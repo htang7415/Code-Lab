@@ -9,9 +9,10 @@ export function generateStaticParams() {
   return content.tracks.map((track) => ({ track: track.id }));
 }
 
-export default function TrackPage({ params }: { params: { track: string } }) {
+export default async function TrackPage({ params }: { params: Promise<{ track: string }> }) {
+  const { track: trackId } = await params;
   const content = contentData as ContentIndex;
-  const track = content.tracks.find((item) => item.id === params.track);
+  const track = content.tracks.find((item) => item.id === trackId);
   if (!track) return notFound();
 
   const topics = content.topics
@@ -19,7 +20,7 @@ export default function TrackPage({ params }: { params: { track: string } }) {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-12">
+    <div className="mx-auto max-w-7xl px-6 py-12">
       <div
         className="mb-8 h-1 w-16 rounded-full"
         style={{ background: `var(${track.accentVar})` }}

@@ -23,7 +23,7 @@ export default function TopicCard({
   problemCount,
 }: TopicCardProps) {
   const isEmpty = !hasDoc && moduleCount === 0 && problemCount === 0;
-  const style: CSSProperties = { "--accent": `var(${accentVar})` };
+  const style = { "--accent": `var(${accentVar})` } as CSSProperties;
 
   return (
     <Link

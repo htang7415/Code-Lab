@@ -64,7 +64,7 @@ export default function ProblemTable({ problems }: ProblemTableProps) {
                 <span
                   className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                     difficultyClass[problem.difficulty] ||
-                    "text-[var(--text-muted)] bg-white/5"
+                    "text-[var(--text-muted)] bg-slate-500/10"
                   }`}
                 >
                   {problem.difficulty}

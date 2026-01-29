@@ -20,7 +20,7 @@ export default function TrackCard({
   moduleCount,
   problemCount,
 }: TrackCardProps) {
-  const style: CSSProperties = { "--accent": `var(${accentVar})` };
+  const style = { "--accent": `var(${accentVar})` } as CSSProperties;
 
   return (
     <Link

@@ -13,7 +13,7 @@ export default function PracticePage() {
   });
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-12">
+    <div className="mx-auto max-w-7xl px-6 py-12">
       <div className="mb-10">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[var(--text-muted)]">
           Practice

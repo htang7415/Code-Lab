@@ -8,9 +8,9 @@ export default function Home() {
 
   return (
     <div>
-      <section className="relative overflow-hidden border-b border-[var(--border-primary)]">
+      <section className="relative overflow-hidden border-b border-[var(--border-primary)] bg-white">
         <div className="hero-grid absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-6 py-16">
+        <div className="relative mx-auto max-w-7xl px-6 py-16">
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-[var(--text-muted)]">
             Code Lab · High-Tech Learning
           </p>
@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-14">
+      <section className="mx-auto max-w-7xl px-6 py-14">
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Tracks</h2>
