@@ -15,6 +15,9 @@ TRACK="$1"
 TOPIC="$2"
 SLUG="$3"
 
+# Rust crate names with hyphens become underscores in use statements
+RUST_NAME=$(echo "$SLUG" | tr '-' '_')
+
 ID="${TRACK}-${TOPIC}-${SLUG}"
 DEST="problems/$TRACK/$TOPIC/$SLUG"
 TEMPLATE_DIR="templates/problem"
@@ -47,7 +50,8 @@ cp "$TEMPLATE_DIR/python/test_solution.py" "$DEST/python/test_solution.py"
 sed "s/{{SLUG}}/$SLUG/g" \
     "$TEMPLATE_DIR/rust/Cargo.toml" > "$DEST/rust/Cargo.toml"
 cp "$TEMPLATE_DIR/rust/src/lib.rs" "$DEST/rust/src/lib.rs"
-cp "$TEMPLATE_DIR/rust/tests/test_solution.rs" "$DEST/rust/tests/test_solution.rs"
+sed "s/{{RUST_NAME}}/$RUST_NAME/g" \
+    "$TEMPLATE_DIR/rust/tests/solution_test.rs" > "$DEST/rust/tests/solution_test.rs"
 
 echo "Created problem at $DEST"
 echo "  pytest $DEST/python -q"

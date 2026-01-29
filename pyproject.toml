@@ -15,7 +15,8 @@ ml = [
 ]
 
 [tool.pytest.ini_options]
-testpaths = ["modules", "problems"]
+# Run tests one at a time: pytest modules/dsa/arrays/prefix-sum/python -q
+norecursedirs = ["templates", "web", "scripts", "docs", "node_modules", ".git"]
 
 [tool.ruff]
 line-length = 100

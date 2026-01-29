@@ -1,4 +1,4 @@
-use two_sum::solve; // TODO: update crate name
+use {{RUST_NAME}}::solve;
 
 #[test]
 fn test_basic() {

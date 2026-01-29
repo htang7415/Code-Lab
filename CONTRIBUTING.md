@@ -45,7 +45,7 @@ problems/<track>/<topic>/<slug>/
   python/test_solution.py
   rust/Cargo.toml
   rust/src/lib.rs
-  rust/tests/test_solution.rs
+  rust/tests/solution_test.rs
 ```
 
 ### meta.json schema

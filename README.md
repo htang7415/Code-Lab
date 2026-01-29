@@ -38,6 +38,12 @@ code-lab/
 pip install -e ".[dev]"
 ```
 
+For ML modules (numpy-based), also install:
+
+```bash
+pip install -e ".[dev,ml]"
+```
+
 ### Run a single module's tests
 
 ```bash
