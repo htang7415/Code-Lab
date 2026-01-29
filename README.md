@@ -1,16 +1,27 @@
 # Code Lab
 
-Coding review and practice for machine learning, data structures & algorithms, AI agents, databases, and software engineering.
+Learn by building: short notes, runnable mini-labs, and practice problems
+across DSA, ML (LLM/RL), AI agents, databases, and software engineering.
 
-## Repo structure
+Code Lab is designed for daily practice: one idea at a time, one test target
+at a time, with clear structure so content can scale without confusion.
+
+## Why Code Lab
+
+- Learn an idea, then run it immediately with a tiny test
+- Keep concepts and exercises separate but linked
+- Use Python by default, with Rust encouraged
+- Make content website-ready from day one
+
+## Repo map
 
 ```
 code-lab/
-  docs/          # Concept notes (markdown)
-  modules/       # Concept labs — teach one idea with code + tests
+  docs/          # Concept notes (website-ready)
+  modules/       # Concept labs — one idea + minimal code + tiny test
   problems/      # Practice problems (LeetCode / deep-ml style)
-  templates/     # Scaffolds for new modules and problems
-  scripts/       # Helper scripts
+  templates/     # Scaffolds for new modules/problems
+  scripts/       # Helper scripts (one-by-one tests, scaffolding)
   web/           # Next.js website (TypeScript, Vercel-deployable)
 ```
 
@@ -23,6 +34,12 @@ code-lab/
 | AI Agents | `ai-agents/` |
 | Databases | `databases/` |
 | Software Engineering | `software-engineering/` |
+
+## Learning flow
+
+1. Read a concept note in `docs/`
+2. Run a related module test in `modules/`
+3. Solve a practice problem in `problems/`
 
 ## Quick start
 
@@ -83,7 +100,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for naming rules and testing conventions.
 
 ## Website
 
-The `web/` directory contains a Next.js app. See [web/README.md](web/README.md) for setup and Vercel deployment instructions.
+The `web/` directory contains a Next.js app. See [web/README.md](web/README.md)
+for setup and Vercel deployment instructions.
+
+## Inspiration
+
+The structure and learning-first approach are inspired by standout learning
+repositories on GitHub, including
+[The Algorithms](https://github.com/TheAlgorithms) and
+[OpenAI Cookbook](https://github.com/openai/openai-cookbook).
 
 ## License
 
