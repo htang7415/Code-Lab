@@ -1,0 +1,17 @@
+[
+  {
+    "id": "dsa-arrays-two-sum",
+    "slug": "two-sum",
+    "title": "Two Sum",
+    "track": "dsa",
+    "topic": "arrays",
+    "difficulty": "easy",
+    "tags": [
+      "hashmap"
+    ],
+    "languages": [
+      "python",
+      "rust"
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": "{{ID}}",
+  "slug": "{{SLUG}}",
+  "title": "TODO: Title",
+  "track": "{{TRACK}}",
+  "topic": "{{TOPIC}}",
+  "difficulty": "easy",
+  "tags": [],
+  "languages": ["python", "rust"]
+}

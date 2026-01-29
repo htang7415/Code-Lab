@@ -1,0 +1,9 @@
+{
+  "name": "code-lab-web",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @codelab/site dev",
+    "build": "pnpm --filter @codelab/site build",
+    "index": "pnpm --filter @codelab/content-indexer index"
+  }
+}

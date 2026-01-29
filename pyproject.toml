@@ -1,0 +1,25 @@
+[project]
+name = "code-lab"
+version = "0.1.0"
+description = "Coding review and practice for ML, DSA, AI agents, databases, and software engineering"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.4",
+]
+ml = [
+    "numpy>=1.24",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["modules", "problems"]
+
+[tool.ruff]
+line-length = 100
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
