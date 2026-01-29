@@ -31,6 +31,15 @@ mkdir -p "$DEST/python"
 mkdir -p "$DEST/rust/src"
 mkdir -p "$DEST/rust/tests"
 
+# README (optional)
+if [ -f "$TEMPLATE_DIR/README.md" ]; then
+  sed -e "s/{{ID}}/$ID/g" \
+      -e "s/{{SLUG}}/$SLUG/g" \
+      -e "s/{{TRACK}}/$TRACK/g" \
+      -e "s/{{TOPIC}}/$TOPIC/g" \
+      "$TEMPLATE_DIR/README.md" > "$DEST/README.md"
+fi
+
 # meta.json
 sed -e "s/{{ID}}/$ID/g" \
     -e "s/{{SLUG}}/$SLUG/g" \

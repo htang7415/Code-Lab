@@ -81,7 +81,7 @@ cargo test --manifest-path problems/<track>/<topic>/<slug>/rust/Cargo.toml
 Use the Makefile shortcuts:
 
 ```bash
-make run-py TARGET=modules/dsa/arrays/prefix-sum/python
+make run-py PATH=modules/dsa/arrays/prefix-sum/python
 make run-rust MANIFEST=problems/dsa/arrays/two-sum/rust/Cargo.toml
 ```
 

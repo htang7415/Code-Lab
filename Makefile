@@ -1,13 +1,21 @@
 .PHONY: run-py run-rust lint format
 
+# Prefer PATH when set on the command line (per prompt),
+# otherwise fall back to TARGET for backward compatibility.
+ifeq ($(origin PATH),command line)
+RUN_PY_PATH := $(PATH)
+else
+RUN_PY_PATH := $(TARGET)
+endif
+
 # Run pytest for a single module or problem
-# Usage: make run-py TARGET=modules/dsa/arrays/prefix-sum/python
+# Usage: make run-py PATH=modules/dsa/arrays/prefix-sum/python
 run-py:
-	@if [ -z "$(TARGET)" ]; then \
-		echo "Usage: make run-py TARGET=<path-to-python-dir>"; \
+	@if [ -z "$(RUN_PY_PATH)" ]; then \
+		echo "Usage: make run-py PATH=<path-to-python-dir>"; \
 		exit 1; \
 	fi
-	pytest $(TARGET) -q
+	pytest $(RUN_PY_PATH) -q
 
 # Run cargo test for a single Rust crate
 # Usage: make run-rust MANIFEST=problems/dsa/arrays/two-sum/rust/Cargo.toml
