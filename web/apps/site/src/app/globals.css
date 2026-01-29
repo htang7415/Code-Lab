@@ -1,28 +1,284 @@
 @import "tailwindcss";
+@import "highlight.js/styles/atom-one-dark.css";
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-card: #141414;
+  --bg-primary: #070b12;
+  --bg-secondary: #0b1220;
+  --bg-card: #0f172a;
+  --bg-elevated: #101b2d;
   --border-primary: #1e293b;
-  --border-hover: #334155;
-  --text-primary: #ededed;
+  --border-hover: rgba(148, 163, 184, 0.4);
+  --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --accent: #38bdf8;
   --easy: #22c55e;
   --medium: #eab308;
   --hard: #ef4444;
+  --track-dsa: #38bdf8;
+  --track-ml: #a78bfa;
+  --track-ai-agents: #34d399;
+  --track-databases: #fbbf24;
+  --track-se: #fb7185;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--bg-primary);
+  background: radial-gradient(circle at top, #0b1220 0%, #070b12 45%, #05070d 100%);
   color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: "Space Grotesk", "SF Pro Text", "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.3);
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 220ms ease, background 220ms ease, border-color 220ms ease,
+    transform 220ms ease;
 }
 
 code,
 .font-mono {
-  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+  font-family: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-grid {
+  background-image: radial-gradient(
+    rgba(148, 163, 184, 0.18) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent 85%);
+  pointer-events: none;
+}
+
+.surface-card {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(7, 11, 18, 0.95));
+  border: 1px solid var(--border-primary);
+  border-radius: 18px;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+    linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--accent) 60%, transparent),
+        transparent 65%
+      )
+      border-box;
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.gradient-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent),
+    0 0 32px color-mix(in srgb, var(--accent) 28%, transparent);
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+}
+
+.gradient-border:hover {
+  transform: translateY(-4px);
+}
+
+.gradient-border:hover::after {
+  opacity: 1;
+}
+
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--text-secondary);
+  transition: all 220ms ease;
+}
+
+.nav-pill:hover {
+  border-color: rgba(148, 163, 184, 0.4);
+  color: var(--text-primary);
+  background: rgba(148, 163, 184, 0.14);
+}
+
+.stat-chip {
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 120px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: var(--text-secondary);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.markdown {
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  color: var(--text-primary);
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.markdown h1 {
+  font-size: 2rem;
+}
+
+.markdown h2 {
+  font-size: 1.6rem;
+}
+
+.markdown h3 {
+  font-size: 1.3rem;
+}
+
+.markdown p {
+  color: var(--text-secondary);
+  margin: 0.7rem 0;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0.7rem 0 0.7rem 1.4rem;
+  color: var(--text-secondary);
+}
+
+.markdown blockquote {
+  border-left: 3px solid rgba(56, 189, 248, 0.6);
+  padding-left: 1rem;
+  color: var(--text-secondary);
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 10px;
+}
+
+.markdown code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  background: rgba(148, 163, 184, 0.12);
+  color: #e2e8f0;
+  font-size: 0.9rem;
+}
+
+.markdown pre {
+  background: #0b1220;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 0.6rem;
+  text-align: left;
+}
+
+.code-block {
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #0b1220;
+  overflow: hidden;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: rgba(15, 23, 42, 0.9);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+.table-surface {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.table-surface table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-surface th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.9rem 1rem;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-muted);
+}
+
+.table-surface td {
+  padding: 0.9rem 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.table-row {
+  transition: background 200ms ease;
+}
+
+.table-row:hover {
+  background: rgba(30, 41, 59, 0.4);
 }

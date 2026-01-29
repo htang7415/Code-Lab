@@ -1,0 +1,748 @@
+{
+  "generated_at": "2026-01-29T18:21:21.836Z",
+  "tracks": [
+    {
+      "id": "dsa",
+      "name": "Data Structures & Algorithms",
+      "description": "Core patterns, data structures, and problem-solving speed.",
+      "accent": "#38bdf8",
+      "accentVar": "--track-dsa",
+      "topicCount": 21,
+      "moduleCount": 1,
+      "problemCount": 1
+    },
+    {
+      "id": "ml",
+      "name": "Machine Learning",
+      "description": "Math foundations, models, optimization, and systems.",
+      "accent": "#a78bfa",
+      "accentVar": "--track-ml",
+      "topicCount": 12,
+      "moduleCount": 2,
+      "problemCount": 0
+    },
+    {
+      "id": "ai-agents",
+      "name": "AI Agents",
+      "description": "Prompting, tool use, memory, and evaluation.",
+      "accent": "#34d399",
+      "accentVar": "--track-ai-agents",
+      "topicCount": 9,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "id": "databases",
+      "name": "Databases",
+      "description": "Schema design, indexing, transactions, and query plans.",
+      "accent": "#fbbf24",
+      "accentVar": "--track-databases",
+      "topicCount": 10,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "id": "software-engineering",
+      "name": "Software Engineering",
+      "description": "APIs, performance, testing, and system design.",
+      "accent": "#fb7185",
+      "accentVar": "--track-se",
+      "topicCount": 10,
+      "moduleCount": 0,
+      "problemCount": 0
+    }
+  ],
+  "topics": [
+    {
+      "track": "software-engineering",
+      "topic": "apis",
+      "name": "APIs",
+      "path": "/track/software-engineering/apis",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "arrays",
+      "name": "Arrays",
+      "path": "/track/dsa/arrays",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 1,
+      "problemCount": 1
+    },
+    {
+      "track": "dsa",
+      "topic": "backtracking",
+      "name": "Backtracking",
+      "path": "/track/dsa/backtracking",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "binary-search",
+      "name": "Binary Search",
+      "path": "/track/dsa/binary-search",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "bit",
+      "name": "Bit",
+      "path": "/track/dsa/bit",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "caching",
+      "name": "Caching",
+      "path": "/track/databases/caching",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "concurrency",
+      "name": "Concurrency",
+      "path": "/track/software-engineering/concurrency",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "data",
+      "name": "Data",
+      "path": "/track/ml/data",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "deep-learning",
+      "name": "Deep Learning",
+      "path": "/track/ml/deep-learning",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "name": "Design Patterns",
+      "path": "/track/software-engineering/design-patterns",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "dp",
+      "name": "Dynamic Programming",
+      "path": "/track/dsa/dp",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "evals",
+      "name": "Evals",
+      "path": "/track/ai-agents/evals",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "evaluation",
+      "name": "Evaluation",
+      "path": "/track/ml/evaluation",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "fundamentals",
+      "name": "Fundamentals",
+      "path": "/track/ml/fundamentals",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "generative",
+      "name": "Generative",
+      "path": "/track/ml/generative",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "graphs",
+      "name": "Graphs",
+      "path": "/track/dsa/graphs",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "greedy",
+      "name": "Greedy",
+      "path": "/track/dsa/greedy",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "guardrails",
+      "name": "Guardrails",
+      "path": "/track/ai-agents/guardrails",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "hashing",
+      "name": "Hashing",
+      "path": "/track/dsa/hashing",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "heap",
+      "name": "Heap",
+      "path": "/track/dsa/heap",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "indexing",
+      "name": "Indexing",
+      "path": "/track/databases/indexing",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "intervals",
+      "name": "Intervals",
+      "path": "/track/dsa/intervals",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "linked-list",
+      "name": "Linked List",
+      "path": "/track/dsa/linked-list",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "llm",
+      "name": "LLM",
+      "path": "/track/ml/llm",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 1,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "math",
+      "name": "Math",
+      "path": "/track/dsa/math",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "memory",
+      "name": "Memory",
+      "path": "/track/ai-agents/memory",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "mlops",
+      "name": "MLOps",
+      "path": "/track/ml/mlops",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "models",
+      "name": "Models",
+      "path": "/track/ml/models",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "multi-agent",
+      "name": "Multi Agent",
+      "path": "/track/ai-agents/multi-agent",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "nosql",
+      "name": "Nosql",
+      "path": "/track/databases/nosql",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "observability",
+      "name": "Observability",
+      "path": "/track/ai-agents/observability",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "optimization",
+      "name": "Optimization",
+      "path": "/track/ml/optimization",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "performance",
+      "name": "Performance",
+      "path": "/track/software-engineering/performance",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "planning",
+      "name": "Planning",
+      "path": "/track/ai-agents/planning",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "prompting",
+      "name": "Prompting",
+      "path": "/track/ai-agents/prompting",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "python",
+      "name": "Python",
+      "path": "/track/software-engineering/python",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "query-plans",
+      "name": "Query Plans",
+      "path": "/track/databases/query-plans",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "rag",
+      "name": "Rag",
+      "path": "/track/ai-agents/rag",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "recursion",
+      "name": "Recursion",
+      "path": "/track/dsa/recursion",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "reinforcement-learning",
+      "name": "Reinforcement Learning",
+      "path": "/track/ml/reinforcement-learning",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 1,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "relational",
+      "name": "Relational",
+      "path": "/track/databases/relational",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "representation",
+      "name": "Representation",
+      "path": "/track/ml/representation",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "rust",
+      "name": "Rust",
+      "path": "/track/software-engineering/rust",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "schema-design",
+      "name": "Schema Design",
+      "path": "/track/databases/schema-design",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "security-basics",
+      "name": "Security Basics",
+      "path": "/track/software-engineering/security-basics",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "shortest-path",
+      "name": "Shortest Path",
+      "path": "/track/dsa/shortest-path",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "sorting",
+      "name": "Sorting",
+      "path": "/track/dsa/sorting",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "sql-patterns",
+      "name": "SQL Patterns",
+      "path": "/track/databases/sql-patterns",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "stack-queue",
+      "name": "Stack Queue",
+      "path": "/track/dsa/stack-queue",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "streaming",
+      "name": "Streaming",
+      "path": "/track/databases/streaming",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "strings",
+      "name": "Strings",
+      "path": "/track/dsa/strings",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "system-design",
+      "name": "System Design",
+      "path": "/track/software-engineering/system-design",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ml",
+      "topic": "systems",
+      "name": "Systems",
+      "path": "/track/ml/systems",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "testing",
+      "name": "Testing",
+      "path": "/track/software-engineering/testing",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "name": "Tool Use",
+      "path": "/track/ai-agents/tool-use",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "software-engineering",
+      "topic": "tooling",
+      "name": "Tooling",
+      "path": "/track/software-engineering/tooling",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "topo-sort",
+      "name": "Topo Sort",
+      "path": "/track/dsa/topo-sort",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "transactions",
+      "name": "Transactions",
+      "path": "/track/databases/transactions",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "trees",
+      "name": "Trees",
+      "path": "/track/dsa/trees",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "tries",
+      "name": "Tries",
+      "path": "/track/dsa/tries",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "dsa",
+      "topic": "union-find",
+      "name": "Union Find",
+      "path": "/track/dsa/union-find",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    },
+    {
+      "track": "databases",
+      "topic": "vector-db",
+      "name": "Vector Db",
+      "path": "/track/databases/vector-db",
+      "hasDoc": false,
+      "docCount": 0,
+      "moduleCount": 0,
+      "problemCount": 0
+    }
+  ],
+  "modules": [
+    {
+      "track": "dsa",
+      "topic": "arrays",
+      "slug": "prefix-sum",
+      "title": "Prefix Sum",
+      "path": "modules/dsa/arrays/prefix-sum",
+      "summary": "> Track: `dsa` | Topic: `arrays`",
+      "readme": "# Prefix Sum\n\n> Track: `dsa` | Topic: `arrays`\n\n## Concept\n\nA **prefix sum** (cumulative sum) array stores running totals so that any\nsubarray sum can be computed in O(1) after O(n) preprocessing.\n\nGiven an array `a` of length `n`, the prefix sum array `p` is defined as:\n\n```\np[0] = 0\np[i] = a[0] + a[1] + ... + a[i-1]\n```\n\nThe sum of elements from index `l` to `r` (inclusive) is `p[r+1] - p[l]`.\n\n## Key points\n\n- Build time: O(n), query time: O(1)\n- Useful for range sum queries, subarray sum problems, and difference arrays\n- Can be extended to 2D grids (2D prefix sums)\n\n## Run tests\n\n```bash\npytest modules/dsa/arrays/prefix-sum/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/dsa/arrays/prefix-sum/python/prefix_sum.py",
+          "language": "python",
+          "content": "\"\"\"Prefix sum — build and query range sums in O(1).\"\"\"\n\nfrom typing import List\n\n\ndef build_prefix_sum(arr: List[int]) -> List[int]:\n    \"\"\"Return a prefix sum array of length len(arr)+1.\n\n    prefix[i] = sum of arr[0..i-1], with prefix[0] = 0.\n    \"\"\"\n    prefix = [0] * (len(arr) + 1)\n    for i, val in enumerate(arr):\n        prefix[i + 1] = prefix[i] + val\n    return prefix\n\n\ndef range_sum(prefix: List[int], left: int, right: int) -> int:\n    \"\"\"Return sum of the original array from index left to right (inclusive).\n\n    Requires the prefix sum array from build_prefix_sum.\n    \"\"\"\n    return prefix[right + 1] - prefix[left]\n"
+        }
+      ]
+    },
+    {
+      "track": "ml",
+      "topic": "llm",
+      "slug": "attention-causal",
+      "title": "Causal Attention Mask",
+      "path": "modules/ml/llm/attention-causal",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "readme": "# Causal Attention Mask\n\n> Track: `ml` | Topic: `llm`\n\n## Concept\n\nIn autoregressive language models, each token can only attend to itself and\nprevious tokens. This is enforced by a **causal (lower-triangular) mask** applied\nto the attention scores before softmax.\n\nGiven queries Q and keys K of shape `(seq_len, d_k)`:\n\n```\nscores = Q @ K^T / sqrt(d_k)\nmask = upper-triangular matrix of -inf\nmasked_scores = scores + mask\nweights = softmax(masked_scores, dim=-1)\noutput = weights @ V\n```\n\n## Key points\n\n- Prevents information leakage from future tokens during training\n- The mask is a constant that can be precomputed for a given sequence length\n- Multi-head attention applies the same mask to each head independently\n\n## Run tests\n\n```bash\npytest modules/ml/llm/attention-causal/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ml/llm/attention-causal/python/attention.py",
+          "language": "python",
+          "content": "\"\"\"Causal (masked) self-attention from scratch using NumPy.\"\"\"\n\nimport numpy as np\n\n\ndef softmax(x: np.ndarray, axis: int = -1) -> np.ndarray:\n    \"\"\"Numerically stable softmax.\"\"\"\n    x_max = np.max(x, axis=axis, keepdims=True)\n    e_x = np.exp(x - x_max)\n    return e_x / np.sum(e_x, axis=axis, keepdims=True)\n\n\ndef causal_mask(seq_len: int) -> np.ndarray:\n    \"\"\"Return an upper-triangular matrix of -inf (causal mask).\n\n    Shape: (seq_len, seq_len). mask[i][j] = -inf if j > i, else 0.\n    \"\"\"\n    mask = np.zeros((seq_len, seq_len))\n    mask[np.triu_indices(seq_len, k=1)] = -np.inf\n    return mask\n\n\ndef causal_self_attention(\n    Q: np.ndarray, K: np.ndarray, V: np.ndarray\n) -> np.ndarray:\n    \"\"\"Compute causal self-attention.\n\n    Args:\n        Q: queries, shape (seq_len, d_k)\n        K: keys,    shape (seq_len, d_k)\n        V: values,  shape (seq_len, d_v)\n\n    Returns:\n        output of shape (seq_len, d_v)\n    \"\"\"\n    seq_len, d_k = Q.shape\n    scores = Q @ K.T / np.sqrt(d_k)\n    scores = scores + causal_mask(seq_len)\n    weights = softmax(scores, axis=-1)\n    return weights @ V\n"
+        }
+      ]
+    },
+    {
+      "track": "ml",
+      "topic": "reinforcement-learning",
+      "slug": "bandit-epsilon-greedy",
+      "title": "Epsilon-Greedy Bandit",
+      "path": "modules/ml/reinforcement-learning/bandit-epsilon-greedy",
+      "summary": "> Track: `ml` | Topic: `reinforcement-learning`",
+      "readme": "# Epsilon-Greedy Bandit\n\n> Track: `ml` | Topic: `reinforcement-learning`\n\n## Concept\n\nThe **multi-armed bandit** problem is a simplified RL setting: an agent\nrepeatedly chooses one of K actions (arms) and receives a reward. The goal is\nto maximize cumulative reward.\n\nThe **epsilon-greedy** strategy balances exploration and exploitation:\n\n- With probability `epsilon`, pick a random arm (explore)\n- With probability `1 - epsilon`, pick the arm with the highest estimated reward (exploit)\n\nAction-value estimates are updated incrementally:\n\n```\nQ[a] += (1/N[a]) * (reward - Q[a])\n```\n\nwhere `N[a]` is the number of times arm `a` has been pulled.\n\n## Key points\n\n- Simple baseline strategy for the explore-exploit tradeoff\n- epsilon = 0 is pure greedy; epsilon = 1 is pure random\n- Does not decay epsilon by default (can be extended to do so)\n\n## Run tests\n\n```bash\npytest modules/ml/reinforcement-learning/bandit-epsilon-greedy/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ml/reinforcement-learning/bandit-epsilon-greedy/python/bandit.py",
+          "language": "python",
+          "content": "\"\"\"Epsilon-greedy multi-armed bandit.\"\"\"\n\nimport random\nfrom typing import List\n\n\nclass EpsilonGreedyBandit:\n    \"\"\"Epsilon-greedy agent for the multi-armed bandit problem.\"\"\"\n\n    def __init__(self, k: int, epsilon: float = 0.1, seed: int | None = None):\n        \"\"\"\n        Args:\n            k: number of arms\n            epsilon: exploration probability (0 to 1)\n            seed: optional random seed for reproducibility\n        \"\"\"\n        self.k = k\n        self.epsilon = epsilon\n        self.q_values: List[float] = [0.0] * k  # estimated action values\n        self.counts: List[int] = [0] * k  # pull counts per arm\n        self._rng = random.Random(seed)\n\n    def select_arm(self) -> int:\n        \"\"\"Choose an arm using epsilon-greedy strategy.\"\"\"\n        if self._rng.random() < self.epsilon:\n            return self._rng.randint(0, self.k - 1)\n        # Greedy: pick arm with highest Q (break ties randomly)\n        max_q = max(self.q_values)\n        best_arms = [a for a in range(self.k) if self.q_values[a] == max_q]\n        return self._rng.choice(best_arms)\n\n    def update(self, arm: int, reward: float) -> None:\n        \"\"\"Update the value estimate for the chosen arm.\"\"\"\n        self.counts[arm] += 1\n        # Incremental mean update\n        self.q_values[arm] += (reward - self.q_values[arm]) / self.counts[arm]\n"
+        }
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "id": "dsa-arrays-two-sum",
+      "slug": "two-sum",
+      "title": "Two Sum",
+      "track": "dsa",
+      "topic": "arrays",
+      "difficulty": "easy",
+      "tags": [
+        "hashmap"
+      ],
+      "languages": [
+        "python",
+        "rust"
+      ],
+      "path": "problems/dsa/arrays/two-sum",
+      "summary": "Given an array of integers `nums` and an integer `target`, return the indices of the two numbers that add up to `target`.",
+      "statement": "# Two Sum\n\n## Problem\n\nGiven an array of integers `nums` and an integer `target`, return the indices\nof the two numbers that add up to `target`.\n\nYou may assume that each input has **exactly one solution**, and you may not\nuse the same element twice. You can return the answer in any order.\n\n## Examples\n\n```\nInput: nums = [2, 7, 11, 15], target = 9\nOutput: [0, 1]\nExplanation: nums[0] + nums[1] == 9\n```\n\n```\nInput: nums = [3, 2, 4], target = 6\nOutput: [1, 2]\n```\n\n```\nInput: nums = [3, 3], target = 6\nOutput: [0, 1]\n```\n\n## Constraints\n\n- 2 <= len(nums) <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Exactly one valid answer exists\n"
+    }
+  ],
+  "docs": []
+}

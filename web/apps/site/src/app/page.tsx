@@ -1,101 +1,58 @@
-import problemsIndex from "@/content/problems_index.json";
-
-interface Problem {
-  id: string;
-  slug: string;
-  title: string;
-  track: string;
-  topic: string;
-  difficulty: string;
-  tags: string[];
-  languages: string[];
-}
-
-const difficultyClass: Record<string, string> = {
-  easy: "text-[var(--easy)] bg-green-500/10",
-  medium: "text-[var(--medium)] bg-yellow-500/10",
-  hard: "text-[var(--hard)] bg-red-500/10",
-};
+import TrackCard from "@/components/TrackCard";
+import type { ContentIndex } from "@/lib/content";
+import contentData from "@/content/content_index.json";
 
 export default function Home() {
-  const problems = problemsIndex as Problem[];
+  const content = contentData as ContentIndex;
+  const { tracks, topics, modules, problems } = content;
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold tracking-tight">Code Lab</h1>
-        <p className="mt-2 text-lg text-[var(--text-secondary)]">
-          Practice problems for ML, DSA, AI agents, databases, and software
-          engineering.
-        </p>
-      </div>
+    <div>
+      <section className="relative overflow-hidden border-b border-[var(--border-primary)]">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-6 py-16">
+          <p className="font-mono text-xs uppercase tracking-[0.4em] text-[var(--text-muted)]">
+            Code Lab · High-Tech Learning
+          </p>
+          <h1 className="mt-5 text-4xl font-semibold leading-tight text-[var(--text-primary)] md:text-5xl">
+            Master the fundamentals. <span className="gradient-text">Ace the interview.</span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-[var(--text-secondary)]">
+            Learn concepts, build with code, and practice the exact patterns that
+            show up in technical interviews. A premium, focused platform for
+            high-velocity learning.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <div className="stat-chip">
+              <span className="text-2xl font-semibold">{topics.length}</span>
+              <span className="text-xs text-[var(--text-muted)]">Topics</span>
+            </div>
+            <div className="stat-chip">
+              <span className="text-2xl font-semibold">{modules.length}</span>
+              <span className="text-xs text-[var(--text-muted)]">Labs</span>
+            </div>
+            <div className="stat-chip">
+              <span className="text-2xl font-semibold">{problems.length}</span>
+              <span className="text-xs text-[var(--text-muted)]">Problems</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <section>
-        <h2 className="mb-6 text-xl font-semibold">Problems</h2>
-
-        {problems.length === 0 ? (
-          <div className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] p-8 text-center">
-            <p className="text-[var(--text-muted)]">
-              No problems indexed yet. Run{" "}
-              <code className="rounded bg-[var(--bg-secondary)] px-2 py-1 text-sm text-[var(--accent)]">
-                pnpm index
-              </code>{" "}
-              to generate the index.
+      <section className="mx-auto max-w-6xl px-6 py-14">
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-semibold">Tracks</h2>
+            <p className="mt-2 text-sm text-[var(--text-secondary)]">
+              Choose a track to explore curated topics, notes, labs, and practice problems.
             </p>
           </div>
-        ) : (
-          <div className="overflow-hidden rounded-lg border border-[var(--border-primary)]">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] text-left text-sm text-[var(--text-secondary)]">
-                  <th className="px-4 py-3 font-medium">Title</th>
-                  <th className="px-4 py-3 font-medium">Track</th>
-                  <th className="px-4 py-3 font-medium">Topic</th>
-                  <th className="px-4 py-3 font-medium">Difficulty</th>
-                  <th className="px-4 py-3 font-medium">Tags</th>
-                </tr>
-              </thead>
-              <tbody>
-                {problems.map((p) => (
-                  <tr
-                    key={p.id}
-                    className="border-b border-[var(--border-primary)] last:border-b-0 transition-colors hover:bg-[var(--bg-card)]"
-                  >
-                    <td className="px-4 py-3 font-medium">{p.title}</td>
-                    <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
-                      {p.track}
-                    </td>
-                    <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
-                      {p.topic}
-                    </td>
-                    <td className="px-4 py-3">
-                      <span
-                        className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                          difficultyClass[p.difficulty] ||
-                          "text-[var(--text-muted)]"
-                        }`}
-                      >
-                        {p.difficulty}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-2 py-0.5 text-xs text-[var(--text-muted)]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {tracks.map((track) => (
+            <TrackCard key={track.id} {...track} />
+          ))}
+        </div>
       </section>
     </div>
   );

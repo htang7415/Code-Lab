@@ -1,17 +1,23 @@
-[
-  {
-    "id": "dsa-arrays-two-sum",
-    "slug": "two-sum",
-    "title": "Two Sum",
-    "track": "dsa",
-    "topic": "arrays",
-    "difficulty": "easy",
-    "tags": [
-      "hashmap"
-    ],
-    "languages": [
-      "python",
-      "rust"
-    ]
-  }
-]
+{
+  "generated_at": "2026-01-29T18:21:21.836Z",
+  "problems": [
+    {
+      "id": "dsa-arrays-two-sum",
+      "slug": "two-sum",
+      "title": "Two Sum",
+      "track": "dsa",
+      "topic": "arrays",
+      "difficulty": "easy",
+      "tags": [
+        "hashmap"
+      ],
+      "languages": [
+        "python",
+        "rust"
+      ],
+      "path": "problems/dsa/arrays/two-sum",
+      "summary": "Given an array of integers `nums` and an integer `target`, return the indices of the two numbers that add up to `target`.",
+      "statement": "# Two Sum\n\n## Problem\n\nGiven an array of integers `nums` and an integer `target`, return the indices\nof the two numbers that add up to `target`.\n\nYou may assume that each input has **exactly one solution**, and you may not\nuse the same element twice. You can return the answer in any order.\n\n## Examples\n\n```\nInput: nums = [2, 7, 11, 15], target = 9\nOutput: [0, 1]\nExplanation: nums[0] + nums[1] == 9\n```\n\n```\nInput: nums = [3, 2, 4], target = 6\nOutput: [1, 2]\n```\n\n```\nInput: nums = [3, 3], target = 6\nOutput: [0, 1]\n```\n\n## Constraints\n\n- 2 <= len(nums) <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Exactly one valid answer exists\n"
+    }
+  ]
+}
