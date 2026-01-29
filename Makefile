@@ -1,13 +1,13 @@
 .PHONY: run-py run-rust lint format
 
 # Run pytest for a single module or problem
-# Usage: make run-py PATH=modules/dsa/arrays/prefix-sum/python
+# Usage: make run-py TARGET=modules/dsa/arrays/prefix-sum/python
 run-py:
-	@if [ -z "$(PATH_TARGET)" ] && [ -z "$(PATH)" ]; then \
-		echo "Usage: make run-py PATH=<path-to-python-dir>"; \
+	@if [ -z "$(TARGET)" ]; then \
+		echo "Usage: make run-py TARGET=<path-to-python-dir>"; \
 		exit 1; \
 	fi
-	pytest $(or $(PATH_TARGET),$(PATH)) -q
+	pytest $(TARGET) -q
 
 # Run cargo test for a single Rust crate
 # Usage: make run-rust MANIFEST=problems/dsa/arrays/two-sum/rust/Cargo.toml
