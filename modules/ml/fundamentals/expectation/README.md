@@ -8,7 +8,7 @@ Expectation is the average value of a random variable.
 
 ## Math
 
-E[X] = Σ x_i p_i
+$$\mathbb{E}[X] = \sum_i x_i p_i$$
 
 ## Function
 

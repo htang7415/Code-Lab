@@ -8,7 +8,7 @@ MSE penalizes squared residuals.
 
 ## Math
 
-MSE = (1/n) Σ (y - ŷ)^2
+$$\mathrm{MSE} = \frac{1}{n}\sum_i (y_i - \hat{y}_i)^2$$
 
 ## Function
 

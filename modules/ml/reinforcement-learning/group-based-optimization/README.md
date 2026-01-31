@@ -10,10 +10,10 @@ GSPO switches to a sequence-level ratio to reduce token-level instability.
 
 ## Math
 
-- A_i = (r_i - mean(r)) / (std(r) + eps)
-- GRPO: r_{i,t} = exp(log pi_theta - log pi_old)
-- GSPO: r_i = exp(sum_t (log pi_theta - log pi_old))
-- Objective (demo): J = mean_i(ratio_i * A_i)
+- $A_i = \frac{r_i - \mu_r}{\sigma_r + \epsilon}$
+- $\text{GRPO: } \rho_{i,t} = \exp(\log \pi_\theta - \log \pi_{\text{old}}),\ \text{ratio}_i = \frac{1}{T}\sum_t \rho_{i,t}$
+- $\text{GSPO: } \text{ratio}_i = \exp\left(\sum_t (\log \pi_\theta - \log \pi_{\text{old}})\right)$
+- $\text{Objective: } J = \frac{1}{N}\sum_i \text{ratio}_i A_i$
 
 ## Function
 

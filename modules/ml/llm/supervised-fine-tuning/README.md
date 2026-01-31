@@ -8,7 +8,7 @@ SFT trains on curated prompt-response pairs with teacher forcing.
 
 ## Math
 
-Masked cross-entropy over supervised target tokens.
+$$\text{Masked cross-entropy over supervised target tokens.}$$
 
 ## Function
 

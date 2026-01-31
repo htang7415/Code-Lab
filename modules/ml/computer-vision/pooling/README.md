@@ -8,7 +8,12 @@ Pooling downsamples by taking max or average over windows.
 
 ## Math
 
-pool = max/mean window
+$$
+\begin{aligned}
+y_{\max} &= \max_{i \in \mathcal{W}} x_i \\
+y_{\text{avg}} &= \frac{1}{|\mathcal{W}|}\sum_{i \in \mathcal{W}} x_i
+\end{aligned}
+$$
 
 ## Function
 

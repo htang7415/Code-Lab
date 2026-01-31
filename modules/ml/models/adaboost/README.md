@@ -8,7 +8,7 @@ AdaBoost reweights samples to focus on errors.
 
 ## Math
 
-w_i <- w_i * exp(α * I[misclassified])
+$$w_i \leftarrow w_i \cdot \exp\left(\alpha \mathbb{I}[\text{misclassified}]\right)$$
 
 ## Function
 

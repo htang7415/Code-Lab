@@ -8,7 +8,7 @@ Compare train vs validation loss to detect fit issues.
 
 ## Math
 
-If train << val => overfit; if both high => underfit.
+$$If train << val => overfit; if both high => underfit.$$
 
 ## Function
 

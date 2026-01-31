@@ -8,7 +8,7 @@ Tokenization maps raw text into discrete tokens that a model can embed.
 
 ## Math
 
-Let `V` be the vocabulary. Tokenization is a mapping `f: text -> [id_1, ..., id_n]`.
+$$Let \texttt{V} be the vocabulary. Tokenization is a mapping \texttt{f: text -> [id\_1, ..., id\_n]}.$$
 
 ## Function
 

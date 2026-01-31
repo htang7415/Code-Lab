@@ -8,7 +8,7 @@ Dropout randomly zeroes activations during training to reduce co-adaptation.
 
 ## Math
 
-x' = mask * x / (1-p)
+$$x' = mask * x / (1-p)$$
 
 ## Function
 

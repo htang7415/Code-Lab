@@ -10,31 +10,31 @@ The goal is to maximize cumulative reward over time.
 
 The **epsilon-greedy** strategy balances exploration and exploitation:
 
-- With probability **ε**, pick a random arm (explore)
-- With probability **1 − ε**, pick the arm with the highest estimated value (exploit)
+- With probability $\epsilon$, pick a random arm (explore)
+- With probability $1-\epsilon$, pick the arm with the highest estimated value (exploit)
 
 This is the simplest baseline for the explore-exploit tradeoff.
-ε = 0 is pure greedy; ε = 1 is pure random.
+$\epsilon = 0$ is pure greedy; $\epsilon = 1$ is pure random.
 
 ## Math
 
-Action-value estimate updated incrementally after pulling arm _a_ and
-observing reward _r_:
+$$Action-value estimate updated incrementally after pulling arm _a_ and$$
+$$observing reward _r_:$$
 
 ```
 N[a] += 1
 Q[a] += (1 / N[a]) * (r - Q[a])
 ```
 
-- `Q[a]` — estimated value of arm _a_ (running mean of rewards)
-- `N[a]` — number of times arm _a_ has been pulled
-- The update is equivalent to computing the sample mean incrementally
+- $\text{\texttt{Q[a]} — estimated value of arm \\_a\\_ (running mean of rewards)}$
+- $\text{\texttt{N[a]} — number of times arm \\_a\\_ has been pulled}$
+- $\text{The update is equivalent to computing the sample mean incrementally}$
 
-Arm selection:
+$$\text{Arm selection:}$$
 
 ```
-a_t = random(0..K-1)         with probability ε
-    = argmax_a Q[a]          with probability 1 - ε
+a_t = random(0..K-1)         with probability epsilon
+    = argmax_a Q[a]          with probability 1 - epsilon
 ```
 
 ## Function

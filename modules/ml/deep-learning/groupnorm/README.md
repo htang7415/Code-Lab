@@ -8,7 +8,7 @@ GroupNorm splits channels into groups and normalizes within each group.
 
 ## Math
 
-Normalize within each group: y = (x-mean_g)/sqrt(var_g+eps)
+$$y = \frac{x - \mu_g}{\sqrt{\sigma_g^2 + \epsilon}}$$
 
 ## Function
 

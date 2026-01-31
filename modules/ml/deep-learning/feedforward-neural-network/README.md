@@ -8,7 +8,7 @@ A feedforward network applies a sequence of linear layers and activations.
 
 ## Math
 
-For layer i: h_i = sigma(W_i h_{i-1} + b_i).
+$$For layer i: h_i = sigma(W_i h_{i-1} + b_i).$$
 
 ## Function
 

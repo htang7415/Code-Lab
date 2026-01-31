@@ -8,7 +8,7 @@ Polynomial features add powers of input to increase model capacity.
 
 ## Math
 
-phi(x) = [x, x^2, ..., x^d]
+$$phi(x) = [x, x^2, ..., x^d]$$
 
 ## Function
 

@@ -8,7 +8,7 @@ Adjust brightness and contrast via linear transform.
 
 ## Math
 
-x' = a x + b
+$$x' = a x + b$$
 
 ## Function
 

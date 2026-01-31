@@ -8,7 +8,7 @@ JS divergence symmetrizes KL using the mean distribution.
 
 ## Math
 
-JS(p,q) = 0.5 KL(p||m)+0.5 KL(q||m)
+$$JS(p,q) = 0.5 KL(p||m)+0.5 KL(q||m)$$
 
 ## Function
 

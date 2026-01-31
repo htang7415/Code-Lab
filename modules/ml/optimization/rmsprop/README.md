@@ -8,7 +8,12 @@ RMSProp scales learning rates by running average of squared gradients.
 
 ## Math
 
-v=βv+(1-β)g^2; w-=lr*g/(sqrt(v)+eps)
+$$
+\begin{aligned}
+v_t &= \beta v_{t-1} + (1-\beta) g_t^2 \\
+w_{t+1} &= w_t - \text{lr} \frac{g_t}{\sqrt{v_t} + \epsilon}
+\end{aligned}
+$$
 
 ## Function
 

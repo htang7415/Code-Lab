@@ -8,7 +8,7 @@ Integer quantization maps floats to a small integer range with a scale.
 
 ## Math
 
-Quantize: q = round(x / s), dequantize: x̂ = q * s.
+$$Quantize: q = round(x / s), dequantize: x̂ = q * s.$$
 
 ## Function
 

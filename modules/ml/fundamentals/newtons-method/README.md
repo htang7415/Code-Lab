@@ -8,7 +8,7 @@ Newton's method uses second derivatives for faster convergence.
 
 ## Math
 
-x = x - f'(x)/f''(x)
+$$x = x - f'(x)/f''(x)$$
 
 ## Function
 

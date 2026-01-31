@@ -8,7 +8,7 @@ An MDP defines states, actions, transitions, and rewards.
 
 ## Math
 
-P(s'|s,a) defines transition probabilities.
+$$\text{P(s'|s,a) defines transition probabilities.}$$
 
 ## Function
 

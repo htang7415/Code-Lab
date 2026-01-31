@@ -8,7 +8,7 @@ KL regularization keeps a policy close to a reference distribution.
 
 ## Math
 
-Penalty: L = β * KL(p || q).
+$$L = \beta\, \mathrm{KL}(p\|q)$$
 
 ## Function
 

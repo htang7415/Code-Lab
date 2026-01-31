@@ -8,7 +8,7 @@ REINFORCE updates policy parameters with reward-weighted gradients.
 
 ## Math
 
-Δθ ∝ R * ∇ log π(a|s)
+$$\Delta \theta \propto R \cdot \nabla \log \pi(a|s)$$
 
 ## Function
 

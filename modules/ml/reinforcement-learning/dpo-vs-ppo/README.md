@@ -8,7 +8,7 @@ Compare preference optimization to policy optimization.
 
 ## Math
 
-DPO uses preference logits; PPO uses clipped policy ratios.
+$$\text{DPO uses preference logits; PPO uses clipped policy ratios.}$$
 
 ## Function
 

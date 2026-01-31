@@ -8,7 +8,7 @@ MAE penalizes absolute residuals.
 
 ## Math
 
-MAE = (1/n) Σ |y - ŷ|
+$$\mathrm{MAE} = \frac{1}{n}\sum_i |y_i - \hat{y}_i|$$
 
 ## Function
 

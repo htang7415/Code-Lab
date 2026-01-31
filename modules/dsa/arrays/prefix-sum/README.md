@@ -12,21 +12,21 @@ and 2D grid prefix sums.
 
 ## Math
 
-Given an array `a` of length `n`, the prefix sum array `p` of length `n+1`:
+$$\text{Given an array \texttt{a} of length \texttt{n}, the prefix sum array \texttt{p} of length \texttt{n+1}:}$$
 
 ```
 p[0] = 0
 p[i] = a[0] + a[1] + ... + a[i-1]    for i = 1..n
 ```
 
-Sum of elements from index `l` to `r` (inclusive):
+$$\text{Sum of elements from index \texttt{l} to \texttt{r} (inclusive):}$$
 
 ```
 sum(l, r) = p[r+1] - p[l]
 ```
 
-- Build time: **O(n)**
-- Query time: **O(1)**
+- $\text{Build time: **O(n)**}$
+- $\text{Query time: **O(1)**}$
 
 ## Function
 

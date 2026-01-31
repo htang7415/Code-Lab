@@ -8,7 +8,7 @@ PPO clips policy updates to avoid large deviations.
 
 ## Math
 
-L = min(r_t A_t, clip(r_t, 1-ε, 1+ε) A_t)
+$$L = \min\left(r_t A_t, \operatorname{clip}(r_t, 1-\epsilon, 1+\epsilon) A_t\right)$$
 
 ## Function
 

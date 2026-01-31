@@ -8,7 +8,12 @@ Adagrad accumulates squared gradients for per-parameter learning rates.
 
 ## Math
 
-G=G+g^2; w-=lr*g/(sqrt(G)+eps)
+$$
+\begin{aligned}
+G_t &= G_{t-1} + g_t^2 \\
+w_{t+1} &= w_t - \text{lr} \frac{g_t}{\sqrt{G_t} + \epsilon}
+\end{aligned}
+$$
 
 ## Function
 

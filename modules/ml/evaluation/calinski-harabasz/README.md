@@ -8,7 +8,7 @@ Calinski-Harabasz compares between- and within-cluster dispersion.
 
 ## Math
 
-CH = (B/(k-1)) / (W/(n-k))
+$$CH = (B/(k-1)) / (W/(n-k))$$
 
 ## Function
 

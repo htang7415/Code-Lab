@@ -8,7 +8,7 @@ VAEs maximize ELBO = reconstruction - KL.
 
 ## Math
 
-ELBO = E_q[log p(x|z)] - KL(q(z)||p(z))
+$$\mathrm{ELBO} = \mathbb{E}_q[\log p(x|z)] - \mathrm{KL}(q(z)\|p(z))$$
 
 ## Function
 

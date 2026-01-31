@@ -8,7 +8,7 @@ KL divergence measures how one distribution diverges from another.
 
 ## Math
 
-KL(p||q) = Σ p log(p/q)
+$$\mathrm{KL}(p\|q) = \sum_i p_i \log\left(\frac{p_i}{q_i}\right)$$
 
 ## Function
 

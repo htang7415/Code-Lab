@@ -8,7 +8,7 @@ Mixture-of-Experts routes tokens to top-k experts based on gating scores.
 
 ## Math
 
-Select top-k gates g_i; output = sum(g_i * expert_i).
+$$Select top-k gates g_i; output = sum(g_i * expert_i).$$
 
 ## Function
 

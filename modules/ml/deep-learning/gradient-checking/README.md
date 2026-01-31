@@ -8,7 +8,7 @@ Finite differences approximate gradients to validate backprop.
 
 ## Math
 
-df/dx ≈ (f(x+ε) - f(x-ε)) / (2ε)
+$$\frac{df}{dx} \approx \frac{f(x+\epsilon) - f(x-\epsilon)}{2\epsilon}$$
 
 ## Function
 

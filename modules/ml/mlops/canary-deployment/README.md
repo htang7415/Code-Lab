@@ -8,7 +8,7 @@ Canary routes a small fraction of traffic to a new model.
 
 ## Math
 
-new_pct = new / total
+$$new_pct = new / total$$
 
 ## Function
 

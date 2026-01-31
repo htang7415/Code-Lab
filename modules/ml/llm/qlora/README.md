@@ -8,7 +8,7 @@ QLoRA combines low-rank updates with quantized base weights.
 
 ## Math
 
-Quantize base weights, then apply LoRA-style low-rank update.
+$$\text{Quantize base weights, then apply LoRA-style low-rank update.}$$
 
 ## Function
 

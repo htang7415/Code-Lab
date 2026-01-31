@@ -8,7 +8,7 @@ Decision trees split data to reduce impurity.
 
 ## Math
 
-Gini = 1 - Σ p_c^2
+$$\mathrm{Gini} = 1 - \sum_c p_c^2$$
 
 ## Function
 

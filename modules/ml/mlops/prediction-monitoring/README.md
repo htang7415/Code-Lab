@@ -8,7 +8,7 @@ Track shifts in prediction mean or variance over time.
 
 ## Math
 
-mean_shift = |μ_new - μ_old|
+$$\Delta \mu = \left|\mu_{\text{new}} - \mu_{\text{old}}\right|$$
 
 ## Function
 

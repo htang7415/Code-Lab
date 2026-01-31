@@ -8,7 +8,7 @@ BatchNorm mixes statistics across batch/time, which conflicts with sequence mode
 
 ## Math
 
-Batch stats depend on other tokens: mean = avg over batch/time.
+$$\mu_B = \frac{1}{BT}\sum_{b=1}^{B}\sum_{t=1}^{T} x_{b,t}$$
 
 ## Function
 

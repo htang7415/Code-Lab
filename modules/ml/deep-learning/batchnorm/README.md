@@ -8,7 +8,7 @@ BatchNorm normalizes activations across the batch.
 
 ## Math
 
-y = (x-mean)/sqrt(var+eps)
+$$y = \frac{x - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}$$
 
 ## Function
 

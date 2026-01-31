@@ -8,7 +8,7 @@ NMS removes overlapping boxes with lower scores.
 
 ## Math
 
-Keep highest score; suppress IoU > threshold.
+$$Keep highest score; suppress IoU > threshold.$$
 
 ## Function
 

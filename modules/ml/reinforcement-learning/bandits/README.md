@@ -8,7 +8,7 @@ Bandits estimate action values from rewards.
 
 ## Math
 
-Q <- Q + (1/N)(r - Q)
+$$Q <- Q + (1/N)(r - Q)$$
 
 ## Function
 

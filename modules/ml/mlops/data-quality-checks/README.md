@@ -8,7 +8,7 @@ Check missing values or out-of-range features.
 
 ## Math
 
-missing_rate = missing / N
+$$missing_rate = missing / N$$
 
 ## Function
 

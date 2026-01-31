@@ -8,7 +8,7 @@ Softmax regression generalizes logistic regression to multiple classes.
 
 ## Math
 
-p_i = exp(z_i)/Σ exp(z_j)
+$$p_i = \frac{\exp(z_i)}{\sum_j \exp(z_j)}$$
 
 ## Function
 

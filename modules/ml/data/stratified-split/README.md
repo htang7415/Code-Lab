@@ -8,7 +8,7 @@ Stratified splits preserve class proportions across splits.
 
 ## Math
 
-Sample indices per class with same ratio.
+$$\text{Sample indices per class with same ratio.}$$
 
 ## Function
 

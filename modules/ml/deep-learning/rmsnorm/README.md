@@ -8,7 +8,7 @@ RMSNorm normalizes by root-mean-square without centering.
 
 ## Math
 
-y = x / sqrt(mean(x^2)+eps)
+$$y = \frac{x}{\sqrt{\frac{1}{d}\sum_{i=1}^{d} x_i^2 + \epsilon}}$$
 
 ## Function
 

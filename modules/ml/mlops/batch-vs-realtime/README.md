@@ -8,7 +8,7 @@ Batching trades latency for throughput.
 
 ## Math
 
-throughput_batch > throughput_realtime
+$$throughput_batch > throughput_realtime$$
 
 ## Function
 

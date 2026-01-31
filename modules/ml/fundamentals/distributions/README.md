@@ -8,7 +8,7 @@ A probability distribution assigns probabilities to outcomes.
 
 ## Math
 
-Σ p_i = 1
+$$\sum_i p_i = 1$$
 
 ## Function
 

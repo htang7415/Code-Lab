@@ -8,7 +8,7 @@ SGD updates parameters by stepping opposite the gradient.
 
 ## Math
 
-w = w - lr * grad
+$$w = w - lr * grad$$
 
 ## Function
 

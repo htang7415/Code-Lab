@@ -8,7 +8,7 @@ R2 measures explained variance relative to a mean baseline.
 
 ## Math
 
-R2 = 1 - SS_res/SS_tot
+$$R2 = 1 - SS_res/SS_tot$$
 
 ## Function
 

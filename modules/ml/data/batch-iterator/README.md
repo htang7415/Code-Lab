@@ -8,7 +8,7 @@ A batch iterator yields index ranges for mini-batches.
 
 ## Math
 
-b_i = [i*B, min((i+1)B, N))
+$$b_i = \left[iB, \min\left((i+1)B, N\right)\right)$$
 
 ## Function
 

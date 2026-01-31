@@ -8,7 +8,7 @@ Upper Confidence Bound balances mean reward and uncertainty.
 
 ## Math
 
-UCB = Q + c * sqrt(ln t / N)
+$$\mathrm{UCB} = Q + c \sqrt{\frac{\ln t}{N}}$$
 
 ## Function
 

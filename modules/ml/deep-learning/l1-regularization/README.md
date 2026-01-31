@@ -4,11 +4,11 @@
 
 ## Concept
 
-L1 adds absolute weight penalty to encourage sparsity.
+L1 adds an absolute weight penalty to encourage sparsity. This is also known as **Lasso** regularization.
 
 ## Math
 
-L = L0 + λ * Σ|w_i|
+$$L = L_0 + \lambda \sum_i |w_i|$$
 
 ## Function
 

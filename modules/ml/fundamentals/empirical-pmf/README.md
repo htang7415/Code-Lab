@@ -8,7 +8,7 @@ Empirical PMF estimates probability from samples.
 
 ## Math
 
-p(x)=count(x)/N
+$$p(x)=count(x)/N$$
 
 ## Function
 

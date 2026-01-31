@@ -8,7 +8,7 @@ Gradient descent updates parameters along negative gradient.
 
 ## Math
 
-x = x - lr * grad
+$$x = x - lr * grad$$
 
 ## Function
 

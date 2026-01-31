@@ -8,7 +8,7 @@ ELBO lower-bounds log-likelihood in variational inference.
 
 ## Math
 
-ELBO = E_q[log p(x|z)] - KL(q||p)
+$$\mathrm{ELBO} = \mathbb{E}_q[\log p(x|z)] - \mathrm{KL}(q\|p)$$
 
 ## Function
 

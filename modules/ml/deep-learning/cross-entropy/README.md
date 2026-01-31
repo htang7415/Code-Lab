@@ -8,7 +8,7 @@ Cross-entropy compares a predicted distribution to a target class.
 
 ## Math
 
-L = -log softmax(logits)[target]
+$$L = -\log\left(\mathrm{softmax}(\text{logits})_{\text{target}}\right)$$
 
 ## Function
 

@@ -8,7 +8,7 @@ RMSE is the square root of MSE.
 
 ## Math
 
-RMSE = sqrt(MSE)
+$$\mathrm{RMSE} = \sqrt{\mathrm{MSE}}$$
 
 ## Function
 

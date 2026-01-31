@@ -4,11 +4,11 @@
 
 ## Concept
 
-Elastic Net combines L1 and L2 penalties.
+Elastic Net combines L1 (Lasso) and L2 (Ridge) penalties to balance sparsity and stability.
 
 ## Math
 
-L = L0 + λ1||w||1 + λ2||w||2^2
+$$L = L_0 + \lambda_1 \lVert w \rVert_1 + \lambda_2 \lVert w \rVert_2^2$$
 
 ## Function
 

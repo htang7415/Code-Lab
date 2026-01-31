@@ -8,7 +8,7 @@ Hessian is the matrix of second derivatives.
 
 ## Math
 
-H_ij = ∂^2 f / ∂x_i ∂x_j
+$$H_ij = ∂^2 f / ∂x_i ∂x_j$$
 
 ## Function
 

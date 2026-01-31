@@ -8,7 +8,7 @@ A convolution layer slides a kernel over the input.
 
 ## Math
 
-(I * K)[i,j] = Σ K[u,v] I[i+u, j+v]
+$$(I * K)_{i,j} = \sum_{u,v} K_{u,v} I_{i+u, j+v}$$
 
 ## Function
 

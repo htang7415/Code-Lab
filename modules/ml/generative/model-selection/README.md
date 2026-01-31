@@ -8,7 +8,7 @@ Pick a model based on fidelity, diversity, and speed trade-offs.
 
 ## Math
 
-Selection is heuristic, not a fixed formula.
+$$\text{Selection is heuristic, not a fixed formula.}$$
 
 ## Function
 

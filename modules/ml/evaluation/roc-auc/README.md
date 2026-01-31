@@ -8,7 +8,7 @@ ROC-AUC measures ranking quality over thresholds.
 
 ## Math
 
-AUC = area under TPR vs FPR curve.
+$$AUC = area under TPR vs FPR curve.$$
 
 ## Function
 

@@ -8,7 +8,7 @@ Distillation matches student logits to teacher logits.
 
 ## Math
 
-L = KL(softmax(z_s/T) || softmax(z_t/T))
+$$L = \mathrm{KL}\left(\mathrm{softmax}\left(\frac{z_s}{T}\right)\,\middle\|\,\mathrm{softmax}\left(\frac{z_t}{T}\right)\right)$$
 
 ## Function
 

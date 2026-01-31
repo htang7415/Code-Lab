@@ -8,7 +8,7 @@ Sparse attention limits attention to a local window to reduce complexity.
 
 ## Math
 
-Mask scores outside a window so softmax only sees nearby positions.
+$$Mask scores outside a window so softmax only sees nearby positions.$$
 
 ## Function
 

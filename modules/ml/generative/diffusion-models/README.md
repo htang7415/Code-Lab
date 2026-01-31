@@ -8,7 +8,7 @@ Diffusion adds noise forward and denoises backward.
 
 ## Math
 
-x_t = sqrt(alpha) x_{t-1} + sqrt(1-alpha) ε
+$$x_t = \sqrt{\alpha}\, x_{t-1} + \sqrt{1-\alpha}\, \epsilon$$
 
 ## Function
 

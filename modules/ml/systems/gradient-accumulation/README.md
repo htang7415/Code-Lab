@@ -8,7 +8,7 @@ Accumulate gradients across steps to simulate larger batches.
 
 ## Math
 
-g_total = Σ g_i
+$$g_{\text{total}} = \sum_i g_i$$
 
 ## Function
 

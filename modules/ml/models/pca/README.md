@@ -8,7 +8,7 @@ PCA finds directions of maximum variance.
 
 ## Math
 
-First principal component = eigenvector of covariance matrix.
+$$v_1 = \arg\max_{\lVert v \rVert = 1} v^\top \Sigma v$$
 
 ## Function
 

@@ -8,7 +8,7 @@ Weight decay shrinks weights during optimization, decoupled in AdamW.
 
 ## Math
 
-w = w - lr*(grad + λ w)
+$$w \leftarrow w - \text{lr}\left(g + \lambda w\right)$$
 
 ## Function
 

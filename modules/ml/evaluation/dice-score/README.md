@@ -8,7 +8,7 @@ Dice score measures overlap, common in segmentation.
 
 ## Math
 
-2|A∩B|/(|A|+|B|)
+$$\text{2|A∩B|/(|A|+|B|)}$$
 
 ## Function
 

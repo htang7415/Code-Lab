@@ -4,11 +4,12 @@
 
 ## Concept
 
-He initialization keeps variance stable for ReLU activations.
+He initialization keeps variance stable for ReLU activations. Demo uses deterministic
+pseudo-random.
 
 ## Math
 
-W ~ N(0, 2/fan_in) (demo uses deterministic pseudo-random).
+$$W \sim \mathcal{N}\left(0, \frac{2}{fan_{in}}\right)$$
 
 ## Function
 

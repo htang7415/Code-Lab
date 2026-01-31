@@ -8,7 +8,7 @@ Forward pass computes model outputs from inputs.
 
 ## Math
 
-y = W x + b
+$$y = W x + b$$
 
 ## Function
 

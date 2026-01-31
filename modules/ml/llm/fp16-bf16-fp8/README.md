@@ -8,7 +8,7 @@ Lower-precision formats trade accuracy for speed and memory.
 
 ## Math
 
-Quantize a float by rounding mantissa bits (demo).
+$$\text{Quantize a float by rounding mantissa bits (demo).}$$
 
 ## Function
 

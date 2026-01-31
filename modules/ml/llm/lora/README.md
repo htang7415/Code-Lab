@@ -4,11 +4,11 @@
 
 ## Concept
 
-LoRA applies a low-rank update ΔW = A @ B while keeping base weights frozen.
+LoRA applies a low-rank update $\Delta W = AB$ while keeping base weights frozen.
 
 ## Math
 
-W' = W + (α / r) * A B.
+$$W' = W + \frac{\alpha}{r} AB$$
 
 ## Function
 

@@ -8,7 +8,7 @@ ResNet is a classic CNN architecture with characteristic layer design.
 
 ## Math
 
-Architecture defined by ordered layers.
+$$\text{Architecture defined by ordered layers.}$$
 
 ## Function
 

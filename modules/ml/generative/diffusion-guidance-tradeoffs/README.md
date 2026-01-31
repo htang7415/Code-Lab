@@ -8,7 +8,7 @@ Guidance improves fidelity but can slow sampling or reduce diversity.
 
 ## Math
 
-guided = base + s * (cond - base)
+$$guided = base + s * (cond - base)$$
 
 ## Function
 

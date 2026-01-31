@@ -8,7 +8,7 @@ Bilinear interpolation blends four neighbors.
 
 ## Math
 
-f(x,y) = Σ w_ij * v_ij
+$$f(x,y) = \sum_{i,j} w_{ij} v_{ij}$$
 
 ## Function
 

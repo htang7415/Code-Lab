@@ -8,7 +8,7 @@ Step decay drops LR by a factor every k steps.
 
 ## Math
 
-lr_t = lr * gamma^{floor(t/step)}
+$$\text{lr}_t = \text{lr} \cdot \gamma^{\lfloor t / \text{step} \rfloor}$$
 
 ## Function
 

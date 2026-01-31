@@ -8,7 +8,7 @@ Autodiff computes derivatives by composing local gradients.
 
 ## Math
 
-If y = x^2 and z = y + 3, then dz/dx = 2x.
+$$If y = x^2 and z = y + 3, then dz/dx = 2x.$$
 
 ## Function
 

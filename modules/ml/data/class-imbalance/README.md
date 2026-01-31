@@ -8,7 +8,7 @@ Compute class weights to rebalance loss contributions.
 
 ## Math
 
-w_c = N / (K * count_c)
+$$w_c = N / (K * count_c)$$
 
 ## Function
 

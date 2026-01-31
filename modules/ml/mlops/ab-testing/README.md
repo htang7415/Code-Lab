@@ -8,7 +8,7 @@ A/B testing compares conversion rates between variants.
 
 ## Math
 
-rate = conversions / trials
+$$rate = conversions / trials$$
 
 ## Function
 

@@ -8,7 +8,7 @@ Jacobian contains partial derivatives of vector-valued functions.
 
 ## Math
 
-J_ij = ∂f_i/∂x_j
+$$J_ij = ∂f_i/∂x_j$$
 
 ## Function
 

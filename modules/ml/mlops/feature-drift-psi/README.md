@@ -8,7 +8,7 @@ PSI compares expected vs actual distributions.
 
 ## Math
 
-PSI = Σ (a-e) * ln(a/e)
+$$\mathrm{PSI} = \sum_i (a_i - e_i) \ln\left(\frac{a_i}{e_i}\right)$$
 
 ## Function
 

@@ -8,7 +8,7 @@ Focal loss down-weights easy examples for imbalanced classification.
 
 ## Math
 
-L = -(1-p)^γ log(p)
+$$L = -(1-p)^{\gamma} \log(p)$$
 
 ## Function
 

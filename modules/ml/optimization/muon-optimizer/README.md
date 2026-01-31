@@ -11,9 +11,9 @@ module uses a tiny Gram-Schmidt approximation for a learnable demo.
 
 ## Math
 
-- m_t = beta * m_{t-1} + g_t
-- Q_t = orthogonalize(m_t)
-- W_{t+1} = W_t - lr * Q_t
+- $m_t = beta * m_{t-1} + g_t$
+- $Q_t = orthogonalize(m_t)$
+- $W_{t+1} = W_t - lr * Q_t$
 
 ## Function
 

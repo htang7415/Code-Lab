@@ -8,7 +8,7 @@ Multi-head attention runs attention in parallel subspaces and concatenates resul
 
 ## Math
 
-Split Q,K,V into heads: head_i = Attention(Q_i,K_i,V_i).
+$$Split Q,K,V into heads: head_i = Attention(Q_i,K_i,V_i).$$
 
 ## Function
 

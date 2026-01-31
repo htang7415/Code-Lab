@@ -8,7 +8,7 @@ Covariance measures how two variables vary together.
 
 ## Math
 
-cov(X,Y)=E[(X-μx)(Y-μy)]
+$$\mathrm{cov}(X,Y)=\mathbb{E}[(X-\mu_X)(Y-\mu_Y)]$$
 
 ## Function
 

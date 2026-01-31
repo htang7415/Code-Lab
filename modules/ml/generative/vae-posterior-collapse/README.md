@@ -8,7 +8,7 @@ Posterior collapse happens when KL goes to zero.
 
 ## Math
 
-KL → 0 indicates z ignored.
+$$KL → 0 indicates z ignored.$$
 
 ## Function
 

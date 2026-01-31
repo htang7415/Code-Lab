@@ -8,7 +8,13 @@ Pegasos is a stochastic subgradient method for SVMs.
 
 ## Math
 
-w = (1 - lr*λ)w + lr*y*x if y(w·x) < 1
+$$
+w \leftarrow
+\begin{cases}
+(1-\text{lr}\,\lambda)w + \text{lr}\, y x, & y(w^\top x) < 1 \\
+(1-\text{lr}\,\lambda)w, & \text{otherwise}
+\end{cases}
+$$
 
 ## Function
 

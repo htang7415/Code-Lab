@@ -8,7 +8,7 @@ A neuron computes a weighted sum plus bias, then applies an activation.
 
 ## Math
 
-y = sigma(w · x + b)
+$$y = sigma(w · x + b)$$
 
 ## Function
 

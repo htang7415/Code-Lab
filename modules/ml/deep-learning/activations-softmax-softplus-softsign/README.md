@@ -8,7 +8,7 @@ Softmax normalizes logits, softplus smooths ReLU, softsign saturates gently.
 
 ## Math
 
-softplus(x)=log(1+e^x), softsign(x)=x/(1+|x|)
+$$softplus(x)=log(1+e^x), softsign(x)=x/(1+|x|)$$
 
 ## Function
 

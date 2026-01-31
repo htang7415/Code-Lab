@@ -9,11 +9,11 @@ Dynamic Tanh (DyT) adds learnable scale/bias parameters to tanh.
 
 ## Math
 
-- sigmoid(x)=1/(1+e^-x)
-- tanh(x)=(e^x-e^-x)/(e^x+e^-x)
-- hard_sigmoid(x)=clip(0.2x+0.5, 0, 1)
-- hardtanh(x)=clip(x, -1, 1)
-- dyt(x)=gamma * tanh(alpha * x) + beta
+- $\sigma(x)=\frac{1}{1+e^{-x}}$
+- $\tanh(x)=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}$
+- $\mathrm{hard\_sigmoid}(x)=\operatorname{clip}(0.2x+0.5, 0, 1)$
+- $\mathrm{hardtanh}(x)=\operatorname{clip}(x, -1, 1)$
+- $\mathrm{dyt}(x)=\gamma\,\tanh(\alpha x)+\beta$
 
 ## Function
 

@@ -8,7 +8,7 @@ CNNs use convolutional filters to capture local patterns.
 
 ## Math
 
-feature_map = conv(input, kernel)
+$$feature_map = conv(input, kernel)$$
 
 ## Function
 

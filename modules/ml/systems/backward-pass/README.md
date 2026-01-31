@@ -8,7 +8,7 @@ Backward pass computes gradients of loss w.r.t parameters.
 
 ## Math
 
-dL/dw = dL/dy * x
+$$dL/dw = dL/dy * x$$
 
 ## Function
 

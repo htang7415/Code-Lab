@@ -8,7 +8,7 @@ AdamW decouples weight decay from adaptive updates.
 
 ## Math
 
-w = w - lr * (m/√v) - lr*wd*w
+$$w = w - lr * (m/√v) - lr*wd*w$$
 
 ## Function
 

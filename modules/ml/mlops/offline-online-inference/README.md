@@ -8,7 +8,7 @@ Offline runs in batches; online responds per request.
 
 ## Math
 
-latency_online << latency_batch
+$$latency_online << latency_batch$$
 
 ## Function
 

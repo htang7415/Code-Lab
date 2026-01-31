@@ -8,7 +8,7 @@ Check that gradients are non-zero and finite.
 
 ## Math
 
-ok if any(|g| > 0) and no NaN
+$$ok if any(|g| > 0) and no NaN$$
 
 ## Function
 

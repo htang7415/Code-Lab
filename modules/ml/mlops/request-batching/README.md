@@ -8,7 +8,7 @@ Batch requests to improve throughput.
 
 ## Math
 
-batches = ceil(n / batch_size)
+$$batches = ceil(n / batch_size)$$
 
 ## Function
 

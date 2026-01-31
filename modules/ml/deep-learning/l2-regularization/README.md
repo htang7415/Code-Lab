@@ -4,11 +4,11 @@
 
 ## Concept
 
-L2 adds squared weight penalty to discourage large weights.
+L2 adds a squared weight penalty to discourage large weights. This is also known as **Ridge** regularization.
 
 ## Math
 
-L = L0 + λ * Σ w_i^2
+$$L = L_0 + \lambda \sum_i w_i^2$$
 
 ## Function
 

@@ -8,7 +8,7 @@ SLA metrics track latency or error thresholds.
 
 ## Math
 
-violation_rate = violations / total
+$$violation_rate = violations / total$$
 
 ## Function
 

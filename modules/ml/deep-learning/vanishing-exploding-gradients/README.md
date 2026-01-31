@@ -8,7 +8,7 @@ Repeated multiplication by small or large values shrinks or blows up gradients.
 
 ## Math
 
-g_L = g_0 * Π w_i
+$$g_L = g_0 * Π w_i$$
 
 ## Function
 

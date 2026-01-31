@@ -8,7 +8,13 @@ Adam combines momentum and adaptive learning rates.
 
 ## Math
 
-m=β1 m+(1-β1)g; v=β2 v+(1-β2)g^2; w-=lr*m/(sqrt(v)+eps)
+$$
+\begin{aligned}
+m_t &= \beta_1 m_{t-1} + (1-\beta_1) g_t \\
+v_t &= \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \\
+w_{t+1} &= w_t - \text{lr} \frac{m_t}{\sqrt{v_t} + \epsilon}
+\end{aligned}
+$$
 
 ## Function
 

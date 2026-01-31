@@ -8,7 +8,7 @@ DBSCAN groups points by density using eps-neighborhoods.
 
 ## Math
 
-neighbors(x) = {y | dist(x,y) <= eps}
+$$\mathrm{neighbors}(x) = \{y \mid \mathrm{dist}(x,y) \le \varepsilon\}$$
 
 ## Function
 

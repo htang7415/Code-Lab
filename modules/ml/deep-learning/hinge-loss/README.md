@@ -8,7 +8,7 @@ Hinge loss encourages a margin between correct and incorrect classes.
 
 ## Math
 
-L = max(0, 1 - y * score)
+$$L = \max(0, 1 - y \cdot \text{score})$$
 
 ## Function
 

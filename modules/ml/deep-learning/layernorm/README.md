@@ -8,7 +8,7 @@ LayerNorm normalizes across features within a single sample.
 
 ## Math
 
-y = (x-mean_feature)/sqrt(var_feature+eps)
+$$y = \frac{x - \mu_f}{\sqrt{\sigma_f^2 + \epsilon}}$$
 
 ## Function
 

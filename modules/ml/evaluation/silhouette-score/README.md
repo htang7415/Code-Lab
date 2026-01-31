@@ -8,7 +8,7 @@ Silhouette compares intra-cluster to nearest-cluster distance.
 
 ## Math
 
-s = (b - a) / max(a,b)
+$$s = \frac{b - a}{\max(a,b)}$$
 
 ## Function
 

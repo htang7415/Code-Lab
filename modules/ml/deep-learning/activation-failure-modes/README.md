@@ -8,7 +8,7 @@ Dead ReLU and saturation reduce gradient flow.
 
 ## Math
 
-Saturation: |σ'(x)| ≈ 0 for large |x|.
+$$|\sigma'(x)| \approx 0 \quad \text{for large } |x|$$
 
 ## Function
 

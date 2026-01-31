@@ -8,7 +8,7 @@ Loss scaling multiplies loss to avoid underflow in mixed precision.
 
 ## Math
 
-scaled_grad = grad * scale
+$$scaled_grad = grad * scale$$
 
 ## Function
 

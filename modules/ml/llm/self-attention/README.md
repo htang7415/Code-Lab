@@ -8,7 +8,7 @@ Self-attention lets each token attend to all others by comparing queries and key
 
 ## Math
 
-Attention(Q,K,V) = softmax(QK^T / sqrt(d_k)) V
+$$\mathrm{Attention}(Q,K,V) = \mathrm{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V$$
 
 ## Function
 

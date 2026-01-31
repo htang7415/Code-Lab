@@ -8,7 +8,12 @@ Momentum accumulates velocity to smooth updates.
 
 ## Math
 
-v = μv + grad; w = w - lr * v
+$$
+\begin{aligned}
+v_t &= \mu v_{t-1} + g_t \\
+w_{t+1} &= w_t - \text{lr}\, v_t
+\end{aligned}
+$$
 
 ## Function
 

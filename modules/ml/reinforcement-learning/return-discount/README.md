@@ -8,7 +8,7 @@ Return is the discounted sum of rewards.
 
 ## Math
 
-G_t = Σ γ^k r_{t+k}
+$$G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$$
 
 ## Function
 

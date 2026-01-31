@@ -8,7 +8,7 @@ A dataset is the full collection; a batch is a subset; an epoch is one full pass
 
 ## Math
 
-num_batches = ceil(dataset_size / batch_size)
+$$num_batches = ceil(dataset_size / batch_size)$$
 
 ## Function
 

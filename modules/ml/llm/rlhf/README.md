@@ -8,7 +8,7 @@ RLHF uses a reward model trained on preference pairs before policy optimization.
 
 ## Math
 
-Reward model loss uses the pairwise logistic objective.
+$$\text{Reward model loss uses the pairwise logistic objective.}$$
 
 ## Function
 

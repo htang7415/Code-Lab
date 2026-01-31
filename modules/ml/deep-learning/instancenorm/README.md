@@ -8,7 +8,7 @@ InstanceNorm normalizes per-sample per-channel, often for vision.
 
 ## Math
 
-Normalize within a single instance: y = (x-mean)/sqrt(var+eps)
+$$y = \frac{x - \mu_I}{\sqrt{\sigma_I^2 + \epsilon}}$$
 
 ## Function
 

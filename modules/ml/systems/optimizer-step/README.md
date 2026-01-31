@@ -8,7 +8,7 @@ Apply gradients to update parameters.
 
 ## Math
 
-w = w - lr * g
+$$w = w - lr * g$$
 
 ## Function
 

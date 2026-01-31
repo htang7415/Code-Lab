@@ -8,7 +8,7 @@ GPR predicts using a kernel to measure similarity.
 
 ## Math
 
-k(x,x') = exp(-||x-x'||^2 / (2ℓ^2))
+$$k(x,x') = \exp\left(-\frac{\lVert x-x' \rVert^2}{2\ell^2}\right)$$
 
 ## Function
 

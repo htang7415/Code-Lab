@@ -8,7 +8,7 @@ Mutual information measures shared information between variables.
 
 ## Math
 
-I(X;Y)=Σ p(x,y) log(p(x,y)/(p(x)p(y)))
+$$I(X;Y)=\sum_{x,y} p(x,y)\log\left(\frac{p(x,y)}{p(x)p(y)}\right)$$
 
 ## Function
 

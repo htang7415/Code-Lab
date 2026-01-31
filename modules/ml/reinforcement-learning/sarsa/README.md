@@ -8,7 +8,7 @@ SARSA uses the next action actually taken for updates.
 
 ## Math
 
-Q <- Q + α (r + γ Q' - Q)
+$$Q \leftarrow Q + \alpha\left(r + \gamma Q' - Q\right)$$
 
 ## Function
 

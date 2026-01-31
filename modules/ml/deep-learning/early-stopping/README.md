@@ -8,7 +8,7 @@ Stop training when validation loss stops improving.
 
 ## Math
 
-Stop if best_loss hasn't improved for patience steps.
+$$t - t_{\text{best}} \ge P$$
 
 ## Function
 

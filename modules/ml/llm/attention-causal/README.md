@@ -17,7 +17,7 @@ The mask is a constant for a given sequence length and can be precomputed once.
 
 ## Math
 
-Scaled dot-product attention with causal mask:
+$$\text{Scaled dot-product attention with causal mask:}$$
 
 ```
 scores = Q @ K^T / sqrt(d_k)           # (seq_len, seq_len)
@@ -30,9 +30,9 @@ weights = softmax(masked, dim=-1)       # (seq_len, seq_len)
 output  = weights @ V                   # (seq_len, d_v)
 ```
 
-- `Q`, `K` — queries and keys, shape `(seq_len, d_k)`
-- `V` — values, shape `(seq_len, d_v)`
-- `d_k` — key dimension (scaling factor prevents large dot products)
+- $\text{\texttt{Q}, \texttt{K} — queries and keys, shape \texttt{(seq\_len, d\_k)}}$
+- $\text{\texttt{V} — values, shape \texttt{(seq\_len, d\_v)}}$
+- $\text{\texttt{d\_k} — key dimension (scaling factor prevents large dot products)}$
 
 ## Function
 

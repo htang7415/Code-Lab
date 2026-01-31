@@ -8,7 +8,7 @@ Constant LR keeps the step size fixed.
 
 ## Math
 
-lr_t = lr
+$$\text{lr}_t = \text{lr}$$
 
 ## Function
 

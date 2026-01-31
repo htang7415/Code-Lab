@@ -8,7 +8,7 @@ Random forests train many trees on bootstrap samples.
 
 ## Math
 
-Bootstrap sample size = N with replacement.
+$$Bootstrap sample size = N with replacement.$$
 
 ## Function
 

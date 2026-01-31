@@ -8,7 +8,7 @@ Convert RGB to grayscale using luminance weights.
 
 ## Math
 
-Y = 0.299R + 0.587G + 0.114B
+$$Y = 0.299R + 0.587G + 0.114B$$
 
 ## Function
 

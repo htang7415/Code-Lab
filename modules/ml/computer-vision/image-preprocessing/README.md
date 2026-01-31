@@ -8,7 +8,7 @@ Preprocessing normalizes pixel ranges for stable training.
 
 ## Math
 
-x' = x / 255
+$$x' = x / 255$$
 
 ## Function
 

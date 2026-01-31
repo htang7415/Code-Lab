@@ -8,7 +8,7 @@ Warmup linearly ramps LR at the start of training.
 
 ## Math
 
-lr_t = lr * min(1, t / warmup_steps)
+$$\text{lr}_t = \text{lr} \cdot \min\left(1, \frac{t}{T_{\text{warmup}}}\right)$$
 
 ## Function
 

@@ -8,7 +8,7 @@ Linear regression predicts a target as a linear function of features.
 
 ## Math
 
-y = w · x + b
+$$y = w · x + b$$
 
 ## Function
 

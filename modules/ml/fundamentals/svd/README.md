@@ -4,11 +4,11 @@
 
 ## Concept
 
-SVD factorizes a matrix into U Σ V^T.
+SVD factorizes a matrix into $U \Sigma V^{\top}$.
 
 ## Math
 
-A = U Σ V^T
+$$A = U \Sigma V^{\top}$$
 
 ## Function
 

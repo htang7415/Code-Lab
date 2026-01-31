@@ -8,7 +8,7 @@ PTX anchoring mixes a small amount of pretraining loss during alignment to retai
 
 ## Math
 
-Anchored loss: L = (1-α) * L_align + α * L_ptx.
+$$L = (1-\alpha) L_{\text{align}} + \alpha L_{\text{ptx}}$$
 
 ## Function
 

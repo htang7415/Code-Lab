@@ -8,7 +8,7 @@ Compare MAE and MSE to see sensitivity to outliers.
 
 ## Math
 
-MAE uses |e|; MSE uses e^2.
+$$MAE uses |e|; MSE uses e^2.$$
 
 ## Function
 

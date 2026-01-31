@@ -8,7 +8,7 @@ Endpoint error measures flow prediction error.
 
 ## Math
 
-EPE = sqrt((u-u*)^2 + (v-v*)^2)
+$$\mathrm{EPE} = \sqrt{(u-u^*)^2 + (v-v^*)^2}$$
 
 ## Function
 

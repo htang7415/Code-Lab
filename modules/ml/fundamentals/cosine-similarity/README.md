@@ -8,7 +8,7 @@ Cosine similarity measures angle between vectors.
 
 ## Math
 
-cos = (a·b) / (||a|| ||b||)
+$$cos = (a·b) / (||a|| ||b||)$$
 
 ## Function
 

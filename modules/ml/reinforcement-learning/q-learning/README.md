@@ -8,7 +8,7 @@ Q-learning updates state-action values toward TD targets.
 
 ## Math
 
-Q <- Q + α (r + γ max Q' - Q)
+$$Q \leftarrow Q + \alpha\left(r + \gamma \max_{a'} Q' - Q\right)$$
 
 ## Function
 

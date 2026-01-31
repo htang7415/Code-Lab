@@ -8,7 +8,7 @@ Exponential decay reduces LR continuously.
 
 ## Math
 
-lr_t = lr * exp(-k t)
+$$\text{lr}_t = \text{lr} \cdot \exp(-k t)$$
 
 ## Function
 

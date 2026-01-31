@@ -8,7 +8,7 @@ Cosine decay anneals LR smoothly to zero.
 
 ## Math
 
-lr_t = lr * 0.5 * (1 + cos(pi t / T))
+$$\text{lr}_t = \text{lr} \cdot \frac{1}{2}\left(1+\cos\left(\frac{\pi t}{T}\right)\right)$$
 
 ## Function
 

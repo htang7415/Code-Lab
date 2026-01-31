@@ -8,7 +8,7 @@ Augmentation applies random transforms like flips.
 
 ## Math
 
-x' = flip(x)
+$$x' = flip(x)$$
 
 ## Function
 

@@ -8,7 +8,7 @@ Logistic regression models class probability with a sigmoid.
 
 ## Math
 
-p = 1/(1+e^{-(w·x+b)})
+$$p = 1/(1+e^{-(w·x+b)})$$
 
 ## Function
 

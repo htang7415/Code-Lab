@@ -8,7 +8,7 @@ Leakage happens when train and test data overlap or share future info.
 
 ## Math
 
-Leakage if |train ∩ test| > 0.
+$$Leakage if |train ∩ test| > 0.$$
 
 ## Function
 

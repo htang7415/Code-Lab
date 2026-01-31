@@ -8,7 +8,7 @@ ReLU variants improve gradient flow by keeping nonzero slopes.
 
 ## Math
 
-ReLU(x)=max(0,x), LeakyReLU(x)=max(ax,x)
+$$\mathrm{ReLU}(x)=\max(0,x),\ \mathrm{LeakyReLU}(x)=\max(\alpha x,x)$$
 
 ## Function
 

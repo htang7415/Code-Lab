@@ -8,7 +8,7 @@ Pretraining optimizes next-token prediction on large corpora.
 
 ## Math
 
-Cross-entropy: L = -log softmax(logits)[target].
+$$\text{Cross-entropy: } L = -\log\left(\mathrm{softmax}(\text{logits})_{\text{target}}\right)$$
 
 ## Function
 

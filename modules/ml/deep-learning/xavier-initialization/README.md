@@ -8,7 +8,7 @@ Xavier init keeps variance stable for symmetric activations.
 
 ## Math
 
-W ~ U(-sqrt(6/(fan_in+fan_out)), sqrt(6/(fan_in+fan_out))).
+$$W \sim \mathcal{U}\left(-\sqrt{\frac{6}{fan_{in}+fan_{out}}}, \sqrt{\frac{6}{fan_{in}+fan_{out}}}\right)$$
 
 ## Function
 

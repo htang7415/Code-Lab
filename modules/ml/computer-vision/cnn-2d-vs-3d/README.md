@@ -8,7 +8,7 @@
 
 ## Math
 
-output_depth = input_depth - kernel_depth + 1
+$$output_depth = input_depth - kernel_depth + 1$$
 
 ## Function
 

@@ -8,7 +8,13 @@ Huber loss is quadratic near zero and linear for large errors.
 
 ## Math
 
-L = 0.5 e^2 if |e|<=δ else δ(|e|-0.5δ)
+$$
+L =
+\begin{cases}
+\frac{1}{2} e^2, & |e| \le \delta \\
+\delta\left(|e| - \frac{1}{2}\delta\right), & \text{otherwise}
+\end{cases}
+$$
 
 ## Function
 

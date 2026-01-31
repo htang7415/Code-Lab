@@ -8,7 +8,7 @@ Reset gradients to zero before the next backward pass.
 
 ## Math
 
-g = 0
+$$g = 0$$
 
 ## Function
 

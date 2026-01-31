@@ -8,7 +8,7 @@ F1 is the harmonic mean of precision and recall.
 
 ## Math
 
-F1 = 2PR/(P+R)
+$$F1 = 2PR/(P+R)$$
 
 ## Function
 

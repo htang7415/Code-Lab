@@ -8,7 +8,7 @@ Two-sample t-test compares means of two groups.
 
 ## Math
 
-t = (m1-m2) / sqrt(s1^2/n1 + s2^2/n2)
+$$t = \frac{m_1 - m_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
 
 ## Function
 

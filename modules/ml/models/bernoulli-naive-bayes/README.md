@@ -8,7 +8,7 @@ Bernoulli NB models binary features per class.
 
 ## Math
 
-p(x|y)=∏ p_i^{x_i} (1-p_i)^{1-x_i}
+$$p(x|y)=∏ p_i^{x_i} (1-p_i)^{1-x_i}$$
 
 ## Function
 

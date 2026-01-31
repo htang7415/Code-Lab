@@ -8,7 +8,7 @@ Mode collapse happens when the generator outputs limited modes.
 
 ## Math
 
-Low diversity ⇒ entropy of samples drops.
+$$Low diversity ⇒ entropy of samples drops.$$
 
 ## Function
 

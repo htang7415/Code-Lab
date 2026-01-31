@@ -8,7 +8,7 @@ Mixed precision scales gradients to avoid underflow.
 
 ## Math
 
-g_scaled = g * scale
+$$g_scaled = g * scale$$
 
 ## Function
 

@@ -8,7 +8,7 @@ K-Means assigns points to nearest centroid.
 
 ## Math
 
-c_i = argmin_j ||x_i - μ_j||
+$$c_i = \arg\min_j \lVert x_i - \mu_j \rVert$$
 
 ## Function
 

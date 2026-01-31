@@ -8,7 +8,7 @@ Check for NaNs to catch divergence early.
 
 ## Math
 
-is_nan(x) = true if x != x
+$$is_nan(x) = true if x != x$$
 
 ## Function
 

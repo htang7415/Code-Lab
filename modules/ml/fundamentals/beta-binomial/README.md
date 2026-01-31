@@ -8,7 +8,7 @@ Beta prior and Binomial likelihood yield Beta posterior.
 
 ## Math
 
-α' = α + successes, β' = β + failures
+$$\alpha' = \alpha + \text{successes},\ \beta' = \beta + \text{failures}$$
 
 ## Function
 

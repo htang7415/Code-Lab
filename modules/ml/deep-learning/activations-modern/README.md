@@ -8,7 +8,12 @@ Modern activations like GeLU, Swish, SwiGLU, and Mish improve expressiveness.
 
 ## Math
 
-Swish(x)=x*sigmoid(x), GeLU≈0.5x(1+tanh(sqrt(2/pi)(x+0.0447x^3)))
+$$
+\begin{aligned}
+\mathrm{Swish}(x) &= x\,\sigma(x) \\
+\mathrm{GeLU}(x) &\approx 0.5x\left(1+\tanh\left(\sqrt{\frac{2}{\pi}}\left(x+0.044715x^3\right)\right)\right)
+\end{aligned}
+$$
 
 ## Function
 

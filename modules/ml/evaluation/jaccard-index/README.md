@@ -8,7 +8,7 @@ Jaccard measures overlap between sets.
 
 ## Math
 
-|A∩B| / |A∪B|
+$$\text{|A∩B| / |A∪B|}$$
 
 ## Function
 

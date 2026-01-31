@@ -8,7 +8,7 @@ Vectors and matrices represent data and linear transforms.
 
 ## Math
 
-y = A x
+$$y = A x$$
 
 ## Function
 

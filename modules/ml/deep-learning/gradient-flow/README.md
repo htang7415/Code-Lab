@@ -8,7 +8,7 @@ Initialization affects gradient variance as it propagates through layers.
 
 ## Math
 
-Var(g_{l}) ≈ Var(g_{l+1}) * Var(W_l)
+$$Var(g_{l}) ≈ Var(g_{l+1}) * Var(W_l)$$
 
 ## Function
 

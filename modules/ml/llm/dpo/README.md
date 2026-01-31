@@ -8,7 +8,7 @@ DPO optimizes policy preferences directly using a reference model.
 
 ## Math
 
-Demo loss: L = -log(sigmoid(β * (Δlogπ - Δlogπ_ref))).
+$$\text{Demo loss: } L = -\log\left(\sigma\left(\beta(\Delta \log \pi - \Delta \log \pi_{\text{ref}})\right)\right)$$
 
 ## Function
 

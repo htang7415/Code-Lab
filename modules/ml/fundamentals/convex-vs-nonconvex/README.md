@@ -8,7 +8,7 @@ Convex functions have a single global minimum.
 
 ## Math
 
-For quadratic ax^2+bx+c, convex if a >= 0.
+$$f(x)=ax^2+bx+c \text{ is convex if } a \ge 0$$
 
 ## Function
 

@@ -8,7 +8,7 @@ KNN predicts by majority vote of nearest points.
 
 ## Math
 
-argmax_c Σ 1[y_i=c] for k nearest
+$$\hat{c} = \arg\max_c \sum_{i \in \mathcal{N}_k} \mathbb{I}[y_i = c]$$
 
 ## Function
 

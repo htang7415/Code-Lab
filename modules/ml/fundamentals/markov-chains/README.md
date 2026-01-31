@@ -8,7 +8,7 @@ Markov chains evolve distributions via transition matrices.
 
 ## Math
 
-p_{t+1} = p_t T
+$$p_{t+1} = p_t T$$
 
 ## Function
 

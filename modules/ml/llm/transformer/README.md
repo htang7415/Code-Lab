@@ -8,7 +8,7 @@ A transformer block applies self-attention, a feed-forward network, and residual
 
 ## Math
 
-Block(x) = x + Attention(x); then x = x + FFN(x).
+$$Block(x) = x + Attention(x); then x = x + FFN(x).$$
 
 ## Function
 

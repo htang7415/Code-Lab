@@ -8,7 +8,7 @@ Gaussian NB assumes features are independent Gaussians per class.
 
 ## Math
 
-p(x|y)=∏ N(x_i; μ_i, σ_i^2)
+$$p(x|y)=\prod_i \mathcal{N}(x_i;\mu_i,\sigma_i^2)$$
 
 ## Function
 

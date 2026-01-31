@@ -8,7 +8,7 @@ Backprop computes gradients using the chain rule from output to inputs.
 
 ## Math
 
-For z = w x, dL/dw = dL/dz * x.
+$$For z = w x, dL/dw = dL/dz * x.$$
 
 ## Function
 

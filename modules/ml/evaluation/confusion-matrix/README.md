@@ -8,7 +8,7 @@ Confusion matrix counts TP, FP, FN, TN.
 
 ## Math
 
-[[TN, FP],[FN, TP]]
+$$[[TN, FP],[FN, TP]]$$
 
 ## Function
 

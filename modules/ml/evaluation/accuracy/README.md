@@ -8,7 +8,7 @@ Accuracy is the fraction of correct predictions.
 
 ## Math
 
-accuracy = correct / N
+$$accuracy = correct / N$$
 
 ## Function
 

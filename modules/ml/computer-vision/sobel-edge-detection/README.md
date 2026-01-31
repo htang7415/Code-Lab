@@ -8,7 +8,7 @@ Sobel filters estimate image gradients.
 
 ## Math
 
-Gx = Kx * I, Gy = Ky * I
+$$Gx = Kx * I, Gy = Ky * I$$
 
 ## Function
 

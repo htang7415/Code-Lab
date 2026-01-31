@@ -8,7 +8,7 @@ GANs train a generator and discriminator adversarially.
 
 ## Math
 
-L_D = -log D(x) - log(1 - D(G(z)))
+$$L_D = -\log D(x) - \log\left(1 - D(G(z))\right)$$
 
 ## Function
 

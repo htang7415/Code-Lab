@@ -8,7 +8,7 @@ Preference learning optimizes models with pairwise comparisons between outputs.
 
 ## Math
 
-Pairwise logistic loss: L = -log(sigmoid(score_chosen - score_rejected)).
+$$\text{Pairwise logistic loss: } L = -\log\left(\sigma(\text{score}_{\text{chosen}} - \text{score}_{\text{rejected}})\right)$$
 
 ## Function
 

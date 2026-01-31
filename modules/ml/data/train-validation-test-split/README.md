@@ -8,7 +8,7 @@ Split indices into train, validation, and test partitions.
 
 ## Math
 
-n_train = floor(N * train_frac), n_val = floor(N * val_frac)
+$$n_train = floor(N * train_frac), n_val = floor(N * val_frac)$$
 
 ## Function
 
