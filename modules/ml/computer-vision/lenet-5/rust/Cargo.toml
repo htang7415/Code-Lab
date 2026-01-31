@@ -1,0 +1,10 @@
+[package]
+name = "ml-computer-vision-lenet-5"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_computer_vision_lenet_5"
+path = "src/lib.rs"
+
+[dependencies]

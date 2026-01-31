@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-feedforward-neural-network"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_feedforward_neural_network"
+path = "src/lib.rs"
+
+[dependencies]

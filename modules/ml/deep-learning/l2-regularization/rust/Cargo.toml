@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-l2-regularization"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_l2_regularization"
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "ml-computer-vision-cnn-2d-vs-3d"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_computer_vision_cnn_2d_vs_3d"
+path = "src/lib.rs"
+
+[dependencies]

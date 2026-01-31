@@ -1,0 +1,10 @@
+[package]
+name = "ml-evaluation-accuracy"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_evaluation_accuracy"
+path = "src/lib.rs"
+
+[dependencies]

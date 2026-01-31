@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-neuron-weights-bias-activation"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_neuron_weights_bias_activation"
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "ml-generative-gan-mode-collapse"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_generative_gan_mode_collapse"
+path = "src/lib.rs"
+
+[dependencies]

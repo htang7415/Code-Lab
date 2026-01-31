@@ -1,0 +1,10 @@
+[package]
+name = "ml-evaluation-davies-bouldin"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_evaluation_davies_bouldin"
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "ml-fundamentals-covariance"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_fundamentals_covariance"
+path = "src/lib.rs"
+
+[dependencies]

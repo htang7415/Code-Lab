@@ -1,0 +1,10 @@
+[package]
+name = "ml-fundamentals-convex-vs-nonconvex"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_fundamentals_convex_vs_nonconvex"
+path = "src/lib.rs"
+
+[dependencies]

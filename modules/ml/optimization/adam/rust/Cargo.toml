@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-adam"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_adam"
+path = "src/lib.rs"
+
+[dependencies]

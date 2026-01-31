@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-loss-scaling"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_loss_scaling"
+path = "src/lib.rs"
+
+[dependencies]

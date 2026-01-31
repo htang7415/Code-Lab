@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-ptx-anchoring"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_ptx_anchoring"
+path = "src/lib.rs"
+
+[dependencies]

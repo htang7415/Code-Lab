@@ -1,0 +1,10 @@
+[package]
+name = "ml-models-decision-trees"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_models_decision_trees"
+path = "src/lib.rs"
+
+[dependencies]

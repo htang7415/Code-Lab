@@ -1,0 +1,10 @@
+[package]
+name = "ml-systems-forward-pass"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_systems_forward_pass"
+path = "src/lib.rs"
+
+[dependencies]

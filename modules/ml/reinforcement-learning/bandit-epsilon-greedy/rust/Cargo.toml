@@ -1,0 +1,10 @@
+[package]
+name = "ml-reinforcement-learning-bandit-epsilon-greedy"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_reinforcement_learning_bandit_epsilon_greedy"
+path = "src/lib.rs"
+
+[dependencies]

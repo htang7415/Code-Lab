@@ -1,0 +1,10 @@
+[package]
+name = "ml-models-k-means"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_models_k_means"
+path = "src/lib.rs"
+
+[dependencies]

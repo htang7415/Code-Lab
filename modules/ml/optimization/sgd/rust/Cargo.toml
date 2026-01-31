@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-sgd"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_sgd"
+path = "src/lib.rs"
+
+[dependencies]

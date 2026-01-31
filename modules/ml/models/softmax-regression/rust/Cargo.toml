@@ -1,0 +1,10 @@
+[package]
+name = "ml-models-softmax-regression"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_models_softmax_regression"
+path = "src/lib.rs"
+
+[dependencies]

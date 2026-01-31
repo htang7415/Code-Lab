@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-mae-loss"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_mae_loss"
+path = "src/lib.rs"
+
+[dependencies]

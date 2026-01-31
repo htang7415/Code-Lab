@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-groupnorm"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_groupnorm"
+path = "src/lib.rs"
+
+[dependencies]

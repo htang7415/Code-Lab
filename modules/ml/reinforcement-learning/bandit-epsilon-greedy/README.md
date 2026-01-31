@@ -5,30 +5,57 @@
 ## Concept
 
 The **multi-armed bandit** problem is a simplified RL setting: an agent
-repeatedly chooses one of K actions (arms) and receives a reward. The goal is
-to maximize cumulative reward.
+repeatedly chooses one of _K_ actions (arms) and receives a stochastic reward.
+The goal is to maximize cumulative reward over time.
 
 The **epsilon-greedy** strategy balances exploration and exploitation:
 
-- With probability `epsilon`, pick a random arm (explore)
-- With probability `1 - epsilon`, pick the arm with the highest estimated reward (exploit)
+- With probability **ε**, pick a random arm (explore)
+- With probability **1 − ε**, pick the arm with the highest estimated value (exploit)
 
-Action-value estimates are updated incrementally:
+This is the simplest baseline for the explore-exploit tradeoff.
+ε = 0 is pure greedy; ε = 1 is pure random.
+
+## Math
+
+Action-value estimate updated incrementally after pulling arm _a_ and
+observing reward _r_:
 
 ```
-Q[a] += (1/N[a]) * (reward - Q[a])
+N[a] += 1
+Q[a] += (1 / N[a]) * (r - Q[a])
 ```
 
-where `N[a]` is the number of times arm `a` has been pulled.
+- `Q[a]` — estimated value of arm _a_ (running mean of rewards)
+- `N[a]` — number of times arm _a_ has been pulled
+- The update is equivalent to computing the sample mean incrementally
 
-## Key points
+Arm selection:
 
-- Simple baseline strategy for the explore-exploit tradeoff
-- epsilon = 0 is pure greedy; epsilon = 1 is pure random
-- Does not decay epsilon by default (can be extended to do so)
+```
+a_t = random(0..K-1)         with probability ε
+    = argmax_a Q[a]          with probability 1 - ε
+```
+
+## Function
+
+```python
+class EpsilonGreedyBandit:
+    def __init__(self, k: int, epsilon: float = 0.1, seed: int | None = None)
+    def select_arm(self) -> int
+    def update(self, arm: int, reward: float) -> None
+```
+
+- `k` — number of arms
+- `epsilon` — exploration probability (0 to 1)
+- `select_arm()` — returns the index of the chosen arm
+- `update(arm, reward)` — updates the value estimate for the given arm
+- `q_values` — list of current estimated values per arm
+- `counts` — list of pull counts per arm
 
 ## Run tests
 
 ```bash
 pytest modules/ml/reinforcement-learning/bandit-epsilon-greedy/python -q
+cargo test --manifest-path modules/ml/reinforcement-learning/bandit-epsilon-greedy/rust/Cargo.toml
 ```

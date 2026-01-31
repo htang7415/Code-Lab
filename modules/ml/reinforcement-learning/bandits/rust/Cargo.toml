@@ -1,0 +1,10 @@
+[package]
+name = "ml-reinforcement-learning-bandits"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_reinforcement_learning_bandits"
+path = "src/lib.rs"
+
+[dependencies]

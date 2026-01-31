@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-activations-softmax-softplus-softsign"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_activations_softmax_softplus_softsign"
+path = "src/lib.rs"
+
+[dependencies]

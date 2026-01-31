@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-lr-step-decay"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_lr_step_decay"
+path = "src/lib.rs"
+
+[dependencies]

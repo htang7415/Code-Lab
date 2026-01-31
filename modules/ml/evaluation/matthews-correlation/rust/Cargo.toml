@@ -1,0 +1,10 @@
+[package]
+name = "ml-evaluation-matthews-correlation"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_evaluation_matthews_correlation"
+path = "src/lib.rs"
+
+[dependencies]

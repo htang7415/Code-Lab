@@ -1,0 +1,10 @@
+[package]
+name = "ml-evaluation-mae-vs-mse"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_evaluation_mae_vs_mse"
+path = "src/lib.rs"
+
+[dependencies]

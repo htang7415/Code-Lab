@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-backpropagation"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_backpropagation"
+path = "src/lib.rs"
+
+[dependencies]

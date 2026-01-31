@@ -1,0 +1,10 @@
+[package]
+name = "ml-mlops-ab-testing"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_mlops_ab_testing"
+path = "src/lib.rs"
+
+[dependencies]

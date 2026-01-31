@@ -1,0 +1,10 @@
+[package]
+name = "ml-fundamentals-kl-divergence"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_fundamentals_kl_divergence"
+path = "src/lib.rs"
+
+[dependencies]

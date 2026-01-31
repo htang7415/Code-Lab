@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-sgd-momentum"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_sgd_momentum"
+path = "src/lib.rs"
+
+[dependencies]

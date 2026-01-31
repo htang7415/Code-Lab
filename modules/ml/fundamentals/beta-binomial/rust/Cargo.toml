@@ -1,0 +1,10 @@
+[package]
+name = "ml-fundamentals-beta-binomial"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_fundamentals_beta_binomial"
+path = "src/lib.rs"
+
+[dependencies]

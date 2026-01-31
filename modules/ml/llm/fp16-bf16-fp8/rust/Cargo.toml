@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-fp16-bf16-fp8"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_fp16_bf16_fp8"
+path = "src/lib.rs"
+
+[dependencies]

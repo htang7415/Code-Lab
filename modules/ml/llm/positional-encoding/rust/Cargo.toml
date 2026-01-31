@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-positional-encoding"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_positional_encoding"
+path = "src/lib.rs"
+
+[dependencies]

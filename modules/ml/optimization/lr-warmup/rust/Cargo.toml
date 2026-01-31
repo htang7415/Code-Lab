@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-lr-warmup"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_lr_warmup"
+path = "src/lib.rs"
+
+[dependencies]

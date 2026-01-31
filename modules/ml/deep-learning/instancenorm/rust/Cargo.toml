@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-instancenorm"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_instancenorm"
+path = "src/lib.rs"
+
+[dependencies]

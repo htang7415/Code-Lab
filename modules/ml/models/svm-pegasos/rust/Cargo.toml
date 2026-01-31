@@ -1,0 +1,10 @@
+[package]
+name = "ml-models-svm-pegasos"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_models_svm_pegasos"
+path = "src/lib.rs"
+
+[dependencies]

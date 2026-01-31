@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-supervised-fine-tuning"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_supervised_fine_tuning"
+path = "src/lib.rs"
+
+[dependencies]

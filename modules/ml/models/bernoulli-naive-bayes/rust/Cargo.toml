@@ -1,0 +1,10 @@
+[package]
+name = "ml-models-bernoulli-naive-bayes"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_models_bernoulli_naive_bayes"
+path = "src/lib.rs"
+
+[dependencies]

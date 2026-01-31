@@ -1,0 +1,10 @@
+[package]
+name = "ml-mlops-offline-online-inference"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_mlops_offline_online_inference"
+path = "src/lib.rs"
+
+[dependencies]

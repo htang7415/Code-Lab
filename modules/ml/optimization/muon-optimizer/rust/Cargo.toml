@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-muon-optimizer"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_muon_optimizer"
+path = "src/lib.rs"
+
+[dependencies]

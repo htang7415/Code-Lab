@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-sparse-attention"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_sparse_attention"
+path = "src/lib.rs"
+
+[dependencies]

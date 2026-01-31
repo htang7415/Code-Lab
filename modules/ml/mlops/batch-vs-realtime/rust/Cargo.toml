@@ -1,0 +1,10 @@
+[package]
+name = "ml-mlops-batch-vs-realtime"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_mlops_batch_vs_realtime"
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "ml-data-stratified-split"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_data_stratified_split"
+path = "src/lib.rs"
+
+[dependencies]

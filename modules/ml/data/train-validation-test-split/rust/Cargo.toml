@@ -1,0 +1,10 @@
+[package]
+name = "ml-data-train-validation-test-split"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_data_train_validation_test_split"
+path = "src/lib.rs"
+
+[dependencies]

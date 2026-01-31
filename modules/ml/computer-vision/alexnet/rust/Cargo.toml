@@ -1,0 +1,10 @@
+[package]
+name = "ml-computer-vision-alexnet"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_computer_vision_alexnet"
+path = "src/lib.rs"
+
+[dependencies]

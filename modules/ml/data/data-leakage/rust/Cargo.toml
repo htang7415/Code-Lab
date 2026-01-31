@@ -1,0 +1,10 @@
+[package]
+name = "ml-data-data-leakage"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_data_data_leakage"
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-activations-relu-family"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_activations_relu_family"
+path = "src/lib.rs"
+
+[dependencies]

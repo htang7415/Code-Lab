@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-int8-int4-quantization"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_int8_int4_quantization"
+path = "src/lib.rs"
+
+[dependencies]

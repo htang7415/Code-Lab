@@ -1,0 +1,10 @@
+[package]
+name = "ml-generative-diffusion-models"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_generative_diffusion_models"
+path = "src/lib.rs"
+
+[dependencies]

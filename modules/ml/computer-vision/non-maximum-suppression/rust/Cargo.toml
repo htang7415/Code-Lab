@@ -1,0 +1,10 @@
+[package]
+name = "ml-computer-vision-non-maximum-suppression"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_computer_vision_non_maximum_suppression"
+path = "src/lib.rs"
+
+[dependencies]

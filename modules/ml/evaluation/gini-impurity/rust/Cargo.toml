@@ -1,0 +1,10 @@
+[package]
+name = "ml-evaluation-gini-impurity"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_evaluation_gini_impurity"
+path = "src/lib.rs"
+
+[dependencies]

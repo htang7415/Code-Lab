@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-qlora"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_qlora"
+path = "src/lib.rs"
+
+[dependencies]

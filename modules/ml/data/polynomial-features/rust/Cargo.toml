@@ -1,0 +1,10 @@
+[package]
+name = "ml-data-polynomial-features"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_data_polynomial_features"
+path = "src/lib.rs"
+
+[dependencies]

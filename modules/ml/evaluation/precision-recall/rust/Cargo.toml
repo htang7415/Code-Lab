@@ -1,0 +1,10 @@
+[package]
+name = "ml-evaluation-precision-recall"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_evaluation_precision_recall"
+path = "src/lib.rs"
+
+[dependencies]

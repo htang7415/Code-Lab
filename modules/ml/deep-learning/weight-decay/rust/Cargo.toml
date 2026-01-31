@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-weight-decay"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_weight_decay"
+path = "src/lib.rs"
+
+[dependencies]

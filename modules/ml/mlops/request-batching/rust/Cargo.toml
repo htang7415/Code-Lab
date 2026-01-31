@@ -1,0 +1,10 @@
+[package]
+name = "ml-mlops-request-batching"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_mlops_request_batching"
+path = "src/lib.rs"
+
+[dependencies]

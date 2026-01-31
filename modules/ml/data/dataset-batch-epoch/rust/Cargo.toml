@@ -1,0 +1,10 @@
+[package]
+name = "ml-data-dataset-batch-epoch"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_data_dataset_batch_epoch"
+path = "src/lib.rs"
+
+[dependencies]

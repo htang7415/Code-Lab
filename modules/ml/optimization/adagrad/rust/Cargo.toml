@@ -1,0 +1,10 @@
+[package]
+name = "ml-optimization-adagrad"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_optimization_adagrad"
+path = "src/lib.rs"
+
+[dependencies]

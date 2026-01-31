@@ -1,0 +1,10 @@
+[package]
+name = "ml-models-random-forest"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_models_random_forest"
+path = "src/lib.rs"
+
+[dependencies]

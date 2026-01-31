@@ -1,0 +1,10 @@
+[package]
+name = "ml-mlops-sla-metrics"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_mlops_sla_metrics"
+path = "src/lib.rs"
+
+[dependencies]

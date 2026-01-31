@@ -1,0 +1,10 @@
+[package]
+name = "ml-generative-model-selection"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_generative_model_selection"
+path = "src/lib.rs"
+
+[dependencies]

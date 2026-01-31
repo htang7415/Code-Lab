@@ -1,0 +1,10 @@
+[package]
+name = "ml-llm-attention-causal"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_llm_attention_causal"
+path = "src/lib.rs"
+
+[dependencies]

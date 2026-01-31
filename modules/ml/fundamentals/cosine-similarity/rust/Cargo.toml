@@ -1,0 +1,10 @@
+[package]
+name = "ml-fundamentals-cosine-similarity"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_fundamentals_cosine_similarity"
+path = "src/lib.rs"
+
+[dependencies]

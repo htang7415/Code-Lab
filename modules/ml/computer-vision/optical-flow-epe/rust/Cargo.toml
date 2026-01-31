@@ -1,0 +1,10 @@
+[package]
+name = "ml-computer-vision-optical-flow-epe"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_computer_vision_optical_flow_epe"
+path = "src/lib.rs"
+
+[dependencies]

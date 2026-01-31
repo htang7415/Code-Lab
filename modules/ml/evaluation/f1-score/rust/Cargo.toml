@@ -1,0 +1,10 @@
+[package]
+name = "ml-evaluation-f1-score"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_evaluation_f1_score"
+path = "src/lib.rs"
+
+[dependencies]

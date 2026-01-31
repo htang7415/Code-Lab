@@ -1,0 +1,10 @@
+[package]
+name = "ml-systems-check-gradients"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_systems_check_gradients"
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "ml-fundamentals-two-sample-t-test"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_fundamentals_two_sample_t_test"
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "ml-systems-backward-pass"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_systems_backward_pass"
+path = "src/lib.rs"
+
+[dependencies]

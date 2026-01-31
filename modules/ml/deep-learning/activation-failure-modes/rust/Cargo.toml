@@ -1,0 +1,10 @@
+[package]
+name = "ml-deep-learning-activation-failure-modes"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ml_deep_learning_activation_failure_modes"
+path = "src/lib.rs"
+
+[dependencies]
