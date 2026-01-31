@@ -1,21 +1,128 @@
-import Breadcrumb from "@/components/Breadcrumb";
 import CodeBlock from "@/components/CodeBlock";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import ProblemTable from "@/components/ProblemTable";
+import TableOfContents from "@/components/TableOfContents";
+import type { TocHeading } from "@/components/TableOfContents";
+import PrevNextNav from "@/components/PrevNextNav";
+import { buildNavItems, getAdjacentPages } from "@/lib/navigation";
 import type { ContentIndex } from "@/lib/content";
 import contentData from "@/content/content_index.json";
 import { notFound } from "next/navigation";
-import type { CSSProperties } from "react";
+
+/* ── Markdown cleaning helpers ─────────────────────────── */
 
 function stripTopHeading(markdown: string) {
   const lines = markdown.split(/\r?\n/);
   if (lines.length === 0) return markdown;
   if (!lines[0].trim().startsWith("# ")) return markdown;
   let index = 1;
-  while (index < lines.length && lines[index].trim() === "") {
-    index += 1;
-  }
+  while (index < lines.length && lines[index].trim() === "") index += 1;
   return lines.slice(index).join("\n");
+}
+
+/** Remove `> Track: ... | Topic: ...` blockquote lines. */
+function stripTrackMeta(markdown: string): string {
+  return markdown
+    .split(/\r?\n/)
+    .filter((line) => !/^>\s*Track:\s*`/i.test(line.trim()))
+    .join("\n");
+}
+
+/** Remove the "## Run tests" section (and everything below it until the next ## heading or EOF). */
+function stripRunTests(markdown: string): string {
+  const lines = markdown.split(/\r?\n/);
+  const result: string[] = [];
+  let skipping = false;
+  for (const line of lines) {
+    if (/^##\s+Run\s+tests/i.test(line)) {
+      skipping = true;
+      continue;
+    }
+    if (skipping && /^##\s+/.test(line)) {
+      skipping = false;
+    }
+    if (!skipping) result.push(line);
+  }
+  return result.join("\n");
+}
+
+/**
+ * Parse README-style markdown into structured sections.
+ * Recognized h2 sections: Concept, Math, Function, Key points.
+ * Everything before the first h2 becomes "intro".
+ */
+interface ContentSection {
+  id: string;
+  label: string;
+  icon: "concept" | "math" | "function" | "keypoints";
+  content: string;
+}
+
+const SECTION_MAP: Record<string, { label: string; icon: ContentSection["icon"] }> = {
+  concept: { label: "Concept", icon: "concept" },
+  concepts: { label: "Concepts", icon: "concept" },
+  math: { label: "Math", icon: "math" },
+  mathematics: { label: "Math", icon: "math" },
+  function: { label: "Function", icon: "function" },
+  functions: { label: "Functions", icon: "function" },
+  api: { label: "Function", icon: "function" },
+  "key points": { label: "Key Points", icon: "keypoints" },
+  "key-points": { label: "Key Points", icon: "keypoints" },
+  keypoints: { label: "Key Points", icon: "keypoints" },
+};
+
+function parseSections(markdown: string): { intro: string; sections: ContentSection[] } {
+  const lines = markdown.split(/\r?\n/);
+  const sections: ContentSection[] = [];
+  let intro = "";
+  let currentKey: string | null = null;
+  let currentLines: string[] = [];
+
+  function flush() {
+    if (currentKey !== null) {
+      const mapping = SECTION_MAP[currentKey];
+      if (mapping) {
+        const id = currentKey.replace(/\s+/g, "-");
+        sections.push({
+          id,
+          label: mapping.label,
+          icon: mapping.icon,
+          content: currentLines.join("\n").trim(),
+        });
+      } else {
+        // Unknown section -- keep as a generic section
+        sections.push({
+          id: currentKey.replace(/\s+/g, "-"),
+          label: currentKey.charAt(0).toUpperCase() + currentKey.slice(1),
+          icon: "concept",
+          content: currentLines.join("\n").trim(),
+        });
+      }
+    }
+    currentLines = [];
+  }
+
+  for (const line of lines) {
+    const h2 = line.match(/^##\s+(.+)$/);
+    if (h2) {
+      if (currentKey === null) {
+        intro = currentLines.join("\n").trim();
+      } else {
+        flush();
+      }
+      currentKey = h2[1].trim().toLowerCase();
+      currentLines = [];
+    } else {
+      currentLines.push(line);
+    }
+  }
+  // Flush last section
+  if (currentKey === null) {
+    intro = currentLines.join("\n").trim();
+  } else {
+    flush();
+  }
+
+  return { intro, sections };
 }
 
 function cleanSummary(summary?: string) {
@@ -24,6 +131,60 @@ function cleanSummary(summary?: string) {
   if (trimmed.toLowerCase().startsWith("> track")) return undefined;
   return trimmed;
 }
+
+function extractHeadings(markdown: string): TocHeading[] {
+  const headings: TocHeading[] = [];
+  const lines = markdown.split(/\r?\n/);
+  for (const line of lines) {
+    const match = line.match(/^(#{2,3})\s+(.+)$/);
+    if (match) {
+      const text = match[2].trim();
+      // Skip "Run tests" headings
+      if (/^Run\s+tests$/i.test(text)) continue;
+      const level = match[1].length;
+      const id = text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-");
+      headings.push({ id, text, level });
+    }
+  }
+  return headings;
+}
+
+/* ── Section icon SVGs ────────────────────────────────── */
+
+function SectionIcon({ icon }: { icon: ContentSection["icon"] }) {
+  switch (icon) {
+    case "concept":
+      return (
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" />
+          <path d="M8 5v3.5M8 10.5v.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+        </svg>
+      );
+    case "math":
+      return (
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M8 3v10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+        </svg>
+      );
+    case "function":
+      return (
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M5.5 4L2 8l3.5 4M10.5 4L14 8l-3.5 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "keypoints":
+      return (
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M4 4h8M4 8h6M4 12h8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+        </svg>
+      );
+  }
+}
+
+/* ── Page ─────────────────────────────────────────────── */
 
 export function generateStaticParams() {
   const content = contentData as ContentIndex;
@@ -46,13 +207,13 @@ export default async function TopicPage({
   );
   if (!track || !topic) return notFound();
 
+  const navItems = buildNavItems(content);
+  const { prev, next } = getAdjacentPages(navItems, trackId, topicId);
+
   const docs = content.docs
     .filter((item) => item.track === trackId && item.topic === topicId)
     .sort((a, b) => a.title.localeCompare(b.title));
   const modules = content.modules
-    .filter((item) => item.track === trackId && item.topic === topicId)
-    .sort((a, b) => a.title.localeCompare(b.title));
-  const problems = content.problems
     .filter((item) => item.track === trackId && item.topic === topicId)
     .sort((a, b) => a.title.localeCompare(b.title));
 
@@ -68,192 +229,140 @@ export default async function TopicPage({
   const entries = entrySlugs
     .map((slug) => {
       const doc = docBySlug.get(slug);
-      const module = moduleBySlug.get(slug);
-      const title = doc?.title ?? module?.title ?? slug;
-      const summary = cleanSummary(doc?.summary) ?? cleanSummary(module?.summary);
-      const theoryContent = doc
-        ? stripTopHeading(doc.content)
-        : module
-          ? stripTopHeading(module.readme)
-          : "";
-      const hasTheory = Boolean(theoryContent.trim());
-      const codeSources = module?.sources ?? [];
+      const mod = moduleBySlug.get(slug);
+      const title = doc?.title ?? mod?.title ?? slug;
+      const summary = cleanSummary(doc?.summary) ?? cleanSummary(mod?.summary);
+
+      // Clean the markdown: strip title, track meta, run tests
+      let rawContent = doc ? doc.content : mod ? mod.readme : "";
+      rawContent = stripTopHeading(rawContent);
+      rawContent = stripTrackMeta(rawContent);
+      rawContent = stripRunTests(rawContent);
+
+      const parsed = parseSections(rawContent);
+      const hasTheory = parsed.intro.length > 0 || parsed.sections.length > 0;
+      const codeSources = mod?.sources ?? [];
       const hasCode = codeSources.length > 0;
-      return {
-        slug,
-        title,
-        summary,
-        theoryContent,
-        hasTheory,
-        codeSources,
-        hasCode,
-      };
+
+      return { slug, title, summary, rawContent, parsed, hasTheory, codeSources, hasCode };
     })
     .sort((a, b) => a.title.localeCompare(b.title));
 
-  const codeCount = entries.filter((entry) => entry.hasCode).length;
-  const accentStyle = {
-    ["--handbook-accent" as string]: `var(${track.accentVar})`,
-  } satisfies CSSProperties;
+  // Build TOC headings
+  const allHeadings: TocHeading[] = [];
+  for (const entry of entries) {
+    allHeadings.push({ id: entry.slug, text: entry.title, level: 2 });
+    for (const section of entry.parsed.sections) {
+      allHeadings.push({ id: `${entry.slug}-${section.id}`, text: section.label, level: 3 });
+    }
+    if (entry.hasCode) {
+      allHeadings.push({ id: `${entry.slug}-code`, text: "Demo Code", level: 3 });
+    }
+  }
 
   return (
-    <div className="pb-16" style={accentStyle}>
-      <section className="relative overflow-hidden border-b border-[var(--border-primary)] bg-white">
-        <div className="hero-grid absolute inset-0" />
-        <div className="relative mx-auto max-w-7xl px-6 py-12">
-          <div
-            className="mb-6 h-1 w-16 rounded-full"
+    <div className="handbook-content-wrapper">
+      <div>
+        {/* Page header */}
+        <div className="flex items-center gap-2 mb-1.5">
+          <span
+            className="h-2 w-2 rounded-full"
             style={{ background: `var(${track.accentVar})` }}
           />
-          <Breadcrumb
-            items={[
-              { label: "home", href: "/" },
-              { label: trackId, href: `/track/${trackId}` },
-              { label: topicId },
-            ]}
-          />
-          <p className="mt-6 font-mono text-xs uppercase tracking-[0.4em] text-[var(--text-muted)]">
-            Handbook · {track.name}
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold md:text-4xl">
-            {topic.name}
-          </h1>
-          <p className="mt-3 max-w-2xl text-sm text-[var(--text-secondary)] md:text-base">
-            Theory and runnable code on the same page. Scan the concepts, copy
-            the demos, then lock it in with practice.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <div className="stat-chip">
-              <span className="text-2xl font-semibold">{entries.length}</span>
-              <span className="text-xs text-[var(--text-muted)]">
-                Concepts
-              </span>
-            </div>
-            <div className="stat-chip">
-              <span className="text-2xl font-semibold">{codeCount}</span>
-              <span className="text-xs text-[var(--text-muted)]">
-                Code demos
-              </span>
-            </div>
-            <div className="stat-chip">
-              <span className="text-2xl font-semibold">
-                {problems.length}
-              </span>
-              <span className="text-xs text-[var(--text-muted)]">
-                Practice problems
-              </span>
-            </div>
-          </div>
+          <span className="text-[0.7rem] font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+            {track.name}
+          </span>
         </div>
-      </section>
+        <h1 className="text-[1.65rem] font-semibold tracking-tight leading-tight">
+          {topic.name}
+        </h1>
 
-      <section className="mx-auto max-w-7xl px-6 pt-12">
         {entries.length === 0 ? (
-          <div className="surface-card p-6 text-sm text-[var(--text-muted)]">
-            This topic is waiting on its first concept note or lab. Add a doc or
-            module to see the handbook view.
+          <div className="empty-state mt-10">
+            This topic is waiting on its first concept note or lab.
           </div>
         ) : (
-          <div className="grid gap-10 lg:grid-cols-[260px_minmax(0,1fr)]">
-            <aside className="handbook-nav">
-              <div className="surface-card p-4">
-                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--text-muted)]">
-                  In this topic
-                </p>
-                <nav className="mt-4 flex flex-col gap-2">
-                  {entries.map((entry) => (
-                    <a
-                      key={entry.slug}
-                      href={`#${entry.slug}`}
-                      className="handbook-nav-link"
-                    >
-                      <span className="handbook-dot" />
-                      <span className="flex-1 text-sm">{entry.title}</span>
-                      <span className="text-xs text-[var(--text-muted)]">
-                        {entry.hasCode ? "code" : "notes"}
-                      </span>
-                    </a>
-                  ))}
-                  <a href="#practice" className="handbook-nav-link">
-                    <span className="handbook-dot handbook-dot-accent" />
-                    <span className="flex-1 text-sm">Practice</span>
-                    <span className="text-xs text-[var(--text-muted)]">
-                      {problems.length}
-                    </span>
-                  </a>
-                </nav>
-              </div>
-            </aside>
+          <div className="mt-8">
+            {entries.map((entry, idx) => (
+              <article
+                key={entry.slug}
+                id={entry.slug}
+                className="concept-article"
+              >
+                {idx > 0 && <div className="concept-divider" />}
 
-            <div className="space-y-10">
-              {entries.map((entry) => (
-                <article
-                  key={entry.slug}
-                  id={entry.slug}
-                  className="handbook-entry surface-card p-6 md:p-8"
-                >
-                  <header>
-                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-                      {entry.slug}
-                    </p>
-                    <h2 className="mt-2 text-2xl font-semibold">
-                      {entry.title}
-                    </h2>
-                    {entry.summary && (
-                      <p className="mt-2 text-sm text-[var(--text-secondary)]">
-                        {entry.summary}
-                      </p>
-                    )}
-                  </header>
+                <h2 className="concept-title">{entry.title}</h2>
+                {entry.summary && (
+                  <p className="mt-1 text-[0.85rem] text-[var(--text-secondary)]">
+                    {entry.summary}
+                  </p>
+                )}
 
-                  <div className="mt-6">
-                    {entry.hasTheory ? (
-                      <MarkdownRenderer content={entry.theoryContent} />
-                    ) : (
-                      <p className="text-sm text-[var(--text-muted)]">
-                        Theory notes are coming soon for this concept.
-                      </p>
-                    )}
+                {/* Intro text (before any ## heading) */}
+                {entry.parsed.intro && (
+                  <div className="mt-3">
+                    <MarkdownRenderer content={entry.parsed.intro} />
+                  </div>
+                )}
 
-                    {entry.hasCode && (
-                      <div className="mt-8">
-                        <p className="implementation-label mb-4">Implementation</p>
-                        <div className="grid gap-4">
-                          {entry.codeSources.map((source) => (
-                            <CodeBlock
-                              key={source.path}
-                              filename={source.path}
-                              language={source.language}
-                              code={source.content}
-                            />
-                          ))}
-                        </div>
+                {/* Structured sections */}
+                {entry.parsed.sections.map((section) => (
+                  <div
+                    key={section.id}
+                    id={`${entry.slug}-${section.id}`}
+                    className="concept-section"
+                  >
+                    <div className={`section-header section-header-${section.icon}`}>
+                      <SectionIcon icon={section.icon} />
+                      <span>{section.label}</span>
+                    </div>
+                    <div className="section-body">
+                      <MarkdownRenderer content={section.content} />
+                    </div>
+                  </div>
+                ))}
+
+                {/* Demo code */}
+                {entry.hasCode && (
+                  <div
+                    id={`${entry.slug}-code`}
+                    className="concept-section"
+                  >
+                    <div className="section-header section-header-code">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.5 4L2 8l3.5 4M10.5 4L14 8l-3.5 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span>Demo Code</span>
+                    </div>
+                    <div className="section-body">
+                      <div className="grid gap-3">
+                        {entry.codeSources.map((source) => (
+                          <CodeBlock
+                            key={source.path}
+                            filename={source.path}
+                            language={source.language}
+                            code={source.content}
+                          />
+                        ))}
                       </div>
-                    )}
+                    </div>
                   </div>
-                </article>
-              ))}
+                )}
 
-              <section id="practice" className="handbook-entry surface-card p-6">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div>
-                    <h2 className="text-xl font-semibold">Practice problems</h2>
-                    <p className="mt-2 text-sm text-[var(--text-secondary)]">
-                      Reinforce the concepts with targeted exercises.
-                    </p>
-                  </div>
-                  <span className="badge font-mono">
-                    {problems.length} problems
-                  </span>
-                </div>
-                <div className="mt-6">
-                  <ProblemTable problems={problems} />
-                </div>
-              </section>
-            </div>
+                {!entry.hasTheory && !entry.hasCode && (
+                  <p className="mt-3 text-[0.85rem] text-[var(--text-muted)]">
+                    Content coming soon.
+                  </p>
+                )}
+              </article>
+            ))}
           </div>
         )}
-      </section>
+
+        <PrevNextNav prev={prev} next={next} />
+      </div>
+
+      <TableOfContents headings={allHeadings} />
     </div>
   );
 }

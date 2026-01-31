@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import Sidebar from "@/components/Sidebar";
+import { buildNavItems, buildSidebarSections } from "@/lib/navigation";
+import type { ContentIndex } from "@/lib/content";
+import contentData from "@/content/content_index.json";
 
 export const metadata: Metadata = {
   title: "Code Lab",
   description:
-    "A high-tech learning platform for fundamentals, code labs, and interview practice.",
+    "A handbook-style learning platform for fundamentals and code labs.",
 };
 
 export default function RootLayout({
@@ -13,29 +17,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const content = contentData as ContentIndex;
+  const navItems = buildNavItems(content);
+  const sections = buildSidebarSections(navItems);
+
   return (
     <html lang="en">
-      <body className="min-h-screen text-[var(--text-primary)] antialiased">
-        <header className="border-b border-[var(--border-primary)] bg-white/80 backdrop-blur">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <Link
-              href="/"
-              className="flex items-center gap-3 text-lg font-semibold tracking-tight"
-            >
-              <span className="font-mono text-[var(--accent)]">&gt;_</span>
+      <body>
+        <header className="site-header">
+          <div className="site-header-inner">
+            <Link href="/" className="header-logo">
+              <span className="header-logo-icon">&gt;_</span>
               <span>Code Lab</span>
             </Link>
-            <nav className="flex items-center gap-3 text-sm">
-              <Link href="/" className="nav-pill">
-                Learn
-              </Link>
-              <Link href="/practice" className="nav-pill">
-                Practice
-              </Link>
-            </nav>
+            <span className="header-tagline">
+              Concepts &middot; Code &middot; Mastery
+            </span>
           </div>
         </header>
-        <main>{children}</main>
+        <div className="handbook-shell">
+          <Sidebar sections={sections} />
+          <main className="handbook-main">{children}</main>
+        </div>
       </body>
     </html>
   );

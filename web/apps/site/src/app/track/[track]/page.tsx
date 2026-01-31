@@ -1,5 +1,4 @@
-import Breadcrumb from "@/components/Breadcrumb";
-import TopicCard from "@/components/TopicCard";
+import Link from "next/link";
 import type { ContentIndex } from "@/lib/content";
 import contentData from "@/content/content_index.json";
 import { notFound } from "next/navigation";
@@ -20,37 +19,46 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-12">
-      <div
-        className="mb-8 h-1 w-16 rounded-full"
-        style={{ background: `var(${track.accentVar})` }}
-      />
-      <Breadcrumb
-        items={[
-          { label: "home", href: "/" },
-          { label: track.id },
-        ]}
-      />
-      <div className="mt-6">
-        <h1 className="text-3xl font-semibold">{track.name}</h1>
-        <p className="mt-2 text-sm text-[var(--text-secondary)]">
-          {track.description}
-        </p>
+    <div>
+      <div className="flex items-center gap-2.5 mb-1">
+        <span
+          className="h-2.5 w-2.5 rounded-full"
+          style={{ background: `var(${track.accentVar})` }}
+        />
+        <span className="text-[0.72rem] font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+          Track
+        </span>
       </div>
-      <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {topics.map((topic) => (
-          <TopicCard
-            key={`${topic.track}-${topic.topic}`}
-            track={topic.track}
-            topic={topic.topic}
-            name={topic.name}
-            accentVar={track.accentVar}
-            hasDoc={topic.hasDoc}
-            docCount={topic.docCount}
-            moduleCount={topic.moduleCount}
-            problemCount={topic.problemCount}
-          />
-        ))}
+      <h1 className="text-2xl font-semibold tracking-tight">{track.name}</h1>
+      <p className="mt-1.5 text-[0.88rem] text-[var(--text-secondary)] max-w-lg">
+        {track.description}
+      </p>
+      <p className="mt-2 text-[0.75rem] text-[var(--text-muted)]">
+        {topics.length} topics
+      </p>
+
+      <div className="mt-6 space-y-0.5">
+        {topics.map((topic) => {
+          const entryCount = topic.docCount + topic.moduleCount;
+          return (
+            <Link
+              key={topic.topic}
+              href={`/track/${track.id}/${topic.topic}`}
+              className="topic-list-item"
+            >
+              <span
+                className="topic-list-dot"
+                style={{ background: `var(${track.accentVar})` }}
+              />
+              <span className="topic-list-name">{topic.name}</span>
+              {entryCount > 0 && (
+                <span className="topic-list-meta">
+                  {entryCount} {entryCount === 1 ? "entry" : "entries"}
+                </span>
+              )}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
