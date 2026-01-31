@@ -55,6 +55,19 @@ interface DocIndexEntry {
   content: string;
 }
 
+interface SearchEntry {
+  id: string;
+  type: "module" | "doc";
+  title: string;
+  summary?: string;
+  track: string;
+  topic: string;
+  slug: string;
+  href: string;
+  trackName: string;
+  topicName: string;
+}
+
 interface TopicIndexEntry {
   track: string;
   topic: string;
@@ -84,6 +97,11 @@ interface ContentIndex {
   modules: ModuleIndexEntry[];
   problems: ProblemIndexEntry[];
   docs: DocIndexEntry[];
+}
+
+interface SearchIndex {
+  generated_at: string;
+  entries: SearchEntry[];
 }
 
 const TRACKS: Array<Omit<TrackIndexEntry, "topicCount" | "moduleCount" | "problemCount">> = [
@@ -367,6 +385,41 @@ async function main() {
     problemCountByTopic.set(key, (problemCountByTopic.get(key) ?? 0) + 1);
   }
 
+  const trackNameById = new Map(TRACKS.map((track) => [track.id, track.name]));
+  const searchEntries: SearchEntry[] = [];
+  for (const module of modules) {
+    const trackName = trackNameById.get(module.track) ?? kebabToTitle(module.track);
+    const topicName = kebabToTitle(module.topic);
+    searchEntries.push({
+      id: `module:${module.track}/${module.topic}/${module.slug}`,
+      type: "module",
+      title: module.title,
+      summary: module.summary,
+      track: module.track,
+      topic: module.topic,
+      slug: module.slug,
+      href: `/track/${module.track}/${module.topic}#${module.slug}`,
+      trackName,
+      topicName,
+    });
+  }
+  for (const doc of docs) {
+    const trackName = trackNameById.get(doc.track) ?? kebabToTitle(doc.track);
+    const topicName = kebabToTitle(doc.topic);
+    searchEntries.push({
+      id: `doc:${doc.track}/${doc.topic}/${doc.slug}`,
+      type: "doc",
+      title: doc.title,
+      summary: doc.summary,
+      track: doc.track,
+      topic: doc.topic,
+      slug: doc.slug,
+      href: `/track/${doc.track}/${doc.topic}#${doc.slug}`,
+      trackName,
+      topicName,
+    });
+  }
+
   const topics: TopicIndexEntry[] = topicDirs
     .map((dirPath) => {
       const relPath = relative(repoRoot, dirPath);
@@ -425,6 +478,15 @@ async function main() {
   };
   const problemsPath = resolve(outDir, "problems_index.json");
   writeFileSync(problemsPath, JSON.stringify(problemsIndex, null, 2) + "\n");
+
+  const searchIndex: SearchIndex = {
+    generated_at: generatedAt,
+    entries: searchEntries
+      .slice()
+      .sort((a, b) => a.title.localeCompare(b.title)),
+  };
+  const searchPath = resolve(outDir, "search_index.json");
+  writeFileSync(searchPath, JSON.stringify(searchIndex, null, 2) + "\n");
 
   console.log(
     `Indexed ${problems.length} problem(s), ${modules.length} module(s), ${docs.length} doc(s)`

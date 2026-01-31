@@ -26,13 +26,41 @@ export default function RootLayout({
       <body>
         <header className="site-header">
           <div className="site-header-inner">
-            <Link href="/" className="header-logo">
-              <span className="header-logo-icon">&gt;_</span>
-              <span>Code Lab</span>
-            </Link>
-            <span className="header-tagline">
-              Concepts &middot; Code &middot; Mastery
-            </span>
+            <div className="header-left">
+              <Link href="/" className="header-logo">
+                <span className="header-logo-icon">&gt;_</span>
+                <span>Code Lab</span>
+              </Link>
+              <span className="header-tagline">
+                Concepts &middot; Code &middot; Mastery
+              </span>
+            </div>
+            <form action="/search" className="header-search" role="search">
+              <input
+                type="search"
+                name="q"
+                placeholder="Search"
+                className="header-search-input"
+                aria-label="Search"
+              />
+              <button className="header-search-button" type="submit">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <circle
+                    cx="7"
+                    cy="7"
+                    r="4.5"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                  />
+                  <path
+                    d="M10.5 10.5L13 13"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+            </form>
           </div>
         </header>
         <div className="handbook-shell">

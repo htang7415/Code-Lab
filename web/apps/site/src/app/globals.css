@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "katex/dist/katex.min.css";
 @import "tailwindcss";
 @import "highlight.js/styles/github-dark-dimmed.css";
 
@@ -99,6 +100,12 @@ code,
   width: 100%;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .header-logo {
   display: flex;
   align-items: center;
@@ -129,6 +136,49 @@ code,
   margin-left: 0.75rem;
   padding-left: 0.75rem;
   border-left: 1px solid var(--border-primary);
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
+  border-radius: 999px;
+  padding: 0.2rem 0.35rem 0.2rem 0.6rem;
+}
+
+.header-search-input {
+  border: none;
+  background: transparent;
+  font-size: 0.78rem;
+  width: 200px;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.header-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.header-search-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border 120ms ease;
+}
+
+.header-search-button:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-primary);
+  color: var(--text-primary);
 }
 
 /* ── Handbook Shell ─────────────────────────────────── */
@@ -734,6 +784,123 @@ code,
   font-size: 0.88rem;
 }
 
+/* ── Search Page ───────────────────────────────────── */
+.search-page {
+  max-width: 780px;
+}
+
+.search-hero {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.9rem;
+  outline: none;
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.search-button:hover {
+  background: var(--accent-hover);
+}
+
+.search-meta {
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.search-results {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.search-result-card {
+  border: 1px solid var(--border-primary);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  background: var(--bg-card);
+  transition: border 120ms ease, background 120ms ease, transform 120ms ease;
+}
+
+.search-result-card:hover {
+  border-color: var(--accent-border);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+
+.search-result-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.search-result-kind {
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.search-result-title {
+  margin-top: 0.35rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.search-result-summary {
+  margin-top: 0.3rem;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.search-empty {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px dashed var(--border-primary);
+  border-radius: 12px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 1100px) {
   .handbook-content-wrapper {
@@ -753,5 +920,8 @@ code,
   }
   .header-tagline {
     display: none;
+  }
+  .header-search-input {
+    width: 140px;
   }
 }
