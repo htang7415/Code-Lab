@@ -1,6 +1,6 @@
 # Generative Models
 
-Core generative families and trade-offs (ML_Outline section 14).
+Core generative families and trade-offs.
 Each bullet maps to a module under `modules/ml/generative/`.
 
 ## Core Families

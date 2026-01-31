@@ -154,13 +154,13 @@ export default function SearchPage({
       <div className="search-hero">
         <h1 className="text-2xl font-semibold tracking-tight">Search</h1>
         <p className="mt-2 text-[0.9rem] text-[var(--text-secondary)]">
-          Find docs and code labs across tracks.
+          Find docs and demos across tracks.
         </p>
         <form action="/search" className="search-form" role="search">
           <input
             type="search"
             name="q"
-            placeholder="Search topics, concepts, or modules"
+            placeholder="Search topics, concepts, or demos"
             defaultValue={raw}
             className="search-input"
             autoFocus
@@ -188,10 +188,15 @@ export default function SearchPage({
       ) : (
         <div className="search-results">
           {results.map((entry) => (
-            <Link key={entry.id} href={entry.href} className="search-result-card">
+            <Link
+              key={entry.id}
+              href={entry.href}
+              className="search-result-card"
+              data-parallax="6"
+            >
               <div className="search-result-meta">
                 <span className="search-result-kind">
-                  {entry.type === "doc" ? "Doc" : "Module"}
+                  {entry.type === "doc" ? "Doc" : "Demo"}
                 </span>
                 <span>
                   {entry.trackName} / {entry.topicName}

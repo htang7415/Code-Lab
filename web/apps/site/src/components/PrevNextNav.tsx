@@ -12,7 +12,11 @@ export default function PrevNextNav({ prev, next }: PrevNextNavProps) {
   return (
     <nav className="prev-next-nav">
       {prev ? (
-        <Link href={prev.href} className="prev-next-link prev-next-prev">
+        <Link
+          href={prev.href}
+          className="prev-next-link prev-next-prev"
+          data-parallax="6"
+        >
           <span className="prev-next-label">&larr; Previous</span>
           <span className="prev-next-title">{prev.topicName}</span>
         </Link>
@@ -20,7 +24,11 @@ export default function PrevNextNav({ prev, next }: PrevNextNavProps) {
         <span />
       )}
       {next ? (
-        <Link href={next.href} className="prev-next-link prev-next-next">
+        <Link
+          href={next.href}
+          className="prev-next-link prev-next-next"
+          data-parallax="6"
+        >
           <span className="prev-next-label">Next &rarr;</span>
           <span className="prev-next-title">{next.topicName}</span>
         </Link>

@@ -1,6 +1,6 @@
 # Math for ML
 
-Core math for models and training (ML_Outline section 15).
+Core math for models and training.
 Each bullet maps to a module under `modules/ml/fundamentals/`.
 
 ## Linear Algebra

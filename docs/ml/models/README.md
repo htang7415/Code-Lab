@@ -1,6 +1,6 @@
 # Models and Classical ML
 
-Classical ML models and baselines (ML_Outline section 7).
+Classical ML models and baselines.
 Each bullet maps to a module under `modules/ml/models/`.
 
 ## Core Models

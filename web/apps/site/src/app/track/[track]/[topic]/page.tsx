@@ -3,10 +3,17 @@ import MarkdownRenderer from "@/components/MarkdownRenderer";
 import TableOfContents from "@/components/TableOfContents";
 import type { TocHeading } from "@/components/TableOfContents";
 import PrevNextNav from "@/components/PrevNextNav";
+import GradientDescentViz from "@/components/GradientDescentViz";
 import { buildNavItems, getAdjacentPages } from "@/lib/navigation";
 import type { ContentIndex } from "@/lib/content";
 import contentData from "@/content/content_index.json";
 import { notFound } from "next/navigation";
+
+type VizComponent = () => JSX.Element;
+
+const VIZ_REGISTRY: Record<string, VizComponent> = {
+  "ml/fundamentals/gradient-descent": GradientDescentViz,
+};
 
 /* ── Markdown cleaning helpers ─────────────────────────── */
 
@@ -641,6 +648,8 @@ export default async function TopicPage({
       const hasTheory = parsed.intro.length > 0 || parsed.sections.length > 0;
       const codeSources = mod?.sources ?? [];
       const hasCode = codeSources.length > 0;
+      const vizKey = `${trackId}/${topicId}/${slug}`;
+      const Viz = VIZ_REGISTRY[vizKey];
 
       return {
         slug,
@@ -651,6 +660,7 @@ export default async function TopicPage({
         hasTheory,
         codeSources,
         hasCode,
+        Viz,
       };
     })
     .sort((a, b) => a.title.localeCompare(b.title));
@@ -729,6 +739,30 @@ export default async function TopicPage({
                     </div>
                   </div>
                 ))}
+
+                {entry.Viz && (
+                  <div id={`${entry.slug}-viz`} className="concept-section">
+                    <div className="section-header section-header-viz">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                        <path
+                          d="M3 11l3-4 3 3 4-6"
+                          stroke="currentColor"
+                          strokeWidth="1.3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <circle cx="3" cy="11" r="1.2" fill="currentColor" />
+                        <circle cx="6" cy="7" r="1.2" fill="currentColor" />
+                        <circle cx="9" cy="10" r="1.2" fill="currentColor" />
+                        <circle cx="13" cy="4" r="1.2" fill="currentColor" />
+                      </svg>
+                      <span>Interactive</span>
+                    </div>
+                    <div className="section-body">
+                      <entry.Viz />
+                    </div>
+                  </div>
+                )}
 
                 {/* Demo code */}
                 {entry.hasCode && (

@@ -1,6 +1,6 @@
 # NLP and LLMs
 
-Transformers, training stages, and alignment for LLMs (ML_Outline section 11).
+Transformers, training stages, and alignment for LLMs.
 Each bullet maps to a module under `modules/ml/llm/`.
 
 ## Core Concepts

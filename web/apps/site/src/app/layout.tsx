@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import MotionOrchestrator from "@/components/MotionOrchestrator";
 import { buildNavItems, buildSidebarSections } from "@/lib/navigation";
 import type { ContentIndex } from "@/lib/content";
 import contentData from "@/content/content_index.json";
@@ -9,7 +10,7 @@ import contentData from "@/content/content_index.json";
 export const metadata: Metadata = {
   title: "Code Lab",
   description:
-    "A handbook-style learning platform for fundamentals and code labs.",
+    "A handbook-style learning platform for fundamentals and demos.",
 };
 
 export default function RootLayout({
@@ -32,8 +33,13 @@ export default function RootLayout({
                 <span>Code Lab</span>
               </Link>
               <span className="header-tagline">
-                Concepts &middot; Code &middot; Mastery
+                Knowledge &middot; Visuals &middot; Code
               </span>
+              <nav className="header-nav">
+                <Link href="/visuals" className="header-nav-link">
+                  Gallery
+                </Link>
+              </nav>
             </div>
             <form action="/search" className="header-search" role="search">
               <input
@@ -67,6 +73,7 @@ export default function RootLayout({
           <Sidebar sections={sections} />
           <main className="handbook-main">{children}</main>
         </div>
+        <MotionOrchestrator />
       </body>
     </html>
   );

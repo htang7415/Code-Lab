@@ -1,6 +1,6 @@
 # Representation Learning
 
-Cross-cutting representation items from ML_Outline.
+Cross-cutting representation items .
 
 ## Core Concepts
 

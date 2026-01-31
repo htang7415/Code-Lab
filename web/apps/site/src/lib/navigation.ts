@@ -1,4 +1,5 @@
 import type { ContentIndex, Track, Topic } from "./content";
+import { sortTopics } from "./roadmap";
 
 export interface NavItem {
   trackId: string;
@@ -27,16 +28,7 @@ export function buildNavItems(content: ContentIndex): NavItem[] {
     trackMap.set(track.id, track);
   }
 
-  return content.topics
-    .slice()
-    .sort((a, b) => {
-      const trackOrder =
-        content.tracks.findIndex((t) => t.id === a.track) -
-        content.tracks.findIndex((t) => t.id === b.track);
-      if (trackOrder !== 0) return trackOrder;
-      return a.name.localeCompare(b.name);
-    })
-    .map((topic) => {
+  return sortTopics(content.topics).map((topic) => {
       const track = trackMap.get(topic.track)!;
       return {
         trackId: track.id,

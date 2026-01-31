@@ -1,6 +1,6 @@
 # Metrics and Evaluation
 
-Metrics and evaluation patterns for common tasks (ML_Outline section 8).
+Metrics and evaluation patterns for common tasks.
 Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 
 ## Classification

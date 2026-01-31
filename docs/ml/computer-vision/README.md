@@ -1,6 +1,6 @@
 # Computer Vision
 
-Vision preprocessing and CNN architecture basics (ML_Outline section 13).
+Vision preprocessing and CNN architecture basics.
 Each bullet maps to a module under `modules/ml/computer-vision/`.
 
 ## CNN Fundamentals

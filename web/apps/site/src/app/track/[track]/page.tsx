@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ContentIndex } from "@/lib/content";
 import contentData from "@/content/content_index.json";
+import { sortTopicsForTrack } from "@/lib/roadmap";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
@@ -14,9 +15,10 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
   const track = content.tracks.find((item) => item.id === trackId);
   if (!track) return notFound();
 
-  const topics = content.topics
-    .filter((topic) => topic.track === track.id)
-    .sort((a, b) => a.name.localeCompare(b.name));
+  const topics = sortTopicsForTrack(
+    content.topics.filter((topic) => topic.track === track.id),
+    track.id
+  );
 
   return (
     <div>
@@ -45,6 +47,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
               key={topic.topic}
               href={`/track/${track.id}/${topic.topic}`}
               className="topic-list-item"
+              data-parallax="4"
             >
               <span
                 className="topic-list-dot"

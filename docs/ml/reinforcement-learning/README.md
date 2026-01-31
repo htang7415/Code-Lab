@@ -1,6 +1,6 @@
 # Reinforcement Learning
 
-Agents learning from rewards and exploration (ML_Outline section 12).
+Agents learning from rewards and exploration.
 Each bullet maps to a module under `modules/ml/reinforcement-learning/`.
 
 ## Core Ideas

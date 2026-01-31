@@ -1,6 +1,6 @@
 # MLOps and Production ML
 
-Operational concerns for production ML (ML_Outline section 10).
+Operational concerns for production ML.
 Each bullet maps to a module under `modules/ml/mlops/`.
 
 ## Production Concepts

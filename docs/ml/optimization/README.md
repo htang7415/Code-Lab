@@ -1,6 +1,6 @@
 # Optimization and Training Dynamics
 
-How gradients become stable updates (ML_Outline section 2).
+How gradients become stable updates.
 Each bullet maps to a module under `modules/ml/optimization/`.
 
 ## Optimizers

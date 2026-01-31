@@ -1,6 +1,6 @@
 # Data and Splitting
 
-Reliable data setup and evaluation splits (ML_Outline section 4).
+Reliable data setup and evaluation splits.
 Each bullet maps to a module under `modules/ml/data/`.
 
 ## Concepts

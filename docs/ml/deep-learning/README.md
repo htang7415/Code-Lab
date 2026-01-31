@@ -1,6 +1,6 @@
 # Foundations of Deep Learning
 
-Neural networks and training mechanics from first principles (ML_Outline sections 1, 3, 5, and 6).
+Neural networks and training mechanics from first principles.
 Each bullet maps to a module under `modules/ml/deep-learning/` unless noted.
 
 ## Neural Networks and Backprop

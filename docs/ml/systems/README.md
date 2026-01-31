@@ -1,6 +1,6 @@
 # Training Loop Mechanics
 
-Training loop mechanics and debugging signals (ML_Outline section 9).
+Training loop mechanics and debugging signals.
 Each bullet maps to a module under `modules/ml/systems/`.
 
 ## Core Steps
