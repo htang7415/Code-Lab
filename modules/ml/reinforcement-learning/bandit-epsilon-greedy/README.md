@@ -18,24 +18,19 @@ $\epsilon = 0$ is pure greedy; $\epsilon = 1$ is pure random.
 
 ## Math
 
-$$Action-value estimate updated incrementally after pulling arm _a_ and$$
-$$observing reward _r_:$$
+Action-value estimate updated incrementally after pulling arm $a$ and observing reward $r$:
 
-```
-N[a] += 1
-Q[a] += (1 / N[a]) * (r - Q[a])
-```
+$$N_a \leftarrow N_a + 1$$
 
-- $\text{\texttt{Q[a]} — estimated value of arm \\_a\\_ (running mean of rewards)}$
-- $\text{\texttt{N[a]} — number of times arm \\_a\\_ has been pulled}$
-- $\text{The update is equivalent to computing the sample mean incrementally}$
+$$Q_a \leftarrow Q_a + \frac{1}{N_a}(r - Q_a)$$
 
-$$\text{Arm selection:}$$
+- $Q_a$ — estimated value of arm $a$ (running mean of rewards)
+- $N_a$ — number of times arm $a$ has been pulled
+- The update computes the sample mean incrementally
 
-```
-a_t = random(0..K-1)         with probability epsilon
-    = argmax_a Q[a]          with probability 1 - epsilon
-```
+Arm selection:
+
+$$a_t = \begin{cases} \text{random arm from } \{0, \dots, K{-}1\} & \text{with probability } \epsilon \\ \arg\max_a Q_a & \text{with probability } 1 - \epsilon \end{cases}$$
 
 ## Function
 

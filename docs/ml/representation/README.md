@@ -1,6 +1,6 @@
 # Representation Learning
 
-Cross-cutting representation items .
+Cross-cutting representation items.
 
 ## Core Concepts
 

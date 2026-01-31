@@ -6,6 +6,7 @@ import PrevNextNav from "@/components/PrevNextNav";
 import GradientDescentViz from "@/components/GradientDescentViz";
 import { buildNavItems, getAdjacentPages } from "@/lib/navigation";
 import type { ContentIndex } from "@/lib/content";
+import { extractModuleOrder } from "@/lib/roadmap";
 import contentData from "@/content/content_index.json";
 import { notFound } from "next/navigation";
 
@@ -49,6 +50,51 @@ function stripRunTests(markdown: string): string {
     }
     if (!skipping) result.push(line);
   }
+  return result.join("\n");
+}
+
+function stripModuleReferences(markdown: string): string {
+  const lines = markdown.split(/\r?\n/);
+  const result: string[] = [];
+  let inCodeBlock = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      result.push(line);
+      continue;
+    }
+    if (inCodeBlock) {
+      result.push(line);
+      continue;
+    }
+
+    const leading = line.match(/^\s*/)?.[0] ?? "";
+    let content = line.slice(leading.length);
+
+    content = content.replace(/\(([^)]*modules\/[^)]*)\)/gi, (match, inner) => {
+      let cleaned = inner as string;
+      cleaned = cleaned.replace(/see\s+modules\/[a-z0-9\-_/]+/gi, "");
+      cleaned = cleaned.replace(/modules\/[a-z0-9\-_/]+/gi, "");
+      cleaned = cleaned.replace(/^[;:,\s]+|[;:,\s]+$/g, "");
+      return cleaned.trim() ? `(${cleaned.trim()})` : "";
+    });
+    content = content.replace(/`modules\/[^`]+`/gi, "");
+    content = content.replace(/modules\/[a-z0-9\-_/]+/gi, "");
+    content = content.replace(/`\s*`/g, "");
+    content = content.replace(/\(\s*\)/g, "");
+    content = content.replace(/\bunder\s+unless\b/gi, "unless");
+    content = content.replace(/\s{2,}/g, " ").replace(/\s+([.,;:])/g, "$1");
+    content = content.replace(/\s+$/g, "");
+
+    if (content.length === 0) {
+      result.push("");
+    } else {
+      result.push(`${leading}${content}`);
+    }
+  }
+
   return result.join("\n");
 }
 
@@ -614,34 +660,61 @@ export default async function TopicPage({
   const navItems = buildNavItems(content);
   const { prev, next } = getAdjacentPages(navItems, trackId, topicId);
 
-  const docs = content.docs
-    .filter((item) => item.track === trackId && item.topic === topicId)
-    .sort((a, b) => a.title.localeCompare(b.title));
-  const modules = content.modules
-    .filter((item) => item.track === trackId && item.topic === topicId)
-    .sort((a, b) => a.title.localeCompare(b.title));
+  const docs = content.docs.filter(
+    (item) => item.track === trackId && item.topic === topicId
+  );
+  const modules = content.modules.filter(
+    (item) => item.track === trackId && item.topic === topicId
+  );
 
-  const docBySlug = new Map(docs.map((doc) => [doc.slug, doc]));
+  // Exclude topic-level README docs (slug === topicId) from rendered entries;
+  // they only provide the module ordering outline.
+  const entryDocs = docs.filter((doc) => doc.slug !== topicId);
+  const docBySlug = new Map(entryDocs.map((doc) => [doc.slug, doc]));
   const moduleBySlug = new Map(modules.map((module) => [module.slug, module]));
   const entrySlugs = Array.from(
     new Set([
-      ...docs.map((doc) => doc.slug),
+      ...entryDocs.map((doc) => doc.slug),
       ...modules.map((module) => module.slug),
     ])
   );
+
+  const moduleOrder = extractModuleOrder(docs[0]?.content, trackId, topicId);
+  const slugOrder = new Map<string, number>();
+  let orderIndex = 0;
+
+  for (const doc of docs) {
+    if (!slugOrder.has(doc.slug)) slugOrder.set(doc.slug, orderIndex++);
+  }
+  for (const slug of moduleOrder) {
+    if (!slugOrder.has(slug)) slugOrder.set(slug, orderIndex++);
+  }
+
+  const remainingSlugs = entrySlugs.filter((slug) => !slugOrder.has(slug));
+  remainingSlugs.sort((a, b) => {
+    const titleA = docBySlug.get(a)?.title ?? moduleBySlug.get(a)?.title ?? a;
+    const titleB = docBySlug.get(b)?.title ?? moduleBySlug.get(b)?.title ?? b;
+    return titleA.localeCompare(titleB);
+  });
+  for (const slug of remainingSlugs) {
+    slugOrder.set(slug, orderIndex++);
+  }
 
   const entries = entrySlugs
     .map((slug) => {
       const doc = docBySlug.get(slug);
       const mod = moduleBySlug.get(slug);
       const title = doc?.title ?? mod?.title ?? slug;
-      const summary = cleanSummary(doc?.summary) ?? cleanSummary(mod?.summary);
+      const summary = stripModuleReferences(
+        cleanSummary(doc?.summary) ?? cleanSummary(mod?.summary) ?? ""
+      ).trim() || undefined;
 
       // Clean the markdown: strip title, track meta, run tests
       let rawContent = doc ? doc.content : mod ? mod.readme : "";
       rawContent = stripTopHeading(rawContent);
       rawContent = stripTrackMeta(rawContent);
       rawContent = stripRunTests(rawContent);
+      rawContent = stripModuleReferences(rawContent);
 
       const parsed = parseSections(rawContent);
       const normalizedSections = normalizeSections(parsed.sections, summary, title, parsed.intro);
@@ -663,7 +736,10 @@ export default async function TopicPage({
         Viz,
       };
     })
-    .sort((a, b) => a.title.localeCompare(b.title));
+    .sort(
+      (a, b) =>
+        (slugOrder.get(a.slug) ?? 0) - (slugOrder.get(b.slug) ?? 0)
+    );
 
   // Build TOC headings
   const allHeadings: TocHeading[] = [];

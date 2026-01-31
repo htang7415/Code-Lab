@@ -109,6 +109,7 @@ export function sortTopics(topics: Topic[]): Topic[] {
     const trackRankA = TRACK_RANK.get(a.track) ?? Number.MAX_SAFE_INTEGER;
     const trackRankB = TRACK_RANK.get(b.track) ?? Number.MAX_SAFE_INTEGER;
     if (trackRankA !== trackRankB) return trackRankA - trackRankB;
+    if (a.track !== b.track) return a.track.localeCompare(b.track);
 
     const topicRank = TOPIC_RANKS.get(a.track);
     const rankA = topicRank?.get(a.topic);

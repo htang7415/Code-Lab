@@ -8,7 +8,9 @@ Autodiff computes derivatives by composing local gradients.
 
 ## Math
 
-$$If y = x^2 and z = y + 3, then dz/dx = 2x.$$
+If $y = x^2$ and $z = y + 3$, then by the chain rule:
+
+$$\frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx} = 1 \cdot 2x = 2x$$
 
 ## Function
 
