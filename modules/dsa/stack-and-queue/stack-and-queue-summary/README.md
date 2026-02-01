@@ -1,0 +1,13 @@
+# Stack and Queue Summary
+
+> Track: `dsa` | Topic: `stack-and-queue`
+
+## Concept
+
+TODO: add explanation.
+
+## Function
+
+```python
+def solve(*args, **kwargs):
+```
