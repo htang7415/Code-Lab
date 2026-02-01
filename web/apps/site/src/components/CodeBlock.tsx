@@ -1,4 +1,18 @@
+import hljs from "highlight.js";
 import CopyButton from "./CopyButton";
+
+const LANGUAGE_ALIASES: Record<string, string> = {
+  js: "javascript",
+  ts: "typescript",
+  tsx: "typescript",
+  jsx: "javascript",
+  py: "python",
+  rs: "rust",
+  md: "markdown",
+  yml: "yaml",
+  sh: "bash",
+  text: "plaintext",
+};
 
 interface CodeBlockProps {
   filename: string;
@@ -7,6 +21,11 @@ interface CodeBlockProps {
 }
 
 export default function CodeBlock({ filename, language, code }: CodeBlockProps) {
+  const normalizedLanguage = LANGUAGE_ALIASES[language] ?? language;
+  const highlighted = hljs.getLanguage(normalizedLanguage)
+    ? hljs.highlight(code, { language: normalizedLanguage }).value
+    : hljs.highlightAuto(code).value;
+
   return (
     <div className="code-block">
       <div className="code-block-header">
@@ -17,7 +36,10 @@ export default function CodeBlock({ filename, language, code }: CodeBlockProps) 
         </div>
       </div>
       <pre>
-        <code className={`language-${language}`}>{code}</code>
+        <code
+          className={`hljs language-${normalizedLanguage}`}
+          dangerouslySetInnerHTML={{ __html: highlighted }}
+        />
       </pre>
     </div>
   );
