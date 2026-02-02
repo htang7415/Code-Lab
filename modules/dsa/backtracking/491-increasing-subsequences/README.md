@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Track non-decreasing subsequences while avoiding duplicates per depth.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findSubsequences(self, nums: list[int]) -> list[list[int]]:
 ```

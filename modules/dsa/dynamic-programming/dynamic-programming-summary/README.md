@@ -4,10 +4,4 @@
 
 ## Concept
 
-TODO: add explanation.
-
-## Function
-
-```python
-def solve(*args, **kwargs):
-```
+Review DP patterns: state, transition, initialization, and optimization.

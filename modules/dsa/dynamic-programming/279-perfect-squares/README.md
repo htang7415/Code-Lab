@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP for minimum count of squares to sum to n.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def numSquares(self, n: int) -> int:
 ```

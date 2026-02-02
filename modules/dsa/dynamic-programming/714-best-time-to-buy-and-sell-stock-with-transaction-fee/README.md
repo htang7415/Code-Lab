@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP with a fee applied on each sell.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxProfit(self, prices: List[int], fee: int) -> int:
 ```

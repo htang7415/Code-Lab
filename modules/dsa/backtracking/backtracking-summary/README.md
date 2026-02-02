@@ -4,10 +4,4 @@
 
 ## Concept
 
-TODO: add explanation.
-
-## Function
-
-```python
-def solve(*args, **kwargs):
-```
+Review backtracking templates for combinations, permutations, subsets, and pruning.

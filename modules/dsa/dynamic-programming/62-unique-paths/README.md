@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Grid DP counting paths from top-left to bottom-right.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sort and skip duplicate choices to avoid repeated permutations.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
 ```

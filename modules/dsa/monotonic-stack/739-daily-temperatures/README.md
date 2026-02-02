@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a decreasing monotonic stack of indices to find the next warmer day.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
 ```

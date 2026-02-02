@@ -4,10 +4,14 @@
 
 ## Concept
 
-TODO: add explanation.
+Use two stacks: push to in-stack, pop/peek from out-stack after transferring.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class MyQueue:
+    def push(self, x: int) -> None:
+    def pop(self) -> int:
+    def peek(self) -> int:
+    def empty(self) -> bool:
 ```

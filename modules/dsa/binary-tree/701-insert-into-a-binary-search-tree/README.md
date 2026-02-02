@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Insert by descending until a leaf position is found.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
 ```

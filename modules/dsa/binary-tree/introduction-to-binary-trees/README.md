@@ -4,10 +4,4 @@
 
 ## Concept
 
-TODO: add explanation.
-
-## Function
-
-```python
-def solve(*args, **kwargs):
-```
+Binary trees store values with left and right child pointers.

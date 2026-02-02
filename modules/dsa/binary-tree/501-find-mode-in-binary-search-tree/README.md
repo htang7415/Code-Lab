@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Inorder traversal to count consecutive values.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Validate BST by ensuring each node value stays within bounds.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
 ```

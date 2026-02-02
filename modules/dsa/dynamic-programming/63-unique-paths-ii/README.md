@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Grid DP counting paths while skipping obstacles.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
 ```

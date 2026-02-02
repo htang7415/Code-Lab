@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+O(n^2) DP where dp[i] is LIS ending at i.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP counting ways to form t from s.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
 ```

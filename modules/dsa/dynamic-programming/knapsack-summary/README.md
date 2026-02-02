@@ -4,10 +4,4 @@
 
 ## Concept
 
-TODO: add explanation.
-
-## Function
-
-```python
-def solve(*args, **kwargs):
-```
+Summarize knapsack variants and how transition direction changes.

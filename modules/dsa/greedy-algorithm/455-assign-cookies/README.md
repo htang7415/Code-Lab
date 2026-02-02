@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sort greed factors and cookie sizes, then assign smallest feasible cookies.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
 ```

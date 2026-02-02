@@ -4,10 +4,4 @@
 
 ## Concept
 
-TODO: add explanation.
-
-## Function
-
-```python
-def solve(*args, **kwargs):
-```
+Summarize edit-distance style DP for string alignment problems.

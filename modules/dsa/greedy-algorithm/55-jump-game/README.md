@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Track the farthest reachable index while scanning.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
 ```

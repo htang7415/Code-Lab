@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Prune the upper bound to avoid exploring impossible branches.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Backtrack over substrings and keep only palindromic segments.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def partition(self, s: str) -> list[list[str]]:
 ```

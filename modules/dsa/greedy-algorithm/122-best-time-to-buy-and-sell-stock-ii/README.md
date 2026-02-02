@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sum all ascending price differences to capture every profit.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
 ```

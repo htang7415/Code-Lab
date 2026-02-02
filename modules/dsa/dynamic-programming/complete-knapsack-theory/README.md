@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+1D DP with forward iteration for unlimited items.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def completeKnapsack(self, weights: List[int], values: List[int], capacity: int) -> int:
 ```

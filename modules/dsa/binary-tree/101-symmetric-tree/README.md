@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Check whether the left and right subtrees are mirror images.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
 ```

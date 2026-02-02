@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Build permutations by choosing unused numbers at each step.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
 ```

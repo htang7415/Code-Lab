@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Swap left and right children recursively.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
 ```

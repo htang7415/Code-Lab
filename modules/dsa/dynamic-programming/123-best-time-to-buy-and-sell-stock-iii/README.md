@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP with up to two transactions.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
 ```

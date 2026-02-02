@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Scan right-to-left to fix decreasing digits, then fill with 9s.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def monotoneIncreasingDigits(self, n: int) -> int:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a monotonic stack to compute trapped water when a higher bar closes a valley.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def trap(self, height: List[int]) -> int:
 ```

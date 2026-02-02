@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Maintain a decreasing deque of indices to track the window maximum.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
 ```

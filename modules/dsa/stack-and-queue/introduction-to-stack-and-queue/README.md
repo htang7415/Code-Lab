@@ -4,10 +4,4 @@
 
 ## Concept
 
-TODO: add explanation.
-
-## Function
-
-```python
-def solve(*args, **kwargs):
-```
+Stacks are LIFO and queues are FIFO structures with push/pop or enqueue/dequeue operations.

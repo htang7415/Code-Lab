@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a local set at each depth to skip duplicate choices.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
 ```

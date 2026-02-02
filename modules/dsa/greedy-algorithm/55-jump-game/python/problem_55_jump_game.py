@@ -1,3 +1,10 @@
-def solve(*args, **kwargs):
-    """TODO: implement 55.Jump Game."""
-    raise NotImplementedError("TODO: implement 55.Jump Game")
+from typing import List
+
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        farthest = 0
+        for i, value in enumerate(nums):
+            if i > farthest:
+                return False
+            farthest = max(farthest, i + value)
+        return True

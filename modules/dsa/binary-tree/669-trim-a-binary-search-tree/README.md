@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Prune subtrees outside the [low, high] range.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def trimBST(self, root: Optional[TreeNode], low: int, high: int) -> Optional[TreeNode]:
 ```

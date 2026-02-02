@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+LCS DP on two sequences to maximize non-crossing lines.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxUncrossedLines(self, nums1: List[int], nums2: List[int]) -> int:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use BST ordering to walk down to the split point.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def lowestCommonAncestor(self, root: Optional[TreeNode], p: TreeNode, q: TreeNode) -> Optional[TreeNode]:
 ```

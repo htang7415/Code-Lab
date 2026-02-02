@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Choose k numbers in ascending order to form combinations.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
 ```

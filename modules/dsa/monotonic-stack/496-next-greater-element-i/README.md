@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a decreasing monotonic stack to precompute next greater elements in nums2.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
 ```

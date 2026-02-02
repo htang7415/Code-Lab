@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP to maximize product by splitting integer.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def integerBreak(self, n: int) -> int:
 ```

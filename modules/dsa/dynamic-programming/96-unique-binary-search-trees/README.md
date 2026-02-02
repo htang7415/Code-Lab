@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Catalan DP counting BST structures.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def numTrees(self, n: int) -> int:
 ```

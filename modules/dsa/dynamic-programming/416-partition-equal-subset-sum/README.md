@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Subset-sum DP to reach half of total.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
 ```

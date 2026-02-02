@@ -29,7 +29,7 @@ export default function RootLayout({
           <div className="site-header-inner">
             <div className="header-left">
               <Link href="/" className="header-logo">
-                <span className="header-logo-icon">&gt;_</span>
+                <span className="header-logo-icon">CL</span>
                 <span>Code Lab</span>
               </Link>
               <span className="header-tagline">

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP for LCS length between two strings.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
 ```

@@ -1,3 +1,31 @@
-def solve(*args, **kwargs):
-    """TODO: implement 450.Delete Node in a BST."""
-    raise NotImplementedError("TODO: implement 450.Delete Node in a BST")
+from __future__ import annotations
+
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if root is None:
+            return None
+        if key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        else:
+            if root.left is None:
+                return root.right
+            if root.right is None:
+                return root.left
+            successor = root.right
+            while successor.left:
+                successor = successor.left
+            root.val = successor.val
+            root.right = self.deleteNode(root.right, successor.val)
+        return root

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Pick the maximum as root and recurse on subarrays.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
 ```

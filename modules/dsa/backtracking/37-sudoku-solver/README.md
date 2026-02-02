@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Fill empty cells with valid digits using backtracking and constraint sets.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def solveSudoku(self, board: list[list[str]]) -> None:
 ```

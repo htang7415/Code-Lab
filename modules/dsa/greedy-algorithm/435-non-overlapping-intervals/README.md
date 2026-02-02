@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Keep intervals with earliest end to maximize non-overlapping count.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
 ```

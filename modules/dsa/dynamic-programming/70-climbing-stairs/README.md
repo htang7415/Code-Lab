@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP on steps: f(n) = f(n-1) + f(n-2).
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def climbStairs(self, n: int) -> int:
 ```

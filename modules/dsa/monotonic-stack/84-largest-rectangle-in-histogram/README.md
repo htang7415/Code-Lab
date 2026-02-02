@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a monotonic increasing stack to expand each bar to its maximal rectangle.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DFS to build all root-to-leaf path strings.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
 ```

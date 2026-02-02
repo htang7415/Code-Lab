@@ -1,3 +1,9 @@
-def solve(*args, **kwargs):
-    """TODO: implement 1047.Remove All Adjacent Duplicates in String."""
-    raise NotImplementedError("TODO: implement 1047.Remove All Adjacent Duplicates in String")
+class Solution:
+    def removeDuplicates(self, s: str) -> str:
+        stack: list[str] = []
+        for ch in s:
+            if stack and stack[-1] == ch:
+                stack.pop()
+            else:
+                stack.append(ch)
+        return "".join(stack)

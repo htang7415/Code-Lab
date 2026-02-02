@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sort by start and merge overlapping intervals greedily.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
 ```

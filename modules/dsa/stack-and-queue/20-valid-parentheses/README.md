@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a stack to match each closing bracket with the most recent opening bracket.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def isValid(self, s: str) -> bool:
 ```

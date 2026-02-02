@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Compute the maximum depth via recursion.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Choose k distinct numbers from 1..9 that sum to n.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> list[list[int]]:
 ```

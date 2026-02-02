@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Perform level-order traversal with a queue.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 ```

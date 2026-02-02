@@ -1,5 +1,6 @@
-from problem_77_combinations import solve
+from problem_77_combinations import Solution
 
 
-def test_stub():
-    assert callable(solve)
+def test_combinations_basic():
+    result = Solution().combine(4, 2)
+    assert sorted(result) == [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]

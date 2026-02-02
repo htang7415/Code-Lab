@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sum leaf nodes that are left children.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
 ```

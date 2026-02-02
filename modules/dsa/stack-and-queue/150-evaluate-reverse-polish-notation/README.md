@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a stack to evaluate tokens, applying operators to the last two values.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
 ```

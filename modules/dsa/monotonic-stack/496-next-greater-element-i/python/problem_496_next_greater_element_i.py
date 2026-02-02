@@ -1,3 +1,14 @@
-def solve(*args, **kwargs):
-    """TODO: implement 496.Next Greater Element I."""
-    raise NotImplementedError("TODO: implement 496.Next Greater Element I")
+from typing import Dict, List
+
+
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        next_greater: Dict[int, int] = {}
+        stack: List[int] = []
+        for num in nums2:
+            while stack and num > stack[-1]:
+                next_greater[stack.pop()] = num
+            stack.append(num)
+        for num in stack:
+            next_greater[num] = -1
+        return [next_greater[num] for num in nums1]

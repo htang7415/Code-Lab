@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Reset the start when the running fuel tank drops below zero.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
 ```

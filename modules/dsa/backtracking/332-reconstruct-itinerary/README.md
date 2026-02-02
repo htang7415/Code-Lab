@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use backtracking with lexicographic ordering to build a valid itinerary.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findItinerary(self, tickets: list[list[str]]) -> list[str]:
 ```

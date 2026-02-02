@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP with insert/delete/replace to compute edit distance.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
 ```

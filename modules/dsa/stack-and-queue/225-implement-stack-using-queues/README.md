@@ -4,10 +4,14 @@
 
 ## Concept
 
-TODO: add explanation.
+Rotate the queue after each push so the front is the stack top.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class MyStack:
+    def push(self, x: int) -> None:
+    def pop(self) -> int:
+    def top(self) -> int:
+    def empty(self) -> bool:
 ```

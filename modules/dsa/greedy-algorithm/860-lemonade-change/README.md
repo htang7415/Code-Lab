@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Track $5 and $10 bills to make change greedily.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def lemonadeChange(self, bills: list[int]) -> bool:
 ```

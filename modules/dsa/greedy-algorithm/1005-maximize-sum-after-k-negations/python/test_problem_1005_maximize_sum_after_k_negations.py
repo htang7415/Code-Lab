@@ -1,5 +1,9 @@
-from problem_1005_maximize_sum_after_k_negations import solve
+from problem_1005_maximize_sum_after_k_negations import Solution
 
 
-def test_stub():
-    assert callable(solve)
+def test_k_negations_basic():
+    assert Solution().largestSumAfterKNegations([4, 2, 3], 1) == 5
+
+
+def test_k_negations_more():
+    assert Solution().largestSumAfterKNegations([3, -1, 0, 2], 3) == 6

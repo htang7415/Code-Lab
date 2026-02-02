@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Assign candies with two passes to satisfy both neighbors.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
 ```

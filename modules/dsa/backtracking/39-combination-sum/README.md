@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Choose candidates with repetition to reach the target sum.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 ```

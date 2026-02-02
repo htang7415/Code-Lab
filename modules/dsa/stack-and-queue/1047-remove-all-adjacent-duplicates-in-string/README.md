@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a stack: remove the top when it matches the current character.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def removeDuplicates(self, s: str) -> str:
 ```

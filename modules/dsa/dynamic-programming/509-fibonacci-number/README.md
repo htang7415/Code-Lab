@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Bottom-up DP for Fibonacci numbers.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def fib(self, n: int) -> int:
 ```

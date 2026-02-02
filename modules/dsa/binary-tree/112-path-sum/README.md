@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Check for a root-to-leaf path with the target sum.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
 ```

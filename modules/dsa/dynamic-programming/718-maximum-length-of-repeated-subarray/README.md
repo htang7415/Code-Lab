@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP on ending positions to find longest common subarray.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
 ```

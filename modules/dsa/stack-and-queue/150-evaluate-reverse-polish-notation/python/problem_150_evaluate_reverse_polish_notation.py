@@ -1,3 +1,18 @@
-def solve(*args, **kwargs):
-    """TODO: implement 150.Evaluate Reverse Polish Notation."""
-    raise NotImplementedError("TODO: implement 150.Evaluate Reverse Polish Notation")
+class Solution:
+    def evalRPN(self, tokens: list[str]) -> int:
+        stack: list[int] = []
+        for token in tokens:
+            if token in {"+", "-", "*", "/"}:
+                b = stack.pop()
+                a = stack.pop()
+                if token == "+":
+                    stack.append(a + b)
+                elif token == "-":
+                    stack.append(a - b)
+                elif token == "*":
+                    stack.append(a * b)
+                else:
+                    stack.append(int(a / b))
+            else:
+                stack.append(int(token))
+        return stack[-1]

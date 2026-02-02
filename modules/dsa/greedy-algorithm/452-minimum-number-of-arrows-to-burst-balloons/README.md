@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sort by end points and shoot a new arrow when ranges no longer overlap.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
 ```

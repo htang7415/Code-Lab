@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Place cameras based on child coverage states to minimize total.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def minCameraCover(self, root: Optional[TreeNode]) -> int:
 ```

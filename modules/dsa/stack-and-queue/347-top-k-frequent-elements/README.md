@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Count frequencies and use buckets to collect the k most frequent elements.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 ```

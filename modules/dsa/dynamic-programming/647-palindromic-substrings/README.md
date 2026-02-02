@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP on substrings to count palindromes.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def countSubstrings(self, s: str) -> int:
 ```

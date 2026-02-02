@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Tree DP with rob/skip states per node.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None) -> None:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Flip negative values with the largest absolute value first.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def largestSumAfterKNegations(self, nums: List[int], k: int) -> int:
 ```

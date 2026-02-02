@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Count sign changes between consecutive differences.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
 ```

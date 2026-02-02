@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Include or skip each element to build all subsets.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
 ```

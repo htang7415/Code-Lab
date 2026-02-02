@@ -15,12 +15,11 @@ const LANGUAGE_ALIASES: Record<string, string> = {
 };
 
 interface CodeBlockProps {
-  filename: string;
   language: string;
   code: string;
 }
 
-export default function CodeBlock({ filename, language, code }: CodeBlockProps) {
+export default function CodeBlock({ language, code }: CodeBlockProps) {
   const normalizedLanguage = LANGUAGE_ALIASES[language] ?? language;
   const highlighted = hljs.getLanguage(normalizedLanguage)
     ? hljs.highlight(code, { language: normalizedLanguage }).value
@@ -29,7 +28,6 @@ export default function CodeBlock({ filename, language, code }: CodeBlockProps) 
   return (
     <div className="code-block">
       <div className="code-block-header">
-        <span className="font-mono text-[0.75rem]">{filename}</span>
         <div className="flex items-center gap-2.5">
           <span className="code-block-lang">{language}</span>
           <CopyButton text={code} />

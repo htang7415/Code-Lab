@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP based on LCS to minimize deletions.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
 ```

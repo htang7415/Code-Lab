@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Split the circle into two linear DP cases.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def rob(self, nums: List[int]) -> int:
 ```

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Track the first node at each level with BFS.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
 ```

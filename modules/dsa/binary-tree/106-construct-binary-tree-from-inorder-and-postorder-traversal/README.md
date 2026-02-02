@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use postorder's last element as root and split inorder ranges.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
 ```

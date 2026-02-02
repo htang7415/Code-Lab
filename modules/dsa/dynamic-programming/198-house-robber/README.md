@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP for max sum without adjacent houses.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def rob(self, nums: List[int]) -> int:
 ```

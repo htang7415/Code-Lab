@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP counting ways with variable step sizes.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def climbStairsAdvanced(self, n: int, steps: List[int]) -> int:
 ```

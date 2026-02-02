@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Split the string into four valid segments with backtracking.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def restoreIpAddresses(self, s: str) -> list[str]:
 ```

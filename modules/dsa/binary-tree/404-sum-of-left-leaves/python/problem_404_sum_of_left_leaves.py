@@ -1,3 +1,20 @@
-def solve(*args, **kwargs):
-    """TODO: implement 404.Sum of Left Leaves."""
-    raise NotImplementedError("TODO: implement 404.Sum of Left Leaves")
+from __future__ import annotations
+
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        total = 0
+        if root.left and root.left.left is None and root.left.right is None:
+            total += root.left.val
+        return total + self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)

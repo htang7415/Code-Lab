@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP over prefixes to test valid word breaks.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def wordBreak(self, s: str, wordDict: list[str]) -> bool:
 ```

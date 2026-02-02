@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sort by height descending, then insert by k to rebuild the queue.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
 ```

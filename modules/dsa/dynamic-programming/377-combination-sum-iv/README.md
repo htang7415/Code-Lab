@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP counting ordered combinations for a target sum.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
 ```

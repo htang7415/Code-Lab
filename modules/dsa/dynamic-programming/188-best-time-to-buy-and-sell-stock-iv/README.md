@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP with k transactions using hold/cash arrays.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
 ```

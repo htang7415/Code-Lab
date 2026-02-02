@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP counting combinations with unlimited coins.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
 ```

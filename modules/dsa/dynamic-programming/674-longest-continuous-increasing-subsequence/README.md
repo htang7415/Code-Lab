@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP for longest increasing run ending at each index.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
 ```

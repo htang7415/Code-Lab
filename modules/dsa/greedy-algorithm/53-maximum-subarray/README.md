@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use Kadane's algorithm to track the best running sum.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
 ```

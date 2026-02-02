@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Bounded knapsack by expanding counts then 0-1 DP.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def multipleKnapsack(self, weights: List[int], values: List[int], counts: List[int], capacity: int) -> int:
 ```

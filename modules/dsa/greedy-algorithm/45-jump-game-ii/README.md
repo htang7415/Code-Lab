@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Use a greedy window to count the minimum jumps.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def jump(self, nums: List[int]) -> int:
 ```

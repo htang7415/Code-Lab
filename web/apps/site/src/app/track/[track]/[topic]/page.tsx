@@ -857,7 +857,6 @@ export default async function TopicPage({
                         {entry.codeSources.map((source) => (
                           <CodeBlock
                             key={source.path}
-                            filename={source.path}
                             language={source.language}
                             code={source.content}
                           />

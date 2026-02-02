@@ -1,3 +1,11 @@
-def solve(*args, **kwargs):
-    """TODO: implement 1049.Last Stone Weight II."""
-    raise NotImplementedError("TODO: implement 1049.Last Stone Weight II")
+from typing import List
+
+class Solution:
+    def lastStoneWeightII(self, stones: List[int]) -> int:
+        total = sum(stones)
+        target = total // 2
+        dp = [0] * (target + 1)
+        for stone in stones:
+            for t in range(target, stone - 1, -1):
+                dp[t] = max(dp[t], dp[t - stone] + stone)
+        return total - 2 * dp[target]

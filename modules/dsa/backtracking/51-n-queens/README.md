@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Place queens row by row while tracking columns and diagonals.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def solveNQueens(self, n: int) -> list[list[str]]:
 ```

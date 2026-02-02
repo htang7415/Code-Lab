@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Kadane-style DP for best subarray ending at each index.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
 ```

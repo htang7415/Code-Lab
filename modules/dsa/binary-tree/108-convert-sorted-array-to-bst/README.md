@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Pick the middle value as root to build a balanced BST.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
 ```

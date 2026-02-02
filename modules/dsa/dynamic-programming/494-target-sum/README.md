@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Transform to subset-sum counting DP.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
 ```

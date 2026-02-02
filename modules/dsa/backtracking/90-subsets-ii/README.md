@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Sort and skip duplicates at each depth to avoid repeated subsets.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
 ```

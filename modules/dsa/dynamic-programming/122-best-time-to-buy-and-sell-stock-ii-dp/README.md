@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP with hold/cash states for unlimited transactions.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
 ```

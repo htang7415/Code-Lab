@@ -1,3 +1,17 @@
-def solve(*args, **kwargs):
-    """TODO: implement 104.Maximum Depth of Binary Tree."""
-    raise NotImplementedError("TODO: implement 104.Maximum Depth of Binary Tree")
+from __future__ import annotations
+
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))

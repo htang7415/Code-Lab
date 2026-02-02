@@ -1,5 +1,13 @@
-from problem_20_valid_parentheses import solve
+from problem_20_valid_parentheses import Solution
 
 
-def test_stub():
-    assert callable(solve)
+def test_valid_parentheses_true():
+    assert Solution().isValid("()") is True
+    assert Solution().isValid("()[]{}") is True
+    assert Solution().isValid("{[]}") is True
+
+
+def test_valid_parentheses_false():
+    assert Solution().isValid("(]") is False
+    assert Solution().isValid("([)]") is False
+    assert Solution().isValid("(") is False

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Merge by summing overlapping nodes in DFS.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
 ```

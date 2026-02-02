@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Expand the current partition to the farthest last occurrence.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def partitionLabels(self, s: str) -> list[int]:
 ```

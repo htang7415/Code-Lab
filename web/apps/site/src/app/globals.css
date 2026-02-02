@@ -9,9 +9,9 @@
   --bg-sidebar: #f1f5fb;
   --bg-sidebar-hover: #e7edf7;
   --bg-header: rgba(247, 249, 252, 0.82);
-  --bg-code: #0f172a;
-  --bg-code-header: #111b30;
-  --bg-inline-code: #eef2f7;
+  --bg-code: #1e1e1e;
+  --bg-code-header: #252526;
+  --bg-inline-code: #1f2937;
   --bg-card: #ffffff;
   --bg-card-hover: #f2f6fb;
   --bg-elevated: #f1f5fb;
@@ -19,7 +19,7 @@
   /* Borders */
   --border-primary: #d9e2ef;
   --border-subtle: #e3e9f3;
-  --border-code: #1d2945;
+  --border-code: #333333;
 
   /* Text */
   --text-primary: #0b1220;
@@ -1323,7 +1323,7 @@ code,
   padding: 0.15rem 0.4rem;
   border-radius: 5px;
   background: var(--bg-inline-code);
-  color: var(--accent);
+  color: #e2e8f0;
   font-size: 0.84em;
   font-weight: 500;
 }
@@ -1399,11 +1399,11 @@ code,
 .code-block-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0.45rem 0.9rem;
   background: var(--bg-code-header);
   border-bottom: 1px solid var(--border-code);
-  color: var(--text-sidebar);
+  color: #c8c8c8;
   font-size: 0.75rem;
 }
 
@@ -1415,20 +1415,90 @@ code,
   letter-spacing: 0.05em;
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text-sidebar);
+  background: rgba(255, 255, 255, 0.08);
+  color: #c8c8c8;
 }
 
 .code-block pre {
   margin: 0;
   padding: 0.9rem 1rem;
   font-size: 0.82rem;
+  line-height: 1.6;
 }
 
 .code-block pre code {
   color: var(--text-on-dark);
   background: none;
   padding: 0;
+}
+
+/* ── VS Code Dark+ inspired syntax colors ───────────── */
+.hljs {
+  color: #d4d4d4;
+  background: transparent;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #6a9955;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-name,
+.hljs-strong,
+.hljs-tag {
+  color: #569cd6;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id,
+.hljs-type {
+  color: #4ec9b0;
+}
+
+.hljs-string,
+.hljs-doctag,
+.hljs-attr,
+.hljs-attribute,
+.hljs-meta-string {
+  color: #ce9178;
+}
+
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet {
+  color: #b5cea8;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #4ec9b0;
+}
+
+.hljs-function .hljs-title {
+  color: #dcdcaa;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #9cdcfe;
+}
+
+.hljs-operator,
+.hljs-punctuation {
+  color: #d4d4d4;
+}
+
+.hljs-meta,
+.hljs-meta-keyword {
+  color: #c586c0;
+}
+
+.hljs-link {
+  color: #4fc1ff;
 }
 
 /* ── Copy button ────────────────────────────────────── */
@@ -1440,13 +1510,13 @@ code,
   border-radius: 5px;
   border: none;
   background: transparent;
-  color: #52525b;
+  color: #9da3ae;
   cursor: pointer;
   transition: color 150ms ease, background 150ms ease;
 }
 
 .copy-btn:hover {
-  color: #e4e4e7;
+  color: #f3f3f3;
   background: rgba(255, 255, 255, 0.08);
 }
 

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Handle missing children when computing minimum depth.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
 ```

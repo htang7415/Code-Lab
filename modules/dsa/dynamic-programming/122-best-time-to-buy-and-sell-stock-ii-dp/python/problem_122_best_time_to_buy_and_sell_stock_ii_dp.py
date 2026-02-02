@@ -1,3 +1,13 @@
-def solve(*args, **kwargs):
-    """TODO: implement 122.Best Time to Buy and Sell Stock II (DP)."""
-    raise NotImplementedError("TODO: implement 122.Best Time to Buy and Sell Stock II (DP)")
+from typing import List
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices:
+            return 0
+        cash = 0
+        hold = -prices[0]
+        for price in prices[1:]:
+            prev_cash = cash
+            cash = max(cash, hold + price)
+            hold = max(hold, prev_cash - price)
+        return cash

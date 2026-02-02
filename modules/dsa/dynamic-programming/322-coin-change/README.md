@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP for minimum coins to reach each amount.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
 ```

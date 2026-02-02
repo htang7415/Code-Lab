@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Interval DP for longest palindromic subsequence.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
 ```

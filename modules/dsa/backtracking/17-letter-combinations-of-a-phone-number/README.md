@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Map digits to letters and backtrack through each position.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def letterCombinations(self, digits: str) -> list[str]:
 ```

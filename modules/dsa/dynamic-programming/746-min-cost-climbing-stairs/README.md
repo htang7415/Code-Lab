@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+DP for minimum cost to reach each step.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
 ```

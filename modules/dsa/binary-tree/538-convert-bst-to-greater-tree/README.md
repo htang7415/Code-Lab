@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Reverse inorder traversal accumulates greater sums.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
 ```

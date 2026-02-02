@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Return the node where paths to p and q diverge.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def lowestCommonAncestor(self, root: Optional[TreeNode], p: TreeNode, q: TreeNode) -> Optional[TreeNode]:
 ```

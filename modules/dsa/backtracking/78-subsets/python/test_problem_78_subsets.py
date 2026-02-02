@@ -1,5 +1,6 @@
-from problem_78_subsets import solve
+from problem_78_subsets import Solution
 
 
-def test_stub():
-    assert callable(solve)
+def test_subsets_basic():
+    result = Solution().subsets([1, 2])
+    assert sorted(result) == [[], [1], [1, 2], [2]]

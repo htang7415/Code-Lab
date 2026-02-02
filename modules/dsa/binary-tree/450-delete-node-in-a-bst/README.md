@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Delete a node and reconnect using the inorder successor.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
 ```

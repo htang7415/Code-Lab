@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Track subtree heights and detect imbalance early.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
 ```

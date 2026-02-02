@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Greedy scan to match s in order within t.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
 ```

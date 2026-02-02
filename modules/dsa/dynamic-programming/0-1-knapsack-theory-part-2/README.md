@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+1D optimized DP for 0-1 knapsack.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def knapSack(self, weights: List[int], values: List[int], capacity: int) -> int:
 ```

@@ -1,3 +1,21 @@
-def solve(*args, **kwargs):
-    """TODO: implement 491.Increasing Subsequences."""
-    raise NotImplementedError("TODO: implement 491.Increasing Subsequences")
+class Solution:
+    def findSubsequences(self, nums: list[int]) -> list[list[int]]:
+        result: list[list[int]] = []
+        path: list[int] = []
+
+        def backtrack(start: int) -> None:
+            if len(path) >= 2:
+                result.append(path.copy())
+            used: set[int] = set()
+            for i in range(start, len(nums)):
+                if path and nums[i] < path[-1]:
+                    continue
+                if nums[i] in used:
+                    continue
+                used.add(nums[i])
+                path.append(nums[i])
+                backtrack(i + 1)
+                path.pop()
+
+        backtrack(0)
+        return result

@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Track minimum price to maximize single-transaction profit.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
 ```

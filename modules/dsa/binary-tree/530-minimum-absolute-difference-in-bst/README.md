@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Inorder traversal to minimize adjacent differences.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
 ```

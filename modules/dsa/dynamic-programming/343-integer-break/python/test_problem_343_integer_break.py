@@ -1,5 +1,9 @@
-from problem_343_integer_break import solve
+from problem_343_integer_break import Solution
 
 
-def test_stub():
-    assert callable(solve)
+def test_integer_break_small():
+    assert Solution().integerBreak(2) == 1
+
+
+def test_integer_break_large():
+    assert Solution().integerBreak(10) == 36

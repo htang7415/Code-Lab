@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Walk down the BST comparing the target value.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
 ```

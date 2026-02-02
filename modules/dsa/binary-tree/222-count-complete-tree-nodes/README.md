@@ -4,10 +4,11 @@
 
 ## Concept
 
-TODO: add explanation.
+Count nodes with a simple DFS.
 
 ## Function
 
 ```python
-def solve(*args, **kwargs):
+class Solution:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
 ```
