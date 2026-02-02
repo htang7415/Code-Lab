@@ -106,7 +106,7 @@ function stripModuleReferences(markdown: string): string {
 interface ContentSection {
   id: string;
   label: string;
-  icon: "concept" | "math" | "function" | "keypoints";
+  icon: "concept" | "math" | "function" | "keypoints" | "pitfalls" | "practice";
   content: string;
 }
 
@@ -121,6 +121,15 @@ const SECTION_MAP: Record<string, { label: string; icon: ContentSection["icon"] 
   "key points": { label: "Key Points", icon: "keypoints" },
   "key-points": { label: "Key Points", icon: "keypoints" },
   keypoints: { label: "Key Points", icon: "keypoints" },
+  pitfall: { label: "Pitfalls", icon: "pitfalls" },
+  pitfalls: { label: "Pitfalls", icon: "pitfalls" },
+  "common mistakes": { label: "Pitfalls", icon: "pitfalls" },
+  mistakes: { label: "Pitfalls", icon: "pitfalls" },
+  gotchas: { label: "Pitfalls", icon: "pitfalls" },
+  practice: { label: "Practice", icon: "practice" },
+  exercises: { label: "Practice", icon: "practice" },
+  "practice problems": { label: "Practice", icon: "practice" },
+  "practice questions": { label: "Practice", icon: "practice" },
 };
 
 const SECTION_ORDER: Record<ContentSection["icon"], number> = {
@@ -128,6 +137,8 @@ const SECTION_ORDER: Record<ContentSection["icon"], number> = {
   function: 1,
   math: 2,
   keypoints: 3,
+  pitfalls: 4,
+  practice: 5,
 };
 
 function orderSections(sections: ContentSection[]) {
@@ -140,6 +151,71 @@ function orderSections(sections: ContentSection[]) {
       return a.index - b.index;
     })
     .map(({ section }) => section);
+}
+
+interface ConceptBlock {
+  label?: string;
+  content: string;
+}
+
+function mergeSections(
+  sections: ContentSection[],
+  id: string,
+  label: string,
+  icon: ContentSection["icon"]
+): ContentSection | undefined {
+  if (sections.length === 0) return undefined;
+  const content = sections
+    .map((section) => section.content)
+    .filter(Boolean)
+    .join("\n\n")
+    .trim();
+  if (!content) return undefined;
+  return { id, label, icon, content };
+}
+
+function splitSections(sections: ContentSection[]) {
+  const pitfalls = mergeSections(
+    sections.filter((section) => section.icon === "pitfalls"),
+    "pitfalls",
+    "Pitfalls",
+    "pitfalls"
+  );
+  const practice = mergeSections(
+    sections.filter((section) => section.icon === "practice"),
+    "practice",
+    "Practice",
+    "practice"
+  );
+  const conceptParts = sections.filter(
+    (section) => section.icon !== "pitfalls" && section.icon !== "practice"
+  );
+
+  return {
+    conceptParts: orderSections(conceptParts),
+    pitfalls,
+    practice,
+  };
+}
+
+function buildConceptBlocks(
+  intro: string,
+  sections: ContentSection[]
+): ConceptBlock[] {
+  const blocks: ConceptBlock[] = [];
+  const trimmedIntro = intro.trim();
+  if (trimmedIntro) {
+    blocks.push({ content: trimmedIntro });
+  }
+  for (const section of sections) {
+    const trimmed = section.content.trim();
+    if (!trimmed) continue;
+    blocks.push({
+      label: section.label === "Concept" ? undefined : section.label,
+      content: trimmed,
+    });
+  }
+  return blocks;
 }
 
 function stripCodeBlocks(markdown: string): string {
@@ -631,6 +707,26 @@ function SectionIcon({ icon }: { icon: ContentSection["icon"] }) {
           <path d="M4 4h8M4 8h6M4 12h8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
         </svg>
       );
+    case "pitfalls":
+      return (
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M8 2.8l5.6 9.7c.3.5-.1 1.1-.7 1.1H3.1c-.6 0-1-.6-.7-1.1L8 2.8z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+          />
+          <path d="M8 6v3.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+          <circle cx="8" cy="11.6" r="0.8" fill="currentColor" />
+        </svg>
+      );
+    case "practice":
+      return (
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="5.5" stroke="currentColor" strokeWidth="1.2" />
+          <path d="M5.5 8.2l1.8 1.8 3.4-3.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
   }
 }
 
@@ -745,11 +841,20 @@ export default async function TopicPage({
   const allHeadings: TocHeading[] = [];
   for (const entry of entries) {
     allHeadings.push({ id: entry.slug, text: entry.title, level: 2 });
-    for (const section of orderSections(entry.parsed.sections)) {
-      if (section.icon === "concept" || section.icon === "math" || section.icon === "function") {
-        continue;
-      }
-      allHeadings.push({ id: `${entry.slug}-${section.id}`, text: section.label, level: 3 });
+    const { pitfalls, practice } = splitSections(entry.parsed.sections);
+    if (pitfalls) {
+      allHeadings.push({
+        id: `${entry.slug}-${pitfalls.id}`,
+        text: pitfalls.label,
+        level: 3,
+      });
+    }
+    if (practice) {
+      allHeadings.push({
+        id: `${entry.slug}-${practice.id}`,
+        text: practice.label,
+        level: 3,
+      });
     }
     // Hide "Demo Code" from the right-side TOC by request.
   }
@@ -777,102 +882,233 @@ export default async function TopicPage({
           </div>
         ) : (
           <div className="mt-8">
-            {entries.map((entry, idx) => (
-              <article
-                key={entry.slug}
-                id={entry.slug}
-                className="concept-article"
-              >
-                {idx > 0 && <div className="concept-divider" />}
+            {entries.map((entry, idx) => {
+              const { conceptParts, pitfalls, practice } = splitSections(
+                entry.parsed.sections
+              );
+              const conceptBlocks = buildConceptBlocks(
+                entry.parsed.intro,
+                conceptParts
+              );
+              const hasConcept = conceptBlocks.length > 0;
+              const hasTemplateContent =
+                hasConcept || entry.Viz || entry.hasCode || pitfalls || practice;
+              const flowSteps: Array<{ key: string; id: string; label: string }> = [];
+              if (hasConcept) {
+                flowSteps.push({
+                  key: "concept",
+                  id: `${entry.slug}-concept`,
+                  label: "Concept",
+                });
+              }
+              if (entry.Viz) {
+                flowSteps.push({
+                  key: "visual",
+                  id: `${entry.slug}-visual`,
+                  label: "Visual",
+                });
+              }
+              if (entry.hasCode) {
+                flowSteps.push({
+                  key: "code",
+                  id: `${entry.slug}-code`,
+                  label: "Code",
+                });
+              }
+              if (pitfalls) {
+                flowSteps.push({
+                  key: "pitfalls",
+                  id: `${entry.slug}-${pitfalls.id}`,
+                  label: pitfalls.label,
+                });
+              }
+              if (practice) {
+                flowSteps.push({
+                  key: "practice",
+                  id: `${entry.slug}-${practice.id}`,
+                  label: practice.label,
+                });
+              }
+              const stepIndex = new Map(flowSteps.map((step, i) => [step.key, i + 1]));
 
-                <h2 className="concept-title">{entry.title}</h2>
-                {entry.summary && (
-                  <p className="mt-1 text-[0.85rem] text-[var(--text-secondary)]">
-                    {entry.summary}
-                  </p>
+              return (
+                <article
+                  key={entry.slug}
+                  id={entry.slug}
+                  className="concept-article"
+                >
+                  {idx > 0 && <div className="concept-divider" />}
+
+                  <h2 className="concept-title">{entry.title}</h2>
+                  {entry.summary && (
+                    <p className="concept-summary mt-1 text-[0.85rem] text-[var(--text-secondary)]">
+                      {entry.summary}
+                    </p>
+                  )}
+
+                {flowSteps.length > 0 && (
+                  <nav className="module-flow" aria-label="Module flow">
+                    {flowSteps.map((step) => (
+                      <a
+                        key={step.key}
+                        className="module-flow-step"
+                        href={`#${step.id}`}
+                      >
+                        <span className="module-flow-number">
+                          {stepIndex.get(step.key)}
+                        </span>
+                        <span className="module-flow-label">{step.label}</span>
+                      </a>
+                    ))}
+                  </nav>
                 )}
 
-                {/* Intro text (before any ## heading) */}
-                {entry.parsed.intro && (
-                  <div className="mt-3">
-                    <MarkdownRenderer content={entry.parsed.intro} />
-                  </div>
-                )}
-
-                {/* Structured sections */}
-                {orderSections(entry.parsed.sections).map((section) => (
-                  <div
-                    key={section.id}
-                    id={`${entry.slug}-${section.id}`}
-                    className="concept-section"
-                  >
-                    <div className={`section-header section-header-${section.icon}`}>
-                      <SectionIcon icon={section.icon} />
-                      <span>{section.label}</span>
-                    </div>
-                    <div className="section-body">
-                      <MarkdownRenderer content={section.content} />
-                    </div>
-                  </div>
-                ))}
-
-                {entry.Viz && (
-                  <div id={`${entry.slug}-viz`} className="concept-section">
-                    <div className="section-header section-header-viz">
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                        <path
-                          d="M3 11l3-4 3 3 4-6"
-                          stroke="currentColor"
-                          strokeWidth="1.3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <circle cx="3" cy="11" r="1.2" fill="currentColor" />
-                        <circle cx="6" cy="7" r="1.2" fill="currentColor" />
-                        <circle cx="9" cy="10" r="1.2" fill="currentColor" />
-                        <circle cx="13" cy="4" r="1.2" fill="currentColor" />
-                      </svg>
-                      <span>Interactive</span>
-                    </div>
-                    <div className="section-body">
-                      <entry.Viz />
-                    </div>
-                  </div>
-                )}
-
-                {/* Demo code */}
-                {entry.hasCode && (
-                  <div
-                    id={`${entry.slug}-code`}
-                    className="concept-section"
-                  >
-                    <div className="section-header section-header-code">
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                        <path d="M5.5 4L2 8l3.5 4M10.5 4L14 8l-3.5 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span>Demo Code</span>
-                    </div>
-                    <div className="section-body">
-                      <div className="grid gap-3">
-                        {entry.codeSources.map((source) => (
-                          <CodeBlock
-                            key={source.path}
-                            language={source.language}
-                            code={source.content}
-                          />
-                        ))}
+                  <div className="module-sections">
+                    {hasConcept && (
+                      <div
+                        id={`${entry.slug}-concept`}
+                        className="concept-section concept-section-concept"
+                      >
+                        <div className="section-header section-header-concept">
+                          <SectionIcon icon="concept" />
+                          {stepIndex.get("concept") && (
+                            <span className="section-step">
+                              {stepIndex.get("concept")}
+                            </span>
+                          )}
+                          <span className="section-label">Concept</span>
+                        </div>
+                        <div className="section-body">
+                          {conceptBlocks.map((block, blockIndex) => (
+                            <div
+                              key={`${entry.slug}-concept-${blockIndex}`}
+                              className="concept-subsection"
+                            >
+                              {block.label && (
+                                <div className="concept-subtitle">{block.label}</div>
+                              )}
+                              <MarkdownRenderer content={block.content} />
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                )}
+                    )}
 
-                {!entry.hasTheory && !entry.hasCode && (
-                  <p className="mt-3 text-[0.85rem] text-[var(--text-muted)]">
-                    Content coming soon.
-                  </p>
-                )}
-              </article>
-            ))}
+                    {entry.Viz && (
+                      <div
+                        id={`${entry.slug}-visual`}
+                        className="concept-section concept-section-visual"
+                      >
+                        <div className="section-header section-header-viz">
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path
+                              d="M3 11l3-4 3 3 4-6"
+                              stroke="currentColor"
+                              strokeWidth="1.3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <circle cx="3" cy="11" r="1.2" fill="currentColor" />
+                            <circle cx="6" cy="7" r="1.2" fill="currentColor" />
+                            <circle cx="9" cy="10" r="1.2" fill="currentColor" />
+                            <circle cx="13" cy="4" r="1.2" fill="currentColor" />
+                          </svg>
+                          {stepIndex.get("visual") && (
+                            <span className="section-step">
+                              {stepIndex.get("visual")}
+                            </span>
+                          )}
+                          <span className="section-label">Visual</span>
+                        </div>
+                        <div className="section-body">
+                          <entry.Viz />
+                        </div>
+                      </div>
+                    )}
+
+                    {entry.hasCode && (
+                      <div
+                        id={`${entry.slug}-code`}
+                        className="concept-section concept-section-code"
+                      >
+                        <div className="section-header section-header-code">
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M5.5 4L2 8l3.5 4M10.5 4L14 8l-3.5 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          {stepIndex.get("code") && (
+                            <span className="section-step">
+                              {stepIndex.get("code")}
+                            </span>
+                          )}
+                          <span className="section-label">Code</span>
+                        </div>
+                        <div className="section-body">
+                          <div className="grid gap-3">
+                            {entry.codeSources.map((source) => (
+                              <CodeBlock
+                                key={source.path}
+                                language={source.language}
+                                code={source.content}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {(pitfalls || practice) && (
+                      <div className="module-split">
+                        {pitfalls && (
+                          <div
+                            id={`${entry.slug}-${pitfalls.id}`}
+                            className="concept-section concept-section-pitfalls"
+                          >
+                            <div className="section-header section-header-pitfalls">
+                              <SectionIcon icon="pitfalls" />
+                              {stepIndex.get("pitfalls") && (
+                                <span className="section-step">
+                                  {stepIndex.get("pitfalls")}
+                                </span>
+                              )}
+                              <span className="section-label">{pitfalls.label}</span>
+                            </div>
+                            <div className="section-body">
+                              <MarkdownRenderer content={pitfalls.content} />
+                            </div>
+                          </div>
+                        )}
+
+                        {practice && (
+                          <div
+                            id={`${entry.slug}-${practice.id}`}
+                            className="concept-section concept-section-practice"
+                          >
+                            <div className="section-header section-header-practice">
+                              <SectionIcon icon="practice" />
+                              {stepIndex.get("practice") && (
+                                <span className="section-step">
+                                  {stepIndex.get("practice")}
+                                </span>
+                              )}
+                              <span className="section-label">{practice.label}</span>
+                            </div>
+                            <div className="section-body">
+                              <MarkdownRenderer content={practice.content} />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {!hasTemplateContent && (
+                    <p className="mt-3 text-[0.85rem] text-[var(--text-muted)]">
+                      Content coming soon.
+                    </p>
+                  )}
+                </article>
+              );
+            })}
           </div>
         )}
 

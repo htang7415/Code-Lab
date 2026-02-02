@@ -1052,6 +1052,10 @@ code,
   margin: 0;
 }
 
+.concept-summary {
+  max-width: 62ch;
+}
+
 .concept-divider {
   height: 1px;
   background: linear-gradient(90deg, rgba(31, 119, 180, 0.5), rgba(15, 23, 42, 0.12), transparent);
@@ -1059,11 +1063,96 @@ code,
 }
 
 /* ── Structured sections within a concept ───────────── */
+.module-sections {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.module-flow {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0.35rem 0.4rem;
+  margin-top: 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.module-flow::-webkit-scrollbar {
+  height: 6px;
+}
+
+.module-flow::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: 999px;
+}
+
+.module-flow-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.62rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.module-flow-step:hover {
+  border-color: rgba(31, 119, 180, 0.35);
+  background: rgba(31, 119, 180, 0.12);
+  color: var(--text-primary);
+}
+
+.module-flow-number {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), #4aa8df);
+  box-shadow: 0 6px 14px rgba(31, 119, 180, 0.25);
+}
+
+.module-flow-label {
+  line-height: 1;
+}
+
+.module-sections .concept-section {
+  margin-top: 0;
+}
+
+.module-split {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 960px) {
+  .module-split {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .concept-section {
   margin-top: 1rem;
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 14px;
   overflow: hidden;
+  position: relative;
   scroll-margin-top: calc(var(--header-height) + 1.5rem);
   background: var(--bg-card);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
@@ -1072,6 +1161,44 @@ code,
     box-shadow 200ms ease,
     border-color 200ms ease,
     opacity 420ms ease;
+}
+
+.concept-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--section-accent, rgba(31, 119, 180, 0.2));
+}
+
+.concept-section-concept {
+  --section-accent: rgba(31, 119, 180, 0.5);
+  background:
+    linear-gradient(180deg, rgba(31, 119, 180, 0.08), transparent 55%),
+    var(--bg-card);
+  border-color: rgba(31, 119, 180, 0.18);
+}
+
+.concept-section-visual {
+  --section-accent: rgba(31, 119, 180, 0.45);
+  border-color: rgba(31, 119, 180, 0.18);
+}
+
+.concept-section-code {
+  --section-accent: rgba(140, 86, 75, 0.4);
+  border-color: rgba(140, 86, 75, 0.18);
+}
+
+.concept-section-pitfalls {
+  --section-accent: rgba(217, 119, 6, 0.45);
+  border-color: rgba(217, 119, 6, 0.18);
+}
+
+.concept-section-practice {
+  --section-accent: rgba(99, 102, 241, 0.45);
+  border-color: rgba(99, 102, 241, 0.18);
 }
 
 .concept-section:hover {
@@ -1083,13 +1210,55 @@ code,
 .section-header {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.55rem;
   padding: 0.5rem 1rem;
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.section-step {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.12);
+  color: var(--text-primary);
+}
+
+.section-label {
+  line-height: 1;
+}
+
+.section-header-concept .section-step {
+  background: rgba(31, 119, 180, 0.18);
+  color: var(--accent);
+}
+
+.section-header-viz .section-step {
+  background: rgba(31, 119, 180, 0.18);
+  color: var(--accent);
+}
+
+.section-header-code .section-step {
+  background: rgba(140, 86, 75, 0.2);
+  color: #8c564b;
+}
+
+.section-header-pitfalls .section-step {
+  background: rgba(217, 119, 6, 0.18);
+  color: #d97706;
+}
+
+.section-header-practice .section-step {
+  background: rgba(99, 102, 241, 0.18);
+  color: #6366f1;
 }
 
 .section-header-concept {
@@ -1122,8 +1291,87 @@ code,
   background: var(--accent-subtle);
 }
 
+.section-header-pitfalls {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.12);
+}
+
+.section-header-practice {
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.12);
+}
+
 .section-body {
   padding: 0.6rem 1rem 0.85rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.concept-section-concept .section-body {
+  padding: 0.85rem 1.1rem 1.1rem;
+}
+
+.concept-section-concept .section-body,
+.concept-section-pitfalls .section-body,
+.concept-section-practice .section-body {
+  max-width: 70ch;
+}
+
+.concept-section-concept .markdown p:first-of-type {
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.concept-section-concept .markdown p {
+  color: var(--text-secondary);
+}
+
+.concept-section-concept .markdown strong {
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.concept-section-concept .markdown b {
+  font-weight: 400;
+}
+
+.concept-subsection {
+  position: relative;
+  padding-left: 0.7rem;
+  border-left: 2px solid rgba(31, 119, 180, 0.14);
+}
+
+.concept-subsection + .concept-subsection {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed rgba(15, 23, 42, 0.12);
+}
+
+.concept-subtitle {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.concept-section-concept .concept-subtitle {
+  color: var(--accent);
+}
+
+.markdown .katex {
+  font-size: 0.98em;
+}
+
+.markdown .katex-display {
+  margin: 0.9rem 0;
+  padding: 0.6rem 0.8rem;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px dashed rgba(15, 23, 42, 0.12);
+  border-radius: 10px;
+  overflow-x: auto;
 }
 
 /* ── Observable demos ───────────────────────────────── */
@@ -1385,6 +1633,12 @@ code,
 .markdown strong {
   font-weight: 600;
   color: var(--text-primary);
+}
+
+.concept-section-concept .markdown strong,
+.concept-section-concept .markdown b {
+  font-weight: 400;
+  color: inherit;
 }
 
 /* ── Code block (CodeBlock component) ───────────────── */
