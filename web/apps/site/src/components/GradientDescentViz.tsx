@@ -20,7 +20,7 @@ export default function GradientDescentViz() {
     stats.innerHTML = "";
 
     const runtime = new Runtime();
-    runtime.module(define, (name) => {
+    runtime.module(define, (name: string) => {
       if (name === "viewof lr") return new Inspector(controls);
       if (name === "viewof steps") return new Inspector(controls);
       if (name === "viewof x0") return new Inspector(controls);
