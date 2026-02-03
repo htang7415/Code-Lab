@@ -13,7 +13,7 @@ import { notFound } from "next/navigation";
 
 type VizComponent = () => React.ReactElement;
 
-const VIZ_REGISTRY: Record<string, VizComponent> = {
+const VIZ_REGISTRY: Partial<Record<string, VizComponent>> = {
   "ml/fundamentals/gradient-descent": GradientDescentViz,
   "ml/fundamentals/vectors-matrices": VectorsMatricesViz,
 };
