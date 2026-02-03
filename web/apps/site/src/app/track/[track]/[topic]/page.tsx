@@ -11,7 +11,7 @@ import { extractModuleOrder } from "@/lib/roadmap";
 import contentData from "@/content/content_index.json";
 import { notFound } from "next/navigation";
 
-type VizComponent = () => JSX.Element;
+type VizComponent = () => React.ReactElement;
 
 const VIZ_REGISTRY: Record<string, VizComponent> = {
   "ml/fundamentals/gradient-descent": GradientDescentViz,
