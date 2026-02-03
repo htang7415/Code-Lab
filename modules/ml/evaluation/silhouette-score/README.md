@@ -10,6 +10,10 @@ Silhouette compares intra-cluster to nearest-cluster distance.
 
 $$s = \frac{b - a}{\max(a,b)}$$
 
+- $s$ -- silhouette score
+- $a$ -- mean intra-cluster distance
+- $b$ -- mean nearest-cluster distance
+
 ## Function
 
 ```python

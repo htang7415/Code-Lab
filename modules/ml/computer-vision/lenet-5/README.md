@@ -7,8 +7,10 @@
 LeNet-5 is a classic CNN architecture with characteristic layer design.
 
 ## Math
+$$f(x) = f_L \circ f_{L-1} \circ \cdots \circ f_1(x)$$
 
-$$\text{Architecture defined by ordered layers.}$$
+- $x$ -- input (feature vector or sample)
+- $L$ -- loss value
 
 ## Function
 

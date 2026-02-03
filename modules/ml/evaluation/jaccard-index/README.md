@@ -7,8 +7,10 @@
 Jaccard measures overlap between sets.
 
 ## Math
+$$\mathrm{Jaccard} = \frac{|A \cap B|}{|A \cup B|}$$
 
-$$\text{|A∩B| / |A∪B|}$$
+- $A$ -- set of predicted positives
+- $B$ -- set of ground-truth positives
 
 ## Function
 

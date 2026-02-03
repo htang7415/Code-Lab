@@ -7,8 +7,10 @@
 ResNet is a classic CNN architecture with characteristic layer design.
 
 ## Math
+$$x_{l+1} = x_l + F(x_l)$$
 
-$$\text{Architecture defined by ordered layers.}$$
+- $x_l$ -- input (feature vector or sample) for l
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

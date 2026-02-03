@@ -1,7 +1,7 @@
 # Code Lab
 
-Learn by building: short notes, runnable mini-labs, and practice problems
-across DSA, ML (LLM/RL), AI agents, databases, and software engineering.
+Learn by building: short notes and runnable mini-labs across DSA, ML (LLM/RL),
+AI agents, databases, and software engineering.
 
 Code Lab is designed for daily practice: one idea at a time, one test target
 at a time, with clear structure so content can scale without confusion.
@@ -9,7 +9,7 @@ at a time, with clear structure so content can scale without confusion.
 ## Why Code Lab
 
 - Learn an idea, then run it immediately with a tiny test
-- Keep concepts and exercises separate but linked
+- Keep concepts and labs tightly linked
 - Use Python by default, with Rust encouraged
 - Make content website-ready from day one
 
@@ -19,8 +19,7 @@ at a time, with clear structure so content can scale without confusion.
 code-lab/
   docs/          # Concept notes (website-ready)
   modules/       # Concept labs — one idea + minimal code + tiny test
-  problems/      # Practice problems (LeetCode / deep-ml style)
-  templates/     # Scaffolds for new modules/problems
+  templates/     # Scaffolds for new modules
   scripts/       # Helper scripts (one-by-one tests, scaffolding)
   web/           # Next.js website (TypeScript, Vercel-deployable)
 ```
@@ -39,7 +38,6 @@ code-lab/
 
 1. Read a concept note in `docs/`
 2. Run a related module test in `modules/`
-3. Solve a practice problem in `problems/`
 
 ## Quick start
 
@@ -67,23 +65,17 @@ pip install -e ".[dev,ml]"
 pytest modules/dsa/arrays/prefix-sum/python -q
 ```
 
-### Run a single problem's tests
-
-```bash
-pytest problems/dsa/arrays/two-sum/python -q
-```
-
 ### Run a Rust crate's tests
 
 ```bash
-cargo test --manifest-path problems/dsa/arrays/two-sum/rust/Cargo.toml
+cargo test --manifest-path modules/dsa/arrays/prefix-sum/rust/Cargo.toml
 ```
 
 ### Using the Makefile
 
 ```bash
 make run-py PATH=modules/dsa/arrays/prefix-sum/python
-make run-rust MANIFEST=problems/dsa/arrays/two-sum/rust/Cargo.toml
+make run-rust MANIFEST=modules/dsa/arrays/prefix-sum/rust/Cargo.toml
 ```
 
 ## Scaffold new content
@@ -91,9 +83,6 @@ make run-rust MANIFEST=problems/dsa/arrays/two-sum/rust/Cargo.toml
 ```bash
 # New module
 ./scripts/new_module.sh dsa arrays sliding-window
-
-# New problem
-./scripts/new_problem.sh dsa arrays three-sum
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for naming rules and testing conventions.

@@ -15,6 +15,13 @@ Dynamic Tanh (DyT) adds learnable scale/bias parameters to tanh.
 - $\mathrm{hardtanh}(x)=\operatorname{clip}(x, -1, 1)$
 - $\mathrm{dyt}(x)=\gamma\,\tanh(\alpha x)+\beta$
 
+- $\sigma$ -- sigmoid function
+- $\tanh$ -- hyperbolic tangent function
+- $\gamma$ -- scale parameter
+- $\alpha$ -- slope parameter
+- $\beta$ -- bias parameter
+- $x$ -- input (feature vector or sample)
+
 ## Function
 
 ```python

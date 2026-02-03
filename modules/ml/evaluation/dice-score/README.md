@@ -7,8 +7,11 @@
 Dice score measures overlap, common in segmentation.
 
 ## Math
+$$\mathrm{Dice} = \frac{2|A \cap B|}{|A| + |B|}$$
 
-$$\text{2|A∩B|/(|A|+|B|)}$$
+- $A$ -- set of predicted positives
+- $B$ -- set of ground-truth positives
+- $Dice$ -- Dice coefficient
 
 ## Function
 

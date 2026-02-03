@@ -10,6 +10,11 @@ Convex functions have a single global minimum.
 
 $$f(x)=ax^2+bx+c \text{ is convex if } a \ge 0$$
 
+- $a$ -- quadratic coefficient
+- $b$ -- linear coefficient
+- $c$ -- constant term
+- $x$ -- input scalar
+
 ## Function
 
 ```python

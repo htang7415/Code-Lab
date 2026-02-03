@@ -10,6 +10,11 @@ Tokenization maps raw text into discrete tokens that a model can embed.
 
 $$Let \texttt{V} be the vocabulary. Tokenization is a mapping \texttt{f: text -> [id\_1, ..., id\_n]}.$$
 
+- $V$ -- vocabulary
+- $f$ -- tokenization mapping
+- $id_i$ -- token id at position $i$
+- $n$ -- number of tokens
+
 ## Function
 
 ```python

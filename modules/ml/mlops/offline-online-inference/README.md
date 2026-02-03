@@ -7,8 +7,9 @@
 Offline runs in batches; online responds per request.
 
 ## Math
+$$\mathrm{latency}_{\text{online}} \ll \mathrm{latency}_{\text{batch}}$$
 
-$$latency_online << latency_batch$$
+- $latency$ -- response time
 
 ## Function
 

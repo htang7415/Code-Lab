@@ -10,6 +10,10 @@ ReLU variants improve gradient flow by keeping nonzero slopes.
 
 $$\mathrm{ReLU}(x)=\max(0,x),\ \mathrm{LeakyReLU}(x)=\max(\alpha x,x)$$
 
+- $x$ -- input (feature vector or sample)
+
+- $\alpha$ -- negative slope for LeakyReLU
+
 ## Function
 
 ```python

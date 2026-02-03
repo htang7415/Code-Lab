@@ -10,6 +10,8 @@ Xavier init keeps variance stable for symmetric activations.
 
 $$W \sim \mathcal{U}\left(-\sqrt{\frac{6}{fan_{in}+fan_{out}}}, \sqrt{\frac{6}{fan_{in}+fan_{out}}}\right)$$
 
+- $W$ -- weight matrix
+
 ## Function
 
 ```python

@@ -7,8 +7,14 @@
 Sobel filters estimate image gradients.
 
 ## Math
+$$G_x = K_x \ast I,\quad G_y = K_y \ast I$$
 
-$$Gx = Kx * I, Gy = Ky * I$$
+- $K_x$ -- key matrix or kernel for x
+- $K_y$ -- key matrix or kernel for y
+- $x$ -- input (feature vector or sample)
+- $K$ -- key matrix or kernel
+- $I$ -- image (pixel grid)
+- $y$ -- target/label
 
 ## Function
 

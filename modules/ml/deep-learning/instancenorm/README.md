@@ -10,6 +10,12 @@ InstanceNorm normalizes per-sample per-channel, often for vision.
 
 $$y = \frac{x - \mu_I}{\sqrt{\sigma_I^2 + \epsilon}}$$
 
+- $x$ -- input features
+- $y$ -- normalized output
+- $\mu_I$ -- mean for instance $I$
+- $\sigma_I$ -- standard deviation for instance $I$
+- $\epsilon$ -- small constant for numerical stability
+
 ## Function
 
 ```python

@@ -7,8 +7,9 @@
 Batching trades latency for throughput.
 
 ## Math
+$$\mathrm{throughput}_{\text{batch}} > \mathrm{throughput}_{\text{realtime}}$$
 
-$$throughput_batch > throughput_realtime$$
+- $throughput$ -- requests per unit time
 
 ## Function
 

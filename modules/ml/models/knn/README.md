@@ -7,8 +7,14 @@
 KNN predicts by majority vote of nearest points.
 
 ## Math
+$$\hat{c} = \arg\max_c \sum_{i \in \mathcal{N}_k} \mathbb{I}[y_i=c]$$
 
-$$\hat{c} = \arg\max_c \sum_{i \in \mathcal{N}_k} \mathbb{I}[y_i = c]$$
+- $\mathbb{I}$ -- indicator function
+- $\mathcal{N}$ -- normal (Gaussian) distribution
+- $y_i$ -- i-th target/label
+- $i$ -- index
+- $k$ -- index or number of neighbors
+- $y$ -- target/label
 
 ## Function
 

@@ -9,14 +9,13 @@ Data leakage occurs when information from outside the training distribution cont
 Leakage is dangerous precisely because it is invisible at training time -- the model appears to perform well on the test set, but fails once deployed on truly unseen data. The fundamental safeguard is to ensure that train and test sets are strictly disjoint and that every preprocessing step is fitted only on the training partition. Feature leakage, where a feature is derived from or strongly correlated with the target, is another subtle variant that can inflate metrics without providing real predictive power.
 
 ## Math
-
 $$\text{Train} \cap \text{Test} = \emptyset$$
 
-$$|\text{Train}| + |\text{Test}| \leq N$$
+$$|\text{Train}| + |\text{Test}| \le N$$
 
-- $\text{Train}$ -- set of sample identifiers used for training
-- $\text{Test}$ -- set of sample identifiers reserved for evaluation
-- $N$ -- total number of samples in the dataset
+- $Train$ -- training set
+- $Test$ -- test set
+- $N$ -- total number of samples
 
 ## Key Points
 

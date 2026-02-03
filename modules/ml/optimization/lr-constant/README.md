@@ -7,8 +7,13 @@
 Constant LR keeps the step size fixed.
 
 ## Math
+$$\eta_t = \eta_0$$
 
-$$\text{lr}_t = \text{lr}$$
+- $\eta$ -- learning rate (step size)
+- $t$ -- timestep or iteration
+
+- $\eta_t$ -- learning rate (step size) at step t
+- $\eta_0$ -- learning rate (step size) for 0
 
 ## Function
 

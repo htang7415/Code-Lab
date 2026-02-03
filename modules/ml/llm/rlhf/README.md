@@ -7,8 +7,14 @@
 RLHF uses a reward model trained on preference pairs before policy optimization.
 
 ## Math
+$$L = -\log \sigma(r_\theta(x^+) - r_\theta(x^-))$$
 
-$$\text{Reward model loss uses the pairwise logistic objective.}$$
+- $\sigma$ -- sigmoid (logistic) function
+- $r_\theta(x)$ -- reward model score
+- $x^+$ -- preferred input
+- $x^-$ -- rejected input
+- $\theta$ -- model parameters
+- $L$ -- loss value
 
 ## Function
 

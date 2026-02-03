@@ -27,6 +27,9 @@ $$\binom{p + d}{d}$$
 - $p$ -- number of original input features
 - $\phi$ -- feature mapping from the original space to the expanded space
 
+- $x_1$ -- input (feature vector or sample) at index 1
+- $x_2$ -- input (feature vector or sample) at index 2
+
 ## Key Points
 
 - Feature count grows combinatorially: with $p = 10$ features and $d = 3$, the expansion produces $\binom{13}{3} = 286$ features.

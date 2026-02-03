@@ -11,9 +11,16 @@ module uses a tiny Gram-Schmidt approximation for a learnable demo.
 
 ## Math
 
-- $m_t = beta * m_{t-1} + g_t$
-- $Q_t = orthogonalize(m_t)$
-- $W_{t+1} = W_t - lr * Q_t$
+- $m_t = \beta m_{t-1} + g_t$
+- $Q_t = \mathrm{orthogonalize}(m_t)$
+- $W_{t+1} = W_t - \eta Q_t$
+
+- $\beta$ -- momentum coefficient
+- $m_t$ -- momentum at step $t$
+- $g_t$ -- gradient at step $t$
+- $Q_t$ -- orthogonalized update at step $t$
+- $W_t$ -- weight matrix at step $t$
+- $\eta$ -- learning rate (step size)
 
 ## Function
 

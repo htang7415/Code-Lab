@@ -10,6 +10,11 @@ SVD factorizes a matrix into $U \Sigma V^{\top}$.
 
 $$A = U \Sigma V^{\top}$$
 
+- $\Sigma$ -- covariance matrix
+- $V$ -- value matrix or value function
+
+- $A$ -- matrix
+
 ## Function
 
 ```python

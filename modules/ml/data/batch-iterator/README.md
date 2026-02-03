@@ -9,14 +9,15 @@ Mini-batch iteration is the process of shuffling a dataset and yielding fixed-si
 Shuffling the data before each epoch ensures the model does not see examples in the same order repeatedly, which could introduce ordering bias and cause the optimizer to cycle through a fixed trajectory. After shuffling, the iterator slices the index sequence into consecutive blocks of size $B$, where the last block may contain fewer than $B$ elements if $N$ is not evenly divisible by $B$.
 
 ## Math
+$$n_{\text{batches}} = \left\lceil \frac{N}{B} \right\rceil$$
 
-$$\text{number of batches} = \left\lceil \frac{N}{B} \right\rceil$$
+$$b_i = [iB,\min((i+1)B,N))$$
 
-$$b_i = \left[ iB, \; \min\!\left((i+1)B, \; N\right) \right)$$
-
-- $N$ -- total number of samples in the dataset
-- $B$ -- batch size (number of samples per mini-batch)
-- $b_i$ -- index range for the $i$-th batch
+- $n_{\text{batches}}$ -- number of batches
+- $N$ -- number of samples in the dataset
+- $B$ -- batch size
+- $b_i$ -- index range for batch $i$
+- $i$ -- batch index
 
 ## Key Points
 

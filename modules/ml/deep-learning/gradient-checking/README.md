@@ -10,6 +10,8 @@ Finite differences approximate gradients to validate backprop.
 
 $$\frac{df}{dx} \approx \frac{f(x+\epsilon) - f(x-\epsilon)}{2\epsilon}$$
 
+- $\epsilon$ -- small constant or noise term
+
 ## Function
 
 ```python

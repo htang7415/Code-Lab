@@ -4,11 +4,11 @@
 
 ## Concept
 
-The **multi-armed bandit** problem is a simplified RL setting: an agent
+The multi-armed bandit problem is a simplified RL setting: an agent
 repeatedly chooses one of _K_ actions (arms) and receives a stochastic reward.
 The goal is to maximize cumulative reward over time.
 
-The **epsilon-greedy** strategy balances exploration and exploitation:
+The epsilon-greedy strategy balances exploration and exploitation:
 
 - With probability $\epsilon$, pick a random arm (explore)
 - With probability $1-\epsilon$, pick the arm with the highest estimated value (exploit)
@@ -17,20 +17,23 @@ This is the simplest baseline for the explore-exploit tradeoff.
 $\epsilon = 0$ is pure greedy; $\epsilon = 1$ is pure random.
 
 ## Math
-
-Action-value estimate updated incrementally after pulling arm $a$ and observing reward $r$:
-
-$$N_a \leftarrow N_a + 1$$
-
 $$Q_a \leftarrow Q_a + \frac{1}{N_a}(r - Q_a)$$
 
-- $Q_a$ — estimated value of arm $a$ (running mean of rewards)
-- $N_a$ — number of times arm $a$ has been pulled
-- The update computes the sample mean incrementally
+$$a_t = \begin{cases}
+\text{random arm} & \text{with prob. } \epsilon \\
+\arg\max_a Q_a & \text{with prob. } 1-\epsilon
+\end{cases}$$
 
-Arm selection:
+- $Q_a$ -- action-value function for a
+- $Q$ -- action-value function
+- $a$ -- action
+- $r$ -- reward
+- $\epsilon$ -- exploration probability
+- $a_t$ -- action at step t
+- $t$ -- timestep or iteration
 
-$$a_t = \begin{cases} \text{random arm from } \{0, \dots, K{-}1\} & \text{with probability } \epsilon \\ \arg\max_a Q_a & \text{with probability } 1 - \epsilon \end{cases}$$
+- $N_a$ -- number of times arm a was selected
+- $N$ -- number of samples
 
 ## Function
 

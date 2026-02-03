@@ -8,7 +8,7 @@ else
 RUN_PY_PATH := $(TARGET)
 endif
 
-# Run pytest for a single module or problem
+# Run pytest for a single module
 # Usage: make run-py PATH=modules/dsa/arrays/prefix-sum/python
 run-py:
 	@if [ -z "$(RUN_PY_PATH)" ]; then \
@@ -18,7 +18,7 @@ run-py:
 	pytest $(RUN_PY_PATH) -q
 
 # Run cargo test for a single Rust crate
-# Usage: make run-rust MANIFEST=problems/dsa/arrays/two-sum/rust/Cargo.toml
+# Usage: make run-rust MANIFEST=modules/dsa/arrays/prefix-sum/rust/Cargo.toml
 run-rust:
 	@if [ -z "$(MANIFEST)" ]; then \
 		echo "Usage: make run-rust MANIFEST=<path-to-Cargo.toml>"; \

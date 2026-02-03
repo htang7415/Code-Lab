@@ -7,8 +7,16 @@
 A feedforward network applies a sequence of linear layers and activations.
 
 ## Math
+$$h_i = \sigma(W_i h_{i-1} + b_i)$$
 
-$$For layer i: h_i = sigma(W_i h_{i-1} + b_i).$$
+- $\sigma$ -- activation function
+- $h_i$ -- i-th hidden representation
+- $W_i$ -- i-th weight matrix
+- $b_i$ -- i-th bias term
+- $h$ -- hidden representation
+- $i$ -- index
+- $W$ -- weight matrix
+- $b$ -- bias term
 
 ## Function
 

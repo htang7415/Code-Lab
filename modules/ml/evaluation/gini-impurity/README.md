@@ -10,6 +10,9 @@ Gini impurity measures class mixing in a node.
 
 $$\mathrm{Gini} = 1 - \sum_c p_c^2$$
 
+- $p_c$ -- probability for c
+- $p$ -- probability
+
 ## Function
 
 ```python

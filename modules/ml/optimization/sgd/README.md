@@ -7,8 +7,14 @@
 SGD updates parameters by stepping opposite the gradient.
 
 ## Math
+$$w_{t+1} = w_t - \eta g_t$$
 
-$$w = w - lr * grad$$
+- $\eta$ -- learning rate (step size)
+- $w_t$ -- weight parameter at step t
+- $g_t$ -- gradient at step t
+- $w$ -- weight parameter
+- $t$ -- timestep or iteration
+- $g$ -- gradient
 
 ## Function
 

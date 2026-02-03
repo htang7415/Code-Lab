@@ -28,6 +28,18 @@ $$\mathcal{L} = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - \lambda \cdot D_{
 - $q_\phi(z|x)$ -- approximate posterior (encoder output)
 - $p(z)$ -- prior distribution, typically $\mathcal{N}(0, I)$
 
+- $\mathrm{ELBO}$ -- evidence lower bound
+- $\mathbb{E}$ -- expectation
+- $\phi$ -- model/encoder parameters
+- $\theta$ -- model parameters
+- $q$ -- probability distribution
+- $z$ -- latent variable
+- $x$ -- input (feature vector or sample)
+- $p$ -- probability
+- $\mathcal{L}$ -- loss function
+- $\mathcal{N}$ -- normal (Gaussian) distribution
+- $I$ -- identity matrix
+
 ## Key Points
 
 - The hallmark of posterior collapse is a KL term near zero combined with poor latent representations; the decoder reconstructs without using $z$.

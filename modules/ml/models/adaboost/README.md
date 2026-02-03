@@ -7,8 +7,13 @@
 AdaBoost reweights samples to focus on errors.
 
 ## Math
+$$w_i \leftarrow w_i \cdot \exp\left(\alpha\,\mathbb{I}[y_i \ne \hat{y}_i]\right)$$
 
-$$w_i \leftarrow w_i \cdot \exp\left(\alpha \mathbb{I}[\text{misclassified}]\right)$$
+- $\mathbb{I}$ -- indicator function
+- $w_i$ -- weight of sample $i$
+- $y_i$ -- true label for sample $i$
+- $\hat{y}_i$ -- predicted label for sample $i$
+- $\alpha$ -- weak learner weight (boosting coefficient)
 
 ## Function
 

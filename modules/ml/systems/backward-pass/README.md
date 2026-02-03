@@ -23,6 +23,9 @@ $$\frac{\partial L}{\partial h^{(l)}} = \frac{\partial L}{\partial h^{(l+1)}} \c
 - $y$ -- layer output (activation)
 - $h^{(l)}$ -- hidden representation at layer $l$
 
+- $N$ -- number of samples
+- $h$ -- hidden representation
+
 ## Key Points
 
 - The backward pass must run after the forward pass because it relies on cached intermediate activations.

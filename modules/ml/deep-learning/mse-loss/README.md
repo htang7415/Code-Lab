@@ -10,6 +10,13 @@ MSE penalizes squared residuals.
 
 $$\mathrm{MSE} = \frac{1}{n}\sum_i (y_i - \hat{y}_i)^2$$
 
+- $\mathrm{MSE}$ -- mean squared error
+- $\hat{y}$ -- prediction
+- $y_i$ -- i-th target/label
+- $n$ -- number of samples
+- $i$ -- index
+- $y$ -- target/label
+
 ## Function
 
 ```python

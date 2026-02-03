@@ -9,13 +9,12 @@ Class imbalance occurs when some classes appear far more frequently than others 
 Reweighting the loss function is one of the most straightforward remedies. By assigning each class a weight inversely proportional to its frequency, the contribution of rare-class samples to the total loss is amplified, encouraging the model to learn meaningful decision boundaries for every class. Alternative strategies include oversampling the minority class, undersampling the majority class, or generating synthetic samples (e.g., SMOTE), each with different trade-offs in variance and computational cost.
 
 ## Math
+$$w_c = \frac{N}{C\,N_c}$$
 
-$$w_c = \frac{N}{C \cdot N_c}$$
-
-- $w_c$ -- weight assigned to class $c$
-- $N$ -- total number of samples
-- $C$ -- total number of classes
-- $N_c$ -- number of samples belonging to class $c$
+- $w_c$ -- weight parameter for c
+- $N_c$ -- number of samples in the dataset for c
+- $w$ -- weight parameter
+- $N$ -- number of samples in the dataset
 
 ## Key Points
 

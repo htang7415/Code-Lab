@@ -10,6 +10,12 @@ Distillation matches student logits to teacher logits.
 
 $$L = \mathrm{KL}\left(\mathrm{softmax}\left(\frac{z_s}{T}\right)\,\middle\|\,\mathrm{softmax}\left(\frac{z_t}{T}\right)\right)$$
 
+- $L$ -- distillation loss
+- $\mathrm{KL}$ -- Kullback-Leibler divergence
+- $z_s$ -- student logits
+- $z_t$ -- teacher logits
+- $T$ -- temperature
+
 ## Function
 
 ```python

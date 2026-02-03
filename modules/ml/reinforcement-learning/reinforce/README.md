@@ -7,8 +7,17 @@
 REINFORCE updates policy parameters with reward-weighted gradients.
 
 ## Math
+$$
+\nabla_\theta J = \mathbb{E}\left[R \nabla_\theta \log \pi_\theta(a \mid s)\right]$$
 
-$$\Delta \theta \propto R \cdot \nabla \log \pi(a|s)$$
+- $\mathbb{E}$ -- expectation
+- $\theta$ -- model parameters
+- $\pi$ -- policy
+- $J$ -- objective
+- $a$ -- action
+- $s$ -- state
+
+- $\pi_\theta$ -- policy parameterized by \theta
 
 ## Function
 

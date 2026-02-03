@@ -10,6 +10,13 @@ Mutual information measures shared information between variables.
 
 $$I(X;Y)=\sum_{x,y} p(x,y)\log\left(\frac{p(x,y)}{p(x)p(y)}\right)$$
 
+- $I$ -- identity matrix
+- $X$ -- data matrix
+- $Y$ -- target matrix
+- $x$ -- input (feature vector or sample)
+- $y$ -- target/label
+- $p$ -- probability
+
 ## Function
 
 ```python

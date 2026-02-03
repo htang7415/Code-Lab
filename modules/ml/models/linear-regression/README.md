@@ -7,8 +7,12 @@
 Linear regression predicts a target as a linear function of features.
 
 ## Math
+$$y = w^\top x + b$$
 
-$$y = w · x + b$$
+- $y$ -- target/label
+- $w$ -- weight parameter
+- $x$ -- input (feature vector or sample)
+- $b$ -- bias term
 
 ## Function
 

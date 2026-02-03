@@ -7,8 +7,11 @@
 F1 is the harmonic mean of precision and recall.
 
 ## Math
+$$\mathrm{F1} = \frac{2\,\mathrm{Precision}\,\mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}$$
 
-$$F1 = 2PR/(P+R)$$
+- $\mathrm{F1}$ -- F1 score
+- $Precision$ -- precision
+- $Recall$ -- recall
 
 ## Function
 

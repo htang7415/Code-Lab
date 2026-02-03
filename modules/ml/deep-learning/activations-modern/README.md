@@ -15,6 +15,10 @@ $$
 \end{aligned}
 $$
 
+- $\sigma$ -- sigmoid function
+- $\pi$ -- circle constant
+- $x$ -- input (feature vector or sample)
+
 ## Function
 
 ```python

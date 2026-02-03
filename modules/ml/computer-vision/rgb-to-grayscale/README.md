@@ -10,6 +10,10 @@ Convert RGB to grayscale using luminance weights.
 
 $$Y = 0.299R + 0.587G + 0.114B$$
 
+- $Y$ -- target matrix
+
+- $B$ -- matrix
+
 ## Function
 
 ```python

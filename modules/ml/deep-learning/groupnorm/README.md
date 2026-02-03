@@ -10,6 +10,12 @@ GroupNorm splits channels into groups and normalizes within each group.
 
 $$y = \frac{x - \mu_g}{\sqrt{\sigma_g^2 + \epsilon}}$$
 
+- $x$ -- input features
+- $y$ -- normalized output
+- $\mu_g$ -- mean over group $g$
+- $\sigma_g$ -- standard deviation over group $g$
+- $\epsilon$ -- small constant for numerical stability
+
 ## Function
 
 ```python

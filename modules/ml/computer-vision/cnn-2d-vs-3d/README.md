@@ -7,8 +7,11 @@
 3D CNNs convolve over time/depth in addition to height/width.
 
 ## Math
+$$d_{\text{out}} = d_{\text{in}} - k_d + 1$$
 
-$$output_depth = input_depth - kernel_depth + 1$$
+- $k_d$ -- index or number of neighbors for d
+- $d$ -- dimension
+- $k$ -- index or number of neighbors
 
 ## Function
 

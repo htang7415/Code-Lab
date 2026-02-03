@@ -7,8 +7,9 @@
 Augmentation applies random transforms like flips.
 
 ## Math
+$$x' = \mathrm{flip}(x)$$
 
-$$x' = flip(x)$$
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

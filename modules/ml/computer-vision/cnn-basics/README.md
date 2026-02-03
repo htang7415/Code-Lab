@@ -7,8 +7,10 @@
 CNNs use convolutional filters to capture local patterns.
 
 ## Math
+$$\text{feature\_map} = x \ast k$$
 
-$$feature_map = conv(input, kernel)$$
+- $x$ -- input (feature vector or sample)
+- $k$ -- index or number of neighbors
 
 ## Function
 

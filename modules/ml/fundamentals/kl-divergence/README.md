@@ -10,6 +10,13 @@ KL divergence measures how one distribution diverges from another.
 
 $$\mathrm{KL}(p\|q) = \sum_i p_i \log\left(\frac{p_i}{q_i}\right)$$
 
+- $\mathrm{KL}$ -- Kullback-Leibler divergence
+- $p_i$ -- i-th probability
+- $q_i$ -- i-th probability distribution
+- $p$ -- probability
+- $q$ -- probability distribution
+- $i$ -- index
+
 ## Function
 
 ```python

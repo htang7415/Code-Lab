@@ -7,8 +7,11 @@
 Cosine similarity measures angle between vectors.
 
 ## Math
+$$\cos(\theta) = \frac{a \cdot b}{\lVert a \rVert \lVert b \rVert}$$
 
-$$cos = (a·b) / (||a|| ||b||)$$
+- $a$ -- vector $a$
+- $b$ -- vector $b$
+- $\theta$ -- angle between vectors
 
 ## Function
 

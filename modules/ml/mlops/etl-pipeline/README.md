@@ -7,8 +7,11 @@
 ETL extracts raw data, transforms it, and loads it for training or serving.
 
 ## Math
+$$x' = \frac{x-\mu}{\sigma}$$
 
-$$x' = \frac{x - \mu}{\sigma}$$
+- $\mu$ -- mean
+- $\sigma$ -- standard deviation
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

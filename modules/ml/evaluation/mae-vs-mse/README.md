@@ -7,8 +7,12 @@
 Compare MAE and MSE to see sensitivity to outliers.
 
 ## Math
+$$\mathrm{MAE} = \frac{1}{n}\sum_{i=1}^{n} |e_i|,\quad \mathrm{MSE} = \frac{1}{n}\sum_{i=1}^{n} e_i^2$$
 
-$$MAE uses |e|; MSE uses e^2.$$
+- $\mathrm{MAE}$ -- mean absolute error
+- $\mathrm{MSE}$ -- mean squared error
+- $n$ -- number of samples
+- $i$ -- index
 
 ## Function
 

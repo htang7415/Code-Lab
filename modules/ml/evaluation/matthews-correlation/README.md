@@ -10,6 +10,8 @@ MCC balances all confusion matrix terms.
 
 $$\mathrm{MCC} = \frac{TP \cdot TN - FP \cdot FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}$$
 
+- $\mathrm{MCC}$ -- Matthews correlation coefficient
+
 ## Function
 
 ```python

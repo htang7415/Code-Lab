@@ -5,23 +5,22 @@ Use this prompt to generate the **first working version** of a GitHub repository
 ## 0) Role and goal
 Act as a senior engineer and educator. Create a repo skeleton that supports:
 - **Learning (concept notes + runnable mini-labs)**
-- **Practice problems (Deep-ML / LeetCode style)**
 - **Python + Rust** code (solutions/tests run locally)
 - A future **TypeScript web site** (Next.js) deployable on **Vercel**
-- Tests should be run **one module/problem at a time** (not “run everything” by default).
+- Tests should be run **one module at a time** (not “run everything” by default).
 
 The user will add more code later one by one for each topic. This first version must be clean, consistent, and easy to extend with several simple examples.
 
 ## 1) What to generate
-Create the repository structure, starter docs, templates, and small example modules/problems so that a newcomer can:
+Create the repository structure, starter docs, templates, and small example modules so that a newcomer can:
 1) read a concept note,
 2) run one module’s tests,
 3) understand how to add more.
 
 ### 1.1 Top-level files (must include)
-- `README.md` (clear overview + how to run a single module/problem)
+- `README.md` (clear overview + how to run a single module)
 - `ROADMAP.md` (phases for growth + website plan)
-- `CONTRIBUTING.md` (how to add modules/problems, naming rules, testing rules)
+- `CONTRIBUTING.md` (how to add modules, naming rules, testing rules)
 - `LICENSE` (MIT)
 - `.gitignore`
 - `Makefile` (targets to run *one-by-one* tests; no global “test all” as the default)
@@ -29,7 +28,7 @@ Create the repository structure, starter docs, templates, and small example modu
 - `templates/` scaffolds (see below)
 
 ### 1.2 Topic coverage (create directories now, even if empty)
-Create **both** `docs/` and `modules/` and `problems/` trees for these topics.
+Create **both** `docs/` and `modules/` trees for these topics.
 
 #### A) Data Structures & Algorithms (DSA)
 Subtopics (directories):
@@ -77,7 +76,6 @@ Use this layout (you may add small improvements, but keep the idea):
 code-lab/
   docs/
   modules/
-  problems/
   templates/
   scripts/
   web/
@@ -87,45 +85,22 @@ code-lab/
 ### 2.1 Naming
 - Directory names: **kebab-case**
 - Python modules: snake_case filenames
-- Each module/problem has a **stable slug** and a **meta.json** (for problems).
+- Each module has a **stable slug**.
 
-### 2.2 “Modules” vs “Problems”
-- `modules/` are **concept labs** (teach one idea with code + a small test).
-- `problems/` are **exercise problems** (statement + solution + tests), like LeetCode/deep-ml.
-
-### 2.3 Problem metadata schema
-Every problem folder must include `meta.json` with at least:
-
-```json
-{
-  "id": "dsa-arrays-two-sum",
-  "slug": "two-sum",
-  "title": "Two Sum",
-  "track": "dsa",
-  "topic": "arrays",
-  "difficulty": "easy",
-  "tags": ["hashmap"],
-  "languages": ["python", "rust"]
-}
-```
-
-### 2.4 Testing philosophy (one-by-one)
-Design commands so the learner runs a *single* module/problem at a time:
+### 2.2 Testing philosophy (one-by-one)
+Design commands so the learner runs a *single* module at a time:
 
 Python examples:
 - `pytest modules/dsa/arrays/prefix-sum/python -q`
-- `pytest problems/dsa/arrays/two-sum/python -q`
 
 Rust examples:
 - `cargo test --manifest-path modules/dsa/arrays/prefix-sum/rust/Cargo.toml`
-- `cargo test --manifest-path problems/dsa/arrays/two-sum/rust/Cargo.toml`
 
 Do **not** make the default workflow “run all tests”. It’s okay to include an optional “test all” script, but it must not be the primary path.
 
 ## 3) Scripts to include
 Create these scripts (POSIX shell; keep them simple and documented):
 - `scripts/new_module.sh` — scaffold a new module from `templates/module`
-- `scripts/new_problem.sh` — scaffold a new problem from `templates/problem`
 - `scripts/run_py.sh <path>` — run pytest for one target folder path
 - `scripts/run_rust.sh <path-to-Cargo.toml>` — run cargo test for one crate
 
@@ -135,7 +110,7 @@ Also include a minimal `Makefile` with targets:
 - optional: `make lint` (python ruff optional), `make format` (optional)
 
 ## 4) Templates to include
-Create `templates/module/` and `templates/problem/` with placeholders:
+Create `templates/module/` with placeholders:
 - `README.md` template
 - Python skeleton: `solution.py` + `test_solution.py` (or similarly named)
 - Rust skeleton: `Cargo.toml`, `src/lib.rs`, `tests/...`
@@ -147,12 +122,13 @@ Create `web/` as a pnpm workspace with a Next.js TypeScript app, clear and high 
 
 ### 5.1 Content indexer requirement
 Implement a script that scans:
-- `../problems/**/meta.json`
-- `../problems/**/problem.md` (optional for v1)
-and generates an index file used by the site, e.g.:
-- `web/apps/site/src/content/problems_index.json`
+- `../modules/**/README.md`
+- `../docs/**/*.md`
+and generates index files used by the site, e.g.:
+- `web/apps/site/src/content/content_index.json`
+- `web/apps/site/src/content/search_index.json`
 
-It only needs to support listing problems by track/topic/difficulty/tags.
+It only needs to support listing docs and modules by track/topic.
 
 ### 5.2 Vercel deployment notes
 In `web/README.md`, document how to deploy with Vercel:
@@ -182,13 +158,6 @@ Add at least these **ready-to-run** examples to demonstrate the pattern:
   - `python/bandit.py`
   - `python/test_bandit.py`
 
-### 6.4 DSA problem example (Two Sum) with Python + Rust
-- `problems/dsa/arrays/two-sum/`
-  - `meta.json`
-  - `problem.md`
-  - `python/solution.py` + `python/test_solution.py`
-  - `rust/` crate with `cargo test`
-
 ## 7) Python tooling (minimal)
 Add `tooling/python/` or a root `pyproject.toml` (choose one) that sets up:
 - `pytest` for tests
@@ -215,11 +184,11 @@ Do not omit file contents for required items.
 - Keep docs concise but correct.
 - Keep code minimal, readable, and tested with concise comments.
 - Avoid over-engineering.
-- Ensure all example modules/problems run as documented.
+- Ensure all example modules run as documented.
 
 ---
 
 ## Final check before finishing
-- Repo has all topic directories under `docs/`, `modules/`, and `problems/`.
+- Repo has all topic directories under `docs/` and `modules/`.
 - Examples run one-by-one with commands shown in README.
-- Next.js app builds, and content-indexer script can generate an index JSON from `problems/`.
+- Next.js app builds, and the content-indexer script can generate index JSON from `docs/` + `modules/`.

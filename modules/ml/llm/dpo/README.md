@@ -7,8 +7,13 @@
 DPO optimizes policy preferences directly using a reference model.
 
 ## Math
+$$L = -\log\left(\sigma\left(\beta(\Delta \log \pi - \Delta \log \pi_{\text{ref}})\right)\right)$$
 
-$$\text{Demo loss: } L = -\log\left(\sigma\left(\beta(\Delta \log \pi - \Delta \log \pi_{\text{ref}})\right)\right)$$
+- $L$ -- loss value
+- $\sigma$ -- sigmoid (logistic) function
+- $\beta$ -- temperature scaling the preference gap
+- $\pi$ -- policy
+- $\pi_{\text{ref}}$ -- reference policy
 
 ## Function
 

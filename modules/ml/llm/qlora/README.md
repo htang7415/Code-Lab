@@ -7,8 +7,16 @@
 QLoRA combines low-rank updates with quantized base weights.
 
 ## Math
+$$W_q = \mathrm{Quantize}(W; s),\quad W' = W_q + \frac{\alpha}{r} AB$$
 
-$$\text{Quantize base weights, then apply LoRA-style low-rank update.}$$
+- $W$ -- base weight matrix
+- $W_q$ -- quantized base weight matrix
+- $W'$ -- updated weight matrix after QLoRA
+- $\mathrm{Quantize}(\cdot; s)$ -- quantization operator with scale $s$
+- $s$ -- quantization scale
+- $A, B$ -- low-rank update matrices (rank $r$)
+- $r$ -- rank of the LoRA update
+- $\alpha$ -- LoRA scaling factor
 
 ## Function
 

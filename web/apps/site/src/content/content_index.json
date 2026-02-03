@@ -8,8 +8,7 @@
       "accent": "#1f77b4",
       "accentVar": "--track-dsa",
       "topicCount": 11,
-      "moduleCount": 172,
-      "problemCount": 0
+      "moduleCount": 172
     },
     {
       "id": "ml",
@@ -18,8 +17,7 @@
       "accent": "#ff7f0e",
       "accentVar": "--track-ml",
       "topicCount": 13,
-      "moduleCount": 178,
-      "problemCount": 0
+      "moduleCount": 178
     },
     {
       "id": "ai-agents",
@@ -28,8 +26,7 @@
       "accent": "#2ca02c",
       "accentVar": "--track-ai-agents",
       "topicCount": 9,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "id": "databases",
@@ -38,8 +35,7 @@
       "accent": "#17becf",
       "accentVar": "--track-databases",
       "topicCount": 10,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "id": "software-engineering",
@@ -48,8 +44,7 @@
       "accent": "#d62728",
       "accentVar": "--track-se",
       "topicCount": 10,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     }
   ],
   "topics": [
@@ -60,8 +55,7 @@
       "path": "/track/software-engineering/apis",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "dsa",
@@ -70,8 +64,7 @@
       "path": "/track/dsa/array",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 7,
-      "problemCount": 0
+      "moduleCount": 7
     },
     {
       "track": "dsa",
@@ -80,8 +73,7 @@
       "path": "/track/dsa/backtracking",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 19,
-      "problemCount": 0
+      "moduleCount": 19
     },
     {
       "track": "dsa",
@@ -90,8 +82,7 @@
       "path": "/track/dsa/binary-tree",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 30,
-      "problemCount": 0
+      "moduleCount": 30
     },
     {
       "track": "databases",
@@ -100,8 +91,7 @@
       "path": "/track/databases/caching",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -110,8 +100,7 @@
       "path": "/track/ml/computer-vision",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 16,
-      "problemCount": 0
+      "moduleCount": 16
     },
     {
       "track": "software-engineering",
@@ -120,8 +109,7 @@
       "path": "/track/software-engineering/concurrency",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -130,8 +118,7 @@
       "path": "/track/ml/data",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 7,
-      "problemCount": 0
+      "moduleCount": 7
     },
     {
       "track": "ml",
@@ -140,8 +127,7 @@
       "path": "/track/ml/deep-learning",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 33,
-      "problemCount": 0
+      "moduleCount": 33
     },
     {
       "track": "software-engineering",
@@ -150,8 +136,7 @@
       "path": "/track/software-engineering/design-patterns",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "dsa",
@@ -160,8 +145,7 @@
       "path": "/track/dsa/double-pointers",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 10,
-      "problemCount": 0
+      "moduleCount": 10
     },
     {
       "track": "dsa",
@@ -170,8 +154,7 @@
       "path": "/track/dsa/dynamic-programming",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 47,
-      "problemCount": 0
+      "moduleCount": 47
     },
     {
       "track": "ai-agents",
@@ -180,8 +163,7 @@
       "path": "/track/ai-agents/evals",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -190,8 +172,7 @@
       "path": "/track/ml/evaluation",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 14,
-      "problemCount": 0
+      "moduleCount": 14
     },
     {
       "track": "ml",
@@ -200,8 +181,7 @@
       "path": "/track/ml/fundamentals",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 19,
-      "problemCount": 0
+      "moduleCount": 19
     },
     {
       "track": "ml",
@@ -210,8 +190,7 @@
       "path": "/track/ml/generative",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 7,
-      "problemCount": 0
+      "moduleCount": 7
     },
     {
       "track": "dsa",
@@ -220,8 +199,7 @@
       "path": "/track/dsa/greedy-algorithm",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 20,
-      "problemCount": 0
+      "moduleCount": 20
     },
     {
       "track": "ai-agents",
@@ -230,8 +208,7 @@
       "path": "/track/ai-agents/guardrails",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "dsa",
@@ -240,8 +217,7 @@
       "path": "/track/dsa/hash-tables",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 10,
-      "problemCount": 0
+      "moduleCount": 10
     },
     {
       "track": "databases",
@@ -250,8 +226,7 @@
       "path": "/track/databases/indexing",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "dsa",
@@ -260,8 +235,7 @@
       "path": "/track/dsa/linked-list",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 9,
-      "problemCount": 0
+      "moduleCount": 9
     },
     {
       "track": "ml",
@@ -270,8 +244,7 @@
       "path": "/track/ml/llm",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 21,
-      "problemCount": 0
+      "moduleCount": 21
     },
     {
       "track": "ai-agents",
@@ -280,8 +253,7 @@
       "path": "/track/ai-agents/memory",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -290,8 +262,7 @@
       "path": "/track/ml/mlops",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 10,
-      "problemCount": 0
+      "moduleCount": 10
     },
     {
       "track": "ml",
@@ -300,8 +271,7 @@
       "path": "/track/ml/models",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 15,
-      "problemCount": 0
+      "moduleCount": 15
     },
     {
       "track": "dsa",
@@ -310,8 +280,7 @@
       "path": "/track/dsa/monotonic-stack",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 5,
-      "problemCount": 0
+      "moduleCount": 5
     },
     {
       "track": "ai-agents",
@@ -320,8 +289,7 @@
       "path": "/track/ai-agents/multi-agent",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "databases",
@@ -330,8 +298,7 @@
       "path": "/track/databases/nosql",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ai-agents",
@@ -340,8 +307,7 @@
       "path": "/track/ai-agents/observability",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -350,8 +316,7 @@
       "path": "/track/ml/optimization",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 16,
-      "problemCount": 0
+      "moduleCount": 16
     },
     {
       "track": "software-engineering",
@@ -360,8 +325,7 @@
       "path": "/track/software-engineering/performance",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ai-agents",
@@ -370,8 +334,7 @@
       "path": "/track/ai-agents/planning",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ai-agents",
@@ -380,8 +343,7 @@
       "path": "/track/ai-agents/prompting",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "software-engineering",
@@ -390,8 +352,7 @@
       "path": "/track/software-engineering/python",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "databases",
@@ -400,8 +361,7 @@
       "path": "/track/databases/query-plans",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ai-agents",
@@ -410,8 +370,7 @@
       "path": "/track/ai-agents/rag",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -420,8 +379,7 @@
       "path": "/track/ml/reinforcement-learning",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 12,
-      "problemCount": 0
+      "moduleCount": 12
     },
     {
       "track": "databases",
@@ -430,8 +388,7 @@
       "path": "/track/databases/relational",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -440,8 +397,7 @@
       "path": "/track/ml/representation",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "software-engineering",
@@ -450,8 +406,7 @@
       "path": "/track/software-engineering/rust",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "databases",
@@ -460,8 +415,7 @@
       "path": "/track/databases/schema-design",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "software-engineering",
@@ -470,8 +424,7 @@
       "path": "/track/software-engineering/security-basics",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "databases",
@@ -480,8 +433,7 @@
       "path": "/track/databases/sql-patterns",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "dsa",
@@ -490,8 +442,7 @@
       "path": "/track/dsa/stack-and-queue",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 9,
-      "problemCount": 0
+      "moduleCount": 9
     },
     {
       "track": "databases",
@@ -500,8 +451,7 @@
       "path": "/track/databases/streaming",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "dsa",
@@ -510,8 +460,7 @@
       "path": "/track/dsa/string",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 6,
-      "problemCount": 0
+      "moduleCount": 6
     },
     {
       "track": "software-engineering",
@@ -520,8 +469,7 @@
       "path": "/track/software-engineering/system-design",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -530,8 +478,7 @@
       "path": "/track/ml/systems",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 8,
-      "problemCount": 0
+      "moduleCount": 8
     },
     {
       "track": "software-engineering",
@@ -540,8 +487,7 @@
       "path": "/track/software-engineering/testing",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "ai-agents",
@@ -550,8 +496,7 @@
       "path": "/track/ai-agents/tool-use",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "software-engineering",
@@ -560,8 +505,7 @@
       "path": "/track/software-engineering/tooling",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "databases",
@@ -570,8 +514,7 @@
       "path": "/track/databases/transactions",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     },
     {
       "track": "databases",
@@ -580,8 +523,7 @@
       "path": "/track/databases/vector-db",
       "hasDoc": false,
       "docCount": 0,
-      "moduleCount": 0,
-      "problemCount": 0
+      "moduleCount": 0
     }
   ],
   "modules": [
@@ -4040,7 +3982,7 @@
       "title": "Effect on Gradient Flow",
       "path": "modules/ml/deep-learning/gradient-flow",
       "summary": "> Track: `ml` | Topic: `deep-learning`",
-      "readme": "# Effect on Gradient Flow\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nInitialization affects gradient variance as it propagates through layers.\n\n## Math\n\n$$Var(g_{l}) ≈ Var(g_{l+1}) * Var(W_l)$$\n\n## Function\n\n```python\ndef propagate_variance(var: float, layer_vars: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/gradient-flow/python -q\n```\n",
+      "readme": "# Effect on Gradient Flow\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nInitialization affects gradient variance as it propagates through layers.\n\n## Math\n\n$$Var(g_{l}) \u2248 Var(g_{l+1}) * Var(W_l)$$\n\n## Function\n\n```python\ndef propagate_variance(var: float, layer_vars: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/gradient-flow/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/deep-learning/gradient-flow/python/gradient_flow.py",
@@ -4292,7 +4234,7 @@
       "title": "Neuron, Weights, Bias, Activation",
       "path": "modules/ml/deep-learning/neuron-weights-bias-activation",
       "summary": "> Track: `ml` | Topic: `deep-learning`",
-      "readme": "# Neuron, Weights, Bias, Activation\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nA neuron computes a weighted sum plus bias, then applies an activation.\n\n## Math\n\n$$y = sigma(w · x + b)$$\n\n## Function\n\n```python\ndef neuron(x: list[float], w: list[float], b: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/neuron-weights-bias-activation/python -q\n```\n",
+      "readme": "# Neuron, Weights, Bias, Activation\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nA neuron computes a weighted sum plus bias, then applies an activation.\n\n## Math\n\n$$y = sigma(w \u00b7 x + b)$$\n\n## Function\n\n```python\ndef neuron(x: list[float], w: list[float], b: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/neuron-weights-bias-activation/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/deep-learning/neuron-weights-bias-activation/python/neuron_weights_bias_activation.py",
@@ -4355,7 +4297,7 @@
       "title": "Vanishing and Exploding Gradients",
       "path": "modules/ml/deep-learning/vanishing-exploding-gradients",
       "summary": "> Track: `ml` | Topic: `deep-learning`",
-      "readme": "# Vanishing and Exploding Gradients\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nRepeated multiplication by small or large values shrinks or blows up gradients.\n\n## Math\n\n$$g_L = g_0 * Π w_i$$\n\n## Function\n\n```python\ndef gradient_chain(weights: list[float], grad: float = 1.0) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/vanishing-exploding-gradients/python -q\n```\n",
+      "readme": "# Vanishing and Exploding Gradients\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nRepeated multiplication by small or large values shrinks or blows up gradients.\n\n## Math\n\n$$g_L = g_0 * \u03a0 w_i$$\n\n## Function\n\n```python\ndef gradient_chain(weights: list[float], grad: float = 1.0) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/vanishing-exploding-gradients/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/deep-learning/vanishing-exploding-gradients/python/vanishing_exploding_gradients.py",
@@ -4502,7 +4444,7 @@
       "title": "Dice Score",
       "path": "modules/ml/evaluation/dice-score",
       "summary": "> Track: `ml` | Topic: `evaluation`",
-      "readme": "# Dice Score\n\n> Track: `ml` | Topic: `evaluation`\n\n## Concept\n\nDice score measures overlap, common in segmentation.\n\n## Math\n\n$$\\text{2|A∩B|/(|A|+|B|)}$$\n\n## Function\n\n```python\ndef dice(a: set[int], b: set[int]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/evaluation/dice-score/python -q\n```\n",
+      "readme": "# Dice Score\n\n> Track: `ml` | Topic: `evaluation`\n\n## Concept\n\nDice score measures overlap, common in segmentation.\n\n## Math\n\n$$\\text{2|A\u2229B|/(|A|+|B|)}$$\n\n## Function\n\n```python\ndef dice(a: set[int], b: set[int]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/evaluation/dice-score/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/evaluation/dice-score/python/dice_score.py",
@@ -4565,7 +4507,7 @@
       "title": "Jaccard Index",
       "path": "modules/ml/evaluation/jaccard-index",
       "summary": "> Track: `ml` | Topic: `evaluation`",
-      "readme": "# Jaccard Index\n\n> Track: `ml` | Topic: `evaluation`\n\n## Concept\n\nJaccard measures overlap between sets.\n\n## Math\n\n$$\\text{|A∩B| / |A∪B|}$$\n\n## Function\n\n```python\ndef jaccard(a: set[int], b: set[int]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/evaluation/jaccard-index/python -q\n```\n",
+      "readme": "# Jaccard Index\n\n> Track: `ml` | Topic: `evaluation`\n\n## Concept\n\nJaccard measures overlap between sets.\n\n## Math\n\n$$\\text{|A\u2229B| / |A\u222aB|}$$\n\n## Function\n\n```python\ndef jaccard(a: set[int], b: set[int]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/evaluation/jaccard-index/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/evaluation/jaccard-index/python/jaccard_index.py",
@@ -4754,7 +4696,7 @@
       "title": "Cosine Similarity",
       "path": "modules/ml/fundamentals/cosine-similarity",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Cosine Similarity\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nCosine similarity measures angle between vectors.\n\n## Math\n\n$$cos = (a·b) / (||a|| ||b||)$$\n\n## Function\n\n```python\ndef cosine_similarity(a: list[float], b: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/cosine-similarity/python -q\n```\n",
+      "readme": "# Cosine Similarity\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nCosine similarity measures angle between vectors.\n\n## Math\n\n$$cos = (a\u00b7b) / (||a|| ||b||)$$\n\n## Function\n\n```python\ndef cosine_similarity(a: list[float], b: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/cosine-similarity/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/cosine-similarity/python/cosine_similarity.py",
@@ -4901,7 +4843,7 @@
       "title": "Hessian",
       "path": "modules/ml/fundamentals/hessian",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Hessian\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nHessian is the matrix of second derivatives.\n\n## Math\n\n$$H_ij = ∂^2 f / ∂x_i ∂x_j$$\n\n## Function\n\n```python\ndef hessian_quadratic(a: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/hessian/python -q\n```\n",
+      "readme": "# Hessian\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nHessian is the matrix of second derivatives.\n\n## Math\n\n$$H_ij = \u2202^2 f / \u2202x_i \u2202x_j$$\n\n## Function\n\n```python\ndef hessian_quadratic(a: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/hessian/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/hessian/python/hessian.py",
@@ -4922,7 +4864,7 @@
       "title": "Jacobian",
       "path": "modules/ml/fundamentals/jacobian",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Jacobian\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nJacobian contains partial derivatives of vector-valued functions.\n\n## Math\n\n$$J_ij = ∂f_i/∂x_j$$\n\n## Function\n\n```python\ndef jacobian(f1: callable, f2: callable, x: float, y: float, eps: float = 1e-5) -> list[list[float]]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/jacobian/python -q\n```\n",
+      "readme": "# Jacobian\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nJacobian contains partial derivatives of vector-valued functions.\n\n## Math\n\n$$J_ij = \u2202f_i/\u2202x_j$$\n\n## Function\n\n```python\ndef jacobian(f1: callable, f2: callable, x: float, y: float, eps: float = 1e-5) -> list[list[float]]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/jacobian/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/jacobian/python/jacobian.py",
@@ -4940,10 +4882,10 @@
       "track": "ml",
       "topic": "fundamentals",
       "slug": "jensen-shannon-divergence",
-      "title": "Jensen–Shannon Divergence",
+      "title": "Jensen\u2013Shannon Divergence",
       "path": "modules/ml/fundamentals/jensen-shannon-divergence",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Jensen–Shannon Divergence\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nJS divergence symmetrizes KL using the mean distribution.\n\n## Math\n\n$$JS(p,q) = 0.5 KL(p||m)+0.5 KL(q||m)$$\n\n## Function\n\n```python\ndef js(p: list[float], q: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/jensen-shannon-divergence/python -q\n```\n",
+      "readme": "# Jensen\u2013Shannon Divergence\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nJS divergence symmetrizes KL using the mean distribution.\n\n## Math\n\n$$JS(p,q) = 0.5 KL(p||m)+0.5 KL(q||m)$$\n\n## Function\n\n```python\ndef js(p: list[float], q: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/jensen-shannon-divergence/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/jensen-shannon-divergence/python/jensen_shannon_divergence.py",
@@ -5258,7 +5200,7 @@
       "title": "Masked Attention (Causal Mask)",
       "path": "modules/ml/llm/attention-causal",
       "summary": "> Track: `ml` | Topic: `llm`",
-      "readme": "# Masked Attention (Causal Mask)\n\n> Track: `ml` | Topic: `llm`\n\n## Concept\n\nIn autoregressive language models, each token can only attend to itself and\nprevious tokens. This is enforced by a **causal (lower-triangular) mask** applied\nto the attention scores before softmax.\n\nWithout the mask, token at position _i_ could \"see\" tokens at positions _i+1, i+2, …_,\nleaking future information during training. The mask sets those attention scores\nto −∞ so that softmax drives them to zero.\n\nMulti-head attention applies the same mask to every head independently.\nThe mask is a constant for a given sequence length and can be precomputed once.\n\n## Math\n\n$$\\text{Scaled dot-product attention with causal mask:}$$\n\n```\nscores = Q @ K^T / sqrt(d_k)           # (seq_len, seq_len)\n\nmask[i][j] = 0      if j <= i\n           = -inf    if j >  i\n\nmasked = scores + mask\nweights = softmax(masked, dim=-1)       # (seq_len, seq_len)\noutput  = weights @ V                   # (seq_len, d_v)\n```\n\n- $\\text{\\texttt{Q}, \\texttt{K} — queries and keys, shape \\texttt{(seq\\_len, d\\_k)}}$\n- $\\text{\\texttt{V} — values, shape \\texttt{(seq\\_len, d\\_v)}}$\n- $\\text{\\texttt{d\\_k} — key dimension (scaling factor prevents large dot products)}$\n\n## Function\n\n```python\ndef causal_self_attention(Q, K, V) -> np.ndarray\n```\n\n- `Q` — query matrix, shape `(seq_len, d_k)`\n- `K` — key matrix, shape `(seq_len, d_k)`\n- `V` — value matrix, shape `(seq_len, d_v)`\n- Returns — output of shape `(seq_len, d_v)`, each row attending only to current and earlier positions\n\nHelper functions:\n\n```python\ndef causal_mask(seq_len) -> np.ndarray    # upper-tri of -inf\ndef softmax(x, axis=-1) -> np.ndarray     # numerically stable\n```\n\n## Run tests\n\n```bash\npytest modules/ml/llm/attention-causal/python -q\n```\n",
+      "readme": "# Masked Attention (Causal Mask)\n\n> Track: `ml` | Topic: `llm`\n\n## Concept\n\nIn autoregressive language models, each token can only attend to itself and\nprevious tokens. This is enforced by a **causal (lower-triangular) mask** applied\nto the attention scores before softmax.\n\nWithout the mask, token at position _i_ could \"see\" tokens at positions _i+1, i+2, \u2026_,\nleaking future information during training. The mask sets those attention scores\nto \u2212\u221e so that softmax drives them to zero.\n\nMulti-head attention applies the same mask to every head independently.\nThe mask is a constant for a given sequence length and can be precomputed once.\n\n## Math\n\n$$\\text{Scaled dot-product attention with causal mask:}$$\n\n```\nscores = Q @ K^T / sqrt(d_k)           # (seq_len, seq_len)\n\nmask[i][j] = 0      if j <= i\n           = -inf    if j >  i\n\nmasked = scores + mask\nweights = softmax(masked, dim=-1)       # (seq_len, seq_len)\noutput  = weights @ V                   # (seq_len, d_v)\n```\n\n- $\\text{\\texttt{Q}, \\texttt{K} \u2014 queries and keys, shape \\texttt{(seq\\_len, d\\_k)}}$\n- $\\text{\\texttt{V} \u2014 values, shape \\texttt{(seq\\_len, d\\_v)}}$\n- $\\text{\\texttt{d\\_k} \u2014 key dimension (scaling factor prevents large dot products)}$\n\n## Function\n\n```python\ndef causal_self_attention(Q, K, V) -> np.ndarray\n```\n\n- `Q` \u2014 query matrix, shape `(seq_len, d_k)`\n- `K` \u2014 key matrix, shape `(seq_len, d_k)`\n- `V` \u2014 value matrix, shape `(seq_len, d_v)`\n- Returns \u2014 output of shape `(seq_len, d_v)`, each row attending only to current and earlier positions\n\nHelper functions:\n\n```python\ndef causal_mask(seq_len) -> np.ndarray    # upper-tri of -inf\ndef softmax(x, axis=-1) -> np.ndarray     # numerically stable\n```\n\n## Run tests\n\n```bash\npytest modules/ml/llm/attention-causal/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/llm/attention-causal/python/attention.py",
@@ -5300,7 +5242,7 @@
       "title": "Embeddings",
       "path": "modules/ml/llm/embeddings",
       "summary": "> Track: `ml` | Topic: `llm`",
-      "readme": "# Embeddings\n\n> Track: `ml` | Topic: `llm`\n\n## Concept\n\nEmbeddings map discrete token ids to continuous vectors used by the model.\n\n## Math\n\n$$Given embedding matrix \\texttt{E ∈ R\\^\\{\\}\\{V×d\\}}, the embedding for token \\texttt{i} is \\texttt{E[i]}.$$\n\n## Function\n\n```python\ndef embed(tokens: list[int], embeddings: list[list[float]]) -> list[list[float]]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/llm/embeddings/python -q\n```\n",
+      "readme": "# Embeddings\n\n> Track: `ml` | Topic: `llm`\n\n## Concept\n\nEmbeddings map discrete token ids to continuous vectors used by the model.\n\n## Math\n\n$$Given embedding matrix \\texttt{E \u2208 R\\^\\{\\}\\{V\u00d7d\\}}, the embedding for token \\texttt{i} is \\texttt{E[i]}.$$\n\n## Function\n\n```python\ndef embed(tokens: list[int], embeddings: list[list[float]]) -> list[list[float]]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/llm/embeddings/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/llm/embeddings/python/embeddings.py",
@@ -5363,7 +5305,7 @@
       "title": "INT8/INT4 Quantization",
       "path": "modules/ml/llm/int8-int4-quantization",
       "summary": "> Track: `ml` | Topic: `llm`",
-      "readme": "# INT8/INT4 Quantization\n\n> Track: `ml` | Topic: `llm`\n\n## Concept\n\nInteger quantization maps floats to a small integer range with a scale.\n\n## Math\n\n$$Quantize: q = round(x / s), dequantize: x̂ = q * s.$$\n\n## Function\n\n```python\ndef quantize_int(x: float, bits: int, scale: float) -> int:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/llm/int8-int4-quantization/python -q\n```\n",
+      "readme": "# INT8/INT4 Quantization\n\n> Track: `ml` | Topic: `llm`\n\n## Concept\n\nInteger quantization maps floats to a small integer range with a scale.\n\n## Math\n\n$$Quantize: q = round(x / s), dequantize: x\u0302 = q * s.$$\n\n## Function\n\n```python\ndef quantize_int(x: float, bits: int, scale: float) -> int:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/llm/int8-int4-quantization/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/llm/int8-int4-quantization/python/int8_int4_quantization.py",
@@ -5930,7 +5872,7 @@
       "title": "Bernoulli Naive Bayes",
       "path": "modules/ml/models/bernoulli-naive-bayes",
       "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# Bernoulli Naive Bayes\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nBernoulli NB models binary features per class.\n\n## Math\n\n$$p(x|y)=∏ p_i^{x_i} (1-p_i)^{1-x_i}$$\n\n## Function\n\n```python\ndef bernoulli_log_likelihood(x: list[int], prob: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/bernoulli-naive-bayes/python -q\n```\n",
+      "readme": "# Bernoulli Naive Bayes\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nBernoulli NB models binary features per class.\n\n## Math\n\n$$p(x|y)=\u220f p_i^{x_i} (1-p_i)^{1-x_i}$$\n\n## Function\n\n```python\ndef bernoulli_log_likelihood(x: list[int], prob: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/bernoulli-naive-bayes/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/models/bernoulli-naive-bayes/python/bernoulli_naive_bayes.py",
@@ -6098,7 +6040,7 @@
       "title": "Linear Regression",
       "path": "modules/ml/models/linear-regression",
       "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# Linear Regression\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nLinear regression predicts a target as a linear function of features.\n\n## Math\n\n$$y = w · x + b$$\n\n## Function\n\n```python\ndef predict(x: list[float], w: list[float], b: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/linear-regression/python -q\n```\n",
+      "readme": "# Linear Regression\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nLinear regression predicts a target as a linear function of features.\n\n## Math\n\n$$y = w \u00b7 x + b$$\n\n## Function\n\n```python\ndef predict(x: list[float], w: list[float], b: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/linear-regression/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/models/linear-regression/python/linear_regression.py",
@@ -6119,7 +6061,7 @@
       "title": "Logistic Regression",
       "path": "modules/ml/models/logistic-regression",
       "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# Logistic Regression\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nLogistic regression models class probability with a sigmoid.\n\n## Math\n\n$$p = 1/(1+e^{-(w·x+b)})$$\n\n## Function\n\n```python\ndef predict_proba(x: list[float], w: list[float], b: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/logistic-regression/python -q\n```\n",
+      "readme": "# Logistic Regression\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nLogistic regression models class probability with a sigmoid.\n\n## Math\n\n$$p = 1/(1+e^{-(w\u00b7x+b)})$$\n\n## Function\n\n```python\ndef predict_proba(x: list[float], w: list[float], b: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/logistic-regression/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/models/logistic-regression/python/logistic_regression.py",
@@ -6266,7 +6208,7 @@
       "title": "AdamW",
       "path": "modules/ml/optimization/adamw",
       "summary": "> Track: `ml` | Topic: `optimization`",
-      "readme": "# AdamW\n\n> Track: `ml` | Topic: `optimization`\n\n## Concept\n\nAdamW decouples weight decay from adaptive updates.\n\n## Math\n\n$$w = w - lr * (m/√v) - lr*wd*w$$\n\n## Function\n\n```python\ndef adamw_step(w: float, grad: float, m: float, v: float, lr: float, wd: float, beta1: float, beta2: float, eps: float) -> tuple[float, float, float]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/optimization/adamw/python -q\n```\n",
+      "readme": "# AdamW\n\n> Track: `ml` | Topic: `optimization`\n\n## Concept\n\nAdamW decouples weight decay from adaptive updates.\n\n## Math\n\n$$w = w - lr * (m/\u221av) - lr*wd*w$$\n\n## Function\n\n```python\ndef adamw_step(w: float, grad: float, m: float, v: float, lr: float, wd: float, beta1: float, beta2: float, eps: float) -> tuple[float, float, float]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/optimization/adamw/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/optimization/adamw/python/adamw.py",
@@ -6560,7 +6502,7 @@
       "title": "Epsilon-Greedy Bandit",
       "path": "modules/ml/reinforcement-learning/bandit-epsilon-greedy",
       "summary": "> Track: `ml` | Topic: `reinforcement-learning`",
-      "readme": "# Epsilon-Greedy Bandit\n\n> Track: `ml` | Topic: `reinforcement-learning`\n\n## Concept\n\nThe **multi-armed bandit** problem is a simplified RL setting: an agent\nrepeatedly chooses one of _K_ actions (arms) and receives a stochastic reward.\nThe goal is to maximize cumulative reward over time.\n\nThe **epsilon-greedy** strategy balances exploration and exploitation:\n\n- With probability $\\epsilon$, pick a random arm (explore)\n- With probability $1-\\epsilon$, pick the arm with the highest estimated value (exploit)\n\nThis is the simplest baseline for the explore-exploit tradeoff.\n$\\epsilon = 0$ is pure greedy; $\\epsilon = 1$ is pure random.\n\n## Math\n\nAction-value estimate updated incrementally after pulling arm $a$ and observing reward $r$:\n\n$$N_a \\leftarrow N_a + 1$$\n\n$$Q_a \\leftarrow Q_a + \\frac{1}{N_a}(r - Q_a)$$\n\n- $Q_a$ — estimated value of arm $a$ (running mean of rewards)\n- $N_a$ — number of times arm $a$ has been pulled\n- The update computes the sample mean incrementally\n\nArm selection:\n\n$$a_t = \\begin{cases} \\text{random arm from } \\{0, \\dots, K{-}1\\} & \\text{with probability } \\epsilon \\\\ \\arg\\max_a Q_a & \\text{with probability } 1 - \\epsilon \\end{cases}$$\n\n## Function\n\n```python\nclass EpsilonGreedyBandit:\n    def __init__(self, k: int, epsilon: float = 0.1, seed: int | None = None)\n    def select_arm(self) -> int\n    def update(self, arm: int, reward: float) -> None\n```\n\n- `k` — number of arms\n- `epsilon` — exploration probability (0 to 1)\n- `select_arm()` — returns the index of the chosen arm\n- `update(arm, reward)` — updates the value estimate for the given arm\n- `q_values` — list of current estimated values per arm\n- `counts` — list of pull counts per arm\n\n## Run tests\n\n```bash\npytest modules/ml/reinforcement-learning/bandit-epsilon-greedy/python -q\ncargo test --manifest-path modules/ml/reinforcement-learning/bandit-epsilon-greedy/rust/Cargo.toml\n```\n",
+      "readme": "# Epsilon-Greedy Bandit\n\n> Track: `ml` | Topic: `reinforcement-learning`\n\n## Concept\n\nThe **multi-armed bandit** problem is a simplified RL setting: an agent\nrepeatedly chooses one of _K_ actions (arms) and receives a stochastic reward.\nThe goal is to maximize cumulative reward over time.\n\nThe **epsilon-greedy** strategy balances exploration and exploitation:\n\n- With probability $\\epsilon$, pick a random arm (explore)\n- With probability $1-\\epsilon$, pick the arm with the highest estimated value (exploit)\n\nThis is the simplest baseline for the explore-exploit tradeoff.\n$\\epsilon = 0$ is pure greedy; $\\epsilon = 1$ is pure random.\n\n## Math\n\nAction-value estimate updated incrementally after pulling arm $a$ and observing reward $r$:\n\n$$N_a \\leftarrow N_a + 1$$\n\n$$Q_a \\leftarrow Q_a + \\frac{1}{N_a}(r - Q_a)$$\n\n- $Q_a$ \u2014 estimated value of arm $a$ (running mean of rewards)\n- $N_a$ \u2014 number of times arm $a$ has been pulled\n- The update computes the sample mean incrementally\n\nArm selection:\n\n$$a_t = \\begin{cases} \\text{random arm from } \\{0, \\dots, K{-}1\\} & \\text{with probability } \\epsilon \\\\ \\arg\\max_a Q_a & \\text{with probability } 1 - \\epsilon \\end{cases}$$\n\n## Function\n\n```python\nclass EpsilonGreedyBandit:\n    def __init__(self, k: int, epsilon: float = 0.1, seed: int | None = None)\n    def select_arm(self) -> int\n    def update(self, arm: int, reward: float) -> None\n```\n\n- `k` \u2014 number of arms\n- `epsilon` \u2014 exploration probability (0 to 1)\n- `select_arm()` \u2014 returns the index of the chosen arm\n- `update(arm, reward)` \u2014 updates the value estimate for the given arm\n- `q_values` \u2014 list of current estimated values per arm\n- `counts` \u2014 list of pull counts per arm\n\n## Run tests\n\n```bash\npytest modules/ml/reinforcement-learning/bandit-epsilon-greedy/python -q\ncargo test --manifest-path modules/ml/reinforcement-learning/bandit-epsilon-greedy/rust/Cargo.toml\n```\n",
       "sources": [
         {
           "path": "modules/ml/reinforcement-learning/bandit-epsilon-greedy/python/bandit.py",
@@ -6974,7 +6916,6 @@
       ]
     }
   ],
-  "problems": [],
   "docs": [
     {
       "track": "dsa",

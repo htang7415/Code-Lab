@@ -9,11 +9,24 @@ a group of sampled responses. GRPO uses token-level importance ratios, while
 GSPO switches to a sequence-level ratio to reduce token-level instability.
 
 ## Math
+$$A_i = \frac{r_i - \mu_r}{\sigma_r + \epsilon}$$
 
-- $A_i = \frac{r_i - \mu_r}{\sigma_r + \epsilon}$
-- $\text{GRPO: } \rho_{i,t} = \exp(\log \pi_\theta - \log \pi_{\text{old}}),\ \text{ratio}_i = \frac{1}{T}\sum_t \rho_{i,t}$
-- $\text{GSPO: } \text{ratio}_i = \exp\left(\sum_t (\log \pi_\theta - \log \pi_{\text{old}})\right)$
-- $\text{Objective: } J = \frac{1}{N}\sum_i \text{ratio}_i A_i$
+$$\rho_{i,t} = \exp(\log \pi_\theta - \log \pi_{\text{old}}),\quad \mathrm{ratio}_i = \frac{1}{T}\sum_t \rho_{i,t}$$
+
+$$J = \frac{1}{N}\sum_i \mathrm{ratio}_i A_i$$
+
+- $A_i$ -- advantage for sample i
+- $r_i$ -- reward for sample i
+- $\mu_r$ -- mean reward
+- $\sigma_r$ -- reward standard deviation
+- $\epsilon$ -- small constant for numerical stability
+- $\rho_{i,t}$ -- importance ratio for sample i at step t
+- $\mathrm{ratio}_i$ -- sequence-level importance ratio for sample i
+- $T$ -- number of tokens or steps
+- $N$ -- number of samples
+- $\pi_\theta$ -- current policy
+- $\pi_{\text{old}}$ -- reference (old) policy
+- $J$ -- objective
 
 ## Function
 

@@ -7,8 +7,11 @@
 Adjust brightness and contrast via linear transform.
 
 ## Math
+$$x' = \alpha x + \beta$$
 
-$$x' = a x + b$$
+- $\alpha$ -- contrast scale
+- $\beta$ -- brightness offset
+- $x$ -- input pixel value
 
 ## Function
 

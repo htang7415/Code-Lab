@@ -7,8 +7,11 @@
 Track shifts in prediction mean or variance over time.
 
 ## Math
+$$\Delta \mu = |\mu_{\text{new}} - \mu_{\text{old}}|$$
 
-$$\Delta \mu = \left|\mu_{\text{new}} - \mu_{\text{old}}\right|$$
+- $\Delta \mu$ -- change in mean
+- $\mu_{\text{new}}$ -- mean of new predictions
+- $\mu_{\text{old}}$ -- mean of reference predictions
 
 ## Function
 

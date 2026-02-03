@@ -10,6 +10,9 @@ Dead ReLU and saturation reduce gradient flow.
 
 $$|\sigma'(x)| \approx 0 \quad \text{for large } |x|$$
 
+- $\sigma$ -- activation function
+- $x$ -- input (feature vector or sample)
+
 ## Function
 
 ```python

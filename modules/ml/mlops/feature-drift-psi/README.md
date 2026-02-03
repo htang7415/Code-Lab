@@ -7,8 +7,11 @@
 PSI compares expected vs actual distributions.
 
 ## Math
-
 $$\mathrm{PSI} = \sum_i (a_i - e_i) \ln\left(\frac{a_i}{e_i}\right)$$
+
+- $\mathrm{PSI}$ -- population stability index
+- $a_i$ -- actual proportion in bin $i$
+- $e_i$ -- expected proportion in bin $i$
 
 ## Function
 

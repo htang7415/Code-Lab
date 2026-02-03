@@ -10,6 +10,13 @@ Endpoint error measures flow prediction error.
 
 $$\mathrm{EPE} = \sqrt{(u-u^*)^2 + (v-v^*)^2}$$
 
+- $\mathrm{EPE}$ -- endpoint error
+- $u^*$ -- horizontal flow component (ground truth)
+- $v^*$ -- vertical flow component (ground truth)
+
+- $u$ -- horizontal flow component (prediction)
+- $v$ -- vertical flow component (prediction)
+
 ## Function
 
 ```python

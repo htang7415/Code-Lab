@@ -8,7 +8,22 @@ Sparse attention limits attention to a local window to reduce complexity.
 
 ## Math
 
-$$Mask scores outside a window so softmax only sees nearby positions.$$
+$$
+\tilde{s}_{i,j} =
+\begin{cases}
+s_{i,j}, & |i - j| \le w \\
+-\infty, & |i - j| > w
+\end{cases},
+\quad
+\alpha_{i,j} = \mathrm{softmax}(\tilde{s}_{i,j})
+$$
+
+- $s_{i,j}$ -- attention score between tokens $i$ and $j$
+- $\tilde{s}_{i,j}$ -- masked attention score
+- $\alpha_{i,j}$ -- attention weight after softmax
+- $w$ -- attention window size
+- $i$ -- token index
+- $j$ -- token index
 
 ## Function
 

@@ -10,6 +10,8 @@ Stop training when validation loss stops improving.
 
 $$t - t_{\text{best}} \ge P$$
 
+- $t$ -- timestep or iteration
+
 ## Function
 
 ```python

@@ -7,8 +7,11 @@
 A transformer block applies self-attention, a feed-forward network, and residual connections.
 
 ## Math
+$$y = x + \mathrm{Attention}(x),\quad z = y + \mathrm{FFN}(y)$$
 
-$$Block(x) = x + Attention(x); then x = x + FFN(x).$$
+- $y$ -- target/label
+- $x$ -- input (feature vector or sample)
+- $z$ -- latent or pre-activation value
 
 ## Function
 

@@ -4,6 +4,7 @@ import TableOfContents from "@/components/TableOfContents";
 import type { TocHeading } from "@/components/TableOfContents";
 import PrevNextNav from "@/components/PrevNextNav";
 import GradientDescentViz from "@/components/GradientDescentViz";
+import VectorsMatricesViz from "@/components/VectorsMatricesViz";
 import { buildNavItems, getAdjacentPages } from "@/lib/navigation";
 import type { ContentIndex } from "@/lib/content";
 import { extractModuleOrder } from "@/lib/roadmap";
@@ -14,6 +15,7 @@ type VizComponent = () => JSX.Element;
 
 const VIZ_REGISTRY: Record<string, VizComponent> = {
   "ml/fundamentals/gradient-descent": GradientDescentViz,
+  "ml/fundamentals/vectors-matrices": VectorsMatricesViz,
 };
 
 /* ── Markdown cleaning helpers ─────────────────────────── */

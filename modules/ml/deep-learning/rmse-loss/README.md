@@ -10,6 +10,9 @@ RMSE is the square root of MSE.
 
 $$\mathrm{RMSE} = \sqrt{\mathrm{MSE}}$$
 
+- $\mathrm{RMSE}$ -- root mean squared error
+- $\mathrm{MSE}$ -- mean squared error
+
 ## Function
 
 ```python

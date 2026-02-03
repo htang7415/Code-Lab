@@ -24,6 +24,14 @@ $$\mathcal{L}_D = -\log D(x) - \log(1 - D(G(z)))$$
 - $G(z)$ -- generator output given noise $z$
 - $p_z$ -- prior distribution over latent noise (typically $\mathcal{N}(0, I)$)
 
+- $\mathbb{E}$ -- expectation
+- $x$ -- input (feature vector or sample)
+- $p$ -- probability
+- $z$ -- latent variable
+- $\mathcal{L}$ -- loss function
+- $\mathcal{N}$ -- normal (Gaussian) distribution
+- $I$ -- identity matrix
+
 ## Key Points
 
 - GAN training is inherently unstable because the generator and discriminator can oscillate rather than converge to a Nash equilibrium.

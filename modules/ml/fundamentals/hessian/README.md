@@ -7,8 +7,13 @@
 Hessian is the matrix of second derivatives.
 
 ## Math
+$$H_{ij} = \frac{\partial^2 f}{\partial x_i\,\partial x_j}$$
 
-$$H_ij = ∂^2 f / ∂x_i ∂x_j$$
+- $x_i$ -- i-th input (feature vector or sample)
+- $x_j$ -- j-th input (feature vector or sample)
+- $x$ -- input (feature vector or sample)
+- $i$ -- index
+- $j$ -- index
 
 ## Function
 

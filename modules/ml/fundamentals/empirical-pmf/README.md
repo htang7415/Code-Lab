@@ -10,6 +10,11 @@ Empirical PMF estimates probability from samples.
 
 $$p(x)=count(x)/N$$
 
+- $p$ -- probability
+- $x$ -- input (feature vector or sample)
+
+- $N$ -- number of samples
+
 ## Function
 
 ```python

@@ -10,6 +10,9 @@ Hinge loss encourages a margin between correct and incorrect classes.
 
 $$L = \max(0, 1 - y \cdot \text{score})$$
 
+- $L$ -- loss value
+- $y$ -- target/label
+
 ## Function
 
 ```python

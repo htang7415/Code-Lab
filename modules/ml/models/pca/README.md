@@ -7,8 +7,11 @@
 PCA finds directions of maximum variance.
 
 ## Math
-
 $$v_1 = \arg\max_{\lVert v \rVert = 1} v^\top \Sigma v$$
+
+- $\Sigma$ -- covariance matrix
+- $v_1$ -- first principal component
+- $v$ -- direction vector
 
 ## Function
 

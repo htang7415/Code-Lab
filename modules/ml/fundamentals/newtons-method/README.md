@@ -7,8 +7,11 @@
 Newton's method uses second derivatives for faster convergence.
 
 ## Math
+$$x_{t+1} = x_t - \frac{f'(x_t)}{f''(x_t)}$$
 
-$$x = x - f'(x)/f''(x)$$
+- $x_t$ -- input (feature vector or sample) at step t
+- $x$ -- input (feature vector or sample)
+- $t$ -- timestep or iteration
 
 ## Function
 

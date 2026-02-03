@@ -7,8 +7,11 @@
 Check missing values or out-of-range features.
 
 ## Math
+$$\mathrm{missing\_rate} = \frac{\text{missing}}{N}$$
 
-$$missing_rate = missing / N$$
+- $\mathrm{missing\_rate}$ -- fraction of missing values
+- $missing$ -- missing values count
+- $N$ -- total number of samples
 
 ## Function
 

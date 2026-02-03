@@ -10,6 +10,12 @@ KL regularization keeps a policy close to a reference distribution.
 
 $$L = \beta\, \mathrm{KL}(p\|q)$$
 
+- $\mathrm{KL}$ -- Kullback-Leibler divergence
+- $\beta$ -- KL regularization weight
+- $L$ -- loss value
+- $p$ -- probability
+- $q$ -- probability distribution
+
 ## Function
 
 ```python

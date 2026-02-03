@@ -12,6 +12,10 @@ If $y = x^2$ and $z = y + 3$, then by the chain rule:
 
 $$\frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx} = 1 \cdot 2x = 2x$$
 
+- $y$ -- target/label
+- $x$ -- input (feature vector or sample)
+- $z$ -- pre-activation value
+
 ## Function
 
 ```python

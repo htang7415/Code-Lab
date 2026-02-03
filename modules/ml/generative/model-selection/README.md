@@ -29,6 +29,9 @@ $$\text{FID} = \|\mu_r - \mu_g\|^2 + \text{Tr}\!\left(\Sigma_r + \Sigma_g - 2(\S
 - $\mu_r, \Sigma_r$ -- mean and covariance of real data features
 - $\mu_g, \Sigma_g$ -- mean and covariance of generated data features
 
+- $\mathrm{FID}$ -- Fréchet Inception Distance
+- $T$ -- number of steps
+
 ## Key Points
 
 - Use GANs when sampling speed and sharpness matter most and you can invest effort in stabilizing training.

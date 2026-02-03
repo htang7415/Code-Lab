@@ -7,8 +7,13 @@
 NMS removes overlapping boxes with lower scores.
 
 ## Math
+$$b^* = \arg\max_i s_i,\quad \text{discard } b_i \text{ if } \mathrm{IoU}(b_i, b^*) > \tau$$
 
-$$Keep highest score; suppress IoU > threshold.$$
+- $b_i$ -- bounding box $i$
+- $b^*$ -- highest-scoring box
+- $s_i$ -- confidence score for box $i$
+- $\mathrm{IoU}$ -- intersection over union
+- $\tau$ -- IoU threshold
 
 ## Function
 

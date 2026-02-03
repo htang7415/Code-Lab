@@ -7,8 +7,11 @@
 Canary routes a small fraction of traffic to a new model.
 
 ## Math
+$$p_{\text{new}} = \frac{n_{\text{new}}}{n_{\text{total}}}$$
 
-$$new_pct = new / total$$
+- $total$ -- total requests or samples
+- $p$ -- probability
+- $n$ -- number of samples
 
 ## Function
 

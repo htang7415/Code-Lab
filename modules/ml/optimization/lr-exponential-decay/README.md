@@ -7,8 +7,14 @@
 Exponential decay reduces LR continuously.
 
 ## Math
+$$\eta_t = \eta_0 \exp(-k t)$$
 
-$$\text{lr}_t = \text{lr} \cdot \exp(-k t)$$
+- $\eta$ -- learning rate (step size)
+- $t$ -- timestep or iteration
+- $k$ -- index or number of neighbors
+
+- $\eta_t$ -- learning rate (step size) at step t
+- $\eta_0$ -- learning rate (step size) for 0
 
 ## Function
 

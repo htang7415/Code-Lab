@@ -10,6 +10,11 @@ PTX anchoring mixes a small amount of pretraining loss during alignment to retai
 
 $$L = (1-\alpha) L_{\text{align}} + \alpha L_{\text{ptx}}$$
 
+- $L$ -- total loss
+- $L_{\text{align}}$ -- alignment loss
+- $L_{\text{ptx}}$ -- pretraining (PTX) loss
+- $\alpha$ -- mixing weight for PTX loss
+
 ## Function
 
 ```python

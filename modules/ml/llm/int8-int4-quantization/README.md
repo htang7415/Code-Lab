@@ -7,8 +7,12 @@
 Integer quantization maps floats to a small integer range with a scale.
 
 ## Math
+$$q = \mathrm{round}(x / s),\quad \hat{x} = q \cdot s$$
 
-$$Quantize: q = round(x / s), dequantize: x̂ = q * s.$$
+- $q$ -- quantized integer value
+- $x$ -- input value
+- $s$ -- quantization scale
+- $\hat{x}$ -- dequantized value
 
 ## Function
 

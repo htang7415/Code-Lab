@@ -7,8 +7,11 @@
 Loss scaling multiplies loss to avoid underflow in mixed precision.
 
 ## Math
+$$g_{\text{scaled}} = s\,g$$
 
-$$scaled_grad = grad * scale$$
+- $g_{\text{scaled}}$ -- scaled gradient
+- $g$ -- original gradient
+- $s$ -- loss scale factor
 
 ## Function
 

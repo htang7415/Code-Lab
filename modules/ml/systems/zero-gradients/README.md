@@ -18,9 +18,13 @@ Without zeroing, the gradient at iteration $t$ incorrectly becomes:
 
 $$g_i^{(t)} = \sum_{s=1}^{t} \nabla_{\theta_i} L^{(s)}$$
 
-- $g_i$ -- gradient buffer for the $i$-th parameter
+- $g_i$ -- gradient buffer for parameter $i$
 - $P$ -- total number of learnable parameters
 - $\nabla_{\theta_i} L^{(s)}$ -- gradient contribution from iteration $s$
+- $\theta_i$ -- i-th model parameter
+- $t$ -- iteration index
+- $s$ -- iteration index
+- $L$ -- loss value
 
 ## Key Points
 

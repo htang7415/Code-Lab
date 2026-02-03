@@ -11,6 +11,9 @@ pseudo-random.
 
 $$W \sim \mathcal{N}\left(0, \frac{2}{fan_{in}}\right)$$
 
+- $\mathcal{N}$ -- normal (Gaussian) distribution
+- $W$ -- weight matrix
+
 ## Function
 
 ```python

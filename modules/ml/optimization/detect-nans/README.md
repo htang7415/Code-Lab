@@ -7,8 +7,10 @@
 Check for NaNs to catch divergence early.
 
 ## Math
+$$x 
+e x \iff \mathrm{NaN}$$
 
-$$is_nan(x) = true if x != x$$
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

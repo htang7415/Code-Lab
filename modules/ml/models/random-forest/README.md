@@ -7,8 +7,11 @@
 Random forests train many trees on bootstrap samples.
 
 ## Math
+$$n_{\text{boot}} = N$$
 
-$$Bootstrap sample size = N with replacement.$$
+- $n$ -- number of samples
+
+- $N$ -- number of samples
 
 ## Function
 

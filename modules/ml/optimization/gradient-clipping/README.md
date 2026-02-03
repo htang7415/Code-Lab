@@ -10,6 +10,8 @@ Clip gradient norm to avoid exploding gradients.
 
 $$g \leftarrow g \cdot \min\left(1, \frac{\text{clip}}{\lVert g \rVert}\right)$$
 
+- $g$ -- gradient
+
 ## Function
 
 ```python

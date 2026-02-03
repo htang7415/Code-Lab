@@ -10,6 +10,10 @@ Focal loss down-weights easy examples for imbalanced classification.
 
 $$L = -(1-p)^{\gamma} \log(p)$$
 
+- $\gamma$ -- discount factor or decay coefficient
+- $L$ -- loss value
+- $p$ -- probability
+
 ## Function
 
 ```python

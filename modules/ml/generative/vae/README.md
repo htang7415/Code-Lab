@@ -25,6 +25,20 @@ $$z = \mu + \sigma \odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)$$
 - $p(z)$ -- prior, typically $\mathcal{N}(0, I)$
 - $D_{KL}$ -- Kullback-Leibler divergence regularizing the latent distribution
 
+- $\mathrm{ELBO}$ -- evidence lower bound
+- $\mathbb{E}$ -- expectation
+- $\phi$ -- model/encoder parameters
+- $\theta$ -- model parameters
+- $q$ -- probability distribution
+- $z$ -- latent variable
+- $x$ -- input (feature vector or sample)
+- $p$ -- probability
+- $\mathcal{N}$ -- normal (Gaussian) distribution
+- $\mu$ -- mean
+- $\sigma$ -- standard deviation
+- $\epsilon$ -- noise term
+- $I$ -- identity matrix
+
 ## Key Points
 
 - The ELBO balances reconstruction quality (first term) against latent regularization (KL term); tuning the weight between them controls sample sharpness versus latent smoothness.

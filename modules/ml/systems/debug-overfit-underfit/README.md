@@ -25,6 +25,10 @@ $$L_{\text{train}} \approx L_{\text{val}} \gg L^{*} \implies \text{underfitting 
 - $L^{*}$ -- irreducible (Bayes-optimal) error
 - $\sigma^2_{\text{noise}}$ -- variance of the irreducible noise
 
+- $\mathbb{E}$ -- expectation
+- $\sigma$ -- standard deviation
+- $L$ -- loss value
+
 ## Key Points
 
 - Always overfit a single small batch first to confirm the model can memorize -- if it cannot, there is a bug before you even consider generalization.

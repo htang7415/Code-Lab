@@ -25,6 +25,13 @@ $$\tilde{\epsilon} = \epsilon_\theta(x_t) + (1 + w)\bigl(\epsilon_\theta(x_t, c)
 - $\epsilon_\theta(x_t)$ -- unconditional noise prediction (condition dropped)
 - $c$ -- conditioning signal (e.g., text embedding, class label)
 
+- $x_t$ -- noisy sample at step t
+- $\epsilon_\theta$ -- noise term parameterized by \theta
+- $\epsilon$ -- noise term
+- $\theta$ -- model parameters
+- $x$ -- input (feature vector or sample)
+- $t$ -- timestep or iteration
+
 ## Key Points
 
 - At $w = 0$ the model samples unconditionally; increasing $w$ trades diversity for stronger adherence to the conditioning signal.

@@ -7,8 +7,11 @@
 Accuracy is the fraction of correct predictions.
 
 ## Math
+$$\mathrm{Accuracy} = \frac{\text{correct}}{N}$$
 
-$$accuracy = correct / N$$
+- $Accuracy$ -- accuracy
+- $correct$ -- number of correct predictions
+- $N$ -- total number of samples
 
 ## Function
 

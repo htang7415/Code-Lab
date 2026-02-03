@@ -7,8 +7,13 @@
 A neuron computes a weighted sum plus bias, then applies an activation.
 
 ## Math
+$$y = \sigma(w^\top x + b)$$
 
-$$y = sigma(w · x + b)$$
+- $\sigma$ -- activation function
+- $y$ -- target/label
+- $w$ -- weight parameter
+- $x$ -- input (feature vector or sample)
+- $b$ -- bias term
 
 ## Function
 

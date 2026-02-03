@@ -8,7 +8,11 @@ Embeddings map discrete token ids to continuous vectors used by the model.
 
 ## Math
 
-$$Given embedding matrix \texttt{E ∈ R\^\{\}\{V×d\}}, the embedding for token \texttt{i} is \texttt{E[i]}.$$
+$$\texttt{E} \in \mathbb{R}^{V \times d},\ \text{embedding for token } i \text{ is } \texttt{E[i]}.$$
+
+- $V$ -- value matrix
+- $d$ -- dimension
+- $i$ -- index
 
 ## Function
 

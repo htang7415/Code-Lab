@@ -7,8 +7,9 @@
 Preprocessing normalizes pixel ranges for stable training.
 
 ## Math
+$$x' = \frac{x}{255}$$
 
-$$x' = x / 255$$
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

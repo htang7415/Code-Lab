@@ -7,8 +7,10 @@
 Decision trees split data to reduce impurity.
 
 ## Math
-
 $$\mathrm{Gini} = 1 - \sum_c p_c^2$$
+
+- $p_c$ -- probability for c
+- $p$ -- probability
 
 ## Function
 

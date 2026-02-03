@@ -9,10 +9,7 @@ A dataset is the full collection of samples available for training. A batch (or 
 The choice of batch size $B$ is a key hyperparameter that affects both optimization dynamics and hardware utilization. Smaller batches inject noise into gradient estimates, which can act as implicit regularization and help escape sharp minima. Larger batches give more accurate gradients and better GPU throughput, but training for too many epochs risks overfitting as the model begins to memorize the training data rather than learning general patterns.
 
 ## Math
-
-$$\text{updates per epoch} = \left\lceil \frac{N}{B} \right\rceil$$
-
-$$\text{total updates} = E \cdot \left\lceil \frac{N}{B} \right\rceil$$
+$$\text{updates/epoch} = \left\lceil \frac{N}{B} \right\rceil,\quad \text{total updates} = E \left\lceil \frac{N}{B} \right\rceil$$
 
 - $N$ -- number of samples in the dataset
 - $B$ -- batch size

@@ -7,8 +7,14 @@
 Q-learning updates state-action values toward TD targets.
 
 ## Math
+$$Q \leftarrow Q + \eta\left(r + \gamma \max_{a'} Q(s',a') - Q(s,a)\right)$$
 
-$$Q \leftarrow Q + \alpha\left(r + \gamma \max_{a'} Q' - Q\right)$$
+- $\eta$ -- learning rate (step size)
+- $\gamma$ -- discount factor
+- $Q$ -- action-value function
+- $r$ -- reward
+- $a$ -- action
+- $s$ -- state
 
 ## Function
 

@@ -5,7 +5,7 @@
 ## Concept
 
 In autoregressive language models, each token can only attend to itself and
-previous tokens. This is enforced by a **causal (lower-triangular) mask** applied
+previous tokens. This is enforced by a causal (lower-triangular) mask applied
 to the attention scores before softmax.
 
 Without the mask, token at position _i_ could "see" tokens at positions _i+1, i+2, …_,

@@ -20,13 +20,14 @@ $$g = \frac{g_{\text{scaled}}}{S}$$
 
 The master weight update remains in FP32:
 
-$$\theta_{\text{FP32}} \leftarrow \theta_{\text{FP32}} - \alpha \cdot g$$
+$$\theta_{\text{FP32}} \leftarrow \theta_{\text{FP32}} - \eta \cdot g$$
 
-- $S$ -- loss scale factor (a large constant, often dynamically adjusted)
+- $S$ -- loss scale factor
 - $L$ -- loss value
-- $g$ -- true gradient in FP32
-- $g_{\text{scaled}}$ -- gradient computed under loss scaling in FP16
-- $\alpha$ -- learning rate
+- $g$ -- gradient in FP32
+- $g_{\text{scaled}}$ -- gradient computed under loss scaling
+- $\eta$ -- learning rate
+- $\theta$ -- model parameters
 - $\theta_{\text{FP32}}$ -- master copy of weights in full precision
 
 ## Key Points

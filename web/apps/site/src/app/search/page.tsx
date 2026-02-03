@@ -121,12 +121,14 @@ function scoreEntry(entry: SearchEntry, query: string, tokens: string[]) {
   return score;
 }
 
-export default function SearchPage({
+export default async function SearchPage({
   searchParams,
 }: {
-  searchParams?: { q?: string | string[] };
+  searchParams?: Promise<{ q?: string | string[] }>;
 }) {
-  const raw = typeof searchParams?.q === "string" ? searchParams.q : "";
+  const resolvedSearchParams = await searchParams;
+  const raw =
+    typeof resolvedSearchParams?.q === "string" ? resolvedSearchParams.q : "";
   const query = normalizeQuery(raw);
   const cleanedTokens = tokenize(raw);
   const tokens =

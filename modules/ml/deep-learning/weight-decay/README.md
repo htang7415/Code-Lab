@@ -8,7 +8,12 @@ Weight decay shrinks weights during optimization, decoupled in AdamW.
 
 ## Math
 
-$$w \leftarrow w - \text{lr}\left(g + \lambda w\right)$$
+$$w \leftarrow w - \eta\left(g + \lambda w\right)$$
+
+- $\eta$ -- learning rate (step size)
+- $\lambda$ -- regularization strength or weighting coefficient
+- $w$ -- weight parameter
+- $g$ -- gradient
 
 ## Function
 

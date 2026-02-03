@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const REVEAL_SELECTOR =
-  ".track-section, .topic-list-item, .concept-section, .search-result-card, .prev-next-link, .home-feature-card, .home-viz, .home-metric, .home-lab-card, .home-share-card, .home-share-item, .visuals-card, .visuals-hero";
+  ".topic-list-item, .concept-section, .search-result-card, .prev-next-link, .home-viz, .home-lab-card, .home-track-card, .home-dashboard, .home-insight-card, .visuals-card, .visuals-hero";
 
 const PARALLAX_SELECTOR = "[data-parallax]";
 

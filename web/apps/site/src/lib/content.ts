@@ -6,7 +6,6 @@ export interface Track {
   accentVar: string;
   topicCount: number;
   moduleCount: number;
-  problemCount: number;
 }
 
 export interface Topic {
@@ -17,7 +16,6 @@ export interface Topic {
   hasDoc: boolean;
   docCount: number;
   moduleCount: number;
-  problemCount: number;
 }
 
 export interface ModuleSource {
@@ -37,20 +35,6 @@ export interface ModuleEntry {
   sources: ModuleSource[];
 }
 
-export interface ProblemEntry {
-  id: string;
-  slug: string;
-  title: string;
-  track: string;
-  topic: string;
-  difficulty: string;
-  tags: string[];
-  languages: string[];
-  path: string;
-  summary?: string;
-  statement: string;
-}
-
 export interface DocEntry {
   track: string;
   topic: string;
@@ -66,6 +50,5 @@ export interface ContentIndex {
   tracks: Track[];
   topics: Topic[];
   modules: ModuleEntry[];
-  problems: ProblemEntry[];
   docs: DocEntry[];
 }

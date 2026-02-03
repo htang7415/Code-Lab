@@ -7,8 +7,12 @@
 Gradient descent updates parameters along negative gradient.
 
 ## Math
+$$x_{t+1} = x_t - \eta\,\nabla f(x_t)$$
 
-$$x = x - lr * grad$$
+- $\eta$ -- learning rate (step size)
+- $x_t$ -- input (feature vector or sample) at step t
+- $x$ -- input (feature vector or sample)
+- $t$ -- timestep or iteration
 
 ## Function
 

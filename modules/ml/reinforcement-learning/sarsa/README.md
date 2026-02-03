@@ -7,8 +7,14 @@
 SARSA uses the next action actually taken for updates.
 
 ## Math
+$$Q \leftarrow Q + \eta\left(r + \gamma Q(s',a') - Q(s,a)\right)$$
 
-$$Q \leftarrow Q + \alpha\left(r + \gamma Q' - Q\right)$$
+- $\eta$ -- learning rate (step size)
+- $\gamma$ -- discount factor
+- $Q$ -- action-value function
+- $r$ -- reward
+- $s$ -- state
+- $a$ -- action
 
 ## Function
 

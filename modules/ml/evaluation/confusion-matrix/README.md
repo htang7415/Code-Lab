@@ -7,8 +7,12 @@
 Confusion matrix counts TP, FP, FN, TN.
 
 ## Math
+$$\begin{bmatrix}\mathrm{TN} & \mathrm{FP} \\ \mathrm{FN} & \mathrm{TP}\end{bmatrix}$$
 
-$$[[TN, FP],[FN, TP]]$$
+- $\mathrm{TN}$ -- true negatives
+- $\mathrm{FP}$ -- false positives
+- $\mathrm{FN}$ -- false negatives
+- $\mathrm{TP}$ -- true positives
 
 ## Function
 

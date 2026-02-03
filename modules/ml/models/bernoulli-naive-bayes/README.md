@@ -7,8 +7,14 @@
 Bernoulli NB models binary features per class.
 
 ## Math
+$$p(x\mid y)=\prod_i p_i^{x_i}(1-p_i)^{1-x_i}$$
 
-$$p(x|y)=∏ p_i^{x_i} (1-p_i)^{1-x_i}$$
+- $p_i$ -- i-th probability
+- $x_i$ -- i-th input (feature vector or sample)
+- $p$ -- probability
+- $x$ -- input (feature vector or sample)
+- $y$ -- target/label
+- $i$ -- index
 
 ## Function
 

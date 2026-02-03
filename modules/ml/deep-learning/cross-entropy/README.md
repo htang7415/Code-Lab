@@ -10,6 +10,8 @@ Cross-entropy compares a predicted distribution to a target class.
 
 $$L = -\log\left(\mathrm{softmax}(\text{logits})_{\text{target}}\right)$$
 
+- $L$ -- loss value
+
 ## Function
 
 ```python

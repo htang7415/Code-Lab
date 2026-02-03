@@ -7,8 +7,11 @@
 DBSCAN groups points by density using eps-neighborhoods.
 
 ## Math
+$$\mathcal{N}_arepsilon(x) = \{y \mid \mathrm{dist}(x,y) \le arepsilon\}$$
 
-$$\mathrm{neighbors}(x) = \{y \mid \mathrm{dist}(x,y) \le \varepsilon\}$$
+- $\mathcal{N}$ -- normal (Gaussian) distribution
+- $x$ -- input (feature vector or sample)
+- $y$ -- target/label
 
 ## Function
 

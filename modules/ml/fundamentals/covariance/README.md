@@ -10,6 +10,14 @@ Covariance measures how two variables vary together.
 
 $$\mathrm{cov}(X,Y)=\mathbb{E}[(X-\mu_X)(Y-\mu_Y)]$$
 
+- $\mathbb{E}$ -- expectation
+- $\mu$ -- mean
+- $X$ -- data matrix
+- $Y$ -- target matrix
+
+- $\mu_X$ -- mean for X
+- $\mu_Y$ -- mean for Y
+
 ## Function
 
 ```python

@@ -7,8 +7,11 @@
 Batch requests to improve throughput.
 
 ## Math
+$$\text{batches} = \left\lceil \frac{n}{\text{batch\_size}} \right\rceil$$
 
-$$batches = ceil(n / batch_size)$$
+- $batches$ -- number of batches
+- $n$ -- number of requests
+- $\mathrm{batch\_size}$ -- requests per batch
 
 ## Function
 

@@ -9,16 +9,10 @@ A stratified split divides a dataset into subsets (e.g., train and test) while p
 This technique is especially critical for imbalanced datasets where some classes contain only a handful of samples. Without stratification, a small test set might contain zero examples of a minority class, making it impossible to evaluate performance on that class. Scikit-learn's `train_test_split` supports stratification directly through the `stratify` parameter.
 
 ## Math
+$$\frac{|S_c^{\text{train}}|}{|S_c|} \approx f,\quad \frac{|S_c^{\text{test}}|}{|S_c|} \approx 1-f$$
 
-For each class $c$ with a train fraction $f$:
-
-$$\frac{|S_c^{\text{train}}|}{|S_c|} \approx f$$
-
-$$\frac{|S_c^{\text{test}}|}{|S_c|} \approx 1 - f$$
-
-- $S_c$ -- set of all indices belonging to class $c$
-- $S_c^{\text{train}}$ -- subset of class-$c$ indices assigned to the training set
-- $f$ -- desired fraction of data allocated to training
+- $S_c$ -- samples belonging to class c
+- $f$ -- train split fraction
 
 ## Key Points
 

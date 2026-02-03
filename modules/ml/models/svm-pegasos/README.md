@@ -11,10 +11,16 @@ Pegasos is a stochastic subgradient method for SVMs.
 $$
 w \leftarrow
 \begin{cases}
-(1-\text{lr}\,\lambda)w + \text{lr}\, y x, & y(w^\top x) < 1 \\
-(1-\text{lr}\,\lambda)w, & \text{otherwise}
+(1-\eta\,\lambda)w + \eta\, y x, & y(w^\top x) < 1 \\
+(1-\eta\,\lambda)w, & \text{otherwise}
 \end{cases}
 $$
+
+- $\eta$ -- learning rate (step size)
+- $\lambda$ -- regularization strength or weighting coefficient
+- $w$ -- weight parameter
+- $y$ -- target/label
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

@@ -7,8 +7,11 @@
 A/B testing compares conversion rates between variants.
 
 ## Math
+$$\mathrm{rate} = \frac{\text{conversions}}{\text{trials}}$$
 
-$$rate = conversions / trials$$
+- $rate$ -- conversion rate
+- $conversions$ -- number of conversions
+- $trials$ -- number of trials
 
 ## Function
 

@@ -7,8 +7,10 @@
 Precision measures correctness of positive predictions; recall measures coverage.
 
 ## Math
+$$\mathrm{Precision} = \frac{TP}{TP+FP},\quad \mathrm{Recall} = \frac{TP}{TP+FN}$$
 
-$$precision=TP/(TP+FP), recall=TP/(TP+FN)$$
+- $Precision$ -- precision
+- $Recall$ -- recall
 
 ## Function
 

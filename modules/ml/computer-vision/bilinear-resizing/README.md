@@ -10,6 +10,15 @@ Bilinear interpolation blends four neighbors.
 
 $$f(x,y) = \sum_{i,j} w_{ij} v_{ij}$$
 
+- $w_ij$ -- weight parameter for ij
+- $v_ij$ -- vertical flow component for ij
+- $x$ -- input (feature vector or sample)
+- $y$ -- target/label
+- $i$ -- index
+- $j$ -- index
+- $w$ -- weight parameter
+- $v$ -- vertical flow component
+
 ## Function
 
 ```python

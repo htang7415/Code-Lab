@@ -1,13 +1,13 @@
 # Code Lab — Web
 
-A Next.js TypeScript website for browsing Code Lab problems.
+A Next.js TypeScript website for browsing Code Lab modules and docs.
 
 ## Structure
 
 ```
 web/
   apps/site/              # Next.js App Router site
-  packages/content-indexer/ # Scans problems/ to generate an index JSON
+  packages/content-indexer/ # Scans modules/ and docs/ to generate index JSON
 ```
 
 ## Local development
@@ -15,7 +15,7 @@ web/
 ```bash
 cd web
 pnpm install
-pnpm index    # generate problems_index.json from ../problems/
+pnpm index    # generate content_index.json + search_index.json
 pnpm dev      # start Next.js dev server
 ```
 

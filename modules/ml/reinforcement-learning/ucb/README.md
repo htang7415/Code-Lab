@@ -7,8 +7,14 @@
 Upper Confidence Bound balances mean reward and uncertainty.
 
 ## Math
+$$\mathrm{UCB}_t = Q_t + c\sqrt{\frac{\ln t}{N_t}}$$
 
-$$\mathrm{UCB} = Q + c \sqrt{\frac{\ln t}{N}}$$
+- $Q_t$ -- action-value function at step t
+- $t$ -- timestep or iteration
+- $Q$ -- action-value function
+
+- $N_t$ -- number of samples at step t
+- $N$ -- number of samples
 
 ## Function
 

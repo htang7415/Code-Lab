@@ -7,8 +7,15 @@
 Repeated multiplication by small or large values shrinks or blows up gradients.
 
 ## Math
+$$g_L = g_0 \prod_i w_i$$
 
-$$g_L = g_0 * Π w_i$$
+- $g_L$ -- gradient for L
+- $g_0$ -- initial gradient
+- $w_i$ -- i-th weight parameter
+- $g$ -- gradient
+- $L$ -- loss value
+- $i$ -- index
+- $w$ -- weight parameter
 
 ## Function
 

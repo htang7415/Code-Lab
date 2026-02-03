@@ -7,8 +7,15 @@
 K-Means assigns points to nearest centroid.
 
 ## Math
-
 $$c_i = \arg\min_j \lVert x_i - \mu_j \rVert$$
+
+- $\mu$ -- mean
+- $x_i$ -- i-th input (feature vector or sample)
+- $i$ -- index
+- $j$ -- index
+- $x$ -- input (feature vector or sample)
+
+- $\mu_j$ -- j-th mean
 
 ## Function
 

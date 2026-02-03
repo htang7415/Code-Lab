@@ -10,6 +10,12 @@ Markov chains evolve distributions via transition matrices.
 
 $$p_{t+1} = p_t T$$
 
+- $p_t$ -- probability at step t
+- $p$ -- probability
+- $t$ -- timestep or iteration
+
+- $T$ -- number of steps
+
 ## Function
 
 ```python

@@ -10,6 +10,10 @@ A probability distribution assigns probabilities to outcomes.
 
 $$\sum_i p_i = 1$$
 
+- $p_i$ -- i-th probability
+- $i$ -- index
+- $p$ -- probability
+
 ## Function
 
 ```python

@@ -24,6 +24,12 @@ $$h^{(l)} = \sigma^{(l)}\!\left(W^{(l)} h^{(l-1)} + b^{(l)}\right), \quad l = 1,
 - $\sigma^{(l)}$ -- activation function at layer $l$ (e.g., ReLU, sigmoid)
 - $h^{(l)}$ -- hidden representation (activation) at layer $l$
 
+- $W$ -- weight matrix
+- $b$ -- bias term
+- $\sigma$ -- sigmoid (logistic) function
+- $h$ -- hidden representation
+- $N$ -- number of samples
+
 ## Key Points
 
 - Intermediate activations must be stored during training for use in the backward pass, which is why training consumes more memory than inference.

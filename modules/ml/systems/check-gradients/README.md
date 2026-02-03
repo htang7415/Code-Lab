@@ -23,6 +23,10 @@ $$e = \frac{\|g - g_{\text{approx}}\|}{\|g\| + \|g_{\text{approx}}\| + \delta}$$
 - $g_{\text{approx}}$ -- numerical finite-difference gradient
 - $\delta$ -- small constant to avoid division by zero
 
+- $\theta_i$ -- i-th model parameters
+- $\theta$ -- model parameters
+- $i$ -- index
+
 ## Key Points
 
 - Use gradient checking only for debugging, never during training -- it is orders of magnitude slower than backpropagation.

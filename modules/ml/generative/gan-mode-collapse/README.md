@@ -20,9 +20,16 @@ Mode collapse occurs when $G$ maps diverse inputs to few outputs. A diversity me
 
 $$\text{diversity} = \frac{1}{N}\sum_{i=1}^{N}(s_i - \bar{s})^2$$
 
-- $s_i$ -- the $i$-th generated sample
-- $\bar{s}$ -- mean of the generated samples
-- $N$ -- number of samples in the evaluation batch
+- $V(D, G)$ -- GAN value function
+- $D$ -- discriminator
+- $G$ -- generator
+- $p_{\text{data}}$ -- data distribution
+- $p_z$ -- noise prior distribution
+- $x$ -- real data sample
+- $z$ -- noise sample
+- $s_i$ -- i-th generated sample
+- $\bar{s}$ -- mean of generated samples
+- $N$ -- number of samples
 
 ## Key Points
 

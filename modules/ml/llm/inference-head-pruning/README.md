@@ -7,8 +7,9 @@
 Head pruning removes less useful attention heads to reduce compute at inference.
 
 ## Math
+$$W' = W[:, \mathcal{H}]$$
 
-$$\text{Prune by slicing head blocks from weight matrices.}$$
+- $W$ -- weight matrix
 
 ## Function
 

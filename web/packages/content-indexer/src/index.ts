@@ -5,28 +5,10 @@ import {
   writeFileSync,
   mkdirSync,
   statSync,
-  existsSync,
 } from "fs";
 import { glob } from "glob";
 import { resolve, dirname, relative, basename, extname } from "path";
 import { fileURLToPath } from "url";
-
-interface ProblemMeta {
-  id: string;
-  slug: string;
-  title: string;
-  track: string;
-  topic: string;
-  difficulty: string;
-  tags: string[];
-  languages: string[];
-}
-
-interface ProblemIndexEntry extends ProblemMeta {
-  path: string;
-  summary?: string;
-  statement: string;
-}
 
 interface ModuleSource {
   path: string;
@@ -76,7 +58,6 @@ interface TopicIndexEntry {
   hasDoc: boolean;
   docCount: number;
   moduleCount: number;
-  problemCount: number;
 }
 
 interface TrackIndexEntry {
@@ -87,7 +68,6 @@ interface TrackIndexEntry {
   accentVar: string;
   topicCount: number;
   moduleCount: number;
-  problemCount: number;
 }
 
 interface ContentIndex {
@@ -95,7 +75,6 @@ interface ContentIndex {
   tracks: TrackIndexEntry[];
   topics: TopicIndexEntry[];
   modules: ModuleIndexEntry[];
-  problems: ProblemIndexEntry[];
   docs: DocIndexEntry[];
 }
 
@@ -104,7 +83,7 @@ interface SearchIndex {
   entries: SearchEntry[];
 }
 
-const TRACKS: Array<Omit<TrackIndexEntry, "topicCount" | "moduleCount" | "problemCount">> = [
+const TRACKS: Array<Omit<TrackIndexEntry, "topicCount" | "moduleCount">> = [
   {
     id: "dsa",
     name: "Data Structures & Algorithms",
@@ -232,16 +211,10 @@ async function main() {
   const __dirname = dirname(__filename);
   const repoRoot = resolve(__dirname, "../../../../");
 
-  const problemsPattern = "problems/**/meta.json";
   const modulesPattern = "modules/**/README.md";
   const docsPattern = "docs/**/*.md";
   const topicsPattern = "docs/*/*";
 
-  const metaFiles = await glob(problemsPattern, {
-    cwd: repoRoot,
-    absolute: true,
-    nodir: true,
-  });
   const moduleFiles = await glob(modulesPattern, {
     cwd: repoRoot,
     absolute: true,
@@ -257,31 +230,8 @@ async function main() {
     absolute: true,
   })).filter(isDirectory);
 
-  const problems: ProblemIndexEntry[] = [];
   const modules: ModuleIndexEntry[] = [];
   const docs: DocIndexEntry[] = [];
-
-  for (const filePath of metaFiles.sort()) {
-    try {
-      const raw = readFileSync(filePath, "utf-8");
-      const meta: ProblemMeta = JSON.parse(raw);
-      const problemDir = dirname(filePath);
-      const problemPath = relative(repoRoot, problemDir);
-      const statementPath = resolve(problemDir, "problem.md");
-      const statement = existsSync(statementPath)
-        ? readFileSync(statementPath, "utf-8")
-        : "";
-      const summary = statement ? extractSummary(statement) : undefined;
-      problems.push({
-        ...meta,
-        path: problemPath,
-        summary,
-        statement,
-      });
-    } catch (err) {
-      console.error(`Warning: could not parse ${filePath}:`, err);
-    }
-  }
 
   for (const filePath of moduleFiles.sort()) {
     try {
@@ -379,11 +329,6 @@ async function main() {
     const key = `${module.track}/${module.topic}`;
     moduleCountByTopic.set(key, (moduleCountByTopic.get(key) ?? 0) + 1);
   }
-  const problemCountByTopic = new Map<string, number>();
-  for (const problem of problems) {
-    const key = `${problem.track}/${problem.topic}`;
-    problemCountByTopic.set(key, (problemCountByTopic.get(key) ?? 0) + 1);
-  }
 
   const trackNameById = new Map(TRACKS.map((track) => [track.id, track.name]));
   const searchEntries: SearchEntry[] = [];
@@ -429,7 +374,6 @@ async function main() {
       const key = `${track}/${topic}`;
       const docCount = docCountByTopic.get(key) ?? 0;
       const moduleCount = moduleCountByTopic.get(key) ?? 0;
-      const problemCount = problemCountByTopic.get(key) ?? 0;
       return {
         track,
         topic,
@@ -438,7 +382,6 @@ async function main() {
         hasDoc: docCount > 0,
         docCount,
         moduleCount,
-        problemCount,
       };
     })
     .filter((topic) => Boolean(topic.track) && Boolean(topic.topic))
@@ -447,12 +390,10 @@ async function main() {
   const tracks: TrackIndexEntry[] = TRACKS.map((track) => {
     const topicCount = topics.filter((topic) => topic.track === track.id).length;
     const moduleCount = modules.filter((module) => module.track === track.id).length;
-    const problemCount = problems.filter((problem) => problem.track === track.id).length;
     return {
       ...track,
       topicCount,
       moduleCount,
-      problemCount,
     };
   });
 
@@ -465,19 +406,11 @@ async function main() {
     tracks,
     topics,
     modules,
-    problems,
     docs,
   };
 
   const contentPath = resolve(outDir, "content_index.json");
   writeFileSync(contentPath, JSON.stringify(contentIndex, null, 2) + "\n");
-
-  const problemsIndex = {
-    generated_at: generatedAt,
-    problems,
-  };
-  const problemsPath = resolve(outDir, "problems_index.json");
-  writeFileSync(problemsPath, JSON.stringify(problemsIndex, null, 2) + "\n");
 
   const searchIndex: SearchIndex = {
     generated_at: generatedAt,
@@ -488,9 +421,7 @@ async function main() {
   const searchPath = resolve(outDir, "search_index.json");
   writeFileSync(searchPath, JSON.stringify(searchIndex, null, 2) + "\n");
 
-  console.log(
-    `Indexed ${problems.length} problem(s), ${modules.length} module(s), ${docs.length} doc(s)`
-  );
+  console.log(`Indexed ${modules.length} module(s), ${docs.length} doc(s)`);
 }
 
 main().catch((err) => {

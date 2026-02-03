@@ -9,17 +9,11 @@ A three-way split partitions data into training, validation, and test sets, each
 Using the test set for tuning leaks information about the test distribution into the model selection process, producing optimistic performance estimates that fail to generalize. The validation set acts as a proxy for unseen data during development: you train multiple model configurations, evaluate each on the validation set, select the best, and only then report its performance on the held-out test set. The test set should ideally be touched only once.
 
 ## Math
+$$n_{\text{train}} = \lfloor N f_{\text{train}} \rfloor,\quad n_{\text{val}} = \lfloor N f_{\text{val}} \rfloor,\quad n_{\text{test}} = N - n_{\text{train}} - n_{\text{val}}$$
 
-$$n_{\text{train}} = \lfloor N \cdot f_{\text{train}} \rfloor$$
-
-$$n_{\text{val}} = \lfloor N \cdot f_{\text{val}} \rfloor$$
-
-$$n_{\text{test}} = N - n_{\text{train}} - n_{\text{val}}$$
-
-- $N$ -- total number of samples
-- $f_{\text{train}}$ -- fraction allocated to training (commonly $0.6$ -- $0.8$)
-- $f_{\text{val}}$ -- fraction allocated to validation (commonly $0.1$ -- $0.2$)
-- $n_{\text{train}}, n_{\text{val}}, n_{\text{test}}$ -- resulting partition sizes
+- $n$ -- number of samples
+- $N$ -- number of samples in the dataset
+- $f$ -- train split fraction
 
 ## Key Points
 

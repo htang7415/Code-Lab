@@ -7,8 +7,11 @@
 SLA metrics track latency or error thresholds.
 
 ## Math
+$$\mathrm{violation\_rate} = \frac{\text{violations}}{\text{total}}$$
 
-$$violation_rate = violations / total$$
+- $\mathrm{violation\_rate}$ -- fraction of SLA violations
+- $violations$ -- number of SLA violations
+- $total$ -- total requests or samples
 
 ## Function
 

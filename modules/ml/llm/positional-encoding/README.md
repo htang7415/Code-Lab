@@ -8,7 +8,13 @@ Positional encodings add order information to token embeddings.
 
 ## Math
 
-$$Sinusoidal: \texttt{PE[pos,2i]=sin(pos/10000\^\{\}\{2i/d\})}, \texttt{PE[pos,2i+1]=cos(pos/10000\^\{\}\{2i/d\})}.$$
+$$
+\mathrm{PE}[pos,2i] = \sin\left(\frac{pos}{10000^{2i/d}}\right),\quad
+\mathrm{PE}[pos,2i+1] = \cos\left(\frac{pos}{10000^{2i/d}}\right).
+$$
+
+- $i$ -- index
+- $d$ -- dimension
 
 ## Function
 

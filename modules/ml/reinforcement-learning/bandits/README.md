@@ -7,8 +7,16 @@
 Bandits estimate action values from rewards.
 
 ## Math
+$$Q_{t+1} = Q_t + \frac{1}{N_t}(r_t - Q_t)$$
 
-$$Q <- Q + (1/N)(r - Q)$$
+- $Q_t$ -- action-value function at step t
+- $r_t$ -- reward at step t
+- $Q$ -- action-value function
+- $t$ -- timestep or iteration
+- $r$ -- reward
+
+- $N_t$ -- number of samples at step t
+- $N$ -- number of samples
 
 ## Function
 

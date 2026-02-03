@@ -7,8 +7,12 @@
 Initialization affects gradient variance as it propagates through layers.
 
 ## Math
+$$\mathrm{Var}(g_l) \approx \mathrm{Var}(g_{l+1}) \cdot \mathrm{Var}(W_l)$$
 
-$$Var(g_{l}) ≈ Var(g_{l+1}) * Var(W_l)$$
+- $g_l$ -- gradient for l
+- $W_l$ -- weight matrix for l
+- $g$ -- gradient
+- $W$ -- weight matrix
 
 ## Function
 

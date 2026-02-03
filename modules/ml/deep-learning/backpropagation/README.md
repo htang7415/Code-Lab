@@ -7,8 +7,11 @@
 Backprop computes gradients using the chain rule from output to inputs.
 
 ## Math
+$$\frac{\partial L}{\partial w} = \frac{\partial L}{\partial z} \cdot x$$
 
-$$For z = w x, dL/dw = dL/dz * x.$$
+- $w$ -- weight parameter
+- $z$ -- pre-activation value
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

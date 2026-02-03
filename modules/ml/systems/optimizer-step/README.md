@@ -12,24 +12,26 @@ The optimizer step is always called after the backward pass has populated the gr
 
 The basic SGD parameter update rule is:
 
-$$\theta \leftarrow \theta - \alpha \cdot g$$
+$$\theta \leftarrow \theta - \eta \cdot g$$
 
 With momentum $\beta$, the update becomes:
 
 $$v \leftarrow \beta \cdot v + g$$
 
-$$\theta \leftarrow \theta - \alpha \cdot v$$
+$$\theta \leftarrow \theta - \eta \cdot v$$
 
 - $\theta$ -- model parameter (weight or bias)
-- $\alpha$ -- learning rate (step size)
+- $\eta$ -- learning rate (step size)
 - $g$ -- gradient $\nabla_\theta L$ of the loss with respect to $\theta$
 - $v$ -- velocity (momentum buffer)
 - $\beta$ -- momentum coefficient, typically $0.9$
 
+- $L$ -- loss value
+
 ## Key Points
 
 - The optimizer step must be called after the backward pass and before zeroing the gradients for the next iteration.
-- The learning rate $\alpha$ controls the step size: too large causes divergence, too small causes slow convergence.
+- The learning rate $\eta$ controls the step size: too large causes divergence, too small causes slow convergence.
 - Advanced optimizers (Adam, AdaGrad, RMSProp) maintain per-parameter adaptive learning rates using gradient statistics.
 - Gradient clipping is often applied before the optimizer step to prevent excessively large updates from destabilizing training.
 
@@ -41,7 +43,7 @@ def step(w: float, grad: float, lr: float) -> float:
 
 - `w` -- current parameter value $\theta$
 - `grad` -- gradient of the loss with respect to `w`
-- `lr` -- learning rate $\alpha$
+- `lr` -- learning rate $\eta$
 
 ## Run tests
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Run pytest for one module or problem
+# Run pytest for one module
 # Usage: ./scripts/run_py.sh <path-to-python-dir>
 # Example: ./scripts/run_py.sh modules/dsa/arrays/prefix-sum/python
 

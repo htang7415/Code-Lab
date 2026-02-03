@@ -7,8 +7,13 @@
 Mixture-of-Experts routes tokens to top-k experts based on gating scores.
 
 ## Math
+$$y = \sum_{i \in \mathcal{K}} g_i f_i(x),\quad \mathcal{K} = \mathrm{TopK}(g)$$
 
-$$Select top-k gates g_i; output = sum(g_i * expert_i).$$
+- $g_i$ -- i-th gradient
+- $y$ -- target/label
+- $i$ -- index
+- $g$ -- gradient
+- $x$ -- input (feature vector or sample)
 
 ## Function
 

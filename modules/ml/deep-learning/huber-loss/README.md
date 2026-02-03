@@ -16,6 +16,8 @@ L =
 \end{cases}
 $$
 
+- $L$ -- loss value
+
 ## Function
 
 ```python

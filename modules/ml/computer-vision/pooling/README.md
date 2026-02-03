@@ -15,6 +15,11 @@ y_{\text{avg}} &= \frac{1}{|\mathcal{W}|}\sum_{i \in \mathcal{W}} x_i
 \end{aligned}
 $$
 
+- $x_i$ -- i-th input (feature vector or sample)
+- $y$ -- target/label
+- $i$ -- index
+- $x$ -- input (feature vector or sample)
+
 ## Function
 
 ```python

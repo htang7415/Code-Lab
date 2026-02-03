@@ -7,8 +7,13 @@
 Jacobian contains partial derivatives of vector-valued functions.
 
 ## Math
+$$J_{ij} = \frac{\partial f_i}{\partial x_j}$$
 
-$$J_ij = ∂f_i/∂x_j$$
+- $J_ij$ -- objective for ij
+- $x_j$ -- j-th input (feature vector or sample)
+- $J$ -- objective
+- $x$ -- input (feature vector or sample)
+- $j$ -- index
 
 ## Function
 

@@ -7,8 +7,13 @@
 Step decay drops LR by a factor every k steps.
 
 ## Math
+$$\eta_t = \eta_0 \gamma^{\lfloor t/s \rfloor}$$
 
-$$\text{lr}_t = \text{lr} \cdot \gamma^{\lfloor t / \text{step} \rfloor}$$
+- $\eta_t$ -- learning rate at step $t$
+- $\eta_0$ -- initial learning rate
+- $\gamma$ -- decay factor
+- $t$ -- timestep
+- $s$ -- step interval for decay
 
 ## Function
 

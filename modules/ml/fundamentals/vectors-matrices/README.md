@@ -10,6 +10,11 @@ Vectors and matrices represent data and linear transforms.
 
 $$y = A x$$
 
+- $y$ -- target/label
+- $x$ -- input (feature vector or sample)
+
+- $A$ -- matrix
+
 ## Function
 
 ```python

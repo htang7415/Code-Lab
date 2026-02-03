@@ -7,8 +7,11 @@
 Lower-precision formats trade accuracy for speed and memory.
 
 ## Math
+$$x_q = \mathrm{round}(x / s) \cdot s$$
 
-$$\text{Quantize a float by rounding mantissa bits (demo).}$$
+- $x$ -- input value
+- $x_q$ -- quantized value
+- $s$ -- quantization scale
 
 ## Function
 

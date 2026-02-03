@@ -24,9 +24,22 @@ The simplified training loss is:
 
 $$\mathcal{L} = \mathbb{E}_{t, x_0, \epsilon}\!\left[\|\epsilon - \epsilon_\theta(x_t, t)\|^2\right]$$
 
+- $x_0$ -- clean (original) sample
+- $x_t$ -- noisy sample at step $t$
+- $x_{t-1}$ -- noisy sample at step $t-1$
+- $x_T$ -- pure noise sample at step $T$
 - $\beta_t$ -- noise variance at step $t$
-- $\bar{\alpha}_t = \prod_{s=1}^{t}(1 - \beta_s)$ -- cumulative signal retention
-- $\epsilon_\theta$ -- neural network predicting the noise component
+- $\beta_s$ -- noise variance at step $s$
+- $\bar{\alpha}_t$ -- cumulative product term at step $t$
+- $\epsilon$ -- Gaussian noise sample
+- $\epsilon_\theta$ -- noise predictor network
+- $q$ -- forward noising distribution
+- $\mathbb{E}$ -- expectation
+- $\mathcal{N}$ -- normal (Gaussian) distribution
+- $\mathcal{L}$ -- training loss
+- $I$ -- identity matrix
+- $t$ -- timestep
+- $s$ -- step index in the product
 
 ## Key Points
 

@@ -7,8 +7,14 @@
 An MDP defines states, actions, transitions, and rewards.
 
 ## Math
+$$P(s'\mid s,a) = \Pr(S_{t+1}=s'\mid S_t=s, A_t=a)$$
 
-$$\text{P(s'|s,a) defines transition probabilities.}$$
+- $s$ -- state
+- $a$ -- action
+- $t$ -- timestep or iteration
+
+- $A_t$ -- advantage estimate at step t
+- $A$ -- advantage estimate
 
 ## Function
 

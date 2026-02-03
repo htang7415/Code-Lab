@@ -7,14 +7,13 @@ Code Lab is a learning-first repo with:
 - `web/`   : TypeScript Next.js site that renders repo content (Vercel deploy)
 
 ## Non-negotiable workflow
-- **Run tests one module/problem at a time.** Do NOT default to “run all tests”.
+- **Run tests one module at a time.** Do NOT default to “run all tests”.
 - Prefer **small, incremental edits** and keep everything easy to learn.
 - Keep **structure and naming consistent** so content can be indexed for the website.
 
 ## Folder conventions
 - Folder names: **kebab-case** (e.g., `prefix-sum`, `attention-causal`)
 - Python files: **snake_case.py**
-- Each problem must include `meta.json` + `problem.md`.
 
 ### Module layout
 ```
@@ -52,20 +51,6 @@ pnpm --filter @codelab/site dev
 ### Add a module (concept lab)
 - Goal: teach **one** idea (short README + minimal code + tiny test).
 - Use the repo template/script if available, otherwise copy an existing module and rename.
-
-#### Required `meta.json` keys
-```json
-{
-  "id": "dsa-arrays-two-sum",
-  "slug": "two-sum",
-  "title": "Two Sum",
-  "track": "dsa",
-  "topic": "arrays",
-  "difficulty": "easy",
-  "tags": ["hashmap"],
-  "languages": ["python", "rust"]
-}
-```
 
 ## Website sync rule
 - The website should NOT duplicate source content.
