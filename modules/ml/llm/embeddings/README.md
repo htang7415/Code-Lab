@@ -5,6 +5,7 @@
 ## Concept
 
 Embeddings map discrete token ids to continuous vectors used by the model.
+For sentence-level representations, token vectors are often pooled (e.g., mean pooling).
 
 ## Math
 

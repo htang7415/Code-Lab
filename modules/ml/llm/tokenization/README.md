@@ -5,6 +5,7 @@
 ## Concept
 
 Tokenization maps raw text into discrete tokens that a model can embed.
+This demo uses a simple whitespace split; real tokenizers may use regex or BPE.
 
 ## Math
 

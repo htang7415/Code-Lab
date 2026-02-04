@@ -5,6 +5,7 @@
 ## Concept
 
 Positional encodings add order information to token embeddings.
+To build a full table, compute this vector for each position.
 
 ## Math
 
