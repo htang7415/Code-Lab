@@ -4,13 +4,10 @@
 
 ## Concept
 
-VGGNet is a classic CNN architecture with characteristic layer design.
+VGGNet stacks many small 3×3 convolutions with max-pooling for depth and simplicity.
 
 ## Math
-$$f(x) = f_L \circ f_{L-1} \circ \cdots \circ f_1(x)$$
-
-- $x$ -- input (feature vector or sample)
-- $L$ -- loss value
+Two 3×3 convolutions approximate a single 5×5 receptive field.
 
 ## Function
 

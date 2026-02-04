@@ -4,13 +4,10 @@
 
 ## Concept
 
-AlexNet is a classic CNN architecture with characteristic layer design.
+AlexNet popularized deep CNNs with ReLU activations, max-pooling, and dropout.
 
 ## Math
-$$f(x) = f_L \circ f_{L-1} \circ \cdots \circ f_1(x)$$
-
-- $x$ -- input (feature vector or sample)
-- $L$ -- loss value
+$$\text{ReLU}(x) = \max(0, x)$$
 
 ## Function
 

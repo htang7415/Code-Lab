@@ -1,2 +1,23 @@
 def layers() -> list[str]:
-    return ["conv", "relu", "pool", "fc"]
+    return [
+        "conv11x11",
+        "relu",
+        "max-pool",
+        "conv5x5",
+        "relu",
+        "max-pool",
+        "conv3x3",
+        "relu",
+        "conv3x3",
+        "relu",
+        "conv3x3",
+        "relu",
+        "max-pool",
+        "fc",
+        "relu",
+        "dropout",
+        "fc",
+        "relu",
+        "dropout",
+        "fc",
+    ]

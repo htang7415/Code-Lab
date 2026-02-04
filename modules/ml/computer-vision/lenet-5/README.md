@@ -4,13 +4,14 @@
 
 ## Concept
 
-LeNet-5 is a classic CNN architecture with characteristic layer design.
+LeNet-5 is an early CNN for digit recognition with two conv+pool stages
+followed by fully connected layers.
 
 ## Math
 $$f(x) = f_L \circ f_{L-1} \circ \cdots \circ f_1(x)$$
 
-- $x$ -- input (feature vector or sample)
-- $L$ -- loss value
+- $x$ -- input image
+- $L$ -- number of layers
 
 ## Function
 
