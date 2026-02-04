@@ -9,8 +9,6 @@ in `docs/` and the labs in `modules/` into a browseable site.
 code-lab/
   docs/          # Concept notes (website-ready)
   modules/       # Concept labs — one idea + minimal code + tiny test
-  templates/     # Scaffolds for new modules
-  scripts/       # Helper scripts (one-by-one tests, scaffolding)
   web/           # Next.js website (TypeScript, Vercel-deployable)
 ```
 
