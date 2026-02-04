@@ -1,19 +1,9 @@
-# Code Lab
+# Code Lab Web
 
-Learn by building: short notes and runnable mini-labs across DSA, ML (LLM/RL),
-AI agents, databases, and software engineering.
+This repository powers the Code Lab website. The `web/` app renders the notes
+in `docs/` and the labs in `modules/` into a browseable site.
 
-Code Lab is designed for daily practice: one idea at a time, one test target
-at a time, with clear structure so content can scale without confusion.
-
-## Why Code Lab
-
-- Learn an idea, then run it immediately with a tiny test
-- Keep concepts and labs tightly linked
-- Use Python by default, with Rust encouraged
-- Make content website-ready from day one
-
-## Repo map
+## Website overview
 
 ```
 code-lab/
@@ -23,6 +13,11 @@ code-lab/
   scripts/       # Helper scripts (one-by-one tests, scaffolding)
   web/           # Next.js website (TypeScript, Vercel-deployable)
 ```
+
+The website reads content from these folders:
+
+- `docs/` for short concept notes
+- `modules/` for runnable labs (Python by default; Rust optional)
 
 ## Tracks
 
@@ -34,70 +29,28 @@ code-lab/
 | Databases | `databases/` |
 | Software Engineering | `software-engineering/` |
 
-## Learning flow
+## Run the site locally
 
-1. Read a concept note in `docs/`
-2. Run a related module test in `modules/`
+Prerequisites:
 
-## Quick start
+- Node.js 18+
+- `pnpm`
 
-### Prerequisites
-
-- Python 3.10+ with `pytest`
-- Rust toolchain (`cargo`) — needed only for Rust solutions
-- Node.js 18+ and `pnpm` — needed only for the website
-
-### Install Python dependencies
+From the repo root:
 
 ```bash
-pip install -e ".[dev]"
+cd web
+pnpm install
+pnpm --filter @codelab/site dev
 ```
 
-For ML modules (numpy-based), also install:
+For deployment details, see `web/README.md`.
 
-```bash
-pip install -e ".[dev,ml]"
-```
+## Content workflow
 
-### Run a single module's tests
-
-```bash
-pytest modules/dsa/arrays/prefix-sum/python -q
-```
-
-### Run a Rust crate's tests
-
-```bash
-cargo test --manifest-path modules/dsa/arrays/prefix-sum/rust/Cargo.toml
-```
-
-### Using the Makefile
-
-```bash
-make run-py PATH=modules/dsa/arrays/prefix-sum/python
-make run-rust MANIFEST=modules/dsa/arrays/prefix-sum/rust/Cargo.toml
-```
-
-## Scaffold new content
-
-```bash
-# New module
-./scripts/new_module.sh dsa arrays sliding-window
-```
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for naming rules and testing conventions.
-
-## Website
-
-The `web/` directory contains a Next.js app. See [web/README.md](web/README.md)
-for setup and Vercel deployment instructions.
-
-## Inspiration
-
-The structure and learning-first approach are inspired by standout learning
-repositories on GitHub, including
-[The Algorithms](https://github.com/TheAlgorithms) and
-[OpenAI Cookbook](https://github.com/openai/openai-cookbook).
+The website picks up changes from `docs/` and `modules/`. If you add a new
+module, keep the folder naming and layout consistent so the content indexer can
+find it. See `CONTRIBUTING.md` for naming rules and conventions.
 
 ## License
 
