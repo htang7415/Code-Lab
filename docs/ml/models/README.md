@@ -15,7 +15,6 @@ Each bullet maps to a module under `modules/ml/models/`.
 - KNN (`modules/ml/models/knn`)
 - K-Means (`modules/ml/models/k-means`)
 - DBSCAN (`modules/ml/models/dbscan`)
-- PCA (`modules/ml/models/pca`)
 - Gaussian Naive Bayes (`modules/ml/models/gaussian-naive-bayes`)
 - Bernoulli Naive Bayes (`modules/ml/models/bernoulli-naive-bayes`)
 - SVM (Pegasos) (`modules/ml/models/svm-pegasos`)

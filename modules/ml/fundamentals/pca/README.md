@@ -1,6 +1,6 @@
 # PCA
 
-> Track: `ml` | Topic: `models`
+> Track: `ml` | Topic: `fundamentals`
 
 ## Concept
 
@@ -22,5 +22,5 @@ def pca_first_component_2d(points: list[list[float]]) -> list[float]:
 ## Run tests
 
 ```bash
-pytest modules/ml/models/pca/python -q
+pytest modules/ml/fundamentals/pca/python -q
 ```

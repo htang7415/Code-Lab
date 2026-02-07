@@ -8,6 +8,7 @@ Each bullet maps to a module under `modules/ml/fundamentals/`.
 - Vectors, matrices (`modules/ml/fundamentals/vectors-matrices`)
 - Jacobian (`modules/ml/fundamentals/jacobian`)
 - Hessian (`modules/ml/fundamentals/hessian`)
+- PCA (`modules/ml/fundamentals/pca`)
 - SVD (`modules/ml/fundamentals/svd`)
 - Cosine similarity (`modules/ml/fundamentals/cosine-similarity`)
 
