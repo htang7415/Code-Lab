@@ -4,19 +4,24 @@
 
 ## Concept
 
-PCA finds directions of maximum variance.
+PCA finds orthogonal directions (principal components) that explain the most variance.
 
 ## Math
-$$v_1 = \arg\max_{\lVert v \rVert = 1} v^\top \Sigma v$$
+For standardized data matrix $Z \in \mathbb{R}^{n \times d}$:
 
-- $\Sigma$ -- covariance matrix
-- $v_1$ -- first principal component
-- $v$ -- direction vector
+$$C = \frac{1}{n-1} Z^\top Z$$
+
+Then principal components are the top eigenvectors of $C$ (largest eigenvalues first).
+
+- $Z$ -- standardized data matrix
+- $C$ -- sample covariance matrix
+- $n$ -- number of samples
+- $d$ -- number of features
 
 ## Function
 
 ```python
-def pca_first_component_2d(points: list[list[float]]) -> list[float]:
+def pca(data, k) -> torch.Tensor:
 ```
 
 ## Run tests

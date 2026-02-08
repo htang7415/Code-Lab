@@ -1,7 +1,10 @@
-from pca import pca_first_component_2d
+import torch
+
+from pca import pca
 
 
-def test_pca_first_component():
-    points = [[-1.0, 0.0], [1.0, 0.0]]
-    vec = pca_first_component_2d(points)
-    assert abs(abs(vec[0]) - 1.0) < 1e-6
+def test_pca_top_component():
+    data = torch.tensor([[1.0, 1.0], [2.0, 2.0], [3.0, 3.0]], dtype=torch.float32)
+    pcs = pca(data, 1)
+    expected = torch.tensor([[0.7071], [0.7071]], dtype=torch.float32)
+    assert torch.allclose(pcs, expected, atol=1e-4)
