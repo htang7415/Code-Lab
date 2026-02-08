@@ -22,7 +22,7 @@ $B = A^{\top}A$ with one Jacobi rotation, then set $U = A V \Sigma^{-1}$.
 ## Function
 
 ```python
-def svd_2x2(a: list[list[float]]) -> tuple[list[list[float]], list[float], list[list[float]]]:
+def svd_2x2_singular_values(A: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
 ```
 
 ```python
