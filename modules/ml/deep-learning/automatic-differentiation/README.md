@@ -4,22 +4,26 @@
 
 ## Concept
 
-Autodiff computes derivatives by composing local gradients.
+Automatic differentiation computes gradients by traversing a computation graph and applying the chain rule.
 
 ## Math
 
-If $y = x^2$ and $z = y + 3$, then by the chain rule:
+For scalar nodes in a graph:
 
-$$\frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx} = 1 \cdot 2x = 2x$$
+$$\frac{\partial L}{\partial x}=\sum_{\text{paths }x\rightarrow L}\prod \text{local derivatives}$$
 
-- $y$ -- target/label
-- $x$ -- input (feature vector or sample)
-- $z$ -- pre-activation value
+- $L$ -- scalar output/loss
+- $x$ -- input scalar node
+- local derivatives -- per-operation gradients (e.g., add, multiply, ReLU)
+
+This module uses a tiny `Value` scalar wrapper API:
+- Python: delegates gradient computation to PyTorch autograd
+- Rust: mirrors the same graph idea with explicit reverse traversal
 
 ## Function
 
 ```python
-def forward_grad(x: float) -> float:
+class Value:
 ```
 
 ## Run tests
