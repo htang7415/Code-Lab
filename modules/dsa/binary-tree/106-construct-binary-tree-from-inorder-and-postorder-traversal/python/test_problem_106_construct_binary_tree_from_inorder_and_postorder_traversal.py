@@ -19,8 +19,19 @@ def level_order(root: TreeNode | None) -> list[int | None]:
     return result
 
 
-def test_build_tree():
+def test_build_tree_example():
     inorder = [9, 3, 15, 20, 7]
     postorder = [9, 15, 7, 20, 3]
     root = Solution().buildTree(inorder, postorder)
     assert level_order(root) == [3, 9, 20, None, None, 15, 7]
+
+
+def test_build_tree_edge_empty():
+    assert Solution().buildTree([], []) is None
+
+
+def test_build_tree_tricky_right_skewed():
+    inorder = [1, 2, 3]
+    postorder = [3, 2, 1]
+    root = Solution().buildTree(inorder, postorder)
+    assert level_order(root) == [1, None, 2, None, 3]

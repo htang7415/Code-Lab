@@ -24,7 +24,7 @@ def inorder(node: TreeNode | None, out: list[int]) -> None:
     inorder(node.right, out)
 
 
-def test_trim_bst_basic():
+def test_trim_bst_example():
     root = build_tree([1, 0, 2])
     trimmed = Solution().trimBST(root, 1, 2)
     values: list[int] = []
@@ -32,9 +32,13 @@ def test_trim_bst_basic():
     assert values == [1, 2]
 
 
-def test_trim_bst_deeper():
-    root = build_tree([3, 0, 4, None, 2, None, None, 1])
-    trimmed = Solution().trimBST(root, 1, 3)
+def test_trim_bst_edge_empty():
+    assert Solution().trimBST(None, 1, 2) is None
+
+
+def test_trim_bst_tricky_root_replaced():
+    root = build_tree([3, 1, 4, None, 2])
+    trimmed = Solution().trimBST(root, 2, 4)
     values: list[int] = []
     inorder(trimmed, values)
-    assert values == [1, 2, 3]
+    assert values == [2, 3, 4]

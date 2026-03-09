@@ -113,6 +113,31 @@ Modules added:
 - `modules/ml/data/chi-square-feature-selection`
 - `modules/ml/llm/self-consistency-voting`
 - `modules/ml/reinforcement-learning/value-normalization`
+- `modules/ml/mlops/backfill-replay`
+- `modules/ml/evaluation/top-k-accuracy`
+- `modules/ml/data/rare-category-grouping`
+- `modules/ml/llm/retrieval-precision-at-k`
+- `modules/ml/reinforcement-learning/double-q-learning`
+- `modules/ml/mlops/cost-per-request`
+- `modules/ml/evaluation/hamming-loss`
+- `modules/ml/data/weight-of-evidence`
+- `modules/ml/llm/judge-calibration`
+- `modules/ml/reinforcement-learning/target-network-update`
+- `modules/ml/mlops/capacity-headroom`
+- `modules/ml/evaluation/log-loss`
+- `modules/ml/data/mean-encoding-smoothing`
+- `modules/ml/llm/retrieval-f1-at-k`
+- `modules/ml/reinforcement-learning/expected-sarsa`
+- `modules/ml/mlops/tail-latency-budget`
+- `modules/ml/evaluation/coverage-error`
+- `modules/ml/data/category-cross-features`
+- `modules/ml/llm/consensus-disagreement-rate`
+- `modules/ml/reinforcement-learning/n-step-return`
+- `modules/ml/mlops/queue-utilization`
+- `modules/ml/evaluation/macro-f1`
+- `modules/ml/data/entity-embedding-intuition`
+- `modules/ml/llm/retrieval-hit-rate`
+- `modules/ml/reinforcement-learning/td-error`
 
 ## Top 10 Docs to Write Next
 
@@ -132,17 +157,17 @@ Modules added:
 `modules/ml/generative/diffusion-guidance-tradeoffs` already covers the classifier-free guidance idea, so it is no longer tracked as a separate module.
 `modules/ml/mlops/ab-testing`, `modules/ml/mlops/canary-deployment`, `modules/ml/mlops/feature-drift-psi`, and `modules/ml/representation/contrastive-loss` already cover the basic title areas, so exact-title follow-ups are lower priority than uncovered concepts.
 
-- `modules/ml/mlops/backfill-replay`: offline serving validation pattern before rollout.
-- `modules/ml/evaluation/top-k-accuracy`: classification ranking metric gap.
-- `modules/ml/data/rare-category-grouping`: preprocessing guardrail for long-tail categoricals.
-- `modules/ml/llm/retrieval-precision-at-k`: retrieval precision counterpart to Recall@k.
-- `modules/ml/reinforcement-learning/double-q-learning`: value-overestimation fix not yet isolated.
-- `modules/ml/mlops/cost-per-request`: serving economics primitive.
+- `modules/ml/mlops/throughput-per-dollar`: simple serving efficiency primitive.
+- `modules/ml/evaluation/balanced-accuracy`: class-imbalance friendly classification metric.
+- `modules/ml/data/rare-token-pruning`: vocabulary cleanup primitive for sparse text.
+- `modules/ml/llm/rerank-gain`: quantify value added by reranking.
+- `modules/ml/reinforcement-learning/reward-clipping`: reward-scale stabilization primitive.
+- `modules/ml/mlops/batch-fill-rate`: serving batch-efficiency metric.
 
 ## Second Wave After That
 
-- `modules/ml/evaluation/hamming-loss`
-- `modules/ml/data/weight-of-evidence`
-- `modules/ml/llm/judge-calibration`
-- `modules/ml/reinforcement-learning/target-network-update`
-- `modules/ml/mlops/capacity-headroom`
+- `modules/ml/evaluation/micro-f1`
+- `modules/ml/data/feature-bucketing`
+- `modules/ml/llm/rerank-disagreement-rate`
+- `modules/ml/reinforcement-learning/q-target`
+- `modules/ml/mlops/admission-control`

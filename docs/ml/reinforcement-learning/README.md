@@ -20,12 +20,17 @@ Each bullet maps to a module under `modules/ml/reinforcement-learning/`.
 - Advantage normalization (`modules/ml/reinforcement-learning/advantage-normalization`)
 - Value normalization (`modules/ml/reinforcement-learning/value-normalization`)
 - Q-Learning (`modules/ml/reinforcement-learning/q-learning`)
+- Double Q-learning (`modules/ml/reinforcement-learning/double-q-learning`)
+- Expected SARSA (`modules/ml/reinforcement-learning/expected-sarsa`)
+- Target-network update (`modules/ml/reinforcement-learning/target-network-update`)
 - SARSA (`modules/ml/reinforcement-learning/sarsa`)
 
 ## Prediction and Planning
 
 - First-visit Monte Carlo prediction (`modules/ml/reinforcement-learning/first-visit-monte-carlo-prediction`)
 - n-step TD prediction (`modules/ml/reinforcement-learning/n-step-td-prediction`)
+- n-step return (`modules/ml/reinforcement-learning/n-step-return`)
+- TD error (`modules/ml/reinforcement-learning/td-error`)
 - Eligibility traces (`modules/ml/reinforcement-learning/eligibility-traces`)
 - TD(lambda) returns (`modules/ml/reinforcement-learning/td-lambda`)
 - Monte Carlo Tree Search (UCT) (`modules/ml/reinforcement-learning/monte-carlo-tree-search`)

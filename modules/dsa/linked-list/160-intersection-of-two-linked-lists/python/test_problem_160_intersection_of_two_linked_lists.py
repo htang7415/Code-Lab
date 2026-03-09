@@ -10,7 +10,7 @@ def build_list(values: list[int]) -> tuple[ListNode | None, ListNode | None]:
     return dummy.next, current if dummy.next else None
 
 
-def test_get_intersection_node_found():
+def test_get_intersection_node_example():
     common_head, _ = build_list([8, 4, 5])
     head_a, tail_a = build_list([4, 1])
     head_b, tail_b = build_list([5, 6, 1])
@@ -21,7 +21,12 @@ def test_get_intersection_node_found():
     assert get_intersection_node(head_a, head_b) is common_head
 
 
-def test_get_intersection_node_none():
+def test_get_intersection_node_edge_none():
     head_a, _ = build_list([1, 2, 3])
     head_b, _ = build_list([4, 5])
     assert get_intersection_node(head_a, head_b) is None
+
+
+def test_get_intersection_node_tricky_same_head():
+    common_head, _ = build_list([1, 2, 3])
+    assert get_intersection_node(common_head, common_head) is common_head

@@ -16,11 +16,15 @@ def build_tree(values: list[int | None]) -> TreeNode | None:
     return root
 
 
-def test_balanced_true():
+def test_balanced_example():
     root = build_tree([3, 9, 20, None, None, 15, 7])
     assert Solution().isBalanced(root) is True
 
 
-def test_balanced_false():
+def test_balanced_edge_empty():
+    assert Solution().isBalanced(None) is True
+
+
+def test_balanced_tricky_false():
     root = build_tree([1, 2, 2, 3, 3, None, None, 4, 4])
     assert Solution().isBalanced(root) is False

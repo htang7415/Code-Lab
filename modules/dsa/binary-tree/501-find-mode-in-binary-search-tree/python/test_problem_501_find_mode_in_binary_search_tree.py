@@ -16,11 +16,16 @@ def build_tree(values: list[int | None]) -> TreeNode | None:
     return root
 
 
-def test_find_mode_single():
+def test_find_mode_example():
     root = build_tree([1, None, 2, 2])
     assert Solution().findMode(root) == [2]
 
 
-def test_find_mode_multiple():
+def test_find_mode_edge_single_node():
+    root = build_tree([1])
+    assert Solution().findMode(root) == [1]
+
+
+def test_find_mode_tricky_multiple():
     root = build_tree([2, 1, 2])
     assert Solution().findMode(root) == [2]

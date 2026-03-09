@@ -22,3 +22,8 @@ Each bullet maps to a module under `modules/ml/mlops/`.
 - Request-level SLA compliance (`modules/ml/mlops/request-sla`)
 - Request batching (`modules/ml/mlops/request-batching`)
 - Error-budget tracking (`modules/ml/mlops/error-budget`)
+- Backfill replay (`modules/ml/mlops/backfill-replay`)
+- Cost per request (`modules/ml/mlops/cost-per-request`)
+- Capacity headroom (`modules/ml/mlops/capacity-headroom`)
+- Tail-latency budget (`modules/ml/mlops/tail-latency-budget`)
+- Queue utilization (`modules/ml/mlops/queue-utilization`)

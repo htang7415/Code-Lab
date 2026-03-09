@@ -14,6 +14,11 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Chi-square feature scoring for sparse features (`modules/ml/data/chi-square-feature-selection`)
 - Frequency encoding for categorical counts (`modules/ml/data/frequency-encoding`)
 - Target encoding for high-cardinality categories (`modules/ml/data/target-encoding`)
+- Rare-category grouping for long-tail categoricals (`modules/ml/data/rare-category-grouping`)
+- Weight-of-evidence encoding (`modules/ml/data/weight-of-evidence`)
+- Smoothed mean encoding (`modules/ml/data/mean-encoding-smoothing`)
+- Category cross features (`modules/ml/data/category-cross-features`)
+- Entity embeddings for categorical IDs (`modules/ml/data/entity-embedding-intuition`)
 - Class imbalance (`modules/ml/data/class-imbalance`)
 - Missing-data imputation (`modules/ml/data/imputation`)
 - Missing-value indicators (`modules/ml/data/missing-indicator`)
@@ -31,6 +36,11 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Chi-square filtering for sparse lexical or one-hot features
 - Frequency encoding as a label-free categorical baseline
 - Target encoding and the leakage risk around per-category means
+- Rare-category grouping before downstream encodings
+- Weight of evidence as a supervised categorical transformation
+- Smoothing category means toward the global target average
+- Category crosses for sparse interaction features
+- Dense entity embeddings as a learned alternative to very wide one-hot features
 - Missing-value handling and its failure modes
 - Missingness indicators alongside imputation
 - Outlier handling and when simple z-score rules fail

@@ -12,13 +12,18 @@ def build_cycle(values: list[int], pos: int) -> ListNode | None:
     return nodes[0]
 
 
-def test_detect_cycle_entry():
+def test_detect_cycle_example():
     head = build_cycle([3, 2, 0, -4], 1)
     entry = Solution().detectCycle(head)
     assert entry is not None
     assert entry.val == 2
 
 
-def test_detect_cycle_none():
+def test_detect_cycle_edge_none():
     head = build_cycle([1, 2, 3], -1)
     assert Solution().detectCycle(head) is None
+
+
+def test_detect_cycle_tricky_head_entry():
+    head = build_cycle([1, 2], 0)
+    assert Solution().detectCycle(head) is head

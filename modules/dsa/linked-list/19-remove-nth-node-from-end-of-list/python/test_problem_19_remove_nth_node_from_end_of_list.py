@@ -18,13 +18,19 @@ def to_list(head: ListNode | None) -> list[int]:
     return result
 
 
-def test_remove_nth_node_from_end_basic():
+def test_remove_nth_node_from_end_example():
     head = build_list([1, 2, 3, 4, 5])
     result = remove_nth_node_from_end(head, 2)
     assert to_list(result) == [1, 2, 3, 5]
 
 
-def test_remove_nth_node_from_end_single():
+def test_remove_nth_node_from_end_edge_single():
     head = build_list([1])
     result = remove_nth_node_from_end(head, 1)
     assert to_list(result) == []
+
+
+def test_remove_nth_node_from_end_tricky_remove_head():
+    head = build_list([1, 2, 3])
+    result = remove_nth_node_from_end(head, 3)
+    assert to_list(result) == [2, 3]

@@ -24,13 +24,17 @@ def to_list(head: ListNode | None) -> list[int]:
     return out
 
 
-def test_reverse_list_basic():
+def test_reverse_list_example():
     head = build_list([1, 2, 3, 4, 5])
     result = Solution().reverseList(head)
     assert to_list(result) == [5, 4, 3, 2, 1]
 
 
-def test_reverse_list_single():
-    head = build_list([1])
+def test_reverse_list_edge_empty():
+    assert Solution().reverseList(None) is None
+
+
+def test_reverse_list_tricky_two_nodes():
+    head = build_list([1, 2])
     result = Solution().reverseList(head)
-    assert to_list(result) == [1]
+    assert to_list(result) == [2, 1]

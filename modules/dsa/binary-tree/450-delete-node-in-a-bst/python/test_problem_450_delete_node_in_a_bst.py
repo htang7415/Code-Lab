@@ -24,7 +24,7 @@ def inorder(node: TreeNode | None, out: list[int]) -> None:
     inorder(node.right, out)
 
 
-def test_delete_node_leaf():
+def test_delete_node_example():
     root = build_tree([5, 3, 6, 2, 4, None, 7])
     result = Solution().deleteNode(root, 3)
     values: list[int] = []
@@ -32,7 +32,15 @@ def test_delete_node_leaf():
     assert values == [2, 4, 5, 6, 7]
 
 
-def test_delete_node_root():
+def test_delete_node_edge_missing():
+    root = build_tree([5, 3, 6, 2, 4, None, 7])
+    result = Solution().deleteNode(root, 8)
+    values: list[int] = []
+    inorder(result, values)
+    assert values == [2, 3, 4, 5, 6, 7]
+
+
+def test_delete_node_tricky_root():
     root = build_tree([5, 3, 6, 2, 4, None, 7])
     result = Solution().deleteNode(root, 5)
     values: list[int] = []

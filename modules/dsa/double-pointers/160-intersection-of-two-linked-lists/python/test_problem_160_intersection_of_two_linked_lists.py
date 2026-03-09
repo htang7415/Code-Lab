@@ -22,7 +22,7 @@ def tail(node: ListNode) -> ListNode:
     return current
 
 
-def test_intersection_found():
+def test_intersection_example():
     common = build_list([8, 4, 5])
     headA = build_list([4, 1])
     headB = build_list([5, 6, 1])
@@ -32,8 +32,14 @@ def test_intersection_found():
     assert result is common
 
 
-def test_intersection_none():
+def test_intersection_edge_none():
     headA = build_list([2, 6, 4])
     headB = build_list([1, 5])
     result = Solution().getIntersectionNode(headA, headB)
     assert result is None
+
+
+def test_intersection_tricky_same_head():
+    common = build_list([1, 2, 3])
+    result = Solution().getIntersectionNode(common, common)
+    assert result is common

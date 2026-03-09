@@ -24,15 +24,22 @@ def find_node(root: TreeNode | None, val: int) -> TreeNode | None:
     return find_node(root.left, val) or find_node(root.right, val)
 
 
-def test_lca_binary_root():
+def test_lca_binary_example():
     root = build_tree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
     p = find_node(root, 5)
     q = find_node(root, 1)
     assert Solution().lowestCommonAncestor(root, p, q).val == 3
 
 
-def test_lca_binary_subtree():
+def test_lca_binary_edge_same_subtree():
     root = build_tree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
     p = find_node(root, 5)
     q = find_node(root, 4)
     assert Solution().lowestCommonAncestor(root, p, q).val == 5
+
+
+def test_lca_binary_tricky_one_node_is_ancestor():
+    root = build_tree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
+    p = find_node(root, 2)
+    q = find_node(root, 7)
+    assert Solution().lowestCommonAncestor(root, p, q).val == 2

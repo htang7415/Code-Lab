@@ -6,6 +6,10 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 ## Classification
 
 - Accuracy (when it fails) (`modules/ml/evaluation/accuracy`)
+- Top-k accuracy (`modules/ml/evaluation/top-k-accuracy`)
+- Hamming loss (`modules/ml/evaluation/hamming-loss`)
+- Log loss (`modules/ml/evaluation/log-loss`)
+- Macro F1 (`modules/ml/evaluation/macro-f1`)
 - Precision / Recall (`modules/ml/evaluation/precision-recall`)
 - F1 (`modules/ml/evaluation/f1-score`)
 - ROC-AUC (`modules/ml/evaluation/roc-auc`)
@@ -50,6 +54,9 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 
 - Mean reciprocal rank (`modules/ml/evaluation/mean-reciprocal-rank`)
 - NDCG (`modules/ml/evaluation/ndcg`)
+- Coverage error (`modules/ml/evaluation/coverage-error`)
+- Retrieval Precision@k (`modules/ml/llm/retrieval-precision-at-k`)
+- Retrieval F1@k (`modules/ml/llm/retrieval-f1-at-k`)
 
 See also:
 

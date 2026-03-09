@@ -24,9 +24,24 @@ def inorder(node: TreeNode | None, out: list[int]) -> None:
     inorder(node.right, out)
 
 
-def test_insert_bst():
+def test_insert_bst_example():
     root = build_tree([4, 2, 7, 1, 3])
     result = Solution().insertIntoBST(root, 5)
     values: list[int] = []
     inorder(result, values)
     assert values == [1, 2, 3, 4, 5, 7]
+
+
+def test_insert_bst_edge_empty():
+    result = Solution().insertIntoBST(None, 1)
+    values: list[int] = []
+    inorder(result, values)
+    assert values == [1]
+
+
+def test_insert_bst_tricky_deeper_branch():
+    root = build_tree([5, 3, 7, 2, 4, None, 8])
+    result = Solution().insertIntoBST(root, 6)
+    values: list[int] = []
+    inorder(result, values)
+    assert values == [2, 3, 4, 5, 6, 7, 8]

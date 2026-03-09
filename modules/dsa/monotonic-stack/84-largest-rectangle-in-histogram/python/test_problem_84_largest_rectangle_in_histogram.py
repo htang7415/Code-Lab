@@ -6,6 +6,11 @@ def test_largest_rectangle_example():
     assert Solution().largestRectangleArea(heights) == 10
 
 
-def test_largest_rectangle_two_bars():
-    heights = [2, 4]
-    assert Solution().largestRectangleArea(heights) == 4
+def test_largest_rectangle_edge_single_bar():
+    heights = [2]
+    assert Solution().largestRectangleArea(heights) == 2
+
+
+def test_largest_rectangle_tricky_increasing():
+    heights = [1, 2, 3, 4, 5]
+    assert Solution().largestRectangleArea(heights) == 9
