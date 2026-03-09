@@ -3,6 +3,11 @@
 Core math for models and training.
 Each bullet maps to a module under `modules/ml/fundamentals/`.
 
+Leaf guides:
+
+- Probability map (`docs/ml/fundamentals/prob`)
+- Statistics map (`docs/ml/fundamentals/stats`)
+
 ## Linear Algebra
 
 - Vectors, matrices (`modules/ml/fundamentals/vectors-matrices`)

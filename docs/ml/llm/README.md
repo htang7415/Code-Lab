@@ -19,6 +19,12 @@ Each bullet maps to a module under `modules/ml/llm/`.
 - Supervised fine-tuning (SFT) (`modules/ml/llm/supervised-fine-tuning`)
 - Alignment / preference learning (`modules/ml/llm/preference-learning`)
 
+## Evaluation
+
+- Perplexity (`modules/ml/llm/perplexity`)
+- MMLU-style evaluation (`modules/ml/llm/mmlu-evaluation`)
+- Pass@k (`modules/ml/llm/pass-at-k`)
+
 ## Alignment and Optimization
 
 - RLHF (`modules/ml/llm/rlhf`)
@@ -29,8 +35,16 @@ Each bullet maps to a module under `modules/ml/llm/`.
 ## Efficiency and Systems
 
 - LoRA (`modules/ml/llm/lora`) / QLoRA (`modules/ml/llm/qlora`)
+- KV cache sizing (`modules/ml/llm/kv-cache`)
+- Prefix-cache reuse (`modules/ml/llm/prefix-cache`)
+- Speculative decoding verification (`modules/ml/llm/speculative-decoding`)
 - Inference head pruning (`modules/ml/llm/inference-head-pruning`)
 - Sparse attention (`modules/ml/llm/sparse-attention`)
 - Sparse MoE layers (top-k expert routing) (`modules/ml/llm/moe-routing`)
 - FP16 / BF16 / FP8 (`modules/ml/llm/fp16-bf16-fp8`)
 - INT8 / INT4 (`modules/ml/llm/int8-int4-quantization`)
+
+See also:
+
+- LLM evaluation guide (`docs/ml/llm/evaluation`)
+- Inference serving guide (`docs/ml/llm/inference-serving`)

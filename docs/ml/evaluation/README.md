@@ -26,3 +26,11 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 - MAE vs MSE (`modules/ml/evaluation/mae-vs-mse`)
 - RMSE (see `modules/ml/deep-learning/rmse-loss`)
 - R2 (pitfalls) (`modules/ml/evaluation/r2-score`)
+
+## Calibration
+
+- Expected calibration error (`modules/ml/evaluation/expected-calibration-error`)
+
+See also:
+
+- Calibration guide (`docs/ml/evaluation/calibration`)

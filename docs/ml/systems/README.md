@@ -13,3 +13,16 @@ Each bullet maps to a module under `modules/ml/systems/`.
 - Mixed precision training (`modules/ml/systems/mixed-precision`)
 - Check gradients are flowing (`modules/ml/systems/check-gradients`)
 - Debug overfitting vs underfitting (`modules/ml/systems/debug-overfit-underfit`)
+
+## Performance Models
+
+- Roofline analysis (`modules/ml/systems/roofline-analysis`)
+
+## Serving Mechanics
+
+- Continuous batching (`modules/ml/systems/continuous-batching`)
+
+See also:
+
+- GPU systems guide (`docs/ml/systems/gpu`)
+- Distributed systems guide (`docs/ml/systems/distributed`)

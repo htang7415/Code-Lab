@@ -1,0 +1,15 @@
+# Distributed ML Systems
+
+Distributed training and serving are mostly about communication patterns and where state lives.
+
+## Current Anchors
+
+- Gradient accumulation (`modules/ml/systems/gradient-accumulation`)
+- Sparse MoE routing (`modules/ml/llm/moe-routing`)
+
+## Concepts to Cover Well
+
+- Data, tensor, expert, and context parallelism
+- All-reduce cost and synchronization bottlenecks
+- Prefill vs decode workload separation
+- When communication dominates compute
