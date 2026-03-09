@@ -4,7 +4,9 @@
 
 ## Concept
 
-Pooling downsamples by taking max or average over windows.
+Pooling downsamples a local window of activations into one summary value. This
+reduces spatial resolution while preserving a coarse signal about what is
+present in the window.
 
 ## Math
 
@@ -15,10 +17,16 @@ y_{\text{avg}} &= \frac{1}{|\mathcal{W}|}\sum_{i \in \mathcal{W}} x_i
 \end{aligned}
 $$
 
-- $x_i$ -- i-th input (feature vector or sample)
-- $y$ -- target/label
-- $i$ -- index
-- $x$ -- input (feature vector or sample)
+- $\mathcal{W}$ -- pooling window
+- $x_i$ -- activation at index $i$ inside the window
+- $y_{\max}$ -- max-pooled output
+- $y_{\text{avg}}$ -- average-pooled output
+
+## Key Points
+
+- Max pooling keeps the strongest activation.
+- Average pooling preserves the mean response of the window.
+- Pooling trades spatial precision for translation tolerance and lower compute.
 
 ## Function
 

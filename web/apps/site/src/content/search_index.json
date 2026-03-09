@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-09T04:34:29.448Z",
+  "generated_at": "2026-03-09T05:42:32.390Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -4360,7 +4360,7 @@
     {
       "id": "module:ml/llm/transformer",
       "type": "module",
-      "title": "Transformer Block",
+      "title": "Transformer Block (Minimal)",
       "summary": "> Track: `ml` | Topic: `llm`",
       "track": "ml",
       "topic": "llm",

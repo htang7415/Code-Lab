@@ -1,4 +1,5 @@
 import CodeBlock from "@/components/CodeBlock";
+import FirstPrinciplesPanel from "@/components/FirstPrinciplesPanel";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import TableOfContents from "@/components/TableOfContents";
 import type { TocHeading } from "@/components/TableOfContents";
@@ -892,6 +893,20 @@ export default async function TopicPage({
                 entry.parsed.intro,
                 conceptParts
               );
+              const purposeText = conceptParts.find(
+                (section) => section.icon === "function"
+              )?.content;
+              const mathText = conceptParts.find(
+                (section) => section.icon === "math"
+              )?.content;
+              const keypointsText = conceptParts.find(
+                (section) => section.icon === "keypoints"
+              )?.content;
+              const introText =
+                entry.parsed.intro ||
+                conceptParts.find((section) => section.icon === "concept")?.content ||
+                entry.summary ||
+                "";
               const hasConcept = conceptBlocks.length > 0;
               const hasTemplateContent =
                 hasConcept || entry.Viz || entry.hasCode || pitfalls || practice;
@@ -981,6 +996,16 @@ export default async function TopicPage({
                           <span className="section-label">Concept</span>
                         </div>
                         <div className="section-body">
+                          <FirstPrinciplesPanel
+                            title={entry.title}
+                            summary={entry.summary}
+                            intro={introText}
+                            purpose={purposeText}
+                            math={mathText}
+                            keypoints={keypointsText}
+                            hasCode={entry.hasCode}
+                            hasVisual={Boolean(entry.Viz)}
+                          />
                           {conceptBlocks.map((block, blockIndex) => (
                             <div
                               key={`${entry.slug}-concept-${blockIndex}`}

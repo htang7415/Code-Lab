@@ -4,16 +4,22 @@
 
 ## Concept
 
-Empirical PMF estimates probability from samples.
+An empirical probability mass function estimates the probabilities of discrete
+outcomes directly from observed counts in data.
 
 ## Math
 
 $$p(x)=count(x)/N$$
 
-- $p$ -- probability
-- $x$ -- input (feature vector or sample)
+- $p(x)$ -- estimated probability of outcome $x$
+- $\mathrm{count}(x)$ -- number of times outcome $x$ appears in the sample
+- $N$ -- total number of observations
 
-- $N$ -- number of samples
+## Key Points
+
+- The empirical PMF is a plug-in estimate from data, not a parametric model.
+- Probabilities sum to 1 because counts sum to $N$.
+- More data usually makes the empirical estimate more stable.
 
 ## Function
 

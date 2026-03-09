@@ -4,20 +4,30 @@
 
 ## Concept
 
-Bilinear interpolation blends four neighbors.
+Bilinear interpolation estimates a value inside a grid cell by blending the four
+nearest corner values. It applies linear interpolation along one axis, then
+along the other.
 
 ## Math
 
-$$f(x,y) = \sum_{i,j} w_{ij} v_{ij}$$
+$$
+f(t_x, t_y) =
+(1-t_x)(1-t_y)v_{00}
++ t_x(1-t_y)v_{10}
++ (1-t_x)t_y v_{01}
++ t_x t_y v_{11}
+$$
 
-- $w_ij$ -- weight parameter for ij
-- $v_ij$ -- vertical flow component for ij
-- $x$ -- input (feature vector or sample)
-- $y$ -- target/label
-- $i$ -- index
-- $j$ -- index
-- $w$ -- weight parameter
-- $v$ -- vertical flow component
+- $v_{00}, v_{10}, v_{01}, v_{11}$ -- values at the four neighboring corners
+- $t_x, t_y \in [0, 1]$ -- fractional offsets inside the cell
+- $f(t_x, t_y)$ -- interpolated value
+
+## Key Points
+
+- Weights are larger for corners closer to the sample point.
+- The four interpolation weights always sum to 1.
+- Bilinear resizing is smoother than nearest-neighbor resizing because it
+  averages neighboring pixels instead of copying a single one.
 
 ## Function
 

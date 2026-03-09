@@ -1567,6 +1567,126 @@ code,
   border-left: 2px solid rgba(31, 119, 180, 0.14);
 }
 
+.first-principles-panel {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(31, 119, 180, 0.14);
+  background:
+    radial-gradient(circle at top left, rgba(31, 119, 180, 0.16), transparent 36%),
+    linear-gradient(135deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.first-principles-header {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.first-principles-header h3 {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.first-principles-header p {
+  margin: 0;
+  max-width: 58ch;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.first-principles-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.first-principles-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.first-principles-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 126px;
+  padding: 0.9rem 0.95rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+}
+
+.first-principles-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(31, 119, 180, 0.7), rgba(14, 165, 233, 0.18));
+}
+
+.first-principles-card-question::before {
+  background: linear-gradient(90deg, rgba(31, 119, 180, 0.8), rgba(96, 165, 250, 0.2));
+}
+
+.first-principles-card-mechanism::before {
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.78), rgba(251, 191, 36, 0.2));
+}
+
+.first-principles-card-equation::before {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.78), rgba(45, 212, 191, 0.2));
+}
+
+.first-principles-card-verify::before {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.78), rgba(168, 85, 247, 0.2));
+}
+
+.first-principles-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.first-principles-label {
+  margin-top: 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.first-principles-card p {
+  margin: 0.5rem 0 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+@media (min-width: 720px) {
+  .first-principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .concept-subsection + .concept-subsection {
   margin-top: 0.65rem;
   padding-top: 0.65rem;

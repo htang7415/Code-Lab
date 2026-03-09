@@ -4,18 +4,24 @@
 
 ## Concept
 
-K-Means assigns points to nearest centroid.
+K-Means alternates between assigning each point to its nearest centroid and
+updating centroids to the mean of their assigned points. It is one of the
+simplest clustering algorithms.
 
 ## Math
 $$c_i = \arg\min_j \lVert x_i - \mu_j \rVert$$
 
-- $\mu$ -- mean
-- $x_i$ -- i-th input (feature vector or sample)
+- $x_i$ -- i-th data point
+- $\mu_j$ -- centroid of cluster $j$
+- $c_i$ -- cluster assignment for point $i$
 - $i$ -- index
 - $j$ -- index
-- $x$ -- input (feature vector or sample)
 
-- $\mu_j$ -- j-th mean
+## Key Points
+
+- Assignment uses nearest-centroid distance.
+- Update moves each centroid to the average of its assigned points.
+- K-Means prefers compact, roughly spherical clusters.
 
 ## Function
 

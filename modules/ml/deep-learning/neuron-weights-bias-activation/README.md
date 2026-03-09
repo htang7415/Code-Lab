@@ -4,16 +4,26 @@
 
 ## Concept
 
-A neuron computes a weighted sum plus bias, then applies an activation.
+A neuron first computes an affine score from its inputs, then applies a
+non-linearity. This is the smallest building block of a feedforward network.
 
 ## Math
-$$y = \sigma(w^\top x + b)$$
+
+$$z = w^\top x + b,\qquad y = \sigma(z)$$
 
 - $\sigma$ -- activation function
-- $y$ -- target/label
-- $w$ -- weight parameter
-- $x$ -- input (feature vector or sample)
+- $w$ -- weight vector
+- $x$ -- input feature vector
 - $b$ -- bias term
+- $z$ -- pre-activation score
+- $y$ -- activated output
+
+## Key Points
+
+- The weights decide how strongly each input contributes.
+- The bias shifts the activation threshold.
+- The activation adds non-linearity so stacked neurons can model complex
+  functions.
 
 ## Function
 

@@ -4,13 +4,22 @@
 
 ## Concept
 
-CNNs use convolutional filters to capture local patterns.
+CNNs use learned convolutional filters to detect local patterns such as edges,
+corners, and textures. By stacking layers, they build increasingly abstract
+features from raw pixels.
 
 ## Math
 $$\text{feature\_map} = x \ast k$$
 
-- $x$ -- input (feature vector or sample)
-- $k$ -- index or number of neighbors
+- $x$ -- input signal or image
+- $k$ -- convolution kernel
+- $x \ast k$ -- filtered feature map
+
+## Key Points
+
+- Early kernels usually capture simple local patterns.
+- Deeper layers combine local features into larger structures.
+- Convolution gives CNNs spatial bias and parameter sharing.
 
 ## Function
 

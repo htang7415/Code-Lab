@@ -4,17 +4,20 @@
 
 ## Concept
 
-Sobel filters estimate image gradients.
+Sobel filters estimate local image gradients by convolving an image patch with
+horizontal and vertical edge kernels. Large responses indicate strong intensity
+changes, which usually correspond to edges.
 
 ## Math
-$$G_x = K_x \ast I,\quad G_y = K_y \ast I$$
 
-- $K_x$ -- key matrix or kernel for x
-- $K_y$ -- key matrix or kernel for y
-- $x$ -- input (feature vector or sample)
-- $K$ -- key matrix or kernel
-- $I$ -- image (pixel grid)
-- $y$ -- target/label
+$$G_x = K_x \ast I,\qquad G_y = K_y \ast I,\qquad |G| = \sqrt{G_x^2 + G_y^2}$$
+
+- $I$ -- local image patch
+- $K_x$ -- horizontal Sobel kernel
+- $K_y$ -- vertical Sobel kernel
+- $G_x$ -- horizontal gradient response
+- $G_y$ -- vertical gradient response
+- $|G|$ -- gradient magnitude
 
 ## Function
 

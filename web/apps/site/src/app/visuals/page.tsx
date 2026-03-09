@@ -3,6 +3,7 @@ import GradientDescentViz from "@/components/GradientDescentViz";
 import HomeHeroViz from "@/components/HomeHeroViz";
 import HomeSoftmaxViz from "@/components/HomeSoftmaxViz";
 import HomeSignalViz from "@/components/HomeSignalViz";
+import VectorsMatricesViz from "@/components/VectorsMatricesViz";
 
 export default function VisualsPage() {
   return (
@@ -41,6 +42,9 @@ export default function VisualsPage() {
         </div>
         <div className="visuals-card" data-parallax="10">
           <GradientDescentViz />
+        </div>
+        <div className="visuals-card" data-parallax="7">
+          <VectorsMatricesViz />
         </div>
       </section>
 

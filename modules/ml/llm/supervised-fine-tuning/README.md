@@ -4,24 +4,27 @@
 
 ## Concept
 
-SFT trains on curated prompt-response pairs with teacher forcing.
+Supervised fine-tuning (SFT) trains a language model on curated prompt-response
+pairs. Teacher forcing means the model is always conditioned on the correct
+previous tokens while learning to predict the next target token.
 
 ## Math
 
 $$\mathcal{L} = -\frac{1}{\sum_i m_i} \sum_i m_i \log p_\theta(y_i \mid x_i)$$
 
 - $\mathcal{L}$ -- masked cross-entropy loss
-- $m_i$ -- mask for supervised tokens (1 if included)
+- $m_i$ -- mask for supervised tokens (1 if token $i$ should contribute)
 - $y_i$ -- target token at position $i$
-- $p_\theta(y_i \mid x_i)$ -- model probability of the target token
-
+- $x_i$ -- conditioning context used to predict token $y_i$
+- $p_\theta(y_i \mid x_i)$ -- model probability assigned to the target token
 - $\theta$ -- model parameters
-- $x_i$ -- i-th input (feature vector or sample)
 - $i$ -- index
-- $m$ -- number of features/units
-- $p$ -- probability
-- $y$ -- target/label
-- $x$ -- input (feature vector or sample)
+
+## Key Points
+
+- The mask excludes prompt tokens or padding positions from the loss.
+- SFT teaches imitation of the reference completion, not exploration.
+- This is usually the stage between pretraining and preference alignment.
 
 ## Function
 

@@ -4,38 +4,38 @@
 
 ## Concept
 
-The forward pass computes the model's output by propagating input data through each layer sequentially, from the first hidden layer to the final prediction. At every layer, a linear transformation is applied followed by a non-linear activation function. The composition of these transformations gives the network its expressive power.
+The forward pass applies the model's current parameters to an input and produces
+an output. This lab isolates the smallest useful piece of that process: one
+affine step, or one neuron's pre-activation.
 
-During training, the forward pass also records all intermediate activations in the computational graph so that the backward pass can compute gradients. During inference, this bookkeeping is unnecessary and can be disabled (e.g., `torch.no_grad()`) to save memory and improve throughput. Understanding the forward pass is essential because the structure of the computation determines both the model's capacity and the shape of gradients that flow backward.
+In a full network, many such steps are chained together, often with
+non-linearities between them. During training, the forward pass also stores
+intermediate values so the backward pass can later compute gradients.
 
 ## Math
 
-For a single layer with weight matrix $W$, bias vector $b$, and activation function $\sigma$:
+For this minimal affine forward step:
 
-$$h = \sigma(W x + b)$$
+$$z = w^\top x + b$$
 
-For a network with $N$ layers, the full forward pass composes each layer:
+If you then apply an activation $\sigma$, you get a neuron's output:
 
-$$h^{(l)} = \sigma^{(l)}\!\left(W^{(l)} h^{(l-1)} + b^{(l)}\right), \quad l = 1, \dots, N$$
+$$h = \sigma(z)$$
 
-- $x$ -- input feature vector (or $h^{(0)}$)
-- $W^{(l)}$ -- weight matrix at layer $l$
-- $b^{(l)}$ -- bias vector at layer $l$
-- $\sigma^{(l)}$ -- activation function at layer $l$ (e.g., ReLU, sigmoid)
-- $h^{(l)}$ -- hidden representation (activation) at layer $l$
-
-- $W$ -- weight matrix
+- $x$ -- input feature vector
+- $w$ -- weight vector
 - $b$ -- bias term
-- $\sigma$ -- sigmoid (logistic) function
-- $h$ -- hidden representation
-- $N$ -- number of samples
+- $z$ -- pre-activation value
+- $h$ -- activated output
+- $\sigma$ -- activation function such as ReLU or sigmoid
 
 ## Key Points
 
-- Intermediate activations must be stored during training for use in the backward pass, which is why training consumes more memory than inference.
-- In inference mode, gradient tracking is disabled to reduce memory usage and computation.
-- The choice of activation function at each layer affects both the forward output and the gradient behavior during backpropagation.
-- Batch dimensions are handled implicitly: $x$ is typically a matrix where each row is one sample in the mini-batch.
+- A forward pass always means "compute outputs from inputs using current
+  parameters."
+- This function computes the affine part only; deeper networks stack many such
+  operations.
+- Training usually stores forward intermediates because backprop needs them.
 
 ## Function
 
@@ -45,7 +45,7 @@ def forward(x: list[float], w: list[float], b: float) -> float:
 
 - `x` -- input feature vector
 - `w` -- weight vector (one weight per input feature)
-- `b` -- scalar bias term
+- `b` -- scalar bias term added after the dot product
 
 ## Run tests
 

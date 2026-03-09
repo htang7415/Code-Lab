@@ -10,14 +10,24 @@ kernel-based similarity to produce a predictive distribution.
 ## Math
 $$k(x,x') = \exp\left(-\frac{\lVert x-x' \rVert^2}{2\ell^2}\right)$$
 
-$$\mu_* = K_*^{\top} K^{-1} y,\quad \Sigma_* = K_{**} - K_*^{\top} K^{-1} K_*$$
+$$\mu_* = K_*^{\top}(K + \sigma_n^2 I)^{-1} y,\quad \Sigma_* = K_{**} - K_*^{\top}(K + \sigma_n^2 I)^{-1} K_*$$
 
-- $k$ -- index or number of neighbors
-- $x$ -- input (feature vector or sample)
-- $\mu$ -- mean
-- $\Sigma$ -- covariance matrix
-- $K$ -- key matrix or kernel
-- $y$ -- target/label
+- $k(x, x')$ -- kernel measuring similarity between inputs
+- $\ell$ -- kernel length scale
+- $K$ -- training-training kernel matrix
+- $K_*$ -- training-test kernel matrix
+- $K_{**}$ -- test-test kernel matrix
+- $\sigma_n^2$ -- observation noise variance
+- $y$ -- observed training targets
+- $\mu_*$ -- predictive mean
+- $\Sigma_*$ -- predictive covariance
+
+## Key Points
+
+- Nearby inputs have strongly correlated function values under the RBF kernel.
+- The posterior mean interpolates smoothly between observed targets.
+- The posterior covariance expresses uncertainty, which is one of GPR's main
+  advantages over point-estimate regressors.
 
 ## Function
 
