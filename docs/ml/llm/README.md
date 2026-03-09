@@ -31,6 +31,6 @@ Each bullet maps to a module under `modules/ml/llm/`.
 - LoRA (`modules/ml/llm/lora`) / QLoRA (`modules/ml/llm/qlora`)
 - Inference head pruning (`modules/ml/llm/inference-head-pruning`)
 - Sparse attention (`modules/ml/llm/sparse-attention`)
-- MoE (Top-K routing, Noisy gating) (`modules/ml/llm/moe-routing`)
+- Sparse MoE layers (top-k expert routing) (`modules/ml/llm/moe-routing`)
 - FP16 / BF16 / FP8 (`modules/ml/llm/fp16-bf16-fp8`)
 - INT8 / INT4 (`modules/ml/llm/int8-int4-quantization`)

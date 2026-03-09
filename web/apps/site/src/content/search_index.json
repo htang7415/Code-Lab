@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-02T01:30:22.758Z",
+  "generated_at": "2026-03-09T04:34:29.448Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -2162,6 +2162,18 @@
       "topicName": "Computer Vision"
     },
     {
+      "id": "module:ml/representation/contrastive-loss",
+      "type": "module",
+      "title": "Contrastive Loss (InfoNCE)",
+      "summary": "> Track: `ml` | Topic: `representation`",
+      "track": "ml",
+      "topic": "representation",
+      "slug": "contrastive-loss",
+      "href": "/track/ml/representation#contrastive-loss",
+      "trackName": "Machine Learning",
+      "topicName": "Representation"
+    },
+    {
       "id": "module:ml/fundamentals/convex-vs-nonconvex",
       "type": "module",
       "title": "Convex vs Non-Convex",
@@ -2652,6 +2664,18 @@
       "href": "/track/ml/mlops#feature-drift-psi",
       "trackName": "Machine Learning",
       "topicName": "MLOps"
+    },
+    {
+      "id": "module:ml/representation/features",
+      "type": "module",
+      "title": "Feature Vectors",
+      "summary": "> Track: `ml` | Topic: `representation`",
+      "track": "ml",
+      "topic": "representation",
+      "slug": "features",
+      "href": "/track/ml/representation#features",
+      "trackName": "Machine Learning",
+      "topicName": "Representation"
     },
     {
       "id": "module:ml/deep-learning/feedforward-neural-network",
@@ -3266,6 +3290,18 @@
       "topicName": "Computer Vision"
     },
     {
+      "id": "module:ml/representation/autoencoder",
+      "type": "module",
+      "title": "Linear Autoencoder",
+      "summary": "> Track: `ml` | Topic: `representation`",
+      "track": "ml",
+      "topic": "representation",
+      "slug": "autoencoder",
+      "href": "/track/ml/representation#autoencoder",
+      "trackName": "Machine Learning",
+      "topicName": "Representation"
+    },
+    {
       "id": "module:ml/models/linear-regression",
       "type": "module",
       "title": "Linear Regression",
@@ -3506,18 +3542,6 @@
       "topicName": "Deep Learning"
     },
     {
-      "id": "module:ml/llm/moe-routing",
-      "type": "module",
-      "title": "MoE Routing",
-      "summary": "> Track: `ml` | Topic: `llm`",
-      "track": "ml",
-      "topic": "llm",
-      "slug": "moe-routing",
-      "href": "/track/ml/llm#moe-routing",
-      "trackName": "Machine Learning",
-      "topicName": "LLM"
-    },
-    {
       "id": "doc:dsa/monotonic-stack/monotonic-stack",
       "type": "doc",
       "title": "Monotonic Stack",
@@ -3686,16 +3710,16 @@
       "topicName": "Systems"
     },
     {
-      "id": "module:ml/models/pca",
+      "id": "module:ml/fundamentals/pca",
       "type": "module",
       "title": "PCA",
-      "summary": "> Track: `ml` | Topic: `models`",
+      "summary": "> Track: `ml` | Topic: `fundamentals`",
       "track": "ml",
-      "topic": "models",
+      "topic": "fundamentals",
       "slug": "pca",
-      "href": "/track/ml/models#pca",
+      "href": "/track/ml/fundamentals#pca",
       "trackName": "Machine Learning",
-      "topicName": "Models"
+      "topicName": "Fundamentals"
     },
     {
       "id": "module:ml/data/polynomial-features",
@@ -3917,7 +3941,7 @@
       "id": "doc:ml/representation/representation",
       "type": "doc",
       "title": "Representation Learning",
-      "summary": "Cross-cutting representation items.",
+      "summary": "How models turn raw inputs into useful features. A good representation organizes data geometry so that similarity, clustering, and downstream tasks become simple.",
       "track": "ml",
       "topic": "representation",
       "slug": "representation",
@@ -4162,6 +4186,18 @@
       "topic": "llm",
       "slug": "sparse-attention",
       "href": "/track/ml/llm#sparse-attention",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
+    },
+    {
+      "id": "module:ml/llm/moe-routing",
+      "type": "module",
+      "title": "Sparse Mixture of Experts Layer",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "moe-routing",
+      "href": "/track/ml/llm#moe-routing",
       "trackName": "Machine Learning",
       "topicName": "LLM"
     },
