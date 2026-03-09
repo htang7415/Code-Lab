@@ -23,7 +23,9 @@ Each bullet maps to a module under `modules/ml/reinforcement-learning/`.
 
 - First-visit Monte Carlo prediction (`modules/ml/reinforcement-learning/first-visit-monte-carlo-prediction`)
 - n-step TD prediction (`modules/ml/reinforcement-learning/n-step-td-prediction`)
+- Eligibility traces (`modules/ml/reinforcement-learning/eligibility-traces`)
 - Monte Carlo Tree Search (UCT) (`modules/ml/reinforcement-learning/monte-carlo-tree-search`)
+- Importance sampling (`modules/ml/reinforcement-learning/importance-sampling`)
 
 ## LLM-related RL
 

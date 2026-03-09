@@ -6,6 +6,7 @@ Each bullet maps to a module under `modules/ml/llm/`.
 ## Core Concepts
 
 - Tokenization (`modules/ml/llm/tokenization`)
+- Tokenizer comparison (`modules/ml/llm/tokenizer-comparison`)
 - Embeddings (`modules/ml/llm/embeddings`)
 - Positional encoding (`modules/ml/llm/positional-encoding`)
 - Transformer (`modules/ml/llm/transformer`)
@@ -31,6 +32,13 @@ Each bullet maps to a module under `modules/ml/llm/`.
 ## Retrieval and Lexical Baselines
 
 - BM25 ranking (`modules/ml/llm/bm25-ranking`)
+
+## Decoding
+
+- Beam search (`modules/ml/llm/beam-search`)
+- Top-k sampling (`modules/ml/llm/top-k-sampling`)
+- Top-p sampling (`modules/ml/llm/top-p-sampling`)
+- Temperature sampling (`modules/ml/llm/temperature-sampling`)
 
 ## Alignment and Optimization
 

@@ -21,6 +21,7 @@ Each bullet maps to a module under `modules/ml/optimization/`.
 - Exponential decay (`modules/ml/optimization/lr-exponential-decay`)
 - Warmup (`modules/ml/optimization/lr-warmup`)
 - Cosine decay (`modules/ml/optimization/lr-cosine-decay`)
+- Warmup plus cosine decay (`modules/ml/optimization/warmup-cosine-decay`)
 
 ## Training Stability
 

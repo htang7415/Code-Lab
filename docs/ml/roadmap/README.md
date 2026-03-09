@@ -63,6 +63,16 @@ Modules added:
 - `modules/ml/reinforcement-learning/monte-carlo-tree-search`
 - `modules/ml/reinforcement-learning/first-visit-monte-carlo-prediction`
 - `modules/ml/reinforcement-learning/n-step-td-prediction`
+- `modules/ml/data/feature-scaling`
+- `modules/ml/llm/beam-search`
+- `modules/ml/llm/top-p-sampling`
+- `modules/ml/llm/temperature-sampling`
+- `modules/ml/reinforcement-learning/eligibility-traces`
+- `modules/ml/evaluation/bootstrap-intervals`
+- `modules/ml/optimization/warmup-cosine-decay`
+- `modules/ml/llm/tokenizer-comparison`
+- `modules/ml/reinforcement-learning/importance-sampling`
+- `modules/ml/llm/top-k-sampling`
 
 ## Top 10 Docs to Write Next
 
@@ -80,27 +90,29 @@ Modules added:
 ## Top 10 New Modules to Add Next
 
 `modules/ml/generative/diffusion-guidance-tradeoffs` already covers the classifier-free guidance idea, so it is no longer tracked as a separate module.
+`modules/ml/mlops/ab-testing`, `modules/ml/mlops/canary-deployment`, `modules/ml/mlops/feature-drift-psi`, and `modules/ml/representation/contrastive-loss` already cover the corresponding title areas, so they are no longer tracked as missing.
 
-- `modules/ml/evaluation/ab-test-analysis`: exact Deep-ML title match for model-comparison statistics.
-- `modules/ml/data/feature-scaling`: exact Deep-ML title match for preprocessing standardization basics.
-- `modules/ml/mlops/canary-rollout`: grounded in the Deep-ML canary deployment health title.
-- `modules/ml/mlops/drift-detection`: grounded in the Deep-ML PSI drift detection title.
-- `modules/ml/llm/beam-search`: exact Deep-ML title match for decoding.
-- `modules/ml/llm/top-p-sampling`: exact Deep-ML title match for nucleus sampling.
-- `modules/ml/llm/temperature-sampling`: exact Deep-ML title match for sampling control.
-- `modules/ml/representation/contrastive-loss`: exact Deep-ML title match for SimCLR-style objectives.
-- `modules/ml/reinforcement-learning/eligibility-traces`: grounded in the Deep-ML TD(llama) title.
-- `modules/ml/systems/expert-load-balancing`: inferred MoE systems gap beyond pure routing and dispatch.
+- `modules/ml/evaluation/permutation-test`: inferred experiment-analysis gap beyond rate calculators.
+- `modules/ml/evaluation/isotonic-calibration`: inferred calibration gap beyond ECE.
+- `modules/ml/llm/reranker-metrics`: inferred retrieval-evaluation gap after BM25.
+- `modules/ml/systems/expert-load-balancing`: inferred MoE systems gap beyond routing and dispatch.
+- `modules/ml/data/missing-indicator`: inferred preprocessing gap complementary to imputation.
+- `modules/ml/evaluation/bradley-terry-ranking`: exact Deep-ML title match for pairwise ranking models.
+- `modules/ml/mlops/request-sla`: inferred serving-metrics gap complementary to existing SLA basics.
+- `modules/ml/llm/sampling-pipeline`: exact Deep-ML title match for combined temperature plus top-k plus top-p logic.
+- `modules/ml/data/robust-scaling`: inferred preprocessing gap beyond z-score and min-max scaling.
+- `modules/ml/llm/retrieval-fusion`: inferred retrieval systems gap after BM25.
 
 ## Second Wave After That
 
-- `modules/ml/evaluation/bootstrap-intervals`
-- `modules/ml/optimization/warmup-cosine-decay`
-- `modules/ml/llm/tokenizer-comparison`
-- `modules/ml/reinforcement-learning/importance-sampling`
-- `modules/ml/llm/top-k-sampling`
-- `modules/ml/data/missing-indicator`
-- `modules/ml/evaluation/permutation-test`
-- `modules/ml/evaluation/isotonic-calibration`
-- `modules/ml/llm/reranker-metrics`
+- `modules/ml/evaluation/bradley-terry-ranking`
 - `modules/ml/mlops/request-sla`
+- `modules/ml/llm/sampling-pipeline`
+- `modules/ml/data/robust-scaling`
+- `modules/ml/llm/retrieval-fusion`
+- `modules/ml/evaluation/wilson-interval`
+- `modules/ml/reinforcement-learning/td-lambda`
+- `modules/ml/evaluation/ab-test-analysis`
+- `modules/ml/mlops/canary-rollout`
+- `modules/ml/mlops/drift-detection`
+- `modules/ml/representation/pairwise-ranking-loss`

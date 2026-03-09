@@ -12,3 +12,7 @@ def test_four_sum_example():
 
 def test_four_sum_no_solution():
     assert four_sum([2, 2, 2, 2, 2], 9) == []
+
+
+def test_four_sum_deduplicates_quadruplets():
+    assert four_sum([2, 2, 2, 2, 2], 8) == [[2, 2, 2, 2]]

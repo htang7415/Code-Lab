@@ -34,6 +34,7 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 ## Uncertainty
 
 - Mean confidence intervals (`modules/ml/evaluation/confidence-intervals`)
+- Bootstrap percentile intervals (`modules/ml/evaluation/bootstrap-intervals`)
 
 See also:
 

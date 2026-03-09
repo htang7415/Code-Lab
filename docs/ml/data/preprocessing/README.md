@@ -5,6 +5,7 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 ## Current Anchors
 
 - Data leakage (`modules/ml/data/data-leakage`)
+- Feature scaling (`modules/ml/data/feature-scaling`)
 - Polynomial features (`modules/ml/data/polynomial-features`)
 - TF-IDF lexical features (`modules/ml/data/tf-idf`)
 - Class imbalance (`modules/ml/data/class-imbalance`)

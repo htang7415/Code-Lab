@@ -4,7 +4,7 @@
 
 ## Concept
 
-Sort and fix two numbers, then use two pointers for the remaining pair.
+Store earlier pair sums in a hash table, then look up the complement for each later pair.
 
 ## Function
 

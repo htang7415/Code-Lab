@@ -10,6 +10,7 @@ Each bullet maps to a module under `modules/ml/data/`.
 - Train / validation / test split (`modules/ml/data/train-validation-test-split`)
 - Stratified split (`modules/ml/data/stratified-split`)
 - Data leakage (common failure modes) (`modules/ml/data/data-leakage`)
+- Feature scaling (`modules/ml/data/feature-scaling`)
 - Polynomial feature expansion (`modules/ml/data/polynomial-features`)
 - TF-IDF lexical features (`modules/ml/data/tf-idf`)
 - Handling class imbalance (`modules/ml/data/class-imbalance`)

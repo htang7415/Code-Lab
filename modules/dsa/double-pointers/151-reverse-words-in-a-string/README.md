@@ -4,7 +4,7 @@
 
 ## Concept
 
-Split on whitespace, reverse the word order, and join with single spaces.
+Trim extra spaces with read/write pointers, reverse the whole sequence, then reverse each word.
 
 ## Function
 

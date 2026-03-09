@@ -4,7 +4,7 @@
 
 ## Concept
 
-Sort the list and use a two-pointer scan to find zero-sum triplets.
+Fix one number, then use a hash set to detect the needed complement for the other two values.
 
 ## Function
 
