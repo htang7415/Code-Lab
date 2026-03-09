@@ -208,6 +208,36 @@ Modules added:
 - `modules/ml/data/overflow-spread`
 - `modules/ml/llm/answer-frequency-table`
 - `modules/ml/reinforcement-learning/terminal-indicator`
+- `modules/ml/mlops/breach-severity-index`
+- `modules/ml/evaluation/log-odds`
+- `modules/ml/data/overflow-gini`
+- `modules/ml/llm/vote-imbalance`
+- `modules/ml/reinforcement-learning/done-fraction`
+- `modules/ml/mlops/pressure-score`
+- `modules/ml/evaluation/log-prevalence-ratio`
+- `modules/ml/data/overflow-density`
+- `modules/ml/llm/vote-frequency-gap`
+- `modules/ml/reinforcement-learning/not-done-mask`
+- `modules/ml/mlops/surge-pressure`
+- `modules/ml/evaluation/log-risk-ratio`
+- `modules/ml/data/overflow-threshold-rate`
+- `modules/ml/llm/vote-tail-mass`
+- `modules/ml/reinforcement-learning/done-indicator`
+- `modules/ml/mlops/breach-burden`
+- `modules/ml/evaluation/log-relative-risk`
+- `modules/ml/data/overflow-threshold-count`
+- `modules/ml/llm/nonmajority-vote-share`
+- `modules/ml/reinforcement-learning/done-indicator-batch`
+- `modules/ml/mlops/breach-heat`
+- `modules/ml/evaluation/log-rate-ratio`
+- `modules/ml/data/overflow-cutoff-rate`
+- `modules/ml/llm/minority-vote-share`
+- `modules/ml/reinforcement-learning/undone-indicator`
+- `modules/ml/mlops/breach-spectrum`
+- `modules/ml/evaluation/log-event-rate`
+- `modules/ml/data/overflow-cutoff-count`
+- `modules/ml/llm/minority-answer-share`
+- `modules/ml/reinforcement-learning/continuing-indicator`
 
 ## Top 10 Docs to Write Next
 
@@ -227,17 +257,17 @@ Modules added:
 `modules/ml/generative/diffusion-guidance-tradeoffs` already covers the classifier-free guidance idea, so it is no longer tracked as a separate module.
 `modules/ml/mlops/ab-testing`, `modules/ml/mlops/canary-deployment`, `modules/ml/mlops/feature-drift-psi`, and `modules/ml/representation/contrastive-loss` already cover the basic title areas, so exact-title follow-ups are lower priority than uncovered concepts.
 
-- `modules/ml/mlops/pressure-score`: simple combined overload severity proxy.
-- `modules/ml/evaluation/log-prevalence-ratio`: log transform of multiplicative prevalence comparison.
-- `modules/ml/data/overflow-density`: overflow normalized by batch size and cap.
-- `modules/ml/llm/vote-frequency-gap`: count gap between the top two normalized answers.
-- `modules/ml/reinforcement-learning/not-done-mask`: scalar or vector mask for continuing transitions.
-- `modules/ml/mlops/breach-severity-index`: combined breach incidence and margin score.
+- `modules/ml/mlops/breach-bucket-share`: share of observations in each breach severity bucket.
+- `modules/ml/evaluation/log-hit-rate`: log transform of a binary hit rate.
+- `modules/ml/data/overflow-cutoff-mean`: mean overflow among cases beyond a fixed cutoff.
+- `modules/ml/llm/minority-cluster-count`: number of normalized answer clusters outside the largest one.
+- `modules/ml/reinforcement-learning/nonterminal-indicator`: scalar indicator for a continuing transition.
+- `modules/ml/mlops/breach-bucket-mass`: normalized overload mass allocated across breach severity buckets.
 
 ## Second Wave After That
 
-- `modules/ml/evaluation/log-odds`
-- `modules/ml/data/overflow-gini`
-- `modules/ml/llm/vote-imbalance`
-- `modules/ml/reinforcement-learning/done-fraction`
-- `modules/ml/mlops/surge-pressure`
+- `modules/ml/evaluation/log-failure-rate`
+- `modules/ml/data/overflow-cutoff-peak`
+- `modules/ml/llm/minority-cluster-share`
+- `modules/ml/reinforcement-learning/ongoing-indicator`
+- `modules/ml/mlops/breach-bucket-entropy`

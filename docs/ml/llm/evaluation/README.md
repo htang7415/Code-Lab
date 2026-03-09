@@ -42,6 +42,12 @@ LLM evaluation mixes language-model likelihood, task scoring, and model-judge st
 - Answer repeat rate as the complement of uniqueness
 - Answer mode count for the largest normalized vote block
 - Answer frequency tables for direct vote inspection
+- Vote frequency gap between the top two normalized answers
+- Vote imbalance normalized by the top-two vote mass
+- Vote tail mass outside the top normalized answer
+- Nonmajority vote share outside the winning normalized answer
+- Minority vote share outside the dominant normalized answer cluster
+- Minority answer share outside the largest normalized answer cluster
 - Self-consistency voting across multiple sampled traces
 - Candidate diversity across multiple sampled candidates
 - Judge confidence aligned with correctness

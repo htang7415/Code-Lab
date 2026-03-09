@@ -21,6 +21,12 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Overflow quantile under hard token limits (`modules/ml/data/overflow-quantile`)
 - Overflow peak under hard token limits (`modules/ml/data/overflow-peak`)
 - Overflow spread under hard token limits (`modules/ml/data/overflow-spread`)
+- Overflow density under hard token limits (`modules/ml/data/overflow-density`)
+- Overflow Gini under hard token limits (`modules/ml/data/overflow-gini`)
+- Overflow threshold rate under hard token limits (`modules/ml/data/overflow-threshold-rate`)
+- Overflow threshold count under hard token limits (`modules/ml/data/overflow-threshold-count`)
+- Overflow cutoff rate under hard token limits (`modules/ml/data/overflow-cutoff-rate`)
+- Overflow cutoff count under hard token limits (`modules/ml/data/overflow-cutoff-count`)
 - Hash trick for fixed-width sparse features (`modules/ml/data/hash-trick`)
 - Chi-square feature scoring for sparse features (`modules/ml/data/chi-square-feature-selection`)
 - Frequency encoding for categorical counts (`modules/ml/data/frequency-encoding`)
@@ -57,6 +63,12 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Overflow quantiles when teams need a configurable severity percentile
 - Overflow peak for the single worst truncation case in a batch
 - Overflow spread for how widely truncation severity varies across examples
+- Overflow density for cap-normalized truncation severity
+- Overflow Gini for how concentrated truncation burden is within a batch
+- Overflow threshold rate when only severe overflow cases should count
+- Overflow threshold count when the raw number of severe cases matters
+- Overflow cutoff rate when a fixed severity line defines unacceptable truncation
+- Overflow cutoff count when teams need the raw number of unacceptable cases
 - Vocabulary-free hashing for large sparse feature spaces
 - Chi-square filtering for sparse lexical or one-hot features
 - Frequency encoding as a label-free categorical baseline
