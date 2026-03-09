@@ -19,6 +19,12 @@ Each bullet maps to a module under `modules/ml/reinforcement-learning/`.
 - Q-Learning (`modules/ml/reinforcement-learning/q-learning`)
 - SARSA (`modules/ml/reinforcement-learning/sarsa`)
 
+## Prediction and Planning
+
+- First-visit Monte Carlo prediction (`modules/ml/reinforcement-learning/first-visit-monte-carlo-prediction`)
+- n-step TD prediction (`modules/ml/reinforcement-learning/n-step-td-prediction`)
+- Monte Carlo Tree Search (UCT) (`modules/ml/reinforcement-learning/monte-carlo-tree-search`)
+
 ## LLM-related RL
 
 - DPO vs PPO (`modules/ml/reinforcement-learning/dpo-vs-ppo`)

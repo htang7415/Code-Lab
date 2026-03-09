@@ -31,6 +31,10 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 
 - Expected calibration error (`modules/ml/evaluation/expected-calibration-error`)
 
+## Uncertainty
+
+- Mean confidence intervals (`modules/ml/evaluation/confidence-intervals`)
+
 See also:
 
 - Calibration guide (`docs/ml/evaluation/calibration`)

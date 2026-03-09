@@ -23,7 +23,14 @@ Each bullet maps to a module under `modules/ml/llm/`.
 
 - Perplexity (`modules/ml/llm/perplexity`)
 - MMLU-style evaluation (`modules/ml/llm/mmlu-evaluation`)
+- Normalized exact match (`modules/ml/llm/exact-match`)
+- BLEU / METEOR overlap (`modules/ml/llm/bleu-meteor`)
 - Pass@k (`modules/ml/llm/pass-at-k`)
+- Pairwise judge rates (`modules/ml/llm/judge-pairwise`)
+
+## Retrieval and Lexical Baselines
+
+- BM25 ranking (`modules/ml/llm/bm25-ranking`)
 
 ## Alignment and Optimization
 

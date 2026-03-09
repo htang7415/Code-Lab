@@ -43,6 +43,26 @@ Modules added:
 - `modules/ml/models/xgboost-objective`
 - `modules/ml/llm/mmlu-evaluation`
 - `modules/ml/llm/pass-at-k`
+- `modules/ml/systems/context-parallelism`
+- `modules/ml/systems/tensor-parallelism`
+- `modules/ml/systems/prefix-cache-metrics`
+- `modules/ml/generative/ddpm-sampling`
+- `modules/ml/data/outlier-detection`
+- `modules/ml/systems/expert-parallelism`
+- `modules/ml/systems/chunked-prefill`
+- `modules/ml/evaluation/confidence-intervals`
+- `modules/ml/llm/exact-match`
+- `modules/ml/llm/judge-pairwise`
+- `modules/ml/models/lle`
+- `modules/ml/models/tsne-gradient`
+- `modules/ml/models/bic-aic`
+- `modules/ml/llm/bleu-meteor`
+- `modules/ml/generative/ddim-sampling`
+- `modules/ml/data/tf-idf`
+- `modules/ml/llm/bm25-ranking`
+- `modules/ml/reinforcement-learning/monte-carlo-tree-search`
+- `modules/ml/reinforcement-learning/first-visit-monte-carlo-prediction`
+- `modules/ml/reinforcement-learning/n-step-td-prediction`
 
 ## Top 10 Docs to Write Next
 
@@ -59,26 +79,28 @@ Modules added:
 
 ## Top 10 New Modules to Add Next
 
-- `modules/ml/systems/context-parallelism`: covers long-context serving and communication trade-offs.
-- `modules/ml/systems/tensor-parallelism`: covers shard-by-dimension compute and all-reduce costs.
-- `modules/ml/systems/prefix-cache-metrics`: covers cache hit-rate reasoning and practical serving gains.
-- `modules/ml/generative/ddpm-sampling`: adds the common reverse-sampling step that appears throughout diffusion curricula.
-- `modules/ml/data/outlier-detection`: adds a practical preprocessing and anomaly-screening baseline.
-- `modules/ml/models/lle`: adds a standard manifold learning baseline from the title list.
-- `modules/ml/models/tsne-gradient`: covers the core optimization idea behind t-SNE.
-- `modules/ml/models/bic-aic`: covers model selection for mixture-style models.
-- `modules/ml/llm/exact-match`: adds normalized answer matching as a simple evaluation primitive.
-- `modules/ml/llm/judge-pairwise`: adds judge-based comparison as a modern LLM eval pattern.
+`modules/ml/generative/diffusion-guidance-tradeoffs` already covers the classifier-free guidance idea, so it is no longer tracked as a separate module.
+
+- `modules/ml/evaluation/ab-test-analysis`: exact Deep-ML title match for model-comparison statistics.
+- `modules/ml/data/feature-scaling`: exact Deep-ML title match for preprocessing standardization basics.
+- `modules/ml/mlops/canary-rollout`: grounded in the Deep-ML canary deployment health title.
+- `modules/ml/mlops/drift-detection`: grounded in the Deep-ML PSI drift detection title.
+- `modules/ml/llm/beam-search`: exact Deep-ML title match for decoding.
+- `modules/ml/llm/top-p-sampling`: exact Deep-ML title match for nucleus sampling.
+- `modules/ml/llm/temperature-sampling`: exact Deep-ML title match for sampling control.
+- `modules/ml/representation/contrastive-loss`: exact Deep-ML title match for SimCLR-style objectives.
+- `modules/ml/reinforcement-learning/eligibility-traces`: grounded in the Deep-ML TD(llama) title.
+- `modules/ml/systems/expert-load-balancing`: inferred MoE systems gap beyond pure routing and dispatch.
 
 ## Second Wave After That
 
-- `modules/ml/systems/tensor-parallelism`
-- `modules/ml/systems/context-parallelism`
-- `modules/ml/systems/expert-parallelism`
-- `modules/ml/generative/ddpm-sampling`
-- `modules/ml/generative/classifier-free-guidance`
-- `modules/ml/models/lle`
-- `modules/ml/models/tsne-gradient`
-- `modules/ml/models/bic-aic`
-- `modules/ml/llm/exact-match`
-- `modules/ml/llm/judge-pairwise`
+- `modules/ml/evaluation/bootstrap-intervals`
+- `modules/ml/optimization/warmup-cosine-decay`
+- `modules/ml/llm/tokenizer-comparison`
+- `modules/ml/reinforcement-learning/importance-sampling`
+- `modules/ml/llm/top-k-sampling`
+- `modules/ml/data/missing-indicator`
+- `modules/ml/evaluation/permutation-test`
+- `modules/ml/evaluation/isotonic-calibration`
+- `modules/ml/llm/reranker-metrics`
+- `modules/ml/mlops/request-sla`

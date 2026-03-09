@@ -14,4 +14,6 @@ Each bullet maps to a module under `modules/ml/generative/`.
 - Choose GAN vs VAE vs Diffusion for a task (trade-offs) (`modules/ml/generative/model-selection`)
 - GAN instability, mode collapse (`modules/ml/generative/gan-mode-collapse`)
 - VAE blurry samples, posterior collapse (`modules/ml/generative/vae-posterior-collapse`)
-- Diffusion slow sampling, guidance trade-offs (`modules/ml/generative/diffusion-guidance-tradeoffs`)
+- DDPM reverse mean step (`modules/ml/generative/ddpm-sampling`)
+- DDIM deterministic step (`modules/ml/generative/ddim-sampling`)
+- Diffusion guidance trade-offs / classifier-free guidance (`modules/ml/generative/diffusion-guidance-tradeoffs`)

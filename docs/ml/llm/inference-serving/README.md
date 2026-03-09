@@ -6,12 +6,14 @@ Serving quality depends on latency, memory, batching, and hardware efficiency mo
 
 - KV cache sizing (`modules/ml/llm/kv-cache`)
 - Prefix-cache reuse (`modules/ml/llm/prefix-cache`)
+- Prefix-cache savings metrics (`modules/ml/systems/prefix-cache-metrics`)
 - Speculative decoding verification (`modules/ml/llm/speculative-decoding`)
 - Inference head pruning (`modules/ml/llm/inference-head-pruning`)
 - INT8 / INT4 quantization (`modules/ml/llm/int8-int4-quantization`)
 - FP16 / BF16 / FP8 trade-offs (`modules/ml/llm/fp16-bf16-fp8`)
 - Request batching (`modules/ml/mlops/request-batching`)
 - Continuous batching (`modules/ml/systems/continuous-batching`)
+- Chunked prefill rounds (`modules/ml/systems/chunked-prefill`)
 - Roofline analysis (`modules/ml/systems/roofline-analysis`)
 
 ## Concepts to Cover Well
@@ -20,4 +22,5 @@ Serving quality depends on latency, memory, batching, and hardware efficiency mo
 - Continuous batching and chunked prefill
 - KV cache memory budgets and eviction
 - Prefix cache reuse
+- Prefix cache hit lengths and saved-token metrics
 - Speculative decoding and verification

@@ -17,10 +17,15 @@ Each bullet maps to a module under `modules/ml/systems/`.
 ## Performance Models
 
 - Roofline analysis (`modules/ml/systems/roofline-analysis`)
+- Tensor parallel linear communication (`modules/ml/systems/tensor-parallelism`)
+- Context parallel attention bytes (`modules/ml/systems/context-parallelism`)
+- Expert parallel dispatch (`modules/ml/systems/expert-parallelism`)
 
 ## Serving Mechanics
 
 - Continuous batching (`modules/ml/systems/continuous-batching`)
+- Chunked prefill rounds (`modules/ml/systems/chunked-prefill`)
+- Prefix cache savings metrics (`modules/ml/systems/prefix-cache-metrics`)
 
 See also:
 
