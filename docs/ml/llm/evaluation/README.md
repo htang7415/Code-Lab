@@ -48,6 +48,9 @@ LLM evaluation mixes language-model likelihood, task scoring, and model-judge st
 - Nonmajority vote share outside the winning normalized answer
 - Minority vote share outside the dominant normalized answer cluster
 - Minority answer share outside the largest normalized answer cluster
+- Minority cluster count outside the dominant normalized answer cluster
+- Minority cluster share outside the dominant normalized answer cluster
+- Minority cluster mode as the typical size of alternative normalized answer groups
 - Self-consistency voting across multiple sampled traces
 - Candidate diversity across multiple sampled candidates
 - Judge confidence aligned with correctness

@@ -238,6 +238,21 @@ Modules added:
 - `modules/ml/data/overflow-cutoff-count`
 - `modules/ml/llm/minority-answer-share`
 - `modules/ml/reinforcement-learning/continuing-indicator`
+- `modules/ml/mlops/breach-bucket-share`
+- `modules/ml/evaluation/log-hit-rate`
+- `modules/ml/data/overflow-cutoff-mean`
+- `modules/ml/llm/minority-cluster-count`
+- `modules/ml/reinforcement-learning/nonterminal-indicator`
+- `modules/ml/mlops/breach-bucket-mass`
+- `modules/ml/evaluation/log-failure-rate`
+- `modules/ml/data/overflow-cutoff-peak`
+- `modules/ml/llm/minority-cluster-share`
+- `modules/ml/reinforcement-learning/ongoing-indicator`
+- `modules/ml/mlops/breach-bucket-entropy`
+- `modules/ml/evaluation/log-miss-rate`
+- `modules/ml/data/overflow-cutoff-std`
+- `modules/ml/llm/minority-cluster-mode`
+- `modules/ml/reinforcement-learning/live-transition-indicator`
 
 ## Top 10 Docs to Write Next
 
@@ -257,17 +272,17 @@ Modules added:
 `modules/ml/generative/diffusion-guidance-tradeoffs` already covers the classifier-free guidance idea, so it is no longer tracked as a separate module.
 `modules/ml/mlops/ab-testing`, `modules/ml/mlops/canary-deployment`, `modules/ml/mlops/feature-drift-psi`, and `modules/ml/representation/contrastive-loss` already cover the basic title areas, so exact-title follow-ups are lower priority than uncovered concepts.
 
-- `modules/ml/mlops/breach-bucket-share`: share of observations in each breach severity bucket.
-- `modules/ml/evaluation/log-hit-rate`: log transform of a binary hit rate.
-- `modules/ml/data/overflow-cutoff-mean`: mean overflow among cases beyond a fixed cutoff.
-- `modules/ml/llm/minority-cluster-count`: number of normalized answer clusters outside the largest one.
-- `modules/ml/reinforcement-learning/nonterminal-indicator`: scalar indicator for a continuing transition.
-- `modules/ml/mlops/breach-bucket-mass`: normalized overload mass allocated across breach severity buckets.
+- `modules/ml/mlops/breach-bucket-tail`: tail mass of the most severe breach buckets.
+- `modules/ml/evaluation/log-error-rate`: log transform of a generic error rate.
+- `modules/ml/data/overflow-cutoff-median`: median overflow among cases beyond a cutoff.
+- `modules/ml/llm/minority-cluster-entropy`: entropy over minority normalized answer clusters.
+- `modules/ml/reinforcement-learning/active-transition-indicator`: scalar indicator for an active transition.
+- `modules/ml/mlops/breach-bucket-cdf`: cumulative distribution over breach severity buckets.
 
 ## Second Wave After That
 
-- `modules/ml/evaluation/log-failure-rate`
-- `modules/ml/data/overflow-cutoff-peak`
-- `modules/ml/llm/minority-cluster-share`
-- `modules/ml/reinforcement-learning/ongoing-indicator`
-- `modules/ml/mlops/breach-bucket-entropy`
+- `modules/ml/evaluation/log-reject-rate`
+- `modules/ml/data/overflow-cutoff-iqr`
+- `modules/ml/llm/minority-cluster-top-share`
+- `modules/ml/reinforcement-learning/surviving-transition-indicator`
+- `modules/ml/mlops/breach-bucket-cumulative-share`

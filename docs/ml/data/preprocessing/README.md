@@ -27,6 +27,9 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Overflow threshold count under hard token limits (`modules/ml/data/overflow-threshold-count`)
 - Overflow cutoff rate under hard token limits (`modules/ml/data/overflow-cutoff-rate`)
 - Overflow cutoff count under hard token limits (`modules/ml/data/overflow-cutoff-count`)
+- Overflow cutoff mean under hard token limits (`modules/ml/data/overflow-cutoff-mean`)
+- Overflow cutoff peak under hard token limits (`modules/ml/data/overflow-cutoff-peak`)
+- Overflow cutoff std under hard token limits (`modules/ml/data/overflow-cutoff-std`)
 - Hash trick for fixed-width sparse features (`modules/ml/data/hash-trick`)
 - Chi-square feature scoring for sparse features (`modules/ml/data/chi-square-feature-selection`)
 - Frequency encoding for categorical counts (`modules/ml/data/frequency-encoding`)
@@ -69,6 +72,9 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Overflow threshold count when the raw number of severe cases matters
 - Overflow cutoff rate when a fixed severity line defines unacceptable truncation
 - Overflow cutoff count when teams need the raw number of unacceptable cases
+- Overflow cutoff mean when teams care about average severity among unacceptable cases
+- Overflow cutoff peak when worst-case overflow among unacceptable cases matters
+- Overflow cutoff std when teams care about severity variability among unacceptable cases
 - Vocabulary-free hashing for large sparse feature spaces
 - Chi-square filtering for sparse lexical or one-hot features
 - Frequency encoding as a label-free categorical baseline
