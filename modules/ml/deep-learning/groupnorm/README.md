@@ -1,29 +1,9 @@
+---
+aliasOf: normalization-methods
+---
+
 # GroupNorm
 
-> Track: `ml` | Topic: `deep-learning`
+Alias entry preserved for old anchors.
 
-## Concept
-
-GroupNorm splits channels into groups and normalizes within each group.
-
-## Math
-
-$$y = \frac{x - \mu_g}{\sqrt{\sigma_g^2 + \epsilon}}$$
-
-- $x$ -- input features
-- $y$ -- normalized output
-- $\mu_g$ -- mean over group $g$
-- $\sigma_g$ -- standard deviation over group $g$
-- $\epsilon$ -- small constant for numerical stability
-
-## Function
-
-```python
-def groupnorm(x: list[float], groups: int, eps: float = 1e-5) -> list[float]:
-```
-
-## Run tests
-
-```bash
-pytest modules/ml/deep-learning/groupnorm/python -q
-```
+Use `modules/ml/deep-learning/normalization-methods` as the canonical module.

@@ -19,11 +19,25 @@ The repo already has strong breadth under `modules/ml/`; the next improvement is
 - MLOps (`docs/ml/mlops`)
 - Computer vision (`docs/ml/computer-vision`)
 
+## Study Paths
+
+- Beginner path (`docs/ml/path-beginner`)
+- Interview path (`docs/ml/path-interview`)
+- LLM systems path (`docs/ml/path-llm-systems`)
+- Math-first path (`docs/ml/path-math-first`)
+
+## Canonical Families
+
+- Deep learning: `activation-functions`, `normalization-methods`
+- Evaluation: `calibration-metrics`, `ranking-metrics`
+- LLM: `decoding-methods`, `retrieval-metrics`
+
 ## Coverage Rule
 
 - Use docs for concept maps, trade-offs, and navigation.
 - Use modules for one-idea drills with tiny code and tiny tests.
 - Prefer canonical concepts over many near-duplicate calculators.
+- Prefer study paths and canonical families as the default entry point for ML learning.
 
 ## Near-Term Priority
 

@@ -11,6 +11,7 @@ import type { ContentIndex } from "@/lib/content";
 import { extractModuleOrder } from "@/lib/roadmap";
 import contentData from "@/content/content_index.json";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
 
 type VizComponent = () => React.ReactElement;
 
@@ -765,6 +766,15 @@ export default async function TopicPage({
   const modules = content.modules.filter(
     (item) => item.track === trackId && item.topic === topicId
   );
+  const moduleAliases = (content.moduleAliases ?? []).filter(
+    (item) => item.track === trackId && item.topic === topicId
+  );
+  const aliasesByCanonical = new Map<string, string[]>();
+  for (const alias of moduleAliases) {
+    const aliases = aliasesByCanonical.get(alias.aliasOf) ?? [];
+    aliases.push(alias.slug);
+    aliasesByCanonical.set(alias.aliasOf, aliases);
+  }
 
   // Exclude topic-level README docs (slug === topicId) from rendered entries;
   // they only provide the module ordering outline.
@@ -949,8 +959,11 @@ export default async function TopicPage({
               const stepIndex = new Map(flowSteps.map((step, i) => [step.key, i + 1]));
 
               return (
+                <Fragment key={entry.slug}>
+                {(aliasesByCanonical.get(entry.slug) ?? []).map((aliasSlug) => (
+                  <span key={aliasSlug} id={aliasSlug} />
+                ))}
                 <article
-                  key={entry.slug}
                   id={entry.slug}
                   className="concept-article"
                 >
@@ -1134,6 +1147,7 @@ export default async function TopicPage({
                     </p>
                   )}
                 </article>
+                </Fragment>
               );
             })}
           </div>

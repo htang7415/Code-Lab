@@ -22,6 +22,7 @@ Each bullet maps to a module under `modules/ml/llm/`.
 
 ## Evaluation
 
+- Retrieval metrics family (`modules/ml/llm/retrieval-metrics`)
 - Perplexity (`modules/ml/llm/perplexity`)
 - MMLU-style evaluation (`modules/ml/llm/mmlu-evaluation`)
 - Normalized exact match (`modules/ml/llm/exact-match`)
@@ -86,6 +87,7 @@ Each bullet maps to a module under `modules/ml/llm/`.
 
 ## Decoding
 
+- Decoding methods family (`modules/ml/llm/decoding-methods`)
 - Beam search (`modules/ml/llm/beam-search`)
 - Top-k sampling (`modules/ml/llm/top-k-sampling`)
 - Top-p sampling (`modules/ml/llm/top-p-sampling`)

@@ -17,6 +17,7 @@ Neural networks and training mechanics from first principles.
 
 ## Activation Functions
 
+- Activation functions family (`modules/ml/deep-learning/activation-functions`)
 - Sigmoid, Tanh, Hard Sigmoid, Dynamic Tanh, Hardtanh
 - ReLU family: ReLU, Leaky ReLU, ELU, PReLU
 - Modern: GeLU, Swish, SwiGLU, Mish
@@ -61,6 +62,7 @@ Neural networks and training mechanics from first principles.
 
 ## Normalization
 
+- Normalization methods family (`modules/ml/deep-learning/normalization-methods`)
 - BatchNorm (train vs eval behavior)
 - LayerNorm
 - RMSNorm

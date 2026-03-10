@@ -69,6 +69,7 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 
 ## Calibration
 
+- Calibration metrics family (`modules/ml/evaluation/calibration-metrics`)
 - Expected calibration error (`modules/ml/evaluation/expected-calibration-error`)
 - Isotonic calibration (`modules/ml/evaluation/isotonic-calibration`)
 - Brier score (`modules/ml/evaluation/brier-score`)
@@ -88,6 +89,7 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 
 ## Ranking and Retrieval
 
+- Ranking metrics family (`modules/ml/evaluation/ranking-metrics`)
 - Lift@k (`modules/ml/evaluation/lift-at-k`)
 - Mean reciprocal rank (`modules/ml/evaluation/mean-reciprocal-rank`)
 - NDCG (`modules/ml/evaluation/ndcg`)

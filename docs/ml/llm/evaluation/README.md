@@ -8,6 +8,7 @@ LLM evaluation mixes language-model likelihood, task scoring, and model-judge st
 
 ## Current Anchors
 
+- Retrieval metrics family (`modules/ml/llm/retrieval-metrics`)
 - Perplexity (`modules/ml/llm/perplexity`)
 - MMLU-style evaluation (`modules/ml/llm/mmlu-evaluation`)
 - Normalized exact match (`modules/ml/llm/exact-match`)

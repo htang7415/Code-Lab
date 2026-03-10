@@ -59,6 +59,19 @@ pnpm --filter @codelab/site dev
 - Keep separate modules only when the mental model, implementation pattern, or failure mode is clearly different.
   Examples: PCA, GMM-EM, backpropagation, PPO, KV cache.
 - Do **not** create a new ML module for a narrow metric or variant if it adds little intuition beyond an existing family module.
+- Avoid duplicate ML modules. Before adding a new module, check whether the idea is already covered by:
+  - an existing canonical family module
+  - a near-duplicate slug with only naming differences
+  - a docs guide that should be expanded instead of creating a new module
+- If a topic is already covered, prefer one of these actions instead of adding a duplicate:
+  - improve the existing module
+  - merge related narrow modules into a denser canonical module
+  - add cross-links, aliases, or redirects for discoverability
+- Only add a separate ML module when it contributes at least one of:
+  - a distinct mental model
+  - a distinct implementation pattern
+  - a distinct failure mode
+  - a materially better learning path
 - Dense ML modules are encouraged when they stay easy to scan. A strong ML module usually includes:
   - a short concept overview
   - grouped formulas or a comparison table

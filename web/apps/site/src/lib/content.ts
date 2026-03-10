@@ -35,6 +35,15 @@ export interface ModuleEntry {
   sources: ModuleSource[];
 }
 
+export interface ModuleAliasEntry {
+  track: string;
+  topic: string;
+  slug: string;
+  title: string;
+  path: string;
+  aliasOf: string;
+}
+
 export interface DocEntry {
   track: string;
   topic: string;
@@ -50,5 +59,6 @@ export interface ContentIndex {
   tracks: Track[];
   topics: Topic[];
   modules: ModuleEntry[];
+  moduleAliases?: ModuleAliasEntry[];
   docs: DocEntry[];
 }

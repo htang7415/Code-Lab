@@ -27,6 +27,15 @@ interface ModuleIndexEntry {
   sources: ModuleSource[];
 }
 
+interface ModuleAliasEntry {
+  track: string;
+  topic: string;
+  slug: string;
+  title: string;
+  path: string;
+  aliasOf: string;
+}
+
 interface DocIndexEntry {
   track: string;
   topic: string;
@@ -75,6 +84,7 @@ interface ContentIndex {
   tracks: TrackIndexEntry[];
   topics: TopicIndexEntry[];
   modules: ModuleIndexEntry[];
+  moduleAliases: ModuleAliasEntry[];
   docs: DocIndexEntry[];
 }
 
@@ -198,6 +208,45 @@ function loadMarkdown(filePath: string) {
   return readFileSync(filePath, "utf-8");
 }
 
+function parseFrontmatter(markdown: string): {
+  body: string;
+  data: Record<string, string | boolean>;
+} {
+  const normalized = markdown.replace(/\r\n/g, "\n");
+  if (!normalized.startsWith("---\n")) {
+    return { body: markdown, data: {} };
+  }
+
+  const end = normalized.indexOf("\n---\n", 4);
+  if (end === -1) {
+    return { body: markdown, data: {} };
+  }
+
+  const rawFrontmatter = normalized.slice(4, end);
+  const body = normalized.slice(end + 5);
+  const data: Record<string, string | boolean> = {};
+
+  for (const line of rawFrontmatter.split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const colon = trimmed.indexOf(":");
+    if (colon === -1) continue;
+    const key = trimmed.slice(0, colon).trim();
+    const rawValue = trimmed.slice(colon + 1).trim();
+    if (!key || !rawValue) continue;
+
+    if (rawValue === "true") {
+      data[key] = true;
+    } else if (rawValue === "false") {
+      data[key] = false;
+    } else {
+      data[key] = rawValue.replace(/^["']|["']$/g, "");
+    }
+  }
+
+  return { body, data };
+}
+
 function languageFromPath(filePath: string) {
   const extension = extname(filePath);
   if (extension === ".py") return "python";
@@ -231,6 +280,7 @@ async function main() {
   })).filter(isDirectory);
 
   const modules: ModuleIndexEntry[] = [];
+  const moduleAliases: ModuleAliasEntry[] = [];
   const docs: DocIndexEntry[] = [];
 
   for (const filePath of moduleFiles.sort()) {
@@ -242,9 +292,27 @@ async function main() {
       const topic = parts[2];
       const slug = parts[3];
       const moduleDir = dirname(filePath);
-      const readme = loadMarkdown(filePath);
+      const rawReadme = loadMarkdown(filePath);
+      const { body: readme, data } = parseFrontmatter(rawReadme);
       const title = extractTitle(readme, kebabToTitle(slug));
       const summary = extractSummary(readme);
+      const aliasOfValue = data.aliasOf ?? data.alias_of;
+      const aliasOf =
+        typeof aliasOfValue === "string" && aliasOfValue.trim().length > 0
+          ? aliasOfValue.trim()
+          : undefined;
+
+      if (aliasOf) {
+        moduleAliases.push({
+          track,
+          topic,
+          slug,
+          title,
+          path: relative(repoRoot, moduleDir),
+          aliasOf,
+        });
+        continue;
+      }
 
       const sources: ModuleSource[] = [];
       const pythonSources = await glob("python/**/*.py", {
@@ -406,6 +474,7 @@ async function main() {
     tracks,
     topics,
     modules,
+    moduleAliases,
     docs,
   };
 
@@ -421,7 +490,9 @@ async function main() {
   const searchPath = resolve(outDir, "search_index.json");
   writeFileSync(searchPath, JSON.stringify(searchIndex, null, 2) + "\n");
 
-  console.log(`Indexed ${modules.length} module(s), ${docs.length} doc(s)`);
+  console.log(
+    `Indexed ${modules.length} module(s), ${moduleAliases.length} alias(es), ${docs.length} doc(s)`
+  );
 }
 
 main().catch((err) => {

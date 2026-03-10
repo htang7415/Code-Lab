@@ -9,6 +9,22 @@ This roadmap is driven by the live Deep-ML title list captured in `artifacts/dee
 - Add new modules only for canonical concepts not already represented.
 - Prefer one module that teaches a family over several tiny variants.
 
+## Current Canonical Families
+
+- `modules/ml/deep-learning/activation-functions`
+- `modules/ml/deep-learning/normalization-methods`
+- `modules/ml/evaluation/calibration-metrics`
+- `modules/ml/evaluation/ranking-metrics`
+- `modules/ml/llm/decoding-methods`
+- `modules/ml/llm/retrieval-metrics`
+
+## Study Paths
+
+- `docs/ml/path-beginner/README.md`
+- `docs/ml/path-interview/README.md`
+- `docs/ml/path-llm-systems/README.md`
+- `docs/ml/path-math-first/README.md`
+
 ## Added in This Pass
 
 Docs added:
