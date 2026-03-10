@@ -19,6 +19,7 @@ Leaf guides:
 - Robust scaling (`modules/ml/data/robust-scaling`)
 - Feature clipping (`modules/ml/data/feature-clipping`)
 - Polynomial feature expansion (`modules/ml/data/polynomial-features`)
+- Structured feature methods (`modules/ml/data/structured-feature-methods`)
 - Count vectorizer (`modules/ml/data/count-vectorizer`)
 - TF-IDF lexical features (`modules/ml/data/tf-idf`)
 - Token budgeting under fixed length limits (`modules/ml/data/token-budgeting`)

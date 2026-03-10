@@ -72,12 +72,40 @@ pnpm --filter @codelab/site dev
   - a distinct implementation pattern
   - a distinct failure mode
   - a materially better learning path
+- For ML docs and modules, optimize for **concise and clear learning**, not exhaustive coverage.
+- Start from **first principles** whenever possible:
+  - what problem this concept solves
+  - the minimum useful math
+  - the minimum useful code shape
+  - when to use it
+- Avoid heavy ML pages that read like flat catalogs of metrics, variants, or historical trivia.
+- Prefer a small number of important ideas over long lists of narrow siblings.
+- For each ML topic, cover the **most important concepts for the current AI era** rather than trying to preserve every older idea.
+- Treat `artifacts/deepml/problem_titles.md` as the primary scope boundary for ML coverage work.
+- Do not add ML topics outside `problem_titles.md` unless they are clearly important for AI practice in 2026.
+- When selecting what to emphasize, bias toward topics that matter most for modern AI workflows in 2026:
+  - LLMs and evaluation
+  - deep learning fundamentals that still matter in practice
+  - inference and systems
+  - modern optimization and training patterns
+  - classical ML concepts that remain foundational
 - Dense ML modules are encouraged when they stay easy to scan. A strong ML module usually includes:
-  - a short concept overview
-  - grouped formulas or a comparison table
-  - failure modes or trade-offs
-  - compact code covering the family
+  - purpose
+  - first-principles intuition
+  - compact math
+  - compact code
+  - grouped formulas or a comparison table when useful
+  - trade-offs or failure modes
+  - links to the canonical neighboring modules
   - one focused test file for the family
+- Dense ML docs should usually follow a teaching-first shape:
+  - Purpose
+  - First Principles
+  - Core Math
+  - Minimal Code Mental Model
+  - Canonical Modules
+  - When To Use What
+  - Common Mistakes
 - Use `docs/` to provide the system map and comparisons. Use `modules/` to provide the smallest **useful** learning unit, which may be larger than a single formula.
 - If consolidating existing ML modules, preserve URL stability. Prefer redirects or compatibility handling over breaking slugs.
 

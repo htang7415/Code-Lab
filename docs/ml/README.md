@@ -1,23 +1,14 @@
 # Machine Learning
 
-This track should cover the full ML stack from math to deployment.
-The repo already has strong breadth under `modules/ml/`; the next improvement is making that coverage easier to scan from the docs layer.
+Use this track to learn the ML stack from first principles without getting buried in old or low-value variants.
+The default goal is not exhaustive coverage. It is fast, deep understanding of the concepts that matter most for modern AI work in 2026.
 
-## Section Map
+## How To Use This Track
 
-- Math and foundations (`docs/ml/fundamentals`)
-- Data and preprocessing (`docs/ml/data`)
-- Classical models (`docs/ml/models`)
-- Metrics and evaluation (`docs/ml/evaluation`)
-- Deep learning (`docs/ml/deep-learning`)
-- Generative models (`docs/ml/generative`)
-- Representation learning (`docs/ml/representation`)
-- LLMs and modern NLP (`docs/ml/llm`)
-- Optimization (`docs/ml/optimization`)
-- Reinforcement learning (`docs/ml/reinforcement-learning`)
-- Systems and performance (`docs/ml/systems`)
-- MLOps (`docs/ml/mlops`)
-- Computer vision (`docs/ml/computer-vision`)
+- Start with one study path, not the whole tree.
+- Use section docs for the concept map and canonical modules for the main learning unit.
+- Use narrow modules only after the canonical family makes sense.
+- Treat `artifacts/deepml/problem_titles.md` as the main scope boundary for ML coverage.
 
 ## Study Paths
 
@@ -26,21 +17,31 @@ The repo already has strong breadth under `modules/ml/`; the next improvement is
 - LLM systems path (`docs/ml/path-llm-systems`)
 - Math-first path (`docs/ml/path-math-first`)
 
+## Learning Order
+
+- Math and foundations (`docs/ml/fundamentals`)
+- Data and preprocessing (`docs/ml/data`)
+- Models and evaluation (`docs/ml/models`, `docs/ml/evaluation`)
+- Deep learning and optimization (`docs/ml/deep-learning`, `docs/ml/optimization`)
+- LLMs and modern NLP (`docs/ml/llm`)
+- Systems, MLOps, RL, and vision (`docs/ml/systems`, `docs/ml/mlops`, `docs/ml/reinforcement-learning`, `docs/ml/computer-vision`)
+
 ## Canonical Families
 
 - Deep learning: `activation-functions`, `normalization-methods`
-- Evaluation: `calibration-metrics`, `ranking-metrics`
+- Evaluation: `calibration-metrics`, `uncertainty-intervals`, `ranking-metrics`, `classification-metrics-core`, `agreement-metrics`, `binary-rate-comparison-metrics`
 - LLM: `decoding-methods`, `retrieval-metrics`
+- Data: `scaling-methods`, `categorical-encoding-methods`, `sparse-text-feature-methods`, `structured-feature-methods`
 
-## Coverage Rule
+## Writing Standard
 
-- Use docs for concept maps, trade-offs, and navigation.
-- Use modules for one-idea drills with tiny code and tiny tests.
+- Keep docs short, teachable, and current.
+- Prefer first-principles explanation plus a little math and code over long catalogs.
 - Prefer canonical concepts over many near-duplicate calculators.
-- Prefer study paths and canonical families as the default entry point for ML learning.
+- Only add topics outside `problem_titles.md` when they are clearly important to AI practice in 2026.
 
 ## Near-Term Priority
 
-- Keep leaf guides in sync so the current module coverage stays visible.
+- Keep heavy pages concise and family-first.
 - Rebalance underrepresented areas such as representation, diffusion, and RL-for-LLM.
-- Use `docs/ml/roadmap` for periodic coverage audits instead of title-by-title expansion.
+- Use `docs/ml/roadmap` for coverage audits instead of title-by-title expansion.

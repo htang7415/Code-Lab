@@ -5,21 +5,12 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 
 ## Classification
 
+- Classification metrics core (`modules/ml/evaluation/classification-metrics-core`)
+- Agreement metrics family (`modules/ml/evaluation/agreement-metrics`)
+- Binary rate comparison metrics family (`modules/ml/evaluation/binary-rate-comparison-metrics`)
 - Accuracy (when it fails) (`modules/ml/evaluation/accuracy`)
 - Agreement rate (`modules/ml/evaluation/agreement-rate`)
-- Positive rate (`modules/ml/evaluation/positive-rate`)
-- Base-rate gap (`modules/ml/evaluation/base-rate-gap`)
-- Prevalence ratio (`modules/ml/evaluation/prevalence-ratio`)
-- Prevalence delta (`modules/ml/evaluation/prevalence-delta`)
-- Risk ratio (`modules/ml/evaluation/risk-ratio`)
-- Prevalence index (`modules/ml/evaluation/prevalence-index`)
-- Base-rate ratio (`modules/ml/evaluation/base-rate-ratio`)
-- Prevalence odds (`modules/ml/evaluation/prevalence-odds`)
-- Log prevalence ratio (`modules/ml/evaluation/log-prevalence-ratio`)
-- Log odds (`modules/ml/evaluation/log-odds`)
-- Log risk ratio (`modules/ml/evaluation/log-risk-ratio`)
-- Log relative risk (`modules/ml/evaluation/log-relative-risk`)
-- Log rate ratio (`modules/ml/evaluation/log-rate-ratio`)
+- Positive rate, gaps, ratios, odds, and log-ratio views (see `modules/ml/evaluation/binary-rate-comparison-metrics`)
 - Log event rate (`modules/ml/evaluation/log-event-rate`)
 - Log hit rate (`modules/ml/evaluation/log-hit-rate`)
 - Log failure rate (`modules/ml/evaluation/log-failure-rate`)
@@ -76,6 +67,7 @@ Each bullet maps to a module under `modules/ml/evaluation/` unless noted.
 
 ## Uncertainty
 
+- Uncertainty intervals family (`modules/ml/evaluation/uncertainty-intervals`)
 - Mean confidence intervals (`modules/ml/evaluation/confidence-intervals`)
 - Bootstrap percentile intervals (`modules/ml/evaluation/bootstrap-intervals`)
 - Wilson interval for binary rates (`modules/ml/evaluation/wilson-interval`)

@@ -13,10 +13,18 @@ This roadmap is driven by the live Deep-ML title list captured in `artifacts/dee
 
 - `modules/ml/deep-learning/activation-functions`
 - `modules/ml/deep-learning/normalization-methods`
+- `modules/ml/evaluation/agreement-metrics`
 - `modules/ml/evaluation/calibration-metrics`
 - `modules/ml/evaluation/ranking-metrics`
+- `modules/ml/evaluation/classification-metrics-core`
+- `modules/ml/evaluation/uncertainty-intervals`
+- `modules/ml/evaluation/binary-rate-comparison-metrics`
 - `modules/ml/llm/decoding-methods`
 - `modules/ml/llm/retrieval-metrics`
+- `modules/ml/data/scaling-methods`
+- `modules/ml/data/categorical-encoding-methods`
+- `modules/ml/data/sparse-text-feature-methods`
+- `modules/ml/data/structured-feature-methods`
 
 ## Study Paths
 

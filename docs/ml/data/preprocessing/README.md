@@ -2,124 +2,79 @@
 
 Preprocessing decides whether downstream models learn signal or shortcuts.
 
-## Leaf Guides
+## Purpose
+
+Use this page to choose the smallest useful preprocessing move:
+- scale numeric features
+- encode categorical features
+- build sparse text features
+- construct simple feature interactions
+- handle missingness, imbalance, and hard length caps
+
+## First Principles
+
+- Scale features when the model is distance-based, gradient-based, or numerically unstable.
+- Encode categories when IDs are informative but cannot be used as raw integers.
+- Build sparse lexical features when a simple text baseline is enough.
+- Add buckets or crosses when a simple model needs nonlinear thresholds or sparse interactions.
+- Track missingness, imbalance, and overflow because preprocessing mistakes often dominate model quality.
+
+## Core Math
+
+- Standardization:
+  $$
+  z = \frac{x - \mu}{\sigma}
+  $$
+- TF-IDF:
+  $$
+  \mathrm{tfidf}(t, d) = \mathrm{tf}(t, d)\log\frac{N}{\mathrm{df}(t)}
+  $$
+- Smoothed target encoding:
+  $$
+  \hat{\mu}_c = \frac{\sum y_c + \alpha \mu}{n_c + \alpha}
+  $$
+- Truncation rate:
+  $$
+  \frac{\#\{\text{examples over budget}\}}{N}
+  $$
+
+## Minimal Code Mental Model
+
+```python
+preprocessor.fit(train_split)
+x_train = preprocessor.transform(train_split)
+x_val = preprocessor.transform(val_split)
+overflow = truncation_rate(token_lengths, max_tokens=4096)
+```
+
+## Canonical Modules
+
+- Numeric scaling: `scaling-methods`
+- Categorical encoding: `categorical-encoding-methods`
+- Sparse text features: `sparse-text-feature-methods`
+- Structured tabular features: `structured-feature-methods`
+- Missingness and repair: `imputation`, `missing-indicator`
+- Imbalance and oversampling: `class-imbalance`, `smote`
+- Overflow diagnostics: `token-budgeting`, `truncation-rate`, plus the overflow guide
+
+## Supporting Guides
 
 - Overflow metrics guide (`docs/ml/data/overflow-metrics`)
 
-## Current Anchors
+## When To Use What
 
-- Data leakage (`modules/ml/data/data-leakage`)
-- Feature scaling (`modules/ml/data/feature-scaling`)
-- Robust scaling (`modules/ml/data/robust-scaling`)
-- Feature clipping for capped numeric ranges (`modules/ml/data/feature-clipping`)
-- Polynomial features (`modules/ml/data/polynomial-features`)
-- Count-vector lexical baseline (`modules/ml/data/count-vectorizer`)
-- TF-IDF lexical features (`modules/ml/data/tf-idf`)
-- Token budgeting under fixed prompt or feature limits (`modules/ml/data/token-budgeting`)
-- Truncation rate under hard token limits (`modules/ml/data/truncation-rate`)
-- Overflow count beyond hard token limits (`modules/ml/data/overflow-count`)
-- Budget overrun share beyond hard token limits (`modules/ml/data/budget-overrun-share`)
-- Mean overflow beyond hard token limits (`modules/ml/data/mean-overflow`)
-- Overflow presence rate beyond hard token limits (`modules/ml/data/overflow-presence-rate`)
-- Overflow tail under hard token limits (`modules/ml/data/overflow-tail`)
-- Overflow quantile under hard token limits (`modules/ml/data/overflow-quantile`)
-- Overflow peak under hard token limits (`modules/ml/data/overflow-peak`)
-- Overflow spread under hard token limits (`modules/ml/data/overflow-spread`)
-- Overflow density under hard token limits (`modules/ml/data/overflow-density`)
-- Overflow Gini under hard token limits (`modules/ml/data/overflow-gini`)
-- Overflow threshold rate under hard token limits (`modules/ml/data/overflow-threshold-rate`)
-- Overflow threshold count under hard token limits (`modules/ml/data/overflow-threshold-count`)
-- Overflow cutoff rate under hard token limits (`modules/ml/data/overflow-cutoff-rate`)
-- Overflow cutoff count under hard token limits (`modules/ml/data/overflow-cutoff-count`)
-- Overflow cutoff mean under hard token limits (`modules/ml/data/overflow-cutoff-mean`)
-- Overflow cutoff peak under hard token limits (`modules/ml/data/overflow-cutoff-peak`)
-- Overflow cutoff std under hard token limits (`modules/ml/data/overflow-cutoff-std`)
-- Overflow cutoff median under hard token limits (`modules/ml/data/overflow-cutoff-median`)
-- Overflow cutoff IQR under hard token limits (`modules/ml/data/overflow-cutoff-iqr`)
-- Overflow cutoff range under hard token limits (`modules/ml/data/overflow-cutoff-range`)
-- Overflow cutoff max gap under hard token limits (`modules/ml/data/overflow-cutoff-max-gap`)
-- Overflow cutoff skew under hard token limits (`modules/ml/data/overflow-cutoff-skew`)
-- Overflow cutoff upper tail under hard token limits (`modules/ml/data/overflow-cutoff-upper-tail`)
-- Overflow cutoff tail mass under hard token limits (`modules/ml/data/overflow-cutoff-tail-mass`)
-- Overflow cutoff tail Gini under hard token limits (`modules/ml/data/overflow-cutoff-tail-gini`)
-- Overflow cutoff top share under hard token limits (`modules/ml/data/overflow-cutoff-top-share`)
-- Overflow cutoff tail mean under hard token limits (`modules/ml/data/overflow-cutoff-tail-mean`)
-- Overflow cutoff tail count under hard token limits (`modules/ml/data/overflow-cutoff-tail-count`)
-- Overflow cutoff tail variance under hard token limits (`modules/ml/data/overflow-cutoff-tail-variance`)
-- Overflow cutoff tail skew under hard token limits (`modules/ml/data/overflow-cutoff-tail-skew`)
-- Overflow cutoff tail range under hard token limits (`modules/ml/data/overflow-cutoff-tail-range`)
-- Hash trick for fixed-width sparse features (`modules/ml/data/hash-trick`)
-- Chi-square feature scoring for sparse features (`modules/ml/data/chi-square-feature-selection`)
-- Frequency encoding for categorical counts (`modules/ml/data/frequency-encoding`)
-- Frequency capping for repeated sparse events (`modules/ml/data/frequency-capping`)
-- Target encoding for high-cardinality categories (`modules/ml/data/target-encoding`)
-- Rare-category grouping for long-tail categoricals (`modules/ml/data/rare-category-grouping`)
-- Weight-of-evidence encoding (`modules/ml/data/weight-of-evidence`)
-- Smoothed mean encoding (`modules/ml/data/mean-encoding-smoothing`)
-- Category cross features (`modules/ml/data/category-cross-features`)
-- Entity embeddings for categorical IDs (`modules/ml/data/entity-embedding-intuition`)
-- Rare-token pruning for sparse vocabularies (`modules/ml/data/rare-token-pruning`)
-- Feature bucketing for numeric thresholds (`modules/ml/data/feature-bucketing`)
-- Class imbalance (`modules/ml/data/class-imbalance`)
-- Missing-data imputation (`modules/ml/data/imputation`)
-- Missing-value indicators (`modules/ml/data/missing-indicator`)
-- SMOTE-style synthetic oversampling (`modules/ml/data/smote`)
-- Z-score outlier screening (`modules/ml/data/outlier-detection`)
+- Use standard or min-max scaling for linear models, distance models, and many neural inputs.
+- Use robust scaling or clipping when outliers distort simple scaling.
+- Use target, frequency, or WoE-style encodings for high-cardinality categories.
+- Use TF-IDF, hashing, or chi-square filtering for quick lexical baselines.
+- Use crosses, buckets, or entity embeddings when simple features miss interactions or category structure.
+- Use missing indicators when the fact that a value is missing may itself carry signal.
+- Use overflow diagnostics only when the system has a hard token or length cap.
 
-## Concepts to Cover Well
+## Common Mistakes
 
-- Scaling and normalization choices
-- Robust alternatives when z-score scaling is too sensitive
-- Feature clipping when only the most extreme numeric values should be capped
-- Label encoding and one-hot encoding
-- Count vectors as the simplest bag-of-words baseline
-- Text feature extraction such as TF-IDF
-- Token budgeting when prompts or sparse features have hard length limits
-- Truncation rate as a diagnostic for whether a length cap is too aggressive
-- Overflow count as a severity metric for how much content a hard cap removes
-- Budget overrun share as a normalized severity metric across datasets
-- Mean overflow as an average per-example severity metric
-- Overflow presence rate as an incidence metric for how often clipping happens
-- Overflow tail as a percentile summary of the most severe truncation cases
-- Overflow quantiles when teams need a configurable severity percentile
-- Overflow peak for the single worst truncation case in a batch
-- Overflow spread for how widely truncation severity varies across examples
-- Overflow density for cap-normalized truncation severity
-- Overflow Gini for how concentrated truncation burden is within a batch
-- Overflow threshold rate when only severe overflow cases should count
-- Overflow threshold count when the raw number of severe cases matters
-- Overflow cutoff rate when a fixed severity line defines unacceptable truncation
-- Overflow cutoff count when teams need the raw number of unacceptable cases
-- Overflow cutoff mean when teams care about average severity among unacceptable cases
-- Overflow cutoff peak when worst-case overflow among unacceptable cases matters
-- Overflow cutoff std when teams care about severity variability among unacceptable cases
-- Overflow cutoff median when teams need a robust center for unacceptable overflow
-- Overflow cutoff IQR when teams need robust spread for unacceptable overflow
-- Overflow cutoff range when teams need the full span of unacceptable overflow
-- Overflow cutoff max gap when one worst-case overflow may be separated from the rest
-- Overflow cutoff skew when unacceptable overflow has an asymmetric right tail
-- Overflow cutoff upper tail when teams only care about the severe end of unacceptable overflow
-- Overflow cutoff tail mass when teams care about how much severity is concentrated in the unacceptable tail
-- Overflow cutoff tail Gini when teams care about concentration inside the unacceptable upper tail
-- Overflow cutoff top share when one unacceptable case may dominate the overflow burden
-- Overflow cutoff tail mean when teams need the average severity inside the unacceptable upper tail
-- Overflow cutoff tail count when teams need the number of unacceptable cases in the upper tail
-- Overflow cutoff tail variance when teams need severity dispersion inside the unacceptable upper tail
-- Overflow cutoff tail skew when teams need asymmetry inside the unacceptable upper tail
-- Overflow cutoff tail range when teams need the full severity span inside the unacceptable upper tail
-- Vocabulary-free hashing for large sparse feature spaces
-- Chi-square filtering for sparse lexical or one-hot features
-- Frequency encoding as a label-free categorical baseline
-- Frequency capping to stop repeated sparse events from dominating linear weights
-- Target encoding and the leakage risk around per-category means
-- Rare-category grouping before downstream encodings
-- Weight of evidence as a supervised categorical transformation
-- Smoothing category means toward the global target average
-- Category crosses for sparse interaction features
-- Dense entity embeddings as a learned alternative to very wide one-hot features
-- Rare-token pruning before sparse lexical featurization
-- Bucketizing numeric features before simple models
-- Missing-value handling and its failure modes
-- Missingness indicators alongside imputation
-- Outlier handling and when simple z-score rules fail
-- Class imbalance remedies such as weighting, resampling, and SMOTE
+- Fitting preprocessors on the full dataset instead of train only.
+- Using target encoding without split-aware leakage control.
+- Applying SMOTE before the train/validation split.
+- Treating every overflow metric as a first-class concept instead of starting with one or two useful ones.
+- Building too many engineered features before establishing a simple baseline.
