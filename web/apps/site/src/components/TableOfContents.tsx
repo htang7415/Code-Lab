@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export interface TocHeading {
   id: string;
@@ -13,10 +14,15 @@ interface TableOfContentsProps {
 }
 
 export default function TableOfContents({ headings }: TableOfContentsProps) {
+  const pathname = usePathname();
   const [activeId, setActiveId] = useState<string>("");
+  const filteredHeadings =
+    pathname?.startsWith("/track/dsa/")
+      ? headings.filter((heading) => !/^Pitfalls$/i.test(heading.text))
+      : headings;
 
   useEffect(() => {
-    if (headings.length === 0) return;
+    if (filteredHeadings.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -29,21 +35,21 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
       { rootMargin: "-80px 0px -60% 0px", threshold: 0.1 }
     );
 
-    for (const heading of headings) {
+    for (const heading of filteredHeadings) {
       const el = document.getElementById(heading.id);
       if (el) observer.observe(el);
     }
 
     return () => observer.disconnect();
-  }, [headings]);
+  }, [filteredHeadings]);
 
-  if (headings.length === 0) return null;
+  if (filteredHeadings.length === 0) return null;
 
   return (
     <aside className="toc-aside">
       <p className="toc-title">On This Page</p>
       <nav className="toc-nav">
-        {headings.map((heading) => (
+        {filteredHeadings.map((heading) => (
           <a
             key={heading.id}
             href={`#${heading.id}`}
