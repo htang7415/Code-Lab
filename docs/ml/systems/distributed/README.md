@@ -4,7 +4,7 @@ Distributed training and serving are mostly about communication patterns and whe
 
 ## Current Anchors
 
-- Gradient accumulation (`modules/ml/systems/gradient-accumulation`)
+- Training loop mechanics (`modules/ml/systems/training-loop-mechanics`)
 - Tensor parallel linear communication (`modules/ml/systems/tensor-parallelism`)
 - Context parallel attention bytes (`modules/ml/systems/context-parallelism`)
 - Expert parallel dispatch (`modules/ml/systems/expert-parallelism`)

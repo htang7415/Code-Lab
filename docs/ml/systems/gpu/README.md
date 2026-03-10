@@ -4,7 +4,7 @@ GPU reasoning should connect model math to memory traffic and achievable through
 
 ## Current Anchors
 
-- Mixed precision training (`modules/ml/systems/mixed-precision`)
+- Training loop mechanics (`modules/ml/systems/training-loop-mechanics`)
 - Numeric formats and quantization (`modules/ml/llm/precision-and-quantization`)
 - Roofline analysis (`modules/ml/systems/roofline-analysis`)
 

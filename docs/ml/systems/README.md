@@ -40,8 +40,8 @@ optimizer.step()
 
 ## Canonical Modules
 
-- Training loop: `zero-gradients`, `forward-pass`, `backward-pass`, `optimizer-step`, `gradient-accumulation`, `mixed-precision`
-- Profiling and debugging: `check-gradients`, `debug-overfit-underfit`, `roofline-analysis`
+- Training loop: `training-loop-mechanics`
+- Profiling and debugging: `debug-overfit-underfit`, `roofline-analysis`
 - Inference scheduling: `continuous-batching`, `chunked-prefill`, `prefix-cache-metrics`
 - Distributed execution: `tensor-parallelism`, `context-parallelism`, `expert-parallelism`, `expert-load-balancing`
 
@@ -52,7 +52,7 @@ optimizer.step()
 
 ## When To Use What
 
-- Start with the training loop modules before distributed systems.
+- Start with `training-loop-mechanics` before distributed systems.
 - Use `roofline-analysis` when you need a first-principles performance model.
 - Use batching and cache modules when latency and throughput are the main problem.
 - Use tensor, context, or expert parallelism only when one-device execution is no longer enough.

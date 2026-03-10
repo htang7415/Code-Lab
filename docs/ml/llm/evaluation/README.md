@@ -16,7 +16,7 @@ Use this page to understand the main evaluation modes for modern LLM systems wit
 - `Likelihood` asks whether the model predicts tokens well. This is where perplexity fits.
 - `Task scoring` asks whether the final answer is correct against references. This is where exact match, answer verification, BLEU/METEOR, pass@k, and MMLU-style scoring fit.
 - `Consensus` asks whether repeated samples agree. This is where self-consistency and vote metrics fit.
-- `Judge and preference evaluation` asks which answer is better when exact references are weak. This is where pairwise judges, judge calibration, and Bradley-Terry style models fit.
+- `Judge and preference evaluation` asks which answer is better when exact references are weak. This is where judge evaluation methods and Bradley-Terry style models fit.
 - `Retrieval and reranking` ask whether the system surfaces relevant documents early enough. This is where Recall@k, MRR, and NDCG fit.
 
 ## Core Math
@@ -57,7 +57,7 @@ preference = judge_pairwise(answer_a, answer_b)
 - Likelihood: `perplexity`
 - Task scoring: `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bleu-meteor`
 - Consensus and sampling: `vote-metrics`
-- Judge and preference: `judge-calibration`, `judge-pairwise`, `judge-agreement-matrix`, `bradley-terry-ranking`
+- Judge and preference: `judge-evaluation-methods`, `bradley-terry-ranking`
 - Retrieval and reranking: `retrieval-metrics`, `reranker-metrics`
 
 ## Supporting Guides

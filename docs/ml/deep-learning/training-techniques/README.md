@@ -39,7 +39,7 @@ optimizer.step()
 
 - Regularization: `dropout`, `early-stopping`, `weight-decay`
 - Target shaping: `label-smoothing`, `knowledge-distillation-loss`, `focal-loss`
-- Numerical stability: `gradient-clipping`, `loss-scaling`
+- Numerical stability: `gradient-stability`, `gradient-clipping`, `loss-scaling`
 
 ## When To Use What
 

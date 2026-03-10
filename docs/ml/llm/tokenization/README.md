@@ -34,12 +34,11 @@ fits_budget = count <= max_tokens
 
 ## Canonical Modules
 
-- Core tokenization: `tokenization`
-- Comparison and trade-offs: `tokenizer-comparison`
+- Core token and representation flow: `token-representation-methods`
 - Budgeting impact: `token-budgeting`
 
 ## When To Use What
 
-- Start with `tokenization` before tokenizer comparisons.
-- Use `tokenizer-comparison` when the same text behaves differently across tokenizers.
+- Start with `token-representation-methods` before token-budget trade-offs.
+- Use the token-count comparison inside `token-representation-methods` when the same text behaves differently across tokenizers.
 - Use `token-budgeting` when prompting, truncation, or cost is the actual problem.

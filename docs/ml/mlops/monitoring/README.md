@@ -37,14 +37,12 @@ if drift_score > threshold or tail_latency > budget:
 
 ## Canonical Modules
 
-- Data drift: `feature-drift-psi`, `drift-detection`
-- Prediction quality: `prediction-monitoring`
-- Service health: `request-sla`, `queue-age-percentiles`, `saturation-rate`
+- Distribution and data health: `monitoring-and-drift-methods`
+- Service health: `service-reliability-metrics`
 - Reliability budget: `error-budget`
 
 ## When To Use What
 
-- Use drift metrics when the input distribution is changing.
-- Use prediction monitoring when labels or proxy outcomes arrive after deployment.
-- Use queue and SLA metrics when latency is part of product quality.
+- Use monitoring-and-drift methods when the input distribution, output distribution, or raw data quality is changing.
+- Use service-reliability metrics when latency, queue buildup, or retries are part of product quality.
 - Use `error-budget` when you need a single reliability constraint that gates rollout speed.

@@ -40,7 +40,7 @@ model = optimize_preferences(model, chosen, rejected, kl_penalty)
 ## Supporting Modules
 
 - Group-based optimization: `group-based-optimization`
-- Judge-based support: `judge-calibration`, `judge-pairwise`, `judge-agreement-matrix`
+- Judge-based support: `judge-evaluation-methods`
 
 ## When To Use What
 

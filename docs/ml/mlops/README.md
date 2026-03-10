@@ -49,10 +49,10 @@ cost = total_spend / request_count
 
 ## Canonical Modules
 
-- Data quality and ingestion: `etl-pipeline`, `data-quality-checks`
-- Monitoring and drift: `feature-drift-psi`, `drift-detection`, `prediction-monitoring`
-- Safe rollout: `canary-deployment`, `canary-rollout`, `online-shadow-mode`, `ab-testing`, `sequential-testing`
-- Serving and control: `offline-online-inference`, `batch-vs-realtime`, `request-sla`, `admission-control`, `request-batching`
+- Data quality and ingestion: `etl-pipeline`, `monitoring-and-drift-methods`
+- Monitoring and drift: `monitoring-and-drift-methods`
+- Safe rollout: `rollout-and-serving-modes`, `ab-testing`, `sequential-testing`
+- Serving and control: `service-reliability-metrics`, `admission-control`, `request-batching`
 - Cost and budgets: `error-budget`, `cost-per-request`, `throughput-per-dollar`, `tail-latency-budget`, `capacity-stress-metrics`
 
 ## Supporting Guides
@@ -64,8 +64,8 @@ cost = total_spend / request_count
 ## When To Use What
 
 - Use shadow or canary rollout before direct replacement.
-- Use drift and prediction monitoring when the input or output distribution may change.
-- Use request-SLA and queue metrics when latency is part of product quality.
+- Use monitoring-and-drift methods when the input, output, or raw data distribution may change.
+- Use service-reliability metrics when latency, queueing, or retries are part of product quality.
 - Use `capacity-stress-metrics` when capacity pressure is the main production risk.
 - Use error budgets when deployment speed must be balanced with reliability.
 - Use cost-per-request and throughput-per-dollar when scaling model size or serving changes.

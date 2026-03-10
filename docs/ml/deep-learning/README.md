@@ -42,8 +42,9 @@ loss = criterion(logits, labels)
 
 ## Canonical Modules
 
-- Network basics: `neuron-weights-bias-activation`, `feedforward-neural-network`
-- Gradient mechanics: `backpropagation`, `automatic-differentiation`, `gradient-flow`
+- Network basics: `network-building-blocks`
+- Gradient mechanics: `gradient-computation-methods`
+- Gradient stability: `gradient-stability`
 - Activations: `activation-functions`, `activation-failure-modes`
 - Initialization and normalization: `initialization-methods`, `normalization-methods`
 - Losses and training signals: `loss-functions`, `label-smoothing`, `knowledge-distillation-loss`
@@ -55,7 +56,7 @@ loss = criterion(logits, labels)
 
 ## When To Use What
 
-- Start with feedforward, activations, and backprop before optimization tricks.
+- Start with network-building-blocks and gradient-computation-methods before optimization tricks.
 - Use `activation-functions` and `normalization-methods` as the default entry points, not the old narrow variants.
 - Use `loss-functions` before memorizing individual loss names.
 - Use `label-smoothing` or `knowledge-distillation-loss` when the problem is modern training behavior, not basic function approximation.

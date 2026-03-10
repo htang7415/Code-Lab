@@ -36,14 +36,12 @@ else:
 
 ## Canonical Modules
 
-- Serving mode: `offline-online-inference`, `batch-vs-realtime`
-- Rollout safety: `canary-deployment`, `canary-rollout`, `online-shadow-mode`
-- Throughput control: `request-batching`, `admission-control`, `queue-delay`, `request-sla`
+- Serving mode and rollout: `rollout-and-serving-modes`
+- Throughput and latency health: `service-reliability-metrics`, `request-batching`, `admission-control`
 - Systems handoff: `continuous-batching`
 
 ## When To Use What
 
-- Use offline or batch inference when freshness is weakly coupled to user experience.
-- Use canary or shadow rollout before full replacement.
+- Use rollout-and-serving modes when choosing between batch vs online paths or when exposing a new model safely.
 - Use request batching when throughput matters and small latency inflation is acceptable.
-- Use admission control and queue-delay metrics when overload is the main failure mode.
+- Use admission control and service-reliability metrics when overload is the main failure mode.

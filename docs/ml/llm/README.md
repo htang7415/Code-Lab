@@ -41,7 +41,7 @@ next_token = decode(hidden[-1], strategy="top_p")
 
 ## Canonical Modules
 
-- Tokenization and representations: `tokenization`, `tokenizer-comparison`, `embeddings`, `positional-encoding`
+- Tokenization and representations: `token-representation-methods`
 - Transformer core: `attention-mechanisms`, `transformer`
 - Training stages: `pretraining`, `alignment-methods`
 - Evaluation: `docs/ml/llm/evaluation`
@@ -59,7 +59,7 @@ next_token = decode(hidden[-1], strategy="top_p")
 
 ## When To Use What
 
-- Start with tokenization, embeddings, and attention before jumping to alignment or serving.
+- Start with token-representation methods and attention before jumping to alignment or serving.
 - Use the evaluation guide before choosing metrics module by module.
 - Use decoding methods when generation behavior is the issue.
 - Use serving and systems topics when latency, memory, or throughput becomes the bottleneck.

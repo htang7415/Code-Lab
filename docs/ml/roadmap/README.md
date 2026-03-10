@@ -5,8 +5,8 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 
 ## Current Status
 
-- Visible ML modules: `212`
-- Hidden ML aliases: `311`
+- Visible ML modules: `182`
+- Hidden ML aliases: `350`
 - Strategy: show canonical learning units first, keep old slugs only for compatibility
 
 ## Authoring Rules
@@ -39,8 +39,8 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 ### Deep Learning
 
 - Guides: `docs/ml/deep-learning/training-techniques`
-- Canonical families: `activation-functions`, `normalization-methods`, `loss-functions`, `regularization-methods`, `initialization-methods`
-- Core standalone modules: `backpropagation`, `automatic-differentiation`, `cross-entropy`, `label-smoothing`, `knowledge-distillation-loss`
+- Canonical families: `network-building-blocks`, `gradient-computation-methods`, `gradient-stability`, `activation-functions`, `normalization-methods`, `loss-functions`, `regularization-methods`, `initialization-methods`
+- Core standalone modules: `label-smoothing`, `knowledge-distillation-loss`
 
 ### Evaluation
 
@@ -51,8 +51,8 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 ### LLM
 
 - Guides: `docs/ml/llm/tokenization`, `docs/ml/llm/alignment`, `docs/ml/llm/evaluation`, `docs/ml/llm/inference-serving`, `docs/ml/llm/vote-metrics`
-- Canonical families: `attention-mechanisms`, `alignment-methods`, `decoding-methods`, `retrieval-metrics`, `retrieval-fusion-methods`, `vote-metrics`, `parameter-efficient-fine-tuning`, `precision-and-quantization`
-- Core standalone modules: `tokenization`, `tokenizer-comparison`, `embeddings`, `positional-encoding`, `transformer`, `pretraining`, `perplexity`, `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bm25-ranking`, `kv-cache`, `speculative-decoding`, `qk-clip`
+- Canonical families: `token-representation-methods`, `attention-mechanisms`, `alignment-methods`, `judge-evaluation-methods`, `decoding-methods`, `retrieval-metrics`, `retrieval-fusion-methods`, `vote-metrics`, `parameter-efficient-fine-tuning`, `precision-and-quantization`
+- Core standalone modules: `transformer`, `pretraining`, `perplexity`, `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bm25-ranking`, `kv-cache`, `speculative-decoding`, `qk-clip`
 
 ### Reinforcement Learning
 
@@ -69,8 +69,8 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 ### Systems and MLOps
 
 - Guides: `docs/ml/systems/gpu`, `docs/ml/systems/distributed`, `docs/ml/mlops/monitoring`, `docs/ml/mlops/serving`, `docs/ml/mlops/breach-buckets`
-- Canonical families: `capacity-stress-metrics`
-- Core standalone modules: `roofline-analysis`, `continuous-batching`, `chunked-prefill`, `tensor-parallelism`, `context-parallelism`, `expert-parallelism`, `request-sla`, `error-budget`, `cost-per-request`, `throughput-per-dollar`
+- Canonical families: `training-loop-mechanics`, `service-reliability-metrics`, `rollout-and-serving-modes`, `monitoring-and-drift-methods`, `capacity-stress-metrics`
+- Core standalone modules: `roofline-analysis`, `continuous-batching`, `chunked-prefill`, `tensor-parallelism`, `context-parallelism`, `expert-parallelism`, `request-batching`, `admission-control`, `error-budget`, `cost-per-request`, `throughput-per-dollar`
 
 ### Generative and Representation
 
@@ -83,7 +83,7 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 
 Supporting content should stay visible when it teaches a distinct mental model, but it should not replace the canonical entry point.
 
-- Specialized evaluation tasks: `bradley-terry-ranking`, `judge-calibration`, `judge-pairwise`, `judge-agreement-matrix`
+- Specialized evaluation tasks: `bradley-terry-ranking`
 - Rare-event log summaries: `log-rate-metrics`
 - Specialized LLM systems topics: `prefix-cache`, `prefix-cache-metrics`
 - Specialized RL topics: `monte-carlo-tree-search`
