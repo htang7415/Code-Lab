@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T18:26:56.805Z",
+  "generated_at": "2026-03-10T18:34:27.429Z",
   "tracks": [
     {
       "id": "dsa",
@@ -17,7 +17,7 @@
       "accent": "#ff7f0e",
       "accentVar": "--track-ml",
       "topicCount": 18,
-      "moduleCount": 182
+      "moduleCount": 178
     },
     {
       "id": "ai-agents",
@@ -271,7 +271,7 @@
       "path": "/track/ml/models",
       "hasDoc": true,
       "docCount": 3,
-      "moduleCount": 18
+      "moduleCount": 14
     },
     {
       "track": "dsa",
@@ -5595,27 +5595,6 @@
     {
       "track": "ml",
       "topic": "models",
-      "slug": "adaboost",
-      "title": "AdaBoost",
-      "path": "modules/ml/models/adaboost",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# AdaBoost\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nAdaBoost reweights samples to focus on errors.\n\n## Math\n$$w_i \\leftarrow w_i \\cdot \\exp\\left(\\alpha\\,\\mathbb{I}[y_i \\ne \\hat{y}_i]\\right)$$\n\n- $\\mathbb{I}$ -- indicator function\n- $w_i$ -- weight of sample $i$\n- $y_i$ -- true label for sample $i$\n- $\\hat{y}_i$ -- predicted label for sample $i$\n- $\\alpha$ -- weak learner weight (boosting coefficient)\n\n## Function\n\n```python\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/adaboost/python -q\n```\n",
-      "sources": [
-        {
-          "path": "modules/ml/models/adaboost/python/adaboost.py",
-          "language": "python",
-          "content": "import math\n\n\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\n    updated = [w * math.exp(alpha * e) for w, e in zip(weights, errors)]\n    s = sum(updated)\n    return [w / s for w in updated]\n"
-        },
-        {
-          "path": "modules/ml/models/adaboost/rust/src/lib.rs",
-          "language": "rust",
-          "content": "pub fn update_weights(weights: &[f64], errors: &[i32], alpha: f64) -> Vec<f64> {\n    let mut updated: Vec<f64> = weights\n        .iter()\n        .zip(errors.iter())\n        .map(|(w, e)| w * (alpha * (*e as f64)).exp())\n        .collect();\n    let sum: f64 = updated.iter().sum();\n    for w in updated.iter_mut() {\n        *w /= sum;\n    }\n    updated\n}\n"
-        }
-      ]
-    },
-    {
-      "track": "ml",
-      "topic": "models",
       "slug": "bic-aic",
       "title": "AIC and BIC",
       "path": "modules/ml/models/bic-aic",
@@ -5653,27 +5632,6 @@
     {
       "track": "ml",
       "topic": "models",
-      "slug": "decision-trees",
-      "title": "Decision Trees",
-      "path": "modules/ml/models/decision-trees",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# Decision Trees\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nDecision trees split data to reduce impurity.\n\n## Math\n$$\\mathrm{Gini} = 1 - \\sum_c p_c^2$$\n\n- $p_c$ -- probability for c\n- $p$ -- probability\n\n## Function\n\n```python\ndef gini_impurity(labels: list[int]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/decision-trees/python -q\n```",
-      "sources": [
-        {
-          "path": "modules/ml/models/decision-trees/python/decision_trees.py",
-          "language": "python",
-          "content": "from collections import Counter\n\n\ndef gini_impurity(labels: list[int]) -> float:\n    counts = Counter(labels)\n    n = len(labels)\n    return 1 - sum((c / n) ** 2 for c in counts.values())\n"
-        },
-        {
-          "path": "modules/ml/models/decision-trees/rust/src/lib.rs",
-          "language": "rust",
-          "content": "use std::collections::HashMap;\n\npub fn gini_impurity(labels: &[i32]) -> f64 {\n    let mut counts: HashMap<i32, usize> = HashMap::new();\n    for label in labels {\n        *counts.entry(*label).or_insert(0) += 1;\n    }\n    let n = labels.len() as f64;\n    let mut sum_sq = 0.0;\n    for cnt in counts.values() {\n        let p = *cnt as f64 / n;\n        sum_sq += p * p;\n    }\n    1.0 - sum_sq\n}\n"
-        }
-      ]
-    },
-    {
-      "track": "ml",
-      "topic": "models",
       "slug": "gaussian-mixture-model-em",
       "title": "Gaussian Mixture Model EM Step",
       "path": "modules/ml/models/gaussian-mixture-model-em",
@@ -5705,22 +5663,6 @@
           "path": "modules/ml/models/gaussian-process-regression/rust/src/lib.rs",
           "language": "rust",
           "content": "pub fn rbf_kernel(x: &[f64], y: &[f64], length_scale: f64) -> f64 {\n    let dist2: f64 = x.iter().zip(y.iter()).map(|(a, b)| (a - b).powi(2)).sum();\n    (-dist2 / (2.0 * length_scale * length_scale)).exp()\n}\n"
-        }
-      ]
-    },
-    {
-      "track": "ml",
-      "topic": "models",
-      "slug": "gradient-boosting",
-      "title": "Gradient Boosting Step",
-      "path": "modules/ml/models/gradient-boosting",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# Gradient Boosting Step\n\n> Track: `ml` | Topic: `models`\n\n## Purpose\n\nUse this module to understand the core stage-wise update behind gradient\nboosting for regression.\n\n## First Principles\n\n- Boosting improves a model by correcting current errors instead of refitting from scratch.\n- At each stage, a weak learner fits the residual or negative gradient.\n- Small learning rates make boosting more stable and usually require more stages.\n- For squared error, residual fitting is the same as fitting the negative gradient.\n\n## Core Math\n\n$$\nr_i = y_i - \\hat{y}_i\n$$\n\n$$\n\\hat{y}_i' = \\hat{y}_i + \\eta \\, h_i\n$$\n\n- $r_i$ -- residual for example $i$\n- $y_i$ -- target value\n- $\\hat{y}_i$ -- current prediction\n- $h_i$ -- weak learner output\n- $\\eta$ -- learning rate\n\n## Minimal Code Mental Model\n\n```python\nresiduals, updated = gradient_boosting_step(\n    targets,\n    predictions,\n    weak_learner_output,\n    learning_rate,\n)\n```\n\n## Function\n\n```python\ndef gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\n```\n\n## When To Use What\n\n- Use this module to understand the boosting update before XGBoost-style second-order variants.\n- Use small learning rates when you want more stable stage-wise improvement.\n- Pair this with tree-based weak learners when studying practical boosting systems.\n\n## Run tests\n\n```bash\npytest modules/ml/models/gradient-boosting/python -q\n```\n",
-      "sources": [
-        {
-          "path": "modules/ml/models/gradient-boosting/python/gradient_boosting.py",
-          "language": "python",
-          "content": "def gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\n    if len(targets) != len(predictions) or len(predictions) != len(weak_learner_output):\n        raise ValueError(\"targets, predictions, and weak_learner_output must have the same length\")\n    if learning_rate < 0.0:\n        raise ValueError(\"learning_rate must be non-negative\")\n\n    updated = [\n        pred + learning_rate * stage\n        for pred, stage in zip(predictions, weak_learner_output)\n    ]\n    residuals = [target - pred for target, pred in zip(targets, updated)]\n    return updated, residuals\n"
         }
       ]
     },
@@ -5849,27 +5791,6 @@
     {
       "track": "ml",
       "topic": "models",
-      "slug": "random-forest",
-      "title": "Random Forest (Bagging)",
-      "path": "modules/ml/models/random-forest",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# Random Forest (Bagging)\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nRandom forests train many trees on bootstrap samples.\n\n## Math\n$$n_{\\text{boot}} = N$$\n\n- $n$ -- number of samples\n\n- $N$ -- number of samples\n\n## Function\n\n```python\ndef bootstrap_indices(n: int, seed: int = 0) -> list[int]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/random-forest/python -q\n```",
-      "sources": [
-        {
-          "path": "modules/ml/models/random-forest/python/random_forest.py",
-          "language": "python",
-          "content": "def bootstrap_indices(n: int, seed: int = 0) -> list[int]:\n    idxs = []\n    state = seed\n    for _ in range(n):\n        state = (1103515245 * state + 12345) % (2**31)\n        idxs.append(state % n)\n    return idxs\n"
-        },
-        {
-          "path": "modules/ml/models/random-forest/rust/src/lib.rs",
-          "language": "rust",
-          "content": "pub fn bootstrap_indices(n: usize, seed: u64) -> Vec<usize> {\n    let mut idxs = Vec::with_capacity(n);\n    let mut state = seed;\n    for _ in 0..n {\n        state = (1103515245u64.wrapping_mul(state).wrapping_add(12345)) % (1u64 << 31);\n        idxs.push((state as usize) % n);\n    }\n    idxs\n}\n"
-        }
-      ]
-    },
-    {
-      "track": "ml",
-      "topic": "models",
       "slug": "svm-pegasos",
       "title": "SVM (Pegasos)",
       "path": "modules/ml/models/svm-pegasos",
@@ -5891,6 +5812,22 @@
     {
       "track": "ml",
       "topic": "models",
+      "slug": "tree-ensemble-methods",
+      "title": "Tree and Ensemble Methods",
+      "path": "modules/ml/models/tree-ensemble-methods",
+      "summary": "> Track: `ml` | Topic: `models`",
+      "readme": "# Tree and Ensemble Methods\n\n> Track: `ml` | Topic: `models`\n\n## Purpose\n\nUse this module to learn the main tree-based modeling ideas in one place:\nsingle-tree impurity, bagging, boosting, and XGBoost-style split gain.\n\n## First Principles\n\n- A decision tree chooses splits that reduce impurity or loss.\n- Bagging reduces variance by training many trees on resampled data.\n- Boosting reduces bias by sequentially correcting current mistakes.\n- XGBoost extends boosting with a second-order split objective and regularization.\n\n## Core Math\n\nGini impurity:\n\n$$\n\\mathrm{Gini} = 1 - \\sum_c p_c^2\n$$\n\nAdaBoost reweighting:\n\n$$\nw_i \\leftarrow w_i \\cdot \\exp\\left(\\alpha\\,\\mathbb{I}[y_i \\ne \\hat{y}_i]\\right)\n$$\n\nGradient boosting update:\n\n$$\n\\hat{y}_i' = \\hat{y}_i + \\eta h_i\n$$\n\nXGBoost split gain:\n\n$$\n\\mathrm{Gain} = \\frac{1}{2}\n\\left(\n\\frac{G_L^2}{H_L + \\lambda}\n+ \\frac{G_R^2}{H_R + \\lambda}\n- \\frac{(G_L + G_R)^2}{H_L + H_R + \\lambda}\n\\right) - \\gamma\n$$\n\n## Minimal Code Mental Model\n\n```python\nimpurity = gini_impurity(labels)\nbagged = bootstrap_indices(n=100, seed=0)\nweights = update_weights(weights, errors, alpha=0.7)\nupdated, residuals = gradient_boosting_step(targets, predictions, weak_learner_output, learning_rate=0.1)\ngain = split_gain(left_grad, left_hess, right_grad, right_hess, lambda_reg=1.0, gamma=0.0)\n```\n\n## Functions\n\n```python\ndef gini_impurity(labels: list[int]) -> float:\ndef bootstrap_indices(n: int, seed: int = 0) -> list[int]:\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\ndef gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\ndef split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n```\n\n## When To Use What\n\n- Use `gini_impurity` when learning how a single decision tree scores candidate splits.\n- Use `bootstrap_indices` when learning why random forests reduce variance through bagging.\n- Use `update_weights` when learning how AdaBoost emphasizes errors.\n- Use `gradient_boosting_step` when learning stage-wise residual fitting.\n- Use `split_gain` when learning why XGBoost chooses one split over another under regularization.\n\n## Run tests\n\n```bash\npytest modules/ml/models/tree-ensemble-methods/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ml/models/tree-ensemble-methods/python/tree_ensemble_methods.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\nimport math\nfrom collections import Counter\n\n\ndef gini_impurity(labels: list[int]) -> float:\n    counts = Counter(labels)\n    n = len(labels)\n    return 1 - sum((count / n) ** 2 for count in counts.values())\n\n\ndef bootstrap_indices(n: int, seed: int = 0) -> list[int]:\n    indices: list[int] = []\n    state = seed\n    for _ in range(n):\n        state = (1103515245 * state + 12345) % (2**31)\n        indices.append(state % n)\n    return indices\n\n\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\n    updated = [weight * math.exp(alpha * error) for weight, error in zip(weights, errors)]\n    total = sum(updated)\n    return [weight / total for weight in updated]\n\n\ndef gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\n    if len(targets) != len(predictions) or len(predictions) != len(weak_learner_output):\n        raise ValueError(\"targets, predictions, and weak_learner_output must have the same length\")\n    if learning_rate < 0.0:\n        raise ValueError(\"learning_rate must be non-negative\")\n\n    updated = [\n        prediction + learning_rate * stage\n        for prediction, stage in zip(predictions, weak_learner_output)\n    ]\n    residuals = [target - prediction for target, prediction in zip(targets, updated)]\n    return updated, residuals\n\n\ndef split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n    if left_hess < 0.0 or right_hess < 0.0 or lambda_reg < 0.0:\n        raise ValueError(\"hessians and lambda_reg must be non-negative\")\n\n    parent_grad = left_grad + right_grad\n    parent_hess = left_hess + right_hess\n\n    left_term = (left_grad ** 2) / (left_hess + lambda_reg)\n    right_term = (right_grad ** 2) / (right_hess + lambda_reg)\n    parent_term = (parent_grad ** 2) / (parent_hess + lambda_reg)\n    return 0.5 * (left_term + right_term - parent_term) - gamma\n"
+        }
+      ]
+    },
+    {
+      "track": "ml",
+      "topic": "models",
       "slug": "tsne-gradient",
       "title": "t-SNE Point Gradient",
       "path": "modules/ml/models/tsne-gradient",
@@ -5901,22 +5838,6 @@
           "path": "modules/ml/models/tsne-gradient/python/tsne_gradient.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef tsne_point_gradient(\n    point: list[float],\n    other_points: list[list[float]],\n    affinities: list[float],\n) -> list[float]:\n    if len(other_points) != len(affinities):\n        raise ValueError(\"other_points and affinities must have the same length\")\n    if any(len(other) != len(point) for other in other_points):\n        raise ValueError(\"other_points must match the point dimension\")\n    if any(affinity < 0.0 for affinity in affinities):\n        raise ValueError(\"affinities must be non-negative\")\n    if not other_points:\n        return [0.0] * len(point)\n\n    affinity_sum = sum(affinities)\n    if affinity_sum <= 0.0:\n        raise ValueError(\"affinities must sum to a positive value\")\n    normalized_affinities = [affinity / affinity_sum for affinity in affinities]\n\n    numerators = []\n    for other in other_points:\n        squared_distance = sum((a - b) ** 2 for a, b in zip(point, other))\n        numerators.append(1.0 / (1.0 + squared_distance))\n\n    q_sum = sum(numerators)\n    q_values = [numerator / q_sum for numerator in numerators]\n\n    gradient = [0.0] * len(point)\n    for p_ij, q_ij, numerator, other in zip(\n        normalized_affinities, q_values, numerators, other_points\n    ):\n        coefficient = 4.0 * (p_ij - q_ij) * numerator\n        for dimension in range(len(point)):\n            gradient[dimension] += coefficient * (point[dimension] - other[dimension])\n    return gradient\n"
-        }
-      ]
-    },
-    {
-      "track": "ml",
-      "topic": "models",
-      "slug": "xgboost-objective",
-      "title": "XGBoost Split Gain",
-      "path": "modules/ml/models/xgboost-objective",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# XGBoost Split Gain\n\n> Track: `ml` | Topic: `models`\n\n## Concept\n\nXGBoost chooses splits by comparing the second-order objective improvement from the left and right child nodes against the unsplit parent.\n\n## Math\n\n$$\\mathrm{Gain} = \\frac{1}{2}\n\\left(\n\\frac{G_L^2}{H_L + \\lambda}\n+ \\frac{G_R^2}{H_R + \\lambda}\n- \\frac{(G_L + G_R)^2}{H_L + H_R + \\lambda}\n\\right) - \\gamma$$\n\n- $G_L, G_R$ -- summed first-order gradients in the left and right nodes\n- $H_L, H_R$ -- summed second-order gradients in the left and right nodes\n- $\\lambda$ -- L2 leaf regularization\n- $\\gamma$ -- split penalty\n\n## Key Points\n\n- Larger gain means a more useful split.\n- Hessians scale how confident the objective is around current predictions.\n- The split penalty $\\gamma$ suppresses weak splits.\n\n## Function\n\n```python\ndef split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/models/xgboost-objective/python -q\n```\n",
-      "sources": [
-        {
-          "path": "modules/ml/models/xgboost-objective/python/xgboost_objective.py",
-          "language": "python",
-          "content": "def split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n    if left_hess < 0.0 or right_hess < 0.0 or lambda_reg < 0.0:\n        raise ValueError(\"hessians and lambda_reg must be non-negative\")\n\n    parent_grad = left_grad + right_grad\n    parent_hess = left_hess + right_hess\n\n    left_term = (left_grad ** 2) / (left_hess + lambda_reg)\n    right_term = (right_grad ** 2) / (right_hess + lambda_reg)\n    parent_term = (parent_grad ** 2) / (parent_hess + lambda_reg)\n    return 0.5 * (left_term + right_term - parent_term) - gamma\n"
         }
       ]
     },
@@ -8618,10 +8539,26 @@
     {
       "track": "ml",
       "topic": "models",
+      "slug": "adaboost",
+      "title": "AdaBoost",
+      "path": "modules/ml/models/adaboost",
+      "aliasOf": "tree-ensemble-methods"
+    },
+    {
+      "track": "ml",
+      "topic": "models",
       "slug": "bernoulli-naive-bayes",
       "title": "Bernoulli Naive Bayes",
       "path": "modules/ml/models/bernoulli-naive-bayes",
       "aliasOf": "naive-bayes-models"
+    },
+    {
+      "track": "ml",
+      "topic": "models",
+      "slug": "decision-trees",
+      "title": "Decision Trees",
+      "path": "modules/ml/models/decision-trees",
+      "aliasOf": "tree-ensemble-methods"
     },
     {
       "track": "ml",
@@ -8642,6 +8579,14 @@
     {
       "track": "ml",
       "topic": "models",
+      "slug": "gradient-boosting",
+      "title": "Gradient Boosting Step",
+      "path": "modules/ml/models/gradient-boosting",
+      "aliasOf": "tree-ensemble-methods"
+    },
+    {
+      "track": "ml",
+      "topic": "models",
       "slug": "linear-regression",
       "title": "Linear Regression",
       "path": "modules/ml/models/linear-regression",
@@ -8658,10 +8603,26 @@
     {
       "track": "ml",
       "topic": "models",
+      "slug": "random-forest",
+      "title": "Random Forest (Bagging)",
+      "path": "modules/ml/models/random-forest",
+      "aliasOf": "tree-ensemble-methods"
+    },
+    {
+      "track": "ml",
+      "topic": "models",
       "slug": "softmax-regression",
       "title": "Softmax Regression",
       "path": "modules/ml/models/softmax-regression",
       "aliasOf": "linear-models"
+    },
+    {
+      "track": "ml",
+      "topic": "models",
+      "slug": "xgboost-objective",
+      "title": "XGBoost Split Gain",
+      "path": "modules/ml/models/xgboost-objective",
+      "aliasOf": "tree-ensemble-methods"
     },
     {
       "track": "ml",
@@ -9662,7 +9623,7 @@
       "title": "Models and Classical ML",
       "path": "docs/ml/models/README.md",
       "summary": "Classical ML is still the fastest path to good baselines, interpretable behavior, and small-data wins.",
-      "content": "# Models and Classical ML\n\nClassical ML is still the fastest path to good baselines, interpretable behavior, and small-data wins.\n\n## Purpose\n\nUse this page to choose the right model family before reaching for deeper systems:\n- linear models\n- tree and ensemble models\n- nearest-neighbor and clustering models\n- probabilistic models\n- dimensionality reduction\n\n## First Principles\n\n- Linear models work well when the signal is mostly additive after good preprocessing.\n- Tree models win when interactions and thresholds matter but data is still structured.\n- Distance-based methods depend heavily on scaling and representation.\n- Probabilistic models are useful when distributions or uncertainty assumptions matter.\n- Dimensionality reduction helps when geometry matters more than raw feature count.\n\n## Core Math\n\n- Linear model:\n  $$\n  \\hat{y} = w^\\top x + b\n  $$\n- Logistic model:\n  $$\n  p(y=1 \\mid x) = \\sigma(w^\\top x + b)\n  $$\n- Tree split objective is usually impurity or loss reduction.\n- EM-style mixture models alternate between soft assignment and parameter re-estimation.\n\n## Minimal Code Mental Model\n\n```python\nmodel.fit(x_train, y_train)\npred = model.predict(x_val)\nscore = evaluate(pred, y_val)\n```\n\n## Canonical Modules\n\n- Linear models: `linear-models`\n- Trees and ensembles: `decision-trees`, `random-forest`, `gradient-boosting`, `xgboost-objective`, `adaboost`\n- Clustering and neighbors: `knn`, `k-means`, `dbscan`, `gaussian-mixture-model-em`\n- Probabilistic baselines: `naive-bayes-models`, `gaussian-process-regression`\n- Dimensionality reduction: `kernel-pca`, `lle`, `tsne-gradient`, `bic-aic`\n\n## Supporting Guides\n\n- Linear-model map (`docs/ml/models/linear`)\n- Tree and ensemble map (`docs/ml/models/trees`)\n\n## When To Use What\n\n- Start with linear models when you want a strong, fast baseline.\n- Use trees or boosting when nonlinear thresholds and feature interactions matter.\n- Use clustering and neighbor methods when geometry is part of the task.\n- Use probabilistic models when assumptions about distributions are actually helpful.\n- Use dimensionality reduction when you need structure, visualization, or compressed features.\n"
+      "content": "# Models and Classical ML\n\nClassical ML is still the fastest path to good baselines, interpretable behavior, and small-data wins.\n\n## Purpose\n\nUse this page to choose the right model family before reaching for deeper systems:\n- linear models\n- tree and ensemble models\n- nearest-neighbor and clustering models\n- probabilistic models\n- dimensionality reduction\n\n## First Principles\n\n- Linear models work well when the signal is mostly additive after good preprocessing.\n- Tree models win when interactions and thresholds matter but data is still structured.\n- Distance-based methods depend heavily on scaling and representation.\n- Probabilistic models are useful when distributions or uncertainty assumptions matter.\n- Dimensionality reduction helps when geometry matters more than raw feature count.\n\n## Core Math\n\n- Linear model:\n  $$\n  \\hat{y} = w^\\top x + b\n  $$\n- Logistic model:\n  $$\n  p(y=1 \\mid x) = \\sigma(w^\\top x + b)\n  $$\n- Tree split objective is usually impurity or loss reduction.\n- EM-style mixture models alternate between soft assignment and parameter re-estimation.\n\n## Minimal Code Mental Model\n\n```python\nmodel.fit(x_train, y_train)\npred = model.predict(x_val)\nscore = evaluate(pred, y_val)\n```\n\n## Canonical Modules\n\n- Linear models: `linear-models`\n- Trees and ensembles: `tree-ensemble-methods`, `isolation-forest`\n- Clustering and neighbors: `knn`, `k-means`, `dbscan`, `gaussian-mixture-model-em`\n- Probabilistic baselines: `naive-bayes-models`, `gaussian-process-regression`\n- Dimensionality reduction: `kernel-pca`, `lle`, `tsne-gradient`, `bic-aic`\n\n## Supporting Guides\n\n- Linear-model map (`docs/ml/models/linear`)\n- Tree and ensemble map (`docs/ml/models/trees`)\n\n## When To Use What\n\n- Start with linear models when you want a strong, fast baseline.\n- Use `tree-ensemble-methods` when nonlinear thresholds and feature interactions matter.\n- Use clustering and neighbor methods when geometry is part of the task.\n- Use probabilistic models when assumptions about distributions are actually helpful.\n- Use dimensionality reduction when you need structure, visualization, or compressed features.\n"
     },
     {
       "track": "ml",
@@ -9680,7 +9641,7 @@
       "title": "Trees and Ensembles",
       "path": "docs/ml/models/trees/README.md",
       "summary": "Tree-based models dominate many tabular problems because they capture nonlinear structure with limited preprocessing.",
-      "content": "# Trees and Ensembles\n\nTree-based models dominate many tabular problems because they capture nonlinear structure with limited preprocessing.\n\n## Current Anchors\n\n- Decision Trees (`modules/ml/models/decision-trees`)\n- Random Forest (`modules/ml/models/random-forest`)\n- AdaBoost (`modules/ml/models/adaboost`)\n- Gradient Boosting (`modules/ml/models/gradient-boosting`)\n- XGBoost split objective (`modules/ml/models/xgboost-objective`)\n- Isolation Forest (`modules/ml/models/isolation-forest`)\n\n## Concepts to Cover Well\n\n- Split quality via impurity or loss reduction\n- Variance reduction from bagging\n- Bias reduction from boosting\n- Feature importance and pruning\n- When trees beat linear models on tabular data\n"
+      "content": "# Trees and Ensembles\n\nTree-based models dominate many tabular problems because they capture nonlinear structure with limited preprocessing.\n\n## Current Anchors\n\n- Tree and ensemble methods (`modules/ml/models/tree-ensemble-methods`)\n- Isolation Forest (`modules/ml/models/isolation-forest`)\n\n## Concepts to Cover Well\n\n- Split quality via impurity or loss reduction\n- Variance reduction from bagging\n- Bias reduction from boosting\n- Feature importance and pruning\n- When trees beat linear models on tabular data\n"
     },
     {
       "track": "ml",
@@ -9797,7 +9758,7 @@
       "title": "ML Coverage Roadmap",
       "path": "docs/ml/roadmap/README.md",
       "summary": "Goal: keep the ML track systematic, concise, and useful for 2026-era AI learning. Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside that file only whe…",
-      "content": "# ML Coverage Roadmap\n\nGoal: keep the ML track systematic, concise, and useful for 2026-era AI learning.\nScope is driven by `artifacts/deepml/problem_titles.md`, with additions outside that file only when they are clearly important for modern AI practice.\n\n## Current Status\n\n- Visible ML modules: `182`\n- Hidden ML aliases: `350`\n- Strategy: show canonical learning units first, keep old slugs only for compatibility\n\n## Authoring Rules\n\n- Prefer concise teaching-first docs over long inventories.\n- Prefer one coherent family module over many narrow variants.\n- Keep concept, math, and minimal code together.\n- Avoid duplicate ML modules.\n- Hide legacy narrow slugs as aliases instead of surfacing them in the main learning path.\n\n## Canonical Learning Units\n\n### Fundamentals\n\n- Guides: `docs/ml/fundamentals/math`, `docs/ml/fundamentals/prob`, `docs/ml/fundamentals/stats`\n- Core modules: `vectors-matrices`, `expectation`, `gradient-descent`, `pca`, `svd`, `kl-divergence`\n\n### Data\n\n- Guides: `docs/ml/data/preprocessing`, `docs/ml/data/overflow-metrics`\n- Canonical families: `scaling-methods`, `categorical-encoding-methods`, `sparse-text-feature-methods`, `structured-feature-methods`, `overflow-metrics`\n- Core standalone modules: `train-validation-test-split`, `stratified-split`, `imputation`, `smote`\n\n### Classical Models\n\n- Guides: `docs/ml/models/linear`, `docs/ml/models/trees`\n- Canonical families: `linear-models`, `naive-bayes-models`\n- Core modules: `gaussian-mixture-model-em`, `gradient-boosting`, `kernel-pca`, `isolation-forest`, `xgboost-objective`\n\n### Deep Learning\n\n- Guides: `docs/ml/deep-learning/training-techniques`\n- Canonical families: `network-building-blocks`, `gradient-computation-methods`, `gradient-stability`, `activation-functions`, `normalization-methods`, `loss-functions`, `regularization-methods`, `initialization-methods`\n- Core standalone modules: `label-smoothing`, `knowledge-distillation-loss`\n\n### Evaluation\n\n- Guides: `docs/ml/evaluation/calibration`, `docs/ml/evaluation/uncertainty`\n- Canonical families: `classification-metrics-core`, `ranking-metrics`, `calibration-metrics`, `uncertainty-intervals`, `agreement-metrics`, `binary-rate-comparison-metrics`, `regression-metrics`, `clustering-metrics`\n- Core standalone modules: `permutation-test`, `ab-test-analysis`, `delong-test`\n\n### LLM\n\n- Guides: `docs/ml/llm/tokenization`, `docs/ml/llm/alignment`, `docs/ml/llm/evaluation`, `docs/ml/llm/inference-serving`, `docs/ml/llm/vote-metrics`\n- Canonical families: `token-representation-methods`, `attention-mechanisms`, `alignment-methods`, `judge-evaluation-methods`, `decoding-methods`, `retrieval-metrics`, `retrieval-fusion-methods`, `vote-metrics`, `parameter-efficient-fine-tuning`, `precision-and-quantization`\n- Core standalone modules: `transformer`, `pretraining`, `perplexity`, `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bm25-ranking`, `kv-cache`, `speculative-decoding`, `qk-clip`\n\n### Reinforcement Learning\n\n- Guides: `docs/ml/reinforcement-learning/rl-for-llm`, `docs/ml/reinforcement-learning/transition-indicators`\n- Canonical families: `bandit-exploration-methods`, `return-estimation-methods`, `td-control-methods`, `off-policy-estimation-methods`, `policy-gradient-methods`, `policy-optimization-utilities`, `transition-indicators`\n- Core standalone modules: none\n\n### Optimization\n\n- Guides: `docs/ml/optimization/schedules`\n- Canonical families: `optimizer-methods`, `learning-rate-schedules`\n- Core standalone modules: `gradient-clipping`, `loss-scaling`, `detect-nans`, `muon-optimizer`\n\n### Systems and MLOps\n\n- Guides: `docs/ml/systems/gpu`, `docs/ml/systems/distributed`, `docs/ml/mlops/monitoring`, `docs/ml/mlops/serving`, `docs/ml/mlops/breach-buckets`\n- Canonical families: `training-loop-mechanics`, `service-reliability-metrics`, `rollout-and-serving-modes`, `monitoring-and-drift-methods`, `capacity-stress-metrics`\n- Core standalone modules: `roofline-analysis`, `continuous-batching`, `chunked-prefill`, `tensor-parallelism`, `context-parallelism`, `expert-parallelism`, `request-batching`, `admission-control`, `error-budget`, `cost-per-request`, `throughput-per-dollar`\n\n### Generative and Representation\n\n- Guides: `docs/ml/generative/diffusion`, `docs/ml/representation/embeddings`, `docs/ml/representation/metric-learning`, `docs/ml/computer-vision/architectures`\n- Canonical families: `cnn-architectures`\n- Core generative modules: `diffusion-models`, `ddpm-sampling`, `ddim-sampling`, `diffusion-guidance-tradeoffs`, `ema-diffusion-weights`, `model-selection`\n- Core representation modules: `embeddings`, `contrastive-loss`, `triplet-loss`, `pairwise-ranking-loss`\n\n## Supporting Content\n\nSupporting content should stay visible when it teaches a distinct mental model, but it should not replace the canonical entry point.\n\n- Specialized evaluation tasks: `bradley-terry-ranking`\n- Rare-event log summaries: `log-rate-metrics`\n- Specialized LLM systems topics: `prefix-cache`, `prefix-cache-metrics`\n- Specialized RL topics: `monte-carlo-tree-search`\n- Specialized generative comparisons: `gan-mode-collapse`, `vae-posterior-collapse`\n\n## Legacy / Hidden\n\nThese should stay out of the main learning path and remain alias-only unless they become the best teaching unit again.\n\n- Old activation and normalization variant slugs\n- Old decoding variant slugs\n- Old ranking, calibration, classification, uncertainty, and agreement metric slugs\n- Old retrieval metric and reranker metric slugs\n- Old scaling, categorical encoding, sparse text, structured feature, and overflow metric slugs\n- Old vote, minority-cluster, and answer-fragmentation metric slugs\n- Old breach-bucket and capacity-stress detail slugs\n- Old transition-mask and transition-batch helper slugs\n\n## Study Paths\n\n- `docs/ml/path-beginner/README.md`\n- `docs/ml/path-interview/README.md`\n- `docs/ml/path-llm-systems/README.md`\n- `docs/ml/path-math-first/README.md`\n\n## Next Cleanup Priorities\n\n- Keep refactoring section docs toward the concise first-principles format\n- Deepen thin but high-value areas: `representation`, `generative`, `computer-vision`, `systems`\n- Consolidate only when a merge creates a better learning unit, not just a smaller module count\n- Keep checking new additions against `problem_titles.md` before adding more ML surface area\n"
+      "content": "# ML Coverage Roadmap\n\nGoal: keep the ML track systematic, concise, and useful for 2026-era AI learning.\nScope is driven by `artifacts/deepml/problem_titles.md`, with additions outside that file only when they are clearly important for modern AI practice.\n\n## Current Status\n\n- Visible ML modules: `178`\n- Hidden ML aliases: `355`\n- Strategy: show canonical learning units first, keep old slugs only for compatibility\n\n## Authoring Rules\n\n- Prefer concise teaching-first docs over long inventories.\n- Prefer one coherent family module over many narrow variants.\n- Keep concept, math, and minimal code together.\n- Avoid duplicate ML modules.\n- Hide legacy narrow slugs as aliases instead of surfacing them in the main learning path.\n\n## Canonical Learning Units\n\n### Fundamentals\n\n- Guides: `docs/ml/fundamentals/math`, `docs/ml/fundamentals/prob`, `docs/ml/fundamentals/stats`\n- Core modules: `vectors-matrices`, `expectation`, `gradient-descent`, `pca`, `svd`, `kl-divergence`\n\n### Data\n\n- Guides: `docs/ml/data/preprocessing`, `docs/ml/data/overflow-metrics`\n- Canonical families: `scaling-methods`, `categorical-encoding-methods`, `sparse-text-feature-methods`, `structured-feature-methods`, `overflow-metrics`\n- Core standalone modules: `train-validation-test-split`, `stratified-split`, `imputation`, `smote`\n\n### Classical Models\n\n- Guides: `docs/ml/models/linear`, `docs/ml/models/trees`\n- Canonical families: `linear-models`, `naive-bayes-models`, `tree-ensemble-methods`\n- Core modules: `gaussian-mixture-model-em`, `kernel-pca`, `isolation-forest`\n\n### Deep Learning\n\n- Guides: `docs/ml/deep-learning/training-techniques`\n- Canonical families: `network-building-blocks`, `gradient-computation-methods`, `gradient-stability`, `activation-functions`, `normalization-methods`, `loss-functions`, `regularization-methods`, `initialization-methods`\n- Core standalone modules: `label-smoothing`, `knowledge-distillation-loss`\n\n### Evaluation\n\n- Guides: `docs/ml/evaluation/calibration`, `docs/ml/evaluation/uncertainty`\n- Canonical families: `classification-metrics-core`, `ranking-metrics`, `calibration-metrics`, `uncertainty-intervals`, `agreement-metrics`, `binary-rate-comparison-metrics`, `regression-metrics`, `clustering-metrics`\n- Core standalone modules: `permutation-test`, `ab-test-analysis`, `delong-test`\n\n### LLM\n\n- Guides: `docs/ml/llm/tokenization`, `docs/ml/llm/alignment`, `docs/ml/llm/evaluation`, `docs/ml/llm/inference-serving`, `docs/ml/llm/vote-metrics`\n- Canonical families: `token-representation-methods`, `attention-mechanisms`, `alignment-methods`, `judge-evaluation-methods`, `decoding-methods`, `retrieval-metrics`, `retrieval-fusion-methods`, `vote-metrics`, `parameter-efficient-fine-tuning`, `precision-and-quantization`\n- Core standalone modules: `transformer`, `pretraining`, `perplexity`, `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bm25-ranking`, `kv-cache`, `speculative-decoding`, `qk-clip`\n\n### Reinforcement Learning\n\n- Guides: `docs/ml/reinforcement-learning/rl-for-llm`, `docs/ml/reinforcement-learning/transition-indicators`\n- Canonical families: `bandit-exploration-methods`, `return-estimation-methods`, `td-control-methods`, `off-policy-estimation-methods`, `policy-gradient-methods`, `policy-optimization-utilities`, `transition-indicators`\n- Core standalone modules: none\n\n### Optimization\n\n- Guides: `docs/ml/optimization/schedules`\n- Canonical families: `optimizer-methods`, `learning-rate-schedules`\n- Core standalone modules: `gradient-clipping`, `loss-scaling`, `detect-nans`, `muon-optimizer`\n\n### Systems and MLOps\n\n- Guides: `docs/ml/systems/gpu`, `docs/ml/systems/distributed`, `docs/ml/mlops/monitoring`, `docs/ml/mlops/serving`, `docs/ml/mlops/breach-buckets`\n- Canonical families: `training-loop-mechanics`, `service-reliability-metrics`, `rollout-and-serving-modes`, `monitoring-and-drift-methods`, `capacity-stress-metrics`\n- Core standalone modules: `roofline-analysis`, `continuous-batching`, `chunked-prefill`, `tensor-parallelism`, `context-parallelism`, `expert-parallelism`, `request-batching`, `admission-control`, `error-budget`, `cost-per-request`, `throughput-per-dollar`\n\n### Generative and Representation\n\n- Guides: `docs/ml/generative/diffusion`, `docs/ml/representation/embeddings`, `docs/ml/representation/metric-learning`, `docs/ml/computer-vision/architectures`\n- Canonical families: `cnn-architectures`\n- Core generative modules: `diffusion-models`, `ddpm-sampling`, `ddim-sampling`, `diffusion-guidance-tradeoffs`, `ema-diffusion-weights`, `model-selection`\n- Core representation modules: `embeddings`, `contrastive-loss`, `triplet-loss`, `pairwise-ranking-loss`\n\n## Supporting Content\n\nSupporting content should stay visible when it teaches a distinct mental model, but it should not replace the canonical entry point.\n\n- Specialized evaluation tasks: `bradley-terry-ranking`\n- Rare-event log summaries: `log-rate-metrics`\n- Specialized LLM systems topics: `prefix-cache`, `prefix-cache-metrics`\n- Specialized RL topics: `monte-carlo-tree-search`\n- Specialized generative comparisons: `gan-mode-collapse`, `vae-posterior-collapse`\n\n## Legacy / Hidden\n\nThese should stay out of the main learning path and remain alias-only unless they become the best teaching unit again.\n\n- Old activation and normalization variant slugs\n- Old decoding variant slugs\n- Old ranking, calibration, classification, uncertainty, and agreement metric slugs\n- Old retrieval metric and reranker metric slugs\n- Old scaling, categorical encoding, sparse text, structured feature, and overflow metric slugs\n- Old vote, minority-cluster, and answer-fragmentation metric slugs\n- Old breach-bucket and capacity-stress detail slugs\n- Old transition-mask and transition-batch helper slugs\n\n## Study Paths\n\n- `docs/ml/path-beginner/README.md`\n- `docs/ml/path-interview/README.md`\n- `docs/ml/path-llm-systems/README.md`\n- `docs/ml/path-math-first/README.md`\n\n## Next Cleanup Priorities\n\n- Keep refactoring section docs toward the concise first-principles format\n- Deepen thin but high-value areas: `representation`, `generative`, `computer-vision`, `systems`\n- Consolidate only when a merge creates a better learning unit, not just a smaller module count\n- Keep checking new additions against `problem_titles.md` before adding more ML surface area\n"
     },
     {
       "track": "ml",

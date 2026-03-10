@@ -43,7 +43,7 @@ score = evaluate(pred, y_val)
 ## Canonical Modules
 
 - Linear models: `linear-models`
-- Trees and ensembles: `decision-trees`, `random-forest`, `gradient-boosting`, `xgboost-objective`, `adaboost`
+- Trees and ensembles: `tree-ensemble-methods`, `isolation-forest`
 - Clustering and neighbors: `knn`, `k-means`, `dbscan`, `gaussian-mixture-model-em`
 - Probabilistic baselines: `naive-bayes-models`, `gaussian-process-regression`
 - Dimensionality reduction: `kernel-pca`, `lle`, `tsne-gradient`, `bic-aic`
@@ -56,7 +56,7 @@ score = evaluate(pred, y_val)
 ## When To Use What
 
 - Start with linear models when you want a strong, fast baseline.
-- Use trees or boosting when nonlinear thresholds and feature interactions matter.
+- Use `tree-ensemble-methods` when nonlinear thresholds and feature interactions matter.
 - Use clustering and neighbor methods when geometry is part of the task.
 - Use probabilistic models when assumptions about distributions are actually helpful.
 - Use dimensionality reduction when you need structure, visualization, or compressed features.

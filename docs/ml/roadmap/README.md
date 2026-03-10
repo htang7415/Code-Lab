@@ -5,8 +5,8 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 
 ## Current Status
 
-- Visible ML modules: `182`
-- Hidden ML aliases: `350`
+- Visible ML modules: `178`
+- Hidden ML aliases: `355`
 - Strategy: show canonical learning units first, keep old slugs only for compatibility
 
 ## Authoring Rules
@@ -33,8 +33,8 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 ### Classical Models
 
 - Guides: `docs/ml/models/linear`, `docs/ml/models/trees`
-- Canonical families: `linear-models`, `naive-bayes-models`
-- Core modules: `gaussian-mixture-model-em`, `gradient-boosting`, `kernel-pca`, `isolation-forest`, `xgboost-objective`
+- Canonical families: `linear-models`, `naive-bayes-models`, `tree-ensemble-methods`
+- Core modules: `gaussian-mixture-model-em`, `kernel-pca`, `isolation-forest`
 
 ### Deep Learning
 

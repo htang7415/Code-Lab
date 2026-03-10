@@ -4,11 +4,7 @@ Tree-based models dominate many tabular problems because they capture nonlinear 
 
 ## Current Anchors
 
-- Decision Trees (`modules/ml/models/decision-trees`)
-- Random Forest (`modules/ml/models/random-forest`)
-- AdaBoost (`modules/ml/models/adaboost`)
-- Gradient Boosting (`modules/ml/models/gradient-boosting`)
-- XGBoost split objective (`modules/ml/models/xgboost-objective`)
+- Tree and ensemble methods (`modules/ml/models/tree-ensemble-methods`)
 - Isolation Forest (`modules/ml/models/isolation-forest`)
 
 ## Concepts to Cover Well

@@ -1,25 +1,8 @@
+---
+aliasOf: tree-ensemble-methods
+---
+
 # Decision Trees
 
-> Track: `ml` | Topic: `models`
-
-## Concept
-
-Decision trees split data to reduce impurity.
-
-## Math
-$$\mathrm{Gini} = 1 - \sum_c p_c^2$$
-
-- $p_c$ -- probability for c
-- $p$ -- probability
-
-## Function
-
-```python
-def gini_impurity(labels: list[int]) -> float:
-```
-
-## Run tests
-
-```bash
-pytest modules/ml/models/decision-trees/python -q
-```
+Alias entry preserved for old anchors.
+Use `modules/ml/models/tree-ensemble-methods` as the canonical module.

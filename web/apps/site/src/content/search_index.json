@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T18:26:56.805Z",
+  "generated_at": "2026-03-10T18:34:27.429Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -1778,18 +1778,6 @@
       "topicName": "Deep Learning"
     },
     {
-      "id": "module:ml/models/adaboost",
-      "type": "module",
-      "title": "AdaBoost",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "track": "ml",
-      "topic": "models",
-      "slug": "adaboost",
-      "href": "/track/ml/models#adaboost",
-      "trackName": "Machine Learning",
-      "topicName": "Models"
-    },
-    {
       "id": "module:ml/mlops/admission-control",
       "type": "module",
       "title": "Admission Control",
@@ -2462,18 +2450,6 @@
       "topicName": "Systems"
     },
     {
-      "id": "module:ml/models/decision-trees",
-      "type": "module",
-      "title": "Decision Trees",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "track": "ml",
-      "topic": "models",
-      "slug": "decision-trees",
-      "href": "/track/ml/models#decision-trees",
-      "trackName": "Machine Learning",
-      "topicName": "Models"
-    },
-    {
       "id": "module:ml/llm/decoding-methods",
       "type": "module",
       "title": "Decoding Methods",
@@ -2940,18 +2916,6 @@
       "href": "/track/ml/systems#gpu",
       "trackName": "Machine Learning",
       "topicName": "Systems"
-    },
-    {
-      "id": "module:ml/models/gradient-boosting",
-      "type": "module",
-      "title": "Gradient Boosting Step",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "track": "ml",
-      "topic": "models",
-      "slug": "gradient-boosting",
-      "href": "/track/ml/models#gradient-boosting",
-      "trackName": "Machine Learning",
-      "topicName": "Models"
     },
     {
       "id": "module:ml/optimization/gradient-clipping",
@@ -4238,18 +4202,6 @@
       "topicName": "Greedy Algorithm"
     },
     {
-      "id": "module:ml/models/random-forest",
-      "type": "module",
-      "title": "Random Forest (Bagging)",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "track": "ml",
-      "topic": "models",
-      "slug": "random-forest",
-      "href": "/track/ml/models#random-forest",
-      "trackName": "Machine Learning",
-      "topicName": "Models"
-    },
-    {
       "id": "module:ml/evaluation/ranking-metrics",
       "type": "module",
       "title": "Ranking Metrics",
@@ -4766,6 +4718,18 @@
       "topicName": "Reinforcement Learning"
     },
     {
+      "id": "module:ml/models/tree-ensemble-methods",
+      "type": "module",
+      "title": "Tree and Ensemble Methods",
+      "summary": "> Track: `ml` | Topic: `models`",
+      "track": "ml",
+      "topic": "models",
+      "slug": "tree-ensemble-methods",
+      "href": "/track/ml/models#tree-ensemble-methods",
+      "trackName": "Machine Learning",
+      "topicName": "Models"
+    },
+    {
       "id": "doc:ml/models/trees",
       "type": "doc",
       "title": "Trees and Ensembles",
@@ -4908,18 +4872,6 @@
       "href": "/track/ml/llm#vote-metrics",
       "trackName": "Machine Learning",
       "topicName": "LLM"
-    },
-    {
-      "id": "module:ml/models/xgboost-objective",
-      "type": "module",
-      "title": "XGBoost Split Gain",
-      "summary": "> Track: `ml` | Topic: `models`",
-      "track": "ml",
-      "topic": "models",
-      "slug": "xgboost-objective",
-      "href": "/track/ml/models#xgboost-objective",
-      "trackName": "Machine Learning",
-      "topicName": "Models"
     },
     {
       "id": "module:ml/data/outlier-detection",
