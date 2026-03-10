@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T20:45:18.418Z",
+  "generated_at": "2026-03-10T20:59:20.173Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -2210,6 +2210,18 @@
       "topicName": "Dynamic Programming"
     },
     {
+      "id": "module:ai-agents/tool-use/computer-use",
+      "type": "module",
+      "title": "Computer Use",
+      "summary": "> Track: `ai-agents` | Topic: `tool-use`",
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "slug": "computer-use",
+      "href": "/track/ai-agents/tool-use#computer-use",
+      "trackName": "AI Agents",
+      "topicName": "Tool Use"
+    },
+    {
       "id": "doc:ml/computer-vision/computer-vision",
       "type": "doc",
       "title": "Computer Vision",
@@ -2220,6 +2232,18 @@
       "href": "/track/ml/computer-vision#computer-vision",
       "trackName": "Machine Learning",
       "topicName": "Computer Vision"
+    },
+    {
+      "id": "module:ml/llm/context-budgeting-and-truncation",
+      "type": "module",
+      "title": "Context Budgeting and Truncation",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "context-budgeting-and-truncation",
+      "href": "/track/ml/llm#context-budgeting-and-truncation",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
     },
     {
       "id": "module:ml/systems/context-parallelism",
@@ -3734,6 +3758,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "module:ai-agents/tool-use/mcp",
+      "type": "module",
+      "title": "Model Context Protocol (MCP)",
+      "summary": "> Track: `ai-agents` | Topic: `tool-use`",
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "slug": "mcp",
+      "href": "/track/ai-agents/tool-use#mcp",
+      "trackName": "AI Agents",
+      "topicName": "Tool Use"
+    },
+    {
       "id": "doc:ml/models/models",
       "type": "doc",
       "title": "Models and Classical ML",
@@ -3780,6 +3816,18 @@
       "href": "/track/ml/reinforcement-learning#monte-carlo-tree-search",
       "trackName": "Machine Learning",
       "topicName": "Reinforcement Learning"
+    },
+    {
+      "id": "module:ml/llm/multimodal-evaluation",
+      "type": "module",
+      "title": "Multimodal Evaluation",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "multimodal-evaluation",
+      "href": "/track/ml/llm#multimodal-evaluation",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
     },
     {
       "id": "module:ml/llm/multimodal-llms",
@@ -4238,6 +4286,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "module:ml/llm/reasoning-evaluation",
+      "type": "module",
+      "title": "Reasoning Evaluation",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "reasoning-evaluation",
+      "href": "/track/ml/llm#reasoning-evaluation",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
+    },
+    {
       "id": "module:dsa/binary-tree/recursive-traversal-of-binary-trees",
       "type": "module",
       "title": "Recursive Traversal of Binary Trees",
@@ -4680,6 +4740,30 @@
       "href": "/track/ml/llm#token-representation-methods",
       "trackName": "Machine Learning",
       "topicName": "LLM"
+    },
+    {
+      "id": "doc:ai-agents/tool-use/tool-use",
+      "type": "doc",
+      "title": "Tool Use",
+      "summary": "This section is about how an agent decides to call tools, how computer-use loops differ from ordinary API tools, and where MCP fits.",
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "slug": "tool-use",
+      "href": "/track/ai-agents/tool-use#tool-use",
+      "trackName": "AI Agents",
+      "topicName": "Tool Use"
+    },
+    {
+      "id": "module:ai-agents/tool-use/tool-use-basics",
+      "type": "module",
+      "title": "Tool Use Basics",
+      "summary": "> Track: `ai-agents` | Topic: `tool-use`",
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "slug": "tool-use-basics",
+      "href": "/track/ai-agents/tool-use#tool-use-basics",
+      "trackName": "AI Agents",
+      "topicName": "Tool Use"
     },
     {
       "id": "module:ml/data/train-validation-test-split",

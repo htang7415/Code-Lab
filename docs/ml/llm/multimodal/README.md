@@ -39,11 +39,13 @@ offsets = modality_offsets([1200, 576, 800])
 ## Canonical Modules
 
 - Main multimodal mental model: `multimodal-llms`
+- Evaluation layer: `multimodal-evaluation`
 - Shared token front end: `token-representation-methods`
 - Vision background when image features are unclear: `docs/ml/computer-vision`
 
 ## When To Use What
 
 - Start with `multimodal-llms` when the core question is how multiple modalities fit into one model input.
+- Use `multimodal-evaluation` when the main question is whether answers are correct and modality coverage is adequate.
 - Use `token-representation-methods` when tokenization, embeddings, or positional structure are still unclear.
 - Use the computer-vision section only when you need extra image-specific intuition beyond the multimodal LLM flow.

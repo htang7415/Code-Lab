@@ -40,12 +40,14 @@ vote = majority_vote_success_probability(single_try_success=0.7, n=5)
 ## Canonical Modules
 
 - Core reasoning trade-off: `reasoning-and-test-time-compute`
+- Cost-aware scoring: `reasoning-evaluation`
 - Multi-sample agreement: `vote-metrics`
 - Task-level reasoning evaluation: `pass-at-k`, `answer-verification`, `answer-stability`
 
 ## When To Use What
 
 - Start with `reasoning-and-test-time-compute` when the main question is quality versus latency or token cost.
+- Use `reasoning-evaluation` when you need to compare reasoning quality under real token budgets.
 - Use `vote-metrics` when you are sampling multiple traces and need consensus summaries.
 - Use `pass-at-k` when retries matter more than one-shot exactness.
 - Use `answer-verification` when the task has a strong objective checker.

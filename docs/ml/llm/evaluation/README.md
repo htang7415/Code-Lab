@@ -15,8 +15,10 @@ Use this page to understand the main evaluation modes for modern LLM systems wit
 
 - `Likelihood` asks whether the model predicts tokens well. This is where perplexity fits.
 - `Task scoring` asks whether the final answer is correct against references. This is where exact match, answer verification, BLEU/METEOR, pass@k, and MMLU-style scoring fit.
+- `Reasoning quality` asks whether extra inference compute actually buys better answers per unit cost.
 - `Consensus` asks whether repeated samples agree. This is where self-consistency and vote metrics fit.
 - `Judge and preference evaluation` asks which answer is better when exact references are weak. This is where judge evaluation methods and Bradley-Terry style models fit.
+- `Multimodal evaluation` asks whether the answer is correct and whether the required modalities were actually present or used.
 - `Retrieval and reranking` ask whether the system surfaces relevant documents early enough. This is where Recall@k, MRR, and NDCG fit.
 
 ## Core Math
@@ -56,8 +58,10 @@ preference = judge_pairwise(answer_a, answer_b)
 
 - Likelihood: `perplexity`
 - Task scoring: `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bleu-meteor`
+- Reasoning quality: `reasoning-evaluation`
 - Consensus and sampling: `vote-metrics`
 - Judge and preference: `judge-evaluation-methods`, `bradley-terry-ranking`
+- Multimodal evaluation: `multimodal-evaluation`
 - Retrieval and reranking: `retrieval-metrics`, `reranker-metrics`
 
 ## Supporting Guides
@@ -69,6 +73,8 @@ preference = judge_pairwise(answer_a, answer_b)
 - Use `perplexity` for pretraining-style language modeling comparisons, not as a full product metric.
 - Use `exact-match` or `answer-verification` when references are strong and deterministic.
 - Use `pass@k` when multiple attempts matter, especially for code and reasoning tasks.
+- Use `reasoning-evaluation` when token cost and answer quality need to be compared together.
 - Use `vote-metrics` and the vote guide when you are sampling multiple traces.
 - Use judge-based methods when references are weak or style matters.
+- Use `multimodal-evaluation` when image, audio, or video inputs are part of the task definition.
 - Use retrieval metrics when answer quality depends on document ranking.

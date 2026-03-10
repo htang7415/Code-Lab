@@ -43,6 +43,7 @@ hit_rate = cache_hit_rate(cached_prefix_tokens=48_000, total_prompt_tokens=64_00
 ## Canonical Modules
 
 - Main long-context mental model: `long-context-and-caching`
+- Packing and truncation policy: `context-budgeting-and-truncation`
 - KV memory growth: `kv-cache`
 - Prefix reuse: `prefix-cache`, `prefix-cache-metrics`
 - Serving support: `chunked-prefill`, `continuous-batching`
@@ -50,6 +51,7 @@ hit_rate = cache_hit_rate(cached_prefix_tokens=48_000, total_prompt_tokens=64_00
 ## When To Use What
 
 - Start with `long-context-and-caching` when prompt length is the main constraint.
+- Use `context-budgeting-and-truncation` when reserved output space and truncation policy are the main design questions.
 - Use `kv-cache` when memory, not prompt preprocessing, is the bottleneck.
 - Use `prefix-cache` when requests share large repeated instructions or documents.
 - Use `chunked-prefill` and `continuous-batching` when long prompts have to coexist with real serving throughput.

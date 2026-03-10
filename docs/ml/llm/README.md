@@ -53,7 +53,7 @@ next_token = decode(hidden[-1], strategy="top_p")
 - Evaluation: `docs/ml/llm/evaluation`
 - Decoding: `decoding-methods`
 - Retrieval and lexical baselines: `bm25-ranking`, `retrieval-fusion-methods`
-- Efficiency and systems: `long-context-and-caching`, `parameter-efficient-fine-tuning`, `precision-and-quantization`, `kv-cache`, `prefix-cache`, `speculative-decoding`, `qk-clip`
+- Efficiency and systems: `long-context-and-caching`, `context-budgeting-and-truncation`, `parameter-efficient-fine-tuning`, `precision-and-quantization`, `kv-cache`, `prefix-cache`, `speculative-decoding`, `qk-clip`
 
 ## Supporting Guides
 
@@ -73,4 +73,5 @@ next_token = decode(hidden[-1], strategy="top_p")
 - Use the evaluation guide before choosing metrics module by module.
 - Use decoding methods when generation behavior is the issue.
 - Use serving and systems topics when latency, memory, or throughput becomes the bottleneck.
+- If the model must call APIs, browse interfaces, or use MCP-style tool servers, switch to `docs/ai-agents/tool-use`.
 - Treat this page as the stack overview; use the leaf guides for the real detail.
