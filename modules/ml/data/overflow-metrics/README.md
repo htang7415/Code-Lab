@@ -2,13 +2,19 @@
 
 > Track: `ml` | Topic: `data`
 
-## Concept
+## Purpose
 
-Overflow metrics summarize what happens when examples exceed a hard token or
-length budget. The main questions are: how often does overflow happen, how big
-is it, and how bad is the tail after a product cutoff.
+Use this module to measure how often inputs exceed a hard token or length budget
+and how severe the overflow becomes.
 
-## Math
+## First Principles
+
+- Overflow is a data and systems problem before it is a modeling problem.
+- The main questions are frequency, magnitude, and tail severity.
+- A simple rate is usually the first useful number.
+- Cutoff-aware metrics matter when only large overflow causes real product failure.
+
+## Core Math
 
 - Overflow amount:
   $$
@@ -27,18 +33,12 @@ is it, and how bad is the tail after a product cutoff.
   \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}[o_i \ge c]
   $$
 
-- $\ell_i$ -- sequence length
-- $L$ -- allowed budget
-- $o_i$ -- overflow amount
-- $c$ -- product cutoff for unacceptable overflow
+## Minimal Code Mental Model
 
-## Key Points
-
-- Start with truncation rate to see whether the budget is routinely violated.
-- Overrun share normalizes overflow by total traffic, so it compares datasets
-  better than a raw count.
-- Quantiles show whether a small number of examples cause most of the damage.
-- Cutoff metrics matter when a product treats only large overflow as failure.
+```python
+count, rate = truncation_rate(lengths, max_length)
+share = budget_overrun_share(lengths, max_length)
+```
 
 ## Function
 
@@ -54,6 +54,13 @@ def overflow_cutoff_tail_mass(
     quantile: float = 0.9,
 ) -> float:
 ```
+
+## When To Use What
+
+- Use truncation rate for the first dashboard number.
+- Use overrun share when comparing datasets or prompts of different total lengths.
+- Use overflow quantiles when a few extreme examples drive the problem.
+- Use cutoff rate and tail mass when only large overflow counts as failure.
 
 ## Run tests
 

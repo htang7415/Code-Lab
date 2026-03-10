@@ -2,34 +2,41 @@
 
 > Track: `ml` | Topic: `deep-learning`
 
-## Concept
+## Purpose
 
-Normalization layers stabilize activation scale, but they normalize across
-different axes. BatchNorm uses batch statistics, LayerNorm and RMSNorm use
-per-token or per-example statistics, and GroupNorm / InstanceNorm sit between
-those extremes for vision-style tensors.
+Use this module to compare the main normalization families and understand which
+axes they normalize over.
 
-## Math
+## First Principles
 
-- $\mathrm{BatchNorm}(x)=\frac{x-\mu_B}{\sqrt{\sigma_B^2+\epsilon}}$
-- $\mathrm{LayerNorm}(x)=\frac{x-\mu_f}{\sqrt{\sigma_f^2+\epsilon}}$
-- $\mathrm{RMSNorm}(x)=\frac{x}{\sqrt{\frac{1}{d}\sum_i x_i^2+\epsilon}}$
-- $\mathrm{GroupNorm}(x)=\frac{x-\mu_g}{\sqrt{\sigma_g^2+\epsilon}}$
-- $\mathrm{InstanceNorm}(x)=\frac{x-\mu_I}{\sqrt{\sigma_I^2+\epsilon}}$
+- Normalization stabilizes activation scale so optimization is easier.
+- The main difference between methods is which statistics are shared.
+- BatchNorm depends on batch statistics, which is why it fits CNN-style training
+  better than transformer-style sequence models.
+- LayerNorm and RMSNorm normalize within each example, which makes them more
+  robust to batch variability.
 
-- $\mu_B$ -- mean over a batch
-- $\mu_f$ -- mean over features of one sample
-- $\mu_g$ -- mean over one channel group
-- $\mu_I$ -- mean over one instance
-- $\epsilon$ -- numerical-stability constant
+## Core Math
 
-## Key Points
+- BatchNorm:
+  $$
+  \mathrm{BatchNorm}(x)=\frac{x-\mu_B}{\sqrt{\sigma_B^2+\epsilon}}
+  $$
+- LayerNorm:
+  $$
+  \mathrm{LayerNorm}(x)=\frac{x-\mu_f}{\sqrt{\sigma_f^2+\epsilon}}
+  $$
+- RMSNorm:
+  $$
+  \mathrm{RMSNorm}(x)=\frac{x}{\sqrt{\frac{1}{d}\sum_i x_i^2+\epsilon}}
+  $$
 
-- BatchNorm works well with stable, reasonably large batches, especially in CNNs.
-- LayerNorm and RMSNorm avoid cross-example coupling, which is why they fit transformers.
-- RMSNorm rescales without subtracting the mean, so it is cheaper than LayerNorm.
-- GroupNorm and InstanceNorm are useful when batch statistics are noisy or unavailable.
-- BatchNorm is usually a poor fit for transformers because sequence length and batch composition change shared statistics.
+## Minimal Code Mental Model
+
+```python
+y_batch = batchnorm(x_batch)
+y_token = layernorm(x_token)
+```
 
 ## Function
 
@@ -42,12 +49,12 @@ def instancenorm(x: list[float], eps: float = 1e-5) -> list[float]:
 def batch_stats(matrix: list[list[float]]) -> tuple[float, float]:
 ```
 
-## Pitfalls
+## When To Use What
 
-- BatchNorm behavior differs between train and eval because running statistics matter in real models.
-- Small or variable batch sizes make BatchNorm noisy.
-- GroupNorm requires the channel count to be divisible by the number of groups.
-- RMSNorm controls scale, not centering, so it is not interchangeable with LayerNorm in every derivation.
+- Use BatchNorm as the classic CNN default when batches are stable and reasonably large.
+- Use LayerNorm or RMSNorm for transformers and sequence models.
+- Use GroupNorm or InstanceNorm when batch statistics are unreliable or unavailable.
+- Use RMSNorm when you want scale control with less computation than full centering.
 
 ## Run tests
 

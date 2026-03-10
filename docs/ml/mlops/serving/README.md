@@ -1,25 +1,49 @@
 # ML Serving
 
-Serving is the operational layer between a trained model and a real user-facing workload.
+Serving is the operational layer between a trained model and a real workload.
 
-## Current Anchors
+## Purpose
 
-- Offline vs online inference (`modules/ml/mlops/offline-online-inference`)
-- Batch vs real-time inference (`modules/ml/mlops/batch-vs-realtime`)
-- Canary deployment (`modules/ml/mlops/canary-deployment`)
-- Canary rollout progression (`modules/ml/mlops/canary-rollout`)
-- Online shadow mode (`modules/ml/mlops/online-shadow-mode`)
-- Request batching (`modules/ml/mlops/request-batching`)
-- Admission control (`modules/ml/mlops/admission-control`)
-- Queue delay (`modules/ml/mlops/queue-delay`)
-- Request-level SLA compliance (`modules/ml/mlops/request-sla`)
-- Continuous batching (`modules/ml/systems/continuous-batching`)
+Use this page to reason about:
+- offline vs online modes
+- rollout strategy
+- batching and queueing
+- admission and latency control
 
-## Concepts to Cover Well
+## First Principles
 
-- Offline, batch, streaming, and online serving modes
-- Canary, shadow, and rollback strategies
-- Queueing, batching, and admission control under load
-- SLA design around latency, reliability, and throughput
-- Cost / latency / accuracy trade-offs in production
-- How serving architecture changes evaluation and monitoring needs
+- Serving mode changes both cost and product behavior.
+- Canary and shadow workflows exist to fail small before failing large.
+- Queueing and batching trade throughput against latency.
+- Admission control matters because an overloaded correct system is still a bad system.
+
+## Core Math
+
+- Throughput:
+  $$
+  \frac{\text{requests or tokens}}{\text{second}}
+  $$
+- Queueing pressure rises when arrival rate approaches or exceeds service rate.
+
+## Minimal Code Mental Model
+
+```python
+if queue_delay > budget:
+    reject_or_degrade(request)
+else:
+    batch.append(request)
+```
+
+## Canonical Modules
+
+- Serving mode: `offline-online-inference`, `batch-vs-realtime`
+- Rollout safety: `canary-deployment`, `canary-rollout`, `online-shadow-mode`
+- Throughput control: `request-batching`, `admission-control`, `queue-delay`, `request-sla`
+- Systems handoff: `continuous-batching`
+
+## When To Use What
+
+- Use offline or batch inference when freshness is weakly coupled to user experience.
+- Use canary or shadow rollout before full replacement.
+- Use request batching when throughput matters and small latency inflation is acceptable.
+- Use admission control and queue-delay metrics when overload is the main failure mode.

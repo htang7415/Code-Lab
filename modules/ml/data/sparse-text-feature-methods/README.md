@@ -2,33 +2,40 @@
 
 > Track: `ml` | Topic: `data`
 
-## Concept
+## Purpose
 
-Sparse lexical pipelines usually follow a simple flow: normalize the token
-space, convert tokens into sparse counts or weights, optionally hash them into a
-fixed-width space, and score which sparse features are most class-informative.
+Use this module to build simple lexical text baselines before heavier embedding
+or transformer pipelines.
 
-## Math
+## First Principles
 
-- $\mathbf{x}_j = \sum_i \mathbf{1}[t_i = v_j]$
-- $\mathrm{tfidf}(t, d) = \frac{c_{t,d}}{|d|}\log \frac{N}{\mathrm{df}(t)}$
-- $\mathrm{bucket}(x) = h(x) \bmod B$
-- $\chi^2 = \sum \frac{(O-E)^2}{E}$
+- Sparse text features treat text as weighted token occurrences.
+- Count vectors are the simplest baseline.
+- TF-IDF reweights common vs document-specific terms.
+- Hashing avoids storing a full vocabulary but introduces collisions.
+- Feature scoring and rare-token pruning stabilize the sparse space before modeling.
 
-- $t_i$ -- observed token
-- $v_j$ -- vocabulary term
-- $c_{t,d}$ -- count of term $t$ in document $d$
-- $N$ -- number of documents
-- $B$ -- number of hash buckets
-- $O, E$ -- observed and expected counts
+## Core Math
 
-## Key Points
+- Count vector entry:
+  $$
+  x_j = \sum_i \mathbf{1}[t_i = v_j]
+  $$
+- TF-IDF:
+  $$
+  \mathrm{tfidf}(t, d) = \frac{c_{t,d}}{|d|}\log \frac{N}{\mathrm{df}(t)}
+  $$
+- Hash bucket:
+  $$
+  h(x) \bmod B
+  $$
 
-- Count vectors are the simplest lexical baseline.
-- TF-IDF downweights globally common terms and upweights document-specific ones.
-- The hash trick avoids storing a full vocabulary but introduces collisions.
-- Rare-token pruning stabilizes sparse vocabularies before featurization.
-- Chi-square scoring is often used to filter sparse lexical features before modeling.
+## Minimal Code Mental Model
+
+```python
+counts = count_vector(tokens, vocabulary)
+weights = tf_idf_weights(tokens, document_frequencies, num_documents)
+```
 
 ## Function
 
@@ -45,12 +52,12 @@ def chi_square_feature_score(
 def prune_rare_tokens(tokens: list[str], min_count: int, unk_token: str = "__UNK__") -> list[str]:
 ```
 
-## Pitfalls
+## When To Use What
 
-- Count vectors and TF-IDF ignore word order and semantics.
-- Hash collisions can make model behavior harder to inspect.
-- Rare-token pruning can drop useful tail signal if the threshold is too aggressive.
-- Chi-square scores are featurewise; they do not reason about redundancy between sparse features.
+- Use count vectors as the simplest lexical baseline.
+- Use TF-IDF when document-specific terms matter more than raw frequency.
+- Use hashing when you need fixed-width features without a maintained vocabulary.
+- Use rare-token pruning and chi-square scoring when the sparse space is too noisy or too wide.
 
 ## Run tests
 

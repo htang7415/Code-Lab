@@ -2,33 +2,41 @@
 
 > Track: `ml` | Topic: `evaluation`
 
-## Concept
+## Purpose
 
-Core classification metrics should cover ranked-label accuracy, class-balanced
-averages, multilabel labelwise error, and probability-aware loss. These are the
-metrics most often compared side-by-side when choosing a classifier.
+Use this module to compare the small set of classification metrics that matter
+most in practice: rank-aware accuracy, class-balanced summaries, multilabel
+error, and probability-aware loss.
 
-## Math
+## First Principles
 
-- $\mathrm{Top\text{-}k\ Accuracy} = \frac{1}{n}\sum_i \mathbf{1}[y_i \in \hat{Y}_i^{(k)}]$
-- $\mathrm{MacroF1} = \frac{1}{C}\sum_{c=1}^{C}\mathrm{F1}_c$
-- $\mathrm{MicroF1} = \frac{2TP}{2TP + FP + FN}$
-- $\mathrm{BalancedAccuracy} = \frac{1}{C}\sum_c \frac{TP_c}{TP_c + FN_c}$
-- $\mathrm{HammingLoss} = \frac{1}{nL}\sum_{i=1}^{n}\sum_{j=1}^{L}\mathbf{1}[\hat{y}_{ij}\ne y_{ij}]$
-- $\mathrm{LogLoss} = -\frac{1}{n}\sum_i \left(y_i\log p_i + (1-y_i)\log(1-p_i)\right)$
+- No single classification metric is universally correct.
+- Accuracy-style metrics reward correct labels.
+- F1-style metrics trade precision against recall.
+- Balanced metrics matter when class frequencies are uneven.
+- Log loss matters when probability quality matters, not just the top label.
 
-- $C$ -- number of classes
-- $TP, FP, FN$ -- true positives, false positives, false negatives
-- $L$ -- number of label positions
-- $p_i$ -- predicted probability for the positive class
+## Core Math
 
-## Key Points
+- Top-k accuracy:
+  $$
+  \frac{1}{n}\sum_i \mathbf{1}[y_i \in \hat{Y}_i^{(k)}]
+  $$
+- Macro F1:
+  $$
+  \frac{1}{C}\sum_{c=1}^{C}\mathrm{F1}_c
+  $$
+- Log loss:
+  $$
+  -\frac{1}{n}\sum_i \left(y_i\log p_i + (1-y_i)\log(1-p_i)\right)
+  $$
 
-- Top-k accuracy is useful when several labels are plausible and predictions are ranked.
-- Macro F1 and balanced accuracy help under class imbalance.
-- Micro F1 emphasizes overall count-weighted performance.
-- Hamming loss is a multilabel metric, not a standard multiclass score.
-- Log loss uses probabilities and penalizes confident mistakes heavily.
+## Minimal Code Mental Model
+
+```python
+score = macro_f1_score(tp, fp, fn)
+loss = log_loss(labels, probabilities)
+```
 
 ## Function
 
@@ -41,12 +49,13 @@ def hamming_loss(predictions: list[list[int]], labels: list[list[int]]) -> float
 def log_loss(labels: list[int], probabilities: list[float], eps: float = 1.0e-15) -> float:
 ```
 
-## Pitfalls
+## When To Use What
 
-- Macro and micro F1 answer different questions and should not be swapped casually.
-- Top-k accuracy can look high even when the model's top prediction is weak.
-- Hamming loss ignores label correlations.
-- Log loss is very sensitive to overconfident wrong probabilities.
+- Use top-k accuracy when several ranked labels are acceptable.
+- Use macro F1 or balanced accuracy when class imbalance is important.
+- Use micro F1 when overall count-weighted performance matters most.
+- Use Hamming loss for multilabel settings, not ordinary multiclass classification.
+- Use log loss when the predicted probabilities themselves drive decisions.
 
 ## Run tests
 

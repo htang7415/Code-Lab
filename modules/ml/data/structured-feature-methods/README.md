@@ -2,22 +2,31 @@
 
 > Track: `ml` | Topic: `data`
 
-## Concept
+## Purpose
 
-Structured feature methods turn raw tabular fields into representations that simpler models can use more effectively.
-This family groups three common moves:
+Use this module to compare the main ways to enrich tabular features without
+jumping straight to a large end-to-end model.
 
-- bucket numeric values into discrete bins
-- cross categories to expose sparse interactions
-- replace high-cardinality IDs with dense entity embeddings
+## First Principles
 
-## Why Learn Them Together
+- Bucketing turns numeric signals into coarse thresholds.
+- Category crosses expose sparse interactions that linear models would otherwise miss.
+- Entity embeddings compress high-cardinality identifiers into learned dense vectors.
+- These methods answer one design question: should this feature stay numeric, become discrete, or become dense?
 
-- Bucketing creates coarse thresholds from continuous signals.
-- Crosses let linear models capture pairwise interactions.
-- Entity embeddings compress wide categorical spaces into dense learned vectors.
+## Core Math
 
-These methods sit on the same design path: choose whether a feature should stay numeric, become discrete, or become dense.
+- Bucket assignment is a thresholded bin index.
+- A category cross forms a joint token such as `city__X__device`.
+- Entity embeddings learn a vector lookup table indexed by category ID.
+
+## Minimal Code Mental Model
+
+```python
+buckets = bucketize(values, boundaries)
+crosses = category_cross_features(left, right)
+embedding = pooled_entity_embedding(entity_ids, embedding_table)
+```
 
 ## Core Functions
 
@@ -27,20 +36,12 @@ def category_cross_features(left: list[str], right: list[str], separator: str = 
 def pooled_entity_embedding(entity_ids: list[int], embedding_table: list[list[float]]) -> list[float]:
 ```
 
-## Comparison
+## When To Use What
 
-| Method | Best for | Output |
-| --- | --- | --- |
-| Bucketing | Simple threshold effects | bucket indices |
-| Category crosses | Sparse pairwise interactions | crossed categorical tokens |
-| Entity embeddings | High-cardinality learned representations | dense vectors |
-
-## Key Points
-
-- Start with bucketing and crosses when you want interpretable tabular baselines.
-- Move to entity embeddings when one-hot or cross spaces get too wide.
-- Bucketing often pairs naturally with crosses because bins can act like categories.
-- Dense embeddings help when IDs have many repeated observations and enough data to learn useful structure.
+- Use bucketing when threshold effects matter more than exact numeric scale.
+- Use category crosses for sparse pairwise interactions in tabular baselines.
+- Use entity embeddings when categorical spaces are too wide for one-hot or crosses alone.
+- Start with bucketing and crosses before learned embeddings when interpretability matters.
 
 ## Run tests
 

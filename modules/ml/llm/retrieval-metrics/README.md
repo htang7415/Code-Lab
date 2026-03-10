@@ -2,35 +2,42 @@
 
 > Track: `ml` | Topic: `llm`
 
-## Concept
+## Purpose
 
-Retrieval evaluation asks two different questions: did the system retrieve any
-relevant item early enough, and how much did reranking improve the ordering?
-This family groups top-k coverage metrics, first-hit metrics, and reranker
-change metrics.
+Use this module to separate retrieval evaluation into coverage, purity,
+first-hit quality, and reranking change.
 
-## Math
+## First Principles
 
-- $\mathrm{Recall@}k=\frac{|\mathrm{TopK}\cap\mathrm{Relevant}|}{|\mathrm{Relevant}|}$
-- $\mathrm{Precision@}k=\frac{|\mathrm{TopK}\cap\mathrm{Relevant}|}{k}$
-- $\mathrm{F1@}k=\frac{2PR}{P+R}$
-- $\mathrm{HitRate@}k=\frac{1}{Q}\sum_q \mathbf{1}[\mathrm{TopK}_q\cap\mathrm{Relevant}_q\neq\emptyset]$
-- $\mathrm{RR}=\frac{1}{r}$ for first relevant rank $r$
-- $\mathrm{gain}=\mathrm{RR}_{\mathrm{reranked}}-\mathrm{RR}_{\mathrm{baseline}}$
+- Retrieval quality is not one number; different products care about different failure modes.
+- Recall asks whether relevant items were found.
+- Precision asks whether early retrieved items are clean.
+- Reciprocal rank asks how early the first useful item appears.
+- Reranking metrics ask whether a second-stage model improved order instead of just changing it.
 
-- $\mathrm{TopK}$ -- retrieved items up to rank $k$
-- $\mathrm{Relevant}$ -- relevant item set
-- $Q$ -- number of queries
-- $P$ -- precision
-- $R$ -- recall
+## Core Math
 
-## Key Points
+- Recall@k:
+  $$
+  \frac{|\mathrm{TopK}\cap\mathrm{Relevant}|}{|\mathrm{Relevant}|}
+  $$
+- Precision@k:
+  $$
+  \frac{|\mathrm{TopK}\cap\mathrm{Relevant}|}{k}
+  $$
+- Reciprocal rank:
+  $$
+  \mathrm{RR}=\frac{1}{r}
+  $$
+  where $r$ is the first relevant rank.
 
-- Recall@k measures coverage; Precision@k measures purity.
-- F1@k balances the two when you need both.
-- HitRate@k only asks whether at least one relevant item appears.
-- Reciprocal rank focuses on how early the first relevant result appears.
-- Rerank gain and disagreement separate quality improvement from ordering churn.
+## Minimal Code Mental Model
+
+```python
+recall = retrieval_recall_at_k(retrieved_ids, relevant_ids, k=5)
+rr = reciprocal_rank(relevance_labels)
+gain = rerank_gain(baseline_labels, reranked_labels)
+```
 
 ## Function
 
@@ -49,12 +56,13 @@ def rerank_gain(baseline_relevance: list[int], reranked_relevance: list[int]) ->
 def rerank_disagreement_rate(baseline_ids: list[str], reranked_ids: list[str], k: int | None = None) -> float:
 ```
 
-## Pitfalls
+## When To Use What
 
-- Precision@k can look low even when the system retrieves all relevant items if the relevant set is small.
-- HitRate@k ignores how many relevant documents were retrieved after the first hit.
-- Reciprocal rank and rerank gain only see the first relevant item, not the full ranking.
-- Disagreement rate alone cannot tell whether the reranker changed the order for better or worse.
+- Use Recall@k when missing relevant documents is the main failure.
+- Use Precision@k when early purity matters more than full coverage.
+- Use HitRate@k when one successful retrieval is enough.
+- Use reciprocal rank or MRR-style metrics when the first useful result dominates user experience.
+- Use rerank gain together with disagreement rate when measuring a reranker over a baseline.
 
 ## Run tests
 

@@ -2,32 +2,44 @@
 
 > Track: `ml` | Topic: `evaluation`
 
-## Concept
+## Purpose
 
-Ranking metrics answer different questions about ordered outputs: how early the
-first relevant item appears, how much gain is concentrated near the top, how
-deep we must scan to cover all relevant labels, and how enriched the top prefix
-is relative to the full population.
+Use this module to compare ranking metrics by the question they answer:
+- first-hit quality
+- graded top-of-list quality
+- full-label coverage
+- top-prefix enrichment
 
-## Math
+## First Principles
 
-- $\mathrm{MRR} = \frac{1}{Q}\sum_{q=1}^{Q}\frac{1}{\mathrm{rank}_q}$
-- $\mathrm{DCG@}k = \sum_{i=1}^{k}\frac{2^{rel_i}-1}{\log_2(i+1)}$
-- $\mathrm{NDCG@}k = \frac{\mathrm{DCG@}k}{\mathrm{IDCG@}k}$
-- $\mathrm{coverage}(x)=\max\{i: rel_i = 1\}$
-- $\mathrm{Lift@}k = \frac{\mathrm{Precision@}k}{\mathrm{BaseRate}}$
+- Ranking metrics care about order, not just whether a label appears somewhere.
+- MRR focuses on the first useful hit.
+- NDCG rewards good ranking near the top and supports graded relevance.
+- Coverage error matters when all relevant labels eventually need to appear.
+- Lift@k asks whether the top prefix is enriched compared with the base rate.
 
-- $Q$ -- number of queries or ranked examples
-- $\mathrm{rank}_q$ -- first relevant rank for query $q$
-- $rel_i$ -- relevance at rank $i$
-- $k$ -- cutoff rank
+## Core Math
 
-## Key Points
+- MRR:
+  $$
+  \mathrm{MRR} = \frac{1}{Q}\sum_{q=1}^{Q}\frac{1}{\mathrm{rank}_q}
+  $$
+- NDCG@k:
+  $$
+  \mathrm{NDCG@}k = \frac{\mathrm{DCG@}k}{\mathrm{IDCG@}k}
+  $$
+- Lift@k:
+  $$
+  \mathrm{Lift@}k = \frac{\mathrm{Precision@}k}{\mathrm{BaseRate}}
+  $$
 
-- MRR cares only about the first hit.
-- NDCG supports graded relevance and rewards early good ranking.
-- Coverage error is useful when all relevant labels must eventually appear.
-- Lift@k measures how enriched the top-ranked prefix is compared with random selection.
+## Minimal Code Mental Model
+
+```python
+mrr = mean_reciprocal_rank(relevance_lists)
+score = ndcg_at_k(relevance, k=10)
+lift = lift_at_k(labels, k=100)
+```
 
 ## Function
 
@@ -38,12 +50,12 @@ def coverage_error(relevance_rankings: list[list[int]]) -> float:
 def lift_at_k(labels: list[int], k: int) -> float:
 ```
 
-## Pitfalls
+## When To Use What
 
-- MRR can hide improvements after the first relevant item.
-- NDCG depends on a relevance scale, not just binary hits.
-- Coverage error is lower-is-better, unlike most ranking scores.
-- Lift@k can look high on rare positives even when recall is low.
+- Use MRR when the first correct result dominates the user experience.
+- Use NDCG when relevance is graded or when early ranking quality matters most.
+- Use coverage error when all relevant labels should appear eventually.
+- Use Lift@k when enrichment of the top slice matters more than full recall.
 
 ## Run tests
 

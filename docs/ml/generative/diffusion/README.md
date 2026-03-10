@@ -1,20 +1,51 @@
 # Diffusion Models
 
-Diffusion models trade fast one-shot generation for stable likelihood-free denoising steps.
+Diffusion models learn to reverse a gradual noising process, which makes training stable but sampling relatively expensive.
 
-## Current Anchors
+## Purpose
 
-- Diffusion models (`modules/ml/generative/diffusion-models`)
-- DDPM reverse step (`modules/ml/generative/ddpm-sampling`)
-- DDIM deterministic step (`modules/ml/generative/ddim-sampling`)
-- Guidance trade-offs / classifier-free guidance (`modules/ml/generative/diffusion-guidance-tradeoffs`)
-- EMA for diffusion weights (`modules/ml/generative/ema-diffusion-weights`)
+Use this page to keep diffusion in the right order:
+- forward noising
+- reverse denoising
+- sampling choices
+- guidance
+- EMA stabilization
 
-## Concepts to Cover Well
+## First Principles
 
-- Forward noising and reverse denoising
-- Noise schedules and timestep parameterization
-- DDPM vs DDIM sampling trade-offs
-- Guidance strength vs diversity
-- EMA weights as a smoother sampling-time model copy
-- Why diffusion is stable but sampling-expensive
+- Training adds noise to data and asks the model to predict or remove it.
+- Sampling runs the reverse process step by step, so quality improves at the cost of speed.
+- DDPM and DDIM mostly differ in how they trade stochasticity against speed and determinism.
+- Guidance improves alignment or prompt-following, but too much guidance can hurt diversity.
+- EMA weights act like a smoother sampling-time copy of the model.
+
+## Core Math
+
+- Forward noising shape:
+  $$
+  x_t = \sqrt{\alpha_t} x_0 + \sqrt{1-\alpha_t}\,\epsilon
+  $$
+- Training often minimizes an MSE between predicted and true noise.
+
+## Minimal Code Mental Model
+
+```python
+noise = sample_noise(x.shape)
+noisy_x = add_noise(x, noise, t)
+pred = model(noisy_x, t)
+loss = mse(pred, noise)
+```
+
+## Canonical Modules
+
+- Core diffusion idea: `diffusion-models`
+- Sampling: `ddpm-sampling`, `ddim-sampling`
+- Guidance: `diffusion-guidance-tradeoffs`
+- Stabilization: `ema-diffusion-weights`
+
+## When To Use What
+
+- Start with `diffusion-models` before DDPM or DDIM details.
+- Use `ddpm-sampling` when you want the basic stochastic reverse process.
+- Use `ddim-sampling` when you want faster or more deterministic sampling intuition.
+- Use guidance and EMA only after the base forward/reverse picture is clear.

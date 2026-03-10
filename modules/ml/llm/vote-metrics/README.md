@@ -2,12 +2,19 @@
 
 > Track: `ml` | Topic: `llm`
 
-## Concept
+## Purpose
 
-Vote metrics summarize how repeated sampled answers agree, fragment, or form a
-strong alternative cluster after answer normalization.
+Use this module to summarize how repeated sampled answers agree, fragment, or
+form structured alternatives after normalization.
 
-## Math
+## First Principles
+
+- Repeated sampling reveals whether a model is stable or fragmented.
+- Some metrics summarize the winning answer.
+- Some summarize diversity or uncertainty.
+- Some focus on minority clusters, which matter when disagreement is structured rather than noisy.
+
+## Core Math
 
 - Normalized vote share:
   $$
@@ -21,23 +28,14 @@ strong alternative cluster after answer normalization.
   $$
   p_{(1)} - p_{(2)}
   $$
-- Uniqueness rate:
-  $$
-  \frac{\#\{\text{unique normalized answers}\}}{N}
-  $$
 
-- $c_i$ -- count for normalized answer $i$
-- $N$ -- number of sampled answers
-- $p_{(1)}$ -- largest vote share
-- $p_{(2)}$ -- second-largest vote share
+## Minimal Code Mental Model
 
-## Key Points
-
-- Use answer stability when you want a pairwise agreement view.
-- Use majority-vote margin and top-vote share when you want a confidence-style summary.
-- Use vote entropy when disagreement structure matters more than the winner.
-- Use uniqueness rate or candidate diversity when exploration matters.
-- Use minority-cluster entropy when you care about structured alternatives, not just noise.
+```python
+votes = normalized_vote_counts(answers)
+entropy = vote_entropy(answers)
+margin = majority_vote_margin(answers)
+```
 
 ## Function
 
@@ -52,6 +50,14 @@ def top_vote_share(answers: list[str]) -> float:
 def consensus_disagreement_rate(answers: list[str]) -> float:
 def minority_cluster_entropy(answers: list[str]) -> float:
 ```
+
+## When To Use What
+
+- Use answer stability for repeated-run consistency.
+- Use majority-vote margin or top-vote share when you want a confidence-style summary.
+- Use vote entropy when disagreement structure matters more than the winner.
+- Use uniqueness or candidate diversity when exploration matters.
+- Use minority-cluster entropy when alternatives form meaningful competing groups.
 
 ## Run tests
 

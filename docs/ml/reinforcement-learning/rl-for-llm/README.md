@@ -1,21 +1,51 @@
 # RL for LLMs
 
-RL for LLMs is mostly about preference optimization under expensive on-policy sampling and fragile reward signals.
+RL for LLMs is preference optimization under long sequences, expensive sampling, and fragile reward signals.
 
-## Current Anchors
+## Purpose
 
-- DPO vs PPO (`modules/ml/reinforcement-learning/dpo-vs-ppo`)
-- Group-based optimization (`modules/ml/reinforcement-learning/group-based-optimization`)
-- Reward clipping (`modules/ml/reinforcement-learning/reward-clipping`)
-- Reward scale (`modules/ml/reinforcement-learning/reward-scale`)
-- KL regularization (`modules/ml/llm/kl-regularization`)
-- RLHF (`modules/ml/llm/rlhf`)
+Use this page to separate the main RL-for-LLM ideas:
+- preference data and reward signals
+- PPO-style policy updates
+- DPO-style direct objectives
+- KL anchoring and reward control
 
-## Concepts to Cover Well
+## First Principles
 
-- Reward modeling and preference data
-- PPO-style token-level ratio control
-- GRPO / GSPO sequence-group objectives
-- KL anchoring against base-model drift
-- Credit assignment under long generated sequences
-- Overoptimization, reward hacking, and judge mismatch
+- The base model already knows language; RL is usually refining behavior, not teaching language from scratch.
+- Preference data is often easier to collect than exact gold outputs.
+- PPO-style methods optimize a policy under ratio and KL constraints.
+- DPO-style methods avoid an explicit reward model by learning directly from chosen vs rejected pairs.
+- Reward hacking and overoptimization are central risks because the reward signal is imperfect.
+
+## Core Math
+
+- PPO-style ratio:
+  $$
+  r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\text{old}}(a_t \mid s_t)}
+  $$
+- DPO-style preference signal favors chosen responses over rejected ones.
+
+## Minimal Code Mental Model
+
+```python
+scores = judge_or_reward_model(samples)
+policy = update_policy(policy, samples, scores, kl_penalty)
+```
+
+## Canonical Modules
+
+- Main alignment routes: `rlhf`, `dpo-vs-ppo`, `group-based-optimization`
+- Reward behavior: `reward-clipping`, `reward-scale`
+- Anchoring: `kl-regularization`
+
+## Supporting Modules
+
+- Alignment stack: `docs/ml/llm/alignment`
+
+## When To Use What
+
+- Start with the LLM alignment guide before RL-for-LLM specifics.
+- Use `dpo-vs-ppo` when choosing the main optimization family.
+- Use `group-based-optimization` when sequence-group objectives are the main modern path.
+- Use KL and reward-scale controls when the model starts drifting or overoptimizing the reward.

@@ -2,12 +2,19 @@
 
 > Track: `ml` | Topic: `reinforcement-learning`
 
-## Concept
+## Purpose
 
-Transition indicators convert episode termination state into masks, fractions,
-and numeric tensors used for bootstrapping and batched RL updates.
+Use this module to convert done-state information into masks and simple summary
+signals for RL targets and batched updates.
 
-## Math
+## First Principles
+
+- Done-state logic decides whether future value should be bootstrapped.
+- Masks are the most important form because they directly zero or keep the bootstrap term.
+- Fractions are useful for rollout diagnostics.
+- Numeric indicators exist mostly because vectorized RL code prefers tensors over booleans.
+
+## Core Math
 
 - Terminal indicator:
   $$
@@ -22,12 +29,12 @@ and numeric tensors used for bootstrapping and batched RL updates.
   \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}[\text{done}_i]
   $$
 
-## Key Points
+## Minimal Code Mental Model
 
-- Masks are the most important form because they directly control bootstrap terms.
-- Fractions are useful for replay-buffer or rollout diagnostics.
-- Numeric indicators are useful when the training code expects floats instead of booleans.
-- Batch helpers should stay simple wrappers around the same done-state logic.
+```python
+mask = terminal_mask(done_flags)
+done_rate = done_fraction(done_flags)
+```
 
 ## Function
 
@@ -39,6 +46,13 @@ def terminal_indicator(done: bool) -> float:
 def nonterminal_indicator(done: bool) -> float:
 def continuing_transition_batch(done_flags: list[bool]) -> list[float]:
 ```
+
+## When To Use What
+
+- Use terminal or continuation masks in TD targets and return computation.
+- Use done fraction for replay-buffer or rollout health summaries.
+- Use numeric indicators when the downstream code expects tensors instead of booleans.
+- Keep these helpers simple; they should clarify bootstrapping logic, not hide it.
 
 ## Run tests
 

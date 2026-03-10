@@ -2,46 +2,59 @@
 
 > Track: `ml` | Topic: `deep-learning`
 
-## Concept
+## Purpose
 
-Activation functions shape how a neuron responds to an input. Different
-families trade saturation, smoothness, sparsity, and gradient flow.
+Use this module to understand what a nonlinearity does to signal flow, gradient
+flow, and model expressiveness.
 
-## Math
+## First Principles
 
-- $\sigma(x)=\frac{1}{1+e^{-x}}$
-- $\tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$
-- $\mathrm{ReLU}(x)=\max(0,x)$
-- $\mathrm{LeakyReLU}(x)=\max(\alpha x, x)$
-- $\mathrm{Swish}(x)=x\,\sigma(x)$
-- $\mathrm{GeLU}(x)\approx 0.5x\left(1+\tanh\left(\sqrt{\frac{2}{\pi}}(x+0.044715x^3)\right)\right)$
-- $\mathrm{softplus}(x)=\log(1+e^x)$
-- $\mathrm{softsign}(x)=\frac{x}{1+|x|}$
+- Without a nonlinearity, stacked linear layers collapse into one linear map.
+- The activation decides whether the network saturates, stays sparse, or keeps
+  smooth gradients.
+- In modern practice, ReLU-family and GeLU-style activations matter most.
+- Softmax is different from the others: it is mainly an output normalization,
+  not a hidden-layer scalar activation.
 
-- $\sigma$ -- sigmoid function
-- $\alpha$ -- negative slope parameter
-- $x$ -- scalar input
+## Core Math
 
-## Key Points
+- Sigmoid:
+  $$
+  \sigma(x)=\frac{1}{1+e^{-x}}
+  $$
+- ReLU:
+  $$
+  \mathrm{ReLU}(x)=\max(0,x)
+  $$
+- Leaky ReLU:
+  $$
+  \mathrm{LeakyReLU}(x)=\max(\alpha x, x)
+  $$
+- GeLU:
+  $$
+  \mathrm{GeLU}(x)\approx 0.5x\left(1+\tanh\left(\sqrt{\frac{2}{\pi}}(x+0.044715x^3)\right)\right)
+  $$
 
-- Sigmoid and tanh are smooth but can saturate.
-- ReLU-family activations keep sparse positive responses and improve gradient flow.
-- Modern activations like Swish and GeLU are smoother and often work well in deep models.
-- Softmax is an output normalization, while softplus and softsign are scalar activations.
+## Minimal Code Mental Model
+
+```python
+hidden = scalar_activations(x)["relu"]
+probs = softmax(logits)
+```
 
 ## Function
 
 ```python
 def scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:
-
 def softmax(row: list[float]) -> list[float]:
 ```
 
-## Pitfalls
+## When To Use What
 
-- Sigmoid and tanh can cause small gradients at large magnitudes.
-- ReLU can die if activations stay negative.
-- Softmax should be used on a vector of logits, not a single scalar.
+- Use ReLU-family activations as the default baseline for many feedforward and CNN-style models.
+- Use GeLU or Swish-style activations when you want smoother transformer-style behavior.
+- Use sigmoid or tanh mainly for historical intuition, bounded outputs, or gated mechanisms.
+- Use softmax only when you need a probability distribution over logits.
 
 ## Run tests
 

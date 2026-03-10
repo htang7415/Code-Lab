@@ -2,30 +2,39 @@
 
 > Track: `ml` | Topic: `evaluation`
 
-## Concept
+## Purpose
 
-Interval estimates quantify uncertainty around a point estimate. The right
-interval depends on the statistic: mean estimates often use normal-style
-intervals, arbitrary estimators often use bootstrap intervals, and Bernoulli
-rates often use Wilson intervals.
+Use this module to understand which interval estimate fits which statistic.
 
-## Math
+## First Principles
 
-- $\bar{x} \pm z \frac{s}{\sqrt{n}}$
-- $[\hat{\theta}_{\alpha/2}, \hat{\theta}_{1-\alpha/2}]$
-- $\hat{p}_W = \frac{\hat{p} + z^2/(2n)}{1 + z^2/n}$
+- A point estimate without uncertainty is usually incomplete.
+- Mean-style confidence intervals work when normal approximations are reasonable.
+- Bootstrap intervals work when you can resample the statistic directly.
+- Wilson intervals are a strong default for binary rates, especially with small counts.
 
-- $\bar{x}$ -- sample mean
-- $s$ -- sample standard deviation
-- $\hat{\theta}_q$ -- bootstrap percentile
-- $\hat{p}$ -- observed success rate
-- $n$ -- sample or trial count
+## Core Math
 
-## Key Points
+- Mean interval:
+  $$
+  \bar{x} \pm z \frac{s}{\sqrt{n}}
+  $$
+- Bootstrap percentile interval:
+  $$
+  [\hat{\theta}_{\alpha/2}, \hat{\theta}_{1-\alpha/2}]
+  $$
+- Wilson center:
+  $$
+  \hat{p}_W = \frac{\hat{p} + z^2/(2n)}{1 + z^2/n}
+  $$
 
-- Mean confidence intervals are simple but rely on approximate normality.
-- Bootstrap percentile intervals are flexible because they work from resampled statistics.
-- Wilson intervals are a strong default for binary rates, especially with small samples.
+## Minimal Code Mental Model
+
+```python
+mean_ci = mean_confidence_interval(samples)
+boot_ci = bootstrap_percentile_interval(bootstrap_statistics)
+wilson_ci = wilson_interval(successes, trials)
+```
 
 ## Function
 
@@ -35,11 +44,12 @@ def bootstrap_percentile_interval(bootstrap_statistics: list[float], alpha: floa
 def wilson_interval(successes: int, trials: int, z: float = 1.96) -> tuple[float, float]:
 ```
 
-## Pitfalls
+## When To Use What
 
-- Mean intervals are misleading when the sample is tiny or badly skewed.
-- Bootstrap intervals are only as good as the resampling distribution you generated.
-- Wilson intervals are for binary proportions, not arbitrary means or losses.
+- Use mean confidence intervals for simple approximately normal statistics.
+- Use bootstrap intervals when the estimator is awkward but easy to resample.
+- Use Wilson intervals for Bernoulli or binomial proportions.
+- Match the interval type to the statistic instead of reusing one interval everywhere.
 
 ## Run tests
 

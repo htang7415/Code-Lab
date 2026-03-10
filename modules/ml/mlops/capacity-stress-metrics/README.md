@@ -2,12 +2,19 @@
 
 > Track: `ml` | Topic: `mlops`
 
-## Concept
+## Purpose
 
-Capacity-stress metrics summarize whether a serving system is comfortably below
-its limit, frequently breaching it, or concentrating failures in a severe tail.
+Use this module to summarize whether a serving system is below capacity,
+routinely breaching it, or collapsing into a severe tail.
 
-## Math
+## First Principles
+
+- Capacity problems are about both frequency and severity.
+- A breach rate tells you how often the system fails the target.
+- Margin and pressure metrics tell you how bad the failure is.
+- Bucket metrics are second-order summaries for the shape of overload severity.
+
+## Core Math
 
 - Breach rate:
   $$
@@ -22,17 +29,12 @@ its limit, frequently breaching it, or concentrating failures in a severe tail.
   \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}[x_i > C]\left(1 + \frac{x_i - C}{C}\right)
   $$
 
-- $x_i$ -- observed load
-- $C$ -- capacity target
+## Minimal Code Mental Model
 
-## Key Points
-
-- Start with breach rate to know whether capacity is routinely violated.
-- Headroom gap explains whether the system is comfortably below the ceiling even
-  when there is no breach.
-- Pressure and overload margin separate mild overflow from severe overflow.
-- Bucket metrics are useful only after the simple summaries already say the
-  system is under stress.
+```python
+breaches, rate = capacity_breach_rate(observations, capacity)
+pressure = pressure_score(observations, capacity)
+```
 
 ## Function
 
@@ -52,6 +54,13 @@ def breach_bucket_tail(
     tail_buckets: int = 1,
 ) -> float:
 ```
+
+## When To Use What
+
+- Use breach rate as the first capacity health number.
+- Use headroom gap when you want to know how close the system usually is to the ceiling.
+- Use overload margin or pressure score when severity matters, not just frequency.
+- Use breach-bucket metrics when you need the shape of overload, not just its average.
 
 ## Run tests
 
