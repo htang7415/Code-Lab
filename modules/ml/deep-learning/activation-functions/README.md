@@ -34,17 +34,36 @@ flow, and model expressiveness.
   $$
   \mathrm{GeLU}(x)\approx 0.5x\left(1+\tanh\left(\sqrt{\frac{2}{\pi}}(x+0.044715x^3)\right)\right)
   $$
+- SwiGLU gate:
+  $$
+  \mathrm{SwiGLU}(v, g)=v \cdot \sigma(g)
+  $$
+
+## From Math To Code
+
+- Hidden-layer activations usually map one scalar to another scalar.
+- Softmax maps a whole vector of logits to a probability distribution.
+- Gated activations such as SwiGLU need both a value path and a gate path, so they should not be faked as a one-input scalar activation.
 
 ## Minimal Code Mental Model
 
 ```python
-hidden = scalar_activations(x)["relu"]
+hidden = scalar_activations(x)["gelu"]
 probs = softmax(logits)
+gated = swiglu(value_stream, gate_stream)
 ```
 
 ## Function
 
 ```python
+def sigmoid(x: float) -> float:
+def relu(x: float) -> float:
+def leaky_relu(x: float, alpha: float = 0.01) -> float:
+def gelu(x: float) -> float:
+def swish(x: float) -> float:
+def softplus(x: float) -> float:
+def softsign(x: float) -> float:
+def swiglu(value: float, gate: float) -> float:
 def scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:
 def softmax(row: list[float]) -> list[float]:
 ```
@@ -53,8 +72,9 @@ def softmax(row: list[float]) -> list[float]:
 
 - Use ReLU-family activations as the default baseline for many feedforward and CNN-style models.
 - Use GeLU or Swish-style activations when you want smoother transformer-style behavior.
-- Use sigmoid or tanh mainly for historical intuition, bounded outputs, or gated mechanisms.
+- Use sigmoid or tanh mainly for historical intuition, bounded outputs, or gate construction.
 - Use softmax only when you need a probability distribution over logits.
+- Use SwiGLU-style gating only when the block really has separate value and gate streams.
 
 ## Run tests
 

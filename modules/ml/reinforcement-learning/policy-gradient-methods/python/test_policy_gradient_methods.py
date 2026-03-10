@@ -2,7 +2,13 @@ from __future__ import annotations
 
 import pytest
 
-from policy_gradient_methods import clip_ratio, generalized_advantages, ppo_objective_term, reinforce_update
+from policy_gradient_methods import (
+    clip_ratio,
+    generalized_advantages,
+    ppo_objective_term,
+    reinforce_update,
+    td_residuals,
+)
 
 
 def test_reinforce_update_matches_reward_weighted_gradient() -> None:
@@ -27,6 +33,11 @@ def test_generalized_advantages_reduce_to_td_residuals_when_lambda_is_zero() -> 
     )
 
     assert advantages == pytest.approx([1.4, 1.18])
+
+
+def test_td_residuals_match_one_step_bootstrap_formula() -> None:
+    deltas = td_residuals(rewards=[1.0, 2.0], values=[0.5, 1.0], gamma=0.9, next_value=0.2)
+    assert deltas == pytest.approx([1.4, 1.18])
 
 
 def test_generalized_advantages_accumulate_future_residuals_when_lambda_is_positive() -> None:

@@ -18,6 +18,20 @@ This track is optimized for:
 - Use alias or narrow modules only after the canonical family is clear.
 - Treat `artifacts/deepml/problem_titles.md` as the main scope boundary.
 
+## Math And Code Rule
+
+- Learn each ML topic in this order: intuition, equation, then code.
+- Use the equation to understand the quantity being optimized or measured.
+- Use the code to see the smallest executable version of that equation.
+- If a topic turns into a long catalog of variants, go back to the canonical family first.
+
+```python
+# The default ML learning loop in this repo:
+concept = understand_problem()
+equation = write_core_formula(concept)
+code = implement_smallest_working_version(equation)
+```
+
 ## Start Here
 
 - If you are unsure, start with `docs/ml/path-beginner`.

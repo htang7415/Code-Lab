@@ -7,6 +7,36 @@ def sigmoid(x: float) -> float:
     return 1.0 / (1.0 + math.exp(-x))
 
 
+def relu(x: float) -> float:
+    return max(0.0, x)
+
+
+def leaky_relu(x: float, alpha: float = 0.01) -> float:
+    if alpha < 0.0:
+        raise ValueError("alpha must be non-negative")
+    return x if x > 0.0 else alpha * x
+
+
+def gelu(x: float) -> float:
+    return 0.5 * x * (1.0 + math.tanh(math.sqrt(2.0 / math.pi) * (x + 0.044715 * x**3)))
+
+
+def swish(x: float) -> float:
+    return x * sigmoid(x)
+
+
+def softplus(x: float) -> float:
+    return math.log1p(math.exp(x))
+
+
+def softsign(x: float) -> float:
+    return x / (1.0 + abs(x))
+
+
+def swiglu(value: float, gate: float) -> float:
+    return value * sigmoid(gate)
+
+
 def dynamic_tanh(
     x: float,
     alpha: float = 1.0,
@@ -26,25 +56,20 @@ def softmax(row: list[float]) -> list[float]:
 
 
 def scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:
-    if alpha < 0.0:
-        raise ValueError("alpha must be non-negative")
-
     sigmoid_value = sigmoid(x)
-    swiglu_gate = sigmoid(x)
     return {
         "sigmoid": sigmoid_value,
         "tanh": math.tanh(x),
         "hard_sigmoid": max(0.0, min(1.0, 0.2 * x + 0.5)),
         "hardtanh": max(-1.0, min(1.0, x)),
         "dynamic_tanh": dynamic_tanh(x, alpha=1.2, gamma=1.0, beta=0.0),
-        "relu": max(0.0, x),
-        "leaky_relu": x if x > 0.0 else alpha * x,
+        "relu": relu(x),
+        "leaky_relu": leaky_relu(x, alpha=alpha),
         "elu": x if x > 0.0 else alpha * (math.exp(x) - 1.0),
         "prelu": x if x > 0.0 else alpha * x,
-        "swish": x * sigmoid_value,
-        "gelu": 0.5 * x * (1.0 + math.tanh(math.sqrt(2.0 / math.pi) * (x + 0.044715 * x**3))),
-        "mish": x * math.tanh(math.log1p(math.exp(x))),
-        "swiglu": x * swiglu_gate * x,
-        "softplus": math.log1p(math.exp(x)),
-        "softsign": x / (1.0 + abs(x)),
+        "swish": swish(x),
+        "gelu": gelu(x),
+        "mish": x * math.tanh(softplus(x)),
+        "softplus": softplus(x),
+        "softsign": softsign(x),
     }

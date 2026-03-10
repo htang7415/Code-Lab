@@ -38,9 +38,16 @@ $$
 \min\left(r_t A_t, \mathrm{clip}(r_t, 1-\epsilon, 1+\epsilon)A_t\right)
 $$
 
+## From Math To Code
+
+- Compute TD residuals first.
+- Fold those residuals backward to get GAE advantages.
+- Plug the advantage into either a plain REINFORCE update or a clipped PPO term.
+
 ## Minimal Code Mental Model
 
 ```python
+delta = td_residuals(rewards, values, gamma=0.99)
 advantages = generalized_advantages(rewards, values, gamma=0.99, lam=0.95)
 ratio = new_prob / old_prob
 objective = ppo_objective_term(ratio, advantages[t], eps=0.2)
@@ -52,6 +59,7 @@ step = reinforce_update(grad_logp, reward=advantages[t], lr=1.0e-4)
 ```python
 def reinforce_update(grad_logp: float, reward: float, lr: float) -> float:
 def clip_ratio(ratio: float, eps: float) -> float:
+def td_residuals(rewards: list[float], values: list[float], gamma: float, next_value: float = 0.0) -> list[float]:
 def ppo_objective_term(ratio: float, advantage: float, eps: float) -> float:
 def generalized_advantages(rewards: list[float], values: list[float], gamma: float, lam: float, next_value: float = 0.0) -> list[float]:
 ```

@@ -30,11 +30,25 @@ first-hit quality, and reranking change.
   \mathrm{RR}=\frac{1}{r}
   $$
   where $r$ is the first relevant rank.
+- F1@k:
+  $$
+  \mathrm{F1@k}=\frac{2 \cdot \mathrm{Precision@k} \cdot \mathrm{Recall@k}}{\mathrm{Precision@k} + \mathrm{Recall@k}}
+  $$
+- Rerank gain:
+  $$
+  \Delta \mathrm{RR} = \mathrm{RR}_{\text{reranked}} - \mathrm{RR}_{\text{baseline}}
+  $$
+
+## From Math To Code
+
+- Retrieval metrics are set overlap or rank-position calculations.
+- Reranker metrics compare two ranked lists, not just one list against labels.
 
 ## Minimal Code Mental Model
 
 ```python
 recall = retrieval_recall_at_k(retrieved_ids, relevant_ids, k=5)
+precision = retrieval_precision_at_k(retrieved_ids, relevant_ids, k=5)
 rr = reciprocal_rank(relevance_labels)
 gain = rerank_gain(baseline_labels, reranked_labels)
 ```

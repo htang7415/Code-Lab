@@ -6,8 +6,8 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 ## Current Status
 
 - Visible ML modules: `178`
-- Hidden ML aliases: `355`
-- Strategy: show canonical learning units first, keep old slugs only for compatibility
+- Hidden ML aliases: `208`
+- Strategy: show canonical learning units first, keep only high-value compatibility slugs
 
 ## Authoring Rules
 
@@ -16,6 +16,7 @@ Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside 
 - Keep concept, math, and minimal code together.
 - Avoid duplicate ML modules.
 - Hide legacy narrow slugs as aliases instead of surfacing them in the main learning path.
+- Remove low-value alias-only micro-variants once a canonical family is stable.
 
 ## Canonical Learning Units
 

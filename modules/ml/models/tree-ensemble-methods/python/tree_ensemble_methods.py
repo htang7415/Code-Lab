@@ -5,12 +5,16 @@ from collections import Counter
 
 
 def gini_impurity(labels: list[int]) -> float:
+    if not labels:
+        return 0.0
     counts = Counter(labels)
     n = len(labels)
     return 1 - sum((count / n) ** 2 for count in counts.values())
 
 
 def bootstrap_indices(n: int, seed: int = 0) -> list[int]:
+    if n <= 0:
+        raise ValueError("n must be positive")
     indices: list[int] = []
     state = seed
     for _ in range(n):
@@ -20,8 +24,14 @@ def bootstrap_indices(n: int, seed: int = 0) -> list[int]:
 
 
 def update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:
+    if len(weights) != len(errors):
+        raise ValueError("weights and errors must have the same length")
+    if any(weight < 0.0 for weight in weights):
+        raise ValueError("weights must be non-negative")
     updated = [weight * math.exp(alpha * error) for weight, error in zip(weights, errors)]
     total = sum(updated)
+    if total == 0.0:
+        raise ValueError("updated weights must sum to a positive value")
     return [weight / total for weight in updated]
 
 

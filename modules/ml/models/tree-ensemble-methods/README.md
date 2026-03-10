@@ -34,6 +34,12 @@ $$
 \hat{y}_i' = \hat{y}_i + \eta h_i
 $$
 
+Residual after one boosting step:
+
+$$
+r_i' = y_i - \hat{y}_i'
+$$
+
 XGBoost split gain:
 
 $$
@@ -44,6 +50,12 @@ $$
 - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda}
 \right) - \gamma
 $$
+
+## From Math To Code
+
+- Trees score a candidate split with impurity or loss reduction.
+- Bagging resamples indices.
+- Boosting changes either example weights or stage-wise residual predictions.
 
 ## Minimal Code Mental Model
 

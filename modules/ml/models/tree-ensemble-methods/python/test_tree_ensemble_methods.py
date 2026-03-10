@@ -13,15 +13,25 @@ from tree_ensemble_methods import (
 
 def test_gini_impurity() -> None:
     assert gini_impurity([0, 0, 1, 1]) == 0.5
+    assert gini_impurity([]) == 0.0
 
 
 def test_bootstrap_indices_len() -> None:
     assert len(bootstrap_indices(5, seed=1)) == 5
+    with pytest.raises(ValueError, match="positive"):
+        bootstrap_indices(0)
 
 
 def test_update_weights_normalizes() -> None:
     out = update_weights([0.5, 0.5], [1, 0], 0.7)
     assert abs(sum(out) - 1.0) < 1e-6
+
+
+def test_update_weights_validates_inputs() -> None:
+    with pytest.raises(ValueError, match="same length"):
+        update_weights([0.5], [1, 0], 0.7)
+    with pytest.raises(ValueError, match="non-negative"):
+        update_weights([-0.5, 1.5], [1, 0], 0.7)
 
 
 def test_gradient_boosting_step_updates_predictions_and_residuals() -> None:

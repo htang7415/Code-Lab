@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T18:34:27.429Z",
+  "generated_at": "2026-03-10T19:05:30.763Z",
   "tracks": [
     {
       "id": "dsa",
@@ -3841,12 +3841,12 @@
       "title": "Activation Functions",
       "path": "modules/ml/deep-learning/activation-functions",
       "summary": "> Track: `ml` | Topic: `deep-learning`",
-      "readme": "# Activation Functions\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Purpose\n\nUse this module to understand what a nonlinearity does to signal flow, gradient\nflow, and model expressiveness.\n\n## First Principles\n\n- Without a nonlinearity, stacked linear layers collapse into one linear map.\n- The activation decides whether the network saturates, stays sparse, or keeps\n  smooth gradients.\n- In modern practice, ReLU-family and GeLU-style activations matter most.\n- Softmax is different from the others: it is mainly an output normalization,\n  not a hidden-layer scalar activation.\n\n## Core Math\n\n- Sigmoid:\n  $$\n  \\sigma(x)=\\frac{1}{1+e^{-x}}\n  $$\n- ReLU:\n  $$\n  \\mathrm{ReLU}(x)=\\max(0,x)\n  $$\n- Leaky ReLU:\n  $$\n  \\mathrm{LeakyReLU}(x)=\\max(\\alpha x, x)\n  $$\n- GeLU:\n  $$\n  \\mathrm{GeLU}(x)\\approx 0.5x\\left(1+\\tanh\\left(\\sqrt{\\frac{2}{\\pi}}(x+0.044715x^3)\\right)\\right)\n  $$\n\n## Minimal Code Mental Model\n\n```python\nhidden = scalar_activations(x)[\"relu\"]\nprobs = softmax(logits)\n```\n\n## Function\n\n```python\ndef scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:\ndef softmax(row: list[float]) -> list[float]:\n```\n\n## When To Use What\n\n- Use ReLU-family activations as the default baseline for many feedforward and CNN-style models.\n- Use GeLU or Swish-style activations when you want smoother transformer-style behavior.\n- Use sigmoid or tanh mainly for historical intuition, bounded outputs, or gated mechanisms.\n- Use softmax only when you need a probability distribution over logits.\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/activation-functions/python -q\n```\n",
+      "readme": "# Activation Functions\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Purpose\n\nUse this module to understand what a nonlinearity does to signal flow, gradient\nflow, and model expressiveness.\n\n## First Principles\n\n- Without a nonlinearity, stacked linear layers collapse into one linear map.\n- The activation decides whether the network saturates, stays sparse, or keeps\n  smooth gradients.\n- In modern practice, ReLU-family and GeLU-style activations matter most.\n- Softmax is different from the others: it is mainly an output normalization,\n  not a hidden-layer scalar activation.\n\n## Core Math\n\n- Sigmoid:\n  $$\n  \\sigma(x)=\\frac{1}{1+e^{-x}}\n  $$\n- ReLU:\n  $$\n  \\mathrm{ReLU}(x)=\\max(0,x)\n  $$\n- Leaky ReLU:\n  $$\n  \\mathrm{LeakyReLU}(x)=\\max(\\alpha x, x)\n  $$\n- GeLU:\n  $$\n  \\mathrm{GeLU}(x)\\approx 0.5x\\left(1+\\tanh\\left(\\sqrt{\\frac{2}{\\pi}}(x+0.044715x^3)\\right)\\right)\n  $$\n- SwiGLU gate:\n  $$\n  \\mathrm{SwiGLU}(v, g)=v \\cdot \\sigma(g)\n  $$\n\n## From Math To Code\n\n- Hidden-layer activations usually map one scalar to another scalar.\n- Softmax maps a whole vector of logits to a probability distribution.\n- Gated activations such as SwiGLU need both a value path and a gate path, so they should not be faked as a one-input scalar activation.\n\n## Minimal Code Mental Model\n\n```python\nhidden = scalar_activations(x)[\"gelu\"]\nprobs = softmax(logits)\ngated = swiglu(value_stream, gate_stream)\n```\n\n## Function\n\n```python\ndef sigmoid(x: float) -> float:\ndef relu(x: float) -> float:\ndef leaky_relu(x: float, alpha: float = 0.01) -> float:\ndef gelu(x: float) -> float:\ndef swish(x: float) -> float:\ndef softplus(x: float) -> float:\ndef softsign(x: float) -> float:\ndef swiglu(value: float, gate: float) -> float:\ndef scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:\ndef softmax(row: list[float]) -> list[float]:\n```\n\n## When To Use What\n\n- Use ReLU-family activations as the default baseline for many feedforward and CNN-style models.\n- Use GeLU or Swish-style activations when you want smoother transformer-style behavior.\n- Use sigmoid or tanh mainly for historical intuition, bounded outputs, or gate construction.\n- Use softmax only when you need a probability distribution over logits.\n- Use SwiGLU-style gating only when the block really has separate value and gate streams.\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/activation-functions/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/deep-learning/activation-functions/python/activation_functions.py",
           "language": "python",
-          "content": "from __future__ import annotations\n\nimport math\n\n\ndef sigmoid(x: float) -> float:\n    return 1.0 / (1.0 + math.exp(-x))\n\n\ndef dynamic_tanh(\n    x: float,\n    alpha: float = 1.0,\n    gamma: float = 1.0,\n    beta: float = 0.0,\n) -> float:\n    return gamma * math.tanh(alpha * x) + beta\n\n\ndef softmax(row: list[float]) -> list[float]:\n    if not row:\n        raise ValueError(\"row must be non-empty\")\n    maximum = max(row)\n    exps = [math.exp(value - maximum) for value in row]\n    total = sum(exps)\n    return [value / total for value in exps]\n\n\ndef scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:\n    if alpha < 0.0:\n        raise ValueError(\"alpha must be non-negative\")\n\n    sigmoid_value = sigmoid(x)\n    swiglu_gate = sigmoid(x)\n    return {\n        \"sigmoid\": sigmoid_value,\n        \"tanh\": math.tanh(x),\n        \"hard_sigmoid\": max(0.0, min(1.0, 0.2 * x + 0.5)),\n        \"hardtanh\": max(-1.0, min(1.0, x)),\n        \"dynamic_tanh\": dynamic_tanh(x, alpha=1.2, gamma=1.0, beta=0.0),\n        \"relu\": max(0.0, x),\n        \"leaky_relu\": x if x > 0.0 else alpha * x,\n        \"elu\": x if x > 0.0 else alpha * (math.exp(x) - 1.0),\n        \"prelu\": x if x > 0.0 else alpha * x,\n        \"swish\": x * sigmoid_value,\n        \"gelu\": 0.5 * x * (1.0 + math.tanh(math.sqrt(2.0 / math.pi) * (x + 0.044715 * x**3))),\n        \"mish\": x * math.tanh(math.log1p(math.exp(x))),\n        \"swiglu\": x * swiglu_gate * x,\n        \"softplus\": math.log1p(math.exp(x)),\n        \"softsign\": x / (1.0 + abs(x)),\n    }\n"
+          "content": "from __future__ import annotations\n\nimport math\n\n\ndef sigmoid(x: float) -> float:\n    return 1.0 / (1.0 + math.exp(-x))\n\n\ndef relu(x: float) -> float:\n    return max(0.0, x)\n\n\ndef leaky_relu(x: float, alpha: float = 0.01) -> float:\n    if alpha < 0.0:\n        raise ValueError(\"alpha must be non-negative\")\n    return x if x > 0.0 else alpha * x\n\n\ndef gelu(x: float) -> float:\n    return 0.5 * x * (1.0 + math.tanh(math.sqrt(2.0 / math.pi) * (x + 0.044715 * x**3)))\n\n\ndef swish(x: float) -> float:\n    return x * sigmoid(x)\n\n\ndef softplus(x: float) -> float:\n    return math.log1p(math.exp(x))\n\n\ndef softsign(x: float) -> float:\n    return x / (1.0 + abs(x))\n\n\ndef swiglu(value: float, gate: float) -> float:\n    return value * sigmoid(gate)\n\n\ndef dynamic_tanh(\n    x: float,\n    alpha: float = 1.0,\n    gamma: float = 1.0,\n    beta: float = 0.0,\n) -> float:\n    return gamma * math.tanh(alpha * x) + beta\n\n\ndef softmax(row: list[float]) -> list[float]:\n    if not row:\n        raise ValueError(\"row must be non-empty\")\n    maximum = max(row)\n    exps = [math.exp(value - maximum) for value in row]\n    total = sum(exps)\n    return [value / total for value in exps]\n\n\ndef scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:\n    sigmoid_value = sigmoid(x)\n    return {\n        \"sigmoid\": sigmoid_value,\n        \"tanh\": math.tanh(x),\n        \"hard_sigmoid\": max(0.0, min(1.0, 0.2 * x + 0.5)),\n        \"hardtanh\": max(-1.0, min(1.0, x)),\n        \"dynamic_tanh\": dynamic_tanh(x, alpha=1.2, gamma=1.0, beta=0.0),\n        \"relu\": relu(x),\n        \"leaky_relu\": leaky_relu(x, alpha=alpha),\n        \"elu\": x if x > 0.0 else alpha * (math.exp(x) - 1.0),\n        \"prelu\": x if x > 0.0 else alpha * x,\n        \"swish\": swish(x),\n        \"gelu\": gelu(x),\n        \"mish\": x * math.tanh(softplus(x)),\n        \"softplus\": softplus(x),\n        \"softsign\": softsign(x),\n    }\n"
         }
       ]
     },
@@ -4086,7 +4086,7 @@
       "title": "Classification Metrics Core",
       "path": "modules/ml/evaluation/classification-metrics-core",
       "summary": "> Track: `ml` | Topic: `evaluation`",
-      "readme": "# Classification Metrics Core\n\n> Track: `ml` | Topic: `evaluation`\n\n## Purpose\n\nUse this module to compare the small set of classification metrics that matter\nmost in practice: direct label accuracy, confusion-style summaries, F1-style\ntradeoffs, rank-aware accuracy, multilabel error, and probability-aware loss.\n\n## First Principles\n\n- No single classification metric is universally correct.\n- Accuracy-style metrics reward correct labels.\n- Confusion-style metrics expose which error types matter.\n- F1-style metrics trade precision against recall.\n- Balanced metrics matter when class frequencies are uneven.\n- Log loss matters when probability quality matters, not just the top label.\n\n## Core Math\n\n- Top-k accuracy:\n  $$\n  \\frac{1}{n}\\sum_i \\mathbf{1}[y_i \\in \\hat{Y}_i^{(k)}]\n  $$\n- Binary F1:\n  $$\n  \\mathrm{F1} = \\frac{2PR}{P + R}\n  $$\n- Macro F1:\n  $$\n  \\frac{1}{C}\\sum_{c=1}^{C}\\mathrm{F1}_c\n  $$\n- Log loss:\n  $$\n  -\\frac{1}{n}\\sum_i \\left(y_i\\log p_i + (1-y_i)\\log(1-p_i)\\right)\n  $$\n\n## Minimal Code Mental Model\n\n```python\nscore = macro_f1_score(tp, fp, fn)\nloss = log_loss(labels, probabilities)\n```\n\n## Function\n\n```python\ndef accuracy(y_true: list[int], y_pred: list[int]) -> float:\ndef confusion_matrix(y_true: list[int], y_pred: list[int]) -> list[list[int]]:\ndef precision_recall(y_true: list[int], y_pred: list[int]) -> tuple[float, float]:\ndef f1_score(precision: float, recall: float) -> float:\ndef roc_auc(fpr: list[float], tpr: list[float]) -> float:\ndef matthews_correlation(tp: int, tn: int, fp: int, fn: int) -> float:\ndef top_k_accuracy(predicted_rankings: list[list[int]], labels: list[int], k: int) -> float:\ndef macro_f1_score(true_positives: list[int], false_positives: list[int], false_negatives: list[int]) -> float:\ndef micro_f1_score(true_positives: list[int], false_positives: list[int], false_negatives: list[int]) -> float:\ndef balanced_accuracy(true_positives: list[int], false_negatives: list[int]) -> float:\ndef hamming_loss(predictions: list[list[int]], labels: list[list[int]]) -> float:\ndef log_loss(labels: list[int], probabilities: list[float], eps: float = 1.0e-15) -> float:\n```\n\n## When To Use What\n\n- Use accuracy when class balance is reasonable and the top label is all that matters.\n- Use confusion matrix, precision, recall, F1, or MCC when error type matters more than raw accuracy.\n- Use ROC AUC when you care about ranking quality across thresholds, not a single threshold.\n- Use top-k accuracy when several ranked labels are acceptable.\n- Use macro F1 or balanced accuracy when class imbalance is important.\n- Use micro F1 when overall count-weighted performance matters most.\n- Use Hamming loss for multilabel settings, not ordinary multiclass classification.\n- Use log loss when the predicted probabilities themselves drive decisions.\n\n## Run tests\n\n```bash\npytest modules/ml/evaluation/classification-metrics-core/python -q\n```\n",
+      "readme": "# Classification Metrics Core\n\n> Track: `ml` | Topic: `evaluation`\n\n## Purpose\n\nUse this module to compare the small set of classification metrics that matter\nmost in practice: direct label accuracy, confusion-style summaries, F1-style\ntradeoffs, rank-aware accuracy, multilabel error, and probability-aware loss.\n\n## First Principles\n\n- No single classification metric is universally correct.\n- Accuracy-style metrics reward correct labels.\n- Confusion-style metrics expose which error types matter.\n- F1-style metrics trade precision against recall.\n- Balanced metrics matter when class frequencies are uneven.\n- Log loss matters when probability quality matters, not just the top label.\n\n## Core Math\n\n- Accuracy:\n  $$\n  \\frac{1}{n}\\sum_i \\mathbf{1}[\\hat{y}_i = y_i]\n  $$\n- Top-k accuracy:\n  $$\n  \\frac{1}{n}\\sum_i \\mathbf{1}[y_i \\in \\hat{Y}_i^{(k)}]\n  $$\n- Precision and recall:\n  $$\n  P=\\frac{TP}{TP+FP},\n  \\qquad\n  R=\\frac{TP}{TP+FN}\n  $$\n- Binary F1:\n  $$\n  \\mathrm{F1} = \\frac{2PR}{P + R}\n  $$\n- Macro F1:\n  $$\n  \\frac{1}{C}\\sum_{c=1}^{C}\\mathrm{F1}_c\n  $$\n- Log loss:\n  $$\n  -\\frac{1}{n}\\sum_i \\left(y_i\\log p_i + (1-y_i)\\log(1-p_i)\\right)\n  $$\n\n## From Math To Code\n\n- Start with counts when the output is a hard label.\n- Move to rank-aware metrics when several labels are acceptable.\n- Move to log loss when the confidence score itself matters.\n\n## Minimal Code Mental Model\n\n```python\nprecision, recall = precision_recall(y_true, y_pred)\nf1 = f1_score(precision, recall)\nloss = log_loss(labels, probabilities)\n```\n\n## Function\n\n```python\ndef accuracy(y_true: list[int], y_pred: list[int]) -> float:\ndef confusion_matrix(y_true: list[int], y_pred: list[int]) -> list[list[int]]:\ndef precision_recall(y_true: list[int], y_pred: list[int]) -> tuple[float, float]:\ndef f1_score(precision: float, recall: float) -> float:\ndef roc_auc(fpr: list[float], tpr: list[float]) -> float:\ndef matthews_correlation(tp: int, tn: int, fp: int, fn: int) -> float:\ndef top_k_accuracy(predicted_rankings: list[list[int]], labels: list[int], k: int) -> float:\ndef macro_f1_score(true_positives: list[int], false_positives: list[int], false_negatives: list[int]) -> float:\ndef micro_f1_score(true_positives: list[int], false_positives: list[int], false_negatives: list[int]) -> float:\ndef balanced_accuracy(true_positives: list[int], false_negatives: list[int]) -> float:\ndef hamming_loss(predictions: list[list[int]], labels: list[list[int]]) -> float:\ndef log_loss(labels: list[int], probabilities: list[float], eps: float = 1.0e-15) -> float:\n```\n\n## When To Use What\n\n- Use accuracy when class balance is reasonable and the top label is all that matters.\n- Use confusion matrix, precision, recall, F1, or MCC when error type matters more than raw accuracy.\n- Use ROC AUC when you care about ranking quality across thresholds, not a single threshold.\n- Use top-k accuracy when several ranked labels are acceptable.\n- Use macro F1 or balanced accuracy when class imbalance is important.\n- Use micro F1 when overall count-weighted performance matters most.\n- Use Hamming loss for multilabel settings, not ordinary multiclass classification.\n- Use log loss when the predicted probabilities themselves drive decisions.\n\n## Run tests\n\n```bash\npytest modules/ml/evaluation/classification-metrics-core/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/evaluation/classification-metrics-core/python/classification_metrics_core.py",
@@ -5243,7 +5243,7 @@
       "title": "Retrieval Metrics",
       "path": "modules/ml/llm/retrieval-metrics",
       "summary": "> Track: `ml` | Topic: `llm`",
-      "readme": "# Retrieval Metrics\n\n> Track: `ml` | Topic: `llm`\n\n## Purpose\n\nUse this module to separate retrieval evaluation into coverage, purity,\nfirst-hit quality, and reranking change.\n\n## First Principles\n\n- Retrieval quality is not one number; different products care about different failure modes.\n- Recall asks whether relevant items were found.\n- Precision asks whether early retrieved items are clean.\n- Reciprocal rank asks how early the first useful item appears.\n- Reranking metrics ask whether a second-stage model improved order instead of just changing it.\n\n## Core Math\n\n- Recall@k:\n  $$\n  \\frac{|\\mathrm{TopK}\\cap\\mathrm{Relevant}|}{|\\mathrm{Relevant}|}\n  $$\n- Precision@k:\n  $$\n  \\frac{|\\mathrm{TopK}\\cap\\mathrm{Relevant}|}{k}\n  $$\n- Reciprocal rank:\n  $$\n  \\mathrm{RR}=\\frac{1}{r}\n  $$\n  where $r$ is the first relevant rank.\n\n## Minimal Code Mental Model\n\n```python\nrecall = retrieval_recall_at_k(retrieved_ids, relevant_ids, k=5)\nrr = reciprocal_rank(relevance_labels)\ngain = rerank_gain(baseline_labels, reranked_labels)\n```\n\n## Function\n\n```python\ndef retrieval_recall_at_k(retrieved_ids: list[str], relevant_ids: set[str], k: int) -> float:\ndef retrieval_precision_at_k(retrieved_ids: list[str], relevant_ids: set[str], k: int) -> float:\ndef retrieval_f1_at_k(retrieved_ids: list[str], relevant_ids: set[str], k: int) -> float:\ndef retrieval_hit_rate_at_k(\n    query_retrievals: list[list[str]],\n    query_relevants: list[set[str]],\n    k: int,\n) -> float:\ndef reciprocal_rank(relevance: list[int]) -> float:\ndef reranker_metrics(relevance: list[int], k: int) -> tuple[float, float]:\ndef rerank_gain(baseline_relevance: list[int], reranked_relevance: list[int]) -> float:\ndef rerank_disagreement_rate(baseline_ids: list[str], reranked_ids: list[str], k: int | None = None) -> float:\n```\n\n## When To Use What\n\n- Use Recall@k when missing relevant documents is the main failure.\n- Use Precision@k when early purity matters more than full coverage.\n- Use HitRate@k when one successful retrieval is enough.\n- Use reciprocal rank or MRR-style metrics when the first useful result dominates user experience.\n- Use rerank gain together with disagreement rate when measuring a reranker over a baseline.\n\n## Run tests\n\n```bash\npytest modules/ml/llm/retrieval-metrics/python -q\n```\n",
+      "readme": "# Retrieval Metrics\n\n> Track: `ml` | Topic: `llm`\n\n## Purpose\n\nUse this module to separate retrieval evaluation into coverage, purity,\nfirst-hit quality, and reranking change.\n\n## First Principles\n\n- Retrieval quality is not one number; different products care about different failure modes.\n- Recall asks whether relevant items were found.\n- Precision asks whether early retrieved items are clean.\n- Reciprocal rank asks how early the first useful item appears.\n- Reranking metrics ask whether a second-stage model improved order instead of just changing it.\n\n## Core Math\n\n- Recall@k:\n  $$\n  \\frac{|\\mathrm{TopK}\\cap\\mathrm{Relevant}|}{|\\mathrm{Relevant}|}\n  $$\n- Precision@k:\n  $$\n  \\frac{|\\mathrm{TopK}\\cap\\mathrm{Relevant}|}{k}\n  $$\n- Reciprocal rank:\n  $$\n  \\mathrm{RR}=\\frac{1}{r}\n  $$\n  where $r$ is the first relevant rank.\n- F1@k:\n  $$\n  \\mathrm{F1@k}=\\frac{2 \\cdot \\mathrm{Precision@k} \\cdot \\mathrm{Recall@k}}{\\mathrm{Precision@k} + \\mathrm{Recall@k}}\n  $$\n- Rerank gain:\n  $$\n  \\Delta \\mathrm{RR} = \\mathrm{RR}_{\\text{reranked}} - \\mathrm{RR}_{\\text{baseline}}\n  $$\n\n## From Math To Code\n\n- Retrieval metrics are set overlap or rank-position calculations.\n- Reranker metrics compare two ranked lists, not just one list against labels.\n\n## Minimal Code Mental Model\n\n```python\nrecall = retrieval_recall_at_k(retrieved_ids, relevant_ids, k=5)\nprecision = retrieval_precision_at_k(retrieved_ids, relevant_ids, k=5)\nrr = reciprocal_rank(relevance_labels)\ngain = rerank_gain(baseline_labels, reranked_labels)\n```\n\n## Function\n\n```python\ndef retrieval_recall_at_k(retrieved_ids: list[str], relevant_ids: set[str], k: int) -> float:\ndef retrieval_precision_at_k(retrieved_ids: list[str], relevant_ids: set[str], k: int) -> float:\ndef retrieval_f1_at_k(retrieved_ids: list[str], relevant_ids: set[str], k: int) -> float:\ndef retrieval_hit_rate_at_k(\n    query_retrievals: list[list[str]],\n    query_relevants: list[set[str]],\n    k: int,\n) -> float:\ndef reciprocal_rank(relevance: list[int]) -> float:\ndef reranker_metrics(relevance: list[int], k: int) -> tuple[float, float]:\ndef rerank_gain(baseline_relevance: list[int], reranked_relevance: list[int]) -> float:\ndef rerank_disagreement_rate(baseline_ids: list[str], reranked_ids: list[str], k: int | None = None) -> float:\n```\n\n## When To Use What\n\n- Use Recall@k when missing relevant documents is the main failure.\n- Use Precision@k when early purity matters more than full coverage.\n- Use HitRate@k when one successful retrieval is enough.\n- Use reciprocal rank or MRR-style metrics when the first useful result dominates user experience.\n- Use rerank gain together with disagreement rate when measuring a reranker over a baseline.\n\n## Run tests\n\n```bash\npytest modules/ml/llm/retrieval-metrics/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/llm/retrieval-metrics/python/retrieval_metrics.py",
@@ -5816,12 +5816,12 @@
       "title": "Tree and Ensemble Methods",
       "path": "modules/ml/models/tree-ensemble-methods",
       "summary": "> Track: `ml` | Topic: `models`",
-      "readme": "# Tree and Ensemble Methods\n\n> Track: `ml` | Topic: `models`\n\n## Purpose\n\nUse this module to learn the main tree-based modeling ideas in one place:\nsingle-tree impurity, bagging, boosting, and XGBoost-style split gain.\n\n## First Principles\n\n- A decision tree chooses splits that reduce impurity or loss.\n- Bagging reduces variance by training many trees on resampled data.\n- Boosting reduces bias by sequentially correcting current mistakes.\n- XGBoost extends boosting with a second-order split objective and regularization.\n\n## Core Math\n\nGini impurity:\n\n$$\n\\mathrm{Gini} = 1 - \\sum_c p_c^2\n$$\n\nAdaBoost reweighting:\n\n$$\nw_i \\leftarrow w_i \\cdot \\exp\\left(\\alpha\\,\\mathbb{I}[y_i \\ne \\hat{y}_i]\\right)\n$$\n\nGradient boosting update:\n\n$$\n\\hat{y}_i' = \\hat{y}_i + \\eta h_i\n$$\n\nXGBoost split gain:\n\n$$\n\\mathrm{Gain} = \\frac{1}{2}\n\\left(\n\\frac{G_L^2}{H_L + \\lambda}\n+ \\frac{G_R^2}{H_R + \\lambda}\n- \\frac{(G_L + G_R)^2}{H_L + H_R + \\lambda}\n\\right) - \\gamma\n$$\n\n## Minimal Code Mental Model\n\n```python\nimpurity = gini_impurity(labels)\nbagged = bootstrap_indices(n=100, seed=0)\nweights = update_weights(weights, errors, alpha=0.7)\nupdated, residuals = gradient_boosting_step(targets, predictions, weak_learner_output, learning_rate=0.1)\ngain = split_gain(left_grad, left_hess, right_grad, right_hess, lambda_reg=1.0, gamma=0.0)\n```\n\n## Functions\n\n```python\ndef gini_impurity(labels: list[int]) -> float:\ndef bootstrap_indices(n: int, seed: int = 0) -> list[int]:\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\ndef gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\ndef split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n```\n\n## When To Use What\n\n- Use `gini_impurity` when learning how a single decision tree scores candidate splits.\n- Use `bootstrap_indices` when learning why random forests reduce variance through bagging.\n- Use `update_weights` when learning how AdaBoost emphasizes errors.\n- Use `gradient_boosting_step` when learning stage-wise residual fitting.\n- Use `split_gain` when learning why XGBoost chooses one split over another under regularization.\n\n## Run tests\n\n```bash\npytest modules/ml/models/tree-ensemble-methods/python -q\n```\n",
+      "readme": "# Tree and Ensemble Methods\n\n> Track: `ml` | Topic: `models`\n\n## Purpose\n\nUse this module to learn the main tree-based modeling ideas in one place:\nsingle-tree impurity, bagging, boosting, and XGBoost-style split gain.\n\n## First Principles\n\n- A decision tree chooses splits that reduce impurity or loss.\n- Bagging reduces variance by training many trees on resampled data.\n- Boosting reduces bias by sequentially correcting current mistakes.\n- XGBoost extends boosting with a second-order split objective and regularization.\n\n## Core Math\n\nGini impurity:\n\n$$\n\\mathrm{Gini} = 1 - \\sum_c p_c^2\n$$\n\nAdaBoost reweighting:\n\n$$\nw_i \\leftarrow w_i \\cdot \\exp\\left(\\alpha\\,\\mathbb{I}[y_i \\ne \\hat{y}_i]\\right)\n$$\n\nGradient boosting update:\n\n$$\n\\hat{y}_i' = \\hat{y}_i + \\eta h_i\n$$\n\nResidual after one boosting step:\n\n$$\nr_i' = y_i - \\hat{y}_i'\n$$\n\nXGBoost split gain:\n\n$$\n\\mathrm{Gain} = \\frac{1}{2}\n\\left(\n\\frac{G_L^2}{H_L + \\lambda}\n+ \\frac{G_R^2}{H_R + \\lambda}\n- \\frac{(G_L + G_R)^2}{H_L + H_R + \\lambda}\n\\right) - \\gamma\n$$\n\n## From Math To Code\n\n- Trees score a candidate split with impurity or loss reduction.\n- Bagging resamples indices.\n- Boosting changes either example weights or stage-wise residual predictions.\n\n## Minimal Code Mental Model\n\n```python\nimpurity = gini_impurity(labels)\nbagged = bootstrap_indices(n=100, seed=0)\nweights = update_weights(weights, errors, alpha=0.7)\nupdated, residuals = gradient_boosting_step(targets, predictions, weak_learner_output, learning_rate=0.1)\ngain = split_gain(left_grad, left_hess, right_grad, right_hess, lambda_reg=1.0, gamma=0.0)\n```\n\n## Functions\n\n```python\ndef gini_impurity(labels: list[int]) -> float:\ndef bootstrap_indices(n: int, seed: int = 0) -> list[int]:\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\ndef gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\ndef split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n```\n\n## When To Use What\n\n- Use `gini_impurity` when learning how a single decision tree scores candidate splits.\n- Use `bootstrap_indices` when learning why random forests reduce variance through bagging.\n- Use `update_weights` when learning how AdaBoost emphasizes errors.\n- Use `gradient_boosting_step` when learning stage-wise residual fitting.\n- Use `split_gain` when learning why XGBoost chooses one split over another under regularization.\n\n## Run tests\n\n```bash\npytest modules/ml/models/tree-ensemble-methods/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/models/tree-ensemble-methods/python/tree_ensemble_methods.py",
           "language": "python",
-          "content": "from __future__ import annotations\n\nimport math\nfrom collections import Counter\n\n\ndef gini_impurity(labels: list[int]) -> float:\n    counts = Counter(labels)\n    n = len(labels)\n    return 1 - sum((count / n) ** 2 for count in counts.values())\n\n\ndef bootstrap_indices(n: int, seed: int = 0) -> list[int]:\n    indices: list[int] = []\n    state = seed\n    for _ in range(n):\n        state = (1103515245 * state + 12345) % (2**31)\n        indices.append(state % n)\n    return indices\n\n\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\n    updated = [weight * math.exp(alpha * error) for weight, error in zip(weights, errors)]\n    total = sum(updated)\n    return [weight / total for weight in updated]\n\n\ndef gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\n    if len(targets) != len(predictions) or len(predictions) != len(weak_learner_output):\n        raise ValueError(\"targets, predictions, and weak_learner_output must have the same length\")\n    if learning_rate < 0.0:\n        raise ValueError(\"learning_rate must be non-negative\")\n\n    updated = [\n        prediction + learning_rate * stage\n        for prediction, stage in zip(predictions, weak_learner_output)\n    ]\n    residuals = [target - prediction for target, prediction in zip(targets, updated)]\n    return updated, residuals\n\n\ndef split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n    if left_hess < 0.0 or right_hess < 0.0 or lambda_reg < 0.0:\n        raise ValueError(\"hessians and lambda_reg must be non-negative\")\n\n    parent_grad = left_grad + right_grad\n    parent_hess = left_hess + right_hess\n\n    left_term = (left_grad ** 2) / (left_hess + lambda_reg)\n    right_term = (right_grad ** 2) / (right_hess + lambda_reg)\n    parent_term = (parent_grad ** 2) / (parent_hess + lambda_reg)\n    return 0.5 * (left_term + right_term - parent_term) - gamma\n"
+          "content": "from __future__ import annotations\n\nimport math\nfrom collections import Counter\n\n\ndef gini_impurity(labels: list[int]) -> float:\n    if not labels:\n        return 0.0\n    counts = Counter(labels)\n    n = len(labels)\n    return 1 - sum((count / n) ** 2 for count in counts.values())\n\n\ndef bootstrap_indices(n: int, seed: int = 0) -> list[int]:\n    if n <= 0:\n        raise ValueError(\"n must be positive\")\n    indices: list[int] = []\n    state = seed\n    for _ in range(n):\n        state = (1103515245 * state + 12345) % (2**31)\n        indices.append(state % n)\n    return indices\n\n\ndef update_weights(weights: list[float], errors: list[int], alpha: float) -> list[float]:\n    if len(weights) != len(errors):\n        raise ValueError(\"weights and errors must have the same length\")\n    if any(weight < 0.0 for weight in weights):\n        raise ValueError(\"weights must be non-negative\")\n    updated = [weight * math.exp(alpha * error) for weight, error in zip(weights, errors)]\n    total = sum(updated)\n    if total == 0.0:\n        raise ValueError(\"updated weights must sum to a positive value\")\n    return [weight / total for weight in updated]\n\n\ndef gradient_boosting_step(\n    targets: list[float],\n    predictions: list[float],\n    weak_learner_output: list[float],\n    learning_rate: float,\n) -> tuple[list[float], list[float]]:\n    if len(targets) != len(predictions) or len(predictions) != len(weak_learner_output):\n        raise ValueError(\"targets, predictions, and weak_learner_output must have the same length\")\n    if learning_rate < 0.0:\n        raise ValueError(\"learning_rate must be non-negative\")\n\n    updated = [\n        prediction + learning_rate * stage\n        for prediction, stage in zip(predictions, weak_learner_output)\n    ]\n    residuals = [target - prediction for target, prediction in zip(targets, updated)]\n    return updated, residuals\n\n\ndef split_gain(\n    left_grad: float,\n    left_hess: float,\n    right_grad: float,\n    right_hess: float,\n    lambda_reg: float,\n    gamma: float,\n) -> float:\n    if left_hess < 0.0 or right_hess < 0.0 or lambda_reg < 0.0:\n        raise ValueError(\"hessians and lambda_reg must be non-negative\")\n\n    parent_grad = left_grad + right_grad\n    parent_hess = left_hess + right_hess\n\n    left_term = (left_grad ** 2) / (left_hess + lambda_reg)\n    right_term = (right_grad ** 2) / (right_hess + lambda_reg)\n    parent_term = (parent_grad ** 2) / (parent_hess + lambda_reg)\n    return 0.5 * (left_term + right_term - parent_term) - gamma\n"
         }
       ]
     },
@@ -6112,12 +6112,12 @@
       "title": "Policy Gradient Methods",
       "path": "modules/ml/reinforcement-learning/policy-gradient-methods",
       "summary": "> Track: `ml` | Topic: `reinforcement-learning`",
-      "readme": "# Policy Gradient Methods\n\n> Track: `ml` | Topic: `reinforcement-learning`\n\n## Purpose\n\nUse this module to learn the main policy-gradient path in one place:\nREINFORCE, generalized advantage estimation, and PPO clipping.\n\n## First Principles\n\n- Policy-gradient methods optimize the policy directly instead of learning only a greedy Q target.\n- REINFORCE is the simplest score-function update: push up log-probability when return is high.\n- Advantage estimates reduce variance by centering updates around how much better an action was than expected.\n- PPO keeps policy updates conservative by clipping the probability ratio.\n\n## Core Math\n\nREINFORCE update shape:\n\n$$\n\\nabla_\\theta J = \\mathbb{E}\\left[R \\nabla_\\theta \\log \\pi_\\theta(a \\mid s)\\right]\n$$\n\nGAE recursion:\n\n$$\n\\delta_t = r_t + \\gamma V(s_{t+1}) - V(s_t)\n$$\n\n$$\nA_t^{\\mathrm{GAE}} = \\delta_t + \\gamma \\lambda A_{t+1}^{\\mathrm{GAE}}\n$$\n\nPPO clipped term:\n\n$$\n\\min\\left(r_t A_t, \\mathrm{clip}(r_t, 1-\\epsilon, 1+\\epsilon)A_t\\right)\n$$\n\n## Minimal Code Mental Model\n\n```python\nadvantages = generalized_advantages(rewards, values, gamma=0.99, lam=0.95)\nratio = new_prob / old_prob\nobjective = ppo_objective_term(ratio, advantages[t], eps=0.2)\nstep = reinforce_update(grad_logp, reward=advantages[t], lr=1.0e-4)\n```\n\n## Function\n\n```python\ndef reinforce_update(grad_logp: float, reward: float, lr: float) -> float:\ndef clip_ratio(ratio: float, eps: float) -> float:\ndef ppo_objective_term(ratio: float, advantage: float, eps: float) -> float:\ndef generalized_advantages(rewards: list[float], values: list[float], gamma: float, lam: float, next_value: float = 0.0) -> list[float]:\n```\n\n## When To Use What\n\n- Use REINFORCE to understand the simplest policy-gradient estimator.\n- Use GAE when policy-gradient updates are too noisy.\n- Use PPO when you want a practical clipped objective for stable on-policy updates.\n\n## Run tests\n\n```bash\npytest modules/ml/reinforcement-learning/policy-gradient-methods/python -q\n```\n",
+      "readme": "# Policy Gradient Methods\n\n> Track: `ml` | Topic: `reinforcement-learning`\n\n## Purpose\n\nUse this module to learn the main policy-gradient path in one place:\nREINFORCE, generalized advantage estimation, and PPO clipping.\n\n## First Principles\n\n- Policy-gradient methods optimize the policy directly instead of learning only a greedy Q target.\n- REINFORCE is the simplest score-function update: push up log-probability when return is high.\n- Advantage estimates reduce variance by centering updates around how much better an action was than expected.\n- PPO keeps policy updates conservative by clipping the probability ratio.\n\n## Core Math\n\nREINFORCE update shape:\n\n$$\n\\nabla_\\theta J = \\mathbb{E}\\left[R \\nabla_\\theta \\log \\pi_\\theta(a \\mid s)\\right]\n$$\n\nGAE recursion:\n\n$$\n\\delta_t = r_t + \\gamma V(s_{t+1}) - V(s_t)\n$$\n\n$$\nA_t^{\\mathrm{GAE}} = \\delta_t + \\gamma \\lambda A_{t+1}^{\\mathrm{GAE}}\n$$\n\nPPO clipped term:\n\n$$\n\\min\\left(r_t A_t, \\mathrm{clip}(r_t, 1-\\epsilon, 1+\\epsilon)A_t\\right)\n$$\n\n## From Math To Code\n\n- Compute TD residuals first.\n- Fold those residuals backward to get GAE advantages.\n- Plug the advantage into either a plain REINFORCE update or a clipped PPO term.\n\n## Minimal Code Mental Model\n\n```python\ndelta = td_residuals(rewards, values, gamma=0.99)\nadvantages = generalized_advantages(rewards, values, gamma=0.99, lam=0.95)\nratio = new_prob / old_prob\nobjective = ppo_objective_term(ratio, advantages[t], eps=0.2)\nstep = reinforce_update(grad_logp, reward=advantages[t], lr=1.0e-4)\n```\n\n## Function\n\n```python\ndef reinforce_update(grad_logp: float, reward: float, lr: float) -> float:\ndef clip_ratio(ratio: float, eps: float) -> float:\ndef td_residuals(rewards: list[float], values: list[float], gamma: float, next_value: float = 0.0) -> list[float]:\ndef ppo_objective_term(ratio: float, advantage: float, eps: float) -> float:\ndef generalized_advantages(rewards: list[float], values: list[float], gamma: float, lam: float, next_value: float = 0.0) -> list[float]:\n```\n\n## When To Use What\n\n- Use REINFORCE to understand the simplest policy-gradient estimator.\n- Use GAE when policy-gradient updates are too noisy.\n- Use PPO when you want a practical clipped objective for stable on-policy updates.\n\n## Run tests\n\n```bash\npytest modules/ml/reinforcement-learning/policy-gradient-methods/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/reinforcement-learning/policy-gradient-methods/python/policy_gradient_methods.py",
           "language": "python",
-          "content": "from __future__ import annotations\n\n\ndef reinforce_update(grad_logp: float, reward: float, lr: float) -> float:\n    return lr * reward * grad_logp\n\n\ndef clip_ratio(ratio: float, eps: float) -> float:\n    if eps < 0.0:\n        raise ValueError(\"eps must be non-negative\")\n    return max(1.0 - eps, min(1.0 + eps, ratio))\n\n\ndef ppo_objective_term(ratio: float, advantage: float, eps: float) -> float:\n    clipped_ratio = clip_ratio(ratio, eps)\n    unclipped = ratio * advantage\n    clipped = clipped_ratio * advantage\n    return min(unclipped, clipped)\n\n\ndef generalized_advantages(\n    rewards: list[float],\n    values: list[float],\n    gamma: float,\n    lam: float,\n    next_value: float = 0.0,\n) -> list[float]:\n    if len(rewards) != len(values):\n        raise ValueError(\"rewards and values must have the same length\")\n    if not 0.0 <= gamma <= 1.0:\n        raise ValueError(\"gamma must satisfy 0 <= gamma <= 1\")\n    if not 0.0 <= lam <= 1.0:\n        raise ValueError(\"lam must satisfy 0 <= lam <= 1\")\n\n    advantages = [0.0] * len(rewards)\n    running_advantage = 0.0\n\n    for index in range(len(rewards) - 1, -1, -1):\n        bootstrapped_value = next_value if index == len(rewards) - 1 else values[index + 1]\n        delta = rewards[index] + gamma * bootstrapped_value - values[index]\n        running_advantage = delta + gamma * lam * running_advantage\n        advantages[index] = running_advantage\n\n    return advantages\n"
+          "content": "from __future__ import annotations\n\n\ndef reinforce_update(grad_logp: float, reward: float, lr: float) -> float:\n    return lr * reward * grad_logp\n\n\ndef clip_ratio(ratio: float, eps: float) -> float:\n    if eps < 0.0:\n        raise ValueError(\"eps must be non-negative\")\n    return max(1.0 - eps, min(1.0 + eps, ratio))\n\n\ndef td_residuals(\n    rewards: list[float],\n    values: list[float],\n    gamma: float,\n    next_value: float = 0.0,\n) -> list[float]:\n    if len(rewards) != len(values):\n        raise ValueError(\"rewards and values must have the same length\")\n    if not 0.0 <= gamma <= 1.0:\n        raise ValueError(\"gamma must satisfy 0 <= gamma <= 1\")\n\n    deltas: list[float] = []\n    for index, (reward, value) in enumerate(zip(rewards, values)):\n        bootstrapped_value = next_value if index == len(rewards) - 1 else values[index + 1]\n        deltas.append(reward + gamma * bootstrapped_value - value)\n    return deltas\n\n\ndef ppo_objective_term(ratio: float, advantage: float, eps: float) -> float:\n    clipped_ratio = clip_ratio(ratio, eps)\n    unclipped = ratio * advantage\n    clipped = clipped_ratio * advantage\n    return min(unclipped, clipped)\n\n\ndef generalized_advantages(\n    rewards: list[float],\n    values: list[float],\n    gamma: float,\n    lam: float,\n    next_value: float = 0.0,\n) -> list[float]:\n    if not 0.0 <= lam <= 1.0:\n        raise ValueError(\"lam must satisfy 0 <= lam <= 1\")\n\n    deltas = td_residuals(rewards, values, gamma=gamma, next_value=next_value)\n    advantages = [0.0] * len(rewards)\n    running_advantage = 0.0\n\n    for index in range(len(rewards) - 1, -1, -1):\n        running_advantage = deltas[index] + gamma * lam * running_advantage\n        advantages[index] = running_advantage\n\n    return advantages\n"
         }
       ]
     },
@@ -6467,14 +6467,6 @@
     {
       "track": "ml",
       "topic": "data",
-      "slug": "budget-overrun-share",
-      "title": "budget overrun share",
-      "path": "modules/ml/data/budget-overrun-share",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
       "slug": "category-cross-features",
       "title": "Category Cross Features",
       "path": "modules/ml/data/category-cross-features",
@@ -6555,246 +6547,6 @@
     {
       "track": "ml",
       "topic": "data",
-      "slug": "mean-overflow",
-      "title": "mean overflow",
-      "path": "modules/ml/data/mean-overflow",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-count",
-      "title": "overflow count",
-      "path": "modules/ml/data/overflow-count",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-count",
-      "title": "overflow cutoff count",
-      "path": "modules/ml/data/overflow-cutoff-count",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-iqr",
-      "title": "overflow cutoff iqr",
-      "path": "modules/ml/data/overflow-cutoff-iqr",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-max-gap",
-      "title": "overflow cutoff max gap",
-      "path": "modules/ml/data/overflow-cutoff-max-gap",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-mean",
-      "title": "overflow cutoff mean",
-      "path": "modules/ml/data/overflow-cutoff-mean",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-median",
-      "title": "overflow cutoff median",
-      "path": "modules/ml/data/overflow-cutoff-median",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-peak",
-      "title": "overflow cutoff peak",
-      "path": "modules/ml/data/overflow-cutoff-peak",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-range",
-      "title": "overflow cutoff range",
-      "path": "modules/ml/data/overflow-cutoff-range",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-rate",
-      "title": "overflow cutoff rate",
-      "path": "modules/ml/data/overflow-cutoff-rate",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-skew",
-      "title": "overflow cutoff skew",
-      "path": "modules/ml/data/overflow-cutoff-skew",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-std",
-      "title": "overflow cutoff std",
-      "path": "modules/ml/data/overflow-cutoff-std",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-tail-count",
-      "title": "overflow cutoff tail count",
-      "path": "modules/ml/data/overflow-cutoff-tail-count",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-tail-gini",
-      "title": "overflow cutoff tail gini",
-      "path": "modules/ml/data/overflow-cutoff-tail-gini",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-tail-mass",
-      "title": "overflow cutoff tail mass",
-      "path": "modules/ml/data/overflow-cutoff-tail-mass",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-tail-mean",
-      "title": "overflow cutoff tail mean",
-      "path": "modules/ml/data/overflow-cutoff-tail-mean",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-tail-range",
-      "title": "overflow cutoff tail range",
-      "path": "modules/ml/data/overflow-cutoff-tail-range",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-tail-skew",
-      "title": "overflow cutoff tail skew",
-      "path": "modules/ml/data/overflow-cutoff-tail-skew",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-tail-variance",
-      "title": "overflow cutoff tail variance",
-      "path": "modules/ml/data/overflow-cutoff-tail-variance",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-top-share",
-      "title": "overflow cutoff top share",
-      "path": "modules/ml/data/overflow-cutoff-top-share",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-cutoff-upper-tail",
-      "title": "overflow cutoff upper tail",
-      "path": "modules/ml/data/overflow-cutoff-upper-tail",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-density",
-      "title": "overflow density",
-      "path": "modules/ml/data/overflow-density",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-gini",
-      "title": "overflow gini",
-      "path": "modules/ml/data/overflow-gini",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-peak",
-      "title": "overflow peak",
-      "path": "modules/ml/data/overflow-peak",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-presence-rate",
-      "title": "overflow presence rate",
-      "path": "modules/ml/data/overflow-presence-rate",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-quantile",
-      "title": "overflow quantile",
-      "path": "modules/ml/data/overflow-quantile",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-spread",
-      "title": "overflow spread",
-      "path": "modules/ml/data/overflow-spread",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-tail",
-      "title": "overflow tail",
-      "path": "modules/ml/data/overflow-tail",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-threshold-count",
-      "title": "overflow threshold count",
-      "path": "modules/ml/data/overflow-threshold-count",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "overflow-threshold-rate",
-      "title": "overflow threshold rate",
-      "path": "modules/ml/data/overflow-threshold-rate",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
       "slug": "rare-category-grouping",
       "title": "Rare Category Grouping",
       "path": "modules/ml/data/rare-category-grouping",
@@ -6838,14 +6590,6 @@
       "slug": "token-budgeting",
       "title": "token budgeting",
       "path": "modules/ml/data/token-budgeting",
-      "aliasOf": "overflow-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "data",
-      "slug": "truncation-rate",
-      "title": "truncation rate",
-      "path": "modules/ml/data/truncation-rate",
       "aliasOf": "overflow-metrics"
     },
     {
@@ -7131,22 +6875,6 @@
     {
       "track": "ml",
       "topic": "evaluation",
-      "slug": "base-rate-gap",
-      "title": "Base Rate Gap",
-      "path": "modules/ml/evaluation/base-rate-gap",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "base-rate-ratio",
-      "title": "Base Rate Ratio",
-      "path": "modules/ml/evaluation/base-rate-ratio",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
       "slug": "bootstrap-intervals",
       "title": "Bootstrap Percentile Interval",
       "path": "modules/ml/evaluation/bootstrap-intervals",
@@ -7251,110 +6979,6 @@
     {
       "track": "ml",
       "topic": "evaluation",
-      "slug": "log-abandon-rate",
-      "title": "Log Abandon Rate",
-      "path": "modules/ml/evaluation/log-abandon-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-abort-rate",
-      "title": "Log Abort Rate",
-      "path": "modules/ml/evaluation/log-abort-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-bypass-rate",
-      "title": "Log Bypass Rate",
-      "path": "modules/ml/evaluation/log-bypass-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-defect-rate",
-      "title": "Log Defect Rate",
-      "path": "modules/ml/evaluation/log-defect-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-deferral-rate",
-      "title": "Log Deferral Rate",
-      "path": "modules/ml/evaluation/log-deferral-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-detour-rate",
-      "title": "Log Detour Rate",
-      "path": "modules/ml/evaluation/log-detour-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-drop-rate",
-      "title": "Log Drop Rate",
-      "path": "modules/ml/evaluation/log-drop-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-error-rate",
-      "title": "Log Error Rate",
-      "path": "modules/ml/evaluation/log-error-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-escape-rate",
-      "title": "Log Escape Rate",
-      "path": "modules/ml/evaluation/log-escape-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-event-rate",
-      "title": "Log Event Rate",
-      "path": "modules/ml/evaluation/log-event-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-failure-rate",
-      "title": "Log Failure Rate",
-      "path": "modules/ml/evaluation/log-failure-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-fallback-rate",
-      "title": "Log Fallback Rate",
-      "path": "modules/ml/evaluation/log-fallback-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-hit-rate",
-      "title": "Log Hit Rate",
-      "path": "modules/ml/evaluation/log-hit-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
       "slug": "log-loss",
       "title": "Log Loss",
       "path": "modules/ml/evaluation/log-loss",
@@ -7363,82 +6987,10 @@
     {
       "track": "ml",
       "topic": "evaluation",
-      "slug": "log-miss-rate",
-      "title": "Log Miss Rate",
-      "path": "modules/ml/evaluation/log-miss-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
       "slug": "log-odds",
       "title": "Log Odds",
       "path": "modules/ml/evaluation/log-odds",
       "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-prevalence-ratio",
-      "title": "Log Prevalence Ratio",
-      "path": "modules/ml/evaluation/log-prevalence-ratio",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-rate-ratio",
-      "title": "Log Rate Ratio",
-      "path": "modules/ml/evaluation/log-rate-ratio",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-reject-rate",
-      "title": "Log Reject Rate",
-      "path": "modules/ml/evaluation/log-reject-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-relative-risk",
-      "title": "Log Relative Risk",
-      "path": "modules/ml/evaluation/log-relative-risk",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-risk-ratio",
-      "title": "Log Risk Ratio",
-      "path": "modules/ml/evaluation/log-risk-ratio",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-shed-rate",
-      "title": "Log Shed Rate",
-      "path": "modules/ml/evaluation/log-shed-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-skip-rate",
-      "title": "Log Skip Rate",
-      "path": "modules/ml/evaluation/log-skip-rate",
-      "aliasOf": "log-rate-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "log-timeout-rate",
-      "title": "Log Timeout Rate",
-      "path": "modules/ml/evaluation/log-timeout-rate",
-      "aliasOf": "log-rate-metrics"
     },
     {
       "track": "ml",
@@ -7507,38 +7059,6 @@
     {
       "track": "ml",
       "topic": "evaluation",
-      "slug": "prevalence-delta",
-      "title": "Prevalence Delta",
-      "path": "modules/ml/evaluation/prevalence-delta",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "prevalence-index",
-      "title": "Prevalence Index",
-      "path": "modules/ml/evaluation/prevalence-index",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "prevalence-odds",
-      "title": "Prevalence Odds",
-      "path": "modules/ml/evaluation/prevalence-odds",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
-      "slug": "prevalence-ratio",
-      "title": "Prevalence Ratio",
-      "path": "modules/ml/evaluation/prevalence-ratio",
-      "aliasOf": "binary-rate-comparison-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "evaluation",
       "slug": "r2-score",
       "title": "R2 Score",
       "path": "modules/ml/evaluation/r2-score",
@@ -7587,41 +7107,9 @@
     {
       "track": "ml",
       "topic": "llm",
-      "slug": "answer-frequency-table",
-      "title": "answer frequency table",
-      "path": "modules/ml/llm/answer-frequency-table",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "answer-mode-count",
-      "title": "answer mode count",
-      "path": "modules/ml/llm/answer-mode-count",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "answer-repeat-rate",
-      "title": "answer repeat rate",
-      "path": "modules/ml/llm/answer-repeat-rate",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
       "slug": "answer-stability",
       "title": "answer stability",
       "path": "modules/ml/llm/answer-stability",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "answer-uniqueness-rate",
-      "title": "answer uniqueness rate",
-      "path": "modules/ml/llm/answer-uniqueness-rate",
       "aliasOf": "vote-metrics"
     },
     {
@@ -7739,170 +7227,10 @@
     {
       "track": "ml",
       "topic": "llm",
-      "slug": "minority-answer-share",
-      "title": "minority answer share",
-      "path": "modules/ml/llm/minority-answer-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-balance",
-      "title": "minority cluster balance",
-      "path": "modules/ml/llm/minority-cluster-balance",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-count",
-      "title": "minority cluster count",
-      "path": "modules/ml/llm/minority-cluster-count",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-dominance",
-      "title": "minority cluster dominance",
-      "path": "modules/ml/llm/minority-cluster-dominance",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-entropy",
-      "title": "minority cluster entropy",
-      "path": "modules/ml/llm/minority-cluster-entropy",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-mode",
-      "title": "minority cluster mode",
-      "path": "modules/ml/llm/minority-cluster-mode",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-remainder-ratio",
-      "title": "minority cluster remainder ratio",
-      "path": "modules/ml/llm/minority-cluster-remainder-ratio",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-residual-mass",
-      "title": "minority cluster residual mass",
-      "path": "modules/ml/llm/minority-cluster-residual-mass",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-share",
-      "title": "minority cluster share",
-      "path": "modules/ml/llm/minority-cluster-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-balance",
-      "title": "minority cluster tail balance",
-      "path": "modules/ml/llm/minority-cluster-tail-balance",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-concentration",
-      "title": "minority cluster tail concentration",
-      "path": "modules/ml/llm/minority-cluster-tail-concentration",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-entropy-gap",
-      "title": "minority cluster tail entropy gap",
-      "path": "modules/ml/llm/minority-cluster-tail-entropy-gap",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-entropy",
-      "title": "minority cluster tail entropy",
-      "path": "modules/ml/llm/minority-cluster-tail-entropy",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-gap",
-      "title": "minority cluster tail gap",
-      "path": "modules/ml/llm/minority-cluster-tail-gap",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-ratio",
-      "title": "minority cluster tail ratio",
-      "path": "modules/ml/llm/minority-cluster-tail-ratio",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-share",
-      "title": "minority cluster tail share",
-      "path": "modules/ml/llm/minority-cluster-tail-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-tail-top-share",
-      "title": "minority cluster tail top share",
-      "path": "modules/ml/llm/minority-cluster-tail-top-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-cluster-top-share",
-      "title": "minority cluster top share",
-      "path": "modules/ml/llm/minority-cluster-top-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "minority-vote-share",
-      "title": "minority vote share",
-      "path": "modules/ml/llm/minority-vote-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
       "slug": "multi-head-attention",
       "title": "Multi-Head Attention (Minimal)",
       "path": "modules/ml/llm/multi-head-attention",
       "aliasOf": "attention-mechanisms"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "nonmajority-vote-share",
-      "title": "nonmajority vote share",
-      "path": "modules/ml/llm/nonmajority-vote-share",
-      "aliasOf": "vote-metrics"
     },
     {
       "track": "ml",
@@ -8027,14 +7355,6 @@
     {
       "track": "ml",
       "topic": "llm",
-      "slug": "runner-up-vote-share",
-      "title": "runner up vote share",
-      "path": "modules/ml/llm/runner-up-vote-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
       "slug": "sampling-pipeline",
       "title": "Combined Sampling Pipeline",
       "path": "modules/ml/llm/sampling-pipeline",
@@ -8115,49 +7435,9 @@
     {
       "track": "ml",
       "topic": "llm",
-      "slug": "top-vote-share",
-      "title": "top vote share",
-      "path": "modules/ml/llm/top-vote-share",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "vote-concentration",
-      "title": "vote concentration",
-      "path": "modules/ml/llm/vote-concentration",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
       "slug": "vote-entropy",
       "title": "vote entropy",
       "path": "modules/ml/llm/vote-entropy",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "vote-frequency-gap",
-      "title": "vote frequency gap",
-      "path": "modules/ml/llm/vote-frequency-gap",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "vote-imbalance",
-      "title": "vote imbalance",
-      "path": "modules/ml/llm/vote-imbalance",
-      "aliasOf": "vote-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "llm",
-      "slug": "vote-tail-mass",
-      "title": "vote tail mass",
-      "path": "modules/ml/llm/vote-tail-mass",
       "aliasOf": "vote-metrics"
     },
     {
@@ -8179,182 +7459,6 @@
     {
       "track": "ml",
       "topic": "mlops",
-      "slug": "breach-bucket-arc",
-      "title": "breach bucket arc",
-      "path": "modules/ml/mlops/breach-bucket-arc",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-bend",
-      "title": "breach bucket bend",
-      "path": "modules/ml/mlops/breach-bucket-bend",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-cdf",
-      "title": "breach bucket cdf",
-      "path": "modules/ml/mlops/breach-bucket-cdf",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-cumulative-share",
-      "title": "breach bucket cumulative share",
-      "path": "modules/ml/mlops/breach-bucket-cumulative-share",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-curvature",
-      "title": "breach bucket curvature",
-      "path": "modules/ml/mlops/breach-bucket-curvature",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-entropy",
-      "title": "breach bucket entropy",
-      "path": "modules/ml/mlops/breach-bucket-entropy",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-inflection",
-      "title": "breach bucket inflection",
-      "path": "modules/ml/mlops/breach-bucket-inflection",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-knee",
-      "title": "breach bucket knee",
-      "path": "modules/ml/mlops/breach-bucket-knee",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-mass",
-      "title": "breach bucket mass",
-      "path": "modules/ml/mlops/breach-bucket-mass",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-quantile",
-      "title": "breach bucket quantile",
-      "path": "modules/ml/mlops/breach-bucket-quantile",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-share",
-      "title": "breach bucket share",
-      "path": "modules/ml/mlops/breach-bucket-share",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-slope",
-      "title": "breach bucket slope",
-      "path": "modules/ml/mlops/breach-bucket-slope",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-span",
-      "title": "breach bucket span",
-      "path": "modules/ml/mlops/breach-bucket-span",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-step-area",
-      "title": "breach bucket step area",
-      "path": "modules/ml/mlops/breach-bucket-step-area",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-step-function",
-      "title": "breach bucket step function",
-      "path": "modules/ml/mlops/breach-bucket-step-function",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-tail",
-      "title": "breach bucket tail",
-      "path": "modules/ml/mlops/breach-bucket-tail",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-turning-point",
-      "title": "breach bucket turning point",
-      "path": "modules/ml/mlops/breach-bucket-turning-point",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-bucket-wave",
-      "title": "breach bucket wave",
-      "path": "modules/ml/mlops/breach-bucket-wave",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-burden",
-      "title": "breach burden",
-      "path": "modules/ml/mlops/breach-burden",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-heat",
-      "title": "breach heat",
-      "path": "modules/ml/mlops/breach-heat",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-severity-index",
-      "title": "breach severity index",
-      "path": "modules/ml/mlops/breach-severity-index",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "breach-spectrum",
-      "title": "breach spectrum",
-      "path": "modules/ml/mlops/breach-spectrum",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
       "slug": "canary-deployment",
       "title": "Canary Deployment",
       "path": "modules/ml/mlops/canary-deployment",
@@ -8367,14 +7471,6 @@
       "title": "Canary Rollout",
       "path": "modules/ml/mlops/canary-rollout",
       "aliasOf": "rollout-and-serving-modes"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "capacity-breach-rate",
-      "title": "capacity breach rate",
-      "path": "modules/ml/mlops/capacity-breach-rate",
-      "aliasOf": "capacity-stress-metrics"
     },
     {
       "track": "ml",
@@ -8403,14 +7499,6 @@
     {
       "track": "ml",
       "topic": "mlops",
-      "slug": "headroom-gap",
-      "title": "headroom gap",
-      "path": "modules/ml/mlops/headroom-gap",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
       "slug": "offline-online-inference",
       "title": "Offline vs Online Inference",
       "path": "modules/ml/mlops/offline-online-inference",
@@ -8427,34 +7515,10 @@
     {
       "track": "ml",
       "topic": "mlops",
-      "slug": "overload-duration-share",
-      "title": "overload duration share",
-      "path": "modules/ml/mlops/overload-duration-share",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "overload-margin",
-      "title": "overload margin",
-      "path": "modules/ml/mlops/overload-margin",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
       "slug": "prediction-monitoring",
       "title": "Prediction Distribution Monitoring",
       "path": "modules/ml/mlops/prediction-monitoring",
       "aliasOf": "monitoring-and-drift-methods"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "pressure-score",
-      "title": "pressure score",
-      "path": "modules/ml/mlops/pressure-score",
-      "aliasOf": "capacity-stress-metrics"
     },
     {
       "track": "ml",
@@ -8519,22 +7583,6 @@
       "title": "SLA Metrics",
       "path": "modules/ml/mlops/sla-metrics",
       "aliasOf": "service-reliability-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "surge-pressure",
-      "title": "surge pressure",
-      "path": "modules/ml/mlops/surge-pressure",
-      "aliasOf": "capacity-stress-metrics"
-    },
-    {
-      "track": "ml",
-      "topic": "mlops",
-      "slug": "utilization-gap",
-      "title": "utilization gap",
-      "path": "modules/ml/mlops/utilization-gap",
-      "aliasOf": "capacity-stress-metrics"
     },
     {
       "track": "ml",
@@ -8747,26 +7795,10 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "active-transition-indicator",
-      "title": "active transition indicator",
-      "path": "modules/ml/reinforcement-learning/active-transition-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "advantage-normalization",
       "title": "Advantage Normalization",
       "path": "modules/ml/reinforcement-learning/advantage-normalization",
       "aliasOf": "policy-optimization-utilities"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "alive-transition-batch",
-      "title": "alive transition batch",
-      "path": "modules/ml/reinforcement-learning/alive-transition-batch",
-      "aliasOf": "transition-indicators"
     },
     {
       "track": "ml",
@@ -8795,46 +7827,6 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "continuation-mask",
-      "title": "continuation mask",
-      "path": "modules/ml/reinforcement-learning/continuation-mask",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "continuing-indicator",
-      "title": "continuing indicator",
-      "path": "modules/ml/reinforcement-learning/continuing-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "continuing-transition-batch",
-      "title": "continuing transition batch",
-      "path": "modules/ml/reinforcement-learning/continuing-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "done-fraction",
-      "title": "done fraction",
-      "path": "modules/ml/reinforcement-learning/done-fraction",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "done-indicator-batch",
-      "title": "done indicator batch",
-      "path": "modules/ml/reinforcement-learning/done-indicator-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "done-indicator",
       "title": "done indicator",
       "path": "modules/ml/reinforcement-learning/done-indicator",
@@ -8851,42 +7843,10 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "durable-transition-batch",
-      "title": "durable transition batch",
-      "path": "modules/ml/reinforcement-learning/durable-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "end-of-episode-mask",
-      "title": "End Of Episode Mask",
-      "path": "modules/ml/reinforcement-learning/end-of-episode-mask",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "enduring-transition-batch",
-      "title": "enduring transition batch",
-      "path": "modules/ml/reinforcement-learning/enduring-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "entropy-bonus",
       "title": "Entropy Bonus",
       "path": "modules/ml/reinforcement-learning/entropy-bonus",
       "aliasOf": "policy-optimization-utilities"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "episode-end-rate",
-      "title": "Episode End Rate",
-      "path": "modules/ml/reinforcement-learning/episode-end-rate",
-      "aliasOf": "transition-indicators"
     },
     {
       "track": "ml",
@@ -8923,22 +7883,6 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "lasting-transition-batch",
-      "title": "lasting transition batch",
-      "path": "modules/ml/reinforcement-learning/lasting-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "live-transition-indicator",
-      "title": "live transition indicator",
-      "path": "modules/ml/reinforcement-learning/live-transition-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "n-step-return",
       "title": "n-Step Return",
       "path": "modules/ml/reinforcement-learning/n-step-return",
@@ -8955,30 +7899,6 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "nonterminal-fraction",
-      "title": "nonterminal fraction",
-      "path": "modules/ml/reinforcement-learning/nonterminal-fraction",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "nonterminal-indicator",
-      "title": "nonterminal indicator",
-      "path": "modules/ml/reinforcement-learning/nonterminal-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "not-done-mask",
-      "title": "not done mask",
-      "path": "modules/ml/reinforcement-learning/not-done-mask",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "off-policy-correction",
       "title": "Off-Policy Correction",
       "path": "modules/ml/reinforcement-learning/off-policy-correction",
@@ -8991,38 +7911,6 @@
       "title": "Off-Policy Evaluation",
       "path": "modules/ml/reinforcement-learning/off-policy-evaluation",
       "aliasOf": "off-policy-estimation-methods"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "ongoing-indicator",
-      "title": "ongoing indicator",
-      "path": "modules/ml/reinforcement-learning/ongoing-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "open-transition-batch",
-      "title": "open transition batch",
-      "path": "modules/ml/reinforcement-learning/open-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "persistent-transition-batch",
-      "title": "Persistent Transition Batch",
-      "path": "modules/ml/reinforcement-learning/persistent-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "persistent-transition-indicator",
-      "title": "persistent transition indicator",
-      "path": "modules/ml/reinforcement-learning/persistent-transition-indicator",
-      "aliasOf": "transition-indicators"
     },
     {
       "track": "ml",
@@ -9067,22 +7955,6 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "residual-transition-indicator",
-      "title": "residual transition indicator",
-      "path": "modules/ml/reinforcement-learning/residual-transition-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "resilient-transition-batch",
-      "title": "Resilient Transition Batch",
-      "path": "modules/ml/reinforcement-learning/resilient-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "return-discount",
       "title": "Reward, Return, Discount",
       "path": "modules/ml/reinforcement-learning/return-discount",
@@ -9123,30 +7995,6 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "steady-transition-batch",
-      "title": "steady transition batch",
-      "path": "modules/ml/reinforcement-learning/steady-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "surviving-transition-indicator",
-      "title": "surviving transition indicator",
-      "path": "modules/ml/reinforcement-learning/surviving-transition-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "sustained-transition-batch",
-      "title": "sustained transition batch",
-      "path": "modules/ml/reinforcement-learning/sustained-transition-batch",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "target-network-update",
       "title": "Target Network Update",
       "path": "modules/ml/reinforcement-learning/target-network-update",
@@ -9171,25 +8019,9 @@
     {
       "track": "ml",
       "topic": "reinforcement-learning",
-      "slug": "terminal-indicator",
-      "title": "terminal indicator",
-      "path": "modules/ml/reinforcement-learning/terminal-indicator",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
       "slug": "terminal-mask",
       "title": "terminal mask",
       "path": "modules/ml/reinforcement-learning/terminal-mask",
-      "aliasOf": "transition-indicators"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "terminal-share",
-      "title": "terminal share",
-      "path": "modules/ml/reinforcement-learning/terminal-share",
       "aliasOf": "transition-indicators"
     },
     {
@@ -9199,14 +8031,6 @@
       "title": "UCB",
       "path": "modules/ml/reinforcement-learning/ucb",
       "aliasOf": "bandit-exploration-methods"
-    },
-    {
-      "track": "ml",
-      "topic": "reinforcement-learning",
-      "slug": "undone-indicator",
-      "title": "undone indicator",
-      "path": "modules/ml/reinforcement-learning/undone-indicator",
-      "aliasOf": "transition-indicators"
     },
     {
       "track": "ml",
@@ -9380,7 +8204,7 @@
       "title": "Machine Learning",
       "path": "docs/ml/README.md",
       "summary": "Use this track to learn the ML stack from first principles without getting buried in low-value variants.",
-      "content": "# Machine Learning\n\nUse this track to learn the ML stack from first principles without getting buried in low-value variants.\n\n## Purpose\n\nThis track is optimized for:\n- clear mental models\n- enough math to understand why a method works\n- enough code to make the idea concrete\n- the topics that matter most for AI work in 2026\n\n## How To Use This Track\n\n- Start with one study path, not the whole tree.\n- Use section docs for the concept map.\n- Use canonical modules for the main learning unit.\n- Use alias or narrow modules only after the canonical family is clear.\n- Treat `artifacts/deepml/problem_titles.md` as the main scope boundary.\n\n## Start Here\n\n- If you are unsure, start with `docs/ml/path-beginner`.\n- If your goal is interview prep, use `docs/ml/path-interview`.\n- If your goal is serving and inference, use `docs/ml/path-llm-systems`.\n- If you want equations first, use `docs/ml/path-math-first`.\n\n## Main Sections\n\n- Foundations: `docs/ml/fundamentals`\n- Data: `docs/ml/data`\n- Models: `docs/ml/models`\n- Evaluation: `docs/ml/evaluation`\n- Deep learning: `docs/ml/deep-learning`\n- LLMs: `docs/ml/llm`\n- Systems and MLOps: `docs/ml/systems`, `docs/ml/mlops`\n- Reinforcement learning: `docs/ml/reinforcement-learning`\n- Generative and representation: `docs/ml/generative`, `docs/ml/representation`\n- Computer vision: `docs/ml/computer-vision`\n\n## Canonical Families\n\n- Deep learning: `activation-functions`, `normalization-methods`\n- Evaluation: `classification-metrics-core`, `ranking-metrics`, `calibration-metrics`, `uncertainty-intervals`, `agreement-metrics`, `binary-rate-comparison-metrics`\n- Data: `scaling-methods`, `categorical-encoding-methods`, `sparse-text-feature-methods`, `structured-feature-methods`, `overflow-metrics`\n- LLM: `decoding-methods`, `retrieval-metrics`, `vote-metrics`\n- Production and RL helpers: `capacity-stress-metrics`, `transition-indicators`\n\n## Scope Rule\n\n- Prefer concise explanations over exhaustive catalogs.\n- Prefer canonical families over many near-duplicate modules.\n- Only add ML topics outside `problem_titles.md` when they are clearly important to AI practice in 2026.\n- Use `docs/ml/roadmap` for pruning and coverage review.\n"
+      "content": "# Machine Learning\n\nUse this track to learn the ML stack from first principles without getting buried in low-value variants.\n\n## Purpose\n\nThis track is optimized for:\n- clear mental models\n- enough math to understand why a method works\n- enough code to make the idea concrete\n- the topics that matter most for AI work in 2026\n\n## How To Use This Track\n\n- Start with one study path, not the whole tree.\n- Use section docs for the concept map.\n- Use canonical modules for the main learning unit.\n- Use alias or narrow modules only after the canonical family is clear.\n- Treat `artifacts/deepml/problem_titles.md` as the main scope boundary.\n\n## Math And Code Rule\n\n- Learn each ML topic in this order: intuition, equation, then code.\n- Use the equation to understand the quantity being optimized or measured.\n- Use the code to see the smallest executable version of that equation.\n- If a topic turns into a long catalog of variants, go back to the canonical family first.\n\n```python\n# The default ML learning loop in this repo:\nconcept = understand_problem()\nequation = write_core_formula(concept)\ncode = implement_smallest_working_version(equation)\n```\n\n## Start Here\n\n- If you are unsure, start with `docs/ml/path-beginner`.\n- If your goal is interview prep, use `docs/ml/path-interview`.\n- If your goal is serving and inference, use `docs/ml/path-llm-systems`.\n- If you want equations first, use `docs/ml/path-math-first`.\n\n## Main Sections\n\n- Foundations: `docs/ml/fundamentals`\n- Data: `docs/ml/data`\n- Models: `docs/ml/models`\n- Evaluation: `docs/ml/evaluation`\n- Deep learning: `docs/ml/deep-learning`\n- LLMs: `docs/ml/llm`\n- Systems and MLOps: `docs/ml/systems`, `docs/ml/mlops`\n- Reinforcement learning: `docs/ml/reinforcement-learning`\n- Generative and representation: `docs/ml/generative`, `docs/ml/representation`\n- Computer vision: `docs/ml/computer-vision`\n\n## Canonical Families\n\n- Deep learning: `activation-functions`, `normalization-methods`\n- Evaluation: `classification-metrics-core`, `ranking-metrics`, `calibration-metrics`, `uncertainty-intervals`, `agreement-metrics`, `binary-rate-comparison-metrics`\n- Data: `scaling-methods`, `categorical-encoding-methods`, `sparse-text-feature-methods`, `structured-feature-methods`, `overflow-metrics`\n- LLM: `decoding-methods`, `retrieval-metrics`, `vote-metrics`\n- Production and RL helpers: `capacity-stress-metrics`, `transition-indicators`\n\n## Scope Rule\n\n- Prefer concise explanations over exhaustive catalogs.\n- Prefer canonical families over many near-duplicate modules.\n- Only add ML topics outside `problem_titles.md` when they are clearly important to AI practice in 2026.\n- Use `docs/ml/roadmap` for pruning and coverage review.\n"
     },
     {
       "track": "ml",
@@ -9758,7 +8582,7 @@
       "title": "ML Coverage Roadmap",
       "path": "docs/ml/roadmap/README.md",
       "summary": "Goal: keep the ML track systematic, concise, and useful for 2026-era AI learning. Scope is driven by `artifacts/deepml/problem_titles.md`, with additions outside that file only whe…",
-      "content": "# ML Coverage Roadmap\n\nGoal: keep the ML track systematic, concise, and useful for 2026-era AI learning.\nScope is driven by `artifacts/deepml/problem_titles.md`, with additions outside that file only when they are clearly important for modern AI practice.\n\n## Current Status\n\n- Visible ML modules: `178`\n- Hidden ML aliases: `355`\n- Strategy: show canonical learning units first, keep old slugs only for compatibility\n\n## Authoring Rules\n\n- Prefer concise teaching-first docs over long inventories.\n- Prefer one coherent family module over many narrow variants.\n- Keep concept, math, and minimal code together.\n- Avoid duplicate ML modules.\n- Hide legacy narrow slugs as aliases instead of surfacing them in the main learning path.\n\n## Canonical Learning Units\n\n### Fundamentals\n\n- Guides: `docs/ml/fundamentals/math`, `docs/ml/fundamentals/prob`, `docs/ml/fundamentals/stats`\n- Core modules: `vectors-matrices`, `expectation`, `gradient-descent`, `pca`, `svd`, `kl-divergence`\n\n### Data\n\n- Guides: `docs/ml/data/preprocessing`, `docs/ml/data/overflow-metrics`\n- Canonical families: `scaling-methods`, `categorical-encoding-methods`, `sparse-text-feature-methods`, `structured-feature-methods`, `overflow-metrics`\n- Core standalone modules: `train-validation-test-split`, `stratified-split`, `imputation`, `smote`\n\n### Classical Models\n\n- Guides: `docs/ml/models/linear`, `docs/ml/models/trees`\n- Canonical families: `linear-models`, `naive-bayes-models`, `tree-ensemble-methods`\n- Core modules: `gaussian-mixture-model-em`, `kernel-pca`, `isolation-forest`\n\n### Deep Learning\n\n- Guides: `docs/ml/deep-learning/training-techniques`\n- Canonical families: `network-building-blocks`, `gradient-computation-methods`, `gradient-stability`, `activation-functions`, `normalization-methods`, `loss-functions`, `regularization-methods`, `initialization-methods`\n- Core standalone modules: `label-smoothing`, `knowledge-distillation-loss`\n\n### Evaluation\n\n- Guides: `docs/ml/evaluation/calibration`, `docs/ml/evaluation/uncertainty`\n- Canonical families: `classification-metrics-core`, `ranking-metrics`, `calibration-metrics`, `uncertainty-intervals`, `agreement-metrics`, `binary-rate-comparison-metrics`, `regression-metrics`, `clustering-metrics`\n- Core standalone modules: `permutation-test`, `ab-test-analysis`, `delong-test`\n\n### LLM\n\n- Guides: `docs/ml/llm/tokenization`, `docs/ml/llm/alignment`, `docs/ml/llm/evaluation`, `docs/ml/llm/inference-serving`, `docs/ml/llm/vote-metrics`\n- Canonical families: `token-representation-methods`, `attention-mechanisms`, `alignment-methods`, `judge-evaluation-methods`, `decoding-methods`, `retrieval-metrics`, `retrieval-fusion-methods`, `vote-metrics`, `parameter-efficient-fine-tuning`, `precision-and-quantization`\n- Core standalone modules: `transformer`, `pretraining`, `perplexity`, `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bm25-ranking`, `kv-cache`, `speculative-decoding`, `qk-clip`\n\n### Reinforcement Learning\n\n- Guides: `docs/ml/reinforcement-learning/rl-for-llm`, `docs/ml/reinforcement-learning/transition-indicators`\n- Canonical families: `bandit-exploration-methods`, `return-estimation-methods`, `td-control-methods`, `off-policy-estimation-methods`, `policy-gradient-methods`, `policy-optimization-utilities`, `transition-indicators`\n- Core standalone modules: none\n\n### Optimization\n\n- Guides: `docs/ml/optimization/schedules`\n- Canonical families: `optimizer-methods`, `learning-rate-schedules`\n- Core standalone modules: `gradient-clipping`, `loss-scaling`, `detect-nans`, `muon-optimizer`\n\n### Systems and MLOps\n\n- Guides: `docs/ml/systems/gpu`, `docs/ml/systems/distributed`, `docs/ml/mlops/monitoring`, `docs/ml/mlops/serving`, `docs/ml/mlops/breach-buckets`\n- Canonical families: `training-loop-mechanics`, `service-reliability-metrics`, `rollout-and-serving-modes`, `monitoring-and-drift-methods`, `capacity-stress-metrics`\n- Core standalone modules: `roofline-analysis`, `continuous-batching`, `chunked-prefill`, `tensor-parallelism`, `context-parallelism`, `expert-parallelism`, `request-batching`, `admission-control`, `error-budget`, `cost-per-request`, `throughput-per-dollar`\n\n### Generative and Representation\n\n- Guides: `docs/ml/generative/diffusion`, `docs/ml/representation/embeddings`, `docs/ml/representation/metric-learning`, `docs/ml/computer-vision/architectures`\n- Canonical families: `cnn-architectures`\n- Core generative modules: `diffusion-models`, `ddpm-sampling`, `ddim-sampling`, `diffusion-guidance-tradeoffs`, `ema-diffusion-weights`, `model-selection`\n- Core representation modules: `embeddings`, `contrastive-loss`, `triplet-loss`, `pairwise-ranking-loss`\n\n## Supporting Content\n\nSupporting content should stay visible when it teaches a distinct mental model, but it should not replace the canonical entry point.\n\n- Specialized evaluation tasks: `bradley-terry-ranking`\n- Rare-event log summaries: `log-rate-metrics`\n- Specialized LLM systems topics: `prefix-cache`, `prefix-cache-metrics`\n- Specialized RL topics: `monte-carlo-tree-search`\n- Specialized generative comparisons: `gan-mode-collapse`, `vae-posterior-collapse`\n\n## Legacy / Hidden\n\nThese should stay out of the main learning path and remain alias-only unless they become the best teaching unit again.\n\n- Old activation and normalization variant slugs\n- Old decoding variant slugs\n- Old ranking, calibration, classification, uncertainty, and agreement metric slugs\n- Old retrieval metric and reranker metric slugs\n- Old scaling, categorical encoding, sparse text, structured feature, and overflow metric slugs\n- Old vote, minority-cluster, and answer-fragmentation metric slugs\n- Old breach-bucket and capacity-stress detail slugs\n- Old transition-mask and transition-batch helper slugs\n\n## Study Paths\n\n- `docs/ml/path-beginner/README.md`\n- `docs/ml/path-interview/README.md`\n- `docs/ml/path-llm-systems/README.md`\n- `docs/ml/path-math-first/README.md`\n\n## Next Cleanup Priorities\n\n- Keep refactoring section docs toward the concise first-principles format\n- Deepen thin but high-value areas: `representation`, `generative`, `computer-vision`, `systems`\n- Consolidate only when a merge creates a better learning unit, not just a smaller module count\n- Keep checking new additions against `problem_titles.md` before adding more ML surface area\n"
+      "content": "# ML Coverage Roadmap\n\nGoal: keep the ML track systematic, concise, and useful for 2026-era AI learning.\nScope is driven by `artifacts/deepml/problem_titles.md`, with additions outside that file only when they are clearly important for modern AI practice.\n\n## Current Status\n\n- Visible ML modules: `178`\n- Hidden ML aliases: `208`\n- Strategy: show canonical learning units first, keep only high-value compatibility slugs\n\n## Authoring Rules\n\n- Prefer concise teaching-first docs over long inventories.\n- Prefer one coherent family module over many narrow variants.\n- Keep concept, math, and minimal code together.\n- Avoid duplicate ML modules.\n- Hide legacy narrow slugs as aliases instead of surfacing them in the main learning path.\n- Remove low-value alias-only micro-variants once a canonical family is stable.\n\n## Canonical Learning Units\n\n### Fundamentals\n\n- Guides: `docs/ml/fundamentals/math`, `docs/ml/fundamentals/prob`, `docs/ml/fundamentals/stats`\n- Core modules: `vectors-matrices`, `expectation`, `gradient-descent`, `pca`, `svd`, `kl-divergence`\n\n### Data\n\n- Guides: `docs/ml/data/preprocessing`, `docs/ml/data/overflow-metrics`\n- Canonical families: `scaling-methods`, `categorical-encoding-methods`, `sparse-text-feature-methods`, `structured-feature-methods`, `overflow-metrics`\n- Core standalone modules: `train-validation-test-split`, `stratified-split`, `imputation`, `smote`\n\n### Classical Models\n\n- Guides: `docs/ml/models/linear`, `docs/ml/models/trees`\n- Canonical families: `linear-models`, `naive-bayes-models`, `tree-ensemble-methods`\n- Core modules: `gaussian-mixture-model-em`, `kernel-pca`, `isolation-forest`\n\n### Deep Learning\n\n- Guides: `docs/ml/deep-learning/training-techniques`\n- Canonical families: `network-building-blocks`, `gradient-computation-methods`, `gradient-stability`, `activation-functions`, `normalization-methods`, `loss-functions`, `regularization-methods`, `initialization-methods`\n- Core standalone modules: `label-smoothing`, `knowledge-distillation-loss`\n\n### Evaluation\n\n- Guides: `docs/ml/evaluation/calibration`, `docs/ml/evaluation/uncertainty`\n- Canonical families: `classification-metrics-core`, `ranking-metrics`, `calibration-metrics`, `uncertainty-intervals`, `agreement-metrics`, `binary-rate-comparison-metrics`, `regression-metrics`, `clustering-metrics`\n- Core standalone modules: `permutation-test`, `ab-test-analysis`, `delong-test`\n\n### LLM\n\n- Guides: `docs/ml/llm/tokenization`, `docs/ml/llm/alignment`, `docs/ml/llm/evaluation`, `docs/ml/llm/inference-serving`, `docs/ml/llm/vote-metrics`\n- Canonical families: `token-representation-methods`, `attention-mechanisms`, `alignment-methods`, `judge-evaluation-methods`, `decoding-methods`, `retrieval-metrics`, `retrieval-fusion-methods`, `vote-metrics`, `parameter-efficient-fine-tuning`, `precision-and-quantization`\n- Core standalone modules: `transformer`, `pretraining`, `perplexity`, `exact-match`, `answer-verification`, `pass-at-k`, `mmlu-evaluation`, `bm25-ranking`, `kv-cache`, `speculative-decoding`, `qk-clip`\n\n### Reinforcement Learning\n\n- Guides: `docs/ml/reinforcement-learning/rl-for-llm`, `docs/ml/reinforcement-learning/transition-indicators`\n- Canonical families: `bandit-exploration-methods`, `return-estimation-methods`, `td-control-methods`, `off-policy-estimation-methods`, `policy-gradient-methods`, `policy-optimization-utilities`, `transition-indicators`\n- Core standalone modules: none\n\n### Optimization\n\n- Guides: `docs/ml/optimization/schedules`\n- Canonical families: `optimizer-methods`, `learning-rate-schedules`\n- Core standalone modules: `gradient-clipping`, `loss-scaling`, `detect-nans`, `muon-optimizer`\n\n### Systems and MLOps\n\n- Guides: `docs/ml/systems/gpu`, `docs/ml/systems/distributed`, `docs/ml/mlops/monitoring`, `docs/ml/mlops/serving`, `docs/ml/mlops/breach-buckets`\n- Canonical families: `training-loop-mechanics`, `service-reliability-metrics`, `rollout-and-serving-modes`, `monitoring-and-drift-methods`, `capacity-stress-metrics`\n- Core standalone modules: `roofline-analysis`, `continuous-batching`, `chunked-prefill`, `tensor-parallelism`, `context-parallelism`, `expert-parallelism`, `request-batching`, `admission-control`, `error-budget`, `cost-per-request`, `throughput-per-dollar`\n\n### Generative and Representation\n\n- Guides: `docs/ml/generative/diffusion`, `docs/ml/representation/embeddings`, `docs/ml/representation/metric-learning`, `docs/ml/computer-vision/architectures`\n- Canonical families: `cnn-architectures`\n- Core generative modules: `diffusion-models`, `ddpm-sampling`, `ddim-sampling`, `diffusion-guidance-tradeoffs`, `ema-diffusion-weights`, `model-selection`\n- Core representation modules: `embeddings`, `contrastive-loss`, `triplet-loss`, `pairwise-ranking-loss`\n\n## Supporting Content\n\nSupporting content should stay visible when it teaches a distinct mental model, but it should not replace the canonical entry point.\n\n- Specialized evaluation tasks: `bradley-terry-ranking`\n- Rare-event log summaries: `log-rate-metrics`\n- Specialized LLM systems topics: `prefix-cache`, `prefix-cache-metrics`\n- Specialized RL topics: `monte-carlo-tree-search`\n- Specialized generative comparisons: `gan-mode-collapse`, `vae-posterior-collapse`\n\n## Legacy / Hidden\n\nThese should stay out of the main learning path and remain alias-only unless they become the best teaching unit again.\n\n- Old activation and normalization variant slugs\n- Old decoding variant slugs\n- Old ranking, calibration, classification, uncertainty, and agreement metric slugs\n- Old retrieval metric and reranker metric slugs\n- Old scaling, categorical encoding, sparse text, structured feature, and overflow metric slugs\n- Old vote, minority-cluster, and answer-fragmentation metric slugs\n- Old breach-bucket and capacity-stress detail slugs\n- Old transition-mask and transition-batch helper slugs\n\n## Study Paths\n\n- `docs/ml/path-beginner/README.md`\n- `docs/ml/path-interview/README.md`\n- `docs/ml/path-llm-systems/README.md`\n- `docs/ml/path-math-first/README.md`\n\n## Next Cleanup Priorities\n\n- Keep refactoring section docs toward the concise first-principles format\n- Deepen thin but high-value areas: `representation`, `generative`, `computer-vision`, `systems`\n- Consolidate only when a merge creates a better learning unit, not just a smaller module count\n- Keep checking new additions against `problem_titles.md` before adding more ML surface area\n"
     },
     {
       "track": "ml",

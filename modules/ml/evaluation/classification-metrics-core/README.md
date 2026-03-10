@@ -19,9 +19,19 @@ tradeoffs, rank-aware accuracy, multilabel error, and probability-aware loss.
 
 ## Core Math
 
+- Accuracy:
+  $$
+  \frac{1}{n}\sum_i \mathbf{1}[\hat{y}_i = y_i]
+  $$
 - Top-k accuracy:
   $$
   \frac{1}{n}\sum_i \mathbf{1}[y_i \in \hat{Y}_i^{(k)}]
+  $$
+- Precision and recall:
+  $$
+  P=\frac{TP}{TP+FP},
+  \qquad
+  R=\frac{TP}{TP+FN}
   $$
 - Binary F1:
   $$
@@ -36,10 +46,17 @@ tradeoffs, rank-aware accuracy, multilabel error, and probability-aware loss.
   -\frac{1}{n}\sum_i \left(y_i\log p_i + (1-y_i)\log(1-p_i)\right)
   $$
 
+## From Math To Code
+
+- Start with counts when the output is a hard label.
+- Move to rank-aware metrics when several labels are acceptable.
+- Move to log loss when the confidence score itself matters.
+
 ## Minimal Code Mental Model
 
 ```python
-score = macro_f1_score(tp, fp, fn)
+precision, recall = precision_recall(y_true, y_pred)
+f1 = f1_score(precision, recall)
 loss = log_loss(labels, probabilities)
 ```
 
