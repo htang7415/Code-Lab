@@ -27,6 +27,6 @@ The repo already has strong breadth under `modules/ml/`; the next improvement is
 
 ## Near-Term Priority
 
-- Fill empty docs leaves first so the current module coverage is visible.
-- Add a small set of missing modules for calibration, preprocessing, mixture models, boosting, and LLM inference systems.
-- See `docs/ml/roadmap` for the concrete backlog.
+- Keep leaf guides in sync so the current module coverage stays visible.
+- Rebalance underrepresented areas such as representation, diffusion, and RL-for-LLM.
+- Use `docs/ml/roadmap` for periodic coverage audits instead of title-by-title expansion.

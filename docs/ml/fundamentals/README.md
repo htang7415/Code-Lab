@@ -5,6 +5,7 @@ Each bullet maps to a module under `modules/ml/fundamentals/`.
 
 Leaf guides:
 
+- Math map (`docs/ml/fundamentals/math`)
 - Probability map (`docs/ml/fundamentals/prob`)
 - Statistics map (`docs/ml/fundamentals/stats`)
 

@@ -3,6 +3,10 @@
 How gradients become stable updates.
 Each bullet maps to a module under `modules/ml/optimization/`.
 
+Leaf guides:
+
+- Schedule map (`docs/ml/optimization/schedules`)
+
 ## Optimizers
 
 - SGD (`modules/ml/optimization/sgd`)

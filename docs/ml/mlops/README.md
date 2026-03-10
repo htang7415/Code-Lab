@@ -3,6 +3,12 @@
 Operational concerns for production ML.
 Each bullet maps to a module under `modules/ml/mlops/`.
 
+Leaf guides:
+
+- Monitoring map (`docs/ml/mlops/monitoring`)
+- Serving map (`docs/ml/mlops/serving`)
+- Breach bucket metrics (`docs/ml/mlops/breach-buckets`)
+
 ## Production Concepts
 
 - ETL pipeline (`modules/ml/mlops/etl-pipeline`)
@@ -42,6 +48,21 @@ Each bullet maps to a module under `modules/ml/mlops/`.
 - Breach bucket share (`modules/ml/mlops/breach-bucket-share`)
 - Breach bucket mass (`modules/ml/mlops/breach-bucket-mass`)
 - Breach bucket entropy (`modules/ml/mlops/breach-bucket-entropy`)
+- Breach bucket tail (`modules/ml/mlops/breach-bucket-tail`)
+- Breach bucket CDF (`modules/ml/mlops/breach-bucket-cdf`)
+- Breach bucket cumulative share (`modules/ml/mlops/breach-bucket-cumulative-share`)
+- Breach bucket quantile (`modules/ml/mlops/breach-bucket-quantile`)
+- Breach bucket step function (`modules/ml/mlops/breach-bucket-step-function`)
+- Breach bucket knee (`modules/ml/mlops/breach-bucket-knee`)
+- Breach bucket turning point (`modules/ml/mlops/breach-bucket-turning-point`)
+- Breach bucket curvature (`modules/ml/mlops/breach-bucket-curvature`)
+- Breach bucket inflection (`modules/ml/mlops/breach-bucket-inflection`)
+- Breach bucket arc (`modules/ml/mlops/breach-bucket-arc`)
+- Breach bucket wave (`modules/ml/mlops/breach-bucket-wave`)
+- Breach bucket bend (`modules/ml/mlops/breach-bucket-bend`)
+- Breach bucket span (`modules/ml/mlops/breach-bucket-span`)
+- Breach bucket slope (`modules/ml/mlops/breach-bucket-slope`)
+- Breach bucket step area (`modules/ml/mlops/breach-bucket-step-area`)
 - Error-budget tracking (`modules/ml/mlops/error-budget`)
 - Backfill replay (`modules/ml/mlops/backfill-replay`)
 - Cost per request (`modules/ml/mlops/cost-per-request`)

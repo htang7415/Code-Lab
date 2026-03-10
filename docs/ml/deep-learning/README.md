@@ -2,6 +2,10 @@
 
 Neural networks and training mechanics from first principles.
 
+## Leaf Guides
+
+- Training techniques (`docs/ml/deep-learning/training-techniques`)
+
 ## Neural Networks and Backprop
 
 - Feedforward neural networks
@@ -41,6 +45,7 @@ Neural networks and training mechanics from first principles.
 - Cross-entropy
 - Hinge loss
 - Focal loss (imbalanced data)
+- Label smoothing
 
 ### Regression
 
@@ -51,7 +56,7 @@ Neural networks and training mechanics from first principles.
 
 ### Special
 
-- Knowledge distillation loss
+- Knowledge distillation loss (`modules/ml/deep-learning/knowledge-distillation-loss`)
 - KL divergence
 
 ## Normalization
@@ -62,3 +67,4 @@ Neural networks and training mechanics from first principles.
 - GroupNorm
 - InstanceNorm
 - Why BatchNorm is bad for Transformers
+- QK clipping / MuonClip for stabilizing attention logits (`modules/ml/llm/qk-clip`)

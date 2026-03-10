@@ -2,6 +2,10 @@
 
 Preprocessing decides whether downstream models learn signal or shortcuts.
 
+## Leaf Guides
+
+- Overflow metrics guide (`docs/ml/data/overflow-metrics`)
+
 ## Current Anchors
 
 - Data leakage (`modules/ml/data/data-leakage`)
@@ -30,6 +34,20 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Overflow cutoff mean under hard token limits (`modules/ml/data/overflow-cutoff-mean`)
 - Overflow cutoff peak under hard token limits (`modules/ml/data/overflow-cutoff-peak`)
 - Overflow cutoff std under hard token limits (`modules/ml/data/overflow-cutoff-std`)
+- Overflow cutoff median under hard token limits (`modules/ml/data/overflow-cutoff-median`)
+- Overflow cutoff IQR under hard token limits (`modules/ml/data/overflow-cutoff-iqr`)
+- Overflow cutoff range under hard token limits (`modules/ml/data/overflow-cutoff-range`)
+- Overflow cutoff max gap under hard token limits (`modules/ml/data/overflow-cutoff-max-gap`)
+- Overflow cutoff skew under hard token limits (`modules/ml/data/overflow-cutoff-skew`)
+- Overflow cutoff upper tail under hard token limits (`modules/ml/data/overflow-cutoff-upper-tail`)
+- Overflow cutoff tail mass under hard token limits (`modules/ml/data/overflow-cutoff-tail-mass`)
+- Overflow cutoff tail Gini under hard token limits (`modules/ml/data/overflow-cutoff-tail-gini`)
+- Overflow cutoff top share under hard token limits (`modules/ml/data/overflow-cutoff-top-share`)
+- Overflow cutoff tail mean under hard token limits (`modules/ml/data/overflow-cutoff-tail-mean`)
+- Overflow cutoff tail count under hard token limits (`modules/ml/data/overflow-cutoff-tail-count`)
+- Overflow cutoff tail variance under hard token limits (`modules/ml/data/overflow-cutoff-tail-variance`)
+- Overflow cutoff tail skew under hard token limits (`modules/ml/data/overflow-cutoff-tail-skew`)
+- Overflow cutoff tail range under hard token limits (`modules/ml/data/overflow-cutoff-tail-range`)
 - Hash trick for fixed-width sparse features (`modules/ml/data/hash-trick`)
 - Chi-square feature scoring for sparse features (`modules/ml/data/chi-square-feature-selection`)
 - Frequency encoding for categorical counts (`modules/ml/data/frequency-encoding`)
@@ -75,6 +93,20 @@ Preprocessing decides whether downstream models learn signal or shortcuts.
 - Overflow cutoff mean when teams care about average severity among unacceptable cases
 - Overflow cutoff peak when worst-case overflow among unacceptable cases matters
 - Overflow cutoff std when teams care about severity variability among unacceptable cases
+- Overflow cutoff median when teams need a robust center for unacceptable overflow
+- Overflow cutoff IQR when teams need robust spread for unacceptable overflow
+- Overflow cutoff range when teams need the full span of unacceptable overflow
+- Overflow cutoff max gap when one worst-case overflow may be separated from the rest
+- Overflow cutoff skew when unacceptable overflow has an asymmetric right tail
+- Overflow cutoff upper tail when teams only care about the severe end of unacceptable overflow
+- Overflow cutoff tail mass when teams care about how much severity is concentrated in the unacceptable tail
+- Overflow cutoff tail Gini when teams care about concentration inside the unacceptable upper tail
+- Overflow cutoff top share when one unacceptable case may dominate the overflow burden
+- Overflow cutoff tail mean when teams need the average severity inside the unacceptable upper tail
+- Overflow cutoff tail count when teams need the number of unacceptable cases in the upper tail
+- Overflow cutoff tail variance when teams need severity dispersion inside the unacceptable upper tail
+- Overflow cutoff tail skew when teams need asymmetry inside the unacceptable upper tail
+- Overflow cutoff tail range when teams need the full severity span inside the unacceptable upper tail
 - Vocabulary-free hashing for large sparse feature spaces
 - Chi-square filtering for sparse lexical or one-hot features
 - Frequency encoding as a label-free categorical baseline

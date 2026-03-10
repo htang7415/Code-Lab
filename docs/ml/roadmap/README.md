@@ -24,6 +24,23 @@ Docs added:
 - `docs/ml/llm/inference-serving/README.md`
 - `docs/ml/systems/gpu/README.md`
 - `docs/ml/systems/distributed/README.md`
+- `docs/ml/fundamentals/math/README.md`
+- `docs/ml/representation/embeddings/README.md`
+- `docs/ml/generative/diffusion/README.md`
+- `docs/ml/optimization/schedules/README.md`
+- `docs/ml/mlops/monitoring/README.md`
+- `docs/ml/mlops/serving/README.md`
+- `docs/ml/llm/tokenization/README.md`
+- `docs/ml/llm/alignment/README.md`
+- `docs/ml/evaluation/uncertainty/README.md`
+- `docs/ml/reinforcement-learning/rl-for-llm/README.md`
+- `docs/ml/data/overflow-metrics/README.md`
+- `docs/ml/llm/vote-metrics/README.md`
+- `docs/ml/mlops/breach-buckets/README.md`
+- `docs/ml/reinforcement-learning/transition-indicators/README.md`
+- `docs/ml/deep-learning/training-techniques/README.md`
+- `docs/ml/computer-vision/architectures/README.md`
+- `docs/ml/representation/metric-learning/README.md`
 
 Modules added:
 
@@ -253,36 +270,92 @@ Modules added:
 - `modules/ml/data/overflow-cutoff-std`
 - `modules/ml/llm/minority-cluster-mode`
 - `modules/ml/reinforcement-learning/live-transition-indicator`
-
-## Top 10 Docs to Write Next
-
-- `docs/ml/fundamentals/math/README.md`: connect Jacobian, Hessian, SVD, PCA, and optimization geometry in one place.
-- `docs/ml/representation/embeddings/README.md`: connect cosine similarity, autoencoders, contrastive loss, and representation quality.
-- `docs/ml/generative/diffusion/README.md`: organize DDPM, DDIM, guidance, and noise schedules.
-- `docs/ml/optimization/schedules/README.md`: unify warmup, cosine decay, step decay, and restart intuition.
-- `docs/ml/mlops/monitoring/README.md`: connect latency, drift, health metrics, and production alerting.
-- `docs/ml/mlops/serving/README.md`: connect canaries, batching, SLAs, and online inference operations.
-- `docs/ml/llm/tokenization/README.md`: connect character tokenization, BPE, and tokenizer-dependent evaluation.
-- `docs/ml/llm/alignment/README.md`: connect SFT, RLHF, DPO, KL penalties, and PTX anchoring.
-- `docs/ml/evaluation/uncertainty/README.md`: cover predictive uncertainty, confidence, and when probability estimates are actionable.
-- `docs/ml/reinforcement-learning/rl-for-llm/README.md`: connect reward modeling, PPO-style alignment, and GRPO/GSPO ideas.
-
-## Next Modules to Add
-
-`modules/ml/generative/diffusion-guidance-tradeoffs` already covers the classifier-free guidance idea, so it is no longer tracked as a separate module.
-`modules/ml/mlops/ab-testing`, `modules/ml/mlops/canary-deployment`, `modules/ml/mlops/feature-drift-psi`, and `modules/ml/representation/contrastive-loss` already cover the basic title areas, so exact-title follow-ups are lower priority than uncovered concepts.
-
-- `modules/ml/mlops/breach-bucket-tail`: tail mass of the most severe breach buckets.
-- `modules/ml/evaluation/log-error-rate`: log transform of a generic error rate.
-- `modules/ml/data/overflow-cutoff-median`: median overflow among cases beyond a cutoff.
-- `modules/ml/llm/minority-cluster-entropy`: entropy over minority normalized answer clusters.
-- `modules/ml/reinforcement-learning/active-transition-indicator`: scalar indicator for an active transition.
-- `modules/ml/mlops/breach-bucket-cdf`: cumulative distribution over breach severity buckets.
-
-## Second Wave After That
-
+- `modules/ml/mlops/breach-bucket-tail`
+- `modules/ml/evaluation/log-error-rate`
+- `modules/ml/data/overflow-cutoff-median`
+- `modules/ml/llm/minority-cluster-entropy`
+- `modules/ml/reinforcement-learning/active-transition-indicator`
+- `modules/ml/mlops/breach-bucket-cdf`
 - `modules/ml/evaluation/log-reject-rate`
 - `modules/ml/data/overflow-cutoff-iqr`
 - `modules/ml/llm/minority-cluster-top-share`
 - `modules/ml/reinforcement-learning/surviving-transition-indicator`
 - `modules/ml/mlops/breach-bucket-cumulative-share`
+- `modules/ml/evaluation/log-abort-rate`
+- `modules/ml/data/overflow-cutoff-range`
+- `modules/ml/llm/minority-cluster-dominance`
+- `modules/ml/reinforcement-learning/persistent-transition-indicator`
+- `modules/ml/mlops/breach-bucket-quantile`
+- `modules/ml/evaluation/log-defect-rate`
+- `modules/ml/data/overflow-cutoff-max-gap`
+- `modules/ml/llm/minority-cluster-balance`
+- `modules/ml/reinforcement-learning/residual-transition-indicator`
+- `modules/ml/mlops/breach-bucket-step-function`
+- `modules/ml/evaluation/log-drop-rate`
+- `modules/ml/data/overflow-cutoff-skew`
+- `modules/ml/llm/minority-cluster-tail-entropy`
+- `modules/ml/reinforcement-learning/continuing-transition-batch`
+- `modules/ml/mlops/breach-bucket-knee`
+- `modules/ml/evaluation/log-timeout-rate`
+- `modules/ml/data/overflow-cutoff-upper-tail`
+- `modules/ml/llm/minority-cluster-residual-mass`
+- `modules/ml/reinforcement-learning/alive-transition-batch`
+- `modules/ml/mlops/breach-bucket-turning-point`
+- `modules/ml/evaluation/log-skip-rate`
+- `modules/ml/data/overflow-cutoff-tail-mass`
+- `modules/ml/llm/minority-cluster-remainder-ratio`
+- `modules/ml/reinforcement-learning/open-transition-batch`
+- `modules/ml/mlops/breach-bucket-curvature`
+- `modules/ml/evaluation/log-shed-rate`
+- `modules/ml/data/overflow-cutoff-tail-gini`
+- `modules/ml/llm/minority-cluster-tail-balance`
+- `modules/ml/reinforcement-learning/sustained-transition-batch`
+- `modules/ml/mlops/breach-bucket-inflection`
+- `modules/ml/evaluation/log-deferral-rate`
+- `modules/ml/data/overflow-cutoff-top-share`
+- `modules/ml/llm/minority-cluster-tail-gap`
+- `modules/ml/reinforcement-learning/steady-transition-batch`
+- `modules/ml/mlops/breach-bucket-arc`
+- `modules/ml/evaluation/log-abandon-rate`
+- `modules/ml/data/overflow-cutoff-tail-mean`
+- `modules/ml/llm/minority-cluster-tail-share`
+- `modules/ml/reinforcement-learning/durable-transition-batch`
+- `modules/ml/mlops/breach-bucket-wave`
+- `modules/ml/evaluation/log-fallback-rate`
+- `modules/ml/data/overflow-cutoff-tail-count`
+- `modules/ml/llm/minority-cluster-tail-top-share`
+- `modules/ml/reinforcement-learning/lasting-transition-batch`
+- `modules/ml/mlops/breach-bucket-bend`
+- `modules/ml/evaluation/log-escape-rate`
+- `modules/ml/data/overflow-cutoff-tail-variance`
+- `modules/ml/llm/minority-cluster-tail-ratio`
+- `modules/ml/reinforcement-learning/enduring-transition-batch`
+- `modules/ml/mlops/breach-bucket-span`
+- `modules/ml/evaluation/log-detour-rate`
+- `modules/ml/data/overflow-cutoff-tail-skew`
+- `modules/ml/llm/minority-cluster-tail-concentration`
+- `modules/ml/reinforcement-learning/resilient-transition-batch`
+- `modules/ml/mlops/breach-bucket-slope`
+- `modules/ml/evaluation/log-bypass-rate`
+- `modules/ml/data/overflow-cutoff-tail-range`
+- `modules/ml/llm/minority-cluster-tail-entropy-gap`
+- `modules/ml/reinforcement-learning/persistent-transition-batch`
+- `modules/ml/mlops/breach-bucket-step-area`
+- `modules/ml/llm/qk-clip`
+- `modules/ml/generative/ema-diffusion-weights`
+- `modules/ml/representation/triplet-loss`
+- `modules/ml/deep-learning/label-smoothing`
+- `modules/ml/computer-vision/global-average-pooling`
+
+## Docs Backlog Status
+
+Tracked docs backlog from this pass is currently exhausted.
+Future work should focus on rebalancing underrepresented areas and consolidating long-tail metric families.
+
+## Module Backlog Status
+
+`modules/ml/generative/diffusion-guidance-tradeoffs` already covers the classifier-free guidance idea, so it is no longer tracked as a separate module.
+`modules/ml/mlops/ab-testing`, `modules/ml/mlops/canary-deployment`, `modules/ml/mlops/feature-drift-psi`, and `modules/ml/representation/contrastive-loss` already cover the basic title areas, so exact-title follow-ups are lower priority than uncovered concepts.
+
+Tracked ML module backlog is currently exhausted.
+Focus can shift to rebalancing underrepresented areas and consolidating long-tail metric families.

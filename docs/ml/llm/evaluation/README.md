@@ -2,6 +2,10 @@
 
 LLM evaluation mixes language-model likelihood, task scoring, and model-judge style comparisons.
 
+## Leaf Guides
+
+- Vote and minority-cluster metrics (`docs/ml/llm/vote-metrics`)
+
 ## Current Anchors
 
 - Perplexity (`modules/ml/llm/perplexity`)
@@ -51,6 +55,20 @@ LLM evaluation mixes language-model likelihood, task scoring, and model-judge st
 - Minority cluster count outside the dominant normalized answer cluster
 - Minority cluster share outside the dominant normalized answer cluster
 - Minority cluster mode as the typical size of alternative normalized answer groups
+- Minority cluster entropy over the alternative normalized answer groups
+- Minority cluster top share as the dominant alternative cluster within minority mass
+- Minority cluster dominance as the gap between the strongest and second strongest minority clusters
+- Minority cluster balance as evenness across the minority normalized answer groups
+- Minority cluster tail entropy over the lower-mass minority clusters after removing the strongest alternative
+- Minority cluster residual mass as the answer share left after removing the strongest minority alternative
+- Minority cluster remainder ratio as the fraction of minority mass left after removing the strongest alternative
+- Minority cluster tail balance as evenness across the residual low-mass minority clusters
+- Minority cluster tail gap as the dominance gap between the two strongest residual tail clusters
+- Minority cluster tail share as the absolute answer share of the strongest residual tail cluster
+- Minority cluster tail top share as the strongest residual tail cluster's share within tail mass
+- Minority cluster tail ratio as residual minority mass relative to the strongest minority cluster
+- Minority cluster tail concentration as a Herfindahl-style dominance score over the residual tail
+- Minority cluster tail entropy gap as the shortfall from a perfectly uniform residual tail
 - Self-consistency voting across multiple sampled traces
 - Candidate diversity across multiple sampled candidates
 - Judge confidence aligned with correctness

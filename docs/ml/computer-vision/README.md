@@ -3,11 +3,16 @@
 Vision preprocessing and CNN architecture basics.
 Each bullet maps to a module under `modules/ml/computer-vision/`.
 
+Leaf guides:
+
+- Architecture map (`docs/ml/computer-vision/architectures`)
+
 ## CNN Fundamentals
 
 - CNNs (`modules/ml/computer-vision/cnn-basics`)
 - Convolution layers (`modules/ml/computer-vision/convolution-layer`)
 - Pooling (max, average) (`modules/ml/computer-vision/pooling`)
+- Global average pooling (`modules/ml/computer-vision/global-average-pooling`)
 - 2D vs 3D CNN (`modules/ml/computer-vision/cnn-2d-vs-3d`)
 - Image preprocessing (`modules/ml/computer-vision/image-preprocessing`)
 - RGB to grayscale (`modules/ml/computer-vision/rgb-to-grayscale`)

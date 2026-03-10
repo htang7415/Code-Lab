@@ -4,6 +4,11 @@ How models turn raw inputs into useful features.
 A good representation organizes data geometry so that similarity, clustering,
 and downstream tasks become simple.
 
+## Leaf Guides
+
+- Embeddings map (`docs/ml/representation/embeddings`)
+- Metric learning map (`docs/ml/representation/metric-learning`)
+
 ## Concept
 
 - A representation is a mapping from input $x$ to features $z = f(x)$.
@@ -23,6 +28,7 @@ match “similar” in meaning or behavior.
 - Invariances and equivariances
 - Bottlenecks and sparsity
 - Contrastive pairs (positive / negative)
+- Triplet objectives for anchor-positive-negative geometry
 - Pairwise ranking losses for ordered preferences
 - Probing and linear separability
 - Transfer learning and freezing

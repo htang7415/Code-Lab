@@ -3,6 +3,11 @@
 Reliable data setup, preprocessing, and evaluation splits.
 Each bullet maps to a module under `modules/ml/data/`.
 
+Leaf guides:
+
+- Preprocessing map (`docs/ml/data/preprocessing`)
+- Overflow metrics guide (`docs/ml/data/overflow-metrics`)
+
 ## Concepts
 
 - Dataset vs batch vs epoch (`modules/ml/data/dataset-batch-epoch`)
@@ -35,6 +40,20 @@ Each bullet maps to a module under `modules/ml/data/`.
 - Overflow cutoff mean under hard length caps (`modules/ml/data/overflow-cutoff-mean`)
 - Overflow cutoff peak under hard length caps (`modules/ml/data/overflow-cutoff-peak`)
 - Overflow cutoff std under hard length caps (`modules/ml/data/overflow-cutoff-std`)
+- Overflow cutoff median under hard length caps (`modules/ml/data/overflow-cutoff-median`)
+- Overflow cutoff IQR under hard length caps (`modules/ml/data/overflow-cutoff-iqr`)
+- Overflow cutoff range under hard length caps (`modules/ml/data/overflow-cutoff-range`)
+- Overflow cutoff max gap under hard length caps (`modules/ml/data/overflow-cutoff-max-gap`)
+- Overflow cutoff skew under hard length caps (`modules/ml/data/overflow-cutoff-skew`)
+- Overflow cutoff upper tail under hard length caps (`modules/ml/data/overflow-cutoff-upper-tail`)
+- Overflow cutoff tail mass under hard length caps (`modules/ml/data/overflow-cutoff-tail-mass`)
+- Overflow cutoff tail Gini under hard length caps (`modules/ml/data/overflow-cutoff-tail-gini`)
+- Overflow cutoff top share under hard length caps (`modules/ml/data/overflow-cutoff-top-share`)
+- Overflow cutoff tail mean under hard length caps (`modules/ml/data/overflow-cutoff-tail-mean`)
+- Overflow cutoff tail count under hard length caps (`modules/ml/data/overflow-cutoff-tail-count`)
+- Overflow cutoff tail variance under hard length caps (`modules/ml/data/overflow-cutoff-tail-variance`)
+- Overflow cutoff tail skew under hard length caps (`modules/ml/data/overflow-cutoff-tail-skew`)
+- Overflow cutoff tail range under hard length caps (`modules/ml/data/overflow-cutoff-tail-range`)
 - Hash trick for sparse features (`modules/ml/data/hash-trick`)
 - Chi-square feature scoring (`modules/ml/data/chi-square-feature-selection`)
 - Frequency encoding for categorical features (`modules/ml/data/frequency-encoding`)
@@ -52,7 +71,3 @@ Each bullet maps to a module under `modules/ml/data/`.
 - Missing-value indicators (`modules/ml/data/missing-indicator`)
 - SMOTE-style synthetic oversampling (`modules/ml/data/smote`)
 - Z-score outlier screening (`modules/ml/data/outlier-detection`)
-
-See also:
-
-- Preprocessing map (`docs/ml/data/preprocessing`)

@@ -3,7 +3,7 @@
 ## What this repo is
 Code Lab is a learning-first repo with:
 - `docs/`  : concise concept notes (website-ready)
-- `modules/`: small concept labs (one idea + minimal code + a tiny test)
+- `modules/`: compact learning modules with code and focused tests
 - `web/`   : TypeScript Next.js site that renders repo content (Vercel deploy)
 
 ## Non-negotiable workflow
@@ -51,6 +51,22 @@ pnpm --filter @codelab/site dev
 ### Add a module (concept lab)
 - Goal: teach **one** idea (short README + minimal code + tiny test).
 - Use the repo template/script if available, otherwise copy an existing module and rename.
+
+### ML authoring policy
+- For the `ml` track, prefer **one coherent learning unit** over overly fragmented one-formula modules.
+- A good ML module may cover a **concept family** when people naturally learn the ideas together.
+  Examples: activation functions, normalization methods, decoding methods, calibration metrics.
+- Keep separate modules only when the mental model, implementation pattern, or failure mode is clearly different.
+  Examples: PCA, GMM-EM, backpropagation, PPO, KV cache.
+- Do **not** create a new ML module for a narrow metric or variant if it adds little intuition beyond an existing family module.
+- Dense ML modules are encouraged when they stay easy to scan. A strong ML module usually includes:
+  - a short concept overview
+  - grouped formulas or a comparison table
+  - failure modes or trade-offs
+  - compact code covering the family
+  - one focused test file for the family
+- Use `docs/` to provide the system map and comparisons. Use `modules/` to provide the smallest **useful** learning unit, which may be larger than a single formula.
+- If consolidating existing ML modules, preserve URL stability. Prefer redirects or compatibility handling over breaking slugs.
 
 ## Website sync rule
 - The website should NOT duplicate source content.

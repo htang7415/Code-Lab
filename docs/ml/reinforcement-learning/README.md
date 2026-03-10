@@ -54,6 +54,20 @@ Each bullet maps to a module under `modules/ml/reinforcement-learning/`.
 - Nonterminal indicator (`modules/ml/reinforcement-learning/nonterminal-indicator`)
 - Ongoing indicator (`modules/ml/reinforcement-learning/ongoing-indicator`)
 - Live transition indicator (`modules/ml/reinforcement-learning/live-transition-indicator`)
+- Active transition indicator (`modules/ml/reinforcement-learning/active-transition-indicator`)
+- Surviving transition indicator (`modules/ml/reinforcement-learning/surviving-transition-indicator`)
+- Persistent transition indicator (`modules/ml/reinforcement-learning/persistent-transition-indicator`)
+- Residual transition indicator (`modules/ml/reinforcement-learning/residual-transition-indicator`)
+- Continuing transition batch (`modules/ml/reinforcement-learning/continuing-transition-batch`)
+- Alive transition batch (`modules/ml/reinforcement-learning/alive-transition-batch`)
+- Open transition batch (`modules/ml/reinforcement-learning/open-transition-batch`)
+- Sustained transition batch (`modules/ml/reinforcement-learning/sustained-transition-batch`)
+- Steady transition batch (`modules/ml/reinforcement-learning/steady-transition-batch`)
+- Durable transition batch (`modules/ml/reinforcement-learning/durable-transition-batch`)
+- Lasting transition batch (`modules/ml/reinforcement-learning/lasting-transition-batch`)
+- Enduring transition batch (`modules/ml/reinforcement-learning/enduring-transition-batch`)
+- Resilient transition batch (`modules/ml/reinforcement-learning/resilient-transition-batch`)
+- Persistent transition batch (`modules/ml/reinforcement-learning/persistent-transition-batch`)
 - Eligibility traces (`modules/ml/reinforcement-learning/eligibility-traces`)
 - TD(lambda) returns (`modules/ml/reinforcement-learning/td-lambda`)
 - Monte Carlo Tree Search (UCT) (`modules/ml/reinforcement-learning/monte-carlo-tree-search`)
@@ -65,3 +79,8 @@ Each bullet maps to a module under `modules/ml/reinforcement-learning/`.
 
 - DPO vs PPO (`modules/ml/reinforcement-learning/dpo-vs-ppo`)
 - Group-based optimization (GSPO / GRPO) (`modules/ml/reinforcement-learning/group-based-optimization`)
+
+See also:
+
+- RL-for-LLM guide (`docs/ml/reinforcement-learning/rl-for-llm`)
+- Transition indicators guide (`docs/ml/reinforcement-learning/transition-indicators`)
