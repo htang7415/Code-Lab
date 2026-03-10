@@ -2,13 +2,23 @@
 
 > Track: `ml` | Topic: `llm`
 
-## Concept
+## Purpose
 
-Autoregressive transformers cache key and value tensors from previous tokens so they do not recompute attention over the full prefix at every decode step.
+Use this module to estimate how cached attention keys and values consume memory
+during autoregressive decoding.
 
-## Math
+## First Principles
 
-$$\mathrm{bytes} = B \cdot L \cdot T \cdot H_{kv} \cdot D \cdot 2 \cdot s$$
+- During decoding, transformers reuse old key and value tensors instead of recomputing the full prefix every step.
+- This speeds up inference, but cache memory grows linearly with context length.
+- KV cache size often becomes the real serving bottleneck before compute does.
+- Multi-query and grouped-query attention reduce cache size by shrinking the number of KV heads.
+
+## Core Math
+
+$$
+\mathrm{bytes} = B \cdot L \cdot T \cdot H_{kv} \cdot D \cdot 2 \cdot s
+$$
 
 - $B$ -- batch size
 - $L$ -- number of layers
@@ -18,11 +28,17 @@ $$\mathrm{bytes} = B \cdot L \cdot T \cdot H_{kv} \cdot D \cdot 2 \cdot s$$
 - $2$ -- one tensor for keys and one for values
 - $s$ -- bytes per stored element
 
-## Key Points
+## Minimal Code Mental Model
 
-- KV cache memory scales linearly with context length.
-- Multi-query or grouped-query attention reduces cache size by shrinking $H_{kv}$.
-- Memory pressure from the cache often drives serving decisions.
+```python
+cache_bytes = kv_cache_bytes(
+    num_layers,
+    num_tokens,
+    num_kv_heads,
+    head_dim,
+    bytes_per_element,
+)
+```
 
 ## Function
 
@@ -36,6 +52,12 @@ def kv_cache_bytes(
     batch_size: int = 1,
 ) -> int:
 ```
+
+## When To Use What
+
+- Use this estimate when context length, batch size, or head layout changes.
+- Use it before deployment to check whether a serving plan fits GPU memory.
+- Pair it with batching and prefix-cache topics when inference throughput is the real concern.
 
 ## Run tests
 

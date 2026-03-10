@@ -2,16 +2,27 @@
 
 > Track: `ml` | Topic: `models`
 
-## Concept
+## Purpose
 
-Gradient boosting fits a weak learner to the current residual signal and updates predictions in small steps.
-This module uses squared-error residuals to show the basic stage-wise update.
+Use this module to understand the core stage-wise update behind gradient
+boosting for regression.
 
-## Math
+## First Principles
 
-$$r_i = y_i - \hat{y}_i$$
+- Boosting improves a model by correcting current errors instead of refitting from scratch.
+- At each stage, a weak learner fits the residual or negative gradient.
+- Small learning rates make boosting more stable and usually require more stages.
+- For squared error, residual fitting is the same as fitting the negative gradient.
 
-$$\hat{y}_i' = \hat{y}_i + \eta \, h_i$$
+## Core Math
+
+$$
+r_i = y_i - \hat{y}_i
+$$
+
+$$
+\hat{y}_i' = \hat{y}_i + \eta \, h_i
+$$
 
 - $r_i$ -- residual for example $i$
 - $y_i$ -- target value
@@ -19,11 +30,16 @@ $$\hat{y}_i' = \hat{y}_i + \eta \, h_i$$
 - $h_i$ -- weak learner output
 - $\eta$ -- learning rate
 
-## Key Points
+## Minimal Code Mental Model
 
-- Boosting corrects current errors instead of refitting from scratch.
-- Small learning rates make stage-wise updates more stable.
-- For squared error, fitting residuals matches the negative gradient.
+```python
+residuals, updated = gradient_boosting_step(
+    targets,
+    predictions,
+    weak_learner_output,
+    learning_rate,
+)
+```
 
 ## Function
 
@@ -35,6 +51,12 @@ def gradient_boosting_step(
     learning_rate: float,
 ) -> tuple[list[float], list[float]]:
 ```
+
+## When To Use What
+
+- Use this module to understand the boosting update before XGBoost-style second-order variants.
+- Use small learning rates when you want more stable stage-wise improvement.
+- Pair this with tree-based weak learners when studying practical boosting systems.
 
 ## Run tests
 
