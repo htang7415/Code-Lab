@@ -1,4 +1,5 @@
 from semantic_caching_basics import lookup_semantic_cache, store_semantic_entry
+import pytest
 
 
 def build_entries():
@@ -63,3 +64,13 @@ def test_stale_entry_does_not_hit_even_if_semantically_similar() -> None:
         version="v1",
         now=500,
     ) is None
+
+
+def test_similarity_threshold_and_max_age_inputs_are_validated() -> None:
+    entries = build_entries()
+
+    with pytest.raises(ValueError, match="similarity_threshold"):
+        lookup_semantic_cache(entries, "show failed runs", workspace_id=7, version="v1", now=120, similarity_threshold=1.2)
+
+    with pytest.raises(ValueError, match="max_age_seconds"):
+        lookup_semantic_cache(entries, "show failed runs", workspace_id=7, version="v1", now=120, max_age_seconds=-1)

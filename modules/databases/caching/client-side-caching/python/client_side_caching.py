@@ -3,6 +3,11 @@
 from __future__ import annotations
 
 
+def validate_version(version: int) -> None:
+    if version < 0:
+        raise ValueError("version must be non-negative")
+
+
 def client_read(
     server: dict[str, tuple[str, int]],
     client_cache: dict[str, tuple[str, int]],
@@ -10,10 +15,12 @@ def client_read(
 ) -> str | None:
     cached = client_cache.get(key)
     if cached is not None:
+        validate_version(int(cached[1]))
         return cached[0]
     current = server.get(key)
     if current is None:
         return None
+    validate_version(int(current[1]))
     client_cache[key] = current
     return current[0]
 
@@ -25,6 +32,7 @@ def server_update(
     value: str,
 ) -> None:
     current_version = 0 if key not in server else int(server[key][1])
+    validate_version(current_version)
     server[key] = (value, current_version + 1)
     invalidations.append(key)
 
@@ -44,7 +52,12 @@ def stale_client_keys(
 ) -> list[str]:
     stale: list[str] = []
     for key, cached in client_cache.items():
+        validate_version(int(cached[1]))
         current = server.get(key)
-        if current is None or current[1] != cached[1]:
+        if current is None:
+            stale.append(key)
+            continue
+        validate_version(int(current[1]))
+        if current[1] != cached[1]:
             stale.append(key)
     return sorted(stale)

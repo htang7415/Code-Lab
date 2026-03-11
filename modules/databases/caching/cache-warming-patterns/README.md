@@ -12,6 +12,7 @@ Cache warming fills likely-hot keys before the first user request so the system 
 - The goal is to reduce origin reads on the first request burst.
 - Warming only helps if the warmed keys actually get requested soon after.
 - The hot-key selection logic matters as much as the preload step.
+- `top_n` and access counts should stay non-negative; negative values are input bugs, not cache signals.
 
 ## Minimal Code Mental Model
 
@@ -25,6 +26,7 @@ responses, origin_reads = serve_requests(store, cache, ["doc:1", "doc:1", "doc:2
 ## Function
 
 ```python
+def validate_top_n(top_n: int) -> None:
 def recommend_warm_keys(access_counts: dict[str, int], top_n: int) -> list[str]:
 def warm_cache(
     store: dict[str, str],

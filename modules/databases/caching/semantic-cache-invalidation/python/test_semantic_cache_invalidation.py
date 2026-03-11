@@ -3,6 +3,7 @@ from semantic_cache_invalidation import (
     lookup_semantic_cache,
     store_semantic_entry,
 )
+import pytest
 
 
 def test_lookup_requires_matching_policy_and_source_versions():
@@ -56,3 +57,30 @@ def test_invalidate_scope_removes_only_stale_entries_for_one_workspace():
 
     assert removed == 1
     assert [entry["response"] for entry in entries] == ["r2", "r3"]
+
+
+def test_lookup_threshold_and_age_inputs_are_validated():
+    entries: list[dict[str, object]] = []
+    store_semantic_entry(entries, "show failed jobs", "2 failed jobs", 7, "policy-v1", "docs-v1", now=100)
+
+    with pytest.raises(ValueError, match="similarity_threshold"):
+        lookup_semantic_cache(
+            entries,
+            "failed jobs",
+            workspace_id=7,
+            policy_version="policy-v1",
+            source_version="docs-v1",
+            now=120,
+            similarity_threshold=-0.1,
+        )
+
+    with pytest.raises(ValueError, match="max_age_seconds"):
+        lookup_semantic_cache(
+            entries,
+            "failed jobs",
+            workspace_id=7,
+            policy_version="policy-v1",
+            source_version="docs-v1",
+            now=120,
+            max_age_seconds=-1,
+        )

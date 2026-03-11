@@ -1,4 +1,5 @@
 from tenant_sharding_basics import default_shard, hottest_shard, route_tenant, shard_loads
+import pytest
 
 
 def test_hash_routing_is_stable_for_normal_tenants():
@@ -24,3 +25,11 @@ def test_hot_tenant_override_can_move_load_off_default_shard():
     assert overridden_loads[override_target] >= 500
     assert overridden_loads[default_target] <= default_loads[default_target] - 500
     assert hottest_shard(overridden_loads) == override_target
+
+
+def test_invalid_overrides_and_sizes_are_rejected():
+    with pytest.raises(ValueError, match="override shard"):
+        route_tenant("tenant-7", shard_count=4, overrides={"tenant-7": 4})
+
+    with pytest.raises(ValueError, match="tenant size"):
+        shard_loads({"tenant-7": -1}, shard_count=4)

@@ -12,6 +12,7 @@ Hashing one tenant to one shard is simple, but one very large tenant can overloa
 - Hot tenants sometimes need bucketed fan-out instead of a single partition.
 - Splitting one tenant trades some locality for lower shard skew.
 - The goal is not perfect balance; it is avoiding one overloaded shard.
+- Split counts should stay positive, and row weights should not be negative.
 
 ## Minimal Code Mental Model
 
@@ -22,6 +23,7 @@ loads = shard_loads(rows, shard_count=4, split_tenants={"tenant-hot": 4})
 ## Function
 
 ```python
+def validate_split_count(split_count: int) -> None:
 def stable_shard(value: str, shard_count: int) -> int:
 def route_row(
     tenant_id: str,

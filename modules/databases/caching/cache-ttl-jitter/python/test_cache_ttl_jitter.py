@@ -20,3 +20,8 @@ def test_jitter_spreads_key_expirations_across_multiple_buckets():
 def test_invalid_jitter_ratio_raises():
     with pytest.raises(ValueError):
         stable_jitter_seconds("k1", base_ttl=60, jitter_ratio=1.5)
+
+
+def test_base_ttl_must_be_positive():
+    with pytest.raises(ValueError, match="base_ttl"):
+        stable_jitter_seconds("k1", base_ttl=0, jitter_ratio=0.2)

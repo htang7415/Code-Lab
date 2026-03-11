@@ -12,6 +12,7 @@ Semantic caching reuses prior model answers when a new request is similar enough
 - A semantic cache is a latency and cost optimization, not a correctness layer.
 - Cache hits should still respect freshness rules.
 - Similar query, same scope, and fresh answer is the minimum safe pattern.
+- Similarity thresholds should stay in `0..1`, and max age should not be negative.
 
 ## Minimal Code Mental Model
 
@@ -25,6 +26,7 @@ hit = lookup_semantic_cache(entries, "show failed runs", workspace_id=7, version
 
 ```python
 def token_overlap_score(left: str, right: str) -> float:
+def validate_lookup_inputs(similarity_threshold: float, max_age_seconds: int) -> None:
 def store_semantic_entry(
     entries: list[dict[str, object]],
     query: str,

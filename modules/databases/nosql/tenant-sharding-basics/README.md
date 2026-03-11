@@ -12,6 +12,7 @@ Tenant sharding maps each tenant to a shard so the system can scale horizontally
 - Hash-based routing spreads normal tenants without a big lookup table.
 - Large tenants often need explicit overrides because one hot tenant can dominate a shard.
 - Routing logic should make both the default path and the override path obvious.
+- Override shard ids should stay within the shard range, and tenant sizes should not be negative.
 
 ## Minimal Code Mental Model
 
@@ -24,6 +25,7 @@ loads = shard_loads({"tenant-7": 10, "tenant-99": 500}, shard_count=4, overrides
 ## Function
 
 ```python
+def validate_override(shard_id: int, shard_count: int) -> None:
 def default_shard(tenant_id: str, shard_count: int) -> int:
 def route_tenant(
     tenant_id: str,

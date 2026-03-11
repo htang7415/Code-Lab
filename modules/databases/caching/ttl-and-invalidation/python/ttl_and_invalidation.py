@@ -6,6 +6,11 @@ from __future__ import annotations
 Cache = dict[str, dict[str, object]]
 
 
+def validate_ttl(ttl_seconds: int) -> None:
+    if ttl_seconds <= 0:
+        raise ValueError("ttl_seconds must be positive")
+
+
 def set_cache_entry(
     cache: Cache,
     key: str,
@@ -14,6 +19,7 @@ def set_cache_entry(
     ttl_seconds: int,
     tags: set[str] | None = None,
 ) -> None:
+    validate_ttl(ttl_seconds)
     cache[key] = {
         "value": value,
         "expires_at": now + ttl_seconds,

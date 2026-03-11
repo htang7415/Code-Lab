@@ -12,6 +12,7 @@ Semantic caches should be invalidated by the data and policy versions that shape
 - Policy or prompt-version changes can invalidate cached answers even when the source data did not.
 - Invalidation should be scoped so one tenant's content refresh does not wipe every cache entry.
 - TTL helps, but version-aware invalidation is the safer correctness boundary.
+- Similarity thresholds should stay in `0..1`, and max-age windows should not be negative.
 
 ## Minimal Code Mental Model
 
@@ -26,6 +27,7 @@ removed = invalidate_scope(entries, 7, current_policy_version="policy-v2", curre
 
 ```python
 def token_overlap_score(left: str, right: str) -> float:
+def validate_lookup_inputs(similarity_threshold: float, max_age_seconds: int) -> None:
 def store_semantic_entry(
     entries: list[dict[str, object]],
     query: str,

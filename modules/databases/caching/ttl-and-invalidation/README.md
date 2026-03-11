@@ -12,6 +12,7 @@ TTL bounds staleness by time, while invalidation removes cached entries when the
 - Invalidation reacts faster to writes, but it needs dependency tracking.
 - Tag-based invalidation is useful when one write affects many cached keys.
 - Good cache design uses both time-based and write-based freshness controls.
+- TTLs should stay positive; `0` just creates an already-expired entry.
 
 ## Minimal Code Mental Model
 
@@ -25,6 +26,7 @@ invalidate_tag(cache, "workspace:7")
 ## Function
 
 ```python
+def validate_ttl(ttl_seconds: int) -> None:
 def set_cache_entry(
     cache: dict[str, dict[str, object]],
     key: str,

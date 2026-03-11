@@ -12,6 +12,7 @@ Compression reduces bytes on disk and over the network, but it adds CPU work to 
 - Smaller reads help most when I/O is the bottleneck.
 - Heavy decode work can cancel out those gains for hot low-latency paths.
 - This tradeoff matters in column stores, log-structured engines, and time-series systems.
+- I/O and decode costs should be non-negative; negative costs hide a broken model.
 
 ## Minimal Code Mental Model
 
@@ -28,6 +29,7 @@ summary = tradeoff_summary(
 
 ```python
 def compressed_size_mb(uncompressed_mb: float, compression_ratio: float) -> float:
+def validate_latency_inputs(io_ms_per_mb: float, decode_ms_per_uncompressed_mb: float) -> None:
 def read_latency_ms(
     uncompressed_mb: float,
     compression_ratio: float,

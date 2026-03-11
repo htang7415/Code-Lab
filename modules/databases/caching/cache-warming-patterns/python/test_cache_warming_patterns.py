@@ -1,4 +1,5 @@
 from cache_warming_patterns import recommend_warm_keys, serve_requests, warm_cache
+import pytest
 
 
 def test_recommendation_picks_hottest_keys_first():
@@ -21,3 +22,11 @@ def test_warming_reduces_origin_reads_on_first_request_burst():
     assert cold_responses == warm_responses
     assert warm_origin_reads < cold_origin_reads
     assert warm_origin_reads == 1
+
+
+def test_invalid_warm_recommendation_inputs_are_rejected():
+    with pytest.raises(ValueError, match="top_n"):
+        recommend_warm_keys({"doc:1": 100}, top_n=-1)
+
+    with pytest.raises(ValueError, match="access counts"):
+        recommend_warm_keys({"doc:1": -1}, top_n=1)

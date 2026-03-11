@@ -35,3 +35,11 @@ def test_compression_can_lose_when_io_is_cheap_but_decode_is_heavy() -> None:
 def test_invalid_compression_ratio_is_rejected() -> None:
     with pytest.raises(ValueError):
         tradeoff_summary(100.0, 0.0, 2.0, 0.1)
+
+
+def test_negative_latency_costs_are_rejected() -> None:
+    with pytest.raises(ValueError, match="io_ms_per_mb"):
+        tradeoff_summary(100.0, 0.4, -1.0, 0.1)
+
+    with pytest.raises(ValueError, match="decode_ms_per_uncompressed_mb"):
+        tradeoff_summary(100.0, 0.4, 2.0, -0.1)

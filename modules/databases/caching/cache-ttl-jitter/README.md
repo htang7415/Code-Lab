@@ -12,6 +12,7 @@ TTL jitter spreads expirations so many keys do not all expire at the same second
 - Jitter adds a small deterministic or random offset around the base TTL.
 - The goal is to spread expiration times, not to make caching unpredictable.
 - Jitter works especially well on hot fleets of similar keys.
+- The base TTL should stay positive; negative TTLs turn jitter into already-expired noise.
 
 ## Minimal Code Mental Model
 
@@ -24,6 +25,7 @@ buckets = expiration_bucket_counts(expirations)
 ## Function
 
 ```python
+def validate_base_ttl(base_ttl: int) -> None:
 def stable_jitter_seconds(key: str, base_ttl: int, jitter_ratio: float) -> int:
 def expiration_time(
     key: str,

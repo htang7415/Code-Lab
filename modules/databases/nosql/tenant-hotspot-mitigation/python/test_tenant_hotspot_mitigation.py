@@ -1,4 +1,5 @@
 from tenant_hotspot_mitigation import hottest_shard_load, shard_loads, tenant_shard_span
+import pytest
 
 
 def test_hot_tenant_split_reduces_hottest_shard_load() -> None:
@@ -29,3 +30,18 @@ def test_only_hot_tenant_loses_single_shard_locality() -> None:
 
     assert spans["tenant-hot"] > 1
     assert spans["tenant-cold"] == 1
+
+
+def test_invalid_split_counts_and_weights_are_rejected() -> None:
+    with pytest.raises(ValueError, match="split_count"):
+        tenant_shard_span(
+            [{"tenant_id": "tenant-hot", "row_id": "row-1"}],
+            shard_count=4,
+            split_tenants={"tenant-hot": 0},
+        )
+
+    with pytest.raises(ValueError, match="weight"):
+        shard_loads(
+            [{"tenant_id": "tenant-hot", "row_id": "row-1", "weight": -1}],
+            shard_count=4,
+        )

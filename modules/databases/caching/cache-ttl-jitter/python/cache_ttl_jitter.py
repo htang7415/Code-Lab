@@ -3,7 +3,13 @@
 from __future__ import annotations
 
 
+def validate_base_ttl(base_ttl: int) -> None:
+    if base_ttl <= 0:
+        raise ValueError("base_ttl must be positive")
+
+
 def stable_jitter_seconds(key: str, base_ttl: int, jitter_ratio: float) -> int:
+    validate_base_ttl(base_ttl)
     if not 0.0 <= jitter_ratio <= 1.0:
         raise ValueError("jitter_ratio must be between 0 and 1")
     spread = int(base_ttl * jitter_ratio)
@@ -19,6 +25,7 @@ def expiration_time(
     base_ttl: int,
     jitter_ratio: float,
 ) -> int:
+    validate_base_ttl(base_ttl)
     return now + base_ttl + stable_jitter_seconds(key, base_ttl, jitter_ratio)
 
 

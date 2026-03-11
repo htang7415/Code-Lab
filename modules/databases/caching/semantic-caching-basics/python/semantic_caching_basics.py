@@ -5,6 +5,13 @@ from __future__ import annotations
 import re
 
 
+def validate_lookup_inputs(similarity_threshold: float, max_age_seconds: int) -> None:
+    if not 0.0 <= similarity_threshold <= 1.0:
+        raise ValueError("similarity_threshold must be between 0 and 1")
+    if max_age_seconds < 0:
+        raise ValueError("max_age_seconds must be non-negative")
+
+
 def token_overlap_score(left: str, right: str) -> float:
     left_tokens = set(re.findall(r"[a-z0-9]+", left.lower()))
     right_tokens = set(re.findall(r"[a-z0-9]+", right.lower()))
@@ -41,6 +48,7 @@ def lookup_semantic_cache(
     similarity_threshold: float = 0.5,
     max_age_seconds: int = 300,
 ) -> str | None:
+    validate_lookup_inputs(similarity_threshold, max_age_seconds)
     best_match: tuple[float, str] | None = None
     for entry in entries:
         if entry["workspace_id"] != workspace_id or entry["version"] != version:

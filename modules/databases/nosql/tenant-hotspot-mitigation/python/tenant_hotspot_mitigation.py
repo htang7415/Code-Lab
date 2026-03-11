@@ -3,6 +3,11 @@
 from __future__ import annotations
 
 
+def validate_split_count(split_count: int) -> None:
+    if split_count <= 0:
+        raise ValueError("split_count must be positive")
+
+
 def stable_shard(value: str, shard_count: int) -> int:
     if shard_count <= 0:
         raise ValueError("shard_count must be positive")
@@ -17,7 +22,8 @@ def route_row(
     split_tenants: dict[str, int] | None = None,
 ) -> int:
     split_count = 1 if split_tenants is None else int(split_tenants.get(tenant_id, 1))
-    if split_count <= 1:
+    validate_split_count(split_count)
+    if split_count == 1:
         return stable_shard(tenant_id, shard_count)
     base_shard = stable_shard(tenant_id, shard_count)
     bucket = stable_shard(row_id, split_count)
@@ -34,6 +40,8 @@ def shard_loads(
         tenant_id = str(row["tenant_id"])
         row_id = str(row["row_id"])
         weight = int(row.get("weight", 1))
+        if weight < 0:
+            raise ValueError("row weight must be non-negative")
         shard_id = route_row(tenant_id, row_id, shard_count, split_tenants)
         loads[shard_id] += weight
     return loads

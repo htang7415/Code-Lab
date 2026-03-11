@@ -3,6 +3,11 @@
 from __future__ import annotations
 
 
+def validate_strategy(strategy: str) -> None:
+    if strategy not in {"tenant", "row"}:
+        raise ValueError("strategy must be 'tenant' or 'row'")
+
+
 def stable_partition(value: str, partition_count: int) -> int:
     if partition_count <= 0:
         raise ValueError("partition_count must be positive")
@@ -37,14 +42,11 @@ def tenant_partition_span(
     partition_count: int,
     strategy: str,
 ) -> dict[str, int]:
-    partitions = (
-        partition_rows_by_tenant(rows, partition_count)
-        if strategy == "tenant"
-        else partition_rows_by_row_id(rows, partition_count)
-    )
+    validate_strategy(strategy)
     spans: dict[str, set[int]] = {}
-    for partition_id, row_ids in partitions.items():
-        for row_id in row_ids:
-            tenant_id = next(str(row["tenant_id"]) for row in rows if str(row["row_id"]) == row_id)
-            spans.setdefault(tenant_id, set()).add(partition_id)
+    for row in rows:
+        tenant_id = str(row["tenant_id"])
+        key = str(row["tenant_id"]) if strategy == "tenant" else str(row["row_id"])
+        partition_id = stable_partition(key, partition_count)
+        spans.setdefault(tenant_id, set()).add(partition_id)
     return {tenant_id: len(partition_ids) for tenant_id, partition_ids in spans.items()}

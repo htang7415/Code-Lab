@@ -12,6 +12,7 @@ Client-side caching keeps hot keys in the application process instead of making 
 - They go stale unless invalidation signals reach the client.
 - Reads are cheap when the local copy is valid.
 - Missed invalidations are the core failure mode.
+- Version counters should stay non-negative; negative versions mean the invalidation model is already broken.
 
 ## Minimal Code Mental Model
 
@@ -23,6 +24,7 @@ apply_invalidations(client_cache, invalidations)
 ## Function
 
 ```python
+def validate_version(version: int) -> None:
 def client_read(
     server: dict[str, tuple[str, int]],
     client_cache: dict[str, tuple[str, int]],

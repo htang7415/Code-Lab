@@ -3,6 +3,13 @@
 from __future__ import annotations
 
 
+def validate_latency_inputs(io_ms_per_mb: float, decode_ms_per_uncompressed_mb: float) -> None:
+    if io_ms_per_mb < 0:
+        raise ValueError("io_ms_per_mb must be non-negative")
+    if decode_ms_per_uncompressed_mb < 0:
+        raise ValueError("decode_ms_per_uncompressed_mb must be non-negative")
+
+
 def compressed_size_mb(uncompressed_mb: float, compression_ratio: float) -> float:
     if uncompressed_mb < 0:
         raise ValueError("uncompressed_mb must be non-negative")
@@ -18,9 +25,10 @@ def read_latency_ms(
     decode_ms_per_uncompressed_mb: float,
     compressed: bool,
 ) -> float:
+    validate_latency_inputs(io_ms_per_mb, decode_ms_per_uncompressed_mb)
     if compressed:
         io_cost = compressed_size_mb(uncompressed_mb, compression_ratio) * io_ms_per_mb
-        decode_cost = uncompressed_mb * max(decode_ms_per_uncompressed_mb, 0.0)
+        decode_cost = uncompressed_mb * decode_ms_per_uncompressed_mb
         return io_cost + decode_cost
     return uncompressed_mb * io_ms_per_mb
 

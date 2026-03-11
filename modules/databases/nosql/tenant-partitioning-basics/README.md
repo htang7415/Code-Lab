@@ -12,6 +12,7 @@ Tenant partitioning keeps one tenant’s rows together behind the same partition
 - Partitioning by row ID can spread one tenant across many partitions.
 - Locality is often more valuable than perfectly even distribution for multi-tenant operational workloads.
 - Large tenants may still need overrides or dedicated partitions once they outgrow the default pattern.
+- Strategy names should be explicit; silently treating an unknown strategy like row-based partitioning is a bug.
 
 ## Minimal Code Mental Model
 
@@ -23,6 +24,7 @@ span = tenant_partition_span(rows, partition_count=4, strategy="tenant")
 
 ```python
 def stable_partition(value: str, partition_count: int) -> int:
+def validate_strategy(strategy: str) -> None:
 def partition_rows_by_tenant(rows: list[dict[str, str]], partition_count: int) -> dict[int, list[str]]:
 def partition_rows_by_row_id(rows: list[dict[str, str]], partition_count: int) -> dict[int, list[str]]:
 def tenant_partition_span(

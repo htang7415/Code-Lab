@@ -3,9 +3,17 @@
 from __future__ import annotations
 
 
+def validate_top_n(top_n: int) -> None:
+    if top_n < 0:
+        raise ValueError("top_n must be non-negative")
+
+
 def recommend_warm_keys(access_counts: dict[str, int], top_n: int) -> list[str]:
+    validate_top_n(top_n)
+    if any(int(count) < 0 for count in access_counts.values()):
+        raise ValueError("access counts must be non-negative")
     ranked = sorted(access_counts.items(), key=lambda item: (-int(item[1]), item[0]))
-    return [key for key, _ in ranked[:max(top_n, 0)]]
+    return [key for key, _ in ranked[:top_n]]
 
 
 def warm_cache(
