@@ -26,6 +26,11 @@ Use this page to organize tooling into:
 - `ci-pipeline-basics`
 - `review-and-merge-discipline`
 
+## Supporting Modules
+
+- `spec-first-ai-coding`
+- `generated-code-review-checklists`
+
 ## When To Use What
 
 - Start here before deeper system topics.

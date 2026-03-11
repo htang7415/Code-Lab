@@ -24,6 +24,7 @@ Use this track to learn the engineering responsibilities that still matter most 
 - Add `concurrency`, `observability`, `reliability`, and `performance` before going deep on `system-design`.
 - Use `python`, `rust`, and `typescript` as implementation support, not as the main curriculum spine.
 - Keep `design-patterns` secondary. Prefer patterns that clarify a real boundary or failure mode.
+- Finish with `capstones` to combine contracts, tests, operations, and delivery decisions in one workflow.
 
 ## Module Authoring Rule
 
@@ -47,6 +48,7 @@ Each software-engineering module should answer the same six questions:
 - Performance and cost: `docs/software-engineering/performance`
 - System design and boundaries: `docs/software-engineering/system-design`
 - Platform and delivery systems: `docs/software-engineering/platform-and-delivery`
+- Capstones and synthesis: `docs/software-engineering/capstones`
 - Python engineering: `docs/software-engineering/python`
 - Rust engineering: `docs/software-engineering/rust`
 - TypeScript engineering: `docs/software-engineering/typescript`
@@ -91,3 +93,9 @@ Build the track in this order:
 - Prefer compact modules with clear failure modes over long catalogs of tips.
 - Prefer operationally meaningful topics over interview-style trivia.
 - Treat AI as a workflow amplifier layered on top of software fundamentals, not as a replacement for them.
+
+## Capstones
+
+- `contract-to-production-api-service` is the first end-to-end capstone.
+- `ai-assisted-feature-delivery` is the second capstone focused on spec, review, verification, and rollout discipline.
+- The next capstone should cover incident recovery drills.

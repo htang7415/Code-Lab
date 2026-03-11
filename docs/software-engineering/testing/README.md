@@ -26,6 +26,10 @@ Use this page to organize testing into:
 - `flaky-test-reduction`
 - `regression-tests-for-ai-generated-code`
 
+## Supporting Modules
+
+- `metamorphic-tests-for-generated-code`
+
 ## When To Use What
 
 - Start with a practical test portfolio before expanding test types.

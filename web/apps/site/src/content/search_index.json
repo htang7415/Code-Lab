@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T18:03:54.517Z",
+  "generated_at": "2026-03-11T18:15:49.242Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -1898,6 +1898,18 @@
       "topicName": "Tooling"
     },
     {
+      "id": "module:software-engineering/capstones/ai-assisted-feature-delivery",
+      "type": "module",
+      "title": "AI-Assisted Feature Delivery",
+      "summary": "> Track: `software-engineering` | Topic: `capstones`",
+      "track": "software-engineering",
+      "topic": "capstones",
+      "slug": "ai-assisted-feature-delivery",
+      "href": "/track/software-engineering/capstones#ai-assisted-feature-delivery",
+      "trackName": "Software Engineering",
+      "topicName": "Capstones"
+    },
+    {
       "id": "module:ml/models/bic-aic",
       "type": "module",
       "title": "AIC and BIC",
@@ -2040,6 +2052,18 @@
       "href": "/track/dsa/array#array-summary",
       "trackName": "Data Structures & Algorithms",
       "topicName": "Array"
+    },
+    {
+      "id": "module:databases/sql-patterns/as-of-joins",
+      "type": "module",
+      "title": "As Of Joins",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "as-of-joins",
+      "href": "/track/databases/sql-patterns#as-of-joins",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
     },
     {
       "id": "module:databases/schema-design/asset-versioning",
@@ -2570,6 +2594,18 @@
       "topicName": "MLOps"
     },
     {
+      "id": "doc:software-engineering/capstones/capstones",
+      "type": "doc",
+      "title": "Capstones",
+      "summary": "This section is for end-to-end synthesis work after the main software-engineering foundations are in place.",
+      "track": "software-engineering",
+      "topic": "capstones",
+      "slug": "capstones",
+      "href": "/track/software-engineering/capstones#capstones",
+      "trackName": "Software Engineering",
+      "topicName": "Capstones"
+    },
+    {
       "id": "module:databases/query-plans/cardinality-estimation",
       "type": "module",
       "title": "Cardinality Estimation",
@@ -2748,6 +2784,18 @@
       "href": "/track/software-engineering/platform-and-delivery#cognitive-load-and-team-interfaces",
       "trackName": "Software Engineering",
       "topicName": "Platform And Delivery"
+    },
+    {
+      "id": "module:databases/sql-patterns/cohort-retention-basics",
+      "type": "module",
+      "title": "Cohort Retention Basics",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "cohort-retention-basics",
+      "href": "/track/databases/sql-patterns#cohort-retention-basics",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
     },
     {
       "id": "module:databases/nosql/compaction-vs-repair-tradeoffs",
@@ -2930,6 +2978,18 @@
       "topicName": "Streaming"
     },
     {
+      "id": "module:databases/streaming/consumer-rebalance-basics",
+      "type": "module",
+      "title": "Consumer Rebalance Basics",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "consumer-rebalance-basics",
+      "href": "/track/databases/streaming#consumer-rebalance-basics",
+      "trackName": "Databases",
+      "topicName": "Streaming"
+    },
+    {
       "id": "module:ml/llm/context-budgeting-and-truncation",
       "type": "module",
       "title": "Context Budgeting and Truncation",
@@ -2988,6 +3048,18 @@
       "href": "/track/software-engineering/testing#contract-tests",
       "trackName": "Software Engineering",
       "topicName": "Testing"
+    },
+    {
+      "id": "module:software-engineering/capstones/contract-to-production-api-service",
+      "type": "module",
+      "title": "Contract To Production API Service",
+      "summary": "> Track: `software-engineering` | Topic: `capstones`",
+      "track": "software-engineering",
+      "topic": "capstones",
+      "slug": "contract-to-production-api-service",
+      "href": "/track/software-engineering/capstones#contract-to-production-api-service",
+      "trackName": "Software Engineering",
+      "topicName": "Capstones"
     },
     {
       "id": "module:ml/computer-vision/contrast-brightness",
@@ -3876,6 +3948,18 @@
       "href": "/track/ml/reinforcement-learning#exploration-exploitation",
       "trackName": "Machine Learning",
       "topicName": "Reinforcement Learning"
+    },
+    {
+      "id": "module:databases/schema-design/fact-grain-and-double-counting",
+      "type": "module",
+      "title": "Fact Grain And Double Counting",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "fact-grain-and-double-counting",
+      "href": "/track/databases/schema-design#fact-grain-and-double-counting",
+      "trackName": "Databases",
+      "topicName": "Schema Design"
     },
     {
       "id": "module:ai-agents/evaluation/failure-taxonomy",
@@ -5822,6 +5906,18 @@
       "topicName": "Computer Vision"
     },
     {
+      "id": "module:databases/transactions/optimistic-concurrency-control",
+      "type": "module",
+      "title": "Optimistic Concurrency Control",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "optimistic-concurrency-control",
+      "href": "/track/databases/transactions#optimistic-concurrency-control",
+      "trackName": "Databases",
+      "topicName": "Transactions"
+    },
+    {
       "id": "doc:ml/optimization/optimization",
       "type": "doc",
       "title": "Optimization and Training Dynamics",
@@ -6734,6 +6830,18 @@
       "topicName": "Planning"
     },
     {
+      "id": "module:databases/streaming/replay-and-backfill-consumers",
+      "type": "module",
+      "title": "Replay And Backfill Consumers",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "replay-and-backfill-consumers",
+      "href": "/track/databases/streaming#replay-and-backfill-consumers",
+      "trackName": "Databases",
+      "topicName": "Streaming"
+    },
+    {
       "id": "module:databases/transactions/replica-failover-routing",
       "type": "module",
       "title": "Replica Failover Routing",
@@ -7214,6 +7322,18 @@
       "topicName": "Evaluation"
     },
     {
+      "id": "module:databases/query-plans/sargability-basics",
+      "type": "module",
+      "title": "Sargability Basics",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "sargability-basics",
+      "href": "/track/databases/query-plans#sargability-basics",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
+    },
+    {
       "id": "module:ml/data/scaling-methods",
       "type": "module",
       "title": "Scaling Methods",
@@ -7452,6 +7572,18 @@
       "href": "/track/ml/data#smote",
       "trackName": "Machine Learning",
       "topicName": "Data"
+    },
+    {
+      "id": "module:databases/schema-design/snapshot-vs-current-state-tables",
+      "type": "module",
+      "title": "Snapshot Vs Current State Tables",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "snapshot-vs-current-state-tables",
+      "href": "/track/databases/schema-design#snapshot-vs-current-state-tables",
+      "trackName": "Databases",
+      "topicName": "Schema Design"
     },
     {
       "id": "module:ml/computer-vision/sobel-edge-detection",
@@ -7764,6 +7896,18 @@
       "href": "/track/software-engineering/observability#structured-logging",
       "trackName": "Software Engineering",
       "topicName": "Observability"
+    },
+    {
+      "id": "module:databases/relational/surrogate-vs-natural-keys",
+      "type": "module",
+      "title": "Surrogate Vs Natural Keys",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "surrogate-vs-natural-keys",
+      "href": "/track/databases/relational#surrogate-vs-natural-keys",
+      "trackName": "Databases",
+      "topicName": "Relational"
     },
     {
       "id": "module:ml/fundamentals/svd",
@@ -8544,6 +8688,18 @@
       "href": "/track/ai-agents/workflows#workflows",
       "trackName": "AI Agents",
       "topicName": "Workflows"
+    },
+    {
+      "id": "module:databases/transactions/write-skew-anomaly",
+      "type": "module",
+      "title": "Write Skew Anomaly",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "write-skew-anomaly",
+      "href": "/track/databases/transactions#write-skew-anomaly",
+      "trackName": "Databases",
+      "topicName": "Transactions"
     },
     {
       "id": "module:ml/data/outlier-detection",

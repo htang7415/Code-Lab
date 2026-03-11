@@ -25,6 +25,10 @@ Use this page to organize reliability into:
 - `canary-rollout-and-rollback`
 - `incidents-and-postmortems`
 
+## Supporting Modules
+
+- `rollback-readiness`
+
 ## When To Use What
 
 - Start with graceful degradation and rollout safety before advanced control patterns.

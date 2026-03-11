@@ -26,6 +26,10 @@ Use this page to organize platform engineering into:
 - `ownership-boundaries`
 - `cognitive-load-and-team-interfaces`
 
+## Supporting Modules
+
+- `change-budgets-and-blast-radius`
+
 ## When To Use What
 
 - Start here once the technical foundations of change safety are in place.
