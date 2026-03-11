@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T07:58:10.103Z",
+  "generated_at": "2026-03-11T15:41:14.535Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -1982,6 +1982,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "module:databases/indexing/btree-basics",
+      "type": "module",
+      "title": "B-Tree Basics",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "btree-basics",
+      "href": "/track/databases/indexing#btree-basics",
+      "trackName": "Databases",
+      "topicName": "Indexing"
+    },
+    {
       "id": "doc:dsa/backtracking/backtracking",
       "type": "doc",
       "title": "Backtracking",
@@ -2208,6 +2220,30 @@
       "href": "/track/ai-agents/planning#budgeted-multi-step-planning",
       "trackName": "AI Agents",
       "topicName": "Planning"
+    },
+    {
+      "id": "module:databases/caching/cache-aside",
+      "type": "module",
+      "title": "Cache Aside",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-aside",
+      "href": "/track/databases/caching#cache-aside",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
+      "id": "doc:databases/caching/overview",
+      "type": "doc",
+      "title": "Caching And Semantic Caching",
+      "summary": "Caches reduce latency and cost by serving reused data from a faster copy.",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "overview",
+      "href": "/track/databases/caching#overview",
+      "trackName": "Databases",
+      "topicName": "Caching"
     },
     {
       "id": "doc:ml/evaluation/calibration",
@@ -2618,6 +2654,18 @@
       "topicName": "Data"
     },
     {
+      "id": "doc:databases/README.md/README",
+      "type": "doc",
+      "title": "Databases",
+      "summary": "This track is about the data layer for modern products and AI systems.",
+      "track": "databases",
+      "topic": "README.md",
+      "slug": "README",
+      "href": "/track/databases/README.md#README",
+      "trackName": "Databases",
+      "topicName": "README.md"
+    },
+    {
       "id": "module:ml/data/dataset-batch-epoch",
       "type": "module",
       "title": "Dataset vs Batch vs Epoch",
@@ -2858,6 +2906,30 @@
       "topicName": "Fundamentals"
     },
     {
+      "id": "module:databases/schema-design/document-chunk-embedding-schema",
+      "type": "module",
+      "title": "Document Chunk Embedding Schema",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "document-chunk-embedding-schema",
+      "href": "/track/databases/schema-design#document-chunk-embedding-schema",
+      "trackName": "Databases",
+      "topicName": "Schema Design"
+    },
+    {
+      "id": "module:databases/nosql/document-modeling",
+      "type": "module",
+      "title": "Document Modeling",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "document-modeling",
+      "href": "/track/databases/nosql#document-modeling",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
       "id": "doc:dsa/double-pointers/double-pointers",
       "type": "doc",
       "title": "Double Pointers",
@@ -3050,6 +3122,18 @@
       "topicName": "Workflows"
     },
     {
+      "id": "module:databases/streaming/event-stream-basics",
+      "type": "module",
+      "title": "Event Stream Basics",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "event-stream-basics",
+      "href": "/track/databases/streaming#event-stream-basics",
+      "trackName": "Databases",
+      "topicName": "Streaming"
+    },
+    {
       "id": "module:ai-agents/prompting/examples-and-delimiters",
       "type": "module",
       "title": "Examples and Delimiters",
@@ -3120,6 +3204,18 @@
       "href": "/track/ml/systems#expert-parallelism",
       "trackName": "Machine Learning",
       "topicName": "Systems"
+    },
+    {
+      "id": "module:databases/query-plans/explain-basics",
+      "type": "module",
+      "title": "Explain Basics",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "explain-basics",
+      "href": "/track/databases/query-plans#explain-basics",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
     },
     {
       "id": "module:ml/reinforcement-learning/exploration-exploitation",
@@ -3434,6 +3530,18 @@
       "topicName": "Evaluation"
     },
     {
+      "id": "module:databases/vector-db/hybrid-search",
+      "type": "module",
+      "title": "Hybrid Search",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "hybrid-search",
+      "href": "/track/databases/vector-db#hybrid-search",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
       "id": "module:ml/computer-vision/image-preprocessing",
       "type": "module",
       "title": "Image Preprocessing",
@@ -3444,6 +3552,18 @@
       "href": "/track/ml/computer-vision#image-preprocessing",
       "trackName": "Machine Learning",
       "topicName": "Computer Vision"
+    },
+    {
+      "id": "doc:databases/indexing/overview",
+      "type": "doc",
+      "title": "Indexing And Access Paths",
+      "summary": "Indexes are physical shortcuts for specific query shapes.",
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "overview",
+      "href": "/track/databases/indexing#overview",
+      "trackName": "Databases",
+      "topicName": "Indexing"
     },
     {
       "id": "module:ml/llm/inference-head-pruning",
@@ -4490,6 +4610,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "doc:databases/nosql/overview",
+      "type": "doc",
+      "title": "NoSQL Trade-Offs",
+      "summary": "NoSQL is a family of data model choices, not one thing.",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "overview",
+      "href": "/track/databases/nosql#overview",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
       "id": "doc:ai-agents/observability/observability",
       "type": "doc",
       "title": "Observability",
@@ -4934,6 +5066,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "doc:databases/query-plans/overview",
+      "type": "doc",
+      "title": "Query Plans And Tuning",
+      "summary": "If you cannot read a query plan, you are tuning blind.",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "overview",
+      "href": "/track/databases/query-plans#overview",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
+    },
+    {
       "id": "module:dsa/greedy-algorithm/queue-reconstruction-by-height-vector-explanation",
       "type": "module",
       "title": "Queue Reconstruction by Height (Vector Explanation)",
@@ -5064,6 +5208,18 @@
       "href": "/track/ml/reinforcement-learning#reinforcement-learning",
       "trackName": "Machine Learning",
       "topicName": "Reinforcement Learning"
+    },
+    {
+      "id": "doc:databases/relational/overview",
+      "type": "doc",
+      "title": "Relational Core",
+      "summary": "Most AI products still keep their source-of-truth state in relational tables.",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "overview",
+      "href": "/track/databases/relational#overview",
+      "trackName": "Databases",
+      "topicName": "Relational"
     },
     {
       "id": "module:ai-agents/planning/replanning",
@@ -5354,6 +5510,18 @@
       "topicName": "Data"
     },
     {
+      "id": "doc:databases/schema-design/overview",
+      "type": "doc",
+      "title": "Schema Design For Products And AI",
+      "summary": "Schema design is where database modeling meets product behavior.",
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "overview",
+      "href": "/track/databases/schema-design#overview",
+      "trackName": "Databases",
+      "topicName": "Schema Design"
+    },
+    {
       "id": "module:ai-agents/evaluation/security-and-red-team-evals",
       "type": "module",
       "title": "Security and Red-Team Evals",
@@ -5486,6 +5654,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "doc:databases/sql-patterns/overview",
+      "type": "doc",
+      "title": "SQL And Analytics Patterns",
+      "summary": "Most day-to-day database work is repeated query shapes, not obscure syntax.",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "overview",
+      "href": "/track/databases/sql-patterns#overview",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
+    },
+    {
       "id": "doc:dsa/stack-and-queue/stack-and-queue",
       "type": "doc",
       "title": "Stack and Queue",
@@ -5570,6 +5750,18 @@
       "topicName": "Data"
     },
     {
+      "id": "doc:databases/streaming/overview",
+      "type": "doc",
+      "title": "Streaming And CDC",
+      "summary": "Streaming connects operational databases to downstream systems without waiting for batch syncs.",
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "overview",
+      "href": "/track/databases/streaming#overview",
+      "trackName": "Databases",
+      "topicName": "Streaming"
+    },
+    {
       "id": "doc:dsa/string/string",
       "type": "doc",
       "title": "String",
@@ -5640,6 +5832,18 @@
       "href": "/track/ml/models#tsne-gradient",
       "trackName": "Machine Learning",
       "topicName": "Models"
+    },
+    {
+      "id": "module:databases/relational/tables-and-keys",
+      "type": "module",
+      "title": "Tables And Keys",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "tables-and-keys",
+      "href": "/track/databases/relational#tables-and-keys",
+      "trackName": "Databases",
+      "topicName": "Relational"
     },
     {
       "id": "module:ml/mlops/tail-latency-budget",
@@ -5834,6 +6038,30 @@
       "topicName": "Systems"
     },
     {
+      "id": "module:databases/transactions/transaction-basics",
+      "type": "module",
+      "title": "Transaction Basics",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "transaction-basics",
+      "href": "/track/databases/transactions#transaction-basics",
+      "trackName": "Databases",
+      "topicName": "Transactions"
+    },
+    {
+      "id": "doc:databases/transactions/overview",
+      "type": "doc",
+      "title": "Transactions, MVCC, And Concurrency",
+      "summary": "Transactions are how a database stays correct when many things happen at once.",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "overview",
+      "href": "/track/databases/transactions#overview",
+      "trackName": "Databases",
+      "topicName": "Transactions"
+    },
+    {
       "id": "module:ml/llm/transformer",
       "type": "module",
       "title": "Transformer Block (Minimal)",
@@ -6002,6 +6230,18 @@
       "topicName": "Generative"
     },
     {
+      "id": "doc:databases/vector-db/overview",
+      "type": "doc",
+      "title": "Vector Retrieval, Hybrid Search, And Memory",
+      "summary": "Vector search is one retrieval layer inside a larger system of metadata, ranking, and product constraints.",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "overview",
+      "href": "/track/databases/vector-db#overview",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
       "id": "module:ml/fundamentals/vectors-matrices",
       "type": "module",
       "title": "Vectors and Matrices",
@@ -6060,6 +6300,18 @@
       "href": "/track/ml/llm#vote-metrics",
       "trackName": "Machine Learning",
       "topicName": "LLM"
+    },
+    {
+      "id": "module:databases/sql-patterns/window-functions-basics",
+      "type": "module",
+      "title": "Window Functions Basics",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "window-functions-basics",
+      "href": "/track/databases/sql-patterns#window-functions-basics",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
     },
     {
       "id": "module:ai-agents/multi-agent/worker-coordination",

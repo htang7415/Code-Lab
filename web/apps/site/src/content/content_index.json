@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T07:58:10.103Z",
+  "generated_at": "2026-03-11T15:41:14.535Z",
   "tracks": [
     {
       "id": "dsa",
@@ -35,7 +35,7 @@
       "accent": "#17becf",
       "accentVar": "--track-databases",
       "topicCount": 10,
-      "moduleCount": 0
+      "moduleCount": 10
     },
     {
       "id": "software-engineering",
@@ -89,9 +89,9 @@
       "topic": "caching",
       "name": "Caching",
       "path": "/track/databases/caching",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "ml",
@@ -233,9 +233,9 @@
       "topic": "indexing",
       "name": "Indexing",
       "path": "/track/databases/indexing",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "dsa",
@@ -305,9 +305,9 @@
       "topic": "nosql",
       "name": "Nosql",
       "path": "/track/databases/nosql",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "ai-agents",
@@ -413,9 +413,9 @@
       "topic": "query-plans",
       "name": "Query Plans",
       "path": "/track/databases/query-plans",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "ai-agents",
@@ -440,9 +440,9 @@
       "topic": "relational",
       "name": "Relational",
       "path": "/track/databases/relational",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "ml",
@@ -476,9 +476,9 @@
       "topic": "schema-design",
       "name": "Schema Design",
       "path": "/track/databases/schema-design",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "software-engineering",
@@ -494,9 +494,9 @@
       "topic": "sql-patterns",
       "name": "SQL Patterns",
       "path": "/track/databases/sql-patterns",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "dsa",
@@ -512,9 +512,9 @@
       "topic": "streaming",
       "name": "Streaming",
       "path": "/track/databases/streaming",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "dsa",
@@ -575,18 +575,18 @@
       "topic": "transactions",
       "name": "Transactions",
       "path": "/track/databases/transactions",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "databases",
       "topic": "vector-db",
       "name": "Vector Db",
       "path": "/track/databases/vector-db",
-      "hasDoc": false,
-      "docCount": 0,
-      "moduleCount": 0
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 1
     },
     {
       "track": "ai-agents",
@@ -1940,6 +1940,166 @@
           "path": "modules/ai-agents/workflows/workflow-concurrency-basics/python/workflow_concurrency_basics.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef runnable_branches(branch_states: dict[str, str]) -> list[str]:\n    return [\n        branch\n        for branch, state in branch_states.items()\n        if branch.strip() and state.strip().lower() == \"ready\"\n    ]\n\n\ndef join_ready(branch_states: dict[str, str], required: int) -> bool:\n    if required <= 0:\n        raise ValueError(\"required must be positive\")\n    completed = sum(1 for state in branch_states.values() if state.strip().lower() == \"done\")\n    return completed >= required\n\n\ndef join_state(branch_states: dict[str, str], required: int) -> str:\n    if join_ready(branch_states, required):\n        return \"join-ready\"\n    if any(state.strip().lower() == \"failed\" for state in branch_states.values()):\n        return \"blocked\"\n    return \"waiting\"\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-aside",
+      "title": "Cache Aside",
+      "path": "modules/databases/caching/cache-aside",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "readme": "# Cache Aside\n\n> Track: `databases` | Topic: `caching`\n\n## Concept\n\nCache-aside reads from a fast cache first and only falls back to the database when the cached copy is missing or stale.\n\n## Key Points\n\n- A cache is a copy, so freshness rules matter as much as speed.\n- Cache-aside keeps the source of truth in the database and treats the cache as an optimization layer.\n- TTL limits staleness but does not guarantee correctness by itself.\n- Explicit invalidation is often simpler than trying to update every cached copy perfectly.\n\n## Minimal Code Mental Model\n\n```python\ncache = {}\nvalue = read_through_cache(cache, \"user:42\", loader=load_user, now=100, ttl_seconds=30)\ninvalidate(cache, \"user:42\")\nfresh_value = read_through_cache(cache, \"user:42\", loader=load_user, now=120, ttl_seconds=30)\n```\n\n## Function\n\n```python\ndef read_through_cache(\n    cache: dict[str, tuple[object, int | None]],\n    key: str,\n    loader: Callable[[], object],\n    now: int,\n    ttl_seconds: int | None = None,\n) -> object:\ndef invalidate(cache: dict[str, tuple[object, int | None]], key: str) -> None:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/caching/cache-aside/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/caching/cache-aside/python/cache_aside.py",
+          "language": "python",
+          "content": "\"\"\"cache_aside - minimal cache-aside pattern with TTL and invalidation.\"\"\"\n\nfrom __future__ import annotations\n\nfrom collections.abc import Callable\n\n\nCache = dict[str, tuple[object, int | None]]\n\n\ndef read_through_cache(\n    cache: Cache,\n    key: str,\n    loader: Callable[[], object],\n    now: int,\n    ttl_seconds: int | None = None,\n) -> object:\n    entry = cache.get(key)\n    if entry is not None:\n        value, expires_at = entry\n        if expires_at is None or now < expires_at:\n            return value\n\n    value = loader()\n    expires_at = None if ttl_seconds is None else now + ttl_seconds\n    cache[key] = (value, expires_at)\n    return value\n\n\ndef invalidate(cache: Cache, key: str) -> None:\n    cache.pop(key, None)\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "btree-basics",
+      "title": "B-Tree Basics",
+      "path": "modules/databases/indexing/btree-basics",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "readme": "# B-Tree Basics\n\n> Track: `databases` | Topic: `indexing`\n\n## Concept\n\nB-tree indexes speed up equality, range, and ordered lookups when the index columns match the query shape.\n\n## Key Points\n\n- A good index follows the filter and sort pattern of a real query.\n- Composite index order matters because the database walks the index from left to right.\n- Indexes trade write cost and storage for faster reads.\n- `EXPLAIN QUERY PLAN` is a fast way to see whether a query is scanning a table or using an index.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_eval_runs_table(conn)\nseed_eval_runs(conn, rows)\nbefore = plan_for_recent_completed_runs(conn, workspace_id=7)\nadd_workspace_status_created_index(conn)\nafter = plan_for_recent_completed_runs(conn, workspace_id=7)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_eval_runs_table(conn: sqlite3.Connection) -> None:\ndef seed_eval_runs(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str, int]],\n) -> None:\ndef add_workspace_status_created_index(conn: sqlite3.Connection) -> None:\ndef plan_for_recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 3,\n) -> list[str]:\ndef recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 3,\n) -> list[tuple[int, str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/indexing/btree-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/indexing/btree-basics/python/btree_basics.py",
+          "language": "python",
+          "content": "\"\"\"btree_basics - use a composite B-tree index for a hot query path.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_eval_runs_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE eval_runs (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            status TEXT NOT NULL,\n            created_at TEXT NOT NULL,\n            latency_ms INTEGER NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef seed_eval_runs(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str, int]],\n) -> None:\n    conn.executemany(\n        \"\"\"\n        INSERT INTO eval_runs (workspace_id, status, created_at, latency_ms)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        rows,\n    )\n\n\ndef add_workspace_status_created_index(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE INDEX idx_eval_runs_workspace_status_created\n        ON eval_runs (workspace_id, status, created_at DESC)\n        \"\"\"\n    )\n\n\ndef plan_for_recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 3,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        EXPLAIN QUERY PLAN\n        SELECT id, created_at\n        FROM eval_runs\n        WHERE workspace_id = ?\n          AND status = 'completed'\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [detail for _, _, _, detail in rows]\n\n\ndef recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 3,\n) -> list[tuple[int, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT id, created_at\n        FROM eval_runs\n        WHERE workspace_id = ?\n          AND status = 'completed'\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [(run_id, created_at) for run_id, created_at in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "document-modeling",
+      "title": "Document Modeling",
+      "path": "modules/databases/nosql/document-modeling",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "readme": "# Document Modeling\n\n> Track: `databases` | Topic: `nosql`\n\n## Concept\n\nDocument modeling keeps related nested data together when the natural read path wants the whole object in one fetch.\n\n## Key Points\n\n- Document shape is useful when nested data is usually read together.\n- Appending nested items is simple when the aggregate is already one product object.\n- You still need conventions for order, metadata, and schema evolution.\n- Document models are a good fit for conversation state, configs, or session blobs with limited cross-document joins.\n\n## Minimal Code Mental Model\n\n```python\nsession = create_conversation_document(\"sess-1\", 42)\nappend_message(session, \"user\", \"Find failed runs\", \"2026-03-11T10:00:00Z\")\nappend_message(session, \"assistant\", \"I found three failed runs.\", \"2026-03-11T10:00:02Z\")\nreply = latest_message_by_role(session, \"assistant\")\n```\n\n## Function\n\n```python\ndef create_conversation_document(session_id: str, user_id: int) -> dict[str, object]:\ndef append_message(\n    document: dict[str, object],\n    role: str,\n    text: str,\n    created_at: str,\n    metadata: dict[str, object] | None = None,\n) -> None:\ndef latest_message_by_role(\n    document: dict[str, object],\n    role: str,\n) -> dict[str, object] | None:\ndef conversation_summary(document: dict[str, object]) -> dict[str, object]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/nosql/document-modeling/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/nosql/document-modeling/python/document_modeling.py",
+          "language": "python",
+          "content": "\"\"\"document_modeling - a small nested conversation document.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef create_conversation_document(session_id: str, user_id: int) -> dict[str, object]:\n    return {\n        \"session_id\": session_id,\n        \"user_id\": user_id,\n        \"messages\": [],\n    }\n\n\ndef append_message(\n    document: dict[str, object],\n    role: str,\n    text: str,\n    created_at: str,\n    metadata: dict[str, object] | None = None,\n) -> None:\n    messages = document.setdefault(\"messages\", [])\n    assert isinstance(messages, list)\n    messages.append(\n        {\n            \"role\": role,\n            \"text\": text,\n            \"created_at\": created_at,\n            \"metadata\": metadata or {},\n        }\n    )\n\n\ndef latest_message_by_role(\n    document: dict[str, object],\n    role: str,\n) -> dict[str, object] | None:\n    messages = document.get(\"messages\", [])\n    assert isinstance(messages, list)\n    for message in reversed(messages):\n        if message[\"role\"] == role:\n            return message\n    return None\n\n\ndef conversation_summary(document: dict[str, object]) -> dict[str, object]:\n    messages = document.get(\"messages\", [])\n    assert isinstance(messages, list)\n    roles = sorted({message[\"role\"] for message in messages})\n    return {\n        \"session_id\": document[\"session_id\"],\n        \"message_count\": len(messages),\n        \"roles\": roles,\n    }\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "explain-basics",
+      "title": "Explain Basics",
+      "path": "modules/databases/query-plans/explain-basics",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "readme": "# Explain Basics\n\n> Track: `databases` | Topic: `query-plans`\n\n## Concept\n\n`EXPLAIN QUERY PLAN` shows whether a query is scanning rows, using an index, or sorting with temporary work.\n\n## Key Points\n\n- A plan is about the work the database expects to do, not just the SQL text you wrote.\n- Full scans and temporary sorts are common reasons a query gets slower as data grows.\n- A good plan often comes from better indexes or a simpler query shape, not magic hints.\n- You should read plans before guessing at performance fixes.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_events_table(conn)\nseed_events(conn, rows)\nbefore = plan_flags(explain_recent_workspace_events(conn, workspace_id=7))\nadd_recent_events_index(conn)\nafter = plan_flags(explain_recent_workspace_events(conn, workspace_id=7))\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_events_table(conn: sqlite3.Connection) -> None:\ndef seed_events(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str]],\n) -> None:\ndef add_recent_events_index(conn: sqlite3.Connection) -> None:\ndef explain_recent_workspace_events(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\ndef plan_flags(plan_details: list[str]) -> dict[str, bool]:\ndef recent_workspace_events(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[tuple[int, str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/query-plans/explain-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/query-plans/explain-basics/python/explain_basics.py",
+          "language": "python",
+          "content": "\"\"\"explain_basics - inspect full scans, index use, and temp sorts.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_events_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE events (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            created_at TEXT NOT NULL,\n            kind TEXT NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef seed_events(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str]],\n) -> None:\n    conn.executemany(\n        \"\"\"\n        INSERT INTO events (workspace_id, created_at, kind)\n        VALUES (?, ?, ?)\n        \"\"\",\n        rows,\n    )\n\n\ndef add_recent_events_index(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE INDEX idx_events_workspace_created\n        ON events (workspace_id, created_at DESC)\n        \"\"\"\n    )\n\n\ndef explain_recent_workspace_events(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        EXPLAIN QUERY PLAN\n        SELECT id, created_at\n        FROM events\n        WHERE workspace_id = ?\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [detail for _, _, _, detail in rows]\n\n\ndef plan_flags(plan_details: list[str]) -> dict[str, bool]:\n    joined = \" | \".join(plan_details)\n    return {\n        \"full_scan\": \"SCAN events\" in joined,\n        \"uses_index\": \"idx_events_workspace_created\" in joined,\n        \"temp_sort\": \"USE TEMP B-TREE FOR ORDER BY\" in joined,\n    }\n\n\ndef recent_workspace_events(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[tuple[int, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT id, created_at\n        FROM events\n        WHERE workspace_id = ?\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [(event_id, created_at) for event_id, created_at in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "relational",
+      "slug": "tables-and-keys",
+      "title": "Tables And Keys",
+      "path": "modules/databases/relational/tables-and-keys",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "readme": "# Tables And Keys\n\n> Track: `databases` | Topic: `relational`\n\n## Concept\n\nTables hold entities, primary keys identify rows, and foreign keys connect related rows without relying on application-only conventions.\n\n## Key Points\n\n- Primary keys give each row a stable identity.\n- Foreign keys protect relationships like `chunks -> documents`.\n- Composite uniqueness rules often encode product rules directly in the schema.\n- A left join lets you ask for all parent rows even when some children do not exist yet.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_core_tables(conn)\nworkspace_id = insert_workspace(conn, \"research\")\ndocument_id = insert_document(conn, workspace_id, \"rag-notes\")\ninsert_chunk(conn, document_id, 0, \"Chunk zero\")\ncounts = chunk_counts_by_document(conn)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_core_tables(conn: sqlite3.Connection) -> None:\ndef insert_workspace(conn: sqlite3.Connection, name: str) -> int:\ndef insert_document(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    source_uri: str | None = None,\n) -> int:\ndef insert_chunk(\n    conn: sqlite3.Connection,\n    document_id: int,\n    chunk_index: int,\n    text: str,\n) -> int:\ndef chunk_counts_by_document(conn: sqlite3.Connection) -> list[tuple[str, str, int]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/relational/tables-and-keys/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/relational/tables-and-keys/python/tables_and_keys.py",
+          "language": "python",
+          "content": "\"\"\"tables_and_keys - primary keys, foreign keys, and join basics.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    \"\"\"Create an in-memory SQLite database with foreign keys enabled.\"\"\"\n    conn = sqlite3.connect(\":memory:\")\n    conn.execute(\"PRAGMA foreign_keys = ON\")\n    return conn\n\n\ndef create_core_tables(conn: sqlite3.Connection) -> None:\n    \"\"\"Create a tiny relational schema for workspaces, documents, and chunks.\"\"\"\n    conn.executescript(\n        \"\"\"\n        CREATE TABLE workspaces (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            name TEXT NOT NULL UNIQUE\n        );\n\n        CREATE TABLE documents (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            title TEXT NOT NULL,\n            source_uri TEXT,\n            FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,\n            UNIQUE (workspace_id, title)\n        );\n\n        CREATE TABLE chunks (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            document_id INTEGER NOT NULL,\n            chunk_index INTEGER NOT NULL,\n            text TEXT NOT NULL,\n            FOREIGN KEY (document_id) REFERENCES documents(id) ON DELETE CASCADE,\n            UNIQUE (document_id, chunk_index)\n        );\n        \"\"\"\n    )\n\n\ndef insert_workspace(conn: sqlite3.Connection, name: str) -> int:\n    cursor = conn.execute(\n        \"INSERT INTO workspaces (name) VALUES (?)\",\n        (name,),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_document(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    source_uri: str | None = None,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO documents (workspace_id, title, source_uri)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (workspace_id, title, source_uri),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_chunk(\n    conn: sqlite3.Connection,\n    document_id: int,\n    chunk_index: int,\n    text: str,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO chunks (document_id, chunk_index, text)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (document_id, chunk_index, text),\n    )\n    return int(cursor.lastrowid)\n\n\ndef chunk_counts_by_document(conn: sqlite3.Connection) -> list[tuple[str, str, int]]:\n    \"\"\"Return one row per document, even if it has zero chunks.\"\"\"\n    rows = conn.execute(\n        \"\"\"\n        SELECT w.name, d.title, COUNT(c.id) AS chunk_count\n        FROM documents AS d\n        JOIN workspaces AS w ON w.id = d.workspace_id\n        LEFT JOIN chunks AS c ON c.document_id = d.id\n        GROUP BY d.id, w.name, d.title\n        ORDER BY d.id\n        \"\"\"\n    ).fetchall()\n    return [(workspace, title, chunk_count) for workspace, title, chunk_count in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "document-chunk-embedding-schema",
+      "title": "Document Chunk Embedding Schema",
+      "path": "modules/databases/schema-design/document-chunk-embedding-schema",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "readme": "# Document Chunk Embedding Schema\n\n> Track: `databases` | Topic: `schema-design`\n\n## Concept\n\nA retrieval system usually needs separate tables for documents, chunks, embedding jobs, and embeddings so that content, lineage, and model metadata stay queryable.\n\n## Key Points\n\n- Keep document metadata separate from chunk rows.\n- Record which embedding job produced each vector so you can re-embed safely later.\n- Use uniqueness constraints to prevent duplicate chunk positions or duplicate embeddings for the same chunk and job.\n- Schema design for AI systems is mostly normal schema design plus lineage.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_ai_retrieval_schema(conn)\ndocument_id = insert_document(conn, 42, \"spec\")\nchunk_id = insert_chunk(conn, document_id, 0, \"Agent memory needs retrieval.\")\njob_id = insert_embedding_job(conn, \"text-embedding-3-small\", 3)\nattach_chunk_embedding(conn, chunk_id, job_id, [0.1, 0.2, 0.3])\nrows = list_document_embeddings(conn, document_id)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_ai_retrieval_schema(conn: sqlite3.Connection) -> None:\ndef insert_document(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    source_uri: str | None = None,\n) -> int:\ndef insert_chunk(\n    conn: sqlite3.Connection,\n    document_id: int,\n    chunk_index: int,\n    text: str,\n) -> int:\ndef insert_embedding_job(conn: sqlite3.Connection, model_name: str, dimensions: int) -> int:\ndef attach_chunk_embedding(\n    conn: sqlite3.Connection,\n    chunk_id: int,\n    embedding_job_id: int,\n    vector: list[float],\n) -> int:\ndef list_document_embeddings(\n    conn: sqlite3.Connection,\n    document_id: int,\n) -> list[dict[str, object]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/schema-design/document-chunk-embedding-schema/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/schema-design/document-chunk-embedding-schema/python/document_chunk_embedding_schema.py",
+          "language": "python",
+          "content": "\"\"\"document_chunk_embedding_schema - normalized retrieval schema with lineage.\"\"\"\n\nfrom __future__ import annotations\n\nimport json\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    conn = sqlite3.connect(\":memory:\")\n    conn.execute(\"PRAGMA foreign_keys = ON\")\n    return conn\n\n\ndef create_ai_retrieval_schema(conn: sqlite3.Connection) -> None:\n    conn.executescript(\n        \"\"\"\n        CREATE TABLE documents (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            title TEXT NOT NULL,\n            source_uri TEXT\n        );\n\n        CREATE TABLE chunks (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            document_id INTEGER NOT NULL,\n            chunk_index INTEGER NOT NULL,\n            text TEXT NOT NULL,\n            token_count INTEGER NOT NULL,\n            FOREIGN KEY (document_id) REFERENCES documents(id) ON DELETE CASCADE,\n            UNIQUE (document_id, chunk_index)\n        );\n\n        CREATE TABLE embedding_jobs (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            model_name TEXT NOT NULL,\n            dimensions INTEGER NOT NULL\n        );\n\n        CREATE TABLE chunk_embeddings (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            chunk_id INTEGER NOT NULL,\n            embedding_job_id INTEGER NOT NULL,\n            vector_json TEXT NOT NULL,\n            FOREIGN KEY (chunk_id) REFERENCES chunks(id) ON DELETE CASCADE,\n            FOREIGN KEY (embedding_job_id) REFERENCES embedding_jobs(id) ON DELETE CASCADE,\n            UNIQUE (chunk_id, embedding_job_id)\n        );\n        \"\"\"\n    )\n\n\ndef insert_document(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    source_uri: str | None = None,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO documents (workspace_id, title, source_uri)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (workspace_id, title, source_uri),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_chunk(\n    conn: sqlite3.Connection,\n    document_id: int,\n    chunk_index: int,\n    text: str,\n) -> int:\n    token_count = len(text.split())\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO chunks (document_id, chunk_index, text, token_count)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        (document_id, chunk_index, text, token_count),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_embedding_job(\n    conn: sqlite3.Connection,\n    model_name: str,\n    dimensions: int,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO embedding_jobs (model_name, dimensions)\n        VALUES (?, ?)\n        \"\"\",\n        (model_name, dimensions),\n    )\n    return int(cursor.lastrowid)\n\n\ndef attach_chunk_embedding(\n    conn: sqlite3.Connection,\n    chunk_id: int,\n    embedding_job_id: int,\n    vector: list[float],\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO chunk_embeddings (chunk_id, embedding_job_id, vector_json)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (chunk_id, embedding_job_id, json.dumps(vector)),\n    )\n    return int(cursor.lastrowid)\n\n\ndef list_document_embeddings(\n    conn: sqlite3.Connection,\n    document_id: int,\n) -> list[dict[str, object]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT\n            c.chunk_index,\n            c.text,\n            c.token_count,\n            ej.model_name,\n            ej.dimensions,\n            ce.vector_json\n        FROM chunks AS c\n        JOIN chunk_embeddings AS ce ON ce.chunk_id = c.id\n        JOIN embedding_jobs AS ej ON ej.id = ce.embedding_job_id\n        WHERE c.document_id = ?\n        ORDER BY c.chunk_index, ej.model_name\n        \"\"\",\n        (document_id,),\n    ).fetchall()\n    return [\n        {\n            \"chunk_index\": chunk_index,\n            \"chunk_text\": chunk_text,\n            \"token_count\": token_count,\n            \"model_name\": model_name,\n            \"dimensions\": dimensions,\n            \"vector\": json.loads(vector_json),\n        }\n        for chunk_index, chunk_text, token_count, model_name, dimensions, vector_json in rows\n    ]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "window-functions-basics",
+      "title": "Window Functions Basics",
+      "path": "modules/databases/sql-patterns/window-functions-basics",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "readme": "# Window Functions Basics\n\n> Track: `databases` | Topic: `sql-patterns`\n\n## Concept\n\nWindow functions compute row-level statistics while still keeping one row per record.\n\n## Key Points\n\n- `ROW_NUMBER()` ranks rows inside a partition like `model_name`.\n- `LAG()` compares the current row to a previous row without a self-join.\n- Window functions are often the cleanest way to get best-run, latest-row, and running-delta queries.\n- They do not collapse the result set the way `GROUP BY` does.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_eval_results_table(conn)\nrecord_eval_result(conn, \"gpt-mini\", \"helpfulness\", 0.81, \"2026-03-01T09:00:00Z\")\nrecord_eval_result(conn, \"gpt-mini\", \"helpfulness\", 0.84, \"2026-03-02T09:00:00Z\")\nranked = rank_runs_within_model(conn)\nbest = best_run_per_model(conn)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_eval_results_table(conn: sqlite3.Connection) -> None:\ndef record_eval_result(\n    conn: sqlite3.Connection,\n    model_name: str,\n    dataset_name: str,\n    score: float,\n    recorded_at: str,\n) -> int:\ndef rank_runs_within_model(conn: sqlite3.Connection) -> list[dict[str, object]]:\ndef best_run_per_model(conn: sqlite3.Connection) -> list[dict[str, object]]:\ndef score_deltas_by_model(conn: sqlite3.Connection) -> list[dict[str, object]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/sql-patterns/window-functions-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/sql-patterns/window-functions-basics/python/window_functions_basics.py",
+          "language": "python",
+          "content": "\"\"\"window_functions_basics - ranking and deltas with SQL window functions.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_eval_results_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE eval_results (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            model_name TEXT NOT NULL,\n            dataset_name TEXT NOT NULL,\n            score REAL NOT NULL,\n            recorded_at TEXT NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef record_eval_result(\n    conn: sqlite3.Connection,\n    model_name: str,\n    dataset_name: str,\n    score: float,\n    recorded_at: str,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO eval_results (model_name, dataset_name, score, recorded_at)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        (model_name, dataset_name, score, recorded_at),\n    )\n    return int(cursor.lastrowid)\n\n\ndef rank_runs_within_model(conn: sqlite3.Connection) -> list[dict[str, object]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT\n            model_name,\n            dataset_name,\n            score,\n            recorded_at,\n            ROW_NUMBER() OVER (\n                PARTITION BY model_name\n                ORDER BY score DESC, recorded_at DESC, id DESC\n            ) AS rank_in_model\n        FROM eval_results\n        ORDER BY model_name, rank_in_model\n        \"\"\"\n    ).fetchall()\n    return [\n        {\n            \"model_name\": model_name,\n            \"dataset_name\": dataset_name,\n            \"score\": score,\n            \"recorded_at\": recorded_at,\n            \"rank_in_model\": rank_in_model,\n        }\n        for model_name, dataset_name, score, recorded_at, rank_in_model in rows\n    ]\n\n\ndef best_run_per_model(conn: sqlite3.Connection) -> list[dict[str, object]]:\n    rows = conn.execute(\n        \"\"\"\n        WITH ranked AS (\n            SELECT\n                id,\n                model_name,\n                dataset_name,\n                score,\n                recorded_at,\n                ROW_NUMBER() OVER (\n                    PARTITION BY model_name\n                    ORDER BY score DESC, recorded_at DESC, id DESC\n                ) AS rank_in_model\n            FROM eval_results\n        )\n        SELECT model_name, dataset_name, score, recorded_at\n        FROM ranked\n        WHERE rank_in_model = 1\n        ORDER BY model_name\n        \"\"\"\n    ).fetchall()\n    return [\n        {\n            \"model_name\": model_name,\n            \"dataset_name\": dataset_name,\n            \"score\": score,\n            \"recorded_at\": recorded_at,\n        }\n        for model_name, dataset_name, score, recorded_at in rows\n    ]\n\n\ndef score_deltas_by_model(conn: sqlite3.Connection) -> list[dict[str, object]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT\n            model_name,\n            dataset_name,\n            score,\n            recorded_at,\n            score - LAG(score) OVER (\n                PARTITION BY model_name\n                ORDER BY recorded_at, id\n            ) AS delta_from_previous\n        FROM eval_results\n        ORDER BY model_name, recorded_at, id\n        \"\"\"\n    ).fetchall()\n    return [\n        {\n            \"model_name\": model_name,\n            \"dataset_name\": dataset_name,\n            \"score\": score,\n            \"recorded_at\": recorded_at,\n            \"delta_from_previous\": delta,\n        }\n        for model_name, dataset_name, score, recorded_at, delta in rows\n    ]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "event-stream-basics",
+      "title": "Event Stream Basics",
+      "path": "modules/databases/streaming/event-stream-basics",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "readme": "# Event Stream Basics\n\n> Track: `databases` | Topic: `streaming`\n\n## Concept\n\nAn event stream is an append-only log where consumers read events in offset order and keep track of how far they have progressed.\n\n## Key Points\n\n- Offsets turn a list of events into a replayable stream.\n- Reading from an offset lets a consumer resume after restarts.\n- Consumer lag is the gap between the end of the stream and the next event a consumer will read.\n- Materialized views are often just deterministic folds over an event log.\n\n## Minimal Code Mental Model\n\n```python\nstream = []\nappend_event(stream, \"document.ingested\", \"doc-1\", {\"status\": \"ready\"})\nappend_event(stream, \"document.ingested\", \"doc-1\", {\"status\": \"embedded\"})\nevents = read_from_offset(stream, offset=1)\nlag = consumer_lag(stream, next_offset=1)\n```\n\n## Function\n\n```python\ndef append_event(\n    stream: list[dict[str, object]],\n    topic: str,\n    key: str,\n    payload: dict[str, object],\n) -> int:\ndef read_from_offset(\n    stream: list[dict[str, object]],\n    offset: int,\n    max_events: int | None = None,\n) -> list[dict[str, object]]:\ndef consumer_lag(stream: list[dict[str, object]], next_offset: int) -> int:\ndef materialize_latest_payload_by_key(\n    stream: list[dict[str, object]],\n    topic: str,\n) -> dict[str, dict[str, object]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/streaming/event-stream-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/streaming/event-stream-basics/python/event_stream_basics.py",
+          "language": "python",
+          "content": "\"\"\"event_stream_basics - append-only offsets and simple materialization.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef append_event(\n    stream: list[dict[str, object]],\n    topic: str,\n    key: str,\n    payload: dict[str, object],\n) -> int:\n    offset = len(stream)\n    stream.append(\n        {\n            \"offset\": offset,\n            \"topic\": topic,\n            \"key\": key,\n            \"payload\": payload,\n        }\n    )\n    return offset\n\n\ndef read_from_offset(\n    stream: list[dict[str, object]],\n    offset: int,\n    max_events: int | None = None,\n) -> list[dict[str, object]]:\n    events = [event for event in stream if int(event[\"offset\"]) >= offset]\n    return events if max_events is None else events[:max_events]\n\n\ndef consumer_lag(stream: list[dict[str, object]], next_offset: int) -> int:\n    return max(len(stream) - next_offset, 0)\n\n\ndef materialize_latest_payload_by_key(\n    stream: list[dict[str, object]],\n    topic: str,\n) -> dict[str, dict[str, object]]:\n    latest: dict[str, dict[str, object]] = {}\n    for event in stream:\n        if event[\"topic\"] == topic:\n            latest[str(event[\"key\"])] = dict(event[\"payload\"])\n    return latest\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "transaction-basics",
+      "title": "Transaction Basics",
+      "path": "modules/databases/transactions/transaction-basics",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "readme": "# Transaction Basics\n\n> Track: `databases` | Topic: `transactions`\n\n## Concept\n\nA transaction groups several writes so they either all happen or none of them do.\n\n## Key Points\n\n- Transactions protect multi-step updates like money movement or job state transitions.\n- Rollback is the core recovery mechanism when a failure happens in the middle.\n- Constraints and transactions work together: constraints reject invalid states, transactions keep partial work from leaking.\n- Atomicity matters in AI systems too, especially for billing, job orchestration, and status updates.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_accounts_table(conn)\nfrom_id = create_account(conn, \"ops\", 150)\nto_id = create_account(conn, \"research\", 20)\ntransfer_funds(conn, from_id, to_id, 50)\nbalances = account_balances(conn)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_accounts_table(conn: sqlite3.Connection) -> None:\ndef create_account(conn: sqlite3.Connection, owner: str, balance: int) -> int:\ndef account_balances(conn: sqlite3.Connection) -> dict[str, int]:\ndef transfer_funds(\n    conn: sqlite3.Connection,\n    from_account_id: int,\n    to_account_id: int,\n    amount: int,\n    fail_after_debit: bool = False,\n) -> None:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/transactions/transaction-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/transactions/transaction-basics/python/transaction_basics.py",
+          "language": "python",
+          "content": "\"\"\"transaction_basics - atomic multi-step updates with rollback.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    conn = sqlite3.connect(\":memory:\")\n    conn.isolation_level = None\n    return conn\n\n\ndef create_accounts_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE accounts (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            owner TEXT NOT NULL UNIQUE,\n            balance INTEGER NOT NULL CHECK (balance >= 0)\n        )\n        \"\"\"\n    )\n\n\ndef create_account(conn: sqlite3.Connection, owner: str, balance: int) -> int:\n    cursor = conn.execute(\n        \"INSERT INTO accounts (owner, balance) VALUES (?, ?)\",\n        (owner, balance),\n    )\n    return int(cursor.lastrowid)\n\n\ndef account_balances(conn: sqlite3.Connection) -> dict[str, int]:\n    rows = conn.execute(\n        \"SELECT owner, balance FROM accounts ORDER BY owner\"\n    ).fetchall()\n    return {owner: balance for owner, balance in rows}\n\n\ndef transfer_funds(\n    conn: sqlite3.Connection,\n    from_account_id: int,\n    to_account_id: int,\n    amount: int,\n    fail_after_debit: bool = False,\n) -> None:\n    if amount <= 0:\n        raise ValueError(\"amount must be positive\")\n\n    conn.execute(\"BEGIN\")\n    try:\n        debit = conn.execute(\n            \"\"\"\n            UPDATE accounts\n            SET balance = balance - ?\n            WHERE id = ? AND balance >= ?\n            \"\"\",\n            (amount, from_account_id, amount),\n        )\n        if debit.rowcount != 1:\n            raise ValueError(\"insufficient funds or missing source account\")\n\n        if fail_after_debit:\n            raise RuntimeError(\"simulated failure after debit\")\n\n        credit = conn.execute(\n            \"\"\"\n            UPDATE accounts\n            SET balance = balance + ?\n            WHERE id = ?\n            \"\"\",\n            (amount, to_account_id),\n        )\n        if credit.rowcount != 1:\n            raise ValueError(\"missing destination account\")\n\n        conn.execute(\"COMMIT\")\n    except Exception:\n        conn.execute(\"ROLLBACK\")\n        raise\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "hybrid-search",
+      "title": "Hybrid Search",
+      "path": "modules/databases/vector-db/hybrid-search",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "readme": "# Hybrid Search\n\n> Track: `databases` | Topic: `vector-db`\n\n## Concept\n\nHybrid search combines lexical matching with vector similarity so exact keywords and semantic similarity can both influence ranking.\n\n## Key Points\n\n- Vector similarity helps when wording differs but meaning is close.\n- Lexical matching helps when exact tokens like product names, IDs, or policy terms matter.\n- A weighted hybrid score is often better than either signal alone.\n- Real retrieval systems usually add metadata filters and reranking on top of this base layer.\n\n## Minimal Code Mental Model\n\n```python\ndocs = [\n    {\"id\": \"a\", \"text\": \"pgvector permissions filter\", \"vector\": [0.6, 0.8]},\n    {\"id\": \"b\", \"text\": \"semantic ranking only\", \"vector\": [1.0, 0.0]},\n]\nranked = rank_documents(\"pgvector permissions\", [1.0, 0.0], docs, alpha=0.4)\n```\n\n## Function\n\n```python\ndef tokenize(text: str) -> list[str]:\ndef cosine_similarity(left: list[float], right: list[float]) -> float:\ndef lexical_overlap_score(query_text: str, doc_text: str) -> float:\ndef hybrid_score(\n    query_text: str,\n    query_vector: list[float],\n    doc_text: str,\n    doc_vector: list[float],\n    alpha: float = 0.5,\n) -> float:\ndef rank_documents(\n    query_text: str,\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    alpha: float = 0.5,\n) -> list[tuple[str, float]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/vector-db/hybrid-search/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/vector-db/hybrid-search/python/hybrid_search.py",
+          "language": "python",
+          "content": "\"\"\"hybrid_search - combine lexical overlap with cosine similarity.\"\"\"\n\nfrom __future__ import annotations\n\nimport math\nimport re\n\n\ndef tokenize(text: str) -> list[str]:\n    return re.findall(r\"[a-z0-9]+\", text.lower())\n\n\ndef cosine_similarity(left: list[float], right: list[float]) -> float:\n    if len(left) != len(right):\n        raise ValueError(\"vectors must have the same dimensions\")\n    left_norm = math.sqrt(sum(value * value for value in left))\n    right_norm = math.sqrt(sum(value * value for value in right))\n    if left_norm == 0 or right_norm == 0:\n        return 0.0\n    dot = sum(a * b for a, b in zip(left, right))\n    similarity = dot / (left_norm * right_norm)\n    if abs(similarity - 1.0) < 1e-12:\n        return 1.0\n    if abs(similarity + 1.0) < 1e-12:\n        return -1.0\n    return similarity\n\n\ndef lexical_overlap_score(query_text: str, doc_text: str) -> float:\n    query_terms = set(tokenize(query_text))\n    if not query_terms:\n        return 0.0\n    doc_terms = set(tokenize(doc_text))\n    return len(query_terms & doc_terms) / len(query_terms)\n\n\ndef hybrid_score(\n    query_text: str,\n    query_vector: list[float],\n    doc_text: str,\n    doc_vector: list[float],\n    alpha: float = 0.5,\n) -> float:\n    if not 0.0 <= alpha <= 1.0:\n        raise ValueError(\"alpha must be between 0 and 1\")\n    semantic = cosine_similarity(query_vector, doc_vector)\n    lexical = lexical_overlap_score(query_text, doc_text)\n    return alpha * semantic + (1.0 - alpha) * lexical\n\n\ndef rank_documents(\n    query_text: str,\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    alpha: float = 0.5,\n) -> list[tuple[str, float]]:\n    scored = [\n        (\n            str(document[\"id\"]),\n            hybrid_score(\n                query_text,\n                query_vector,\n                str(document[\"text\"]),\n                list(document[\"vector\"]),\n                alpha=alpha,\n            ),\n        )\n        for document in documents\n    ]\n    return sorted(scored, key=lambda item: (-item[1], item[0]))\n"
         }
       ]
     },
@@ -9681,6 +9841,105 @@
       "path": "docs/ai-agents/workflows/README.md",
       "summary": "This section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.",
       "content": "# Workflows\n\nThis section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.\n\n## Purpose\n\nUse this page to understand:\n- routing to the right worker\n- structured handoffs\n- bounded retries\n\n## First Principles\n\n- Workflows matter when one free-form agent loop is not enough.\n- Routing should depend on task type, not on vague prompt wording alone.\n- Handoffs should pass compact structured state, not the entire raw transcript.\n- Retries should be limited and explicit.\n\n## Minimal Code Mental Model\n\n```python\nroute = route_task(\"summarize docs and file a ticket\", routes)\nhandoff = build_handoff(\"task_7\", route, {\"doc_id\": \"abc\"})\nretry = should_retry(attempt=1, max_attempts=3, retryable=True)\n```\n\n## Canonical Modules\n\n- Routing and handoff basics: `handoffs-and-routing`\n- Retry and fallback basics: `retries-and-recovery`\n\n## Supporting Modules\n\n- Escalation routing after failed or risky steps: `escalation-routing`\n- Critique-and-revise loops for improving a draft: `evaluator-optimizer-loops`\n- Explicit latency budgets across multi-step runs: `latency-budget-accounting`\n- Multimodal execution routing over text, image, audio, or video inputs: `multimodal-agent-loops`\n- Sequential stage-to-stage prompting with explicit outputs: `prompt-chaining`\n- Bayesian route ranking from observed success/failure evidence: `posterior-routing`\n- Weighted route selection from explicit signals: `routing-scorecards`\n- Runtime route choice with entropy and ambiguity checks: `uncertainty-aware-routing`\n- Low-latency turn routing for voice and streaming sessions: `voice-and-realtime-agent-loops`\n- Explicit state transitions for multi-step runs: `state-machine-basics`\n- Parallel branches and join points in a workflow: `workflow-concurrency-basics`\n\n## When To Use What\n\n- Start with `handoffs-and-routing` when the agent needs more than one specialized step.\n- Use `retries-and-recovery` when steps can fail transiently and need bounded retries or a safe fallback.\n- Use `escalation-routing` when failures need a structured handoff to review instead of another retry.\n- Use `evaluator-optimizer-loops` when one pass produces a draft that should be critiqued and revised instead of simply retried.\n- Use `latency-budget-accounting` when response time needs an explicit total budget, per-step split, and overrun route.\n- Use `multimodal-agent-loops` when the workflow must check required modalities, possibly call tools over them, and only then answer or escalate.\n- Use `prompt-chaining` when one stage should transform output for the next stage instead of handing the whole task to one prompt.\n- Use `posterior-routing` when repeated route outcomes should update route choice from observed evidence rather than fixed priors alone.\n- Use `routing-scorecards` when route choice should come from weighted task, tool, and latency signals instead of loose keyword heuristics.\n- Use `uncertainty-aware-routing` when a top route exists but the system still needs a quantitative check for ambiguity or low confidence before acting.\n- Use `voice-and-realtime-agent-loops` when the workflow must handle streaming input, interruptions, or realtime response budgets.\n- Use `state-machine-basics` when the workflow has a small fixed set of stages and transitions.\n- Use `workflow-concurrency-basics` when independent steps can run in parallel and later join.\n- Add more workflow depth only after the baseline route and handoff state are stable.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "README.md",
+      "slug": "README",
+      "title": "Databases",
+      "path": "docs/databases/README.md",
+      "summary": "This track is about the data layer for modern products and AI systems.",
+      "content": "# Databases\n\nThis track is about the data layer for modern products and AI systems.\n\n## Purpose\n\nUse this track to learn databases in the order that matters most in 2026:\n- relational source-of-truth design\n- schema and query patterns\n- indexing, transactions, and query plans\n- caching and streaming\n- document, key-value, and vector retrieval systems\n\n## First Principles\n\n- Most AI systems still keep core business state in a relational database.\n- Schema design, access paths, and consistency rules matter more than vendor labels.\n- AI products add new data needs like embeddings, chunk metadata, eval logs, lineage, and freshness, but they do not replace transactional fundamentals.\n- Most production systems are hybrid: one operational store, one cache, one stream, one retrieval layer, and one analytics path.\n\n## How To Use This Track\n\n- Start with `relational`, `schema-design`, and `sql-patterns`.\n- Add `indexing`, `transactions`, and `query-plans` before chasing system-specific optimizations.\n- Add `caching`, `streaming`, `nosql`, and `vector-db` when the product shape actually requires them.\n- Prefer learning one stable pattern deeply over memorizing a long vendor feature list.\n\n## Main Sections\n\n- Relational core: `docs/databases/relational/overview.md`\n- Schema design: `docs/databases/schema-design/overview.md`\n- SQL and analytics patterns: `docs/databases/sql-patterns/overview.md`\n- Indexing and access paths: `docs/databases/indexing/overview.md`\n- Transactions and concurrency: `docs/databases/transactions/overview.md`\n- Query plans and tuning: `docs/databases/query-plans/overview.md`\n- Caching and semantic caching: `docs/databases/caching/overview.md`\n- NoSQL trade-offs: `docs/databases/nosql/overview.md`\n- Streaming and CDC: `docs/databases/streaming/overview.md`\n- Vector retrieval and memory: `docs/databases/vector-db/overview.md`\n\n## AI-Time 2026 Priorities\n\n- Keep PostgreSQL-level relational fundamentals, MVCC, and `EXPLAIN` central.\n- Treat DuckDB and Parquet as part of the normal analytics toolbox, not a separate specialty.\n- Teach CDC and streaming as the bridge between operational systems, analytics, and AI pipelines.\n- Teach caching with invalidation first, then semantic caching for repeated model calls.\n- Teach vector search as one retrieval component inside a larger metadata and ranking system.\n\n## Scope Rule\n\n- Prefer stable mental models over vendor tours.\n- Prefer concise docs and compact labs over exhaustive catalogs.\n- Prefer Postgres-first concepts for core database ideas, while keeping examples portable when possible.\n- Only add separate modules when they teach a distinct access pattern, failure mode, or system design choice.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "caching",
+      "slug": "overview",
+      "title": "Caching And Semantic Caching",
+      "path": "docs/databases/caching/overview.md",
+      "summary": "Caches reduce latency and cost by serving reused data from a faster copy.",
+      "content": "# Caching And Semantic Caching\n\nCaches reduce latency and cost by serving reused data from a faster copy.\n\n## Purpose\n\nUse this topic to learn classic cache patterns, invalidation trade-offs, and where AI-era semantic caching fits.\n\n## First Principles\n\n- A cache is a copy. The core problem is deciding when that copy is valid enough to trust.\n- Read-mostly workloads benefit from cache-aside patterns. Write-heavy workloads often fail when caching is added naively.\n- TTL is a freshness policy, not a correctness guarantee.\n- Semantic caching helps with repeated LLM requests, but it does not replace authorization checks, grounding checks, or product-specific invalidation.\n\n## Minimal Query Mental Model\n\n```python\nvalue = cache.get(key)\nif value is None:\n    value = load_from_database(key)\n    cache.set(key, value, ttl=300)\nreturn value\n```\n\n## Canonical Modules\n\n- `cache-aside`\n- `ttl-and-invalidation`\n- `write-through-vs-write-behind`\n- `client-side-caching`\n- `hot-key-and-rate-limit-protection`\n- `semantic-caching-basics`\n\n## When To Use What\n\n- Start with cache-aside and explicit invalidation rules.\n- Use TTL when stale reads are acceptable for a bounded period.\n- Use write-through or write-behind only when the operational trade-off is clear.\n- Use semantic caching for repeated retrieval or model-answer patterns with stable permissions and bounded freshness needs.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "overview",
+      "title": "Indexing And Access Paths",
+      "path": "docs/databases/indexing/overview.md",
+      "summary": "Indexes are physical shortcuts for specific query shapes.",
+      "content": "# Indexing And Access Paths\n\nIndexes are physical shortcuts for specific query shapes.\n\n## Purpose\n\nUse this topic to learn how access paths speed up reads, what they cost on writes, and how to choose indexes from actual predicates and sort order.\n\n## First Principles\n\n- An index is not free. It adds storage, write amplification, and maintenance cost.\n- Good indexing starts from the query shape: filters, joins, ordering, and limits.\n- Composite index order matters because databases use left-prefix access patterns.\n- The fastest query is often a combination of better schema, smaller scans, and the right index, not \"add indexes everywhere\".\n\n## Minimal Query Mental Model\n\n```sql\nEXPLAIN\nSELECT id, created_at\nFROM eval_runs\nWHERE workspace_id = 42\n  AND status = 'completed'\nORDER BY created_at DESC\nLIMIT 20;\n```\n\n## Canonical Modules\n\n- `btree-basics`\n- `composite-index-order`\n- `covering-index-concepts`\n- `partial-indexes`\n- `jsonb-and-gin-indexing`\n- `partition-pruning-basics`\n\n## When To Use What\n\n- Use B-tree indexes first for equality, range, and ordered lookups.\n- Use composite indexes when filters and sort order repeat on a hot path.\n- Use partial indexes when only a subset of rows matters often enough to justify a targeted structure.\n- Use JSONB and GIN only when flexible metadata queries are truly part of the product path.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "overview",
+      "title": "NoSQL Trade-Offs",
+      "path": "docs/databases/nosql/overview.md",
+      "summary": "NoSQL is a family of data model choices, not one thing.",
+      "content": "# NoSQL Trade-Offs\n\nNoSQL is a family of data model choices, not one thing.\n\n## Purpose\n\nUse this topic to understand when document, key-value, and wide-column systems fit better than a relational model, and when they do not.\n\n## First Principles\n\n- The data model should follow the access pattern and consistency needs.\n- Flexible schema does not remove the need for design. It just moves the design pressure elsewhere.\n- Different NoSQL systems trade joins, transactions, secondary indexes, and consistency guarantees for scale or simplicity on specific workloads.\n- Many teams can stay in a relational database longer than they think by using good schema design and selective JSONB-style flexibility.\n\n## Minimal Query Mental Model\n\n```json\n{\n  \"session_id\": \"abc123\",\n  \"user_id\": 42,\n  \"messages\": [\n    {\"role\": \"user\", \"text\": \"Find last week's failed runs\"},\n    {\"role\": \"assistant\", \"text\": \"I found 3 failed runs\"}\n  ]\n}\n```\n\n## Canonical Modules\n\n- `key-value-patterns`\n- `document-modeling`\n- `consistency-and-quorum-mental-model`\n- `secondary-index-tradeoffs`\n- `wide-row-and-time-series-patterns`\n- `when-postgres-is-enough`\n\n## When To Use What\n\n- Use key-value systems for extremely simple lookup paths with predictable keys.\n- Use document stores when nested data is the natural product shape and cross-document joins are limited.\n- Use wide-row or time-series models when write shape and retention patterns dominate the design.\n- Stay relational when consistency, joins, and flexible querying matter more than a narrow scaling win.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "overview",
+      "title": "Query Plans And Tuning",
+      "path": "docs/databases/query-plans/overview.md",
+      "summary": "If you cannot read a query plan, you are tuning blind.",
+      "content": "# Query Plans And Tuning\n\nIf you cannot read a query plan, you are tuning blind.\n\n## Purpose\n\nUse this topic to learn how the optimizer chooses scans, joins, and sorts, and how to debug slow queries from the plan outward.\n\n## First Principles\n\n- Query performance comes from row counts, access paths, and operator choice.\n- `EXPLAIN` is a model of what the optimizer expects. `EXPLAIN ANALYZE` shows what actually happened.\n- Bad plans often come from poor cardinality estimates, missing indexes, or query shapes that force too much work.\n- Tuning is usually simpler than it looks: reduce scanned rows, improve predicates, and make joins more selective earlier.\n\n## Minimal Query Mental Model\n\n```sql\nEXPLAIN ANALYZE\nSELECT c.document_id, COUNT(*) AS hits\nFROM chunks AS c\nWHERE c.workspace_id = 42\n  AND c.created_at >= now() - interval '7 days'\nGROUP BY c.document_id;\n```\n\n## Canonical Modules\n\n- `explain-basics`\n- `seq-scan-vs-index-scan`\n- `nested-loop-vs-hash-join`\n- `cardinality-estimation`\n- `sort-limit-and-group-by-costs`\n- `plan-regression-debugging`\n\n## When To Use What\n\n- Use `EXPLAIN` before changing schema or adding indexes.\n- Use `EXPLAIN ANALYZE` when a query is already slow and you need actual timing and row counts.\n- Suspect cardinality errors when a plan shape looks reasonable but performs badly.\n- Recheck the data model when tuning becomes a long chain of special-case indexes.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "relational",
+      "slug": "overview",
+      "title": "Relational Core",
+      "path": "docs/databases/relational/overview.md",
+      "summary": "Most AI products still keep their source-of-truth state in relational tables.",
+      "content": "# Relational Core\n\nMost AI products still keep their source-of-truth state in relational tables.\n\n## Purpose\n\nUse this topic to learn how tables, keys, joins, and constraints turn raw rows into a reliable product data model.\n\n## First Principles\n\n- A relational database is best treated as the system of record for users, orgs, permissions, jobs, eval runs, and other durable state.\n- Normalization reduces duplication in source-of-truth tables. Denormalization creates faster read paths when the access pattern is already clear.\n- Constraints are part of the design, not optional cleanup. A foreign key or uniqueness rule is often better than application-only conventions.\n- AI-specific data like prompts, documents, chunks, and embeddings still need relational metadata around ownership, timestamps, lineage, and permissions.\n\n## Minimal Query Mental Model\n\n```sql\nSELECT d.id, d.title, COUNT(c.id) AS chunk_count\nFROM documents AS d\nLEFT JOIN chunks AS c ON c.document_id = d.id\nWHERE d.workspace_id = 42\nGROUP BY d.id, d.title\nORDER BY d.created_at DESC;\n```\n\n## Canonical Modules\n\n- `tables-and-keys`\n- `join-shapes`\n- `constraints-and-integrity`\n- `normalization-vs-denormalization`\n- `jsonb-inside-relational-systems`\n\n## When To Use What\n\n- Start here before `nosql` or `vector-db`.\n- Use normalized tables for correctness and long-term maintainability.\n- Add selective denormalization only after the hot read path is real.\n- Use flexible columns like JSONB for metadata at the edge, not as an excuse to skip schema design.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "overview",
+      "title": "Schema Design For Products And AI",
+      "path": "docs/databases/schema-design/overview.md",
+      "summary": "Schema design is where database modeling meets product behavior.",
+      "content": "# Schema Design For Products And AI\n\nSchema design is where database modeling meets product behavior.\n\n## Purpose\n\nUse this topic to design tables around access patterns, ownership, auditability, and the data shapes that modern AI products add.\n\n## First Principles\n\n- Model entities, relationships, and lifecycle first. Query syntax comes later.\n- Separate current state from append-only history when the system needs both fast reads and reliable audits.\n- Design for tenant boundaries, permissions, and deletion rules early. Retrofitting them later is expensive.\n- AI systems add document, chunk, embedding, feedback, and eval tables, but they still need normal product modeling around users, workspaces, jobs, and runs.\n\n## Minimal Query Mental Model\n\n```sql\nCREATE TABLE documents (\n  id BIGSERIAL PRIMARY KEY,\n  workspace_id BIGINT NOT NULL,\n  title TEXT NOT NULL,\n  source_uri TEXT,\n  created_at TIMESTAMPTZ NOT NULL DEFAULT now()\n);\n\nCREATE TABLE chunks (\n  id BIGSERIAL PRIMARY KEY,\n  document_id BIGINT NOT NULL REFERENCES documents(id),\n  chunk_index INT NOT NULL,\n  text TEXT NOT NULL,\n  UNIQUE (document_id, chunk_index)\n);\n```\n\n## Canonical Modules\n\n- `entity-vs-event-tables`\n- `one-to-many-and-many-to-many`\n- `metadata-and-lineage-tables`\n- `multi-tenant-schema-patterns`\n- `audit-soft-delete-and-history`\n- `document-chunk-embedding-schema`\n\n## When To Use What\n\n- Use entity tables when the product needs the latest state quickly.\n- Use append-only event tables when ordering and replay matter.\n- Use explicit join tables when relationships are real first-class data.\n- Use clear lineage tables when AI outputs depend on prompts, datasets, or upstream jobs.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "overview",
+      "title": "SQL And Analytics Patterns",
+      "path": "docs/databases/sql-patterns/overview.md",
+      "summary": "Most day-to-day database work is repeated query shapes, not obscure syntax.",
+      "content": "# SQL And Analytics Patterns\n\nMost day-to-day database work is repeated query shapes, not obscure syntax.\n\n## Purpose\n\nUse this topic to learn the SQL patterns that matter across OLTP, analytics, and AI data workflows.\n\n## First Principles\n\n- Most useful queries are combinations of filter, join, aggregate, rank, dedupe, and update.\n- Common table expressions help readability, but they do not replace understanding the actual plan.\n- Window functions are often the cleanest way to compute latest-row, rank, running total, and cohort-style questions.\n- In 2026, local analytics with DuckDB plus Parquet is part of the normal workflow for experiments, offline evaluation, and data debugging.\n\n## Minimal Query Mental Model\n\n```sql\nWITH ranked AS (\n  SELECT\n    run_id,\n    model_name,\n    score,\n    ROW_NUMBER() OVER (\n      PARTITION BY model_name\n      ORDER BY score DESC, run_id DESC\n    ) AS rn\n  FROM eval_results\n)\nSELECT model_name, run_id, score\nFROM ranked\nWHERE rn = 1;\n```\n\n## Canonical Modules\n\n- `joins-and-aggregations`\n- `ctes-and-readable-sql`\n- `window-functions-basics`\n- `dedup-and-latest-row`\n- `upserts-and-merge-patterns`\n- `duckdb-parquet-query-patterns`\n\n## When To Use What\n\n- Start with joins and aggregations before window functions.\n- Use window functions when you need row context without collapsing the result set.\n- Use upserts when writes must be idempotent and conflict-safe.\n- Use DuckDB and Parquet when the question is analytical and does not need transactional writes.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "overview",
+      "title": "Streaming And CDC",
+      "path": "docs/databases/streaming/overview.md",
+      "summary": "Streaming connects operational databases to downstream systems without waiting for batch syncs.",
+      "content": "# Streaming And CDC\n\nStreaming connects operational databases to downstream systems without waiting for batch syncs.\n\n## Purpose\n\nUse this topic to learn events, consumer groups, CDC, and the patterns that keep data pipelines correct under retries and replay.\n\n## First Principles\n\n- An event is a fact that happened. A stream is an ordered log of those facts.\n- CDC captures database changes after commit. Application events are explicit signals from business logic. They solve different problems.\n- Delivery guarantees do not remove the need for idempotent consumers.\n- Streaming systems are often the glue between transactional databases, caches, analytics systems, and AI pipelines.\n\n## Minimal Query Mental Model\n\n```json\n{\n  \"event_id\": \"evt_001\",\n  \"topic\": \"document.ingested\",\n  \"document_id\": 918,\n  \"workspace_id\": 42,\n  \"occurred_at\": \"2026-03-11T10:00:00Z\"\n}\n```\n\n## Canonical Modules\n\n- `event-stream-basics`\n- `cdc-vs-application-events`\n- `consumer-groups-and-offsets`\n- `idempotent-consumers`\n- `outbox-and-materialized-view-patterns`\n- `connectors-and-pipeline-shapes`\n\n## When To Use What\n\n- Use CDC when downstream systems need committed database changes.\n- Use application events when business meaning matters more than raw row-level change capture.\n- Use idempotent consumers whenever retries or replay are possible.\n- Use streaming when freshness across systems matters enough that batch polling is no longer acceptable.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "overview",
+      "title": "Transactions, MVCC, And Concurrency",
+      "path": "docs/databases/transactions/overview.md",
+      "summary": "Transactions are how a database stays correct when many things happen at once.",
+      "content": "# Transactions, MVCC, And Concurrency\n\nTransactions are how a database stays correct when many things happen at once.\n\n## Purpose\n\nUse this topic to learn how isolation, MVCC, retries, and locks protect correctness under concurrent reads and writes.\n\n## First Principles\n\n- A transaction defines which changes succeed or fail together.\n- Isolation level is about the anomalies you allow, not a vague \"safer is better\" slider.\n- MVCC lets readers and writers coexist by working with row versions instead of one global mutable state.\n- Retries and idempotency are part of transaction design because failures and deadlocks are normal in real systems.\n\n## Minimal Query Mental Model\n\n```sql\nBEGIN;\n\nUPDATE accounts\nSET balance = balance - 50\nWHERE id = 1;\n\nUPDATE accounts\nSET balance = balance + 50\nWHERE id = 2;\n\nCOMMIT;\n```\n\n## Canonical Modules\n\n- `transaction-basics`\n- `isolation-levels-and-anomalies`\n- `mvcc-mental-model`\n- `deadlocks-and-lock-ordering`\n- `idempotent-writes-and-retries`\n- `outbox-pattern`\n\n## When To Use What\n\n- Start with transaction basics before explicit locking.\n- Use stronger isolation only when the anomaly really matters.\n- Use retries for transient conflicts and deadlocks.\n- Use the outbox pattern when database writes must drive downstream queues or events reliably.\n"
+    },
+    {
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "overview",
+      "title": "Vector Retrieval, Hybrid Search, And Memory",
+      "path": "docs/databases/vector-db/overview.md",
+      "summary": "Vector search is one retrieval layer inside a larger system of metadata, ranking, and product constraints.",
+      "content": "# Vector Retrieval, Hybrid Search, And Memory\n\nVector search is one retrieval layer inside a larger system of metadata, ranking, and product constraints.\n\n## Purpose\n\nUse this topic to learn how embeddings, ANN indexes, metadata filters, reranking, and agent memory fit together in AI products.\n\n## First Principles\n\n- A vector store is rarely enough by itself. Good retrieval also needs document metadata, permissions, freshness rules, and often lexical ranking.\n- Chunking and embedding quality often matter more than the database brand.\n- Exact search and approximate nearest neighbor search trade recall, latency, and memory differently.\n- Agent memory is retrieval over prior state. It still needs schema, scoring, decay, and conflict rules.\n\n## Minimal Query Mental Model\n\n```sql\nSELECT chunk_id, document_id, distance\nFROM chunk_embeddings\nWHERE workspace_id = 42\n  AND doc_type = 'spec'\nORDER BY embedding <-> :query_embedding\nLIMIT 5;\n```\n\n## Canonical Modules\n\n- `embedding-table-design`\n- `exact-vs-ann-search`\n- `metadata-filtering`\n- `hybrid-search`\n- `reranking-pipelines`\n- `agent-memory-retrieval`\n\n## When To Use What\n\n- Start with embedding table design and metadata filters before ANN tuning.\n- Use exact search for smaller collections or correctness-first baselines.\n- Use ANN when collection size or latency targets make exact search too expensive.\n- Use hybrid search when lexical terms and semantic similarity both matter.\n"
     },
     {
       "track": "dsa",
