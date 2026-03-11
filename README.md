@@ -2,6 +2,8 @@
 
 Max Handbook is a learning-first knowledge base for modern AI, software, and problem solving. The repository is the source of truth: concise notes live in `docs/`, runnable learning units live in `modules/`, and `web/` renders the same content.
 
+Read the live handbook at [max-handbook.vercel.app](https://max-handbook.vercel.app/).
+
 ## What Knowledge Lives Here
 
 | Track | Focus | Representative topics |
