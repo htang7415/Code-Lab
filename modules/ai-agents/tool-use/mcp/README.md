@@ -4,28 +4,39 @@
 
 ## Concept
 
-MCP is a standard way for a server to expose tools, resources, and prompts to a model-driven client.
+MCP is a standard way for a host and client to talk to a server that exposes tools, resources, and prompts through one structured interface.
 
 ## Key Points
 
-- MCP is about discovery and structured access, not about how the model reasons.
-- A server can advertise whether it supports tools, resources, or prompts.
-- Tool calls still need ordinary validation and feedback loops after discovery.
+- MCP separates client, host, and server responsibilities.
+- Tools act, resources provide data, and prompts provide reusable prompt templates.
+- Auth and session state matter because the same server may expose different capabilities to different clients.
 
 ## Minimal Code Mental Model
 
 ```python
-caps = server_capabilities(tool_count=3, resource_count=2, prompt_count=1)
-tool = tool_descriptor("search", "Search documents")
-request = tool_call_request("search", {"query": "MCP overview"})
+roles = transport_roles("agent", "desktop app", "filesystem server")
+caps = server_capabilities(tool_count=3, resource_count=2, prompt_count=1, auth_required=True)
+session = session_context("sess_7", scopes=["repo:read"], authenticated=True)
+resource = resource_read_request("repo://README.md", session_id=session["session_id"])
+prompt = prompt_get_request("summarize_diff", {"style": "concise"}, session_id=session["session_id"])
+tool = tool_call_request("search", {"query": "MCP overview"}, session_id=session["session_id"])
 ```
 
 ## Function
 
 ```python
-def server_capabilities(tool_count: int = 0, resource_count: int = 0, prompt_count: int = 0) -> dict[str, bool]:
-def tool_descriptor(name: str, description: str) -> dict[str, str]:
-def tool_call_request(name: str, arguments: dict[str, object]) -> dict[str, object]:
+def transport_roles(client: str, host: str, server: str) -> dict[str, str]:
+def server_capabilities(
+    tool_count: int = 0,
+    resource_count: int = 0,
+    prompt_count: int = 0,
+    auth_required: bool = False,
+) -> dict[str, bool]:
+def session_context(session_id: str, scopes: list[str], authenticated: bool) -> dict[str, object]:
+def resource_read_request(uri: str, session_id: str) -> dict[str, object]:
+def prompt_get_request(name: str, arguments: dict[str, object], session_id: str) -> dict[str, object]:
+def tool_call_request(name: str, arguments: dict[str, object], session_id: str) -> dict[str, object]:
 ```
 
 ## Run tests

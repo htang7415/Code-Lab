@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T05:12:36.007Z",
+  "generated_at": "2026-03-11T06:10:08.240Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -2318,6 +2318,18 @@
       "topicName": "Computer Vision"
     },
     {
+      "id": "module:ai-agents/tool-use/connectors-and-auth-scopes",
+      "type": "module",
+      "title": "Connectors and Auth Scopes",
+      "summary": "> Track: `ai-agents` | Topic: `tool-use`",
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "slug": "connectors-and-auth-scopes",
+      "href": "/track/ai-agents/tool-use#connectors-and-auth-scopes",
+      "trackName": "AI Agents",
+      "topicName": "Tool Use"
+    },
+    {
       "id": "module:ml/llm/context-budgeting-and-truncation",
       "type": "module",
       "title": "Context Budgeting and Truncation",
@@ -4322,6 +4334,18 @@
       "topicName": "Optimization"
     },
     {
+      "id": "module:ai-agents/multi-agent/orchestrator-workers",
+      "type": "module",
+      "title": "Orchestrator Workers",
+      "summary": "> Track: `ai-agents` | Topic: `multi-agent`",
+      "track": "ai-agents",
+      "topic": "multi-agent",
+      "slug": "orchestrator-workers",
+      "href": "/track/ai-agents/multi-agent#orchestrator-workers",
+      "trackName": "AI Agents",
+      "topicName": "Multi Agent"
+    },
+    {
       "id": "module:ml/data/overflow-metrics",
       "type": "module",
       "title": "Overflow Metrics",
@@ -5292,6 +5316,18 @@
       "href": "/track/ml/systems#tensor-parallelism",
       "trackName": "Machine Learning",
       "topicName": "Systems"
+    },
+    {
+      "id": "module:ai-agents/tool-use/terminal-use",
+      "type": "module",
+      "title": "Terminal Use",
+      "summary": "> Track: `ai-agents` | Topic: `tool-use`",
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "slug": "terminal-use",
+      "href": "/track/ai-agents/tool-use#terminal-use",
+      "trackName": "AI Agents",
+      "topicName": "Tool Use"
     },
     {
       "id": "module:ml/mlops/throughput-per-dollar",

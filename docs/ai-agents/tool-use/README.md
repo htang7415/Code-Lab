@@ -32,6 +32,8 @@ result = tool_result(call["id"], output)
 
 ## Supporting Modules
 
+- Shell-based execution with dry-run and review rules: `terminal-use`
+- External app access with narrow scopes and auth refresh: `connectors-and-auth-scopes`
 - Validation of tool results before reuse: `tool-result-validation`
 - Recovery decisions after tool failure: `tool-failure-handling`
 - Choosing the best tool before calling it: `tool-selection-heuristics`
@@ -41,8 +43,10 @@ result = tool_result(call["id"], output)
 ## When To Use What
 
 - Start with `tool-use-basics` when the problem is ordinary function calling.
-- Use `computer-use` when the agent must click, type, scroll, or inspect a live interface.
-- Use `mcp` when tools and resources need a standard server-style interface instead of one-off adapters.
+- Use `computer-use` when the agent must click, type, scroll, or inspect a live interface and risky screens may need checkpoints or takeover.
+- Use `terminal-use` when the agent must inspect files, run commands, or operate through a shell instead of a GUI.
+- Use `connectors-and-auth-scopes` when the agent talks to email, calendar, docs, CRM, or other external apps and must keep scopes narrow and sessions fresh.
+- Use `mcp` when tools, resources, and prompts need a standard server-style interface with discovery, auth, and session-aware access instead of one-off adapters.
 - Use `tool-result-validation` when tool outputs must be checked for schema shape, missing fields, or obvious execution errors.
 - Use `tool-failure-handling` when the agent needs a simple retry / fallback / escalate decision after a tool call fails.
 - Use `tool-selection-heuristics` when the main challenge is picking the right tool from several plausible options.
