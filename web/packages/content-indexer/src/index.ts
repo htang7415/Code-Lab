@@ -331,6 +331,22 @@ async function main() {
         });
       }
 
+      const typescriptSources = await glob("typescript/**/*.{ts,tsx}", {
+        cwd: moduleDir,
+        absolute: true,
+        nodir: true,
+      });
+      for (const sourcePath of typescriptSources) {
+        const fileName = basename(sourcePath);
+        if (fileName.startsWith("test_")) continue;
+        if (sourcePath.endsWith(".d.ts")) continue;
+        sources.push({
+          path: relative(repoRoot, sourcePath),
+          language: languageFromPath(sourcePath),
+          content: readFileSync(sourcePath, "utf-8"),
+        });
+      }
+
       const rustSources = await glob("rust/src/**/*.rs", {
         cwd: moduleDir,
         absolute: true,

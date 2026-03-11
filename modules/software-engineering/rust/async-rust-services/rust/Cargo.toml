@@ -1,0 +1,10 @@
+[package]
+name = "software-engineering-rust-async-rust-services"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "software_engineering_rust_async_rust_services"
+path = "src/lib.rs"
+
+[dependencies]

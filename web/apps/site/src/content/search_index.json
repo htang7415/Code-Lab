@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T17:21:05.570Z",
+  "generated_at": "2026-03-11T18:03:54.517Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -1790,6 +1790,18 @@
       "topicName": "Deep Learning"
     },
     {
+      "id": "module:software-engineering/design-patterns/adapters-and-anti-corruption-layers",
+      "type": "module",
+      "title": "Adapters And Anti-Corruption Layers",
+      "summary": "> Track: `software-engineering` | Topic: `design-patterns`",
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "slug": "adapters-and-anti-corruption-layers",
+      "href": "/track/software-engineering/design-patterns#adapters-and-anti-corruption-layers",
+      "trackName": "Software Engineering",
+      "topicName": "Design Patterns"
+    },
+    {
       "id": "module:ml/mlops/admission-control",
       "type": "module",
       "title": "Admission Control",
@@ -1958,6 +1970,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "module:databases/nosql/anti-entropy-and-repair",
+      "type": "module",
+      "title": "Anti-Entropy And Repair",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "anti-entropy-and-repair",
+      "href": "/track/databases/nosql#anti-entropy-and-repair",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
       "id": "module:software-engineering/apis/api-contract-basics",
       "type": "module",
       "title": "API Contract Basics",
@@ -2028,6 +2052,42 @@
       "href": "/track/databases/schema-design#asset-versioning",
       "trackName": "Databases",
       "topicName": "Schema Design"
+    },
+    {
+      "id": "module:software-engineering/python/async-python-services",
+      "type": "module",
+      "title": "Async Python Services",
+      "summary": "> Track: `software-engineering` | Topic: `python`",
+      "track": "software-engineering",
+      "topic": "python",
+      "slug": "async-python-services",
+      "href": "/track/software-engineering/python#async-python-services",
+      "trackName": "Software Engineering",
+      "topicName": "Python"
+    },
+    {
+      "id": "module:software-engineering/rust/async-rust-services",
+      "type": "module",
+      "title": "Async Rust Services",
+      "summary": "> Track: `software-engineering` | Topic: `rust`",
+      "track": "software-engineering",
+      "topic": "rust",
+      "slug": "async-rust-services",
+      "href": "/track/software-engineering/rust#async-rust-services",
+      "trackName": "Software Engineering",
+      "topicName": "Rust"
+    },
+    {
+      "id": "module:software-engineering/typescript/async-typescript-services",
+      "type": "module",
+      "title": "Async TypeScript Services",
+      "summary": "> Track: `software-engineering` | Topic: `typescript`",
+      "track": "software-engineering",
+      "topic": "typescript",
+      "slug": "async-typescript-services",
+      "href": "/track/software-engineering/typescript#async-typescript-services",
+      "trackName": "Software Engineering",
+      "topicName": "Typescript"
     },
     {
       "id": "module:ml/llm/attention-mechanisms",
@@ -2148,6 +2208,18 @@
       "href": "/track/ml/data#batch-iterator",
       "trackName": "Machine Learning",
       "topicName": "Data"
+    },
+    {
+      "id": "module:databases/query-plans/batching-and-n-plus-one-query-costs",
+      "type": "module",
+      "title": "Batching And N-Plus-One Query Costs",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "batching-and-n-plus-one-query-costs",
+      "href": "/track/databases/query-plans#batching-and-n-plus-one-query-costs",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
     },
     {
       "id": "module:software-engineering/performance/batching-vs-streaming",
@@ -2318,6 +2390,18 @@
       "topicName": "Planning"
     },
     {
+      "id": "module:databases/caching/cache-admission-policies",
+      "type": "module",
+      "title": "Cache Admission Policies",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-admission-policies",
+      "href": "/track/databases/caching#cache-admission-policies",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
       "id": "module:databases/caching/cache-aside",
       "type": "module",
       "title": "Cache Aside",
@@ -2330,6 +2414,30 @@
       "topicName": "Caching"
     },
     {
+      "id": "module:databases/caching/cache-consistency-patterns",
+      "type": "module",
+      "title": "Cache Consistency Patterns",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-consistency-patterns",
+      "href": "/track/databases/caching#cache-consistency-patterns",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
+      "id": "module:databases/caching/cache-key-design",
+      "type": "module",
+      "title": "Cache Key Design",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-key-design",
+      "href": "/track/databases/caching#cache-key-design",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
       "id": "module:databases/caching/cache-stampede-mitigation",
       "type": "module",
       "title": "Cache Stampede Mitigation",
@@ -2338,6 +2446,30 @@
       "topic": "caching",
       "slug": "cache-stampede-mitigation",
       "href": "/track/databases/caching#cache-stampede-mitigation",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
+      "id": "module:databases/caching/cache-ttl-jitter",
+      "type": "module",
+      "title": "Cache TTL Jitter",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-ttl-jitter",
+      "href": "/track/databases/caching#cache-ttl-jitter",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
+      "id": "module:databases/caching/cache-warming-patterns",
+      "type": "module",
+      "title": "Cache Warming Patterns",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-warming-patterns",
+      "href": "/track/databases/caching#cache-warming-patterns",
       "trackName": "Databases",
       "topicName": "Caching"
     },
@@ -2486,6 +2618,18 @@
       "topicName": "Streaming"
     },
     {
+      "id": "module:software-engineering/platform-and-delivery/change-budgets-and-blast-radius",
+      "type": "module",
+      "title": "Change Budgets And Blast Radius",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "change-budgets-and-blast-radius",
+      "href": "/track/software-engineering/platform-and-delivery#change-budgets-and-blast-radius",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
+    },
+    {
       "id": "module:ml/generative/model-selection",
       "type": "module",
       "title": "Choose GAN vs VAE vs Diffusion",
@@ -2594,6 +2738,30 @@
       "topicName": "Computer Vision"
     },
     {
+      "id": "module:software-engineering/platform-and-delivery/cognitive-load-and-team-interfaces",
+      "type": "module",
+      "title": "Cognitive Load And Team Interfaces",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "cognitive-load-and-team-interfaces",
+      "href": "/track/software-engineering/platform-and-delivery#cognitive-load-and-team-interfaces",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
+    },
+    {
+      "id": "module:databases/nosql/compaction-vs-repair-tradeoffs",
+      "type": "module",
+      "title": "Compaction Vs Repair Tradeoffs",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "compaction-vs-repair-tradeoffs",
+      "href": "/track/databases/nosql#compaction-vs-repair-tradeoffs",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
       "id": "module:dsa/dynamic-programming/complete-knapsack-theory",
       "type": "module",
       "title": "Complete Knapsack Theory",
@@ -2616,6 +2784,18 @@
       "href": "/track/databases/indexing#composite-index-order",
       "trackName": "Databases",
       "topicName": "Indexing"
+    },
+    {
+      "id": "module:software-engineering/design-patterns/composition-over-inheritance",
+      "type": "module",
+      "title": "Composition Over Inheritance",
+      "summary": "> Track: `software-engineering` | Topic: `design-patterns`",
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "slug": "composition-over-inheritance",
+      "href": "/track/software-engineering/design-patterns#composition-over-inheritance",
+      "trackName": "Software Engineering",
+      "topicName": "Design Patterns"
     },
     {
       "id": "module:ai-agents/tool-use/computer-use",
@@ -2930,6 +3110,18 @@
       "topicName": "Indexing"
     },
     {
+      "id": "module:databases/query-plans/covering-index-vs-table-lookups",
+      "type": "module",
+      "title": "Covering Index Vs Table Lookups",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "covering-index-vs-table-lookups",
+      "href": "/track/databases/query-plans#covering-index-vs-table-lookups",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
+    },
+    {
       "id": "doc:ml/data/data",
       "type": "doc",
       "title": "Data and Splitting",
@@ -3170,6 +3362,18 @@
       "topicName": "Security Basics"
     },
     {
+      "id": "module:software-engineering/design-patterns/dependency-injection-basics",
+      "type": "module",
+      "title": "Dependency Injection Basics",
+      "summary": "> Track: `software-engineering` | Topic: `design-patterns`",
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "slug": "dependency-injection-basics",
+      "href": "/track/software-engineering/design-patterns#dependency-injection-basics",
+      "trackName": "Software Engineering",
+      "topicName": "Design Patterns"
+    },
+    {
       "id": "module:ml/mlops/depth-spike-rate",
       "type": "module",
       "title": "Depth Spike Rate",
@@ -3264,6 +3468,18 @@
       "href": "/track/ml/generative#diffusion-guidance-tradeoffs",
       "trackName": "Machine Learning",
       "topicName": "Generative"
+    },
+    {
+      "id": "module:databases/schema-design/dimensional-modeling-basics",
+      "type": "module",
+      "title": "Dimensional Modeling Basics",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "dimensional-modeling-basics",
+      "href": "/track/databases/schema-design#dimensional-modeling-basics",
+      "trackName": "Databases",
+      "topicName": "Schema Design"
     },
     {
       "id": "doc:ml/systems/distributed",
@@ -3710,6 +3926,18 @@
       "topicName": "Data"
     },
     {
+      "id": "module:software-engineering/typescript/frontend-backend-shared-types",
+      "type": "module",
+      "title": "Frontend-Backend Shared Types",
+      "summary": "> Track: `software-engineering` | Topic: `typescript`",
+      "track": "software-engineering",
+      "topic": "typescript",
+      "slug": "frontend-backend-shared-types",
+      "href": "/track/software-engineering/typescript#frontend-backend-shared-types",
+      "trackName": "Software Engineering",
+      "topicName": "Typescript"
+    },
+    {
       "id": "module:ml/generative/gan",
       "type": "module",
       "title": "GAN",
@@ -3758,6 +3986,18 @@
       "topicName": "Models"
     },
     {
+      "id": "module:software-engineering/tooling/generated-code-review-checklists",
+      "type": "module",
+      "title": "Generated Code Review Checklists",
+      "summary": "> Track: `software-engineering` | Topic: `tooling`",
+      "track": "software-engineering",
+      "topic": "tooling",
+      "slug": "generated-code-review-checklists",
+      "href": "/track/software-engineering/tooling#generated-code-review-checklists",
+      "trackName": "Software Engineering",
+      "topicName": "Tooling"
+    },
+    {
       "id": "doc:ml/generative/generative",
       "type": "doc",
       "title": "Generative Models",
@@ -3804,6 +4044,18 @@
       "href": "/track/software-engineering/testing#golden-and-snapshot-test-tradeoffs",
       "trackName": "Software Engineering",
       "topicName": "Testing"
+    },
+    {
+      "id": "module:databases/vector-db/golden-query-eval-sets",
+      "type": "module",
+      "title": "Golden Query Eval Sets",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "golden-query-eval-sets",
+      "href": "/track/databases/vector-db#golden-query-eval-sets",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "doc:ml/systems/gpu",
@@ -3948,6 +4200,18 @@
       "href": "/track/ai-agents/workflows#handoffs-and-routing",
       "trackName": "AI Agents",
       "topicName": "Workflows"
+    },
+    {
+      "id": "module:databases/vector-db/hard-negative-eval-cases",
+      "type": "module",
+      "title": "Hard Negative Eval Cases",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "hard-negative-eval-cases",
+      "href": "/track/databases/vector-db#hard-negative-eval-cases",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "module:dsa/hash-tables/hash-table-summary",
@@ -4104,6 +4368,18 @@
       "href": "/track/software-engineering/reliability#incidents-and-postmortems",
       "trackName": "Software Engineering",
       "topicName": "Reliability"
+    },
+    {
+      "id": "module:databases/sql-patterns/incremental-refresh-watermarks",
+      "type": "module",
+      "title": "Incremental Refresh Watermarks",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "incremental-refresh-watermarks",
+      "href": "/track/databases/sql-patterns#incremental-refresh-watermarks",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
     },
     {
       "id": "doc:databases/indexing/overview",
@@ -4334,6 +4610,18 @@
       "topicName": "Fundamentals"
     },
     {
+      "id": "module:databases/query-plans/join-elimination-basics",
+      "type": "module",
+      "title": "Join Elimination Basics",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "join-elimination-basics",
+      "href": "/track/databases/query-plans#join-elimination-basics",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
+    },
+    {
       "id": "module:databases/query-plans/join-order-and-cardinality",
       "type": "module",
       "title": "Join Order And Cardinality",
@@ -4354,6 +4642,18 @@
       "topic": "relational",
       "slug": "join-shapes",
       "href": "/track/databases/relational#join-shapes",
+      "trackName": "Databases",
+      "topicName": "Relational"
+    },
+    {
+      "id": "module:databases/relational/join-vs-subquery-shapes",
+      "type": "module",
+      "title": "Join Vs Subquery Shapes",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "join-vs-subquery-shapes",
+      "href": "/track/databases/relational#join-vs-subquery-shapes",
       "trackName": "Databases",
       "topicName": "Relational"
     },
@@ -4514,6 +4814,18 @@
       "topicName": "Deep Learning"
     },
     {
+      "id": "module:databases/sql-patterns/late-arriving-data-handling",
+      "type": "module",
+      "title": "Late-Arriving Data Handling",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "late-arriving-data-handling",
+      "href": "/track/databases/sql-patterns#late-arriving-data-handling",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
+    },
+    {
       "id": "module:ai-agents/workflows/latency-budget-accounting",
       "type": "module",
       "title": "Latency Budget Accounting",
@@ -4562,6 +4874,18 @@
       "topicName": "Optimization"
     },
     {
+      "id": "module:software-engineering/security-basics/least-privilege",
+      "type": "module",
+      "title": "Least Privilege",
+      "summary": "> Track: `software-engineering` | Topic: `security-basics`",
+      "track": "software-engineering",
+      "topic": "security-basics",
+      "slug": "least-privilege",
+      "href": "/track/software-engineering/security-basics#least-privilege",
+      "trackName": "Software Engineering",
+      "topicName": "Security Basics"
+    },
+    {
       "id": "module:ai-agents/guardrails/least-privilege-and-sandboxing",
       "type": "module",
       "title": "Least Privilege and Sandboxing",
@@ -4572,18 +4896,6 @@
       "href": "/track/ai-agents/guardrails#least-privilege-and-sandboxing",
       "trackName": "AI Agents",
       "topicName": "Guardrails"
-    },
-    {
-      "id": "module:software-engineering/security-basics/least-privilege-and-secrets-management",
-      "type": "module",
-      "title": "Least Privilege And Secrets Management",
-      "summary": "> Track: `software-engineering` | Topic: `security-basics`",
-      "track": "software-engineering",
-      "topic": "security-basics",
-      "slug": "least-privilege-and-secrets-management",
-      "href": "/track/software-engineering/security-basics#least-privilege-and-secrets-management",
-      "trackName": "Software Engineering",
-      "topicName": "Security Basics"
     },
     {
       "id": "module:ml/representation/autoencoder",
@@ -4776,6 +5088,18 @@
       "href": "/track/ml/llm#long-context-and-caching",
       "trackName": "Machine Learning",
       "topicName": "LLM"
+    },
+    {
+      "id": "module:databases/vector-db/long-context-vs-retrieval-tradeoffs",
+      "type": "module",
+      "title": "Long-Context Vs Retrieval Tradeoffs",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "long-context-vs-retrieval-tradeoffs",
+      "href": "/track/databases/vector-db#long-context-vs-retrieval-tradeoffs",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "module:ml/deep-learning/loss-functions",
@@ -4982,6 +5306,18 @@
       "topicName": "Memory"
     },
     {
+      "id": "module:databases/sql-patterns/merge-vs-materialize-olap-patterns",
+      "type": "module",
+      "title": "Merge Vs Materialize OLAP Patterns",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "merge-vs-materialize-olap-patterns",
+      "href": "/track/databases/sql-patterns#merge-vs-materialize-olap-patterns",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
+    },
+    {
       "id": "module:databases/schema-design/metadata-and-lineage-tables",
       "type": "module",
       "title": "Metadata And Lineage Tables",
@@ -5004,6 +5340,18 @@
       "href": "/track/databases/vector-db#metadata-filtering",
       "trackName": "Databases",
       "topicName": "Vector Db"
+    },
+    {
+      "id": "module:software-engineering/testing/metamorphic-tests-for-generated-code",
+      "type": "module",
+      "title": "Metamorphic Tests For Generated Code",
+      "summary": "> Track: `software-engineering` | Topic: `testing`",
+      "track": "software-engineering",
+      "topic": "testing",
+      "slug": "metamorphic-tests-for-generated-code",
+      "href": "/track/software-engineering/testing#metamorphic-tests-for-generated-code",
+      "trackName": "Software Engineering",
+      "topicName": "Testing"
     },
     {
       "id": "doc:ml/representation/metric-learning",
@@ -5306,6 +5654,18 @@
       "topicName": "Models"
     },
     {
+      "id": "module:databases/caching/negative-caching-patterns",
+      "type": "module",
+      "title": "Negative Caching Patterns",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "negative-caching-patterns",
+      "href": "/track/databases/caching#negative-caching-patterns",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
       "id": "module:ml/deep-learning/network-building-blocks",
       "type": "module",
       "title": "Network Building Blocks",
@@ -5546,6 +5906,18 @@
       "topicName": "Data"
     },
     {
+      "id": "module:software-engineering/rust/ownership-at-api-boundaries",
+      "type": "module",
+      "title": "Ownership At API Boundaries",
+      "summary": "> Track: `software-engineering` | Topic: `rust`",
+      "track": "software-engineering",
+      "topic": "rust",
+      "slug": "ownership-at-api-boundaries",
+      "href": "/track/software-engineering/rust#ownership-at-api-boundaries",
+      "trackName": "Software Engineering",
+      "topicName": "Rust"
+    },
+    {
       "id": "module:software-engineering/platform-and-delivery/ownership-boundaries",
       "type": "module",
       "title": "Ownership Boundaries",
@@ -5556,6 +5928,18 @@
       "href": "/track/software-engineering/platform-and-delivery#ownership-boundaries",
       "trackName": "Software Engineering",
       "topicName": "Platform And Delivery"
+    },
+    {
+      "id": "module:software-engineering/python/packaging-and-project-layout",
+      "type": "module",
+      "title": "Packaging And Project Layout",
+      "summary": "> Track: `software-engineering` | Topic: `python`",
+      "track": "software-engineering",
+      "topic": "python",
+      "slug": "packaging-and-project-layout",
+      "href": "/track/software-engineering/python#packaging-and-project-layout",
+      "trackName": "Software Engineering",
+      "topicName": "Python"
     },
     {
       "id": "module:software-engineering/apis/pagination-patterns",
@@ -5774,6 +6158,18 @@
       "topicName": "Platform And Delivery"
     },
     {
+      "id": "module:databases/indexing/point-lookups-vs-range-scans",
+      "type": "module",
+      "title": "Point Lookups Vs Range Scans",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "point-lookups-vs-range-scans",
+      "href": "/track/databases/indexing#point-lookups-vs-range-scans",
+      "trackName": "Databases",
+      "topicName": "Indexing"
+    },
+    {
       "id": "module:ai-agents/guardrails/policy-and-escalation",
       "type": "module",
       "title": "Policy and Escalation",
@@ -5882,6 +6278,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "module:databases/sql-patterns/predicate-pushdown-basics",
+      "type": "module",
+      "title": "Predicate Pushdown Basics",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "predicate-pushdown-basics",
+      "href": "/track/databases/sql-patterns#predicate-pushdown-basics",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
+    },
+    {
       "id": "module:ml/llm/prefix-cache",
       "type": "module",
       "title": "Prefix Cache Hit Length",
@@ -5928,6 +6336,18 @@
       "href": "/track/ml/fundamentals#prob",
       "trackName": "Machine Learning",
       "topicName": "Fundamentals"
+    },
+    {
+      "id": "module:software-engineering/python/profiling-python",
+      "type": "module",
+      "title": "Profiling Python",
+      "summary": "> Track: `software-engineering` | Topic: `python`",
+      "track": "software-engineering",
+      "topic": "python",
+      "slug": "profiling-python",
+      "href": "/track/software-engineering/python#profiling-python",
+      "trackName": "Software Engineering",
+      "topicName": "Python"
     },
     {
       "id": "module:software-engineering/performance/profiling-workflow",
@@ -6122,6 +6542,30 @@
       "topicName": "Evaluation"
     },
     {
+      "id": "module:databases/nosql/read-amplification-in-lsm-trees",
+      "type": "module",
+      "title": "Read Amplification In LSM Trees",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "read-amplification-in-lsm-trees",
+      "href": "/track/databases/nosql#read-amplification-in-lsm-trees",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
+      "id": "module:databases/transactions/read-replica-routing",
+      "type": "module",
+      "title": "Read Replica Routing",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "read-replica-routing",
+      "href": "/track/databases/transactions#read-replica-routing",
+      "trackName": "Databases",
+      "topicName": "Transactions"
+    },
+    {
       "id": "module:ml/llm/reasoning-and-test-time-compute",
       "type": "module",
       "title": "Reasoning and Test-Time Compute",
@@ -6156,6 +6600,18 @@
       "href": "/track/dsa/binary-tree#recursive-traversal-of-binary-trees",
       "trackName": "Data Structures & Algorithms",
       "topicName": "Binary Tree"
+    },
+    {
+      "id": "module:databases/sql-patterns/refresh-backfill-strategies",
+      "type": "module",
+      "title": "Refresh Backfill Strategies",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "refresh-backfill-strategies",
+      "href": "/track/databases/sql-patterns#refresh-backfill-strategies",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
     },
     {
       "id": "module:ai-agents/evaluation/regression-checks",
@@ -6254,6 +6710,18 @@
       "topicName": "Reliability"
     },
     {
+      "id": "module:databases/nosql/repair-vs-read-repair",
+      "type": "module",
+      "title": "Repair Vs Read-Repair",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "repair-vs-read-repair",
+      "href": "/track/databases/nosql#repair-vs-read-repair",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
       "id": "module:ai-agents/planning/replanning",
       "type": "module",
       "title": "Replanning",
@@ -6264,6 +6732,18 @@
       "href": "/track/ai-agents/planning#replanning",
       "trackName": "AI Agents",
       "topicName": "Planning"
+    },
+    {
+      "id": "module:databases/transactions/replica-failover-routing",
+      "type": "module",
+      "title": "Replica Failover Routing",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "replica-failover-routing",
+      "href": "/track/databases/transactions#replica-failover-routing",
+      "trackName": "Databases",
+      "topicName": "Transactions"
     },
     {
       "id": "module:databases/transactions/replication-lag-mental-model",
@@ -6350,6 +6830,30 @@
       "topicName": "Vector Db"
     },
     {
+      "id": "module:databases/vector-db/reranking-vs-retrieval-budgeting",
+      "type": "module",
+      "title": "Reranking Vs Retrieval Budgeting",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "reranking-vs-retrieval-budgeting",
+      "href": "/track/databases/vector-db#reranking-vs-retrieval-budgeting",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
+      "id": "module:software-engineering/rust/result-error-handling",
+      "type": "module",
+      "title": "Result Error Handling",
+      "summary": "> Track: `software-engineering` | Topic: `rust`",
+      "track": "software-engineering",
+      "topic": "rust",
+      "slug": "result-error-handling",
+      "href": "/track/software-engineering/rust#result-error-handling",
+      "trackName": "Software Engineering",
+      "topicName": "Rust"
+    },
+    {
       "id": "module:software-engineering/reliability/retries-and-fallbacks",
       "type": "module",
       "title": "Retries And Fallbacks",
@@ -6396,6 +6900,42 @@
       "href": "/track/ai-agents/rag#retrieval-abstention-and-coverage",
       "trackName": "AI Agents",
       "topicName": "Rag"
+    },
+    {
+      "id": "module:databases/vector-db/retrieval-debugging-checklist",
+      "type": "module",
+      "title": "Retrieval Debugging Checklist",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "retrieval-debugging-checklist",
+      "href": "/track/databases/vector-db#retrieval-debugging-checklist",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
+      "id": "module:databases/vector-db/retrieval-evaluation-dataset-shapes",
+      "type": "module",
+      "title": "Retrieval Evaluation Dataset Shapes",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "retrieval-evaluation-dataset-shapes",
+      "href": "/track/databases/vector-db#retrieval-evaluation-dataset-shapes",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
+      "id": "module:databases/vector-db/retrieval-failure-analysis",
+      "type": "module",
+      "title": "Retrieval Failure Analysis",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "retrieval-failure-analysis",
+      "href": "/track/databases/vector-db#retrieval-failure-analysis",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "module:ml/llm/retrieval-fusion-methods",
@@ -6542,6 +7082,18 @@
       "topicName": "Multi Agent"
     },
     {
+      "id": "module:software-engineering/reliability/rollback-readiness",
+      "type": "module",
+      "title": "Rollback Readiness",
+      "summary": "> Track: `software-engineering` | Topic: `reliability`",
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "rollback-readiness",
+      "href": "/track/software-engineering/reliability#rollback-readiness",
+      "trackName": "Software Engineering",
+      "topicName": "Reliability"
+    },
+    {
       "id": "module:ml/mlops/rollout-and-serving-modes",
       "type": "module",
       "title": "Rollout and Serving Modes",
@@ -6626,6 +7178,18 @@
       "topicName": "Observability"
     },
     {
+      "id": "module:software-engineering/typescript/runtime-validation",
+      "type": "module",
+      "title": "Runtime Validation",
+      "summary": "> Track: `software-engineering` | Topic: `typescript`",
+      "track": "software-engineering",
+      "topic": "typescript",
+      "slug": "runtime-validation",
+      "href": "/track/software-engineering/typescript#runtime-validation",
+      "trackName": "Software Engineering",
+      "topicName": "Typescript"
+    },
+    {
       "id": "doc:software-engineering/rust/rust",
       "type": "doc",
       "title": "Rust",
@@ -6698,6 +7262,30 @@
       "topicName": "Nosql"
     },
     {
+      "id": "module:databases/nosql/secondary-indexes-in-lsm-systems",
+      "type": "module",
+      "title": "Secondary Indexes In LSM Systems",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "secondary-indexes-in-lsm-systems",
+      "href": "/track/databases/nosql#secondary-indexes-in-lsm-systems",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
+      "id": "module:software-engineering/security-basics/secrets-management",
+      "type": "module",
+      "title": "Secrets Management",
+      "summary": "> Track: `software-engineering` | Topic: `security-basics`",
+      "track": "software-engineering",
+      "topic": "security-basics",
+      "slug": "secrets-management",
+      "href": "/track/software-engineering/security-basics#secrets-management",
+      "trackName": "Software Engineering",
+      "topicName": "Security Basics"
+    },
+    {
       "id": "module:software-engineering/security-basics/secure-sdlc-basics",
       "type": "module",
       "title": "Secure SDLC Basics",
@@ -6746,6 +7334,18 @@
       "topicName": "Prompting"
     },
     {
+      "id": "module:databases/caching/semantic-cache-hit-rate-analysis",
+      "type": "module",
+      "title": "Semantic Cache Hit-Rate Analysis",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "semantic-cache-hit-rate-analysis",
+      "href": "/track/databases/caching#semantic-cache-hit-rate-analysis",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
       "id": "module:databases/caching/semantic-cache-invalidation",
       "type": "module",
       "title": "Semantic Cache Invalidation",
@@ -6768,6 +7368,18 @@
       "href": "/track/databases/caching#semantic-caching-basics",
       "trackName": "Databases",
       "topicName": "Caching"
+    },
+    {
+      "id": "module:databases/relational/semi-join-and-anti-join-shapes",
+      "type": "module",
+      "title": "Semi-Join And Anti-Join Shapes",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "semi-join-and-anti-join-shapes",
+      "href": "/track/databases/relational#semi-join-and-anti-join-shapes",
+      "trackName": "Databases",
+      "topicName": "Relational"
     },
     {
       "id": "module:ai-agents/evaluation/sequential-test-stopping",
@@ -6914,6 +7526,18 @@
       "topicName": "Data"
     },
     {
+      "id": "module:software-engineering/tooling/spec-first-ai-coding",
+      "type": "module",
+      "title": "Spec-First AI Coding",
+      "summary": "> Track: `software-engineering` | Topic: `tooling`",
+      "track": "software-engineering",
+      "topic": "tooling",
+      "slug": "spec-first-ai-coding",
+      "href": "/track/software-engineering/tooling#spec-first-ai-coding",
+      "trackName": "Software Engineering",
+      "topicName": "Tooling"
+    },
+    {
       "id": "module:ml/llm/speculative-decoding",
       "type": "module",
       "title": "Speculative Decoding Verification",
@@ -6972,6 +7596,18 @@
       "href": "/track/ai-agents/workflows#state-machine-basics",
       "trackName": "AI Agents",
       "topicName": "Workflows"
+    },
+    {
+      "id": "module:software-engineering/design-patterns/state-machine-basics",
+      "type": "module",
+      "title": "State Machine Basics",
+      "summary": "> Track: `software-engineering` | Topic: `design-patterns`",
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "slug": "state-machine-basics",
+      "href": "/track/software-engineering/design-patterns#state-machine-basics",
+      "trackName": "Software Engineering",
+      "topicName": "Design Patterns"
     },
     {
       "id": "module:software-engineering/concurrency/state-machine-thinking",
@@ -7044,6 +7680,18 @@
       "href": "/track/software-engineering/system-design#storage-choice-basics",
       "trackName": "Software Engineering",
       "topicName": "System Design"
+    },
+    {
+      "id": "module:software-engineering/design-patterns/strategy-pattern-in-real-systems",
+      "type": "module",
+      "title": "Strategy Pattern In Real Systems",
+      "summary": "> Track: `software-engineering` | Topic: `design-patterns`",
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "slug": "strategy-pattern-in-real-systems",
+      "href": "/track/software-engineering/design-patterns#strategy-pattern-in-real-systems",
+      "trackName": "Software Engineering",
+      "topicName": "Design Patterns"
     },
     {
       "id": "module:ml/data/stratified-split",
@@ -7214,6 +7862,18 @@
       "topicName": "Reinforcement Learning"
     },
     {
+      "id": "module:databases/nosql/tenant-sharding-basics",
+      "type": "module",
+      "title": "Tenant Sharding Basics",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "tenant-sharding-basics",
+      "href": "/track/databases/nosql#tenant-sharding-basics",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
       "id": "module:ml/systems/tensor-parallelism",
       "type": "module",
       "title": "Tensor Parallel Linear All-Reduce",
@@ -7260,6 +7920,42 @@
       "href": "/track/software-engineering/testing#testing",
       "trackName": "Software Engineering",
       "topicName": "Testing"
+    },
+    {
+      "id": "module:software-engineering/python/testing-python-services",
+      "type": "module",
+      "title": "Testing Python Services",
+      "summary": "> Track: `software-engineering` | Topic: `python`",
+      "track": "software-engineering",
+      "topic": "python",
+      "slug": "testing-python-services",
+      "href": "/track/software-engineering/python#testing-python-services",
+      "trackName": "Software Engineering",
+      "topicName": "Python"
+    },
+    {
+      "id": "module:software-engineering/rust/testing-rust-libraries",
+      "type": "module",
+      "title": "Testing Rust Libraries",
+      "summary": "> Track: `software-engineering` | Topic: `rust`",
+      "track": "software-engineering",
+      "topic": "rust",
+      "slug": "testing-rust-libraries",
+      "href": "/track/software-engineering/rust#testing-rust-libraries",
+      "trackName": "Software Engineering",
+      "topicName": "Rust"
+    },
+    {
+      "id": "module:software-engineering/typescript/testing-typescript-backends",
+      "type": "module",
+      "title": "Testing TypeScript Backends",
+      "summary": "> Track: `software-engineering` | Topic: `typescript`",
+      "track": "software-engineering",
+      "topic": "typescript",
+      "slug": "testing-typescript-backends",
+      "href": "/track/software-engineering/typescript#testing-typescript-backends",
+      "trackName": "Software Engineering",
+      "topicName": "Typescript"
     },
     {
       "id": "module:ml/mlops/throughput-per-dollar",
@@ -7382,6 +8078,18 @@
       "topicName": "Tooling"
     },
     {
+      "id": "module:databases/query-plans/top-n-sort-vs-full-sort",
+      "type": "module",
+      "title": "Top-N Sort Vs Full Sort",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "top-n-sort-vs-full-sort",
+      "href": "/track/databases/query-plans#top-n-sort-vs-full-sort",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
+    },
+    {
       "id": "module:software-engineering/observability/trace-driven-debugging",
       "type": "module",
       "title": "Trace-Driven Debugging",
@@ -7416,6 +8124,18 @@
       "href": "/track/ml/systems#training-loop-mechanics",
       "trackName": "Machine Learning",
       "topicName": "Systems"
+    },
+    {
+      "id": "module:software-engineering/rust/traits-and-abstraction-boundaries",
+      "type": "module",
+      "title": "Traits And Abstraction Boundaries",
+      "summary": "> Track: `software-engineering` | Topic: `rust`",
+      "track": "software-engineering",
+      "topic": "rust",
+      "slug": "traits-and-abstraction-boundaries",
+      "href": "/track/software-engineering/rust#traits-and-abstraction-boundaries",
+      "trackName": "Software Engineering",
+      "topicName": "Rust"
     },
     {
       "id": "module:databases/transactions/transaction-basics",
@@ -7538,6 +8258,18 @@
       "topicName": "Fundamentals"
     },
     {
+      "id": "module:software-engineering/typescript/type-driven-api-design",
+      "type": "module",
+      "title": "Type-Driven API Design",
+      "summary": "> Track: `software-engineering` | Topic: `typescript`",
+      "track": "software-engineering",
+      "topic": "typescript",
+      "slug": "type-driven-api-design",
+      "href": "/track/software-engineering/typescript#type-driven-api-design",
+      "trackName": "Software Engineering",
+      "topicName": "Typescript"
+    },
+    {
       "id": "doc:software-engineering/typescript/typescript",
       "type": "doc",
       "title": "TypeScript",
@@ -7548,6 +8280,18 @@
       "href": "/track/software-engineering/typescript#typescript",
       "trackName": "Software Engineering",
       "topicName": "Typescript"
+    },
+    {
+      "id": "module:software-engineering/python/typing-for-large-python-codebases",
+      "type": "module",
+      "title": "Typing For Large Python Codebases",
+      "summary": "> Track: `software-engineering` | Topic: `python`",
+      "track": "software-engineering",
+      "topic": "python",
+      "slug": "typing-for-large-python-codebases",
+      "href": "/track/software-engineering/python#typing-for-large-python-codebases",
+      "trackName": "Software Engineering",
+      "topicName": "Python"
     },
     {
       "id": "doc:ml/evaluation/uncertainty",

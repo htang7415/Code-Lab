@@ -1,0 +1,17 @@
+# optimistic-concurrency-control
+
+> Track: `databases` | Topic: `transactions`
+
+## Concept
+
+<!-- Explain the core idea here -->
+
+## Key points
+
+<!-- Bullet points summarizing the concept -->
+
+## Run tests
+
+```bash
+pytest modules/databases/transactions/optimistic-concurrency-control/python -q
+```
