@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T20:00:22.680Z",
+  "generated_at": "2026-03-11T20:17:55.729Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -2078,6 +2078,18 @@
       "topicName": "SQL Patterns"
     },
     {
+      "id": "doc:ai-agents/assessments/assessments",
+      "type": "doc",
+      "title": "Assessments",
+      "summary": "Use this page to check whether the agent track is changing how you design agent loops, not just how many modules you have read.",
+      "track": "ai-agents",
+      "topic": "assessments",
+      "slug": "assessments",
+      "href": "/track/ai-agents/assessments#assessments",
+      "trackName": "AI Agents",
+      "topicName": "Assessments"
+    },
+    {
       "id": "doc:software-engineering/assessments/assessments",
       "type": "doc",
       "title": "Assessments",
@@ -2628,6 +2640,18 @@
       "href": "/track/ml/mlops#capacity-stress-metrics",
       "trackName": "Machine Learning",
       "topicName": "MLOps"
+    },
+    {
+      "id": "doc:ai-agents/capstones/capstones",
+      "type": "doc",
+      "title": "Capstones",
+      "summary": "This section is for end-to-end synthesis work after the main `ai-agents` foundations are in place.",
+      "track": "ai-agents",
+      "topic": "capstones",
+      "slug": "capstones",
+      "href": "/track/ai-agents/capstones#capstones",
+      "trackName": "AI Agents",
+      "topicName": "Capstones"
     },
     {
       "id": "doc:software-engineering/capstones/capstones",
@@ -4394,6 +4418,18 @@
       "topicName": "Greedy Algorithm"
     },
     {
+      "id": "module:ai-agents/capstones/grounded-support-agent",
+      "type": "module",
+      "title": "Grounded Support Agent",
+      "summary": "> Track: `ai-agents` | Topic: `capstones`",
+      "track": "ai-agents",
+      "topic": "capstones",
+      "slug": "grounded-support-agent",
+      "href": "/track/ai-agents/capstones#grounded-support-agent",
+      "trackName": "AI Agents",
+      "topicName": "Capstones"
+    },
+    {
       "id": "module:ml/reinforcement-learning/group-based-optimization",
       "type": "module",
       "title": "Group-Based Optimization (GSPO / GRPO)",
@@ -4607,6 +4643,18 @@
       "slug": "incident-recovery-drill",
       "href": "/track/software-engineering/capstones#incident-recovery-drill",
       "trackName": "Software Engineering",
+      "topicName": "Capstones"
+    },
+    {
+      "id": "module:ai-agents/capstones/incident-triage-workflow",
+      "type": "module",
+      "title": "Incident Triage Workflow",
+      "summary": "> Track: `ai-agents` | Topic: `capstones`",
+      "track": "ai-agents",
+      "topic": "capstones",
+      "slug": "incident-triage-workflow",
+      "href": "/track/ai-agents/capstones#incident-triage-workflow",
+      "trackName": "AI Agents",
       "topicName": "Capstones"
     },
     {

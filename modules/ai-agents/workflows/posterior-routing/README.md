@@ -12,6 +12,17 @@ Posterior routing uses observed success and failure evidence to rank routes by B
 - Posterior variance keeps low-data routes from looking more certain than they are.
 - A route should win on both quality and confidence before execution.
 
+## Core Math
+
+- Beta posterior mean:
+  $$
+  \frac{\alpha + s}{\alpha + \beta + s + f}
+  $$
+- Beta posterior variance:
+  $$
+  \frac{(\alpha+s)(\beta+f)}{(\alpha+\beta+s+f)^2(\alpha+\beta+s+f+1)}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

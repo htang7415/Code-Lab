@@ -12,6 +12,7 @@ Join order follows cardinality. The optimizer wants to keep intermediate results
 - A selective filter early in the plan can shrink every downstream join.
 - Starting from a huge fact table can keep intermediate results huge even when the final answer is small.
 - Join order bugs are often estimation bugs before they are join-algorithm bugs.
+- Selectivities should stay between `0` and `1`; impossible estimates distort the whole model.
 
 ## Minimal Code Mental Model
 

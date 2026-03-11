@@ -12,6 +12,17 @@ Worker coordination routes a task to the right specialist, packages a small hand
 - Handoffs should carry only the context the worker needs.
 - Merge logic should stay simple enough to inspect.
 
+## Core Math
+
+- Worker match score:
+  $$
+  \text{matched keywords in task}
+  $$
+- Merge count:
+  $$
+  \text{valid worker outputs returned}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

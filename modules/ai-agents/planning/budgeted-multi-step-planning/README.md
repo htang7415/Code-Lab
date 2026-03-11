@@ -12,6 +12,17 @@ Budgeted multi-step planning decides how much budget each step can use, how many
 - Reserve budget before dividing the remainder across steps.
 - If only part of the plan fits, trimming is safer than silently overspending.
 
+## Core Math
+
+- Per-step budget:
+  $$
+  \frac{\text{total budget} - \text{reserve}}{\text{step count}}
+  $$
+- Executable prefix rule:
+  $$
+  \sum_{i=1}^{k} \text{step cost}_i \le \text{total budget} - \text{reserve}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

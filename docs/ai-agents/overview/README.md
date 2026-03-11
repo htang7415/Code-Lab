@@ -10,6 +10,7 @@ Use this page to keep the agent stack in the right order:
 - retrieval and memory
 - planning and workflows
 - observability, evaluation, and guardrails
+- assessments and capstone synthesis
 - multi-agent coordination only when one loop is no longer enough
 
 ## First Principles
@@ -55,6 +56,8 @@ score = task_success_rate([True, False, True])
 - Observability: `docs/ai-agents/observability`
 - Evaluation: `docs/ai-agents/evaluation`
 - Guardrails: `docs/ai-agents/guardrails`
+- Assessments: `docs/ai-agents/assessments`
+- Capstones: `docs/ai-agents/capstones`
 - Multi-agent coordination: `docs/ai-agents/multi-agent`
 
 ## Supporting Docs
@@ -69,4 +72,6 @@ score = task_success_rate([True, False, True])
 - Add planning and workflows when one free-form loop is no longer stable enough.
 - Add observability once the agent is useful enough that failures need structured debugging.
 - Add evaluation and guardrails before scaling usage, not after.
+- Use assessments to check whether your routing, risk, and metric choices are explicit enough.
+- Start capstones only after the core single-agent loop is stable.
 - Add multi-agent coordination only when role split is clearer than one stronger single-agent loop.

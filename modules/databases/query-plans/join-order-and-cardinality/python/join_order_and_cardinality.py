@@ -3,13 +3,21 @@
 from __future__ import annotations
 
 
+def validate_selectivity(selectivity: float) -> None:
+    if not 0.0 <= selectivity <= 1.0:
+        raise ValueError("selectivity must be between 0 and 1")
+
+
 def filtered_rows(base_rows: int, selectivity: float) -> int:
+    validate_selectivity(selectivity)
     if base_rows <= 0 or selectivity <= 0:
         return 0
     return max(1, int(base_rows * selectivity))
 
 
 def join_output_rows(current_rows: int, average_matches: float) -> int:
+    if average_matches < 0:
+        raise ValueError("average_matches must be non-negative")
     if current_rows <= 0 or average_matches <= 0:
         return 0
     return max(1, int(current_rows * average_matches))

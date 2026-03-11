@@ -12,6 +12,17 @@ Latency budget accounting makes an agent track how much response time is left, h
 - Reserve response time before planning step budgets.
 - Step budgets should be explicit so overruns trigger a controlled route instead of silent drift.
 
+## Core Math
+
+- Remaining latency:
+  $$
+  \text{total budget} - \text{elapsed} - \text{reserved response}
+  $$
+- Per-step budget:
+  $$
+  \frac{\text{remaining latency}}{\text{remaining steps}}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

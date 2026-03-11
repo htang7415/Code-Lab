@@ -12,6 +12,14 @@ Escalation routing decides where a failed, risky, or low-confidence step should 
 - The route should be explicit so humans or fallback workers know why they were chosen.
 - A small escalation policy is easier to audit than retry logic mixed into every step.
 
+## Core Math
+
+- Escalation rule:
+  $$
+  \text{blocked} \;\lor\; \text{confidence} < \tau \;\lor\; \text{attempt} \ge \text{max attempts}
+  $$
+- Route choice is then a table lookup from reason to destination.
+
 ## Minimal Code Mental Model
 
 ```python

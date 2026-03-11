@@ -12,6 +12,17 @@ Risk scoring and thresholds make guardrail decisions explicit by aggregating a f
 - Signals should be normalized to the same range, usually `0` to `1`.
 - Separate review and block thresholds make policy decisions easier to audit.
 
+## Core Math
+
+- Weighted risk score:
+  $$
+  \frac{\sum_i w_i s_i}{\sum_i w_i}
+  $$
+- Threshold order:
+  $$
+  \tau_{\text{review}} < \tau_{\text{block}}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

@@ -12,6 +12,17 @@ Paired run significance compares two agent variants on the same cases and checks
 - Discordant pairs carry the actual signal: cases where one variant succeeds and the other fails.
 - A significance check should distinguish improvement, regression, and inconclusive results.
 
+## Core Math
+
+- Discordant-pair counts:
+  $$
+  b = \text{baseline-only wins}, \quad c = \text{candidate-only wins}
+  $$
+- McNemar statistic with continuity correction:
+  $$
+  \chi^2 = \frac{(|b-c|-1)^2}{b+c}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

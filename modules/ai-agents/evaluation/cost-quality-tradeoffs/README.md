@@ -12,6 +12,18 @@ Cost-quality tradeoffs compare runs by balancing output quality or success again
 - Cost per successful run is often a better operational metric than mean cost alone.
 - Simple ratios are enough for first comparisons.
 
+## Core Math
+
+- Quality per cost:
+  $$
+  \frac{\sum_i q_i}{\sum_i c_i}
+  $$
+- Cost per success:
+  $$
+  \frac{\text{total cost}}{\text{successful runs}}
+  $$
+- Pick the best tradeoff by maximizing quality while minimizing cost.
+
 ## Minimal Code Mental Model
 
 ```python

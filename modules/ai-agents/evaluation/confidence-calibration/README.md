@@ -12,6 +12,21 @@ Confidence calibration checks whether the agent's reported confidence matches ho
 - Calibration gaps are about alignment, not just raw quality.
 - A confidence gate should review agents that are both overconfident and inaccurate.
 
+## Core Math
+
+- Mean confidence:
+  $$
+  \frac{1}{N}\sum_i c_i
+  $$
+- Observed accuracy:
+  $$
+  \frac{\text{correct runs}}{N}
+  $$
+- Calibration gap:
+  $$
+  \left|\text{mean confidence} - \text{observed accuracy}\right|
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

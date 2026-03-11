@@ -12,6 +12,17 @@ Sample size and power basics estimate how many paired or per-variant cases an ag
 - Required sample size depends on the baseline rate and the effect you care about.
 - Before running more benchmarks, it helps to know whether the current sample can detect the change at all.
 
+## Core Math
+
+- Approximate sample size:
+  $$
+  n \approx \frac{(z_\alpha + z_\beta)^2 p(1-p)}{\delta^2}
+  $$
+- Approximate minimum detectable effect:
+  $$
+  \delta \approx (z_\alpha + z_\beta)\sqrt{\frac{p(1-p)}{n}}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

@@ -12,6 +12,21 @@ Bayesian benchmark updating keeps a running belief about benchmark success by co
 - Posterior mean tracks expected success rate after each new batch.
 - Posterior variance makes low-data confidence explicit instead of hiding it.
 
+## Core Math
+
+- Beta update:
+  $$
+  \alpha' = \alpha + s, \quad \beta' = \beta + f
+  $$
+- Posterior mean:
+  $$
+  \frac{\alpha'}{\alpha' + \beta'}
+  $$
+- Posterior variance:
+  $$
+  \frac{\alpha'\beta'}{(\alpha' + \beta')^2(\alpha' + \beta' + 1)}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

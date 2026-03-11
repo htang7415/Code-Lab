@@ -12,6 +12,17 @@ Routing scorecards make route selection explicit by scoring each candidate route
 - Route signals should stay small and interpretable, such as task fit, tool readiness, or latency fit.
 - If the best score is too weak or too close to the next route, review is safer than guessing.
 
+## Core Math
+
+- Weighted route score:
+  $$
+  \frac{\sum_i w_i s_i}{\sum_i w_i}
+  $$
+- Selection margin:
+  $$
+  \text{best score} - \text{runner-up score}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

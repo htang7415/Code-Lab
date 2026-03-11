@@ -12,6 +12,17 @@ Delegation budgets split a shared worker budget across agents, detect which work
 - Worker budgets should be proportional to role importance or expected workload.
 - If only some workers exceed budget, rebalancing is better than failing the whole plan.
 
+## Core Math
+
+- Worker budget split:
+  $$
+  b_i = \frac{w_i}{\sum_j w_j}\,(\text{total budget} - \text{reserve})
+  $$
+- Over-budget rule:
+  $$
+  \text{worker cost}_i > b_i
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

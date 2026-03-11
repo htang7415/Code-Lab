@@ -12,6 +12,17 @@ Expected-value tool selection compares candidate tools by balancing likely succe
 - Expected value should include both tool cost and the downside of failure.
 - A weak top tool should be skipped, and a close race should go to review.
 
+## Core Math
+
+- Expected tool value:
+  $$
+  p(\text{success}) \cdot \text{success value} - \text{tool cost} - (1-p(\text{success})) \cdot \text{failure penalty}
+  $$
+- Selection margin:
+  $$
+  \text{best expected value} - \text{runner-up expected value}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

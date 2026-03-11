@@ -12,6 +12,17 @@ Decision cost matrices choose between allow, review, and block by comparing the 
 - Review is useful when both false allows and false blocks are expensive.
 - The best decision is the action with the lowest expected cost, not the loudest rule.
 
+## Core Math
+
+- Expected action cost:
+  $$
+  \mathbb{E}[\text{cost} \mid a] = \sum_o P(o)\,\text{cost}(a,o)
+  $$
+- Choose:
+  $$
+  \operatorname{arg\,min}_a \mathbb{E}[\text{cost} \mid a]
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

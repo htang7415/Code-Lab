@@ -24,8 +24,12 @@ def correlated_estimate(table_rows: int, selectivities: list[float]) -> int:
 
 
 def q_error(estimated_rows: int, actual_rows: int) -> float:
-    if estimated_rows <= 0 or actual_rows <= 0:
-        raise ValueError("estimated_rows and actual_rows must be positive")
+    if estimated_rows < 0 or actual_rows < 0:
+        raise ValueError("estimated_rows and actual_rows must be non-negative")
+    if estimated_rows == 0 and actual_rows == 0:
+        return 1.0
+    if estimated_rows == 0 or actual_rows == 0:
+        return float("inf")
     larger = max(estimated_rows, actual_rows)
     smaller = min(estimated_rows, actual_rows)
     return larger / smaller

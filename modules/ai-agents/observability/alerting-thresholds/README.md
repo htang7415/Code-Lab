@@ -12,6 +12,17 @@ Alerting thresholds turn observed metrics into simple raise-or-don't-raise decis
 - Thresholds should be easy to inspect and adjust.
 - Alert messages should say which metric crossed which boundary.
 
+## Core Math
+
+- Breach rule:
+  $$
+  \text{value} > \tau \quad \text{or} \quad \text{value} < \tau
+  $$
+- Alert rate:
+  $$
+  \frac{\text{threshold breaches}}{\text{checks observed}}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

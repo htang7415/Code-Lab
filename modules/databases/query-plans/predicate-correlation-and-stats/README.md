@@ -12,6 +12,7 @@ Cardinality estimates often assume predicates are independent. When filters are 
 - Multiplying selectivities works for independence, but it overfilters when predicates move together.
 - Large q-error on correlated predicates is a sign that multicolumn stats or better histograms may matter.
 - This is one common cause of “planner chose a weird plan even though each single-column stat looked fine.”
+- Zero-row outcomes are still valid estimates; the q-error model should treat them explicitly instead of crashing.
 
 ## Minimal Code Mental Model
 

@@ -12,6 +12,17 @@ Bucketed calibration diagnostics group runs by reported confidence so you can co
 - Buckets make overconfidence and underconfidence visible by confidence band.
 - Expected calibration error summarizes the bucket gaps into one number.
 
+## Core Math
+
+- Bucket accuracy and confidence:
+  $$
+  \mathrm{acc}(b), \quad \mathrm{conf}(b)
+  $$
+- Expected calibration error:
+  $$
+  \sum_b \frac{n_b}{N}\left|\mathrm{acc}(b) - \mathrm{conf}(b)\right|
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

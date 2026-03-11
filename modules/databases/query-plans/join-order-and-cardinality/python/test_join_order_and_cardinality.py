@@ -44,3 +44,8 @@ def test_missing_join_edge_raises():
 def test_filtered_rows_clamps_nonzero_selective_inputs():
     assert filtered_rows(1000, 0.001) == 1
     assert filtered_rows(1000, 0.5) == 500
+
+
+def test_invalid_selectivity_is_rejected():
+    with pytest.raises(ValueError, match="selectivity"):
+        filtered_rows(1000, 1.2)

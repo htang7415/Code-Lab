@@ -12,6 +12,17 @@ Constrained optimization for budgeted agent policies chooses the best feasible p
 - Among feasible policies, objective value should stay explicit and comparable.
 - If nothing is feasible, the planner should review instead of silently violating constraints.
 
+## Core Math
+
+- Policy objective:
+  $$
+  \text{expected reward} - \lambda_c \text{cost} - \lambda_t \text{latency}
+  $$
+- Feasibility:
+  $$
+  \text{cost}, \text{latency}, \text{risk} \le \text{allowed budgets}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

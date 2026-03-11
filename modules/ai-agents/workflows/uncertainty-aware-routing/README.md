@@ -12,6 +12,21 @@ Uncertainty-aware routing decides whether to execute the best route, ask for cla
 - Low absolute confidence and high relative ambiguity are different failure modes.
 - Entropy and top-vs-second margin give a compact uncertainty picture.
 
+## Core Math
+
+- Normalized route probability:
+  $$
+  p_i = \frac{s_i}{\sum_j s_j}
+  $$
+- Entropy:
+  $$
+  -\sum_i p_i \log_2 p_i
+  $$
+- Margin:
+  $$
+  p_{(1)} - p_{(2)}
+  $$
+
 ## Minimal Code Mental Model
 
 ```python

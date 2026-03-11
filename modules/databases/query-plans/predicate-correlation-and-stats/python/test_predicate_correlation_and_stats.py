@@ -25,3 +25,12 @@ def test_less_extreme_correlation_still_reduces_the_gap() -> None:
 def test_invalid_selectivity_is_rejected() -> None:
     with pytest.raises(ValueError):
         independent_estimate(1_000, [0.4, 1.5])
+
+
+def test_zero_row_estimates_do_not_crash_q_error_summary() -> None:
+    summary = correlation_summary(table_rows=1_000_000, selectivities=[0.0, 0.2])
+
+    assert summary["independent_estimate"] == 0
+    assert summary["correlated_actual_rows"] == 0
+    assert summary["q_error"] == 1.0
+    assert summary["needs_extended_stats"] is False

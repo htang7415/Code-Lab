@@ -12,6 +12,14 @@ Risk-adjusted benchmark summaries combine task success with safety or high-risk 
 - Risk penalties make security and reliability tradeoffs visible in one comparable number.
 - A candidate can beat the raw success rate and still lose after adjustment.
 
+## Core Math
+
+- Risk-adjusted score:
+  $$
+  \text{success rate} - \lambda \cdot \text{high-risk failure rate}
+  $$
+- Here `\lambda` is the risk penalty.
+
 ## Minimal Code Mental Model
 
 ```python
