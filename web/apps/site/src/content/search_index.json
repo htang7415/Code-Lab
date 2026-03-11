@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T06:26:38.144Z",
+  "generated_at": "2026-03-11T06:34:32.868Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -2354,6 +2354,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "module:ai-agents/prompting/context-engineering-for-agents",
+      "type": "module",
+      "title": "Context Engineering for Agents",
+      "summary": "> Track: `ai-agents` | Topic: `prompting`",
+      "track": "ai-agents",
+      "topic": "prompting",
+      "slug": "context-engineering-for-agents",
+      "href": "/track/ai-agents/prompting#context-engineering-for-agents",
+      "trackName": "AI Agents",
+      "topicName": "Prompting"
+    },
+    {
       "id": "module:ml/systems/context-parallelism",
       "type": "module",
       "title": "Context Parallel Attention Bytes",
@@ -4658,6 +4670,18 @@
       "topicName": "Fundamentals"
     },
     {
+      "id": "module:ai-agents/workflows/prompt-chaining",
+      "type": "module",
+      "title": "Prompt Chaining",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "prompt-chaining",
+      "href": "/track/ai-agents/workflows#prompt-chaining",
+      "trackName": "AI Agents",
+      "topicName": "Workflows"
+    },
+    {
       "id": "module:ai-agents/guardrails/prompt-injection-defense",
       "type": "module",
       "title": "Prompt Injection Defense",
@@ -5688,6 +5712,18 @@
       "href": "/track/ml/computer-vision#architectures",
       "trackName": "Machine Learning",
       "topicName": "Computer Vision"
+    },
+    {
+      "id": "module:ai-agents/workflows/voice-and-realtime-agent-loops",
+      "type": "module",
+      "title": "Voice and Realtime Agent Loops",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "voice-and-realtime-agent-loops",
+      "href": "/track/ai-agents/workflows#voice-and-realtime-agent-loops",
+      "trackName": "AI Agents",
+      "topicName": "Workflows"
     },
     {
       "id": "doc:ml/llm/vote-metrics",

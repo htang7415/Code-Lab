@@ -15,6 +15,8 @@ axes they normalize over.
   better than transformer-style sequence models.
 - LayerNorm and RMSNorm normalize within each example, which makes them more
   robust to batch variability.
+- In this toy implementation, rows are examples in a batch and columns are
+  features.
 
 ## Core Math
 
@@ -40,9 +42,11 @@ axes they normalize over.
 ## Minimal Code Mental Model
 
 ```python
+feature_means, feature_variances = batch_stats(x_batch)
+y_batch = batchnorm(x_batch)
 mean, variance = mean_variance(x_token)
 y_token = normalize_with_stats(x_token, mean, variance)
-y_batch = batchnorm(x_batch)
+y_instance = instancenorm(x_batch)
 rms_scaled = rmsnorm(x_token)
 ```
 
@@ -51,12 +55,12 @@ rms_scaled = rmsnorm(x_token)
 ```python
 def mean_variance(x: list[float]) -> tuple[float, float]:
 def normalize_with_stats(x: list[float], mean: float, variance: float, eps: float = 1e-5) -> list[float]:
-def batchnorm(x: list[float], eps: float = 1e-5) -> list[float]:
+def batch_stats(matrix: list[list[float]]) -> tuple[list[float], list[float]]:
+def batchnorm(matrix: list[list[float]], eps: float = 1e-5) -> list[list[float]]:
 def layernorm(x: list[float], eps: float = 1e-5) -> list[float]:
 def rmsnorm(x: list[float], eps: float = 1e-5) -> list[float]:
 def groupnorm(x: list[float], groups: int, eps: float = 1e-5) -> list[float]:
-def instancenorm(x: list[float], eps: float = 1e-5) -> list[float]:
-def batch_stats(matrix: list[list[float]]) -> tuple[float, float]:
+def instancenorm(matrix: list[list[float]], eps: float = 1e-5) -> list[list[float]]:
 ```
 
 ## When To Use What

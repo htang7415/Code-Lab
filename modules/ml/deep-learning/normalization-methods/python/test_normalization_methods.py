@@ -14,11 +14,24 @@ from normalization_methods import (
 )
 
 
-def test_centered_normalizers_produce_zero_mean_vectors() -> None:
-    x = [1.0, 2.0, 3.0, 4.0]
+def test_batchnorm_normalizes_each_feature_across_the_batch() -> None:
+    out = batchnorm([[1.0, 10.0], [3.0, 30.0], [5.0, 50.0]])
+    first_feature = [row[0] for row in out]
+    second_feature = [row[1] for row in out]
 
-    for out in (batchnorm(x), layernorm(x), instancenorm(x)):
-        assert sum(out) == pytest.approx(0.0, abs=1e-6)
+    assert sum(first_feature) / len(first_feature) == pytest.approx(0.0, abs=1e-6)
+    assert sum(second_feature) / len(second_feature) == pytest.approx(0.0, abs=1e-6)
+
+
+def test_layernorm_normalizes_one_example() -> None:
+    out = layernorm([1.0, 2.0, 3.0, 4.0])
+    assert sum(out) == pytest.approx(0.0, abs=1e-6)
+
+
+def test_instancenorm_normalizes_each_row_independently() -> None:
+    out = instancenorm([[1.0, 2.0, 3.0], [10.0, 20.0, 30.0]])
+    for row in out:
+        assert sum(row) == pytest.approx(0.0, abs=1e-6)
 
 
 def test_rmsnorm_rescales_to_unit_rms() -> None:
@@ -37,10 +50,10 @@ def test_groupnorm_normalizes_each_group_independently() -> None:
 
 
 def test_batch_stats_aggregates_rectangular_matrix() -> None:
-    mean, variance = batch_stats([[1.0, 2.0], [3.0, 4.0]])
+    means, variances = batch_stats([[1.0, 2.0], [3.0, 4.0]])
 
-    assert mean == pytest.approx(2.5)
-    assert variance == pytest.approx(1.25)
+    assert means == pytest.approx([2.0, 3.0])
+    assert variances == pytest.approx([1.0, 1.0])
 
 
 def test_mean_variance_and_normalize_with_stats_match_manual_values() -> None:
@@ -54,6 +67,9 @@ def test_mean_variance_and_normalize_with_stats_match_manual_values() -> None:
 def test_invalid_groupnorm_and_batch_stats_inputs_raise() -> None:
     with pytest.raises(ValueError, match="divisible"):
         groupnorm([1.0, 2.0, 3.0], groups=2)
+
+    with pytest.raises(ValueError, match="non-empty"):
+        batchnorm([])
 
     with pytest.raises(ValueError, match="rectangular"):
         batch_stats([[1.0], [2.0, 3.0]])

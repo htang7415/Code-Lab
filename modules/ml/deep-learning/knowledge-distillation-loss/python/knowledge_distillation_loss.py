@@ -2,6 +2,11 @@ import math
 
 
 def _softmax(logits: list[float], temp: float) -> list[float]:
+    if not logits:
+        raise ValueError("logits must be non-empty")
+    if temp <= 0.0:
+        raise ValueError("temp must be positive")
+
     m = max(logits)
     exps = [math.exp((x - m) / temp) for x in logits]
     s = sum(exps)
@@ -9,6 +14,9 @@ def _softmax(logits: list[float], temp: float) -> list[float]:
 
 
 def distill_loss(student: list[float], teacher: list[float], temp: float = 1.0) -> float:
+    if len(student) != len(teacher):
+        raise ValueError("student and teacher must have the same length")
+
     ps = _softmax(student, temp)
     pt = _softmax(teacher, temp)
     loss = 0.0

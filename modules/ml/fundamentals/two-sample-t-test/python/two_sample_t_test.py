@@ -2,6 +2,9 @@ import math
 
 
 def t_stat(x: list[float], y: list[float]) -> float:
+    if len(x) < 2 or len(y) < 2:
+        raise ValueError("each sample must contain at least 2 observations")
+
     m1 = sum(x) / len(x)
     m2 = sum(y) / len(y)
     v1 = sum((v - m1) ** 2 for v in x) / (len(x) - 1)

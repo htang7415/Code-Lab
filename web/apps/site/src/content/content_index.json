@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T06:26:38.144Z",
+  "generated_at": "2026-03-11T06:34:32.868Z",
   "tracks": [
     {
       "id": "dsa",
@@ -26,7 +26,7 @@
       "accent": "#2ca02c",
       "accentVar": "--track-ai-agents",
       "topicCount": 12,
-      "moduleCount": 56
+      "moduleCount": 59
     },
     {
       "id": "databases",
@@ -166,15 +166,6 @@
       "moduleCount": 0
     },
     {
-      "track": "ml",
-      "topic": "evaluation",
-      "name": "Evaluation",
-      "path": "/track/ml/evaluation",
-      "hasDoc": true,
-      "docCount": 3,
-      "moduleCount": 17
-    },
-    {
       "track": "ai-agents",
       "topic": "evaluation",
       "name": "Evaluation",
@@ -182,6 +173,15 @@
       "hasDoc": true,
       "docCount": 1,
       "moduleCount": 9
+    },
+    {
+      "track": "ml",
+      "topic": "evaluation",
+      "name": "Evaluation",
+      "path": "/track/ml/evaluation",
+      "hasDoc": true,
+      "docCount": 3,
+      "moduleCount": 17
     },
     {
       "track": "ml",
@@ -397,7 +397,7 @@
       "path": "/track/ai-agents/prompting",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 3
+      "moduleCount": 4
     },
     {
       "track": "software-engineering",
@@ -595,7 +595,7 @@
       "path": "/track/ai-agents/workflows",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 7
+      "moduleCount": 9
     }
   ],
   "modules": [
@@ -1130,6 +1130,22 @@
     {
       "track": "ai-agents",
       "topic": "prompting",
+      "slug": "context-engineering-for-agents",
+      "title": "Context Engineering for Agents",
+      "path": "modules/ai-agents/prompting/context-engineering-for-agents",
+      "summary": "> Track: `ai-agents` | Topic: `prompting`",
+      "readme": "# Context Engineering for Agents\n\n> Track: `ai-agents` | Topic: `prompting`\n\n## Concept\n\nContext engineering for agents decides which instructions, memory, and retrieved evidence should fit into the active prompt before the model generates anything.\n\n## Key Points\n\n- The active prompt is a packed working set, not the full system history.\n- Context blocks should be ranked before packing so low-value text drops first.\n- Output space must be reserved before prompt packing begins.\n\n## Minimal Code Mental Model\n\n```python\nbudget = available_context_budget(context_window=8192, reserved_output_tokens=1024)\nranked = rank_context_blocks(blocks)\npacked = pack_context_blocks(ranked, token_budget=budget)\n```\n\n## Function\n\n```python\ndef available_context_budget(context_window: int, reserved_output_tokens: int) -> int:\ndef rank_context_blocks(blocks: list[dict[str, object]]) -> list[dict[str, object]]:\ndef pack_context_blocks(blocks: list[dict[str, object]], token_budget: int) -> list[str]:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/prompting/context-engineering-for-agents/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/prompting/context-engineering-for-agents/python/context_engineering_for_agents.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef available_context_budget(context_window: int, reserved_output_tokens: int) -> int:\n    if context_window <= 0:\n        raise ValueError(\"context_window must be positive\")\n    if reserved_output_tokens < 0:\n        raise ValueError(\"reserved_output_tokens must be non-negative\")\n    if reserved_output_tokens >= context_window:\n        raise ValueError(\"reserved_output_tokens must be smaller than context_window\")\n    return context_window - reserved_output_tokens\n\n\ndef rank_context_blocks(blocks: list[dict[str, object]]) -> list[dict[str, object]]:\n    if not blocks:\n        raise ValueError(\"blocks must be non-empty\")\n\n    ranked: list[dict[str, object]] = []\n    for block in blocks:\n        name = str(block.get(\"name\", \"\")).strip()\n        tokens = int(block.get(\"tokens\", 0))\n        priority = int(block.get(\"priority\", 0))\n        if not name:\n            raise ValueError(\"block names must be non-empty\")\n        if tokens <= 0:\n            raise ValueError(\"block tokens must be positive\")\n        ranked.append({\"name\": name, \"tokens\": tokens, \"priority\": priority})\n\n    return sorted(ranked, key=lambda block: (-int(block[\"priority\"]), int(block[\"tokens\"]), str(block[\"name\"])))\n\n\ndef pack_context_blocks(blocks: list[dict[str, object]], token_budget: int) -> list[str]:\n    if token_budget <= 0:\n        raise ValueError(\"token_budget must be positive\")\n\n    packed: list[str] = []\n    remaining = token_budget\n    for block in blocks:\n        tokens = int(block.get(\"tokens\", 0))\n        name = str(block.get(\"name\", \"\")).strip()\n        if not name:\n            raise ValueError(\"block names must be non-empty\")\n        if tokens <= 0:\n            raise ValueError(\"block tokens must be positive\")\n        if tokens <= remaining:\n            packed.append(name)\n            remaining -= tokens\n    return packed\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "prompting",
       "slug": "examples-and-delimiters",
       "title": "Examples and Delimiters",
       "path": "modules/ai-agents/prompting/examples-and-delimiters",
@@ -1450,6 +1466,22 @@
     {
       "track": "ai-agents",
       "topic": "workflows",
+      "slug": "prompt-chaining",
+      "title": "Prompt Chaining",
+      "path": "modules/ai-agents/workflows/prompt-chaining",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "readme": "# Prompt Chaining\n\n> Track: `ai-agents` | Topic: `workflows`\n\n## Concept\n\nPrompt chaining breaks a larger task into ordered prompt stages where each stage passes a compact output to the next one.\n\n## Key Points\n\n- Chaining is useful when each stage has a clear transformation job.\n- Stage outputs should stay compact so later prompts do not inherit the whole transcript.\n- A failed stage should stop the chain instead of letting downstream prompts guess.\n\n## Minimal Code Mental Model\n\n```python\nstages = chain_stages([\"extract facts\", \"write summary\", \"check format\"])\nmessage = chained_prompt(\"facts: revenue up 12%\", \"write summary\")\nroute = chain_route(stage_index=1, total_stages=3, previous_success=True)\n```\n\n## Function\n\n```python\ndef chain_stages(stages: list[str]) -> list[dict[str, object]]:\ndef chained_prompt(previous_output: str, stage_instruction: str) -> str:\ndef chain_route(stage_index: int, total_stages: int, previous_success: bool) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/workflows/prompt-chaining/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/workflows/prompt-chaining/python/prompt_chaining.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef chain_stages(stages: list[str]) -> list[dict[str, object]]:\n    if not stages:\n        raise ValueError(\"stages must be non-empty\")\n\n    packets: list[dict[str, object]] = []\n    for index, stage in enumerate(stages):\n        cleaned_stage = stage.strip()\n        if not cleaned_stage:\n            raise ValueError(\"stage names must be non-empty\")\n        packets.append(\n            {\n                \"stage_index\": index,\n                \"instruction\": cleaned_stage,\n                \"is_last\": index == len(stages) - 1,\n            }\n        )\n    return packets\n\n\ndef chained_prompt(previous_output: str, stage_instruction: str) -> str:\n    cleaned_output = previous_output.strip()\n    cleaned_instruction = stage_instruction.strip()\n    if not cleaned_output:\n        raise ValueError(\"previous_output must be non-empty\")\n    if not cleaned_instruction:\n        raise ValueError(\"stage_instruction must be non-empty\")\n    return f\"Previous stage output:\\n{cleaned_output}\\n\\nNext stage:\\n{cleaned_instruction}\"\n\n\ndef chain_route(stage_index: int, total_stages: int, previous_success: bool) -> str:\n    if stage_index < 0:\n        raise ValueError(\"stage_index must be non-negative\")\n    if total_stages <= 0:\n        raise ValueError(\"total_stages must be positive\")\n    if stage_index >= total_stages:\n        raise ValueError(\"stage_index must be smaller than total_stages\")\n    if not previous_success:\n        return \"stop\"\n    if stage_index == total_stages - 1:\n        return \"complete\"\n    return \"next-stage\"\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "workflows",
       "slug": "retries-and-recovery",
       "title": "Retries and Recovery",
       "path": "modules/ai-agents/workflows/retries-and-recovery",
@@ -1476,6 +1508,22 @@
           "path": "modules/ai-agents/workflows/state-machine-basics/python/state_machine_basics.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\nEVENT_TO_STATE = {\n    (\"planned\", \"start\"): \"running\",\n    (\"running\", \"complete\"): \"done\",\n    (\"running\", \"block\"): \"blocked\",\n    (\"blocked\", \"resume\"): \"running\",\n}\n\n\ndef valid_transition(\n    current_state: str,\n    next_state_name: str,\n    transitions: dict[str, list[str]],\n) -> bool:\n    allowed = transitions.get(current_state.strip(), [])\n    return next_state_name.strip() in allowed\n\n\ndef next_state(current_state: str, event: str) -> str:\n    key = (current_state.strip(), event.strip())\n    if key not in EVENT_TO_STATE:\n        raise ValueError(\"invalid state transition\")\n    return EVENT_TO_STATE[key]\n\n\ndef transition_trace(states: list[str]) -> str:\n    cleaned = [state.strip() for state in states if state.strip()]\n    return \" -> \".join(cleaned)\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "voice-and-realtime-agent-loops",
+      "title": "Voice and Realtime Agent Loops",
+      "path": "modules/ai-agents/workflows/voice-and-realtime-agent-loops",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "readme": "# Voice and Realtime Agent Loops\n\n> Track: `ai-agents` | Topic: `workflows`\n\n## Concept\n\nVoice and realtime agent loops route streaming turns by checking whether transcript state, interruption state, and latency budget still allow the agent to keep responding live.\n\n## Key Points\n\n- Realtime loops must react to interruption before they optimize response quality.\n- Transcript availability and response latency are workflow constraints, not just model details.\n- Voice workflows often need to choose between waiting, responding, or yielding control to a tool.\n\n## Minimal Code Mental Model\n\n```python\npacket = voice_turn_packet(\"audio\", transcript=\"schedule meeting tomorrow\", interrupted=False)\nwithin_budget = realtime_budget_ok(latency_ms=180, max_latency_ms=250)\nroute = realtime_route(has_transcript=True, interrupted=False, needs_tool=True)\n```\n\n## Function\n\n```python\ndef voice_turn_packet(\n    input_mode: str,\n    transcript: str | None = None,\n    interrupted: bool = False,\n) -> dict[str, object]:\ndef realtime_budget_ok(latency_ms: int, max_latency_ms: int) -> bool:\ndef realtime_route(has_transcript: bool, interrupted: bool, needs_tool: bool) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/workflows/voice-and-realtime-agent-loops/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/workflows/voice-and-realtime-agent-loops/python/voice_and_realtime_agent_loops.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef voice_turn_packet(\n    input_mode: str,\n    transcript: str | None = None,\n    interrupted: bool = False,\n) -> dict[str, object]:\n    cleaned_mode = input_mode.strip().lower()\n    if cleaned_mode not in {\"audio\", \"text\", \"multimodal\"}:\n        raise ValueError(\"input_mode must be audio, text, or multimodal\")\n\n    cleaned_transcript = transcript.strip() if transcript is not None else None\n    if cleaned_mode == \"audio\" and not cleaned_transcript and not interrupted:\n        raise ValueError(\"audio turns need a transcript unless interrupted\")\n\n    return {\n        \"input_mode\": cleaned_mode,\n        \"transcript\": cleaned_transcript,\n        \"interrupted\": interrupted,\n    }\n\n\ndef realtime_budget_ok(latency_ms: int, max_latency_ms: int) -> bool:\n    if latency_ms < 0:\n        raise ValueError(\"latency_ms must be non-negative\")\n    if max_latency_ms <= 0:\n        raise ValueError(\"max_latency_ms must be positive\")\n    return latency_ms <= max_latency_ms\n\n\ndef realtime_route(has_transcript: bool, interrupted: bool, needs_tool: bool) -> str:\n    if interrupted:\n        return \"yield\"\n    if not has_transcript:\n        return \"wait\"\n    if needs_tool:\n        return \"run-tool\"\n    return \"respond\"\n"
         }
       ]
     },
@@ -4828,17 +4876,17 @@
       "title": "Knowledge Distillation Loss",
       "path": "modules/ml/deep-learning/knowledge-distillation-loss",
       "summary": "> Track: `ml` | Topic: `deep-learning`",
-      "readme": "# Knowledge Distillation Loss\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nDistillation matches student logits to teacher logits.\n\n## Math\n\n$$L = \\mathrm{KL}\\left(\\mathrm{softmax}\\left(\\frac{z_s}{T}\\right)\\,\\middle\\|\\,\\mathrm{softmax}\\left(\\frac{z_t}{T}\\right)\\right)$$\n\n- $L$ -- distillation loss\n- $\\mathrm{KL}$ -- Kullback-Leibler divergence\n- $z_s$ -- student logits\n- $z_t$ -- teacher logits\n- $T$ -- temperature\n\n## Function\n\n```python\ndef distill_loss(student: list[float], teacher: list[float], temp: float = 1.0) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/knowledge-distillation-loss/python -q\n```\n",
+      "readme": "# Knowledge Distillation Loss\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Concept\n\nDistillation matches student logits to teacher logits.\n\n## Math\n\n$$L = \\mathrm{KL}\\left(\\mathrm{softmax}\\left(\\frac{z_t}{T}\\right)\\,\\middle\\|\\,\\mathrm{softmax}\\left(\\frac{z_s}{T}\\right)\\right)$$\n\n- $L$ -- distillation loss\n- $\\mathrm{KL}$ -- Kullback-Leibler divergence\n- $z_s$ -- student logits\n- $z_t$ -- teacher logits\n- $T$ -- temperature\n\nThe teacher distribution provides the weighting, so the loss is zero only when\nthe student matches the teacher distribution.\n\n## Function\n\n```python\ndef distill_loss(student: list[float], teacher: list[float], temp: float = 1.0) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/knowledge-distillation-loss/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/deep-learning/knowledge-distillation-loss/python/knowledge_distillation_loss.py",
           "language": "python",
-          "content": "import math\n\n\ndef _softmax(logits: list[float], temp: float) -> list[float]:\n    m = max(logits)\n    exps = [math.exp((x - m) / temp) for x in logits]\n    s = sum(exps)\n    return [e / s for e in exps]\n\n\ndef distill_loss(student: list[float], teacher: list[float], temp: float = 1.0) -> float:\n    ps = _softmax(student, temp)\n    pt = _softmax(teacher, temp)\n    loss = 0.0\n    for p_s, p_t in zip(ps, pt):\n        if p_t > 0 and p_s > 0:\n            loss += p_t * math.log(p_t / p_s)\n    return loss\n"
+          "content": "import math\n\n\ndef _softmax(logits: list[float], temp: float) -> list[float]:\n    if not logits:\n        raise ValueError(\"logits must be non-empty\")\n    if temp <= 0.0:\n        raise ValueError(\"temp must be positive\")\n\n    m = max(logits)\n    exps = [math.exp((x - m) / temp) for x in logits]\n    s = sum(exps)\n    return [e / s for e in exps]\n\n\ndef distill_loss(student: list[float], teacher: list[float], temp: float = 1.0) -> float:\n    if len(student) != len(teacher):\n        raise ValueError(\"student and teacher must have the same length\")\n\n    ps = _softmax(student, temp)\n    pt = _softmax(teacher, temp)\n    loss = 0.0\n    for p_s, p_t in zip(ps, pt):\n        if p_t > 0 and p_s > 0:\n            loss += p_t * math.log(p_t / p_s)\n    return loss\n"
         },
         {
           "path": "modules/ml/deep-learning/knowledge-distillation-loss/rust/src/lib.rs",
           "language": "rust",
-          "content": "fn softmax(logits: &[f64], temp: f64) -> Vec<f64> {\n    let m = logits.iter().copied().fold(f64::NEG_INFINITY, f64::max);\n    let exps: Vec<f64> = logits.iter().map(|x| ((x - m) / temp).exp()).collect();\n    let sum: f64 = exps.iter().sum();\n    exps.iter().map(|e| e / sum).collect()\n}\n\npub fn distill_loss(student: &[f64], teacher: &[f64], temp: f64) -> f64 {\n    let ps = softmax(student, temp);\n    let pt = softmax(teacher, temp);\n    let mut loss = 0.0;\n    for (p_s, p_t) in ps.iter().zip(pt.iter()) {\n        if *p_t > 0.0 && *p_s > 0.0 {\n            loss += p_t * (p_t / p_s).ln();\n        }\n    }\n    loss\n}\n"
+          "content": "fn softmax(logits: &[f64], temp: f64) -> Vec<f64> {\n    assert!(!logits.is_empty(), \"logits must be non-empty\");\n    assert!(temp > 0.0, \"temp must be positive\");\n\n    let m = logits.iter().copied().fold(f64::NEG_INFINITY, f64::max);\n    let exps: Vec<f64> = logits.iter().map(|x| ((x - m) / temp).exp()).collect();\n    let sum: f64 = exps.iter().sum();\n    exps.iter().map(|e| e / sum).collect()\n}\n\npub fn distill_loss(student: &[f64], teacher: &[f64], temp: f64) -> f64 {\n    assert_eq!(\n        student.len(),\n        teacher.len(),\n        \"student and teacher must have the same length\"\n    );\n\n    let ps = softmax(student, temp);\n    let pt = softmax(teacher, temp);\n    let mut loss = 0.0;\n    for (p_s, p_t) in ps.iter().zip(pt.iter()) {\n        if *p_t > 0.0 && *p_s > 0.0 {\n            loss += p_t * (p_t / p_s).ln();\n        }\n    }\n    loss\n}\n"
         }
       ]
     },
@@ -4897,12 +4945,12 @@
       "title": "Normalization Methods",
       "path": "modules/ml/deep-learning/normalization-methods",
       "summary": "> Track: `ml` | Topic: `deep-learning`",
-      "readme": "# Normalization Methods\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Purpose\n\nUse this module to compare the main normalization families and understand which\naxes they normalize over.\n\n## First Principles\n\n- Normalization stabilizes activation scale so optimization is easier.\n- The main difference between methods is which statistics are shared.\n- BatchNorm depends on batch statistics, which is why it fits CNN-style training\n  better than transformer-style sequence models.\n- LayerNorm and RMSNorm normalize within each example, which makes them more\n  robust to batch variability.\n\n## Core Math\n\n- BatchNorm:\n  $$\n  \\mathrm{BatchNorm}(x)=\\frac{x-\\mu_B}{\\sqrt{\\sigma_B^2+\\epsilon}}\n  $$\n- LayerNorm:\n  $$\n  \\mathrm{LayerNorm}(x)=\\frac{x-\\mu_f}{\\sqrt{\\sigma_f^2+\\epsilon}}\n  $$\n- RMSNorm:\n  $$\n  \\mathrm{RMSNorm}(x)=\\frac{x}{\\sqrt{\\frac{1}{d}\\sum_i x_i^2+\\epsilon}}\n  $$\n\n## From Math To Code\n\n- Compute the mean and variance for the axes you want to normalize over.\n- Reuse those statistics to standardize activations.\n- Skip centering only when you explicitly want RMS-only scaling.\n\n## Minimal Code Mental Model\n\n```python\nmean, variance = mean_variance(x_token)\ny_token = normalize_with_stats(x_token, mean, variance)\ny_batch = batchnorm(x_batch)\nrms_scaled = rmsnorm(x_token)\n```\n\n## Function\n\n```python\ndef mean_variance(x: list[float]) -> tuple[float, float]:\ndef normalize_with_stats(x: list[float], mean: float, variance: float, eps: float = 1e-5) -> list[float]:\ndef batchnorm(x: list[float], eps: float = 1e-5) -> list[float]:\ndef layernorm(x: list[float], eps: float = 1e-5) -> list[float]:\ndef rmsnorm(x: list[float], eps: float = 1e-5) -> list[float]:\ndef groupnorm(x: list[float], groups: int, eps: float = 1e-5) -> list[float]:\ndef instancenorm(x: list[float], eps: float = 1e-5) -> list[float]:\ndef batch_stats(matrix: list[list[float]]) -> tuple[float, float]:\n```\n\n## When To Use What\n\n- Use BatchNorm as the classic CNN default when batches are stable and reasonably large.\n- Use LayerNorm or RMSNorm for transformers and sequence models.\n- Use GroupNorm or InstanceNorm when batch statistics are unreliable or unavailable.\n- Use RMSNorm when you want scale control with less computation than full centering.\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/normalization-methods/python -q\n```\n",
+      "readme": "# Normalization Methods\n\n> Track: `ml` | Topic: `deep-learning`\n\n## Purpose\n\nUse this module to compare the main normalization families and understand which\naxes they normalize over.\n\n## First Principles\n\n- Normalization stabilizes activation scale so optimization is easier.\n- The main difference between methods is which statistics are shared.\n- BatchNorm depends on batch statistics, which is why it fits CNN-style training\n  better than transformer-style sequence models.\n- LayerNorm and RMSNorm normalize within each example, which makes them more\n  robust to batch variability.\n- In this toy implementation, rows are examples in a batch and columns are\n  features.\n\n## Core Math\n\n- BatchNorm:\n  $$\n  \\mathrm{BatchNorm}(x)=\\frac{x-\\mu_B}{\\sqrt{\\sigma_B^2+\\epsilon}}\n  $$\n- LayerNorm:\n  $$\n  \\mathrm{LayerNorm}(x)=\\frac{x-\\mu_f}{\\sqrt{\\sigma_f^2+\\epsilon}}\n  $$\n- RMSNorm:\n  $$\n  \\mathrm{RMSNorm}(x)=\\frac{x}{\\sqrt{\\frac{1}{d}\\sum_i x_i^2+\\epsilon}}\n  $$\n\n## From Math To Code\n\n- Compute the mean and variance for the axes you want to normalize over.\n- Reuse those statistics to standardize activations.\n- Skip centering only when you explicitly want RMS-only scaling.\n\n## Minimal Code Mental Model\n\n```python\nfeature_means, feature_variances = batch_stats(x_batch)\ny_batch = batchnorm(x_batch)\nmean, variance = mean_variance(x_token)\ny_token = normalize_with_stats(x_token, mean, variance)\ny_instance = instancenorm(x_batch)\nrms_scaled = rmsnorm(x_token)\n```\n\n## Function\n\n```python\ndef mean_variance(x: list[float]) -> tuple[float, float]:\ndef normalize_with_stats(x: list[float], mean: float, variance: float, eps: float = 1e-5) -> list[float]:\ndef batch_stats(matrix: list[list[float]]) -> tuple[list[float], list[float]]:\ndef batchnorm(matrix: list[list[float]], eps: float = 1e-5) -> list[list[float]]:\ndef layernorm(x: list[float], eps: float = 1e-5) -> list[float]:\ndef rmsnorm(x: list[float], eps: float = 1e-5) -> list[float]:\ndef groupnorm(x: list[float], groups: int, eps: float = 1e-5) -> list[float]:\ndef instancenorm(matrix: list[list[float]], eps: float = 1e-5) -> list[list[float]]:\n```\n\n## When To Use What\n\n- Use BatchNorm as the classic CNN default when batches are stable and reasonably large.\n- Use LayerNorm or RMSNorm for transformers and sequence models.\n- Use GroupNorm or InstanceNorm when batch statistics are unreliable or unavailable.\n- Use RMSNorm when you want scale control with less computation than full centering.\n\n## Run tests\n\n```bash\npytest modules/ml/deep-learning/normalization-methods/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/deep-learning/normalization-methods/python/normalization_methods.py",
           "language": "python",
-          "content": "from __future__ import annotations\n\nimport math\n\n\ndef _validate_vector(x: list[float]) -> None:\n    if not x:\n        raise ValueError(\"x must be non-empty\")\n\n\ndef _mean_variance(x: list[float]) -> tuple[float, float]:\n    mean = sum(x) / len(x)\n    variance = sum((value - mean) ** 2 for value in x) / len(x)\n    return mean, variance\n\n\ndef mean_variance(x: list[float]) -> tuple[float, float]:\n    _validate_vector(x)\n    return _mean_variance(x)\n\n\ndef normalize_with_stats(x: list[float], mean: float, variance: float, eps: float = 1e-5) -> list[float]:\n    if eps <= 0.0:\n        raise ValueError(\"eps must be positive\")\n    return [(value - mean) / math.sqrt(variance + eps) for value in x]\n\n\ndef batchnorm(x: list[float], eps: float = 1e-5) -> list[float]:\n    mean, variance = mean_variance(x)\n    return normalize_with_stats(x, mean, variance, eps=eps)\n\n\ndef layernorm(x: list[float], eps: float = 1e-5) -> list[float]:\n    mean, variance = mean_variance(x)\n    return normalize_with_stats(x, mean, variance, eps=eps)\n\n\ndef rmsnorm(x: list[float], eps: float = 1e-5) -> list[float]:\n    _validate_vector(x)\n    rms = math.sqrt(sum(value * value for value in x) / len(x) + eps)\n    return [value / rms for value in x]\n\n\ndef groupnorm(x: list[float], groups: int, eps: float = 1e-5) -> list[float]:\n    _validate_vector(x)\n    if groups <= 0:\n        raise ValueError(\"groups must be positive\")\n    if len(x) % groups != 0:\n        raise ValueError(\"len(x) must be divisible by groups\")\n\n    group_size = len(x) // groups\n    out: list[float] = []\n    for group_index in range(groups):\n        chunk = x[group_index * group_size : (group_index + 1) * group_size]\n        mean, variance = mean_variance(chunk)\n        out.extend(normalize_with_stats(chunk, mean, variance, eps=eps))\n    return out\n\n\ndef instancenorm(x: list[float], eps: float = 1e-5) -> list[float]:\n    mean, variance = mean_variance(x)\n    return normalize_with_stats(x, mean, variance, eps=eps)\n\n\ndef batch_stats(matrix: list[list[float]]) -> tuple[float, float]:\n    if not matrix or not matrix[0]:\n        raise ValueError(\"matrix must be non-empty\")\n    width = len(matrix[0])\n    if any(len(row) != width for row in matrix):\n        raise ValueError(\"matrix must be rectangular\")\n\n    values = [value for row in matrix for value in row]\n    mean = sum(values) / len(values)\n    variance = sum((value - mean) ** 2 for value in values) / len(values)\n    return mean, variance\n"
+          "content": "from __future__ import annotations\n\nimport math\n\n\ndef _validate_vector(x: list[float]) -> None:\n    if not x:\n        raise ValueError(\"x must be non-empty\")\n\n\ndef _validate_matrix(matrix: list[list[float]]) -> None:\n    if not matrix or not matrix[0]:\n        raise ValueError(\"matrix must be non-empty\")\n    width = len(matrix[0])\n    if any(len(row) != width for row in matrix):\n        raise ValueError(\"matrix must be rectangular\")\n\n\ndef _mean_variance(x: list[float]) -> tuple[float, float]:\n    mean = sum(x) / len(x)\n    variance = sum((value - mean) ** 2 for value in x) / len(x)\n    return mean, variance\n\n\ndef mean_variance(x: list[float]) -> tuple[float, float]:\n    _validate_vector(x)\n    return _mean_variance(x)\n\n\ndef normalize_with_stats(x: list[float], mean: float, variance: float, eps: float = 1e-5) -> list[float]:\n    if eps <= 0.0:\n        raise ValueError(\"eps must be positive\")\n    return [(value - mean) / math.sqrt(variance + eps) for value in x]\n\n\ndef batch_stats(matrix: list[list[float]]) -> tuple[list[float], list[float]]:\n    _validate_matrix(matrix)\n\n    width = len(matrix[0])\n    means: list[float] = []\n    variances: list[float] = []\n    for feature_index in range(width):\n        column = [row[feature_index] for row in matrix]\n        mean, variance = mean_variance(column)\n        means.append(mean)\n        variances.append(variance)\n    return means, variances\n\n\ndef batchnorm(matrix: list[list[float]], eps: float = 1e-5) -> list[list[float]]:\n    if eps <= 0.0:\n        raise ValueError(\"eps must be positive\")\n\n    means, variances = batch_stats(matrix)\n    return [\n        [\n            (value - means[feature_index]) / math.sqrt(variances[feature_index] + eps)\n            for feature_index, value in enumerate(row)\n        ]\n        for row in matrix\n    ]\n\n\ndef layernorm(x: list[float], eps: float = 1e-5) -> list[float]:\n    mean, variance = mean_variance(x)\n    return normalize_with_stats(x, mean, variance, eps=eps)\n\n\ndef rmsnorm(x: list[float], eps: float = 1e-5) -> list[float]:\n    _validate_vector(x)\n    rms = math.sqrt(sum(value * value for value in x) / len(x) + eps)\n    return [value / rms for value in x]\n\n\ndef groupnorm(x: list[float], groups: int, eps: float = 1e-5) -> list[float]:\n    _validate_vector(x)\n    if groups <= 0:\n        raise ValueError(\"groups must be positive\")\n    if len(x) % groups != 0:\n        raise ValueError(\"len(x) must be divisible by groups\")\n\n    group_size = len(x) // groups\n    out: list[float] = []\n    for group_index in range(groups):\n        chunk = x[group_index * group_size : (group_index + 1) * group_size]\n        mean, variance = mean_variance(chunk)\n        out.extend(normalize_with_stats(chunk, mean, variance, eps=eps))\n    return out\n\n\ndef instancenorm(matrix: list[list[float]], eps: float = 1e-5) -> list[list[float]]:\n    _validate_matrix(matrix)\n    return [\n        normalize_with_stats(row, *mean_variance(row), eps=eps)\n        for row in matrix\n    ]\n"
         }
       ]
     },
@@ -5468,17 +5516,17 @@
       "title": "KL Divergence",
       "path": "modules/ml/fundamentals/kl-divergence",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# KL Divergence\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nKL divergence measures how one distribution diverges from another.\n\n## Math\n\n$$\\mathrm{KL}(p\\|q) = \\sum_i p_i \\log\\left(\\frac{p_i}{q_i}\\right)$$\n\n- $\\mathrm{KL}$ -- Kullback-Leibler divergence\n- $p_i$ -- i-th probability\n- $q_i$ -- i-th probability distribution\n- $p$ -- probability\n- $q$ -- probability distribution\n- $i$ -- index\n\n## Function\n\n```python\ndef kl(p: list[float], q: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/kl-divergence/python -q\n```\n",
+      "readme": "# KL Divergence\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nKL divergence measures how one distribution diverges from another.\n\n## Math\n\n$$\\mathrm{KL}(p\\|q) = \\sum_i p_i \\log\\left(\\frac{p_i}{q_i}\\right)$$\n\nIf some $p_i > 0$ while $q_i = 0$, then $\\mathrm{KL}(p\\|q) = \\infty$.\n\n- $\\mathrm{KL}$ -- Kullback-Leibler divergence\n- $p_i$ -- i-th probability\n- $q_i$ -- i-th probability under $q$\n- $p$ -- source distribution\n- $q$ -- reference distribution\n- $i$ -- index\n\n## Function\n\n```python\ndef kl(p: list[float], q: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/kl-divergence/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/kl-divergence/python/kl_divergence.py",
           "language": "python",
-          "content": "import math\n\n\ndef kl(p: list[float], q: list[float]) -> float:\n    total = 0.0\n    for pi, qi in zip(p, q):\n        if pi > 0 and qi > 0:\n            total += pi * math.log(pi / qi)\n    return total\n"
+          "content": "import math\n\n\ndef kl(p: list[float], q: list[float]) -> float:\n    if len(p) != len(q):\n        raise ValueError(\"p and q must have the same length\")\n\n    total = 0.0\n    for pi, qi in zip(p, q):\n        if pi < 0.0 or qi < 0.0:\n            raise ValueError(\"p and q must be non-negative\")\n        if pi == 0.0:\n            continue\n        if qi == 0.0:\n            return float(\"inf\")\n        total += pi * math.log(pi / qi)\n    return total\n"
         },
         {
           "path": "modules/ml/fundamentals/kl-divergence/rust/src/lib.rs",
           "language": "rust",
-          "content": "pub fn kl(p: &[f64], q: &[f64]) -> f64 {\n    let mut total = 0.0;\n    for (&pi, &qi) in p.iter().zip(q.iter()) {\n        if pi > 0.0 && qi > 0.0 {\n            total += pi * (pi / qi).ln();\n        }\n    }\n    total\n}\n"
+          "content": "pub fn kl(p: &[f64], q: &[f64]) -> f64 {\n    assert_eq!(p.len(), q.len(), \"p and q must have the same length\");\n\n    let mut total = 0.0;\n    for (&pi, &qi) in p.iter().zip(q.iter()) {\n        assert!(pi >= 0.0 && qi >= 0.0, \"p and q must be non-negative\");\n        if pi == 0.0 {\n            continue;\n        }\n        if qi == 0.0 {\n            return f64::INFINITY;\n        }\n        total += pi * (pi / qi).ln();\n    }\n    total\n}\n"
         }
       ]
     },
@@ -5594,17 +5642,17 @@
       "title": "Two-Sample t-test",
       "path": "modules/ml/fundamentals/two-sample-t-test",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Two-Sample t-test\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nTwo-sample t-test compares means of two groups.\n\n## Math\n\n$$t = \\frac{m_1 - m_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$\n\n- $t$ -- t statistic\n- $m_1$ -- mean of sample 1\n- $m_2$ -- mean of sample 2\n- $s_1$ -- sample standard deviation of sample 1\n- $s_2$ -- sample standard deviation of sample 2\n- $n_1$ -- sample size of sample 1\n- $n_2$ -- sample size of sample 2\n\n## Function\n\n```python\ndef t_stat(x: list[float], y: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/two-sample-t-test/python -q\n```\n",
+      "readme": "# Two-Sample t-test\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nTwo-sample t-test compares means of two groups.\n\n## Math\n\n$$t = \\frac{m_1 - m_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$\n\nThis statistic uses sample variance, so each group needs at least 2\nobservations.\n\n- $t$ -- t statistic\n- $m_1$ -- mean of sample 1\n- $m_2$ -- mean of sample 2\n- $s_1$ -- sample standard deviation of sample 1\n- $s_2$ -- sample standard deviation of sample 2\n- $n_1$ -- sample size of sample 1\n- $n_2$ -- sample size of sample 2\n\n## Function\n\n```python\ndef t_stat(x: list[float], y: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/two-sample-t-test/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/two-sample-t-test/python/two_sample_t_test.py",
           "language": "python",
-          "content": "import math\n\n\ndef t_stat(x: list[float], y: list[float]) -> float:\n    m1 = sum(x) / len(x)\n    m2 = sum(y) / len(y)\n    v1 = sum((v - m1) ** 2 for v in x) / (len(x) - 1)\n    v2 = sum((v - m2) ** 2 for v in y) / (len(y) - 1)\n    denom = math.sqrt(v1 / len(x) + v2 / len(y))\n    if denom == 0:\n        if m1 == m2:\n            return 0.0\n        return float(\"-inf\") if m1 < m2 else float(\"inf\")\n    return (m1 - m2) / denom\n"
+          "content": "import math\n\n\ndef t_stat(x: list[float], y: list[float]) -> float:\n    if len(x) < 2 or len(y) < 2:\n        raise ValueError(\"each sample must contain at least 2 observations\")\n\n    m1 = sum(x) / len(x)\n    m2 = sum(y) / len(y)\n    v1 = sum((v - m1) ** 2 for v in x) / (len(x) - 1)\n    v2 = sum((v - m2) ** 2 for v in y) / (len(y) - 1)\n    denom = math.sqrt(v1 / len(x) + v2 / len(y))\n    if denom == 0:\n        if m1 == m2:\n            return 0.0\n        return float(\"-inf\") if m1 < m2 else float(\"inf\")\n    return (m1 - m2) / denom\n"
         },
         {
           "path": "modules/ml/fundamentals/two-sample-t-test/rust/src/lib.rs",
           "language": "rust",
-          "content": "pub fn t_stat(x: &[f64], y: &[f64]) -> f64 {\n    let m1: f64 = x.iter().sum::<f64>() / x.len() as f64;\n    let m2: f64 = y.iter().sum::<f64>() / y.len() as f64;\n    let v1: f64 = x.iter().map(|v| (v - m1).powi(2)).sum::<f64>() / (x.len() as f64 - 1.0);\n    let v2: f64 = y.iter().map(|v| (v - m2).powi(2)).sum::<f64>() / (y.len() as f64 - 1.0);\n    (m1 - m2) / (v1 / x.len() as f64 + v2 / y.len() as f64).sqrt()\n}\n"
+          "content": "pub fn t_stat(x: &[f64], y: &[f64]) -> f64 {\n    assert!(\n        x.len() >= 2 && y.len() >= 2,\n        \"each sample must contain at least 2 observations\"\n    );\n\n    let m1: f64 = x.iter().sum::<f64>() / x.len() as f64;\n    let m2: f64 = y.iter().sum::<f64>() / y.len() as f64;\n    let v1: f64 = x.iter().map(|v| (v - m1).powi(2)).sum::<f64>() / (x.len() as f64 - 1.0);\n    let v2: f64 = y.iter().map(|v| (v - m2).powi(2)).sum::<f64>() / (y.len() as f64 - 1.0);\n    let denom = (v1 / x.len() as f64 + v2 / y.len() as f64).sqrt();\n    if denom == 0.0 {\n        if m1 == m2 {\n            0.0\n        } else if m1 < m2 {\n            f64::NEG_INFINITY\n        } else {\n            f64::INFINITY\n        }\n    } else {\n        (m1 - m2) / denom\n    }\n}\n"
         }
       ]
     },
@@ -9196,7 +9244,7 @@
       "title": "Prompting",
       "path": "docs/ai-agents/prompting/README.md",
       "summary": "Prompting is the layer that turns a raw user request into a structured input the model can reliably follow.",
-      "content": "# Prompting\n\nPrompting is the layer that turns a raw user request into a structured input the model can reliably follow.\n\n## Purpose\n\nUse this page to understand:\n- how to separate system instructions from user intent\n- when to add explicit constraints\n- how to keep prompts short and structured\n\n## First Principles\n\n- Good prompts reduce ambiguity before the model starts generating.\n- System instructions define behavior; user messages define the task.\n- Constraints are most useful when they are explicit and easy to check.\n\n## Minimal Code Mental Model\n\n```python\nchecklist = format_checklist([\"answer in bullets\", \"cite sources\"])\nmessages = build_messages(\n    system_prompt=\"You are a careful research assistant.\",\n    user_prompt=\"Summarize the latest policy changes.\",\n    checklist=[\"answer in bullets\", \"cite sources\"],\n)\n```\n\n## Canonical Modules\n\n- Main structuring pattern: `prompt-structuring`\n\n## Supporting Modules\n\n- Few-shot examples and explicit delimiters: `examples-and-delimiters`\n- Lightweight answer verification prompts: `self-check-patterns`\n\n## When To Use What\n\n- Start with `prompt-structuring` when the problem is basic message layout and instruction clarity.\n- Use `examples-and-delimiters` when the model needs a clearer output pattern or stronger separation between sections.\n- Use `self-check-patterns` when the model should verify constraints before returning a final answer.\n- Keep prompts short before adding more examples or scaffolding.\n"
+      "content": "# Prompting\n\nPrompting is the layer that turns a raw user request into a structured input the model can reliably follow.\n\n## Purpose\n\nUse this page to understand:\n- how to separate system instructions from user intent\n- when to add explicit constraints\n- how to keep prompts short and structured\n\n## First Principles\n\n- Good prompts reduce ambiguity before the model starts generating.\n- System instructions define behavior; user messages define the task.\n- Constraints are most useful when they are explicit and easy to check.\n\n## Minimal Code Mental Model\n\n```python\nchecklist = format_checklist([\"answer in bullets\", \"cite sources\"])\nmessages = build_messages(\n    system_prompt=\"You are a careful research assistant.\",\n    user_prompt=\"Summarize the latest policy changes.\",\n    checklist=[\"answer in bullets\", \"cite sources\"],\n)\n```\n\n## Canonical Modules\n\n- Main structuring pattern: `prompt-structuring`\n\n## Supporting Modules\n\n- Few-shot examples and explicit delimiters: `examples-and-delimiters`\n- Packing instructions, memory, and retrieval into one active prompt: `context-engineering-for-agents`\n- Lightweight answer verification prompts: `self-check-patterns`\n\n## When To Use What\n\n- Start with `prompt-structuring` when the problem is basic message layout and instruction clarity.\n- Use `context-engineering-for-agents` when the main problem is deciding which instructions, memory, and retrieved evidence should fit into the active prompt.\n- Use `examples-and-delimiters` when the model needs a clearer output pattern or stronger separation between sections.\n- Use `self-check-patterns` when the model should verify constraints before returning a final answer.\n- Keep prompts short before adding more examples or scaffolding.\n"
     },
     {
       "track": "ai-agents",
@@ -9223,7 +9271,7 @@
       "title": "Workflows",
       "path": "docs/ai-agents/workflows/README.md",
       "summary": "This section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.",
-      "content": "# Workflows\n\nThis section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.\n\n## Purpose\n\nUse this page to understand:\n- routing to the right worker\n- structured handoffs\n- bounded retries\n\n## First Principles\n\n- Workflows matter when one free-form agent loop is not enough.\n- Routing should depend on task type, not on vague prompt wording alone.\n- Handoffs should pass compact structured state, not the entire raw transcript.\n- Retries should be limited and explicit.\n\n## Minimal Code Mental Model\n\n```python\nroute = route_task(\"summarize docs and file a ticket\", routes)\nhandoff = build_handoff(\"task_7\", route, {\"doc_id\": \"abc\"})\nretry = should_retry(attempt=1, max_attempts=3, retryable=True)\n```\n\n## Canonical Modules\n\n- Routing and handoff basics: `handoffs-and-routing`\n- Retry and fallback basics: `retries-and-recovery`\n\n## Supporting Modules\n\n- Escalation routing after failed or risky steps: `escalation-routing`\n- Critique-and-revise loops for improving a draft: `evaluator-optimizer-loops`\n- Multimodal execution routing over text, image, audio, or video inputs: `multimodal-agent-loops`\n- Explicit state transitions for multi-step runs: `state-machine-basics`\n- Parallel branches and join points in a workflow: `workflow-concurrency-basics`\n\n## When To Use What\n\n- Start with `handoffs-and-routing` when the agent needs more than one specialized step.\n- Use `retries-and-recovery` when steps can fail transiently and need bounded retries or a safe fallback.\n- Use `escalation-routing` when failures need a structured handoff to review instead of another retry.\n- Use `evaluator-optimizer-loops` when one pass produces a draft that should be critiqued and revised instead of simply retried.\n- Use `multimodal-agent-loops` when the workflow must check required modalities, possibly call tools over them, and only then answer or escalate.\n- Use `state-machine-basics` when the workflow has a small fixed set of stages and transitions.\n- Use `workflow-concurrency-basics` when independent steps can run in parallel and later join.\n- Add more workflow depth only after the baseline route and handoff state are stable.\n"
+      "content": "# Workflows\n\nThis section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.\n\n## Purpose\n\nUse this page to understand:\n- routing to the right worker\n- structured handoffs\n- bounded retries\n\n## First Principles\n\n- Workflows matter when one free-form agent loop is not enough.\n- Routing should depend on task type, not on vague prompt wording alone.\n- Handoffs should pass compact structured state, not the entire raw transcript.\n- Retries should be limited and explicit.\n\n## Minimal Code Mental Model\n\n```python\nroute = route_task(\"summarize docs and file a ticket\", routes)\nhandoff = build_handoff(\"task_7\", route, {\"doc_id\": \"abc\"})\nretry = should_retry(attempt=1, max_attempts=3, retryable=True)\n```\n\n## Canonical Modules\n\n- Routing and handoff basics: `handoffs-and-routing`\n- Retry and fallback basics: `retries-and-recovery`\n\n## Supporting Modules\n\n- Escalation routing after failed or risky steps: `escalation-routing`\n- Critique-and-revise loops for improving a draft: `evaluator-optimizer-loops`\n- Multimodal execution routing over text, image, audio, or video inputs: `multimodal-agent-loops`\n- Sequential stage-to-stage prompting with explicit outputs: `prompt-chaining`\n- Low-latency turn routing for voice and streaming sessions: `voice-and-realtime-agent-loops`\n- Explicit state transitions for multi-step runs: `state-machine-basics`\n- Parallel branches and join points in a workflow: `workflow-concurrency-basics`\n\n## When To Use What\n\n- Start with `handoffs-and-routing` when the agent needs more than one specialized step.\n- Use `retries-and-recovery` when steps can fail transiently and need bounded retries or a safe fallback.\n- Use `escalation-routing` when failures need a structured handoff to review instead of another retry.\n- Use `evaluator-optimizer-loops` when one pass produces a draft that should be critiqued and revised instead of simply retried.\n- Use `multimodal-agent-loops` when the workflow must check required modalities, possibly call tools over them, and only then answer or escalate.\n- Use `prompt-chaining` when one stage should transform output for the next stage instead of handing the whole task to one prompt.\n- Use `voice-and-realtime-agent-loops` when the workflow must handle streaming input, interruptions, or realtime response budgets.\n- Use `state-machine-basics` when the workflow has a small fixed set of stages and transitions.\n- Use `workflow-concurrency-basics` when independent steps can run in parallel and later join.\n- Add more workflow depth only after the baseline route and handoff state are stable.\n"
     },
     {
       "track": "dsa",

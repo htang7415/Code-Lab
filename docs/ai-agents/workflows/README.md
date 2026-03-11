@@ -34,6 +34,8 @@ retry = should_retry(attempt=1, max_attempts=3, retryable=True)
 - Escalation routing after failed or risky steps: `escalation-routing`
 - Critique-and-revise loops for improving a draft: `evaluator-optimizer-loops`
 - Multimodal execution routing over text, image, audio, or video inputs: `multimodal-agent-loops`
+- Sequential stage-to-stage prompting with explicit outputs: `prompt-chaining`
+- Low-latency turn routing for voice and streaming sessions: `voice-and-realtime-agent-loops`
 - Explicit state transitions for multi-step runs: `state-machine-basics`
 - Parallel branches and join points in a workflow: `workflow-concurrency-basics`
 
@@ -44,6 +46,8 @@ retry = should_retry(attempt=1, max_attempts=3, retryable=True)
 - Use `escalation-routing` when failures need a structured handoff to review instead of another retry.
 - Use `evaluator-optimizer-loops` when one pass produces a draft that should be critiqued and revised instead of simply retried.
 - Use `multimodal-agent-loops` when the workflow must check required modalities, possibly call tools over them, and only then answer or escalate.
+- Use `prompt-chaining` when one stage should transform output for the next stage instead of handing the whole task to one prompt.
+- Use `voice-and-realtime-agent-loops` when the workflow must handle streaming input, interruptions, or realtime response budgets.
 - Use `state-machine-basics` when the workflow has a small fixed set of stages and transitions.
 - Use `workflow-concurrency-basics` when independent steps can run in parallel and later join.
 - Add more workflow depth only after the baseline route and handoff state are stable.
