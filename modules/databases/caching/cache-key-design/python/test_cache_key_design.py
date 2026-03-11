@@ -1,4 +1,5 @@
 from cache_key_design import cache_key, key_collides, naive_key, parse_cache_key
+import pytest
 
 
 def test_scoped_versioned_keys_separate_tenants_and_versions():
@@ -34,3 +35,14 @@ def test_sorted_extras_make_equivalent_requests_share_one_key():
 
     assert first == second
     assert key_collides(naive_key("doc-42"), naive_key("doc-42"))
+
+
+def test_reserved_delimiters_and_negative_workspace_ids_are_rejected():
+    with pytest.raises(ValueError, match="resource_id"):
+        cache_key("answer", 7, "doc|42", "v1")
+
+    with pytest.raises(ValueError, match="workspace_id"):
+        cache_key("answer", -1, "doc-42", "v1")
+
+    with pytest.raises(ValueError, match="contain"):
+        cache_key("answer", 7, "doc-42", "v1", extras={"mode": "summary=short"})

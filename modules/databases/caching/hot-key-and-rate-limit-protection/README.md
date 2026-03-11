@@ -12,6 +12,7 @@ Hot keys create thundering herds. Once many clients pile onto the same key, a sm
 - Detecting hot keys is just counting, but protecting the origin requires a rolling-window policy.
 - Rate limits are usually scoped by caller and key so one noisy client cannot stampede the backend.
 - Protection should reset as the window moves forward instead of permanently blocking the key.
+- Hot thresholds, max-request limits, and window sizes should all stay positive.
 
 ## Minimal Code Mental Model
 
@@ -32,6 +33,8 @@ allowed = allow_request(
 ## Function
 
 ```python
+def validate_hot_threshold(threshold: int) -> None:
+def validate_rate_limit(max_requests: int, window_seconds: int) -> None:
 def hot_keys(requests: list[str], threshold: int) -> list[str]:
 def allow_request(
     state: dict[tuple[str, str], list[int]],

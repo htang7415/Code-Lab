@@ -12,6 +12,7 @@ Compaction and repair are not substitutes. Compaction reduces read amplification
 - Repair is a replica-consistency operation.
 - High read amplification points toward compaction.
 - Divergent replicas point toward repair, even if read amplification is fine.
+- SSTable counts and divergent-key counts should be non-negative, and the read-amplification threshold should stay positive.
 
 ## Minimal Code Mental Model
 
@@ -25,6 +26,8 @@ summary = tradeoff_summary(
 ## Function
 
 ```python
+def validate_level_sstables(level_sstables: list[int]) -> None:
+def validate_tradeoff_inputs(divergent_key_count: int, read_amp_threshold: int) -> None:
 def read_amplification(level_sstables: list[int]) -> int:
 def compacted_levels(level_sstables: list[int]) -> list[int]:
 def repair_needed(divergent_key_count: int) -> bool:

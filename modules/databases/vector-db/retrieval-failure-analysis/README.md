@@ -12,6 +12,7 @@ When retrieval quality is bad, the first useful question is what kind of failure
 - If no relevant result appears anywhere, recall is the main problem.
 - If relevant results exist but appear below `k`, ranking is the main problem.
 - Failure labels make debugging retrieval systems more systematic than looking at one score.
+- This analysis needs a positive `k` and at least one labeled relevant id; otherwise the label is not meaningful.
 
 ## Minimal Code Mental Model
 
@@ -26,6 +27,8 @@ reason = failure_reason(results, relevant_ids={"b"}, allowed_workspace_id=7, k=1
 ## Function
 
 ```python
+def validate_k(k: int) -> None:
+def validate_relevant_ids(relevant_ids: set[str]) -> None:
 def first_relevant_rank(
     ranked_ids: list[str],
     relevant_ids: set[str],

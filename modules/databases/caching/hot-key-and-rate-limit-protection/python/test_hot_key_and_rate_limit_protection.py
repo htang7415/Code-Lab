@@ -3,6 +3,7 @@ from hot_key_and_rate_limit_protection import (
     hot_keys,
     protected_origin_requests,
 )
+import pytest
 
 
 def test_hot_keys_finds_repeated_cache_targets():
@@ -47,3 +48,11 @@ def test_protected_origin_requests_only_throttles_hot_keys():
     )
 
     assert allowed == [True, True, True, False, True]
+
+
+def test_hot_key_thresholds_and_rate_limits_must_be_positive():
+    with pytest.raises(ValueError, match="threshold"):
+        hot_keys(["doc:42"], threshold=0)
+
+    with pytest.raises(ValueError, match="window_seconds"):
+        allow_request({}, "user-1", "doc:42", now=10, max_requests=2, window_seconds=0)

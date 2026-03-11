@@ -12,6 +12,7 @@ Compaction debt is the backlog you build when write and delete pressure outpace 
 - Tombstones are cheap to write but expensive to carry around for too long.
 - Pending compaction bytes are a backlog signal, not a correctness signal.
 - Good alerts combine several weak signals instead of one metric alone.
+- SSTable counts must stay non-negative, tombstone ratios should stay in `0..1`, and pending bytes should not be negative.
 
 ## Minimal Code Mental Model
 
@@ -22,6 +23,8 @@ summary = compaction_summary([6, 8, 5], tombstone_ratio=0.22, pending_bytes_mb=9
 ## Function
 
 ```python
+def validate_level_sstables(level_sstables: list[int]) -> None:
+def validate_inputs(tombstone_ratio: float, pending_bytes_mb: int) -> None:
 def read_amplification(level_sstables: list[int]) -> int:
 def debt_signals(
     level_sstables: list[int],

@@ -3,6 +3,16 @@
 from __future__ import annotations
 
 
+def validate_k(k: int) -> None:
+    if k <= 0:
+        raise ValueError("k must be positive")
+
+
+def validate_relevant_ids(relevant_ids: set[str]) -> None:
+    if not relevant_ids:
+        raise ValueError("relevant_ids must not be empty")
+
+
 def first_relevant_rank(
     ranked_ids: list[str],
     relevant_ids: set[str],
@@ -18,6 +28,7 @@ def has_scope_leak(
     allowed_workspace_id: int,
     k: int,
 ) -> bool:
+    validate_k(k)
     return any(
         int(result["workspace_id"]) != allowed_workspace_id
         for result in ranked_results[:k]
@@ -30,6 +41,8 @@ def failure_reason(
     allowed_workspace_id: int,
     k: int,
 ) -> str:
+    validate_k(k)
+    validate_relevant_ids(relevant_ids)
     if has_scope_leak(ranked_results, allowed_workspace_id, k):
         return "scope-leak"
     rank = first_relevant_rank(
@@ -47,6 +60,7 @@ def failure_summary(
     cases: list[dict[str, object]],
     k: int,
 ) -> dict[str, int]:
+    validate_k(k)
     summary = {
         "ok": 0,
         "scope-leak": 0,

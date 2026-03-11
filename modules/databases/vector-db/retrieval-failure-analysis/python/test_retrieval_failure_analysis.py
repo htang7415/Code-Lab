@@ -4,6 +4,7 @@ from retrieval_failure_analysis import (
     first_relevant_rank,
     has_scope_leak,
 )
+import pytest
 
 
 def test_scope_leak_is_detected_before_ranking_analysis():
@@ -56,3 +57,11 @@ def test_failure_summary_counts_case_types():
         "no-relevant-hit": 0,
         "ranked-below-k": 1,
     }
+
+
+def test_failure_analysis_requires_positive_k_and_gold_labels():
+    with pytest.raises(ValueError, match="k"):
+        has_scope_leak([], allowed_workspace_id=7, k=0)
+
+    with pytest.raises(ValueError, match="relevant_ids"):
+        failure_reason([], relevant_ids=set(), allowed_workspace_id=7, k=1)

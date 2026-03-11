@@ -12,6 +12,7 @@ Good cache keys encode the scope and version that make a value safe to reuse. Ba
 - Keys should include version or model identity when behavior changes across releases.
 - Optional parameters should be normalized so logically identical requests map to the same key.
 - A short key is useless if it aliases two different values.
+- Key parts should avoid reserved delimiters like `|` and `=` or parsing becomes ambiguous.
 
 ## Minimal Code Mental Model
 
@@ -29,6 +30,7 @@ parts = parse_cache_key(key)
 ## Function
 
 ```python
+def validate_key_fragment(name: str, value: str) -> None:
 def cache_key(
     namespace: str,
     workspace_id: int,

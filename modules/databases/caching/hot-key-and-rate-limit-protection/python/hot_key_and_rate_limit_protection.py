@@ -3,7 +3,20 @@
 from __future__ import annotations
 
 
+def validate_hot_threshold(threshold: int) -> None:
+    if threshold <= 0:
+        raise ValueError("threshold must be positive")
+
+
+def validate_rate_limit(max_requests: int, window_seconds: int) -> None:
+    if max_requests <= 0:
+        raise ValueError("max_requests must be positive")
+    if window_seconds <= 0:
+        raise ValueError("window_seconds must be positive")
+
+
 def hot_keys(requests: list[str], threshold: int) -> list[str]:
+    validate_hot_threshold(threshold)
     counts: dict[str, int] = {}
     for key in requests:
         counts[key] = counts.get(key, 0) + 1
@@ -18,6 +31,7 @@ def allow_request(
     max_requests: int,
     window_seconds: int,
 ) -> bool:
+    validate_rate_limit(max_requests, window_seconds)
     bucket = (actor_id, key)
     recent = [timestamp for timestamp in state.get(bucket, []) if now - timestamp < window_seconds]
     if len(recent) >= max_requests:
@@ -34,6 +48,8 @@ def protected_origin_requests(
     max_requests: int,
     window_seconds: int,
 ) -> list[bool]:
+    validate_hot_threshold(hot_threshold)
+    validate_rate_limit(max_requests, window_seconds)
     counts: dict[str, int] = {}
     state: dict[tuple[str, str], list[int]] = {}
     allowed: list[bool] = []
