@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T16:38:12.699Z",
+  "generated_at": "2026-03-11T17:21:05.570Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -2066,6 +2066,18 @@
       "topicName": "Indexing"
     },
     {
+      "id": "module:software-engineering/system-design/background-jobs-and-workflows",
+      "type": "module",
+      "title": "Background Jobs And Workflows",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "background-jobs-and-workflows",
+      "href": "/track/software-engineering/system-design#background-jobs-and-workflows",
+      "trackName": "Software Engineering",
+      "topicName": "System Design"
+    },
+    {
       "id": "doc:dsa/backtracking/backtracking",
       "type": "doc",
       "title": "Backtracking",
@@ -2136,6 +2148,18 @@
       "href": "/track/ml/data#batch-iterator",
       "trackName": "Machine Learning",
       "topicName": "Data"
+    },
+    {
+      "id": "module:software-engineering/performance/batching-vs-streaming",
+      "type": "module",
+      "title": "Batching Vs Streaming",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "batching-vs-streaming",
+      "href": "/track/software-engineering/performance#batching-vs-streaming",
+      "trackName": "Software Engineering",
+      "topicName": "Performance"
     },
     {
       "id": "module:ai-agents/evaluation/bayesian-benchmark-updating",
@@ -2306,6 +2330,18 @@
       "topicName": "Caching"
     },
     {
+      "id": "module:databases/caching/cache-stampede-mitigation",
+      "type": "module",
+      "title": "Cache Stampede Mitigation",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "cache-stampede-mitigation",
+      "href": "/track/databases/caching#cache-stampede-mitigation",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
       "id": "doc:databases/caching/overview",
       "type": "doc",
       "title": "Caching And Semantic Caching",
@@ -2316,6 +2352,18 @@
       "href": "/track/databases/caching#overview",
       "trackName": "Databases",
       "topicName": "Caching"
+    },
+    {
+      "id": "module:software-engineering/performance/caching-basics",
+      "type": "module",
+      "title": "Caching Basics",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "caching-basics",
+      "href": "/track/software-engineering/performance#caching-basics",
+      "trackName": "Software Engineering",
+      "topicName": "Performance"
     },
     {
       "id": "doc:ml/evaluation/calibration",
@@ -2426,6 +2474,18 @@
       "topicName": "Streaming"
     },
     {
+      "id": "module:databases/streaming/cdc-watermarks-and-ordering",
+      "type": "module",
+      "title": "CDC Watermarks And Ordering",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "cdc-watermarks-and-ordering",
+      "href": "/track/databases/streaming#cdc-watermarks-and-ordering",
+      "trackName": "Databases",
+      "topicName": "Streaming"
+    },
+    {
       "id": "module:ml/generative/model-selection",
       "type": "module",
       "title": "Choose GAN vs VAE vs Diffusion",
@@ -2460,6 +2520,18 @@
       "href": "/track/software-engineering/tooling#ci-pipeline-basics",
       "trackName": "Software Engineering",
       "topicName": "Tooling"
+    },
+    {
+      "id": "module:software-engineering/reliability/circuit-breakers-and-bulkheads",
+      "type": "module",
+      "title": "Circuit Breakers And Bulkheads",
+      "summary": "> Track: `software-engineering` | Topic: `reliability`",
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "circuit-breakers-and-bulkheads",
+      "href": "/track/software-engineering/reliability#circuit-breakers-and-bulkheads",
+      "trackName": "Software Engineering",
+      "topicName": "Reliability"
     },
     {
       "id": "module:ml/evaluation/classification-metrics-core",
@@ -2630,6 +2702,18 @@
       "topicName": "Nosql"
     },
     {
+      "id": "module:software-engineering/system-design/consistency-tradeoffs",
+      "type": "module",
+      "title": "Consistency Tradeoffs",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "consistency-tradeoffs",
+      "href": "/track/software-engineering/system-design#consistency-tradeoffs",
+      "trackName": "Software Engineering",
+      "topicName": "System Design"
+    },
+    {
       "id": "module:ai-agents/planning/constrained-optimization-for-budgeted-agent-policies",
       "type": "module",
       "title": "Constrained Optimization for Budgeted Agent Policies",
@@ -2796,6 +2880,18 @@
       "href": "/track/ml/mlops#cost-per-request",
       "trackName": "Machine Learning",
       "topicName": "MLOps"
+    },
+    {
+      "id": "module:software-engineering/performance/cost-performance-tradeoffs",
+      "type": "module",
+      "title": "Cost-Performance Tradeoffs",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "cost-performance-tradeoffs",
+      "href": "/track/software-engineering/performance#cost-performance-tradeoffs",
+      "trackName": "Software Engineering",
+      "topicName": "Performance"
     },
     {
       "id": "module:ai-agents/evaluation/cost-quality-tradeoffs",
@@ -3108,6 +3204,18 @@
       "href": "/track/ml/optimization#detect-nans",
       "trackName": "Machine Learning",
       "topicName": "Optimization"
+    },
+    {
+      "id": "module:software-engineering/platform-and-delivery/developer-experience-as-leverage",
+      "type": "module",
+      "title": "Developer Experience As Leverage",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "developer-experience-as-leverage",
+      "href": "/track/software-engineering/platform-and-delivery#developer-experience-as-leverage",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
     },
     {
       "id": "module:ml/evaluation/dice-score",
@@ -3902,6 +4010,18 @@
       "topicName": "Caching"
     },
     {
+      "id": "module:databases/vector-db/hybrid-retrieval-evaluation",
+      "type": "module",
+      "title": "Hybrid Retrieval Evaluation",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "hybrid-retrieval-evaluation",
+      "href": "/track/databases/vector-db#hybrid-retrieval-evaluation",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
       "id": "module:databases/vector-db/hybrid-search",
       "type": "module",
       "title": "Hybrid Search",
@@ -3974,6 +4094,18 @@
       "topicName": "Computer Vision"
     },
     {
+      "id": "module:software-engineering/reliability/incidents-and-postmortems",
+      "type": "module",
+      "title": "Incidents And Postmortems",
+      "summary": "> Track: `software-engineering` | Topic: `reliability`",
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "incidents-and-postmortems",
+      "href": "/track/software-engineering/reliability#incidents-and-postmortems",
+      "trackName": "Software Engineering",
+      "topicName": "Reliability"
+    },
+    {
       "id": "doc:databases/indexing/overview",
       "type": "doc",
       "title": "Indexing And Access Paths",
@@ -4032,6 +4164,18 @@
       "href": "/track/ai-agents/guardrails#input-output-guardrails",
       "trackName": "AI Agents",
       "topicName": "Guardrails"
+    },
+    {
+      "id": "module:software-engineering/platform-and-delivery/internal-platforms",
+      "type": "module",
+      "title": "Internal Platforms",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "internal-platforms",
+      "href": "/track/software-engineering/platform-and-delivery#internal-platforms",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
     },
     {
       "id": "doc:ml/path-interview/path-interview",
@@ -4190,6 +4334,18 @@
       "topicName": "Fundamentals"
     },
     {
+      "id": "module:databases/query-plans/join-order-and-cardinality",
+      "type": "module",
+      "title": "Join Order And Cardinality",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "join-order-and-cardinality",
+      "href": "/track/databases/query-plans#join-order-and-cardinality",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
+    },
+    {
       "id": "module:databases/relational/join-shapes",
       "type": "module",
       "title": "Join Shapes",
@@ -4222,6 +4378,18 @@
       "topic": "relational",
       "slug": "jsonb-inside-relational-systems",
       "href": "/track/databases/relational#jsonb-inside-relational-systems",
+      "trackName": "Databases",
+      "topicName": "Relational"
+    },
+    {
+      "id": "module:databases/relational/jsonb-to-normalized-migration",
+      "type": "module",
+      "title": "JSONB To Normalized Migration",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "jsonb-to-normalized-migration",
+      "href": "/track/databases/relational#jsonb-to-normalized-migration",
       "trackName": "Databases",
       "topicName": "Relational"
     },
@@ -4730,6 +4898,18 @@
       "topicName": "Memory"
     },
     {
+      "id": "module:software-engineering/performance/memory-and-allocation-basics",
+      "type": "module",
+      "title": "Memory And Allocation Basics",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "memory-and-allocation-basics",
+      "href": "/track/software-engineering/performance#memory-and-allocation-basics",
+      "trackName": "Software Engineering",
+      "topicName": "Performance"
+    },
+    {
       "id": "module:ai-agents/memory/memory-compaction",
       "type": "module",
       "title": "Memory Compaction",
@@ -4740,6 +4920,18 @@
       "href": "/track/ai-agents/memory#memory-compaction",
       "trackName": "AI Agents",
       "topicName": "Memory"
+    },
+    {
+      "id": "module:databases/vector-db/memory-compaction-patterns",
+      "type": "module",
+      "title": "Memory Compaction Patterns",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "memory-compaction-patterns",
+      "href": "/track/databases/vector-db#memory-compaction-patterns",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "module:ai-agents/memory/memory-conflict-resolution",
@@ -4992,6 +5184,18 @@
       "href": "/track/ai-agents/multi-agent#multi-agent",
       "trackName": "AI Agents",
       "topicName": "Multi Agent"
+    },
+    {
+      "id": "module:databases/indexing/multi-tenant-index-design",
+      "type": "module",
+      "title": "Multi-Tenant Index Design",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "multi-tenant-index-design",
+      "href": "/track/databases/indexing#multi-tenant-index-design",
+      "trackName": "Databases",
+      "topicName": "Indexing"
     },
     {
       "id": "module:ai-agents/workflows/multimodal-agent-loops",
@@ -5342,6 +5546,18 @@
       "topicName": "Data"
     },
     {
+      "id": "module:software-engineering/platform-and-delivery/ownership-boundaries",
+      "type": "module",
+      "title": "Ownership Boundaries",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "ownership-boundaries",
+      "href": "/track/software-engineering/platform-and-delivery#ownership-boundaries",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
+    },
+    {
       "id": "module:software-engineering/apis/pagination-patterns",
       "type": "module",
       "title": "Pagination Patterns",
@@ -5422,6 +5638,18 @@
       "topic": "indexing",
       "slug": "partition-pruning-basics",
       "href": "/track/databases/indexing#partition-pruning-basics",
+      "trackName": "Databases",
+      "topicName": "Indexing"
+    },
+    {
+      "id": "module:databases/indexing/partitioning-vs-secondary-indexes",
+      "type": "module",
+      "title": "Partitioning Vs Secondary Indexes",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "partitioning-vs-secondary-indexes",
+      "href": "/track/databases/indexing#partitioning-vs-secondary-indexes",
       "trackName": "Databases",
       "topicName": "Indexing"
     },
@@ -5702,6 +5930,30 @@
       "topicName": "Fundamentals"
     },
     {
+      "id": "module:software-engineering/performance/profiling-workflow",
+      "type": "module",
+      "title": "Profiling Workflow",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "profiling-workflow",
+      "href": "/track/software-engineering/performance#profiling-workflow",
+      "trackName": "Software Engineering",
+      "topicName": "Performance"
+    },
+    {
+      "id": "module:software-engineering/platform-and-delivery/progressive-delivery",
+      "type": "module",
+      "title": "Progressive Delivery",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "progressive-delivery",
+      "href": "/track/software-engineering/platform-and-delivery#progressive-delivery",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
+    },
+    {
       "id": "module:ai-agents/workflows/prompt-chaining",
       "type": "module",
       "title": "Prompt Chaining",
@@ -5978,6 +6230,18 @@
       "topicName": "Relational"
     },
     {
+      "id": "module:software-engineering/platform-and-delivery/release-engineering-basics",
+      "type": "module",
+      "title": "Release Engineering Basics",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "release-engineering-basics",
+      "href": "/track/software-engineering/platform-and-delivery#release-engineering-basics",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
+    },
+    {
       "id": "doc:software-engineering/reliability/reliability",
       "type": "doc",
       "title": "Reliability",
@@ -6000,6 +6264,18 @@
       "href": "/track/ai-agents/planning#replanning",
       "trackName": "AI Agents",
       "topicName": "Planning"
+    },
+    {
+      "id": "module:databases/transactions/replication-lag-mental-model",
+      "type": "module",
+      "title": "Replication Lag Mental Model",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "replication-lag-mental-model",
+      "href": "/track/databases/transactions#replication-lag-mental-model",
+      "trackName": "Databases",
+      "topicName": "Transactions"
     },
     {
       "id": "module:software-engineering/tooling/repo-layout-and-codegen-boundaries",
@@ -6050,6 +6326,18 @@
       "topicName": "MLOps"
     },
     {
+      "id": "module:software-engineering/system-design/requirements-and-failure-models",
+      "type": "module",
+      "title": "Requirements And Failure Models",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "requirements-and-failure-models",
+      "href": "/track/software-engineering/system-design#requirements-and-failure-models",
+      "trackName": "Software Engineering",
+      "topicName": "System Design"
+    },
+    {
       "id": "module:databases/vector-db/reranking-pipelines",
       "type": "module",
       "title": "Reranking Pipelines",
@@ -6060,6 +6348,18 @@
       "href": "/track/databases/vector-db#reranking-pipelines",
       "trackName": "Databases",
       "topicName": "Vector Db"
+    },
+    {
+      "id": "module:software-engineering/reliability/retries-and-fallbacks",
+      "type": "module",
+      "title": "Retries And Fallbacks",
+      "summary": "> Track: `software-engineering` | Topic: `reliability`",
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "retries-and-fallbacks",
+      "href": "/track/software-engineering/reliability#retries-and-fallbacks",
+      "trackName": "Software Engineering",
+      "topicName": "Reliability"
     },
     {
       "id": "module:ai-agents/workflows/retries-and-recovery",
@@ -6314,6 +6614,18 @@
       "topicName": "Observability"
     },
     {
+      "id": "module:software-engineering/observability/runbooks-and-dashboards",
+      "type": "module",
+      "title": "Runbooks And Dashboards",
+      "summary": "> Track: `software-engineering` | Topic: `observability`",
+      "track": "software-engineering",
+      "topic": "observability",
+      "slug": "runbooks-and-dashboards",
+      "href": "/track/software-engineering/observability#runbooks-and-dashboards",
+      "trackName": "Software Engineering",
+      "topicName": "Observability"
+    },
+    {
       "id": "doc:software-engineering/rust/rust",
       "type": "doc",
       "title": "Rust",
@@ -6432,6 +6744,18 @@
       "href": "/track/ai-agents/prompting#self-check-patterns",
       "trackName": "AI Agents",
       "topicName": "Prompting"
+    },
+    {
+      "id": "module:databases/caching/semantic-cache-invalidation",
+      "type": "module",
+      "title": "Semantic Cache Invalidation",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "semantic-cache-invalidation",
+      "href": "/track/databases/caching#semantic-cache-invalidation",
+      "trackName": "Databases",
+      "topicName": "Caching"
     },
     {
       "id": "module:databases/caching/semantic-caching-basics",
@@ -6662,6 +6986,18 @@
       "topicName": "Concurrency"
     },
     {
+      "id": "module:software-engineering/system-design/stateless-vs-stateful-design",
+      "type": "module",
+      "title": "Stateless Vs Stateful Design",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "stateless-vs-stateful-design",
+      "href": "/track/software-engineering/system-design#stateless-vs-stateful-design",
+      "trackName": "Software Engineering",
+      "topicName": "System Design"
+    },
+    {
       "id": "doc:ml/fundamentals/stats",
       "type": "doc",
       "title": "Statistics for ML",
@@ -6696,6 +7032,18 @@
       "href": "/track/dsa/dynamic-programming#stock-problems-summary",
       "trackName": "Data Structures & Algorithms",
       "topicName": "Dynamic Programming"
+    },
+    {
+      "id": "module:software-engineering/system-design/storage-choice-basics",
+      "type": "module",
+      "title": "Storage Choice Basics",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "storage-choice-basics",
+      "href": "/track/software-engineering/system-design#storage-choice-basics",
+      "trackName": "Software Engineering",
+      "topicName": "System Design"
     },
     {
       "id": "module:ml/data/stratified-split",
@@ -7032,6 +7380,18 @@
       "href": "/track/software-engineering/tooling#tooling",
       "trackName": "Software Engineering",
       "topicName": "Tooling"
+    },
+    {
+      "id": "module:software-engineering/observability/trace-driven-debugging",
+      "type": "module",
+      "title": "Trace-Driven Debugging",
+      "summary": "> Track: `software-engineering` | Topic: `observability`",
+      "track": "software-engineering",
+      "topic": "observability",
+      "slug": "trace-driven-debugging",
+      "href": "/track/software-engineering/observability#trace-driven-debugging",
+      "trackName": "Software Engineering",
+      "topicName": "Observability"
     },
     {
       "id": "module:ml/data/train-validation-test-split",

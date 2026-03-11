@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T16:38:12.699Z",
+  "generated_at": "2026-03-11T17:21:05.570Z",
   "tracks": [
     {
       "id": "dsa",
@@ -35,7 +35,7 @@
       "accent": "#17becf",
       "accentVar": "--track-databases",
       "topicCount": 10,
-      "moduleCount": 51
+      "moduleCount": 61
     },
     {
       "id": "software-engineering",
@@ -44,7 +44,7 @@
       "accent": "#d62728",
       "accentVar": "--track-se",
       "topicCount": 14,
-      "moduleCount": 35
+      "moduleCount": 55
     }
   ],
   "topics": [
@@ -91,7 +91,7 @@
       "path": "/track/databases/caching",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 4
+      "moduleCount": 6
     },
     {
       "track": "ml",
@@ -166,15 +166,6 @@
       "moduleCount": 0
     },
     {
-      "track": "ml",
-      "topic": "evaluation",
-      "name": "Evaluation",
-      "path": "/track/ml/evaluation",
-      "hasDoc": true,
-      "docCount": 3,
-      "moduleCount": 17
-    },
-    {
       "track": "ai-agents",
       "topic": "evaluation",
       "name": "Evaluation",
@@ -182,6 +173,15 @@
       "hasDoc": true,
       "docCount": 1,
       "moduleCount": 18
+    },
+    {
+      "track": "ml",
+      "topic": "evaluation",
+      "name": "Evaluation",
+      "path": "/track/ml/evaluation",
+      "hasDoc": true,
+      "docCount": 3,
+      "moduleCount": 17
     },
     {
       "track": "ml",
@@ -235,7 +235,7 @@
       "path": "/track/databases/indexing",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 6
+      "moduleCount": 8
     },
     {
       "track": "dsa",
@@ -316,7 +316,7 @@
       "path": "/track/software-engineering/observability",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 3
+      "moduleCount": 5
     },
     {
       "track": "ai-agents",
@@ -388,7 +388,7 @@
       "path": "/track/software-engineering/performance",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 6
     },
     {
       "track": "ai-agents",
@@ -406,7 +406,7 @@
       "path": "/track/software-engineering/platform-and-delivery",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 0
+      "moduleCount": 5
     },
     {
       "track": "ai-agents",
@@ -433,7 +433,7 @@
       "path": "/track/databases/query-plans",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 4
+      "moduleCount": 5
     },
     {
       "track": "ai-agents",
@@ -460,7 +460,7 @@
       "path": "/track/databases/relational",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 4
+      "moduleCount": 5
     },
     {
       "track": "software-engineering",
@@ -469,7 +469,7 @@
       "path": "/track/software-engineering/reliability",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 2
+      "moduleCount": 5
     },
     {
       "track": "ml",
@@ -541,7 +541,7 @@
       "path": "/track/databases/streaming",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 7
+      "moduleCount": 8
     },
     {
       "track": "dsa",
@@ -559,7 +559,7 @@
       "path": "/track/software-engineering/system-design",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 6
     },
     {
       "track": "ml",
@@ -604,7 +604,7 @@
       "path": "/track/databases/transactions",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 5
+      "moduleCount": 6
     },
     {
       "track": "software-engineering",
@@ -622,7 +622,7 @@
       "path": "/track/databases/vector-db",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 6
+      "moduleCount": 8
     },
     {
       "track": "ai-agents",
@@ -1998,6 +1998,22 @@
     {
       "track": "databases",
       "topic": "caching",
+      "slug": "cache-stampede-mitigation",
+      "title": "Cache Stampede Mitigation",
+      "path": "modules/databases/caching/cache-stampede-mitigation",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "readme": "# Cache Stampede Mitigation\n\n> Track: `databases` | Topic: `caching`\n\n## Concept\n\nCache stampede mitigation lets one caller refresh a cold or expired key while other callers either wait or temporarily use stale data instead of all hitting the origin.\n\n## Key Points\n\n- A stampede happens when many callers miss the same key at once.\n- Single-flight refresh means only one caller becomes the loader for that key.\n- Stale-while-revalidate can keep serving a slightly stale value while the loader refreshes it.\n- Cold misses without a stale value usually need waiting or request coalescing, not parallel origin calls.\n\n## Minimal Code Mental Model\n\n```python\ncache = {\"doc:42\": cache_entry(\"old\", expires_at=100, stale_until=130)}\ninflight = set()\nfirst = request_action(cache, inflight, \"doc:42\", now=110)\nsecond = request_action(cache, inflight, \"doc:42\", now=111)\nfinish_refresh(cache, inflight, \"doc:42\", \"new\", now=112, ttl=30, stale_window=60)\n```\n\n## Function\n\n```python\ndef cache_entry(value: str, expires_at: int, stale_until: int) -> dict[str, object]:\ndef request_action(\n    cache: dict[str, dict[str, object]],\n    inflight: set[str],\n    key: str,\n    now: int,\n) -> str:\ndef finish_refresh(\n    cache: dict[str, dict[str, object]],\n    inflight: set[str],\n    key: str,\n    value: str,\n    now: int,\n    ttl: int,\n    stale_window: int,\n) -> None:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/caching/cache-stampede-mitigation/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/caching/cache-stampede-mitigation/python/cache_stampede_mitigation.py",
+          "language": "python",
+          "content": "\"\"\"cache_stampede_mitigation - single-flight refresh with stale-while-revalidate.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef cache_entry(value: str, expires_at: int, stale_until: int) -> dict[str, object]:\n    return {\n        \"value\": value,\n        \"expires_at\": expires_at,\n        \"stale_until\": stale_until,\n    }\n\n\ndef request_action(\n    cache: dict[str, dict[str, object]],\n    inflight: set[str],\n    key: str,\n    now: int,\n) -> str:\n    entry = cache.get(key)\n    if entry is not None:\n        if now < int(entry[\"expires_at\"]):\n            return \"hit\"\n        if key in inflight:\n            return \"serve-stale\" if now < int(entry[\"stale_until\"]) else \"wait\"\n        inflight.add(key)\n        return \"refresh\"\n\n    if key in inflight:\n        return \"wait\"\n    inflight.add(key)\n    return \"refresh\"\n\n\ndef finish_refresh(\n    cache: dict[str, dict[str, object]],\n    inflight: set[str],\n    key: str,\n    value: str,\n    now: int,\n    ttl: int,\n    stale_window: int,\n) -> None:\n    cache[key] = cache_entry(\n        value=value,\n        expires_at=now + ttl,\n        stale_until=now + ttl + stale_window,\n    )\n    inflight.discard(key)\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "caching",
       "slug": "hot-key-and-rate-limit-protection",
       "title": "Hot-Key And Rate-Limit Protection",
       "path": "modules/databases/caching/hot-key-and-rate-limit-protection",
@@ -2008,6 +2024,22 @@
           "path": "modules/databases/caching/hot-key-and-rate-limit-protection/python/hot_key_and_rate_limit_protection.py",
           "language": "python",
           "content": "\"\"\"hot_key_and_rate_limit_protection - detect hot keys and throttle origin load.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef hot_keys(requests: list[str], threshold: int) -> list[str]:\n    counts: dict[str, int] = {}\n    for key in requests:\n        counts[key] = counts.get(key, 0) + 1\n    return sorted(key for key, count in counts.items() if count >= threshold)\n\n\ndef allow_request(\n    state: dict[tuple[str, str], list[int]],\n    actor_id: str,\n    key: str,\n    now: int,\n    max_requests: int,\n    window_seconds: int,\n) -> bool:\n    bucket = (actor_id, key)\n    recent = [timestamp for timestamp in state.get(bucket, []) if now - timestamp < window_seconds]\n    if len(recent) >= max_requests:\n        state[bucket] = recent\n        return False\n    recent.append(now)\n    state[bucket] = recent\n    return True\n\n\ndef protected_origin_requests(\n    requests: list[dict[str, object]],\n    hot_threshold: int,\n    max_requests: int,\n    window_seconds: int,\n) -> list[bool]:\n    counts: dict[str, int] = {}\n    state: dict[tuple[str, str], list[int]] = {}\n    allowed: list[bool] = []\n\n    for request in requests:\n        actor_id = str(request[\"actor_id\"])\n        key = str(request[\"key\"])\n        now = int(request[\"now\"])\n        counts[key] = counts.get(key, 0) + 1\n\n        if counts[key] < hot_threshold:\n            allowed.append(True)\n            continue\n\n        allowed.append(\n            allow_request(\n                state,\n                actor_id=actor_id,\n                key=key,\n                now=now,\n                max_requests=max_requests,\n                window_seconds=window_seconds,\n            )\n        )\n    return allowed\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "caching",
+      "slug": "semantic-cache-invalidation",
+      "title": "Semantic Cache Invalidation",
+      "path": "modules/databases/caching/semantic-cache-invalidation",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "readme": "# Semantic Cache Invalidation\n\n> Track: `databases` | Topic: `caching`\n\n## Concept\n\nSemantic caches should be invalidated by the data and policy versions that shaped the answer, not just by time.\n\n## Key Points\n\n- A semantically similar answer is stale if the underlying source corpus changed.\n- Policy or prompt-version changes can invalidate cached answers even when the source data did not.\n- Invalidation should be scoped so one tenant's content refresh does not wipe every cache entry.\n- TTL helps, but version-aware invalidation is the safer correctness boundary.\n\n## Minimal Code Mental Model\n\n```python\nentries = []\nstore_semantic_entry(entries, \"show failed jobs\", \"2 failed jobs\", 7, \"policy-v1\", \"docs-v1\", now=100)\nhit = lookup_semantic_cache(entries, \"failed jobs\", 7, \"policy-v1\", \"docs-v1\", now=110)\nremoved = invalidate_scope(entries, 7, current_policy_version=\"policy-v2\", current_source_version=\"docs-v2\")\n```\n\n## Function\n\n```python\ndef token_overlap_score(left: str, right: str) -> float:\ndef store_semantic_entry(\n    entries: list[dict[str, object]],\n    query: str,\n    response: str,\n    workspace_id: int,\n    policy_version: str,\n    source_version: str,\n    now: int,\n) -> None:\ndef lookup_semantic_cache(\n    entries: list[dict[str, object]],\n    query: str,\n    workspace_id: int,\n    policy_version: str,\n    source_version: str,\n    now: int,\n    similarity_threshold: float = 0.5,\n    max_age_seconds: int = 300,\n) -> str | None:\ndef invalidate_scope(\n    entries: list[dict[str, object]],\n    workspace_id: int,\n    current_policy_version: str,\n    current_source_version: str,\n) -> int:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/caching/semantic-cache-invalidation/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/caching/semantic-cache-invalidation/python/semantic_cache_invalidation.py",
+          "language": "python",
+          "content": "\"\"\"semantic_cache_invalidation - version-aware semantic cache invalidation.\"\"\"\n\nfrom __future__ import annotations\n\nimport re\n\n\ndef token_overlap_score(left: str, right: str) -> float:\n    left_tokens = set(re.findall(r\"[a-z0-9]+\", left.lower()))\n    right_tokens = set(re.findall(r\"[a-z0-9]+\", right.lower()))\n    if not left_tokens:\n        return 0.0\n    return len(left_tokens & right_tokens) / len(left_tokens)\n\n\ndef store_semantic_entry(\n    entries: list[dict[str, object]],\n    query: str,\n    response: str,\n    workspace_id: int,\n    policy_version: str,\n    source_version: str,\n    now: int,\n) -> None:\n    entries.append(\n        {\n            \"query\": query,\n            \"response\": response,\n            \"workspace_id\": workspace_id,\n            \"policy_version\": policy_version,\n            \"source_version\": source_version,\n            \"created_at\": now,\n        }\n    )\n\n\ndef lookup_semantic_cache(\n    entries: list[dict[str, object]],\n    query: str,\n    workspace_id: int,\n    policy_version: str,\n    source_version: str,\n    now: int,\n    similarity_threshold: float = 0.5,\n    max_age_seconds: int = 300,\n) -> str | None:\n    best_match: tuple[float, int, str] | None = None\n    for entry in entries:\n        if int(entry[\"workspace_id\"]) != workspace_id:\n            continue\n        if entry[\"policy_version\"] != policy_version:\n            continue\n        if entry[\"source_version\"] != source_version:\n            continue\n        age = now - int(entry[\"created_at\"])\n        if age > max_age_seconds:\n            continue\n        score = token_overlap_score(query, str(entry[\"query\"]))\n        if score < similarity_threshold:\n            continue\n        created_at = int(entry[\"created_at\"])\n        response = str(entry[\"response\"])\n        if best_match is None or (score, created_at) > (best_match[0], best_match[1]):\n            best_match = (score, created_at, response)\n    return None if best_match is None else best_match[2]\n\n\ndef invalidate_scope(\n    entries: list[dict[str, object]],\n    workspace_id: int,\n    current_policy_version: str,\n    current_source_version: str,\n) -> int:\n    before = len(entries)\n    entries[:] = [\n        entry\n        for entry in entries\n        if int(entry[\"workspace_id\"]) != workspace_id\n        or (\n            entry[\"policy_version\"] == current_policy_version\n            and entry[\"source_version\"] == current_source_version\n        )\n    ]\n    return before - len(entries)\n"
         }
       ]
     },
@@ -2110,6 +2142,22 @@
     {
       "track": "databases",
       "topic": "indexing",
+      "slug": "multi-tenant-index-design",
+      "title": "Multi-Tenant Index Design",
+      "path": "modules/databases/indexing/multi-tenant-index-design",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "readme": "# Multi-Tenant Index Design\n\n> Track: `databases` | Topic: `indexing`\n\n## Concept\n\nIn a multi-tenant system, the tenant key usually needs to lead the index so the engine can narrow to one tenant before it scans shared data.\n\n## Key Points\n\n- Index column order matters because B-tree lookups use a leading prefix.\n- A shared-table multi-tenant system should usually lead hot indexes with `workspace_id` or `tenant_id`.\n- Putting tenant second can leave the engine scanning many rows from other tenants first.\n- Tenant-leading indexes often pair the tenant key with status, time, or foreign-key columns used on the hot path.\n\n## Minimal Code Mental Model\n\n```python\nrows = [\n    {\"id\": \"d1\", \"workspace_id\": 7, \"status\": \"open\", \"created_day\": 1},\n    {\"id\": \"d2\", \"workspace_id\": 8, \"status\": \"open\", \"created_day\": 1},\n]\nsummary = index_cost_summary(\n    rows,\n    index_order=(\"workspace_id\", \"status\", \"created_day\"),\n    filters={\"workspace_id\": 7, \"status\": \"open\"},\n)\n```\n\n## Function\n\n```python\ndef prefix_match_columns(\n    index_order: tuple[str, ...],\n    filters: dict[str, object],\n) -> tuple[str, ...]:\ndef candidate_row_ids(\n    rows: list[dict[str, object]],\n    index_order: tuple[str, ...],\n    filters: dict[str, object],\n) -> list[str]:\ndef final_row_ids(\n    rows: list[dict[str, object]],\n    filters: dict[str, object],\n) -> list[str]:\ndef index_cost_summary(\n    rows: list[dict[str, object]],\n    index_order: tuple[str, ...],\n    filters: dict[str, object],\n) -> dict[str, object]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/indexing/multi-tenant-index-design/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/indexing/multi-tenant-index-design/python/multi_tenant_index_design.py",
+          "language": "python",
+          "content": "\"\"\"multi_tenant_index_design - estimate how index order affects tenant isolation.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef prefix_match_columns(\n    index_order: tuple[str, ...],\n    filters: dict[str, object],\n) -> tuple[str, ...]:\n    matched: list[str] = []\n    for column in index_order:\n        if column not in filters:\n            break\n        matched.append(column)\n    return tuple(matched)\n\n\ndef candidate_row_ids(\n    rows: list[dict[str, object]],\n    index_order: tuple[str, ...],\n    filters: dict[str, object],\n) -> list[str]:\n    matched_prefix = prefix_match_columns(index_order, filters)\n    if not matched_prefix:\n        return [str(row[\"id\"]) for row in rows]\n    return [\n        str(row[\"id\"])\n        for row in rows\n        if all(row[column] == filters[column] for column in matched_prefix)\n    ]\n\n\ndef final_row_ids(\n    rows: list[dict[str, object]],\n    filters: dict[str, object],\n) -> list[str]:\n    return [\n        str(row[\"id\"])\n        for row in rows\n        if all(row.get(column) == value for column, value in filters.items())\n    ]\n\n\ndef index_cost_summary(\n    rows: list[dict[str, object]],\n    index_order: tuple[str, ...],\n    filters: dict[str, object],\n) -> dict[str, object]:\n    matched_prefix = prefix_match_columns(index_order, filters)\n    candidates = candidate_row_ids(rows, index_order, filters)\n    results = final_row_ids(rows, filters)\n    return {\n        \"matched_prefix\": list(matched_prefix),\n        \"candidate_count\": len(candidates),\n        \"result_count\": len(results),\n        \"candidate_ids\": candidates,\n        \"result_ids\": results,\n    }\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "indexing",
       "slug": "partial-indexes",
       "title": "Partial Indexes",
       "path": "modules/databases/indexing/partial-indexes",
@@ -2136,6 +2184,22 @@
           "path": "modules/databases/indexing/partition-pruning-basics/python/partition_pruning_basics.py",
           "language": "python",
           "content": "\"\"\"partition_pruning_basics - monthly partitions plus simple pruning logic.\"\"\"\n\nfrom __future__ import annotations\n\nfrom datetime import date\n\n\ndef month_key(date_text: str) -> str:\n    value = date.fromisoformat(date_text)\n    return f\"{value.year:04d}-{value.month:02d}\"\n\n\ndef build_monthly_partitions(\n    rows: list[dict[str, object]],\n) -> dict[str, list[dict[str, object]]]:\n    partitions: dict[str, list[dict[str, object]]] = {}\n    for row in rows:\n        key = month_key(str(row[\"event_date\"]))\n        partitions.setdefault(key, []).append(row)\n    return partitions\n\n\ndef pruned_partition_keys(\n    partitions: dict[str, list[dict[str, object]]],\n    start_date: str,\n    end_date: str,\n) -> list[str]:\n    raw_start = date.fromisoformat(start_date)\n    raw_end = date.fromisoformat(end_date)\n    if raw_end < raw_start:\n        raise ValueError(\"end_date must be on or after start_date\")\n    start = raw_start.replace(day=1)\n    end = raw_end.replace(day=1)\n\n    keys: list[str] = []\n    current = start\n    while current <= end:\n        key = f\"{current.year:04d}-{current.month:02d}\"\n        if key in partitions:\n            keys.append(key)\n        if current.month == 12:\n            current = date(current.year + 1, 1, 1)\n        else:\n            current = date(current.year, current.month + 1, 1)\n    return keys\n\n\ndef query_partitioned_rows(\n    partitions: dict[str, list[dict[str, object]]],\n    workspace_id: int,\n    start_date: str,\n    end_date: str,\n) -> tuple[list[str], list[str]]:\n    start = date.fromisoformat(start_date)\n    end = date.fromisoformat(end_date)\n    scanned = pruned_partition_keys(partitions, start_date, end_date)\n    matches: list[str] = []\n    for key in scanned:\n        for row in partitions[key]:\n            row_date = date.fromisoformat(str(row[\"event_date\"]))\n            if int(row[\"workspace_id\"]) != workspace_id:\n                continue\n            if start <= row_date <= end:\n                matches.append(str(row[\"id\"]))\n    return scanned, matches\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "partitioning-vs-secondary-indexes",
+      "title": "Partitioning Vs Secondary Indexes",
+      "path": "modules/databases/indexing/partitioning-vs-secondary-indexes",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "readme": "# Partitioning Vs Secondary Indexes\n\n> Track: `databases` | Topic: `indexing`\n\n## Concept\n\nPartitioning reduces the partitions you touch. Secondary indexes reduce the rows you touch inside those partitions. They solve different parts of the read path.\n\n## Key Points\n\n- Partition pruning is best for large date or tenant ranges that can skip whole chunks of data.\n- A secondary index still matters inside each remaining partition when the query filters on another key.\n- Partitioning alone does not make per-tenant or per-user lookups cheap.\n- Good indexing design usually combines both ideas instead of treating them as substitutes.\n\n## Minimal Code Mental Model\n\n```python\npartitions = build_monthly_partitions(rows)\nsecondary = build_workspace_secondary_index(partitions)\nscanned, inspected, matches = query_with_secondary_index(\n    partitions,\n    secondary,\n    workspace_id=7,\n    start_date=\"2026-02-01\",\n    end_date=\"2026-03-31\",\n)\n```\n\n## Function\n\n```python\ndef month_key(date_text: str) -> str:\ndef build_monthly_partitions(\n    rows: list[dict[str, object]],\n) -> dict[str, list[dict[str, object]]]:\ndef scanned_partition_keys(\n    partitions: dict[str, list[dict[str, object]]],\n    start_date: str,\n    end_date: str,\n) -> list[str]:\ndef build_workspace_secondary_index(\n    partitions: dict[str, list[dict[str, object]]],\n) -> dict[str, dict[int, list[dict[str, object]]]]:\ndef query_with_partitioning_only(\n    partitions: dict[str, list[dict[str, object]]],\n    workspace_id: int,\n    start_date: str,\n    end_date: str,\n) -> tuple[list[str], int, list[str]]:\ndef query_with_secondary_index(\n    partitions: dict[str, list[dict[str, object]]],\n    secondary_indexes: dict[str, dict[int, list[dict[str, object]]]],\n    workspace_id: int,\n    start_date: str,\n    end_date: str,\n) -> tuple[list[str], int, list[str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/indexing/partitioning-vs-secondary-indexes/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/indexing/partitioning-vs-secondary-indexes/python/partitioning_vs_secondary_indexes.py",
+          "language": "python",
+          "content": "\"\"\"partitioning_vs_secondary_indexes - show why pruning and indexes are complementary.\"\"\"\n\nfrom __future__ import annotations\n\nfrom datetime import date\n\n\ndef month_key(date_text: str) -> str:\n    value = date.fromisoformat(date_text)\n    return f\"{value.year:04d}-{value.month:02d}\"\n\n\ndef build_monthly_partitions(\n    rows: list[dict[str, object]],\n) -> dict[str, list[dict[str, object]]]:\n    partitions: dict[str, list[dict[str, object]]] = {}\n    for row in rows:\n        partitions.setdefault(month_key(str(row[\"event_date\"])), []).append(row)\n    return partitions\n\n\ndef scanned_partition_keys(\n    partitions: dict[str, list[dict[str, object]]],\n    start_date: str,\n    end_date: str,\n) -> list[str]:\n    start = date.fromisoformat(start_date)\n    end = date.fromisoformat(end_date)\n    if end < start:\n        raise ValueError(\"end_date must be on or after start_date\")\n\n    current = start.replace(day=1)\n    limit = end.replace(day=1)\n    keys: list[str] = []\n    while current <= limit:\n        key = f\"{current.year:04d}-{current.month:02d}\"\n        if key in partitions:\n            keys.append(key)\n        if current.month == 12:\n            current = date(current.year + 1, 1, 1)\n        else:\n            current = date(current.year, current.month + 1, 1)\n    return keys\n\n\ndef build_workspace_secondary_index(\n    partitions: dict[str, list[dict[str, object]]],\n) -> dict[str, dict[int, list[dict[str, object]]]]:\n    secondary: dict[str, dict[int, list[dict[str, object]]]] = {}\n    for partition_key, rows in partitions.items():\n        workspace_rows: dict[int, list[dict[str, object]]] = {}\n        for row in rows:\n            workspace_id = int(row[\"workspace_id\"])\n            workspace_rows.setdefault(workspace_id, []).append(row)\n        secondary[partition_key] = workspace_rows\n    return secondary\n\n\ndef query_with_partitioning_only(\n    partitions: dict[str, list[dict[str, object]]],\n    workspace_id: int,\n    start_date: str,\n    end_date: str,\n) -> tuple[list[str], int, list[str]]:\n    scanned = scanned_partition_keys(partitions, start_date, end_date)\n    matches: list[str] = []\n    inspected_rows = 0\n    start = date.fromisoformat(start_date)\n    end = date.fromisoformat(end_date)\n\n    for partition_key in scanned:\n        for row in partitions[partition_key]:\n            inspected_rows += 1\n            row_date = date.fromisoformat(str(row[\"event_date\"]))\n            if int(row[\"workspace_id\"]) != workspace_id:\n                continue\n            if start <= row_date <= end:\n                matches.append(str(row[\"id\"]))\n    return scanned, inspected_rows, matches\n\n\ndef query_with_secondary_index(\n    partitions: dict[str, list[dict[str, object]]],\n    secondary_indexes: dict[str, dict[int, list[dict[str, object]]]],\n    workspace_id: int,\n    start_date: str,\n    end_date: str,\n) -> tuple[list[str], int, list[str]]:\n    scanned = scanned_partition_keys(partitions, start_date, end_date)\n    matches: list[str] = []\n    inspected_rows = 0\n    start = date.fromisoformat(start_date)\n    end = date.fromisoformat(end_date)\n\n    for partition_key in scanned:\n        candidate_rows = secondary_indexes.get(partition_key, {}).get(workspace_id, [])\n        inspected_rows += len(candidate_rows)\n        for row in candidate_rows:\n            row_date = date.fromisoformat(str(row[\"event_date\"]))\n            if start <= row_date <= end:\n                matches.append(str(row[\"id\"]))\n    return scanned, inspected_rows, matches\n"
         }
       ]
     },
@@ -2238,6 +2302,22 @@
     {
       "track": "databases",
       "topic": "query-plans",
+      "slug": "join-order-and-cardinality",
+      "title": "Join Order And Cardinality",
+      "path": "modules/databases/query-plans/join-order-and-cardinality",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "readme": "# Join Order And Cardinality\n\n> Track: `databases` | Topic: `query-plans`\n\n## Concept\n\nJoin order follows cardinality. The optimizer wants to keep intermediate results small, so the most selective starting point is often the cheapest plan.\n\n## Key Points\n\n- Cardinality is the estimated number of rows after each filter or join.\n- A selective filter early in the plan can shrink every downstream join.\n- Starting from a huge fact table can keep intermediate results huge even when the final answer is small.\n- Join order bugs are often estimation bugs before they are join-algorithm bugs.\n\n## Minimal Code Mental Model\n\n```python\ntable_rows = {\"customers\": 100_000, \"orders\": 500_000, \"items\": 2_000_000}\nselectivities = {\"customers\": 0.001, \"orders\": 1.0, \"items\": 1.0}\nedges = {\n    (\"customers\", \"orders\"): 5.0,\n    (\"orders\", \"items\"): 4.0,\n}\nplan = left_deep_plan_cost(table_rows, selectivities, [\"customers\", \"orders\", \"items\"], edges)\n```\n\n## Function\n\n```python\ndef filtered_rows(base_rows: int, selectivity: float) -> int:\ndef join_output_rows(current_rows: int, average_matches: float) -> int:\ndef left_deep_plan_cost(\n    table_rows: dict[str, int],\n    selectivities: dict[str, float],\n    join_order: list[str],\n    join_edges: dict[tuple[str, str], float],\n) -> dict[str, int]:\ndef cheaper_plan(left: dict[str, int], right: dict[str, int]) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/query-plans/join-order-and-cardinality/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/query-plans/join-order-and-cardinality/python/join_order_and_cardinality.py",
+          "language": "python",
+          "content": "\"\"\"join_order_and_cardinality - estimate how join order changes intermediate work.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef filtered_rows(base_rows: int, selectivity: float) -> int:\n    if base_rows <= 0 or selectivity <= 0:\n        return 0\n    return max(1, int(base_rows * selectivity))\n\n\ndef join_output_rows(current_rows: int, average_matches: float) -> int:\n    if current_rows <= 0 or average_matches <= 0:\n        return 0\n    return max(1, int(current_rows * average_matches))\n\n\ndef left_deep_plan_cost(\n    table_rows: dict[str, int],\n    selectivities: dict[str, float],\n    join_order: list[str],\n    join_edges: dict[tuple[str, str], float],\n) -> dict[str, int]:\n    if not join_order:\n        return {\"start_rows\": 0, \"output_rows\": 0, \"work\": 0}\n\n    first = join_order[0]\n    current_rows = filtered_rows(table_rows[first], selectivities.get(first, 1.0))\n    total_work = current_rows\n\n    for left, right in zip(join_order, join_order[1:]):\n        if (left, right) not in join_edges:\n            raise KeyError((left, right))\n        right_rows = filtered_rows(table_rows[right], selectivities.get(right, 1.0))\n        total_work += current_rows + right_rows\n        current_rows = join_output_rows(current_rows, join_edges[(left, right)])\n\n    return {\n        \"start_rows\": filtered_rows(table_rows[first], selectivities.get(first, 1.0)),\n        \"output_rows\": current_rows,\n        \"work\": total_work,\n    }\n\n\ndef cheaper_plan(left: dict[str, int], right: dict[str, int]) -> str:\n    return \"left\" if int(left[\"work\"]) <= int(right[\"work\"]) else \"right\"\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "query-plans",
       "slug": "plan-regression-debugging",
       "title": "Plan Regression Debugging",
       "path": "modules/databases/query-plans/plan-regression-debugging",
@@ -2312,6 +2392,22 @@
           "path": "modules/databases/relational/jsonb-inside-relational-systems/python/jsonb_inside_relational_systems.py",
           "language": "python",
           "content": "\"\"\"jsonb_inside_relational_systems - relational rows with indexed JSON-like metadata.\"\"\"\n\nfrom __future__ import annotations\n\nimport json\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_ticket_schema(conn: sqlite3.Connection) -> None:\n    conn.executescript(\n        \"\"\"\n        CREATE TABLE tickets (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            status TEXT NOT NULL,\n            title TEXT NOT NULL,\n            metadata_json TEXT NOT NULL\n        );\n\n        CREATE TABLE ticket_metadata_terms (\n            ticket_id INTEGER NOT NULL,\n            term TEXT NOT NULL,\n            PRIMARY KEY (ticket_id, term),\n            FOREIGN KEY (ticket_id) REFERENCES tickets (id) ON DELETE CASCADE\n        );\n\n        CREATE INDEX idx_ticket_metadata_terms_term\n        ON ticket_metadata_terms (term);\n        \"\"\"\n    )\n\n\ndef metadata_terms(metadata: dict[str, object]) -> set[str]:\n    terms: set[str] = set()\n    for key, value in metadata.items():\n        if isinstance(value, list):\n            singular = key[:-1] if key.endswith(\"s\") else key\n            for item in value:\n                terms.add(f\"{singular}={item}\")\n        else:\n            terms.add(f\"{key}={value}\")\n    return terms\n\n\ndef insert_ticket(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    status: str,\n    title: str,\n    metadata: dict[str, object],\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO tickets (workspace_id, status, title, metadata_json)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        (workspace_id, status, title, json.dumps(metadata, sort_keys=True)),\n    )\n    ticket_id = int(cursor.lastrowid)\n    _replace_metadata_terms(conn, ticket_id, metadata)\n    return ticket_id\n\n\ndef update_ticket_metadata(\n    conn: sqlite3.Connection,\n    ticket_id: int,\n    metadata: dict[str, object],\n) -> None:\n    conn.execute(\n        \"\"\"\n        UPDATE tickets\n        SET metadata_json = ?\n        WHERE id = ?\n        \"\"\",\n        (json.dumps(metadata, sort_keys=True), ticket_id),\n    )\n    _replace_metadata_terms(conn, ticket_id, metadata)\n\n\ndef filter_ticket_ids(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    status: str | None = None,\n    required_terms: list[str] | None = None,\n) -> list[int]:\n    terms = required_terms or []\n    if not terms:\n        if status is None:\n            rows = conn.execute(\n                \"\"\"\n                SELECT id\n                FROM tickets\n                WHERE workspace_id = ?\n                ORDER BY id\n                \"\"\",\n                (workspace_id,),\n            ).fetchall()\n        else:\n            rows = conn.execute(\n                \"\"\"\n                SELECT id\n                FROM tickets\n                WHERE workspace_id = ? AND status = ?\n                ORDER BY id\n                \"\"\",\n                (workspace_id, status),\n            ).fetchall()\n        return [int(ticket_id) for (ticket_id,) in rows]\n\n    placeholders = \", \".join(\"?\" for _ in terms)\n    params: list[object] = [workspace_id]\n    query = [\n        \"\"\"\n        SELECT t.id\n        FROM tickets AS t\n        JOIN ticket_metadata_terms AS m\n          ON m.ticket_id = t.id\n        WHERE t.workspace_id = ?\n        \"\"\".strip()\n    ]\n    if status is not None:\n        query.append(\"AND t.status = ?\")\n        params.append(status)\n    query.append(f\"AND m.term IN ({placeholders})\")\n    params.extend(terms)\n    query.append(\"GROUP BY t.id\")\n    query.append(\"HAVING COUNT(DISTINCT m.term) = ?\")\n    query.append(\"ORDER BY t.id\")\n    params.append(len(set(terms)))\n    rows = conn.execute(\"\\n\".join(query), params).fetchall()\n    return [int(ticket_id) for (ticket_id,) in rows]\n\n\ndef ticket_metadata(conn: sqlite3.Connection, ticket_id: int) -> dict[str, object]:\n    row = conn.execute(\n        \"\"\"\n        SELECT metadata_json\n        FROM tickets\n        WHERE id = ?\n        \"\"\",\n        (ticket_id,),\n    ).fetchone()\n    if row is None:\n        raise KeyError(ticket_id)\n    return json.loads(str(row[0]))\n\n\ndef _replace_metadata_terms(\n    conn: sqlite3.Connection,\n    ticket_id: int,\n    metadata: dict[str, object],\n) -> None:\n    conn.execute(\n        \"\"\"\n        DELETE FROM ticket_metadata_terms\n        WHERE ticket_id = ?\n        \"\"\",\n        (ticket_id,),\n    )\n    conn.executemany(\n        \"\"\"\n        INSERT INTO ticket_metadata_terms (ticket_id, term)\n        VALUES (?, ?)\n        \"\"\",\n        [(ticket_id, term) for term in sorted(metadata_terms(metadata))],\n    )\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "relational",
+      "slug": "jsonb-to-normalized-migration",
+      "title": "JSONB To Normalized Migration",
+      "path": "modules/databases/relational/jsonb-to-normalized-migration",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "readme": "# JSONB To Normalized Migration\n\n> Track: `databases` | Topic: `relational`\n\n## Concept\n\nWhen a JSON-like field becomes a hot query path, migrate the frequently-filtered attributes into normal relational tables instead of repeatedly parsing the blob.\n\n## Key Points\n\n- JSON metadata is fine for low-frequency or evolving attributes.\n- Once a field becomes a join or filter key, backfilling a normalized table is usually cleaner than adding more blob parsing.\n- A migration can keep the original JSON for compatibility while introducing indexed relational rows.\n- Good backfills are idempotent so they can be rerun safely.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_legacy_schema(conn)\nticket_id = insert_legacy_ticket(conn, 7, \"Broken retrieval\", {\"tags\": [\"rag\", \"prod\"]})\ncreate_normalized_tag_table(conn)\nbackfill_ticket_tags(conn)\nmatches = tickets_with_tag_from_normalized(conn, workspace_id=7, tag=\"rag\")\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_legacy_schema(conn: sqlite3.Connection) -> None:\ndef insert_legacy_ticket(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    metadata: dict[str, object],\n) -> int:\ndef create_normalized_tag_table(conn: sqlite3.Connection) -> None:\ndef backfill_ticket_tags(conn: sqlite3.Connection) -> None:\ndef tickets_with_tag_from_json(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    tag: str,\n) -> list[int]:\ndef tickets_with_tag_from_normalized(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    tag: str,\n) -> list[int]:\ndef tag_rows(conn: sqlite3.Connection) -> list[tuple[int, str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/relational/jsonb-to-normalized-migration/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/relational/jsonb-to-normalized-migration/python/jsonb_to_normalized_migration.py",
+          "language": "python",
+          "content": "\"\"\"jsonb_to_normalized_migration - move hot JSON metadata into relational tables.\"\"\"\n\nfrom __future__ import annotations\n\nimport json\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_legacy_schema(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE tickets (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            title TEXT NOT NULL,\n            metadata_json TEXT NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef insert_legacy_ticket(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    metadata: dict[str, object],\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO tickets (workspace_id, title, metadata_json)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (workspace_id, title, json.dumps(metadata, sort_keys=True)),\n    )\n    return int(cursor.lastrowid)\n\n\ndef create_normalized_tag_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE ticket_tags (\n            ticket_id INTEGER NOT NULL,\n            tag TEXT NOT NULL,\n            PRIMARY KEY (ticket_id, tag),\n            FOREIGN KEY (ticket_id) REFERENCES tickets (id) ON DELETE CASCADE\n        )\n        \"\"\"\n    )\n\n\ndef backfill_ticket_tags(conn: sqlite3.Connection) -> None:\n    rows = conn.execute(\n        \"\"\"\n        SELECT id, metadata_json\n        FROM tickets\n        ORDER BY id\n        \"\"\"\n    ).fetchall()\n    for ticket_id, metadata_json in rows:\n        metadata = json.loads(str(metadata_json))\n        tags = metadata.get(\"tags\", [])\n        if not isinstance(tags, list):\n            continue\n        conn.executemany(\n            \"\"\"\n            INSERT OR IGNORE INTO ticket_tags (ticket_id, tag)\n            VALUES (?, ?)\n            \"\"\",\n            [(int(ticket_id), str(tag)) for tag in sorted(set(tags))],\n        )\n\n\ndef tickets_with_tag_from_json(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    tag: str,\n) -> list[int]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT id, metadata_json\n        FROM tickets\n        WHERE workspace_id = ?\n        ORDER BY id\n        \"\"\",\n        (workspace_id,),\n    ).fetchall()\n    matches: list[int] = []\n    for ticket_id, metadata_json in rows:\n        metadata = json.loads(str(metadata_json))\n        tags = metadata.get(\"tags\", [])\n        if isinstance(tags, list) and tag in tags:\n            matches.append(int(ticket_id))\n    return matches\n\n\ndef tickets_with_tag_from_normalized(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    tag: str,\n) -> list[int]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT t.id\n        FROM tickets AS t\n        JOIN ticket_tags AS tt\n          ON tt.ticket_id = t.id\n        WHERE t.workspace_id = ? AND tt.tag = ?\n        ORDER BY t.id\n        \"\"\",\n        (workspace_id, tag),\n    ).fetchall()\n    return [int(ticket_id) for (ticket_id,) in rows]\n\n\ndef tag_rows(conn: sqlite3.Connection) -> list[tuple[int, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT ticket_id, tag\n        FROM ticket_tags\n        ORDER BY ticket_id, tag\n        \"\"\"\n    ).fetchall()\n    return [(int(ticket_id), str(tag)) for ticket_id, tag in rows]\n"
         }
       ]
     },
@@ -2526,6 +2622,22 @@
     {
       "track": "databases",
       "topic": "streaming",
+      "slug": "cdc-watermarks-and-ordering",
+      "title": "CDC Watermarks And Ordering",
+      "path": "modules/databases/streaming/cdc-watermarks-and-ordering",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "readme": "# CDC Watermarks And Ordering\n\n> Track: `databases` | Topic: `streaming`\n\n## Concept\n\nCDC consumers often see events arrive out of order. A watermark tracks the highest contiguous sequence that has been safely applied.\n\n## Key Points\n\n- A consumer should not advance its watermark past a gap in the sequence.\n- Out-of-order events are usually buffered until the missing earlier event arrives.\n- The watermark is the safe replay point for restarts and downstream handoffs.\n- Delete events still need ordering; applying them early can corrupt the read model.\n\n## Minimal Code Mental Model\n\n```python\nstate = empty_consumer_state()\ningest_cdc_event(state, cdc_event(1, \"orders\", \"o1\", \"upsert\", {\"status\": \"placed\"}))\ningest_cdc_event(state, cdc_event(3, \"orders\", \"o1\", \"upsert\", {\"status\": \"completed\"}))\ningest_cdc_event(state, cdc_event(2, \"orders\", \"o1\", \"upsert\", {\"status\": \"paid\"}))\nwatermark = current_watermark(state)\n```\n\n## Function\n\n```python\ndef cdc_event(\n    sequence: int,\n    table: str,\n    row_id: str,\n    op: str,\n    after: dict[str, object] | None,\n) -> dict[str, object]:\ndef empty_consumer_state() -> dict[str, object]:\ndef ingest_cdc_event(\n    consumer_state: dict[str, object],\n    event: dict[str, object],\n) -> list[int]:\ndef current_watermark(consumer_state: dict[str, object]) -> int:\ndef latest_row(\n    consumer_state: dict[str, object],\n    table: str,\n    row_id: str,\n) -> dict[str, object] | None:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/streaming/cdc-watermarks-and-ordering/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/streaming/cdc-watermarks-and-ordering/python/cdc_watermarks_and_ordering.py",
+          "language": "python",
+          "content": "\"\"\"cdc_watermarks_and_ordering - buffer out-of-order CDC until the watermark can advance.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef cdc_event(\n    sequence: int,\n    table: str,\n    row_id: str,\n    op: str,\n    after: dict[str, object] | None,\n) -> dict[str, object]:\n    return {\n        \"sequence\": sequence,\n        \"table\": table,\n        \"row_id\": row_id,\n        \"op\": op,\n        \"after\": after,\n    }\n\n\ndef empty_consumer_state() -> dict[str, object]:\n    return {\n        \"next_sequence\": 1,\n        \"buffer\": {},\n        \"rows\": {},\n    }\n\n\ndef ingest_cdc_event(\n    consumer_state: dict[str, object],\n    event: dict[str, object],\n) -> list[int]:\n    next_sequence = int(consumer_state[\"next_sequence\"])\n    sequence = int(event[\"sequence\"])\n    if sequence < next_sequence:\n        return []\n\n    buffer = consumer_state[\"buffer\"]\n    assert isinstance(buffer, dict)\n    buffer.setdefault(sequence, event)\n\n    applied: list[int] = []\n    rows = consumer_state[\"rows\"]\n    assert isinstance(rows, dict)\n    while next_sequence in buffer:\n        current = buffer.pop(next_sequence)\n        key = (str(current[\"table\"]), str(current[\"row_id\"]))\n        if current[\"op\"] == \"delete\":\n            rows.pop(key, None)\n        else:\n            rows[key] = dict(current.get(\"after\") or {})\n        applied.append(next_sequence)\n        next_sequence += 1\n\n    consumer_state[\"next_sequence\"] = next_sequence\n    return applied\n\n\ndef current_watermark(consumer_state: dict[str, object]) -> int:\n    return int(consumer_state[\"next_sequence\"]) - 1\n\n\ndef latest_row(\n    consumer_state: dict[str, object],\n    table: str,\n    row_id: str,\n) -> dict[str, object] | None:\n    rows = consumer_state[\"rows\"]\n    assert isinstance(rows, dict)\n    row = rows.get((table, row_id))\n    return None if row is None else dict(row)\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "streaming",
       "slug": "connectors-and-pipeline-shapes",
       "title": "Connectors And Pipeline Shapes",
       "path": "modules/databases/streaming/connectors-and-pipeline-shapes",
@@ -2686,6 +2798,22 @@
     {
       "track": "databases",
       "topic": "transactions",
+      "slug": "replication-lag-mental-model",
+      "title": "Replication Lag Mental Model",
+      "path": "modules/databases/transactions/replication-lag-mental-model",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "readme": "# Replication Lag Mental Model\n\n> Track: `databases` | Topic: `transactions`\n\n## Concept\n\nPrimary commits become visible on a replica only after the replica has replayed those log records. Replication lag is the gap between primary progress and replica replay progress.\n\n## Key Points\n\n- A committed write can exist on the primary while still being invisible on a replica.\n- Lag is usually tracked by an LSN or sequence position, not just by wall-clock time.\n- Read-after-write guarantees fail on a stale replica even when the primary commit succeeded.\n- The core mental model is “primary commit first, replica replay later.”\n\n## Minimal Code Mental Model\n\n```python\nlog = empty_primary_log()\nlsn = commit_write(log, \"order:o1\", {\"status\": \"placed\"})\nreplica = empty_replica_state()\nlag = replica_lag(log, replica)\napply_replica_writes(replica, log, up_to_lsn=lsn)\n```\n\n## Function\n\n```python\ndef empty_primary_log() -> list[dict[str, object]]:\ndef commit_write(\n    primary_log: list[dict[str, object]],\n    key: str,\n    value: object | None,\n) -> int:\ndef empty_replica_state() -> dict[str, object]:\ndef apply_replica_writes(\n    replica_state: dict[str, object],\n    primary_log: list[dict[str, object]],\n    up_to_lsn: int,\n) -> list[int]:\ndef replica_lag(\n    primary_log: list[dict[str, object]],\n    replica_state: dict[str, object],\n) -> int:\ndef visible_value_on_primary(\n    primary_log: list[dict[str, object]],\n    key: str,\n) -> object | None:\ndef visible_value_on_replica(\n    replica_state: dict[str, object],\n    key: str,\n) -> object | None:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/transactions/replication-lag-mental-model/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/transactions/replication-lag-mental-model/python/replication_lag_mental_model.py",
+          "language": "python",
+          "content": "\"\"\"replication_lag_mental_model - primary commit visibility versus replica replay.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef empty_primary_log() -> list[dict[str, object]]:\n    return []\n\n\ndef commit_write(\n    primary_log: list[dict[str, object]],\n    key: str,\n    value: object | None,\n) -> int:\n    lsn = 1 if not primary_log else int(primary_log[-1][\"lsn\"]) + 1\n    primary_log.append(\n        {\n            \"lsn\": lsn,\n            \"key\": key,\n            \"op\": \"delete\" if value is None else \"upsert\",\n            \"value\": value,\n        }\n    )\n    return lsn\n\n\ndef empty_replica_state() -> dict[str, object]:\n    return {\"applied_lsn\": 0, \"values\": {}}\n\n\ndef apply_replica_writes(\n    replica_state: dict[str, object],\n    primary_log: list[dict[str, object]],\n    up_to_lsn: int,\n) -> list[int]:\n    applied: list[int] = []\n    values = replica_state[\"values\"]\n    assert isinstance(values, dict)\n    current_lsn = int(replica_state[\"applied_lsn\"])\n\n    for entry in primary_log:\n        lsn = int(entry[\"lsn\"])\n        if lsn <= current_lsn or lsn > up_to_lsn:\n            continue\n        key = str(entry[\"key\"])\n        if entry[\"op\"] == \"delete\":\n            values.pop(key, None)\n        else:\n            values[key] = entry[\"value\"]\n        applied.append(lsn)\n        current_lsn = lsn\n\n    replica_state[\"applied_lsn\"] = current_lsn\n    return applied\n\n\ndef replica_lag(\n    primary_log: list[dict[str, object]],\n    replica_state: dict[str, object],\n) -> int:\n    latest_lsn = 0 if not primary_log else int(primary_log[-1][\"lsn\"])\n    return latest_lsn - int(replica_state[\"applied_lsn\"])\n\n\ndef visible_value_on_primary(\n    primary_log: list[dict[str, object]],\n    key: str,\n) -> object | None:\n    value: object | None = None\n    for entry in primary_log:\n        if entry[\"key\"] != key:\n            continue\n        value = None if entry[\"op\"] == \"delete\" else entry[\"value\"]\n    return value\n\n\ndef visible_value_on_replica(\n    replica_state: dict[str, object],\n    key: str,\n) -> object | None:\n    values = replica_state[\"values\"]\n    assert isinstance(values, dict)\n    return values.get(key)\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "transactions",
       "slug": "transaction-basics",
       "title": "Transaction Basics",
       "path": "modules/databases/transactions/transaction-basics",
@@ -2750,6 +2878,22 @@
     {
       "track": "databases",
       "topic": "vector-db",
+      "slug": "hybrid-retrieval-evaluation",
+      "title": "Hybrid Retrieval Evaluation",
+      "path": "modules/databases/vector-db/hybrid-retrieval-evaluation",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "readme": "# Hybrid Retrieval Evaluation\n\n> Track: `databases` | Topic: `vector-db`\n\n## Concept\n\nHybrid retrieval should be judged by retrieval metrics, not intuition. The useful question is whether lexical, vector, or hybrid ranking returns relevant results higher in the list.\n\n## Key Points\n\n- Precision at `k` tells you how many top results are relevant.\n- Reciprocal rank tells you how quickly the first relevant result appears.\n- A hybrid system should beat or justify itself against lexical-only and vector-only baselines.\n- Evaluation should happen per query set, not by staring at one anecdotal search result.\n\n## Minimal Code Mental Model\n\n```python\nrelevant = {\"q1\": {\"a\"}, \"q2\": {\"d\"}}\nruns = {\n    \"lexical\": {\"q1\": [\"a\", \"b\"], \"q2\": [\"x\", \"d\"]},\n    \"hybrid\": {\"q1\": [\"a\", \"b\"], \"q2\": [\"d\", \"x\"]},\n}\nscores = evaluate_runs(runs, relevant, k=1)\n```\n\n## Function\n\n```python\ndef precision_at_k(\n    ranked_ids: list[str],\n    relevant_ids: set[str],\n    k: int,\n) -> float:\ndef reciprocal_rank(\n    ranked_ids: list[str],\n    relevant_ids: set[str],\n) -> float:\ndef evaluate_run(\n    ranked_by_query: dict[str, list[str]],\n    relevant_by_query: dict[str, set[str]],\n    k: int,\n) -> dict[str, float]:\ndef evaluate_runs(\n    runs: dict[str, dict[str, list[str]]],\n    relevant_by_query: dict[str, set[str]],\n    k: int,\n) -> dict[str, dict[str, float]]:\ndef best_run_name(\n    scores: dict[str, dict[str, float]],\n    metric: str,\n) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/vector-db/hybrid-retrieval-evaluation/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/vector-db/hybrid-retrieval-evaluation/python/hybrid_retrieval_evaluation.py",
+          "language": "python",
+          "content": "\"\"\"hybrid_retrieval_evaluation - compare lexical, vector, and hybrid retrieval runs.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef precision_at_k(\n    ranked_ids: list[str],\n    relevant_ids: set[str],\n    k: int,\n) -> float:\n    if k <= 0:\n        return 0.0\n    top_k = ranked_ids[:k]\n    if not top_k:\n        return 0.0\n    hits = sum(1 for doc_id in top_k if doc_id in relevant_ids)\n    return hits / k\n\n\ndef reciprocal_rank(\n    ranked_ids: list[str],\n    relevant_ids: set[str],\n) -> float:\n    for index, doc_id in enumerate(ranked_ids, start=1):\n        if doc_id in relevant_ids:\n            return 1.0 / index\n    return 0.0\n\n\ndef evaluate_run(\n    ranked_by_query: dict[str, list[str]],\n    relevant_by_query: dict[str, set[str]],\n    k: int,\n) -> dict[str, float]:\n    if not relevant_by_query:\n        return {\"precision_at_k\": 0.0, \"mrr\": 0.0}\n    precisions: list[float] = []\n    reciprocal_ranks: list[float] = []\n    for query_id, relevant_ids in relevant_by_query.items():\n        ranked_ids = ranked_by_query.get(query_id, [])\n        precisions.append(precision_at_k(ranked_ids, relevant_ids, k))\n        reciprocal_ranks.append(reciprocal_rank(ranked_ids, relevant_ids))\n    query_count = len(relevant_by_query)\n    return {\n        \"precision_at_k\": sum(precisions) / query_count,\n        \"mrr\": sum(reciprocal_ranks) / query_count,\n    }\n\n\ndef evaluate_runs(\n    runs: dict[str, dict[str, list[str]]],\n    relevant_by_query: dict[str, set[str]],\n    k: int,\n) -> dict[str, dict[str, float]]:\n    return {\n        run_name: evaluate_run(ranked_by_query, relevant_by_query, k)\n        for run_name, ranked_by_query in runs.items()\n    }\n\n\ndef best_run_name(\n    scores: dict[str, dict[str, float]],\n    metric: str,\n) -> str:\n    return max(scores, key=lambda run_name: (scores[run_name][metric], run_name))\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "vector-db",
       "slug": "hybrid-search",
       "title": "Hybrid Search",
       "path": "modules/databases/vector-db/hybrid-search",
@@ -2760,6 +2904,22 @@
           "path": "modules/databases/vector-db/hybrid-search/python/hybrid_search.py",
           "language": "python",
           "content": "\"\"\"hybrid_search - combine lexical overlap with cosine similarity.\"\"\"\n\nfrom __future__ import annotations\n\nimport math\nimport re\n\n\ndef tokenize(text: str) -> list[str]:\n    return re.findall(r\"[a-z0-9]+\", text.lower())\n\n\ndef cosine_similarity(left: list[float], right: list[float]) -> float:\n    if len(left) != len(right):\n        raise ValueError(\"vectors must have the same dimensions\")\n    left_norm = math.sqrt(sum(value * value for value in left))\n    right_norm = math.sqrt(sum(value * value for value in right))\n    if left_norm == 0 or right_norm == 0:\n        return 0.0\n    dot = sum(a * b for a, b in zip(left, right))\n    similarity = dot / (left_norm * right_norm)\n    if abs(similarity - 1.0) < 1e-12:\n        return 1.0\n    if abs(similarity + 1.0) < 1e-12:\n        return -1.0\n    return similarity\n\n\ndef lexical_overlap_score(query_text: str, doc_text: str) -> float:\n    query_terms = set(tokenize(query_text))\n    if not query_terms:\n        return 0.0\n    doc_terms = set(tokenize(doc_text))\n    return len(query_terms & doc_terms) / len(query_terms)\n\n\ndef hybrid_score(\n    query_text: str,\n    query_vector: list[float],\n    doc_text: str,\n    doc_vector: list[float],\n    alpha: float = 0.5,\n) -> float:\n    if not 0.0 <= alpha <= 1.0:\n        raise ValueError(\"alpha must be between 0 and 1\")\n    semantic = cosine_similarity(query_vector, doc_vector)\n    lexical = lexical_overlap_score(query_text, doc_text)\n    return alpha * semantic + (1.0 - alpha) * lexical\n\n\ndef rank_documents(\n    query_text: str,\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    alpha: float = 0.5,\n) -> list[tuple[str, float]]:\n    scored = [\n        (\n            str(document[\"id\"]),\n            hybrid_score(\n                query_text,\n                query_vector,\n                str(document[\"text\"]),\n                list(document[\"vector\"]),\n                alpha=alpha,\n            ),\n        )\n        for document in documents\n    ]\n    return sorted(scored, key=lambda item: (-item[1], item[0]))\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "memory-compaction-patterns",
+      "title": "Memory Compaction Patterns",
+      "path": "modules/databases/vector-db/memory-compaction-patterns",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "readme": "# Memory Compaction Patterns\n\n> Track: `databases` | Topic: `vector-db`\n\n## Concept\n\nLong-running agents need memory compaction so the raw memory store does not grow without bound while still preserving the useful signal.\n\n## Key Points\n\n- Keep recent or high-importance memories raw.\n- Collapse older low-value memories into topic summaries.\n- Pinned memories should survive compaction even if they are old.\n- Compaction should reduce retrieval noise, not just save storage.\n\n## Minimal Code Mental Model\n\n```python\nkept = raw_memory_ids(memories, now=200, keep_raw=2)\ncompacted = compact_memories(memories, now=200, keep_raw=2)\n```\n\n## Function\n\n```python\ndef memory_score(\n    memory: dict[str, object],\n    now: int,\n    recency_window: int = 3600,\n) -> float:\ndef raw_memory_ids(\n    memories: list[dict[str, object]],\n    now: int,\n    keep_raw: int,\n) -> list[str]:\ndef summary_text(memories: list[dict[str, object]]) -> str:\ndef compact_memories(\n    memories: list[dict[str, object]],\n    now: int,\n    keep_raw: int,\n) -> list[dict[str, object]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/vector-db/memory-compaction-patterns/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/vector-db/memory-compaction-patterns/python/memory_compaction_patterns.py",
+          "language": "python",
+          "content": "\"\"\"memory_compaction_patterns - keep important memories raw and summarize the rest.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef memory_score(\n    memory: dict[str, object],\n    now: int,\n    recency_window: int = 3600,\n) -> float:\n    if memory.get(\"pinned\"):\n        return 1000.0 + float(memory.get(\"importance\", 0.5))\n    age = max(now - int(memory[\"created_at\"]), 0)\n    recency = max(0.0, 1.0 - (age / recency_window))\n    importance = float(memory.get(\"importance\", 0.5))\n    return (0.7 * importance) + (0.3 * recency)\n\n\ndef raw_memory_ids(\n    memories: list[dict[str, object]],\n    now: int,\n    keep_raw: int,\n) -> list[str]:\n    ranked = sorted(\n        memories,\n        key=lambda memory: (\n            -memory_score(memory, now),\n            -int(memory[\"created_at\"]),\n            str(memory[\"id\"]),\n        ),\n    )\n    return [str(memory[\"id\"]) for memory in ranked[:keep_raw]]\n\n\ndef summary_text(memories: list[dict[str, object]]) -> str:\n    ordered = sorted(memories, key=lambda memory: (int(memory[\"created_at\"]), str(memory[\"id\"])))\n    return \" | \".join(str(memory[\"text\"]) for memory in ordered)\n\n\ndef compact_memories(\n    memories: list[dict[str, object]],\n    now: int,\n    keep_raw: int,\n) -> list[dict[str, object]]:\n    kept_ids = set(raw_memory_ids(memories, now, keep_raw))\n    kept_raw = [dict(memory) for memory in memories if str(memory[\"id\"]) in kept_ids]\n\n    grouped: dict[str, list[dict[str, object]]] = {}\n    for memory in memories:\n        if str(memory[\"id\"]) in kept_ids:\n            continue\n        grouped.setdefault(str(memory.get(\"topic\", \"general\")), []).append(memory)\n\n    summaries: list[dict[str, object]] = []\n    for topic, topic_memories in sorted(grouped.items()):\n        summaries.append(\n            {\n                \"id\": f\"summary:{topic}\",\n                \"topic\": topic,\n                \"text\": f\"Summary of {topic}: {summary_text(topic_memories)}\",\n                \"created_at\": max(int(memory[\"created_at\"]) for memory in topic_memories),\n                \"importance\": max(float(memory.get(\"importance\", 0.5)) for memory in topic_memories),\n                \"kind\": \"summary\",\n            }\n        )\n\n    combined = kept_raw + summaries\n    return sorted(combined, key=lambda memory: (int(memory[\"created_at\"]), str(memory[\"id\"])))\n"
         }
       ]
     },
@@ -8960,6 +9120,22 @@
     {
       "track": "software-engineering",
       "topic": "observability",
+      "slug": "runbooks-and-dashboards",
+      "title": "Runbooks And Dashboards",
+      "path": "modules/software-engineering/observability/runbooks-and-dashboards",
+      "summary": "> Track: `software-engineering` | Topic: `observability`",
+      "readme": "# Runbooks And Dashboards\n\n> Track: `software-engineering` | Topic: `observability`\n\n## Concept\n\nRunbooks tell operators what to do during an incident, and dashboards tell them whether the system is moving toward or away from recovery.\n\n## Key Points\n\n- A dashboard without a runbook leaves responders guessing what action to take.\n- A runbook without current service signals is hard to trust under pressure.\n- Missing owner, rollback, or health-check information usually turns incidents into improvisation.\n\n## Minimal Code Mental Model\n\n```python\nmissing = missing_runbook_fields(runbook)\ncoverage = missing_dashboard_panels([\"latency\", \"error-rate\", \"traffic\"], [\"latency\", \"traffic\"])\nready = operator_ready(runbook, [\"latency\", \"error-rate\", \"traffic\"], [\"latency\", \"error-rate\", \"traffic\"])\n```\n\n## Function\n\n```python\ndef missing_runbook_fields(runbook: dict[str, str], required_fields: list[str] | None = None) -> list[str]:\ndef missing_dashboard_panels(required_panels: list[str], present_panels: list[str]) -> list[str]:\ndef operator_ready(runbook: dict[str, str], required_panels: list[str], present_panels: list[str]) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/observability/runbooks-and-dashboards/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/observability/runbooks-and-dashboards/python/runbooks_and_dashboards.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\nDEFAULT_RUNBOOK_FIELDS = [\"service\", \"owner\", \"page-policy\", \"health-check\", \"rollback\"]\n\n\ndef missing_runbook_fields(runbook: dict[str, str], required_fields: list[str] | None = None) -> list[str]:\n    fields = required_fields or DEFAULT_RUNBOOK_FIELDS\n    missing: list[str] = []\n    for field in fields:\n        cleaned_field = field.strip()\n        if not cleaned_field:\n            continue\n        if not runbook.get(cleaned_field, \"\").strip():\n            missing.append(cleaned_field)\n    return sorted(missing)\n\n\ndef missing_dashboard_panels(required_panels: list[str], present_panels: list[str]) -> list[str]:\n    required = {panel.strip() for panel in required_panels if panel.strip()}\n    present = {panel.strip() for panel in present_panels if panel.strip()}\n    return sorted(required - present)\n\n\ndef operator_ready(runbook: dict[str, str], required_panels: list[str], present_panels: list[str]) -> bool:\n    return not missing_runbook_fields(runbook) and not missing_dashboard_panels(required_panels, present_panels)\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "observability",
       "slug": "slis-slos-and-alerting",
       "title": "SLIs, SLOs, And Alerting",
       "path": "modules/software-engineering/observability/slis-slos-and-alerting",
@@ -8991,6 +9167,70 @@
     },
     {
       "track": "software-engineering",
+      "topic": "observability",
+      "slug": "trace-driven-debugging",
+      "title": "Trace-Driven Debugging",
+      "path": "modules/software-engineering/observability/trace-driven-debugging",
+      "summary": "> Track: `software-engineering` | Topic: `observability`",
+      "readme": "# Trace-Driven Debugging\n\n> Track: `software-engineering` | Topic: `observability`\n\n## Concept\n\nTrace-driven debugging uses span latency and failure status to decide where an investigation should start instead of guessing from symptoms alone.\n\n## Key Points\n\n- Failing spans are the fastest path to the broken dependency or workflow step.\n- If nothing failed, the slowest span is usually the first latency suspect.\n- Traces are most useful when the route from symptom to next inspection step is explicit.\n\n## Minimal Code Mental Model\n\n```python\nfailed = failing_spans(spans)\nslowest = slowest_span(spans)\nroute = debugging_route(spans, slow_ms_threshold=200.0)\n```\n\n## Function\n\n```python\ndef failing_spans(spans: list[dict[str, object]]) -> list[str]:\ndef slowest_span(spans: list[dict[str, object]]) -> str | None:\ndef debugging_route(spans: list[dict[str, object]], slow_ms_threshold: float) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/observability/trace-driven-debugging/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/observability/trace-driven-debugging/python/trace_driven_debugging.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef _validated_spans(spans: list[dict[str, object]]) -> list[dict[str, object]]:\n    validated: list[dict[str, object]] = []\n    for span in spans:\n        name = str(span.get(\"name\", \"\")).strip()\n        latency_ms = float(span.get(\"latency_ms\", 0.0))\n        if not name:\n            raise ValueError(\"span name must be non-empty\")\n        if latency_ms < 0:\n            raise ValueError(\"span latency must be non-negative\")\n        validated.append({\"name\": name, \"latency_ms\": latency_ms, \"status\": str(span.get(\"status\", \"\")).strip()})\n    return validated\n\n\ndef failing_spans(spans: list[dict[str, object]]) -> list[str]:\n    validated = _validated_spans(spans)\n    return [span[\"name\"] for span in validated if span[\"status\"].lower() not in {\"ok\", \"success\"}]\n\n\ndef slowest_span(spans: list[dict[str, object]]) -> str | None:\n    validated = _validated_spans(spans)\n    if not validated:\n        return None\n    return max(validated, key=lambda span: span[\"latency_ms\"])[\"name\"]\n\n\ndef debugging_route(spans: list[dict[str, object]], slow_ms_threshold: float) -> str:\n    if slow_ms_threshold < 0:\n        raise ValueError(\"slow_ms_threshold must be non-negative\")\n\n    validated = _validated_spans(spans)\n    failed = failing_spans(validated)\n    if failed:\n        return f\"inspect-failed-span:{failed[0]}\"\n\n    if not validated:\n        return \"no-trace-data\"\n\n    slowest_name = slowest_span(validated)\n    slowest_latency = max(span[\"latency_ms\"] for span in validated)\n    if slowest_name is not None and slowest_latency >= slow_ms_threshold:\n        return f\"inspect-slowest-span:{slowest_name}\"\n    return \"trace-healthy\"\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "batching-vs-streaming",
+      "title": "Batching Vs Streaming",
+      "path": "modules/software-engineering/performance/batching-vs-streaming",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "readme": "# Batching Vs Streaming\n\n> Track: `software-engineering` | Topic: `performance`\n\n## Concept\n\nBatching amortizes overhead across many items, while streaming delivers early partial results at the cost of more per-item overhead.\n\n## Key Points\n\n- Batching is useful when throughput matters more than time to first result.\n- Streaming is useful when users benefit from partial output quickly.\n- The right choice depends on whether amortization or responsiveness is the bottleneck.\n\n## Minimal Code Mental Model\n\n```python\nmode = preferred_delivery_mode(needs_early_results=True, amortization_priority=False)\ncost = batch_cost_per_item(total_batch_ms=120, batch_size=6)\nworth_it = streaming_worth_it(time_to_first_result_ms=100, full_completion_ms=900)\n```\n\n## Function\n\n```python\ndef preferred_delivery_mode(needs_early_results: bool, amortization_priority: bool) -> str:\ndef batch_cost_per_item(total_batch_ms: int, batch_size: int) -> float:\ndef streaming_worth_it(time_to_first_result_ms: int, full_completion_ms: int) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/performance/batching-vs-streaming/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/performance/batching-vs-streaming/python/batching_vs_streaming.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef preferred_delivery_mode(needs_early_results: bool, amortization_priority: bool) -> str:\n    if needs_early_results:\n        return \"streaming\"\n    if amortization_priority:\n        return \"batching\"\n    return \"batching\"\n\n\ndef batch_cost_per_item(total_batch_ms: int, batch_size: int) -> float:\n    if total_batch_ms < 0 or batch_size <= 0:\n        raise ValueError(\"total_batch_ms must be non-negative and batch_size positive\")\n    return total_batch_ms / batch_size\n\n\ndef streaming_worth_it(time_to_first_result_ms: int, full_completion_ms: int) -> bool:\n    if time_to_first_result_ms < 0 or full_completion_ms < 0:\n        raise ValueError(\"latencies must be non-negative\")\n    if full_completion_ms == 0:\n        return False\n    return time_to_first_result_ms <= full_completion_ms / 4\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "caching-basics",
+      "title": "Caching Basics",
+      "path": "modules/software-engineering/performance/caching-basics",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "readme": "# Caching Basics\n\n> Track: `software-engineering` | Topic: `performance`\n\n## Concept\n\nCaching is useful when repeated reads are common and the system can tolerate some freshness lag without violating correctness.\n\n## Key Points\n\n- A cache is only as good as its invalidation and freshness rules.\n- High mutation rates increase stale-data risk.\n- Hit rate is the main signal for whether the cache is paying for itself.\n\n## Minimal Code Mental Model\n\n```python\nworth_it = should_cache(read_frequency=1000, mutation_frequency=5, freshness_tolerance_s=60)\nhit_rate = cache_hit_rate(hits=900, lookups=1000)\nrisk = stale_risk(mutation_frequency=20, freshness_tolerance_s=5)\n```\n\n## Function\n\n```python\ndef should_cache(read_frequency: int, mutation_frequency: int, freshness_tolerance_s: int) -> bool:\ndef cache_hit_rate(hits: int, lookups: int) -> float:\ndef stale_risk(mutation_frequency: int, freshness_tolerance_s: int) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/performance/caching-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/performance/caching-basics/python/caching_basics.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef should_cache(read_frequency: int, mutation_frequency: int, freshness_tolerance_s: int) -> bool:\n    if read_frequency < 0 or mutation_frequency < 0 or freshness_tolerance_s < 0:\n        raise ValueError(\"inputs must be non-negative\")\n    if read_frequency == 0:\n        return False\n    return read_frequency >= max(1, mutation_frequency * 10) and freshness_tolerance_s > 0\n\n\ndef cache_hit_rate(hits: int, lookups: int) -> float:\n    if hits < 0 or lookups <= 0 or hits > lookups:\n        raise ValueError(\"hits must be between 0 and lookups, and lookups must be positive\")\n    return hits / lookups\n\n\ndef stale_risk(mutation_frequency: int, freshness_tolerance_s: int) -> str:\n    if mutation_frequency < 0 or freshness_tolerance_s < 0:\n        raise ValueError(\"inputs must be non-negative\")\n    if freshness_tolerance_s == 0:\n        return \"high\"\n    if mutation_frequency == 0:\n        return \"low\"\n    if mutation_frequency * freshness_tolerance_s >= 100:\n        return \"high\"\n    if mutation_frequency * freshness_tolerance_s >= 20:\n        return \"medium\"\n    return \"low\"\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "cost-performance-tradeoffs",
+      "title": "Cost-Performance Tradeoffs",
+      "path": "modules/software-engineering/performance/cost-performance-tradeoffs",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "readme": "# Cost-Performance Tradeoffs\n\n> Track: `software-engineering` | Topic: `performance`\n\n## Concept\n\nPerformance changes should be judged against their cost, because lower latency is only one part of the engineering decision.\n\n## Key Points\n\n- Faster is not automatically better if the cost increase is too large.\n- Compare improvements in units the team can reason about, like milliseconds saved and cost per 1k requests.\n- Small latency wins on low-value paths often do not justify large infrastructure spend.\n\n## Minimal Code Mental Model\n\n```python\ncost = cost_per_1k_requests(hourly_cost=12.0, requests_per_hour=60000)\ngain = latency_improvement_ms(baseline_ms=300, candidate_ms=220)\nworth_it = worthwhile_tradeoff(gain, extra_cost_per_1k=0.02, max_extra_cost_per_1k=0.03)\n```\n\n## Function\n\n```python\ndef cost_per_1k_requests(hourly_cost: float, requests_per_hour: int) -> float:\ndef latency_improvement_ms(baseline_ms: int, candidate_ms: int) -> int:\ndef worthwhile_tradeoff(\n    latency_gain_ms: int,\n    extra_cost_per_1k: float,\n    max_extra_cost_per_1k: float,\n) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/performance/cost-performance-tradeoffs/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/performance/cost-performance-tradeoffs/python/cost_performance_tradeoffs.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef cost_per_1k_requests(hourly_cost: float, requests_per_hour: int) -> float:\n    if hourly_cost < 0 or requests_per_hour <= 0:\n        raise ValueError(\"hourly_cost must be non-negative and requests_per_hour positive\")\n    return (hourly_cost / requests_per_hour) * 1000\n\n\ndef latency_improvement_ms(baseline_ms: int, candidate_ms: int) -> int:\n    if baseline_ms < 0 or candidate_ms < 0:\n        raise ValueError(\"latencies must be non-negative\")\n    return baseline_ms - candidate_ms\n\n\ndef worthwhile_tradeoff(\n    latency_gain_ms: int,\n    extra_cost_per_1k: float,\n    max_extra_cost_per_1k: float,\n) -> bool:\n    if latency_gain_ms < 0 or extra_cost_per_1k < 0 or max_extra_cost_per_1k < 0:\n        raise ValueError(\"inputs must be non-negative\")\n    if latency_gain_ms == 0:\n        return False\n    return extra_cost_per_1k <= max_extra_cost_per_1k\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
       "topic": "performance",
       "slug": "latency-budgeting",
       "title": "Latency Budgeting",
@@ -9002,6 +9242,118 @@
           "path": "modules/software-engineering/performance/latency-budgeting/python/latency_budgeting.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef remaining_latency_budget_ms(total_budget_ms: int, observed_steps_ms: list[int]) -> int:\n    if total_budget_ms < 0 or any(step < 0 for step in observed_steps_ms):\n        raise ValueError(\"latencies must be non-negative\")\n    return max(0, total_budget_ms - sum(observed_steps_ms))\n\n\ndef latency_budget_exceeded(total_budget_ms: int, observed_steps_ms: list[int]) -> bool:\n    return remaining_latency_budget_ms(total_budget_ms, observed_steps_ms) == 0 and sum(\n        observed_steps_ms\n    ) > total_budget_ms\n\n\ndef largest_latency_contributor(step_latencies_ms: dict[str, int]) -> str:\n    if not step_latencies_ms:\n        raise ValueError(\"step_latencies_ms must be non-empty\")\n    if any(latency < 0 for latency in step_latencies_ms.values()):\n        raise ValueError(\"latencies must be non-negative\")\n    return max(step_latencies_ms, key=step_latencies_ms.get)\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "memory-and-allocation-basics",
+      "title": "Memory And Allocation Basics",
+      "path": "modules/software-engineering/performance/memory-and-allocation-basics",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "readme": "# Memory And Allocation Basics\n\n> Track: `software-engineering` | Topic: `performance`\n\n## Concept\n\nMemory pressure comes from how many objects are created, how large they are, and how long they stay alive.\n\n## Key Points\n\n- Frequent allocations increase GC or allocator work.\n- Peak memory depends on both object size and retention.\n- Pooling or reuse is only worth it when allocation churn is materially high.\n\n## Minimal Code Mental Model\n\n```python\nbytes_per_request = allocation_bytes(objects_per_request=500, bytes_per_object=256)\npressure = memory_pressure(heap_mb=900, limit_mb=1024)\nreuse = reuse_worth_it(objects_per_request=5000, bytes_per_object=512)\n```\n\n## Function\n\n```python\ndef allocation_bytes(objects_per_request: int, bytes_per_object: int) -> int:\ndef memory_pressure(heap_mb: int, limit_mb: int) -> str:\ndef reuse_worth_it(objects_per_request: int, bytes_per_object: int) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/performance/memory-and-allocation-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/performance/memory-and-allocation-basics/python/memory_and_allocation_basics.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef allocation_bytes(objects_per_request: int, bytes_per_object: int) -> int:\n    if objects_per_request < 0 or bytes_per_object < 0:\n        raise ValueError(\"counts and sizes must be non-negative\")\n    return objects_per_request * bytes_per_object\n\n\ndef memory_pressure(heap_mb: int, limit_mb: int) -> str:\n    if heap_mb < 0 or limit_mb <= 0:\n        raise ValueError(\"heap_mb must be non-negative and limit_mb positive\")\n    usage = heap_mb / limit_mb\n    if usage >= 0.9:\n        return \"high\"\n    if usage >= 0.7:\n        return \"medium\"\n    return \"low\"\n\n\ndef reuse_worth_it(objects_per_request: int, bytes_per_object: int) -> bool:\n    return allocation_bytes(objects_per_request, bytes_per_object) >= 1_000_000\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "profiling-workflow",
+      "title": "Profiling Workflow",
+      "path": "modules/software-engineering/performance/profiling-workflow",
+      "summary": "> Track: `software-engineering` | Topic: `performance`",
+      "readme": "# Profiling Workflow\n\n> Track: `software-engineering` | Topic: `performance`\n\n## Concept\n\nA profiling workflow turns a performance complaint into a measured bottleneck and then into the next investigation step.\n\n## Key Points\n\n- The first question is where the time or resources go, not how to optimize yet.\n- CPU, I/O, and allocation bottlenecks need different fixes.\n- The highest-cost function or subsystem is usually the first place to inspect.\n\n## Minimal Code Mental Model\n\n```python\nbottleneck = bottleneck_type(cpu_pct=75, io_wait_pct=10, alloc_pct=15)\ntarget = highest_cost_function({\"render\": 12.0, \"query_db\": 80.0, \"serialize\": 8.0})\nnext_step = next_profiling_step(bottleneck)\n```\n\n## Function\n\n```python\ndef bottleneck_type(cpu_pct: float, io_wait_pct: float, alloc_pct: float) -> str:\ndef highest_cost_function(profile_costs_ms: dict[str, float]) -> str:\ndef next_profiling_step(bottleneck: str) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/performance/profiling-workflow/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/performance/profiling-workflow/python/profiling_workflow.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef bottleneck_type(cpu_pct: float, io_wait_pct: float, alloc_pct: float) -> str:\n    if min(cpu_pct, io_wait_pct, alloc_pct) < 0:\n        raise ValueError(\"percentages must be non-negative\")\n    if cpu_pct >= io_wait_pct and cpu_pct >= alloc_pct:\n        return \"cpu\"\n    if io_wait_pct >= cpu_pct and io_wait_pct >= alloc_pct:\n        return \"io\"\n    return \"allocation\"\n\n\ndef highest_cost_function(profile_costs_ms: dict[str, float]) -> str:\n    if not profile_costs_ms:\n        raise ValueError(\"profile_costs_ms must be non-empty\")\n    if any(cost < 0 for cost in profile_costs_ms.values()):\n        raise ValueError(\"profile costs must be non-negative\")\n    return max(profile_costs_ms, key=profile_costs_ms.get)\n\n\ndef next_profiling_step(bottleneck: str) -> str:\n    normalized = bottleneck.strip().lower()\n    if normalized == \"cpu\":\n        return \"inspect hot functions and algorithm cost\"\n    if normalized == \"io\":\n        return \"inspect external calls and wait time\"\n    if normalized == \"allocation\":\n        return \"inspect object churn and memory copies\"\n    raise ValueError(\"bottleneck must be cpu, io, or allocation\")\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "developer-experience-as-leverage",
+      "title": "Developer Experience As Leverage",
+      "path": "modules/software-engineering/platform-and-delivery/developer-experience-as-leverage",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "readme": "# Developer Experience As Leverage\n\n> Track: `software-engineering` | Topic: `platform-and-delivery`\n\n## Concept\n\nDeveloper experience matters because slow setup, testing, or deployment feedback multiplies across every engineer and every change.\n\n## Key Points\n\n- Small per-engineer delays become large org-wide waste.\n- Setup time, test feedback time, and deploy feedback time are high-signal DX metrics.\n- DX work is leverage when it saves repeated minutes across many engineers every week.\n\n## Minimal Code Mental Model\n\n```python\nrisk = feedback_loop_risk(setup_minutes=20, test_minutes=15, deploy_feedback_minutes=10)\nworth_it = dx_investment_worth_it(engineers=10, minutes_saved_per_week=30)\nfocus = dx_priority(setup_minutes=20, test_minutes=5, deploy_feedback_minutes=8)\n```\n\n## Function\n\n```python\ndef feedback_loop_risk(setup_minutes: int, test_minutes: int, deploy_feedback_minutes: int) -> str:\ndef dx_investment_worth_it(engineers: int, minutes_saved_per_week: int) -> bool:\ndef dx_priority(setup_minutes: int, test_minutes: int, deploy_feedback_minutes: int) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/platform-and-delivery/developer-experience-as-leverage/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/platform-and-delivery/developer-experience-as-leverage/python/developer_experience_as_leverage.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef feedback_loop_risk(setup_minutes: int, test_minutes: int, deploy_feedback_minutes: int) -> str:\n    if min(setup_minutes, test_minutes, deploy_feedback_minutes) < 0:\n        raise ValueError(\"times must be non-negative\")\n    total = setup_minutes + test_minutes + deploy_feedback_minutes\n    if total >= 30:\n        return \"high\"\n    if total >= 10:\n        return \"medium\"\n    return \"low\"\n\n\ndef dx_investment_worth_it(engineers: int, minutes_saved_per_week: int) -> bool:\n    if engineers < 0 or minutes_saved_per_week < 0:\n        raise ValueError(\"inputs must be non-negative\")\n    return engineers * minutes_saved_per_week >= 120\n\n\ndef dx_priority(setup_minutes: int, test_minutes: int, deploy_feedback_minutes: int) -> str:\n    if min(setup_minutes, test_minutes, deploy_feedback_minutes) < 0:\n        raise ValueError(\"times must be non-negative\")\n    costs = {\n        \"setup\": setup_minutes,\n        \"test-feedback\": test_minutes,\n        \"deploy-feedback\": deploy_feedback_minutes,\n    }\n    return max(costs, key=costs.get)\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "internal-platforms",
+      "title": "Internal Platforms",
+      "path": "modules/software-engineering/platform-and-delivery/internal-platforms",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "readme": "# Internal Platforms\n\n> Track: `software-engineering` | Topic: `platform-and-delivery`\n\n## Concept\n\nAn internal platform is justified when many teams repeat the same infrastructure or delivery work and a shared abstraction can remove that toil without hiding essential choices.\n\n## Key Points\n\n- A platform should solve repeated pain, not invent new surfaces to maintain.\n- Too many exceptions are a sign the abstraction is premature or too broad.\n- Platform value depends on adoption and reduced repeated work.\n\n## Minimal Code Mental Model\n\n```python\nworth_it = platform_candidate(teams=6, repeated_work_hours_per_team=5, custom_exceptions=1)\nrisk = abstraction_risk(custom_exceptions=5)\nvalue = platform_value(teams=6, repeated_work_hours_per_team=5)\n```\n\n## Function\n\n```python\ndef platform_candidate(teams: int, repeated_work_hours_per_team: int, custom_exceptions: int) -> bool:\ndef abstraction_risk(custom_exceptions: int) -> str:\ndef platform_value(teams: int, repeated_work_hours_per_team: int) -> int:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/platform-and-delivery/internal-platforms/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/platform-and-delivery/internal-platforms/python/internal_platforms.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef platform_candidate(teams: int, repeated_work_hours_per_team: int, custom_exceptions: int) -> bool:\n    if teams < 0 or repeated_work_hours_per_team < 0 or custom_exceptions < 0:\n        raise ValueError(\"inputs must be non-negative\")\n    return teams >= 3 and repeated_work_hours_per_team >= 2 and custom_exceptions <= 3\n\n\ndef abstraction_risk(custom_exceptions: int) -> str:\n    if custom_exceptions < 0:\n        raise ValueError(\"custom_exceptions must be non-negative\")\n    if custom_exceptions <= 1:\n        return \"low\"\n    if custom_exceptions <= 3:\n        return \"medium\"\n    return \"high\"\n\n\ndef platform_value(teams: int, repeated_work_hours_per_team: int) -> int:\n    if teams < 0 or repeated_work_hours_per_team < 0:\n        raise ValueError(\"inputs must be non-negative\")\n    return teams * repeated_work_hours_per_team\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "ownership-boundaries",
+      "title": "Ownership Boundaries",
+      "path": "modules/software-engineering/platform-and-delivery/ownership-boundaries",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "readme": "# Ownership Boundaries\n\n> Track: `software-engineering` | Topic: `platform-and-delivery`\n\n## Concept\n\nOwnership boundaries are healthy when teams know who decides, who operates, and who changes a system without repeated ambiguity or excess handoffs.\n\n## Key Points\n\n- Shared ownership without clear decision rights usually slows delivery.\n- Frequent cross-team handoffs are a sign the boundary may be wrong or under-specified.\n- A good boundary reduces coordination cost without hiding critical responsibilities.\n\n## Minimal Code Mental Model\n\n```python\nmodel = ownership_model(single_team_owner=True, many_consumers=True)\nhealth = boundary_health(shared_services=2, cross_team_handoffs=1, ambiguous_owner=False)\nescalate = escalation_needed(shared_services=5, cross_team_handoffs=4, ambiguous_owner=True)\n```\n\n## Function\n\n```python\ndef ownership_model(single_team_owner: bool, many_consumers: bool) -> str:\ndef boundary_health(shared_services: int, cross_team_handoffs: int, ambiguous_owner: bool) -> str:\ndef escalation_needed(shared_services: int, cross_team_handoffs: int, ambiguous_owner: bool) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/platform-and-delivery/ownership-boundaries/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/platform-and-delivery/ownership-boundaries/python/ownership_boundaries.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef ownership_model(single_team_owner: bool, many_consumers: bool) -> str:\n    if single_team_owner and many_consumers:\n        return \"platform-owner\"\n    if single_team_owner:\n        return \"service-owner\"\n    return \"shared-ownership\"\n\n\ndef boundary_health(shared_services: int, cross_team_handoffs: int, ambiguous_owner: bool) -> str:\n    if shared_services < 0 or cross_team_handoffs < 0:\n        raise ValueError(\"counts must be non-negative\")\n    if ambiguous_owner:\n        return \"poor\"\n    if cross_team_handoffs >= 3 or shared_services >= 4:\n        return \"strained\"\n    return \"healthy\"\n\n\ndef escalation_needed(shared_services: int, cross_team_handoffs: int, ambiguous_owner: bool) -> bool:\n    return boundary_health(shared_services, cross_team_handoffs, ambiguous_owner) != \"healthy\"\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "progressive-delivery",
+      "title": "Progressive Delivery",
+      "path": "modules/software-engineering/platform-and-delivery/progressive-delivery",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "readme": "# Progressive Delivery\n\n> Track: `software-engineering` | Topic: `platform-and-delivery`\n\n## Concept\n\nProgressive delivery reduces blast radius by exposing a change gradually and pausing when health signals degrade.\n\n## Key Points\n\n- Staged exposure is useful when rollback cost and user impact both matter.\n- Expansion steps should be explicit instead of improvised mid-rollout.\n- A bad rollout should pause before it reaches most users.\n\n## Minimal Code Mental Model\n\n```python\nstage = next_rollout_stage(current_percentage=10, healthy=True)\nradius = blast_radius(current_percentage=10, total_users=100000)\npause = should_pause_rollout(error_rate_delta=0.02, max_allowed_delta=0.01)\n```\n\n## Function\n\n```python\ndef next_rollout_stage(current_percentage: int, healthy: bool) -> int:\ndef blast_radius(current_percentage: int, total_users: int) -> int:\ndef should_pause_rollout(error_rate_delta: float, max_allowed_delta: float) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/platform-and-delivery/progressive-delivery/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/platform-and-delivery/progressive-delivery/python/progressive_delivery.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\nROLLOUT_STEPS = [1, 5, 10, 25, 50, 100]\n\n\ndef next_rollout_stage(current_percentage: int, healthy: bool) -> int:\n    if current_percentage not in ROLLOUT_STEPS:\n        raise ValueError(\"current_percentage must be one of the rollout steps\")\n    if not healthy:\n        return current_percentage\n    index = ROLLOUT_STEPS.index(current_percentage)\n    return ROLLOUT_STEPS[min(index + 1, len(ROLLOUT_STEPS) - 1)]\n\n\ndef blast_radius(current_percentage: int, total_users: int) -> int:\n    if total_users < 0:\n        raise ValueError(\"total_users must be non-negative\")\n    return (current_percentage * total_users) // 100\n\n\ndef should_pause_rollout(error_rate_delta: float, max_allowed_delta: float) -> bool:\n    if error_rate_delta < 0 or max_allowed_delta < 0:\n        raise ValueError(\"deltas must be non-negative\")\n    return error_rate_delta > max_allowed_delta\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "release-engineering-basics",
+      "title": "Release Engineering Basics",
+      "path": "modules/software-engineering/platform-and-delivery/release-engineering-basics",
+      "summary": "> Track: `software-engineering` | Topic: `platform-and-delivery`",
+      "readme": "# Release Engineering Basics\n\n> Track: `software-engineering` | Topic: `platform-and-delivery`\n\n## Concept\n\nRelease engineering turns a code change into a repeatable, auditable production release with explicit gates and rollback readiness.\n\n## Key Points\n\n- A release gate should be tied to a real risk, not just tradition.\n- Build, test, and migration checks should be visible before shipping.\n- A release is not ready if rollback or recovery is unclear.\n\n## Minimal Code Mental Model\n\n```python\ngates = required_release_gates([\"database\", \"api\"])\nblockers = release_blockers(gates, {\"build\": \"passed\", \"tests\": \"passed\", \"migration-review\": \"failed\"})\nready = releasable(gates, {\"build\": \"passed\", \"tests\": \"passed\", \"migration-review\": \"passed\", \"rollback-plan\": \"passed\"})\n```\n\n## Function\n\n```python\ndef required_release_gates(change_tags: list[str]) -> list[str]:\ndef release_blockers(required_gates: list[str], gate_statuses: dict[str, str]) -> list[str]:\ndef releasable(required_gates: list[str], gate_statuses: dict[str, str]) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/platform-and-delivery/release-engineering-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/platform-and-delivery/release-engineering-basics/python/release_engineering_basics.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef required_release_gates(change_tags: list[str]) -> list[str]:\n    normalized_tags = {tag.strip().lower() for tag in change_tags if tag.strip()}\n    gates = [\"build\", \"tests\", \"rollback-plan\"]\n    if normalized_tags.intersection({\"database\", \"migration\"}):\n        gates.append(\"migration-review\")\n    if normalized_tags.intersection({\"api\", \"schema\"}):\n        gates.append(\"compatibility-check\")\n    return gates\n\n\ndef release_blockers(required_gates: list[str], gate_statuses: dict[str, str]) -> list[str]:\n    blockers: list[str] = []\n    for gate in required_gates:\n        if gate_statuses.get(gate) != \"passed\":\n            blockers.append(gate)\n    return blockers\n\n\ndef releasable(required_gates: list[str], gate_statuses: dict[str, str]) -> bool:\n    return not release_blockers(required_gates, gate_statuses)\n"
         }
       ]
     },
@@ -9024,6 +9376,22 @@
     {
       "track": "software-engineering",
       "topic": "reliability",
+      "slug": "circuit-breakers-and-bulkheads",
+      "title": "Circuit Breakers And Bulkheads",
+      "path": "modules/software-engineering/reliability/circuit-breakers-and-bulkheads",
+      "summary": "> Track: `software-engineering` | Topic: `reliability`",
+      "readme": "# Circuit Breakers And Bulkheads\n\n> Track: `software-engineering` | Topic: `reliability`\n\n## Concept\n\nCircuit breakers stop traffic to a failing dependency, and bulkheads keep one overloaded path from consuming all capacity needed by others.\n\n## Key Points\n\n- A circuit should open after repeated failures, not after one noisy event.\n- Half-open probes let a dependency earn traffic back carefully.\n- Bulkheads are about reserving capacity for independent work, not just adding more workers.\n\n## Minimal Code Mental Model\n\n```python\nstate = circuit_state(consecutive_failures=5, failure_threshold=4, cooldown_complete=False)\nallowed = allow_dependency_call(state, probe_budget=1)\nisolated = bulkhead_available(active_work=7, capacity=6)\n```\n\n## Function\n\n```python\ndef circuit_state(consecutive_failures: int, failure_threshold: int, cooldown_complete: bool) -> str:\ndef allow_dependency_call(state: str, probe_budget: int = 0) -> bool:\ndef bulkhead_available(active_work: int, capacity: int) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/reliability/circuit-breakers-and-bulkheads/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/reliability/circuit-breakers-and-bulkheads/python/circuit_breakers_and_bulkheads.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef circuit_state(consecutive_failures: int, failure_threshold: int, cooldown_complete: bool) -> str:\n    if consecutive_failures < 0 or failure_threshold <= 0:\n        raise ValueError(\"failure counts must be non-negative and threshold positive\")\n    if consecutive_failures < failure_threshold:\n        return \"closed\"\n    if cooldown_complete:\n        return \"half-open\"\n    return \"open\"\n\n\ndef allow_dependency_call(state: str, probe_budget: int = 0) -> bool:\n    normalized_state = state.strip().lower()\n    if normalized_state == \"closed\":\n        return True\n    if normalized_state == \"open\":\n        return False\n    if normalized_state == \"half-open\":\n        return probe_budget > 0\n    raise ValueError(\"state must be closed, open, or half-open\")\n\n\ndef bulkhead_available(active_work: int, capacity: int) -> bool:\n    if active_work < 0 or capacity <= 0:\n        raise ValueError(\"active_work must be non-negative and capacity positive\")\n    return active_work < capacity\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "reliability",
       "slug": "graceful-degradation-and-overload",
       "title": "Graceful Degradation And Overload",
       "path": "modules/software-engineering/reliability/graceful-degradation-and-overload",
@@ -9034,6 +9402,38 @@
           "path": "modules/software-engineering/reliability/graceful-degradation-and-overload/python/graceful_degradation_and_overload.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef capacity_state(current_rps: int, safe_rps: int, hard_rps: int) -> str:\n    if current_rps < 0 or safe_rps <= 0 or hard_rps < safe_rps:\n        raise ValueError(\"capacity inputs must be non-negative and ordered\")\n    if current_rps <= safe_rps:\n        return \"healthy\"\n    if current_rps <= hard_rps:\n        return \"degraded\"\n    return \"overloaded\"\n\n\ndef requests_to_shed(current_rps: int, hard_rps: int) -> int:\n    if current_rps < 0 or hard_rps <= 0:\n        raise ValueError(\"rps values must be positive\")\n    return max(0, current_rps - hard_rps)\n\n\ndef degradation_actions(state: str, optional_features: list[str]) -> list[str]:\n    normalized_state = state.strip().lower()\n    if normalized_state == \"healthy\":\n        return []\n    if normalized_state == \"degraded\":\n        return [f\"disable:{feature}\" for feature in optional_features if feature.strip()]\n    if normalized_state == \"overloaded\":\n        actions = [f\"disable:{feature}\" for feature in optional_features if feature.strip()]\n        actions.append(\"rate-limit\")\n        return actions\n    raise ValueError(\"state must be healthy, degraded, or overloaded\")\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "incidents-and-postmortems",
+      "title": "Incidents And Postmortems",
+      "path": "modules/software-engineering/reliability/incidents-and-postmortems",
+      "summary": "> Track: `software-engineering` | Topic: `reliability`",
+      "readme": "# Incidents And Postmortems\n\n> Track: `software-engineering` | Topic: `reliability`\n\n## Concept\n\nIncident response limits user harm in the moment, and the postmortem turns the event into concrete follow-up work that reduces repeat failures.\n\n## Key Points\n\n- Severity should reflect user harm and data risk, not internal embarrassment.\n- A postmortem is incomplete if key timeline or remediation details are missing.\n- Follow-up work matters more than blame assignment.\n\n## Minimal Code Mental Model\n\n```python\nseverity = incident_severity(user_impacting=True, duration_minutes=45, data_loss=False)\nmissing = missing_postmortem_sections(postmortem)\ncomplete = postmortem_complete(postmortem, action_items=[\"add retry budget alert\"])\n```\n\n## Function\n\n```python\ndef incident_severity(user_impacting: bool, duration_minutes: int, data_loss: bool) -> str:\ndef missing_postmortem_sections(\n    postmortem: dict[str, str],\n    required_sections: list[str] | None = None,\n) -> list[str]:\ndef postmortem_complete(postmortem: dict[str, str], action_items: list[str]) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/reliability/incidents-and-postmortems/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/reliability/incidents-and-postmortems/python/incidents_and_postmortems.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\nDEFAULT_SECTIONS = [\"summary\", \"impact\", \"timeline\", \"root-cause\", \"actions\"]\n\n\ndef incident_severity(user_impacting: bool, duration_minutes: int, data_loss: bool) -> str:\n    if duration_minutes < 0:\n        raise ValueError(\"duration_minutes must be non-negative\")\n    if data_loss:\n        return \"sev1\"\n    if user_impacting and duration_minutes >= 30:\n        return \"sev1\"\n    if user_impacting:\n        return \"sev2\"\n    return \"sev3\"\n\n\ndef missing_postmortem_sections(\n    postmortem: dict[str, str],\n    required_sections: list[str] | None = None,\n) -> list[str]:\n    sections = required_sections or DEFAULT_SECTIONS\n    missing: list[str] = []\n    for section in sections:\n        cleaned_section = section.strip()\n        if not cleaned_section:\n            continue\n        if not postmortem.get(cleaned_section, \"\").strip():\n            missing.append(cleaned_section)\n    return sorted(missing)\n\n\ndef postmortem_complete(postmortem: dict[str, str], action_items: list[str]) -> bool:\n    has_actions = any(item.strip() for item in action_items)\n    return not missing_postmortem_sections(postmortem) and has_actions\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "retries-and-fallbacks",
+      "title": "Retries And Fallbacks",
+      "path": "modules/software-engineering/reliability/retries-and-fallbacks",
+      "summary": "> Track: `software-engineering` | Topic: `reliability`",
+      "readme": "# Retries And Fallbacks\n\n> Track: `software-engineering` | Topic: `reliability`\n\n## Concept\n\nRetries are for transient failures on safe operations, and fallbacks are for keeping degraded service alive when retries are no longer worth the cost.\n\n## Key Points\n\n- Retries should prefer idempotent operations.\n- Max attempts should be explicit and small.\n- Fallback targets should be simpler or cheaper than the primary path.\n\n## Minimal Code Mental Model\n\n```python\naction = retry_action(\"timeout\", attempt=1, max_attempts=3, idempotent=True)\ndelay = retry_delay_ms(base_delay_ms=200, attempt=2, max_delay_ms=1000)\nfallback = fallback_target(\"live-recommendations\")\n```\n\n## Function\n\n```python\ndef retry_action(error_type: str, attempt: int, max_attempts: int, idempotent: bool) -> str:\ndef retry_delay_ms(base_delay_ms: int, attempt: int, max_delay_ms: int) -> int:\ndef fallback_target(primary_path: str, fallback_map: dict[str, str] | None = None) -> str | None:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/reliability/retries-and-fallbacks/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/reliability/retries-and-fallbacks/python/retries_and_fallbacks.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\nTRANSIENT_ERRORS = {\"timeout\", \"rate_limit\", \"temporary_unavailable\"}\n\n\ndef retry_action(error_type: str, attempt: int, max_attempts: int, idempotent: bool) -> str:\n    if attempt < 0 or max_attempts <= 0:\n        raise ValueError(\"attempt must be non-negative and max_attempts positive\")\n\n    normalized_error = error_type.strip().lower()\n    if normalized_error in TRANSIENT_ERRORS and idempotent and attempt < max_attempts:\n        return \"retry\"\n    if normalized_error in TRANSIENT_ERRORS:\n        return \"fallback\"\n    return \"fail-fast\"\n\n\ndef retry_delay_ms(base_delay_ms: int, attempt: int, max_delay_ms: int) -> int:\n    if base_delay_ms <= 0 or attempt < 0 or max_delay_ms < base_delay_ms:\n        raise ValueError(\"invalid retry delay inputs\")\n    return min(max_delay_ms, base_delay_ms * (2 ** attempt))\n\n\ndef fallback_target(primary_path: str, fallback_map: dict[str, str] | None = None) -> str | None:\n    if fallback_map is None:\n        fallback_map = {\n            \"live-recommendations\": \"cached-recommendations\",\n            \"semantic-search\": \"keyword-search\",\n            \"llm-summary\": \"template-summary\",\n        }\n    cleaned_path = primary_path.strip()\n    if not cleaned_path:\n        raise ValueError(\"primary_path must be non-empty\")\n    return fallback_map.get(cleaned_path)\n"
         }
       ]
     },
@@ -9120,6 +9520,54 @@
     {
       "track": "software-engineering",
       "topic": "system-design",
+      "slug": "background-jobs-and-workflows",
+      "title": "Background Jobs And Workflows",
+      "path": "modules/software-engineering/system-design/background-jobs-and-workflows",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "readme": "# Background Jobs And Workflows\n\n> Track: `software-engineering` | Topic: `system-design`\n\n## Concept\n\nWork should leave the request path when it is slow, retry-prone, or composed of multiple durable steps.\n\n## Key Points\n\n- Background jobs reduce request latency by moving non-immediate work out of band.\n- Multi-step business processes usually need workflow state, not just one queued function.\n- User-visible deadlines still matter even when work is asynchronous.\n\n## Minimal Code Mental Model\n\n```python\nbackground = should_background_job(user_waiting=True, duration_ms=1500, retries_expected=True)\nkind = workflow_kind(needs_human_approval=False, has_multiple_steps=True)\npriority = queue_priority(user_visible=True, deadline_ms=2000)\n```\n\n## Function\n\n```python\ndef should_background_job(user_waiting: bool, duration_ms: int, retries_expected: bool) -> bool:\ndef workflow_kind(needs_human_approval: bool, has_multiple_steps: bool) -> str:\ndef queue_priority(user_visible: bool, deadline_ms: int | None) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/system-design/background-jobs-and-workflows/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/system-design/background-jobs-and-workflows/python/background_jobs_and_workflows.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef should_background_job(user_waiting: bool, duration_ms: int, retries_expected: bool) -> bool:\n    if duration_ms < 0:\n        raise ValueError(\"duration_ms must be non-negative\")\n    return duration_ms >= 500 or retries_expected or not user_waiting\n\n\ndef workflow_kind(needs_human_approval: bool, has_multiple_steps: bool) -> str:\n    if needs_human_approval or has_multiple_steps:\n        return \"workflow\"\n    return \"single-job\"\n\n\ndef queue_priority(user_visible: bool, deadline_ms: int | None) -> str:\n    if deadline_ms is not None and deadline_ms < 0:\n        raise ValueError(\"deadline_ms must be non-negative when provided\")\n    if user_visible and deadline_ms is not None and deadline_ms <= 5000:\n        return \"high\"\n    if user_visible:\n        return \"medium\"\n    return \"low\"\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "consistency-tradeoffs",
+      "title": "Consistency Tradeoffs",
+      "path": "modules/software-engineering/system-design/consistency-tradeoffs",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "readme": "# Consistency Tradeoffs\n\n> Track: `software-engineering` | Topic: `system-design`\n\n## Concept\n\nConsistency choices decide whether a system optimizes for immediate correctness across replicas and components or accepts temporary divergence for availability and latency.\n\n## Key Points\n\n- Strong consistency is most valuable when cross-entity invariants matter.\n- Eventual consistency is easier to scale when stale reads are acceptable.\n- Write conflicts and stale-read tolerance are the main design signals.\n\n## Minimal Code Mental Model\n\n```python\nmode = consistency_mode(cross_entity_invariant=True, stale_reads_tolerable=False)\nrisk = read_write_conflict_risk(concurrent_writers=4, stale_reads_tolerable=False)\ndecision = consistency_decision(cross_entity_invariant=False, stale_reads_tolerable=True, concurrent_writers=1)\n```\n\n## Function\n\n```python\ndef consistency_mode(cross_entity_invariant: bool, stale_reads_tolerable: bool) -> str:\ndef read_write_conflict_risk(concurrent_writers: int, stale_reads_tolerable: bool) -> str:\ndef consistency_decision(\n    cross_entity_invariant: bool,\n    stale_reads_tolerable: bool,\n    concurrent_writers: int,\n) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/system-design/consistency-tradeoffs/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/system-design/consistency-tradeoffs/python/consistency_tradeoffs.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef consistency_mode(cross_entity_invariant: bool, stale_reads_tolerable: bool) -> str:\n    if cross_entity_invariant and not stale_reads_tolerable:\n        return \"strong\"\n    if stale_reads_tolerable:\n        return \"eventual\"\n    return \"session\"\n\n\ndef read_write_conflict_risk(concurrent_writers: int, stale_reads_tolerable: bool) -> str:\n    if concurrent_writers < 0:\n        raise ValueError(\"concurrent_writers must be non-negative\")\n    if concurrent_writers <= 1:\n        return \"low\"\n    if stale_reads_tolerable:\n        return \"medium\"\n    return \"high\"\n\n\ndef consistency_decision(\n    cross_entity_invariant: bool,\n    stale_reads_tolerable: bool,\n    concurrent_writers: int,\n) -> str:\n    mode = consistency_mode(cross_entity_invariant, stale_reads_tolerable)\n    risk = read_write_conflict_risk(concurrent_writers, stale_reads_tolerable)\n    if mode == \"strong\":\n        return \"protect invariants with strong coordination\"\n    if mode == \"eventual\" and risk == \"low\":\n        return \"accept async replication and repair\"\n    if mode == \"eventual\":\n        return \"add conflict resolution for async writes\"\n    return \"use session guarantees and careful retry rules\"\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "requirements-and-failure-models",
+      "title": "Requirements And Failure Models",
+      "path": "modules/software-engineering/system-design/requirements-and-failure-models",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "readme": "# Requirements And Failure Models\n\n> Track: `software-engineering` | Topic: `system-design`\n\n## Concept\n\nSystem design starts by making quality requirements and expected failure modes explicit before choosing components.\n\n## Key Points\n\n- Latency, availability, and correctness trade off against each other.\n- A design should be shaped by what is likely to fail, not by ideal-path diagrams.\n- Overload, dependency failure, and state corruption lead to different architectural priorities.\n\n## Minimal Code Mental Model\n\n```python\nattributes = required_quality_attributes(user_facing=True, high_scale=True, strict_correctness=False)\nfailure = dominant_failure_model(external_dependencies=4, stateful_components=1, overload_risk=True)\nfocus = architecture_focus(attributes, failure)\n```\n\n## Function\n\n```python\ndef required_quality_attributes(user_facing: bool, high_scale: bool, strict_correctness: bool) -> list[str]:\ndef dominant_failure_model(external_dependencies: int, stateful_components: int, overload_risk: bool) -> str:\ndef architecture_focus(requirements: list[str], failure_model: str) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/system-design/requirements-and-failure-models/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/system-design/requirements-and-failure-models/python/requirements_and_failure_models.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef required_quality_attributes(user_facing: bool, high_scale: bool, strict_correctness: bool) -> list[str]:\n    attributes: list[str] = []\n    if user_facing:\n        attributes.extend([\"latency\", \"availability\"])\n    if high_scale:\n        attributes.append(\"scalability\")\n    if strict_correctness:\n        attributes.append(\"correctness\")\n    return attributes or [\"simplicity\"]\n\n\ndef dominant_failure_model(external_dependencies: int, stateful_components: int, overload_risk: bool) -> str:\n    if external_dependencies < 0 or stateful_components < 0:\n        raise ValueError(\"counts must be non-negative\")\n    if overload_risk:\n        return \"overload\"\n    if external_dependencies >= stateful_components:\n        return \"dependency-failure\"\n    return \"state-failure\"\n\n\ndef architecture_focus(requirements: list[str], failure_model: str) -> str:\n    normalized_failure_model = failure_model.strip().lower()\n    requirement_set = {requirement.strip().lower() for requirement in requirements if requirement.strip()}\n\n    if normalized_failure_model == \"overload\":\n        return \"shed load and protect tail latency\"\n    if normalized_failure_model == \"dependency-failure\":\n        return \"isolate dependencies and add fallbacks\"\n    if normalized_failure_model == \"state-failure\":\n        return \"protect consistency and recovery paths\"\n    raise ValueError(\"unknown failure_model\")\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "system-design",
       "slug": "service-boundaries-and-failure-domains",
       "title": "Service Boundaries And Failure Domains",
       "path": "modules/software-engineering/system-design/service-boundaries-and-failure-domains",
@@ -9130,6 +9578,38 @@
           "path": "modules/software-engineering/system-design/service-boundaries-and-failure-domains/python/service_boundaries_and_failure_domains.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef should_split_service(\n    independent_scaling: bool,\n    separate_ownership: bool,\n    requires_strong_transaction: bool,\n) -> bool:\n    if requires_strong_transaction:\n        return False\n    return independent_scaling or separate_ownership\n\n\ndef failure_domain_risk(shared_dependencies: int, critical_paths: int) -> str:\n    if shared_dependencies < 0 or critical_paths < 0:\n        raise ValueError(\"counts must be non-negative\")\n    if shared_dependencies == 0 or critical_paths == 0:\n        return \"low\"\n    if shared_dependencies <= 2 and critical_paths <= 1:\n        return \"medium\"\n    return \"high\"\n\n\ndef boundary_decision(\n    independent_scaling: bool,\n    separate_ownership: bool,\n    requires_strong_transaction: bool,\n) -> str:\n    if should_split_service(independent_scaling, separate_ownership, requires_strong_transaction):\n        return \"split\"\n    if requires_strong_transaction and (independent_scaling or separate_ownership):\n        return \"review-transaction-boundary\"\n    return \"keep-together\"\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "stateless-vs-stateful-design",
+      "title": "Stateless Vs Stateful Design",
+      "path": "modules/software-engineering/system-design/stateless-vs-stateful-design",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "readme": "# Stateless Vs Stateful Design\n\n> Track: `software-engineering` | Topic: `system-design`\n\n## Concept\n\nStateless components are easier to scale and replace, while stateful components can provide stronger locality or coordination at the cost of harder recovery.\n\n## Key Points\n\n- Stateless services are usually easier to load-balance horizontally.\n- Local mutable state makes failover and scaling more complicated.\n- State should live where recovery and consistency rules are explicit.\n\n## Minimal Code Mental Model\n\n```python\nstyle = component_style(needs_durable_session=True, requires_local_cache_consistency=False)\nscaling = horizontal_scaling_ease(style)\nrecovery = recovery_complexity(style)\n```\n\n## Function\n\n```python\ndef component_style(needs_durable_session: bool, requires_local_cache_consistency: bool) -> str:\ndef horizontal_scaling_ease(style: str) -> str:\ndef recovery_complexity(style: str) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/system-design/stateless-vs-stateful-design/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/system-design/stateless-vs-stateful-design/python/stateless_vs_stateful_design.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef component_style(needs_durable_session: bool, requires_local_cache_consistency: bool) -> str:\n    if needs_durable_session or requires_local_cache_consistency:\n        return \"stateful\"\n    return \"stateless\"\n\n\ndef horizontal_scaling_ease(style: str) -> str:\n    normalized_style = style.strip().lower()\n    if normalized_style == \"stateless\":\n        return \"easy\"\n    if normalized_style == \"stateful\":\n        return \"harder\"\n    raise ValueError(\"style must be stateless or stateful\")\n\n\ndef recovery_complexity(style: str) -> str:\n    normalized_style = style.strip().lower()\n    if normalized_style == \"stateless\":\n        return \"lower\"\n    if normalized_style == \"stateful\":\n        return \"higher\"\n    raise ValueError(\"style must be stateless or stateful\")\n"
+        }
+      ]
+    },
+    {
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "storage-choice-basics",
+      "title": "Storage Choice Basics",
+      "path": "modules/software-engineering/system-design/storage-choice-basics",
+      "summary": "> Track: `software-engineering` | Topic: `system-design`",
+      "readme": "# Storage Choice Basics\n\n> Track: `software-engineering` | Topic: `system-design`\n\n## Concept\n\nStorage choice should follow the access pattern and correctness requirements instead of defaulting every workload to the same database.\n\n## Key Points\n\n- Transaction-heavy source-of-truth data usually belongs in a relational store.\n- Search and vector retrieval are access patterns, not replacements for core transactional state.\n- Multiple requirements often justify a hybrid design rather than forcing one store to do everything.\n\n## Minimal Code Mental Model\n\n```python\nstore = primary_storage(needs_transactions=True, document_search=False, vector_similarity=False)\nhybrid = hybrid_needed(needs_transactions=True, document_search=True, vector_similarity=False)\ntradeoff = storage_tradeoff(\"vector\")\n```\n\n## Function\n\n```python\ndef primary_storage(needs_transactions: bool, document_search: bool, vector_similarity: bool) -> str:\ndef hybrid_needed(needs_transactions: bool, document_search: bool, vector_similarity: bool) -> bool:\ndef storage_tradeoff(storage: str) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/software-engineering/system-design/storage-choice-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/software-engineering/system-design/storage-choice-basics/python/storage_choice_basics.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef primary_storage(needs_transactions: bool, document_search: bool, vector_similarity: bool) -> str:\n    if needs_transactions and not document_search and not vector_similarity:\n        return \"relational\"\n    if vector_similarity and not needs_transactions and not document_search:\n        return \"vector\"\n    if document_search and not needs_transactions and not vector_similarity:\n        return \"search\"\n    return \"hybrid\"\n\n\ndef hybrid_needed(needs_transactions: bool, document_search: bool, vector_similarity: bool) -> bool:\n    return sum([needs_transactions, document_search, vector_similarity]) >= 2\n\n\ndef storage_tradeoff(storage: str) -> str:\n    normalized_storage = storage.strip().lower()\n    if normalized_storage == \"relational\":\n        return \"strong transactions and flexible query patterns\"\n    if normalized_storage == \"search\":\n        return \"text retrieval and ranking over document fields\"\n    if normalized_storage == \"vector\":\n        return \"approximate similarity search over embeddings\"\n    if normalized_storage == \"hybrid\":\n        return \"combine stores by access pattern and correctness need\"\n    raise ValueError(\"unknown storage\")\n"
         }
       ]
     },
