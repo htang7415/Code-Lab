@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T06:10:08.240Z",
+  "generated_at": "2026-03-11T06:26:38.144Z",
   "tracks": [
     {
       "id": "dsa",
@@ -26,7 +26,7 @@
       "accent": "#2ca02c",
       "accentVar": "--track-ai-agents",
       "topicCount": 12,
-      "moduleCount": 51
+      "moduleCount": 56
     },
     {
       "id": "databases",
@@ -181,7 +181,7 @@
       "path": "/track/ai-agents/evaluation",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 6
+      "moduleCount": 9
     },
     {
       "track": "ml",
@@ -595,7 +595,7 @@
       "path": "/track/ai-agents/workflows",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 5
+      "moduleCount": 7
     }
   ],
   "modules": [
@@ -612,6 +612,22 @@
           "path": "modules/ai-agents/evaluation/agent-evaluation-basics/python/agent_evaluation_basics.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef _rate(outcomes: list[bool]) -> float:\n    if not outcomes:\n        raise ValueError(\"outcomes must be non-empty\")\n    return sum(1 for outcome in outcomes if outcome) / len(outcomes)\n\n\ndef task_success_rate(outcomes: list[bool]) -> float:\n    return _rate(outcomes)\n\n\ndef tool_call_success_rate(outcomes: list[bool]) -> float:\n    return _rate(outcomes)\n\n\ndef mean_latency_ms(latencies_ms: list[float]) -> float:\n    if not latencies_ms:\n        raise ValueError(\"latencies_ms must be non-empty\")\n    if any(latency < 0 for latency in latencies_ms):\n        raise ValueError(\"latencies_ms must be non-negative\")\n    return sum(latencies_ms) / len(latencies_ms)\n\n\ndef failure_breakdown(labels: list[str]) -> dict[str, int]:\n    counts: dict[str, int] = {}\n    for label in labels:\n        cleaned = label.strip()\n        if not cleaned:\n            continue\n        counts[cleaned] = counts.get(cleaned, 0) + 1\n    return counts\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "evaluation",
+      "slug": "benchmark-harness-basics",
+      "title": "Benchmark Harness Basics",
+      "path": "modules/ai-agents/evaluation/benchmark-harness-basics",
+      "summary": "> Track: `ai-agents` | Topic: `evaluation`",
+      "readme": "# Benchmark Harness Basics\n\n> Track: `ai-agents` | Topic: `evaluation`\n\n## Concept\n\nBenchmark harness basics turn a fixed set of cases, bucket labels, and a frozen baseline into one repeatable evaluation suite for agent variants.\n\n## Key Points\n\n- A benchmark harness should keep the task set stable while variants change.\n- Bucket counts help you see whether coverage is balanced across failure modes or task types.\n- A frozen baseline turns benchmark runs into an auditable gate instead of a moving target.\n\n## Minimal Code Mental Model\n\n```python\nmanifest = benchmark_manifest([\"tool-use\", \"tool-use\", \"planning\", \"guardrails\"])\nbaseline = baseline_snapshot(\"agent-v1\", {\"success\": 0.78, \"latency_ms\": 140.0})\ngate = benchmark_gate(candidate_success=0.76, baseline_success=0.78, min_success=0.75, max_drop=0.03)\n```\n\n## Function\n\n```python\ndef benchmark_manifest(case_buckets: list[str]) -> dict[str, object]:\ndef baseline_snapshot(name: str, metrics: dict[str, float]) -> dict[str, object]:\ndef benchmark_gate(\n    candidate_success: float,\n    baseline_success: float,\n    min_success: float,\n    max_drop: float,\n) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/evaluation/benchmark-harness-basics/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/evaluation/benchmark-harness-basics/python/benchmark_harness_basics.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef benchmark_manifest(case_buckets: list[str]) -> dict[str, object]:\n    if not case_buckets:\n        raise ValueError(\"case_buckets must be non-empty\")\n\n    bucket_counts: dict[str, int] = {}\n    for bucket in case_buckets:\n        cleaned_bucket = bucket.strip()\n        if not cleaned_bucket:\n            raise ValueError(\"bucket names must be non-empty\")\n        bucket_counts[cleaned_bucket] = bucket_counts.get(cleaned_bucket, 0) + 1\n\n    return {\n        \"total_cases\": len(case_buckets),\n        \"bucket_counts\": bucket_counts,\n    }\n\n\ndef baseline_snapshot(name: str, metrics: dict[str, float]) -> dict[str, object]:\n    cleaned_name = name.strip()\n    if not cleaned_name:\n        raise ValueError(\"name must be non-empty\")\n    if not metrics:\n        raise ValueError(\"metrics must be non-empty\")\n    return {\n        \"name\": cleaned_name,\n        \"metrics\": metrics,\n        \"frozen\": True,\n    }\n\n\ndef benchmark_gate(\n    candidate_success: float,\n    baseline_success: float,\n    min_success: float,\n    max_drop: float,\n) -> str:\n    values = [candidate_success, baseline_success, min_success]\n    if any(not 0.0 <= value <= 1.0 for value in values):\n        raise ValueError(\"success metrics must satisfy 0 <= value <= 1\")\n    if max_drop < 0.0:\n        raise ValueError(\"max_drop must be non-negative\")\n\n    if candidate_success < min_success:\n        return \"fail\"\n    if baseline_success - candidate_success > max_drop:\n        return \"review\"\n    return \"pass\"\n"
         }
       ]
     },
@@ -666,6 +682,22 @@
     {
       "track": "ai-agents",
       "topic": "evaluation",
+      "slug": "judge-and-trace-grading",
+      "title": "Judge and Trace Grading",
+      "path": "modules/ai-agents/evaluation/judge-and-trace-grading",
+      "summary": "> Track: `ai-agents` | Topic: `evaluation`",
+      "readme": "# Judge and Trace Grading\n\n> Track: `ai-agents` | Topic: `evaluation`\n\n## Concept\n\nJudge-and-trace grading combines a final-answer judge score with step-trace status so an agent run is not accepted just because the last answer sounds good.\n\n## Key Points\n\n- A strong final answer can still hide blocked or failed steps earlier in the trace.\n- Judge scores are most useful when they are combined with execution evidence, not read alone.\n- This pattern builds on judge-style evaluation by adding trace-aware routing for pass, review, or fail.\n\n## Minimal Code Mental Model\n\n```python\nscore = mean_judge_score([0.9, 0.8, 0.7])\npacket = trace_grade_packet(\"run_7\", score, [\"done\", \"blocked\", \"done\"])\nroute = judge_trace_route(packet[\"judge_score\"], packet[\"blocked_or_failed_steps\"], threshold=0.8)\n```\n\n## Function\n\n```python\ndef mean_judge_score(scores: list[float]) -> float:\ndef trace_grade_packet(run_id: str, judge_score: float, step_statuses: list[str]) -> dict[str, object]:\ndef judge_trace_route(judge_score: float, blocked_or_failed_steps: int, threshold: float) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/evaluation/judge-and-trace-grading/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/evaluation/judge-and-trace-grading/python/judge_and_trace_grading.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef mean_judge_score(scores: list[float]) -> float:\n    if not scores:\n        raise ValueError(\"scores must be non-empty\")\n    if any(score < 0.0 or score > 1.0 for score in scores):\n        raise ValueError(\"scores must satisfy 0 <= score <= 1\")\n    return sum(scores) / len(scores)\n\n\ndef trace_grade_packet(run_id: str, judge_score: float, step_statuses: list[str]) -> dict[str, object]:\n    cleaned_run_id = run_id.strip()\n    if not cleaned_run_id:\n        raise ValueError(\"run_id must be non-empty\")\n    if judge_score < 0.0 or judge_score > 1.0:\n        raise ValueError(\"judge_score must satisfy 0 <= score <= 1\")\n\n    cleaned_statuses = [status.strip().lower() for status in step_statuses if status.strip()]\n    if not cleaned_statuses:\n        raise ValueError(\"step_statuses must contain at least one non-empty status\")\n\n    blocked_or_failed_steps = sum(\n        status in {\"blocked\", \"failed\"} for status in cleaned_statuses\n    )\n    return {\n        \"run_id\": cleaned_run_id,\n        \"judge_score\": judge_score,\n        \"step_statuses\": cleaned_statuses,\n        \"blocked_or_failed_steps\": blocked_or_failed_steps,\n    }\n\n\ndef judge_trace_route(judge_score: float, blocked_or_failed_steps: int, threshold: float) -> str:\n    if judge_score < 0.0 or judge_score > 1.0:\n        raise ValueError(\"judge_score must satisfy 0 <= score <= 1\")\n    if threshold < 0.0 or threshold > 1.0:\n        raise ValueError(\"threshold must satisfy 0 <= value <= 1\")\n    if blocked_or_failed_steps < 0:\n        raise ValueError(\"blocked_or_failed_steps must be non-negative\")\n\n    if judge_score < threshold:\n        return \"fail\"\n    if blocked_or_failed_steps > 0:\n        return \"review\"\n    return \"pass\"\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "evaluation",
       "slug": "regression-checks",
       "title": "Regression Checks",
       "path": "modules/ai-agents/evaluation/regression-checks",
@@ -676,6 +708,22 @@
           "path": "modules/ai-agents/evaluation/regression-checks/python/regression_checks.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef metric_drop(baseline: float, candidate: float) -> float:\n    return baseline - candidate\n\n\ndef regression_failed(baseline: float, candidate: float, max_drop: float) -> bool:\n    if max_drop < 0:\n        raise ValueError(\"max_drop must be non-negative\")\n    return metric_drop(baseline, candidate) > max_drop\n\n\ndef regression_report(\n    metric_name: str,\n    baseline: float,\n    candidate: float,\n    max_drop: float,\n) -> dict[str, object]:\n    if not metric_name.strip():\n        raise ValueError(\"metric_name must be non-empty\")\n    failed = regression_failed(baseline, candidate, max_drop)\n    return {\n        \"metric\": metric_name,\n        \"baseline\": baseline,\n        \"candidate\": candidate,\n        \"drop\": metric_drop(baseline, candidate),\n        \"failed\": failed,\n    }\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "evaluation",
+      "slug": "security-and-red-team-evals",
+      "title": "Security and Red-Team Evals",
+      "path": "modules/ai-agents/evaluation/security-and-red-team-evals",
+      "summary": "> Track: `ai-agents` | Topic: `evaluation`",
+      "readme": "# Security and Red-Team Evals\n\n> Track: `ai-agents` | Topic: `evaluation`\n\n## Concept\n\nSecurity and red-team evals measure whether an agent resists attacks such as prompt injection, data exfiltration, privilege escalation, and unsafe action requests before a release.\n\n## Key Points\n\n- Security evals are attack-focused, not just general quality benchmarks.\n- High-risk attack failures should count more heavily than ordinary misses.\n- A release gate should combine overall pass rate with a separate check for high-risk failures.\n\n## Minimal Code Mental Model\n\n```python\nbreakdown = security_eval_breakdown([\"prompt_injection\", \"unsafe_action\", \"prompt_injection\"])\nhigh_risk = high_risk_failure_count(breakdown)\nroute = security_release_gate(pass_rate=0.94, high_risk_failures=high_risk, min_pass_rate=0.9)\n```\n\n## Function\n\n```python\ndef security_eval_breakdown(failed_attack_types: list[str]) -> dict[str, int]:\ndef high_risk_failure_count(\n    breakdown: dict[str, int],\n    high_risk_labels: list[str] | None = None,\n) -> int:\ndef security_release_gate(pass_rate: float, high_risk_failures: int, min_pass_rate: float) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/evaluation/security-and-red-team-evals/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/evaluation/security-and-red-team-evals/python/security_and_red_team_evals.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\nDEFAULT_HIGH_RISK_LABELS = [\n    \"prompt_injection\",\n    \"data_exfiltration\",\n    \"privilege_escalation\",\n    \"unsafe_action\",\n]\n\n\ndef security_eval_breakdown(failed_attack_types: list[str]) -> dict[str, int]:\n    if not failed_attack_types:\n        raise ValueError(\"failed_attack_types must be non-empty\")\n\n    breakdown: dict[str, int] = {}\n    for attack_type in failed_attack_types:\n        cleaned = attack_type.strip().lower()\n        if not cleaned:\n            raise ValueError(\"attack types must be non-empty\")\n        breakdown[cleaned] = breakdown.get(cleaned, 0) + 1\n    return breakdown\n\n\ndef high_risk_failure_count(\n    breakdown: dict[str, int],\n    high_risk_labels: list[str] | None = None,\n) -> int:\n    if not breakdown:\n        raise ValueError(\"breakdown must be non-empty\")\n\n    labels = high_risk_labels or DEFAULT_HIGH_RISK_LABELS\n    high_risk = {label.strip().lower() for label in labels if label.strip()}\n    return sum(count for label, count in breakdown.items() if label in high_risk)\n\n\ndef security_release_gate(pass_rate: float, high_risk_failures: int, min_pass_rate: float) -> str:\n    if not 0.0 <= pass_rate <= 1.0:\n        raise ValueError(\"pass_rate must satisfy 0 <= value <= 1\")\n    if not 0.0 <= min_pass_rate <= 1.0:\n        raise ValueError(\"min_pass_rate must satisfy 0 <= value <= 1\")\n    if high_risk_failures < 0:\n        raise ValueError(\"high_risk_failures must be non-negative\")\n\n    if high_risk_failures > 0:\n        return \"fail\"\n    if pass_rate < min_pass_rate:\n        return \"review\"\n    return \"pass\"\n"
         }
       ]
     },
@@ -1354,6 +1402,22 @@
     {
       "track": "ai-agents",
       "topic": "workflows",
+      "slug": "evaluator-optimizer-loops",
+      "title": "Evaluator Optimizer Loops",
+      "path": "modules/ai-agents/workflows/evaluator-optimizer-loops",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "readme": "# Evaluator Optimizer Loops\n\n> Track: `ai-agents` | Topic: `workflows`\n\n## Concept\n\nEvaluator-optimizer loops generate a draft, critique it against explicit checks, and send only the targeted feedback into the next revision step.\n\n## Key Points\n\n- This pattern is for improving a draft, not for repeating the same failed action blindly.\n- The evaluator should return structured pass/fail checks plus concise feedback.\n- The optimizer should stop after a bounded number of revisions and escalate if quality still misses the bar.\n\n## Minimal Code Mental Model\n\n```python\nreport = evaluation_report({\"citations\": True, \"clarity\": False})\nroute = optimizer_route(report[\"passed\"], attempt=1, max_attempts=3)\npacket = revision_packet(\"Draft answer\", report[\"failed_checks\"])\n```\n\n## Function\n\n```python\ndef evaluation_report(check_results: dict[str, bool]) -> dict[str, object]:\ndef optimizer_route(passed: bool, attempt: int, max_attempts: int) -> str:\ndef revision_packet(draft: str, failed_checks: list[str]) -> dict[str, object]:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/workflows/evaluator-optimizer-loops/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/workflows/evaluator-optimizer-loops/python/evaluator_optimizer_loops.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef evaluation_report(check_results: dict[str, bool]) -> dict[str, object]:\n    if not check_results:\n        raise ValueError(\"check_results must be non-empty\")\n\n    passed_checks = [name for name, passed in check_results.items() if passed]\n    failed_checks = [name for name, passed in check_results.items() if not passed]\n    return {\n        \"passed\": len(failed_checks) == 0,\n        \"passed_checks\": passed_checks,\n        \"failed_checks\": failed_checks,\n        \"score\": len(passed_checks) / len(check_results),\n    }\n\n\ndef optimizer_route(passed: bool, attempt: int, max_attempts: int) -> str:\n    if attempt < 0:\n        raise ValueError(\"attempt must be non-negative\")\n    if max_attempts <= 0:\n        raise ValueError(\"max_attempts must be positive\")\n    if passed:\n        return \"accept\"\n    if attempt + 1 < max_attempts:\n        return \"revise\"\n    return \"escalate\"\n\n\ndef revision_packet(draft: str, failed_checks: list[str]) -> dict[str, object]:\n    cleaned_draft = draft.strip()\n    if not cleaned_draft:\n        raise ValueError(\"draft must be non-empty\")\n    if not failed_checks:\n        raise ValueError(\"failed_checks must be non-empty\")\n\n    normalized_checks = [check.strip() for check in failed_checks if check.strip()]\n    if not normalized_checks:\n        raise ValueError(\"failed_checks must include at least one non-empty check\")\n\n    return {\n        \"draft\": cleaned_draft,\n        \"feedback\": normalized_checks,\n    }\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "workflows",
       "slug": "handoffs-and-routing",
       "title": "Handoffs and Routing",
       "path": "modules/ai-agents/workflows/handoffs-and-routing",
@@ -1364,6 +1428,22 @@
           "path": "modules/ai-agents/workflows/handoffs-and-routing/python/handoffs_and_routing.py",
           "language": "python",
           "content": "from __future__ import annotations\n\n\ndef route_task(request: str, routes: dict[str, list[str]]) -> str | None:\n    lowered = request.lower()\n    scored: list[tuple[int, str]] = []\n    for target, keywords in routes.items():\n        matches = sum(1 for keyword in keywords if keyword.strip().lower() in lowered)\n        if matches:\n            scored.append((matches, target))\n    if not scored:\n        return None\n    scored.sort(reverse=True)\n    return scored[0][1]\n\n\ndef build_handoff(task_id: str, target: str, payload: dict[str, object]) -> dict[str, object]:\n    if not task_id.strip():\n        raise ValueError(\"task_id must be non-empty\")\n    if not target.strip():\n        raise ValueError(\"target must be non-empty\")\n    return {\n        \"task_id\": task_id,\n        \"target\": target,\n        \"payload\": payload,\n    }\n\n\ndef should_retry(attempt: int, max_attempts: int, retryable: bool) -> bool:\n    if attempt < 0:\n        raise ValueError(\"attempt must be non-negative\")\n    if max_attempts <= 0:\n        raise ValueError(\"max_attempts must be positive\")\n    return retryable and attempt < max_attempts\n"
+        }
+      ]
+    },
+    {
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "multimodal-agent-loops",
+      "title": "Multimodal Agent Loops",
+      "path": "modules/ai-agents/workflows/multimodal-agent-loops",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "readme": "# Multimodal Agent Loops\n\n> Track: `ai-agents` | Topic: `workflows`\n\n## Concept\n\nMultimodal agent loops decide whether the workflow has the required text, image, audio, or video inputs, whether tools should run over them, and when the system should answer, ask for more input, or escalate.\n\n## Key Points\n\n- Multimodal workflows fail early when required modalities are missing.\n- Tool use over modalities should be explicit, not assumed from the final answer step.\n- This workflow layer builds on the model-side multimodal modules by routing execution around modality availability.\n\n## Minimal Code Mental Model\n\n```python\nmissing = missing_modalities([\"text\", \"image\"], [\"text\"])\npacket = multimodal_task_packet(\"caption image and verify logo\", [\"text\", \"image\"], [\"vision_parse\"])\nroute = multimodal_execution_route(missing, packet[\"tool_plan\"])\n```\n\n## Function\n\n```python\ndef missing_modalities(required_modalities: list[str], available_modalities: list[str]) -> list[str]:\ndef multimodal_task_packet(\n    task: str,\n    required_modalities: list[str],\n    tool_plan: list[str] | None = None,\n) -> dict[str, object]:\ndef multimodal_execution_route(missing: list[str], tool_plan: list[str]) -> str:\n```\n\n## Run tests\n\n```bash\npytest modules/ai-agents/workflows/multimodal-agent-loops/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/ai-agents/workflows/multimodal-agent-loops/python/multimodal_agent_loops.py",
+          "language": "python",
+          "content": "from __future__ import annotations\n\n\ndef missing_modalities(required_modalities: list[str], available_modalities: list[str]) -> list[str]:\n    required = {modality.strip().lower() for modality in required_modalities if modality.strip()}\n    available = {modality.strip().lower() for modality in available_modalities if modality.strip()}\n    if not required:\n        raise ValueError(\"required_modalities must be non-empty\")\n    return sorted(required - available)\n\n\ndef multimodal_task_packet(\n    task: str,\n    required_modalities: list[str],\n    tool_plan: list[str] | None = None,\n) -> dict[str, object]:\n    cleaned_task = task.strip()\n    if not cleaned_task:\n        raise ValueError(\"task must be non-empty\")\n\n    cleaned_required = [modality.strip().lower() for modality in required_modalities if modality.strip()]\n    if not cleaned_required:\n        raise ValueError(\"required_modalities must be non-empty\")\n\n    cleaned_tools = []\n    for tool in tool_plan or []:\n        cleaned_tool = tool.strip()\n        if cleaned_tool:\n            cleaned_tools.append(cleaned_tool)\n\n    return {\n        \"task\": cleaned_task,\n        \"required_modalities\": cleaned_required,\n        \"tool_plan\": cleaned_tools,\n    }\n\n\ndef multimodal_execution_route(missing: list[str], tool_plan: list[str]) -> str:\n    if missing:\n        return \"request-modalities\"\n    if tool_plan:\n        return \"run-tools\"\n    return \"answer\"\n"
         }
       ]
     },
@@ -9044,7 +9124,7 @@
       "title": "Evaluation",
       "path": "docs/ai-agents/evaluation/README.md",
       "summary": "This section is about how to measure whether an agent succeeds, whether its tool calls work, and where failures happen.",
-      "content": "# Evaluation\n\nThis section is about how to measure whether an agent succeeds, whether its tool calls work, and where failures happen.\n\n## Purpose\n\nUse this page to understand:\n- task success\n- tool-call success\n- latency and cost baselines\n- failure category counts\n\n## First Principles\n\n- Agent evaluation should measure both final outcomes and the steps that produced them.\n- Simple metrics are usually enough to find the main bottlenecks.\n- A useful evaluation loop separates model failure, tool failure, and workflow failure.\n\n## Minimal Code Mental Model\n\n```python\nsuccess = task_success_rate([True, False, True])\ntool_success = tool_call_success_rate([True, True, False])\nbreakdown = failure_breakdown([\"tool\", \"model\", \"tool\"])\n```\n\n## Canonical Modules\n\n- Core agent metrics: `agent-evaluation-basics`\n\n## Supporting Modules\n\n- Step-level completion and blockage summaries: `step-level-evaluation`\n- Cost-quality summaries across runs: `cost-quality-tradeoffs`\n- A/B-style comparison between agent variants: `experiment-comparison`\n- Detecting quality drift against a baseline: `regression-checks`\n- Grouping failures into stable categories: `failure-taxonomy`\n\n## When To Use What\n\n- Start with `agent-evaluation-basics` before adding judge-based or benchmark-heavy evaluation.\n- Use `step-level-evaluation` when whole-run success is too coarse to explain where the agent fails.\n- Use `cost-quality-tradeoffs` when comparing variants where quality, cost, and success all matter.\n- Use `experiment-comparison` when you need a side-by-side summary of two prompts, tools, or workflows.\n- Use `regression-checks` when a new variant should not fall below an existing baseline on key metrics.\n- Use `failure-taxonomy` when repeated failures need a stable set of labels for triage and reporting.\n- Track latency and failure labels together so you know whether the bottleneck is planning, tool use, or execution.\n"
+      "content": "# Evaluation\n\nThis section is about how to measure whether an agent succeeds, whether its tool calls work, and where failures happen.\n\n## Purpose\n\nUse this page to understand:\n- task success\n- tool-call success\n- latency and cost baselines\n- failure category counts\n\n## First Principles\n\n- Agent evaluation should measure both final outcomes and the steps that produced them.\n- Simple metrics are usually enough to find the main bottlenecks.\n- A useful evaluation loop separates model failure, tool failure, and workflow failure.\n\n## Minimal Code Mental Model\n\n```python\nsuccess = task_success_rate([True, False, True])\ntool_success = tool_call_success_rate([True, True, False])\nbreakdown = failure_breakdown([\"tool\", \"model\", \"tool\"])\n```\n\n## Canonical Modules\n\n- Core agent metrics: `agent-evaluation-basics`\n\n## Supporting Modules\n\n- Frozen suites, bucket counts, and baseline gates: `benchmark-harness-basics`\n- Final-answer judge scores plus trace-aware grading: `judge-and-trace-grading`\n- Security-focused attack suites and release gates: `security-and-red-team-evals`\n- Step-level completion and blockage summaries: `step-level-evaluation`\n- Cost-quality summaries across runs: `cost-quality-tradeoffs`\n- A/B-style comparison between agent variants: `experiment-comparison`\n- Detecting quality drift against a baseline: `regression-checks`\n- Grouping failures into stable categories: `failure-taxonomy`\n\n## When To Use What\n\n- Start with `agent-evaluation-basics` before adding judge-based or benchmark-heavy evaluation.\n- Use `benchmark-harness-basics` when you need a fixed task suite with bucket labels and a frozen baseline before comparing variants.\n- Use `judge-and-trace-grading` when references are weak and you need final-answer judging plus step-trace evidence before accepting a run.\n- Use `security-and-red-team-evals` when the main benchmark question is whether prompt injection, exfiltration, privilege escalation, or unsafe-action cases are blocked reliably enough to ship.\n- Use `step-level-evaluation` when whole-run success is too coarse to explain where the agent fails.\n- Use `cost-quality-tradeoffs` when comparing variants where quality, cost, and success all matter.\n- Use `experiment-comparison` when you need a side-by-side summary of two prompts, tools, or workflows.\n- Use `regression-checks` when a new variant should not fall below an existing baseline on key metrics.\n- Use `failure-taxonomy` when repeated failures need a stable set of labels for triage and reporting.\n- Track latency and failure labels together so you know whether the bottleneck is planning, tool use, or execution.\n"
     },
     {
       "track": "ai-agents",
@@ -9143,7 +9223,7 @@
       "title": "Workflows",
       "path": "docs/ai-agents/workflows/README.md",
       "summary": "This section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.",
-      "content": "# Workflows\n\nThis section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.\n\n## Purpose\n\nUse this page to understand:\n- routing to the right worker\n- structured handoffs\n- bounded retries\n\n## First Principles\n\n- Workflows matter when one free-form agent loop is not enough.\n- Routing should depend on task type, not on vague prompt wording alone.\n- Handoffs should pass compact structured state, not the entire raw transcript.\n- Retries should be limited and explicit.\n\n## Minimal Code Mental Model\n\n```python\nroute = route_task(\"summarize docs and file a ticket\", routes)\nhandoff = build_handoff(\"task_7\", route, {\"doc_id\": \"abc\"})\nretry = should_retry(attempt=1, max_attempts=3, retryable=True)\n```\n\n## Canonical Modules\n\n- Routing and handoff basics: `handoffs-and-routing`\n- Retry and fallback basics: `retries-and-recovery`\n\n## Supporting Modules\n\n- Escalation routing after failed or risky steps: `escalation-routing`\n- Explicit state transitions for multi-step runs: `state-machine-basics`\n- Parallel branches and join points in a workflow: `workflow-concurrency-basics`\n\n## When To Use What\n\n- Start with `handoffs-and-routing` when the agent needs more than one specialized step.\n- Use `retries-and-recovery` when steps can fail transiently and need bounded retries or a safe fallback.\n- Use `escalation-routing` when failures need a structured handoff to review instead of another retry.\n- Use `state-machine-basics` when the workflow has a small fixed set of stages and transitions.\n- Use `workflow-concurrency-basics` when independent steps can run in parallel and later join.\n- Add more workflow depth only after the baseline route and handoff state are stable.\n"
+      "content": "# Workflows\n\nThis section is about how an agent routes tasks, hands state to another step or worker, and decides when to retry.\n\n## Purpose\n\nUse this page to understand:\n- routing to the right worker\n- structured handoffs\n- bounded retries\n\n## First Principles\n\n- Workflows matter when one free-form agent loop is not enough.\n- Routing should depend on task type, not on vague prompt wording alone.\n- Handoffs should pass compact structured state, not the entire raw transcript.\n- Retries should be limited and explicit.\n\n## Minimal Code Mental Model\n\n```python\nroute = route_task(\"summarize docs and file a ticket\", routes)\nhandoff = build_handoff(\"task_7\", route, {\"doc_id\": \"abc\"})\nretry = should_retry(attempt=1, max_attempts=3, retryable=True)\n```\n\n## Canonical Modules\n\n- Routing and handoff basics: `handoffs-and-routing`\n- Retry and fallback basics: `retries-and-recovery`\n\n## Supporting Modules\n\n- Escalation routing after failed or risky steps: `escalation-routing`\n- Critique-and-revise loops for improving a draft: `evaluator-optimizer-loops`\n- Multimodal execution routing over text, image, audio, or video inputs: `multimodal-agent-loops`\n- Explicit state transitions for multi-step runs: `state-machine-basics`\n- Parallel branches and join points in a workflow: `workflow-concurrency-basics`\n\n## When To Use What\n\n- Start with `handoffs-and-routing` when the agent needs more than one specialized step.\n- Use `retries-and-recovery` when steps can fail transiently and need bounded retries or a safe fallback.\n- Use `escalation-routing` when failures need a structured handoff to review instead of another retry.\n- Use `evaluator-optimizer-loops` when one pass produces a draft that should be critiqued and revised instead of simply retried.\n- Use `multimodal-agent-loops` when the workflow must check required modalities, possibly call tools over them, and only then answer or escalate.\n- Use `state-machine-basics` when the workflow has a small fixed set of stages and transitions.\n- Use `workflow-concurrency-basics` when independent steps can run in parallel and later join.\n- Add more workflow depth only after the baseline route and handoff state are stable.\n"
     },
     {
       "track": "dsa",

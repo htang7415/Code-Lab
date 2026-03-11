@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T06:10:08.240Z",
+  "generated_at": "2026-03-11T06:26:38.144Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -2042,6 +2042,18 @@
       "topicName": "Fundamentals"
     },
     {
+      "id": "module:ai-agents/evaluation/benchmark-harness-basics",
+      "type": "module",
+      "title": "Benchmark Harness Basics",
+      "summary": "> Track: `ai-agents` | Topic: `evaluation`",
+      "track": "ai-agents",
+      "topic": "evaluation",
+      "slug": "benchmark-harness-basics",
+      "href": "/track/ai-agents/evaluation#benchmark-harness-basics",
+      "trackName": "AI Agents",
+      "topicName": "Evaluation"
+    },
+    {
       "id": "module:ml/computer-vision/bilinear-resizing",
       "type": "module",
       "title": "Bilinear Resizing",
@@ -2906,6 +2918,18 @@
       "topicName": "Evaluation"
     },
     {
+      "id": "module:ai-agents/workflows/evaluator-optimizer-loops",
+      "type": "module",
+      "title": "Evaluator Optimizer Loops",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "evaluator-optimizer-loops",
+      "href": "/track/ai-agents/workflows#evaluator-optimizer-loops",
+      "trackName": "AI Agents",
+      "topicName": "Workflows"
+    },
+    {
       "id": "module:ai-agents/prompting/examples-and-delimiters",
       "type": "module",
       "title": "Examples and Delimiters",
@@ -3468,6 +3492,18 @@
       "href": "/track/ml/fundamentals#jensen-shannon-divergence",
       "trackName": "Machine Learning",
       "topicName": "Fundamentals"
+    },
+    {
+      "id": "module:ai-agents/evaluation/judge-and-trace-grading",
+      "type": "module",
+      "title": "Judge and Trace Grading",
+      "summary": "> Track: `ai-agents` | Topic: `evaluation`",
+      "track": "ai-agents",
+      "topic": "evaluation",
+      "slug": "judge-and-trace-grading",
+      "href": "/track/ai-agents/evaluation#judge-and-trace-grading",
+      "trackName": "AI Agents",
+      "topicName": "Evaluation"
     },
     {
       "id": "module:ml/llm/judge-evaluation-methods",
@@ -4116,6 +4152,18 @@
       "href": "/track/ai-agents/multi-agent#multi-agent",
       "trackName": "AI Agents",
       "topicName": "Multi Agent"
+    },
+    {
+      "id": "module:ai-agents/workflows/multimodal-agent-loops",
+      "type": "module",
+      "title": "Multimodal Agent Loops",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "multimodal-agent-loops",
+      "href": "/track/ai-agents/workflows#multimodal-agent-loops",
+      "trackName": "AI Agents",
+      "topicName": "Workflows"
     },
     {
       "id": "module:ml/llm/multimodal-evaluation",
@@ -5004,6 +5052,18 @@
       "href": "/track/ml/data#scaling-methods",
       "trackName": "Machine Learning",
       "topicName": "Data"
+    },
+    {
+      "id": "module:ai-agents/evaluation/security-and-red-team-evals",
+      "type": "module",
+      "title": "Security and Red-Team Evals",
+      "summary": "> Track: `ai-agents` | Topic: `evaluation`",
+      "track": "ai-agents",
+      "topic": "evaluation",
+      "slug": "security-and-red-team-evals",
+      "href": "/track/ai-agents/evaluation#security-and-red-team-evals",
+      "trackName": "AI Agents",
+      "topicName": "Evaluation"
     },
     {
       "id": "module:ai-agents/prompting/self-check-patterns",

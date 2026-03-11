@@ -30,6 +30,9 @@ breakdown = failure_breakdown(["tool", "model", "tool"])
 
 ## Supporting Modules
 
+- Frozen suites, bucket counts, and baseline gates: `benchmark-harness-basics`
+- Final-answer judge scores plus trace-aware grading: `judge-and-trace-grading`
+- Security-focused attack suites and release gates: `security-and-red-team-evals`
 - Step-level completion and blockage summaries: `step-level-evaluation`
 - Cost-quality summaries across runs: `cost-quality-tradeoffs`
 - A/B-style comparison between agent variants: `experiment-comparison`
@@ -39,6 +42,9 @@ breakdown = failure_breakdown(["tool", "model", "tool"])
 ## When To Use What
 
 - Start with `agent-evaluation-basics` before adding judge-based or benchmark-heavy evaluation.
+- Use `benchmark-harness-basics` when you need a fixed task suite with bucket labels and a frozen baseline before comparing variants.
+- Use `judge-and-trace-grading` when references are weak and you need final-answer judging plus step-trace evidence before accepting a run.
+- Use `security-and-red-team-evals` when the main benchmark question is whether prompt injection, exfiltration, privilege escalation, or unsafe-action cases are blocked reliably enough to ship.
 - Use `step-level-evaluation` when whole-run success is too coarse to explain where the agent fails.
 - Use `cost-quality-tradeoffs` when comparing variants where quality, cost, and success all matter.
 - Use `experiment-comparison` when you need a side-by-side summary of two prompts, tools, or workflows.
