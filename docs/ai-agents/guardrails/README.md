@@ -33,6 +33,7 @@ escalate = should_escalate(model_confidence=0.42, threshold=0.6, blocked=blocked
 - Human approval before risky side effects: `approval-gated-actions`
 - Narrow scopes and isolated execution: `least-privilege-and-sandboxing`
 - Policy decisions and escalation paths: `policy-and-escalation`
+- Weighted risk aggregation plus allow / review / block thresholds: `risk-scoring-and-thresholds`
 - Review queue packets and human handoff: `review-queue-handoff`
 
 ## When To Use What
@@ -42,5 +43,6 @@ escalate = should_escalate(model_confidence=0.42, threshold=0.6, blocked=blocked
 - Use `approval-gated-actions` when the agent is about to send, buy, delete, publish, or otherwise cause an external side effect.
 - Use `least-privilege-and-sandboxing` when the agent needs tools, files, or network access and you must keep permissions as narrow as possible.
 - Use `policy-and-escalation` when the system needs a clear allow / review / block decision.
+- Use `risk-scoring-and-thresholds` when several risk signals should combine into one explicit score before the system decides allow, review, or block.
 - Use `review-queue-handoff` when risky requests need a structured packet for human review instead of a direct answer.
 - Add stronger policy logic only after the simple checks are in place.

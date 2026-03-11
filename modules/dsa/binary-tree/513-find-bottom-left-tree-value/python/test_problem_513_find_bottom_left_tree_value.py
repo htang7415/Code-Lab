@@ -1,3 +1,5 @@
+import pytest
+
 from problem_513_find_bottom_left_tree_value import Solution, TreeNode
 
 
@@ -29,3 +31,8 @@ def test_bottom_left_edge_single():
 def test_bottom_left_tricky_deeper():
     root = build_tree([1, 2, 3, 4, None, 5, 6, None, None, 7])
     assert Solution().findBottomLeftValue(root) == 7
+
+
+def test_bottom_left_rejects_empty_tree():
+    with pytest.raises(ValueError, match="root must not be None"):
+        Solution().findBottomLeftValue(None)

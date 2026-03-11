@@ -12,6 +12,7 @@ from approval_gated_actions import (
 def test_approval_gate_detects_risky_or_sensitive_actions() -> None:
     assert approval_required("send_email", risk_level="medium", external_side_effect=True) is True
     assert approval_required("purchase", risk_level="low", external_side_effect=True) is True
+    assert approval_required("SEND_EMAIL", risk_level="low", external_side_effect=True) is True
     assert approval_required("summarize_notes", risk_level="low", external_side_effect=False) is False
 
 

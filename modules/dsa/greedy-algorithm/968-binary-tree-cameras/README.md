@@ -29,6 +29,13 @@ If any child is uncovered, place a camera at the current node. This postpones ca
 
 - `dfs(node)` returns the coverage state of that subtree root after greedily minimizing cameras below it.
 
+## Why This Greedy Works
+
+- A leaf should not get a camera immediately. A camera on its parent covers the leaf, the parent, and potentially the sibling too, so it dominates placing the camera lower.
+- That means the correct strategy is to let children report their state first. If a child is uncovered, the parent is the cheapest place to fix that need.
+- Postorder traversal is what makes that possible: by the time you decide at a node, both child subtrees are already minimized.
+- The only remaining special case is the root. If it is still uncovered after all child-driven decisions, it must receive one final camera.
+
 ## Walkthrough
 
 For a small chain-like tree:

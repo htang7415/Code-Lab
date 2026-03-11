@@ -16,6 +16,7 @@ Use this page to keep the agent stack in the right order:
 - An agent is not just a model. It is a loop around the model.
 - Good agents keep only the state they need, use tools when text alone is not enough, and recover when steps fail.
 - Most agent systems become easier to debug when planning, memory, tool use, and evaluation are separated.
+- As systems grow, routing, latency, and risk decisions should become explicit scores, budgets, or thresholds instead of ad hoc prompt intuition.
 
 ## Minimal Code Mental Model
 

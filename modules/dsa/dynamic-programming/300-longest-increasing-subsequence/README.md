@@ -25,6 +25,13 @@ Maintain `tails`, where `tails[length - 1]` is the smallest possible tail value 
 - `tails` stays sorted.
 - Replacing a tail with a smaller value never hurts a future longer subsequence.
 
+## Why This Works
+
+- `tails[i]` is not an actual fixed subsequence. It is the smallest tail value seen so far for any increasing subsequence of length `i + 1`.
+- A smaller tail is always better than a larger tail for the same length because it leaves more room for future numbers to extend the subsequence.
+- So when a number replaces the first tail greater than or equal to it, you do not lose any achievable subsequence length. You only improve the best tail for that length.
+- The final length of `tails` is therefore the longest subsequence length that was ever achievable.
+
 ## Walkthrough
 
 For `[10, 9, 2, 5, 3, 7, 101, 18]`:

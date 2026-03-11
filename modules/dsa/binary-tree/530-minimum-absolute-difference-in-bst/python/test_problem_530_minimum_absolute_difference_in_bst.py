@@ -1,3 +1,5 @@
+import pytest
+
 from problem_530_minimum_absolute_difference_in_bst import Solution, TreeNode
 
 
@@ -29,3 +31,14 @@ def test_min_diff_edge_two_nodes():
 def test_min_diff_tricky_internal_gap():
     root = build_tree([1, 0, 48, None, None, 12, 49])
     assert Solution().getMinimumDifference(root) == 1
+
+
+def test_min_diff_rejects_empty_tree():
+    with pytest.raises(ValueError, match="BST must contain at least two nodes"):
+        Solution().getMinimumDifference(None)
+
+
+def test_min_diff_rejects_single_node_tree():
+    root = build_tree([5])
+    with pytest.raises(ValueError, match="BST must contain at least two nodes"):
+        Solution().getMinimumDifference(root)

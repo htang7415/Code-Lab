@@ -24,6 +24,14 @@ Let the positive-sign subset sum be `P`. Since `P - (total - P) = target`, we ge
 
 - `dp[s]` is the number of ways to choose a subset of the processed numbers with sum `s`.
 
+## Why This Works
+
+- Every sign assignment splits the numbers into a positive group `P` and a negative group `N`.
+- Those groups satisfy `P - N = target` and `P + N = total`.
+- Adding the two equations gives `2P = total + target`, so choosing signs is equivalent to choosing a subset with sum `(total + target) / 2`.
+- This is a one-to-one transformation. Each valid subset determines exactly one sign assignment, and each valid sign assignment determines exactly one subset.
+- That is why parity mismatch or `abs(target) > total` makes the answer immediately `0`.
+
 ## Walkthrough
 
 For `[1, 1, 1, 1, 1]` and target `3`:

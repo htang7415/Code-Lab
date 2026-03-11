@@ -24,6 +24,13 @@ If the total sum is `S`, then you want one pile as close as possible to `S // 2`
 
 - `dp[t]` is the largest achievable pile sum not exceeding capacity `t`.
 
+## Why This Works
+
+- After all smashes, each stone has effectively been assigned a `+` sign or a `-` sign depending on which side of the cancellation it ends up on.
+- So the final leftover is not about smash order. It is `|sum(A) - sum(B)|` for some partition of the stones into two groups.
+- If the total is `S` and one group has sum `x`, then the leftover is `|S - 2x|`.
+- The best possible answer therefore comes from making one group as close as possible to `S / 2`, which is exactly a half-capacity 0/1 knapsack target.
+
 ## Walkthrough
 
 For `[2, 7, 4, 1, 8, 1]`:

@@ -18,7 +18,7 @@ _DECISION_ROUTES = {
 
 
 def approval_required(action_type: str, risk_level: str, external_side_effect: bool) -> bool:
-    cleaned_action = action_type.strip()
+    cleaned_action = action_type.strip().lower()
     cleaned_risk = risk_level.strip().lower()
     if not cleaned_action:
         raise ValueError("action_type must be non-empty")

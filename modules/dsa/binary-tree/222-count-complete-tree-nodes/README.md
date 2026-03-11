@@ -25,6 +25,13 @@ If the leftmost height and rightmost height of a subtree are equal, that subtree
 - Equal leftmost and rightmost heights mean the current subtree is perfect.
 - Otherwise, recurse into left and right children and combine the counts.
 
+## Why This Works
+
+- In a complete tree, all levels except possibly the last are full, and the last level is filled from left to right.
+- If the leftmost path height equals the rightmost path height, then the last level reaches both extremes. In a complete tree, that can happen only when the subtree is fully filled, so it is perfect.
+- A perfect binary tree of height `h` has `1 + 2 + 4 + ... + 2^(h-1) = 2^h - 1` nodes.
+- Each recursive step spends `O(log n)` time measuring boundary heights, and there are only `O(log n)` levels where the subtree can remain incomplete, giving `O((log n)^2)`.
+
 ## Walkthrough
 
 For `[1,2,3,4,5,6]`:

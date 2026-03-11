@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T06:34:32.868Z",
+  "generated_at": "2026-03-11T06:51:02.622Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -3626,6 +3626,18 @@
       "topicName": "Deep Learning"
     },
     {
+      "id": "module:ai-agents/workflows/latency-budget-accounting",
+      "type": "module",
+      "title": "Latency Budget Accounting",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "latency-budget-accounting",
+      "href": "/track/ai-agents/workflows#latency-budget-accounting",
+      "trackName": "AI Agents",
+      "topicName": "Workflows"
+    },
+    {
       "id": "module:ml/optimization/learning-rate-schedules",
       "type": "module",
       "title": "Learning Rate Schedules",
@@ -4994,6 +5006,18 @@
       "topicName": "Computer Vision"
     },
     {
+      "id": "module:ai-agents/guardrails/risk-scoring-and-thresholds",
+      "type": "module",
+      "title": "Risk Scoring and Thresholds",
+      "summary": "> Track: `ai-agents` | Topic: `guardrails`",
+      "track": "ai-agents",
+      "topic": "guardrails",
+      "slug": "risk-scoring-and-thresholds",
+      "href": "/track/ai-agents/guardrails#risk-scoring-and-thresholds",
+      "trackName": "AI Agents",
+      "topicName": "Guardrails"
+    },
+    {
       "id": "doc:ml/reinforcement-learning/rl-for-llm",
       "type": "doc",
       "title": "RL for LLMs",
@@ -5040,6 +5064,18 @@
       "href": "/track/ml/systems#roofline-analysis",
       "trackName": "Machine Learning",
       "topicName": "Systems"
+    },
+    {
+      "id": "module:ai-agents/workflows/routing-scorecards",
+      "type": "module",
+      "title": "Routing Scorecards",
+      "summary": "> Track: `ai-agents` | Topic: `workflows`",
+      "track": "ai-agents",
+      "topic": "workflows",
+      "slug": "routing-scorecards",
+      "href": "/track/ai-agents/workflows#routing-scorecards",
+      "trackName": "AI Agents",
+      "topicName": "Workflows"
     },
     {
       "id": "module:ai-agents/observability/run-analysis-metrics",

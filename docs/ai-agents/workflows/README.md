@@ -33,8 +33,10 @@ retry = should_retry(attempt=1, max_attempts=3, retryable=True)
 
 - Escalation routing after failed or risky steps: `escalation-routing`
 - Critique-and-revise loops for improving a draft: `evaluator-optimizer-loops`
+- Explicit latency budgets across multi-step runs: `latency-budget-accounting`
 - Multimodal execution routing over text, image, audio, or video inputs: `multimodal-agent-loops`
 - Sequential stage-to-stage prompting with explicit outputs: `prompt-chaining`
+- Weighted route selection from explicit signals: `routing-scorecards`
 - Low-latency turn routing for voice and streaming sessions: `voice-and-realtime-agent-loops`
 - Explicit state transitions for multi-step runs: `state-machine-basics`
 - Parallel branches and join points in a workflow: `workflow-concurrency-basics`
@@ -45,8 +47,10 @@ retry = should_retry(attempt=1, max_attempts=3, retryable=True)
 - Use `retries-and-recovery` when steps can fail transiently and need bounded retries or a safe fallback.
 - Use `escalation-routing` when failures need a structured handoff to review instead of another retry.
 - Use `evaluator-optimizer-loops` when one pass produces a draft that should be critiqued and revised instead of simply retried.
+- Use `latency-budget-accounting` when response time needs an explicit total budget, per-step split, and overrun route.
 - Use `multimodal-agent-loops` when the workflow must check required modalities, possibly call tools over them, and only then answer or escalate.
 - Use `prompt-chaining` when one stage should transform output for the next stage instead of handing the whole task to one prompt.
+- Use `routing-scorecards` when route choice should come from weighted task, tool, and latency signals instead of loose keyword heuristics.
 - Use `voice-and-realtime-agent-loops` when the workflow must handle streaming input, interruptions, or realtime response budgets.
 - Use `state-machine-basics` when the workflow has a small fixed set of stages and transitions.
 - Use `workflow-concurrency-basics` when independent steps can run in parallel and later join.

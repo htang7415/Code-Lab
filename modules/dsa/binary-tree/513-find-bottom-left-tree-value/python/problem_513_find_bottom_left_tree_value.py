@@ -13,6 +13,9 @@ class TreeNode:
 
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            raise ValueError("root must not be None")
+
         queue: deque[TreeNode] = deque([root])
         leftmost = root.val
         while queue:
