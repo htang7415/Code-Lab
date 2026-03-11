@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T15:41:14.535Z",
+  "generated_at": "2026-03-11T15:57:56.440Z",
   "tracks": [
     {
       "id": "dsa",
@@ -35,7 +35,7 @@
       "accent": "#17becf",
       "accentVar": "--track-databases",
       "topicCount": 10,
-      "moduleCount": 10
+      "moduleCount": 26
     },
     {
       "id": "software-engineering",
@@ -43,7 +43,7 @@
       "description": "APIs, performance, testing, and system design.",
       "accent": "#d62728",
       "accentVar": "--track-se",
-      "topicCount": 10,
+      "topicCount": 14,
       "moduleCount": 0
     }
   ],
@@ -53,8 +53,8 @@
       "topic": "apis",
       "name": "APIs",
       "path": "/track/software-engineering/apis",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -91,7 +91,7 @@
       "path": "/track/databases/caching",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 2
     },
     {
       "track": "ml",
@@ -107,8 +107,8 @@
       "topic": "concurrency",
       "name": "Concurrency",
       "path": "/track/software-engineering/concurrency",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -134,8 +134,8 @@
       "topic": "design-patterns",
       "name": "Design Patterns",
       "path": "/track/software-engineering/design-patterns",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -235,7 +235,7 @@
       "path": "/track/databases/indexing",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 3
     },
     {
       "track": "dsa",
@@ -307,7 +307,16 @@
       "path": "/track/databases/nosql",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 2
+    },
+    {
+      "track": "software-engineering",
+      "topic": "observability",
+      "name": "Observability",
+      "path": "/track/software-engineering/observability",
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 0
     },
     {
       "track": "ai-agents",
@@ -377,8 +386,8 @@
       "topic": "performance",
       "name": "Performance",
       "path": "/track/software-engineering/performance",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -389,6 +398,15 @@
       "hasDoc": true,
       "docCount": 1,
       "moduleCount": 7
+    },
+    {
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "name": "Platform And Delivery",
+      "path": "/track/software-engineering/platform-and-delivery",
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 0
     },
     {
       "track": "ai-agents",
@@ -404,8 +422,8 @@
       "topic": "python",
       "name": "Python",
       "path": "/track/software-engineering/python",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -415,7 +433,7 @@
       "path": "/track/databases/query-plans",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 2
     },
     {
       "track": "ai-agents",
@@ -442,7 +460,16 @@
       "path": "/track/databases/relational",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 3
+    },
+    {
+      "track": "software-engineering",
+      "topic": "reliability",
+      "name": "Reliability",
+      "path": "/track/software-engineering/reliability",
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 0
     },
     {
       "track": "ml",
@@ -467,8 +494,8 @@
       "topic": "rust",
       "name": "Rust",
       "path": "/track/software-engineering/rust",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -478,15 +505,15 @@
       "path": "/track/databases/schema-design",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 3
     },
     {
       "track": "software-engineering",
       "topic": "security-basics",
       "name": "Security Basics",
       "path": "/track/software-engineering/security-basics",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -496,7 +523,7 @@
       "path": "/track/databases/sql-patterns",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 3
     },
     {
       "track": "dsa",
@@ -514,7 +541,7 @@
       "path": "/track/databases/streaming",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 2
     },
     {
       "track": "dsa",
@@ -530,8 +557,8 @@
       "topic": "system-design",
       "name": "System Design",
       "path": "/track/software-engineering/system-design",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -548,8 +575,8 @@
       "topic": "testing",
       "name": "Testing",
       "path": "/track/software-engineering/testing",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -566,8 +593,8 @@
       "topic": "tooling",
       "name": "Tooling",
       "path": "/track/software-engineering/tooling",
-      "hasDoc": false,
-      "docCount": 0,
+      "hasDoc": true,
+      "docCount": 1,
       "moduleCount": 0
     },
     {
@@ -577,7 +604,16 @@
       "path": "/track/databases/transactions",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 3
+    },
+    {
+      "track": "software-engineering",
+      "topic": "typescript",
+      "name": "Typescript",
+      "path": "/track/software-engineering/typescript",
+      "hasDoc": true,
+      "docCount": 1,
+      "moduleCount": 0
     },
     {
       "track": "databases",
@@ -586,7 +622,7 @@
       "path": "/track/databases/vector-db",
       "hasDoc": true,
       "docCount": 1,
-      "moduleCount": 1
+      "moduleCount": 3
     },
     {
       "track": "ai-agents",
@@ -1961,6 +1997,22 @@
     },
     {
       "track": "databases",
+      "topic": "caching",
+      "slug": "ttl-and-invalidation",
+      "title": "TTL And Invalidation",
+      "path": "modules/databases/caching/ttl-and-invalidation",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "readme": "# TTL And Invalidation\n\n> Track: `databases` | Topic: `caching`\n\n## Concept\n\nTTL bounds staleness by time, while invalidation removes cached entries when the underlying data changes.\n\n## Key Points\n\n- TTL is simple, but it allows stale reads until expiration.\n- Invalidation reacts faster to writes, but it needs dependency tracking.\n- Tag-based invalidation is useful when one write affects many cached keys.\n- Good cache design uses both time-based and write-based freshness controls.\n\n## Minimal Code Mental Model\n\n```python\ncache = {}\nset_cache_entry(cache, \"doc:1\", {\"title\": \"Spec\"}, now=100, ttl_seconds=30, tags={\"workspace:7\"})\nvalue = get_if_fresh(cache, \"doc:1\", now=110)\ninvalidate_tag(cache, \"workspace:7\")\n```\n\n## Function\n\n```python\ndef set_cache_entry(\n    cache: dict[str, dict[str, object]],\n    key: str,\n    value: object,\n    now: int,\n    ttl_seconds: int,\n    tags: set[str] | None = None,\n) -> None:\ndef get_if_fresh(\n    cache: dict[str, dict[str, object]],\n    key: str,\n    now: int,\n) -> object | None:\ndef invalidate_key(cache: dict[str, dict[str, object]], key: str) -> None:\ndef invalidate_tag(cache: dict[str, dict[str, object]], tag: str) -> None:\ndef stale_keys(cache: dict[str, dict[str, object]], now: int) -> list[str]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/caching/ttl-and-invalidation/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/caching/ttl-and-invalidation/python/ttl_and_invalidation.py",
+          "language": "python",
+          "content": "\"\"\"ttl_and_invalidation - time-based freshness plus explicit invalidation.\"\"\"\n\nfrom __future__ import annotations\n\n\nCache = dict[str, dict[str, object]]\n\n\ndef set_cache_entry(\n    cache: Cache,\n    key: str,\n    value: object,\n    now: int,\n    ttl_seconds: int,\n    tags: set[str] | None = None,\n) -> None:\n    cache[key] = {\n        \"value\": value,\n        \"expires_at\": now + ttl_seconds,\n        \"tags\": set(tags or set()),\n    }\n\n\ndef get_if_fresh(\n    cache: Cache,\n    key: str,\n    now: int,\n) -> object | None:\n    entry = cache.get(key)\n    if entry is None:\n        return None\n    if int(entry[\"expires_at\"]) <= now:\n        return None\n    return entry[\"value\"]\n\n\ndef invalidate_key(cache: Cache, key: str) -> None:\n    cache.pop(key, None)\n\n\ndef invalidate_tag(cache: Cache, tag: str) -> None:\n    doomed = [\n        key\n        for key, entry in cache.items()\n        if tag in set(entry[\"tags\"])\n    ]\n    for key in doomed:\n        cache.pop(key, None)\n\n\ndef stale_keys(cache: Cache, now: int) -> list[str]:\n    return sorted(\n        key\n        for key, entry in cache.items()\n        if int(entry[\"expires_at\"]) <= now\n    )\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
       "topic": "indexing",
       "slug": "btree-basics",
       "title": "B-Tree Basics",
@@ -1972,6 +2024,38 @@
           "path": "modules/databases/indexing/btree-basics/python/btree_basics.py",
           "language": "python",
           "content": "\"\"\"btree_basics - use a composite B-tree index for a hot query path.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_eval_runs_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE eval_runs (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            status TEXT NOT NULL,\n            created_at TEXT NOT NULL,\n            latency_ms INTEGER NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef seed_eval_runs(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str, int]],\n) -> None:\n    conn.executemany(\n        \"\"\"\n        INSERT INTO eval_runs (workspace_id, status, created_at, latency_ms)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        rows,\n    )\n\n\ndef add_workspace_status_created_index(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE INDEX idx_eval_runs_workspace_status_created\n        ON eval_runs (workspace_id, status, created_at DESC)\n        \"\"\"\n    )\n\n\ndef plan_for_recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 3,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        EXPLAIN QUERY PLAN\n        SELECT id, created_at\n        FROM eval_runs\n        WHERE workspace_id = ?\n          AND status = 'completed'\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [detail for _, _, _, detail in rows]\n\n\ndef recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 3,\n) -> list[tuple[int, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT id, created_at\n        FROM eval_runs\n        WHERE workspace_id = ?\n          AND status = 'completed'\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [(run_id, created_at) for run_id, created_at in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "composite-index-order",
+      "title": "Composite Index Order",
+      "path": "modules/databases/indexing/composite-index-order",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "readme": "# Composite Index Order\n\n> Track: `databases` | Topic: `indexing`\n\n## Concept\n\nComposite indexes only help efficiently when the query starts from the left side of the index column order.\n\n## Key Points\n\n- `(status, workspace_id, created_at)` is not equivalent to `(workspace_id, created_at)`.\n- The left-prefix rule is why column order is part of index design, not a detail.\n- A poorly ordered composite index can still leave a query doing a full scan and a temp sort.\n- `EXPLAIN QUERY PLAN` is the fastest way to catch this mistake.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_runs_table(conn)\nseed_runs(conn, rows)\nadd_bad_index_status_workspace_created(conn)\nbad_plan = plan_flags(plan_for_workspace_recent_runs(conn, 7))\nadd_good_index_workspace_created(conn)\ngood_plan = plan_flags(plan_for_workspace_recent_runs(conn, 7))\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_runs_table(conn: sqlite3.Connection) -> None:\ndef seed_runs(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str]],\n) -> None:\ndef add_bad_index_status_workspace_created(conn: sqlite3.Connection) -> None:\ndef add_good_index_workspace_created(conn: sqlite3.Connection) -> None:\ndef plan_for_workspace_recent_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\ndef plan_flags(plan_details: list[str]) -> dict[str, bool]:\ndef recent_runs_for_workspace(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[tuple[int, str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/indexing/composite-index-order/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/indexing/composite-index-order/python/composite_index_order.py",
+          "language": "python",
+          "content": "\"\"\"composite_index_order - why left-prefix index order matters.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_runs_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE runs (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            status TEXT NOT NULL,\n            created_at TEXT NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef seed_runs(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str]],\n) -> None:\n    conn.executemany(\n        \"\"\"\n        INSERT INTO runs (workspace_id, status, created_at)\n        VALUES (?, ?, ?)\n        \"\"\",\n        rows,\n    )\n\n\ndef add_bad_index_status_workspace_created(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE INDEX idx_runs_status_workspace_created\n        ON runs (status, workspace_id, created_at DESC)\n        \"\"\"\n    )\n\n\ndef add_good_index_workspace_created(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE INDEX idx_runs_workspace_created\n        ON runs (workspace_id, created_at DESC)\n        \"\"\"\n    )\n\n\ndef plan_for_workspace_recent_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        EXPLAIN QUERY PLAN\n        SELECT id, created_at\n        FROM runs\n        WHERE workspace_id = ?\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [detail for _, _, _, detail in rows]\n\n\ndef plan_flags(plan_details: list[str]) -> dict[str, bool]:\n    joined = \" | \".join(plan_details)\n    return {\n        \"full_scan\": \"SCAN runs\" in joined,\n        \"uses_bad_index\": \"idx_runs_status_workspace_created\" in joined,\n        \"uses_good_index\": \"idx_runs_workspace_created\" in joined,\n        \"temp_sort\": \"USE TEMP B-TREE FOR ORDER BY\" in joined,\n    }\n\n\ndef recent_runs_for_workspace(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[tuple[int, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT id, created_at\n        FROM runs\n        WHERE workspace_id = ?\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [(run_id, created_at) for run_id, created_at in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "partial-indexes",
+      "title": "Partial Indexes",
+      "path": "modules/databases/indexing/partial-indexes",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "readme": "# Partial Indexes\n\n> Track: `databases` | Topic: `indexing`\n\n## Concept\n\nPartial indexes index only the subset of rows that a hot query actually cares about.\n\n## Key Points\n\n- A partial index is useful when one status or one slice of the table dominates the read path.\n- Smaller indexes can be cheaper to maintain than full-table indexes.\n- The query predicate has to match the partial condition closely.\n- Queries outside the indexed subset still need another access path or a scan.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_eval_runs_table(conn)\nseed_eval_runs(conn, rows)\nadd_failed_runs_partial_index(conn)\nfailed_plan = plan_flags(plan_for_recent_failed_runs(conn, 7))\ncompleted_plan = plan_flags(plan_for_recent_completed_runs(conn, 7))\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_eval_runs_table(conn: sqlite3.Connection) -> None:\ndef seed_eval_runs(conn: sqlite3.Connection, rows: list[tuple[int, str, str]]) -> None:\ndef add_failed_runs_partial_index(conn: sqlite3.Connection) -> None:\ndef plan_for_recent_failed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\ndef plan_for_recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\ndef plan_flags(plan_details: list[str]) -> dict[str, bool]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/indexing/partial-indexes/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/indexing/partial-indexes/python/partial_indexes.py",
+          "language": "python",
+          "content": "\"\"\"partial_indexes - narrow indexes for hot subsets of a table.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_eval_runs_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE eval_runs (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            status TEXT NOT NULL,\n            created_at TEXT NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef seed_eval_runs(conn: sqlite3.Connection, rows: list[tuple[int, str, str]]) -> None:\n    conn.executemany(\n        \"\"\"\n        INSERT INTO eval_runs (workspace_id, status, created_at)\n        VALUES (?, ?, ?)\n        \"\"\",\n        rows,\n    )\n\n\ndef add_failed_runs_partial_index(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE INDEX idx_eval_runs_failed_recent\n        ON eval_runs (workspace_id, created_at DESC)\n        WHERE status = 'failed'\n        \"\"\"\n    )\n\n\ndef plan_for_recent_failed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        EXPLAIN QUERY PLAN\n        SELECT id, created_at\n        FROM eval_runs\n        WHERE workspace_id = ?\n          AND status = 'failed'\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [detail for _, _, _, detail in rows]\n\n\ndef plan_for_recent_completed_runs(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        EXPLAIN QUERY PLAN\n        SELECT id, created_at\n        FROM eval_runs\n        WHERE workspace_id = ?\n          AND status = 'completed'\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [detail for _, _, _, detail in rows]\n\n\ndef plan_flags(plan_details: list[str]) -> dict[str, bool]:\n    joined = \" | \".join(plan_details)\n    return {\n        \"full_scan\": \"SCAN eval_runs\" in joined,\n        \"uses_partial_index\": \"idx_eval_runs_failed_recent\" in joined,\n        \"temp_sort\": \"USE TEMP B-TREE FOR ORDER BY\" in joined,\n    }\n"
         }
       ]
     },
@@ -1993,6 +2077,38 @@
     },
     {
       "track": "databases",
+      "topic": "nosql",
+      "slug": "secondary-index-tradeoffs",
+      "title": "Secondary Index Tradeoffs",
+      "path": "modules/databases/nosql/secondary-index-tradeoffs",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "readme": "# Secondary Index Tradeoffs\n\n> Track: `databases` | Topic: `nosql`\n\n## Concept\n\nSecondary indexes speed up alternate lookup paths, but they add extra write work because the index has to stay in sync with the primary document store.\n\n## Key Points\n\n- A primary key lookup is cheap because the store is already organized around it.\n- A secondary index lets you query by another field like `status`.\n- Updating an indexed field usually means removing one old index entry and adding one new one.\n- Secondary indexes improve reads but increase write amplification and maintenance complexity.\n\n## Minimal Code Mental Model\n\n```python\nstore = {}\nstatus_index = {}\nput_document(store, status_index, \"job-1\", {\"status\": \"queued\", \"owner\": \"ops\"})\nput_document(store, status_index, \"job-1\", {\"status\": \"running\", \"owner\": \"ops\"})\nqueued = documents_by_status(store, status_index, \"queued\")\n```\n\n## Function\n\n```python\ndef put_document(\n    store: dict[str, dict[str, object]],\n    status_index: dict[str, set[str]],\n    doc_id: str,\n    document: dict[str, object],\n) -> int:\ndef documents_by_status(\n    store: dict[str, dict[str, object]],\n    status_index: dict[str, set[str]],\n    status: str,\n) -> list[dict[str, object]]:\ndef index_updates_for_write(previous_status: str | None, new_status: str) -> int:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/nosql/secondary-index-tradeoffs/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/nosql/secondary-index-tradeoffs/python/secondary_index_tradeoffs.py",
+          "language": "python",
+          "content": "\"\"\"secondary_index_tradeoffs - maintain a simple secondary index on document status.\"\"\"\n\nfrom __future__ import annotations\n\n\nStore = dict[str, dict[str, object]]\nStatusIndex = dict[str, set[str]]\n\n\ndef put_document(\n    store: Store,\n    status_index: StatusIndex,\n    doc_id: str,\n    document: dict[str, object],\n) -> int:\n    previous = store.get(doc_id)\n    previous_status = None if previous is None else str(previous[\"status\"])\n    new_status = str(document[\"status\"])\n\n    if previous_status is not None and previous_status in status_index:\n        status_index[previous_status].discard(doc_id)\n\n    store[doc_id] = dict(document)\n    status_index.setdefault(new_status, set()).add(doc_id)\n    return index_updates_for_write(previous_status, new_status)\n\n\ndef documents_by_status(\n    store: Store,\n    status_index: StatusIndex,\n    status: str,\n) -> list[dict[str, object]]:\n    ids = sorted(status_index.get(status, set()))\n    return [dict(store[doc_id], id=doc_id) for doc_id in ids]\n\n\ndef index_updates_for_write(previous_status: str | None, new_status: str) -> int:\n    if previous_status is None:\n        return 1\n    if previous_status == new_status:\n        return 0\n    return 2\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "cardinality-estimation",
+      "title": "Cardinality Estimation",
+      "path": "modules/databases/query-plans/cardinality-estimation",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "readme": "# Cardinality Estimation\n\n> Track: `databases` | Topic: `query-plans`\n\n## Concept\n\nCardinality estimation is the optimizer’s guess about how many rows each step of a query will produce.\n\n## Key Points\n\n- Many plan mistakes start with a bad row-count estimate.\n- A common first estimate multiplies selectivities across predicates.\n- Estimated row count affects whether the optimizer prefers a scan or an index lookup.\n- Q-error is a simple way to measure how wrong an estimate was.\n\n## Math\n\n$$\n\\text{estimated rows} = \\text{table rows} \\times \\prod_i \\text{selectivity}_i\n$$\n\n## Minimal Code Mental Model\n\n```python\nestimated = estimate_rows(10000, [0.1, 0.2])\nscan = choose_access_path(estimated, table_rows=10000, index_available=True)\nerror = q_error(estimated, actual_rows=900)\n```\n\n## Function\n\n```python\ndef estimate_rows(table_rows: int, selectivities: list[float]) -> int:\ndef choose_access_path(\n    estimated_rows: int,\n    table_rows: int,\n    index_available: bool,\n    index_fraction_threshold: float = 0.1,\n) -> str:\ndef q_error(estimated_rows: int, actual_rows: int) -> float:\ndef needs_plan_attention(\n    estimated_rows: int,\n    actual_rows: int,\n    q_error_threshold: float = 4.0,\n) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/query-plans/cardinality-estimation/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/query-plans/cardinality-estimation/python/cardinality_estimation.py",
+          "language": "python",
+          "content": "\"\"\"cardinality_estimation - small first-principles planner estimates.\"\"\"\n\nfrom __future__ import annotations\n\nfrom math import prod\n\n\ndef estimate_rows(table_rows: int, selectivities: list[float]) -> int:\n    if table_rows < 0:\n        raise ValueError(\"table_rows must be non-negative\")\n    if any(not 0.0 <= value <= 1.0 for value in selectivities):\n        raise ValueError(\"selectivities must be between 0 and 1\")\n    return round(table_rows * prod(selectivities or [1.0]))\n\n\ndef choose_access_path(\n    estimated_rows: int,\n    table_rows: int,\n    index_available: bool,\n    index_fraction_threshold: float = 0.1,\n) -> str:\n    if not index_available:\n        return \"seq-scan\"\n    if table_rows <= 0:\n        return \"seq-scan\"\n    if estimated_rows / table_rows <= index_fraction_threshold:\n        return \"index-scan\"\n    return \"seq-scan\"\n\n\ndef q_error(estimated_rows: int, actual_rows: int) -> float:\n    if estimated_rows <= 0 or actual_rows <= 0:\n        raise ValueError(\"estimated_rows and actual_rows must be positive\")\n    larger = max(estimated_rows, actual_rows)\n    smaller = min(estimated_rows, actual_rows)\n    return larger / smaller\n\n\ndef needs_plan_attention(\n    estimated_rows: int,\n    actual_rows: int,\n    q_error_threshold: float = 4.0,\n) -> bool:\n    return q_error(estimated_rows, actual_rows) >= q_error_threshold\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
       "topic": "query-plans",
       "slug": "explain-basics",
       "title": "Explain Basics",
@@ -2004,6 +2120,38 @@
           "path": "modules/databases/query-plans/explain-basics/python/explain_basics.py",
           "language": "python",
           "content": "\"\"\"explain_basics - inspect full scans, index use, and temp sorts.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_events_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE events (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            created_at TEXT NOT NULL,\n            kind TEXT NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef seed_events(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, str, str]],\n) -> None:\n    conn.executemany(\n        \"\"\"\n        INSERT INTO events (workspace_id, created_at, kind)\n        VALUES (?, ?, ?)\n        \"\"\",\n        rows,\n    )\n\n\ndef add_recent_events_index(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE INDEX idx_events_workspace_created\n        ON events (workspace_id, created_at DESC)\n        \"\"\"\n    )\n\n\ndef explain_recent_workspace_events(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        EXPLAIN QUERY PLAN\n        SELECT id, created_at\n        FROM events\n        WHERE workspace_id = ?\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [detail for _, _, _, detail in rows]\n\n\ndef plan_flags(plan_details: list[str]) -> dict[str, bool]:\n    joined = \" | \".join(plan_details)\n    return {\n        \"full_scan\": \"SCAN events\" in joined,\n        \"uses_index\": \"idx_events_workspace_created\" in joined,\n        \"temp_sort\": \"USE TEMP B-TREE FOR ORDER BY\" in joined,\n    }\n\n\ndef recent_workspace_events(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    limit: int = 2,\n) -> list[tuple[int, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT id, created_at\n        FROM events\n        WHERE workspace_id = ?\n        ORDER BY created_at DESC\n        LIMIT ?\n        \"\"\",\n        (workspace_id, limit),\n    ).fetchall()\n    return [(event_id, created_at) for event_id, created_at in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "relational",
+      "slug": "constraints-and-integrity",
+      "title": "Constraints And Integrity",
+      "path": "modules/databases/relational/constraints-and-integrity",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "readme": "# Constraints And Integrity\n\n> Track: `databases` | Topic: `relational`\n\n## Concept\n\nConstraints keep bad states out of the database before they turn into application bugs.\n\n## Key Points\n\n- `NOT NULL` protects required fields.\n- `UNIQUE` enforces business rules like one document title per workspace.\n- `CHECK` constrains valid values such as allowed statuses.\n- Foreign keys keep child rows attached to real parent rows.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_integrity_schema(conn)\nworkspace_id = insert_workspace(conn, \"research\")\ninsert_document(conn, workspace_id, \"spec\", \"draft\")\nrows = document_rows(conn)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_integrity_schema(conn: sqlite3.Connection) -> None:\ndef insert_workspace(conn: sqlite3.Connection, name: str) -> int:\ndef insert_document(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    status: str,\n) -> int:\ndef document_rows(conn: sqlite3.Connection) -> list[tuple[str, str, str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/relational/constraints-and-integrity/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/relational/constraints-and-integrity/python/constraints_and_integrity.py",
+          "language": "python",
+          "content": "\"\"\"constraints_and_integrity - core schema constraints for relational correctness.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    conn = sqlite3.connect(\":memory:\")\n    conn.execute(\"PRAGMA foreign_keys = ON\")\n    return conn\n\n\ndef create_integrity_schema(conn: sqlite3.Connection) -> None:\n    conn.executescript(\n        \"\"\"\n        CREATE TABLE workspaces (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            name TEXT NOT NULL UNIQUE\n        );\n\n        CREATE TABLE documents (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            title TEXT NOT NULL,\n            status TEXT NOT NULL CHECK (status IN ('draft', 'published', 'archived')),\n            FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,\n            UNIQUE (workspace_id, title)\n        );\n        \"\"\"\n    )\n\n\ndef insert_workspace(conn: sqlite3.Connection, name: str) -> int:\n    cursor = conn.execute(\n        \"INSERT INTO workspaces (name) VALUES (?)\",\n        (name,),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_document(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    title: str,\n    status: str,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO documents (workspace_id, title, status)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (workspace_id, title, status),\n    )\n    return int(cursor.lastrowid)\n\n\ndef document_rows(conn: sqlite3.Connection) -> list[tuple[str, str, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT w.name, d.title, d.status\n        FROM documents AS d\n        JOIN workspaces AS w ON w.id = d.workspace_id\n        ORDER BY w.id, d.id\n        \"\"\"\n    ).fetchall()\n    return [(workspace, title, status) for workspace, title, status in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "relational",
+      "slug": "join-shapes",
+      "title": "Join Shapes",
+      "path": "modules/databases/relational/join-shapes",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "readme": "# Join Shapes\n\n> Track: `databases` | Topic: `relational`\n\n## Concept\n\nDifferent join shapes answer different questions: an inner join keeps only matching rows, a left join keeps all rows from the left table, and an anti-join finds rows with no match.\n\n## Key Points\n\n- Inner joins answer \"show me matching parent-child pairs.\"\n- Left joins answer \"show me every parent, even if it has zero children.\"\n- Anti-joins answer \"which parents are missing children?\"\n- Picking the wrong join shape is a correctness bug, not just a style issue.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_join_demo_tables(conn)\nseed_documents(conn, [(1, \"spec\"), (2, \"roadmap\"), (3, \"notes\")])\nseed_chunks(conn, [(1, 0, \"chunk a\"), (1, 1, \"chunk b\"), (3, 0, \"chunk c\")])\npairs = inner_join_document_chunks(conn)\ncounts = left_join_document_chunk_counts(conn)\nmissing = documents_without_chunks(conn)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_join_demo_tables(conn: sqlite3.Connection) -> None:\ndef seed_documents(conn: sqlite3.Connection, rows: list[tuple[int, str]]) -> None:\ndef seed_chunks(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, int, str]],\n) -> None:\ndef inner_join_document_chunks(conn: sqlite3.Connection) -> list[tuple[str, str]]:\ndef left_join_document_chunk_counts(conn: sqlite3.Connection) -> list[tuple[str, int]]:\ndef documents_without_chunks(conn: sqlite3.Connection) -> list[str]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/relational/join-shapes/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/relational/join-shapes/python/join_shapes.py",
+          "language": "python",
+          "content": "\"\"\"join_shapes - inner joins, left joins, and anti-joins.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    conn = sqlite3.connect(\":memory:\")\n    conn.execute(\"PRAGMA foreign_keys = ON\")\n    return conn\n\n\ndef create_join_demo_tables(conn: sqlite3.Connection) -> None:\n    conn.executescript(\n        \"\"\"\n        CREATE TABLE documents (\n            id INTEGER PRIMARY KEY,\n            title TEXT NOT NULL\n        );\n\n        CREATE TABLE chunks (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            document_id INTEGER NOT NULL,\n            chunk_index INTEGER NOT NULL,\n            text TEXT NOT NULL,\n            FOREIGN KEY (document_id) REFERENCES documents(id) ON DELETE CASCADE,\n            UNIQUE (document_id, chunk_index)\n        );\n        \"\"\"\n    )\n\n\ndef seed_documents(conn: sqlite3.Connection, rows: list[tuple[int, str]]) -> None:\n    conn.executemany(\n        \"INSERT INTO documents (id, title) VALUES (?, ?)\",\n        rows,\n    )\n\n\ndef seed_chunks(\n    conn: sqlite3.Connection,\n    rows: list[tuple[int, int, str]],\n) -> None:\n    conn.executemany(\n        \"\"\"\n        INSERT INTO chunks (document_id, chunk_index, text)\n        VALUES (?, ?, ?)\n        \"\"\",\n        rows,\n    )\n\n\ndef inner_join_document_chunks(conn: sqlite3.Connection) -> list[tuple[str, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT d.title, c.text\n        FROM documents AS d\n        JOIN chunks AS c ON c.document_id = d.id\n        ORDER BY d.id, c.chunk_index\n        \"\"\"\n    ).fetchall()\n    return [(title, text) for title, text in rows]\n\n\ndef left_join_document_chunk_counts(conn: sqlite3.Connection) -> list[tuple[str, int]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT d.title, COUNT(c.id) AS chunk_count\n        FROM documents AS d\n        LEFT JOIN chunks AS c ON c.document_id = d.id\n        GROUP BY d.id, d.title\n        ORDER BY d.id\n        \"\"\"\n    ).fetchall()\n    return [(title, chunk_count) for title, chunk_count in rows]\n\n\ndef documents_without_chunks(conn: sqlite3.Connection) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT d.title\n        FROM documents AS d\n        LEFT JOIN chunks AS c ON c.document_id = d.id\n        WHERE c.id IS NULL\n        ORDER BY d.id\n        \"\"\"\n    ).fetchall()\n    return [title for (title,) in rows]\n"
         }
       ]
     },
@@ -2041,6 +2189,70 @@
     },
     {
       "track": "databases",
+      "topic": "schema-design",
+      "slug": "metadata-and-lineage-tables",
+      "title": "Metadata And Lineage Tables",
+      "path": "modules/databases/schema-design/metadata-and-lineage-tables",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "readme": "# Metadata And Lineage Tables\n\n> Track: `databases` | Topic: `schema-design`\n\n## Concept\n\nMetadata tables describe assets and jobs, while lineage tables record which jobs consumed or produced which assets.\n\n## Key Points\n\n- Asset metadata should be queryable without scanning raw payloads.\n- Input and output edges should be explicit tables, not buried in blobs.\n- A produced asset should normally have one producer job in the lineage graph.\n- Lineage lets you answer “which prompt, dataset, and model produced this output?”\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_metadata_lineage_schema(conn)\ndataset_id = insert_asset(conn, 42, \"dataset\", \"s3://datasets/v1.parquet\", \"abc\")\njob_id = insert_job(conn, 42, \"eval\", \"gpt-4.1-mini\", \"2026-03-11T10:00:00Z\")\nlink_job_input(conn, job_id, dataset_id, \"dataset\")\nsummary = lineage_summary(conn, job_id)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_metadata_lineage_schema(conn: sqlite3.Connection) -> None:\ndef insert_asset(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    kind: str,\n    uri: str,\n    content_hash: str,\n) -> int:\ndef insert_job(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    job_kind: str,\n    model_name: str,\n    created_at: str,\n) -> int:\ndef link_job_input(\n    conn: sqlite3.Connection,\n    job_id: int,\n    asset_id: int,\n    input_role: str,\n) -> None:\ndef link_job_output(\n    conn: sqlite3.Connection,\n    job_id: int,\n    asset_id: int,\n    output_role: str = \"primary\",\n) -> None:\ndef lineage_summary(conn: sqlite3.Connection, job_id: int) -> dict[str, object]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/schema-design/metadata-and-lineage-tables/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/schema-design/metadata-and-lineage-tables/python/metadata_and_lineage_tables.py",
+          "language": "python",
+          "content": "\"\"\"metadata_and_lineage_tables - explicit metadata and lineage edge tables.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    conn = sqlite3.connect(\":memory:\")\n    conn.execute(\"PRAGMA foreign_keys = ON\")\n    return conn\n\n\ndef create_metadata_lineage_schema(conn: sqlite3.Connection) -> None:\n    conn.executescript(\n        \"\"\"\n        CREATE TABLE assets (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            kind TEXT NOT NULL,\n            uri TEXT NOT NULL,\n            content_hash TEXT NOT NULL,\n            UNIQUE (workspace_id, uri)\n        );\n\n        CREATE TABLE jobs (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            job_kind TEXT NOT NULL,\n            model_name TEXT NOT NULL,\n            created_at TEXT NOT NULL\n        );\n\n        CREATE TABLE job_inputs (\n            job_id INTEGER NOT NULL,\n            asset_id INTEGER NOT NULL,\n            input_role TEXT NOT NULL,\n            PRIMARY KEY (job_id, asset_id, input_role),\n            FOREIGN KEY (job_id) REFERENCES jobs(id) ON DELETE CASCADE,\n            FOREIGN KEY (asset_id) REFERENCES assets(id) ON DELETE CASCADE\n        );\n\n        CREATE TABLE job_outputs (\n            job_id INTEGER NOT NULL,\n            asset_id INTEGER NOT NULL UNIQUE,\n            output_role TEXT NOT NULL,\n            PRIMARY KEY (job_id, asset_id, output_role),\n            FOREIGN KEY (job_id) REFERENCES jobs(id) ON DELETE CASCADE,\n            FOREIGN KEY (asset_id) REFERENCES assets(id) ON DELETE CASCADE\n        );\n        \"\"\"\n    )\n\n\ndef insert_asset(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    kind: str,\n    uri: str,\n    content_hash: str,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO assets (workspace_id, kind, uri, content_hash)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        (workspace_id, kind, uri, content_hash),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_job(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    job_kind: str,\n    model_name: str,\n    created_at: str,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO jobs (workspace_id, job_kind, model_name, created_at)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        (workspace_id, job_kind, model_name, created_at),\n    )\n    return int(cursor.lastrowid)\n\n\ndef link_job_input(\n    conn: sqlite3.Connection,\n    job_id: int,\n    asset_id: int,\n    input_role: str,\n) -> None:\n    conn.execute(\n        \"\"\"\n        INSERT INTO job_inputs (job_id, asset_id, input_role)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (job_id, asset_id, input_role),\n    )\n\n\ndef link_job_output(\n    conn: sqlite3.Connection,\n    job_id: int,\n    asset_id: int,\n    output_role: str = \"primary\",\n) -> None:\n    conn.execute(\n        \"\"\"\n        INSERT INTO job_outputs (job_id, asset_id, output_role)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (job_id, asset_id, output_role),\n    )\n\n\ndef lineage_summary(conn: sqlite3.Connection, job_id: int) -> dict[str, object]:\n    job_row = conn.execute(\n        \"\"\"\n        SELECT job_kind, model_name, created_at\n        FROM jobs\n        WHERE id = ?\n        \"\"\",\n        (job_id,),\n    ).fetchone()\n    if job_row is None:\n        raise ValueError(f\"missing job {job_id}\")\n\n    input_rows = conn.execute(\n        \"\"\"\n        SELECT ji.input_role, a.uri\n        FROM job_inputs AS ji\n        JOIN assets AS a ON a.id = ji.asset_id\n        WHERE ji.job_id = ?\n        ORDER BY ji.input_role, a.uri\n        \"\"\",\n        (job_id,),\n    ).fetchall()\n    output_rows = conn.execute(\n        \"\"\"\n        SELECT jo.output_role, a.uri\n        FROM job_outputs AS jo\n        JOIN assets AS a ON a.id = jo.asset_id\n        WHERE jo.job_id = ?\n        ORDER BY jo.output_role, a.uri\n        \"\"\",\n        (job_id,),\n    ).fetchall()\n\n    return {\n        \"job_kind\": job_row[0],\n        \"model_name\": job_row[1],\n        \"created_at\": job_row[2],\n        \"inputs\": [{\"role\": role, \"uri\": uri} for role, uri in input_rows],\n        \"outputs\": [{\"role\": role, \"uri\": uri} for role, uri in output_rows],\n    }\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "multi-tenant-schema-patterns",
+      "title": "Multi Tenant Schema Patterns",
+      "path": "modules/databases/schema-design/multi-tenant-schema-patterns",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "readme": "# Multi Tenant Schema Patterns\n\n> Track: `databases` | Topic: `schema-design`\n\n## Concept\n\nMulti-tenant schemas keep each customer's data isolated while still sharing one database and one set of tables.\n\n## Key Points\n\n- Tenant identity should be explicit in every tenant-scoped table.\n- Composite constraints can stop cross-tenant references before they reach application code.\n- Uniqueness rules often belong inside a tenant, not globally across all tenants.\n- A good multi-tenant schema makes isolation the default query shape.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_multi_tenant_schema(conn)\nteam_a = insert_workspace(conn, \"team-a\")\nteam_b = insert_workspace(conn, \"team-b\")\ndoc_id = insert_document(conn, team_a, \"spec\")\ninsert_chunk(conn, team_a, doc_id, 0, \"chunk a\")\ndocs = document_titles_for_workspace(conn, team_a)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_multi_tenant_schema(conn: sqlite3.Connection) -> None:\ndef insert_workspace(conn: sqlite3.Connection, name: str) -> int:\ndef insert_document(conn: sqlite3.Connection, workspace_id: int, title: str) -> int:\ndef insert_chunk(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    document_id: int,\n    chunk_index: int,\n    text: str,\n) -> int:\ndef document_titles_for_workspace(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n) -> list[str]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/schema-design/multi-tenant-schema-patterns/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/schema-design/multi-tenant-schema-patterns/python/multi_tenant_schema_patterns.py",
+          "language": "python",
+          "content": "\"\"\"multi_tenant_schema_patterns - tenant-scoped uniqueness and foreign keys.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    conn = sqlite3.connect(\":memory:\")\n    conn.execute(\"PRAGMA foreign_keys = ON\")\n    return conn\n\n\ndef create_multi_tenant_schema(conn: sqlite3.Connection) -> None:\n    conn.executescript(\n        \"\"\"\n        CREATE TABLE workspaces (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            name TEXT NOT NULL UNIQUE\n        );\n\n        CREATE TABLE documents (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            title TEXT NOT NULL,\n            FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,\n            UNIQUE (workspace_id, id),\n            UNIQUE (workspace_id, title)\n        );\n\n        CREATE TABLE chunks (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            workspace_id INTEGER NOT NULL,\n            document_id INTEGER NOT NULL,\n            chunk_index INTEGER NOT NULL,\n            text TEXT NOT NULL,\n            FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,\n            FOREIGN KEY (workspace_id, document_id)\n                REFERENCES documents(workspace_id, id) ON DELETE CASCADE,\n            UNIQUE (workspace_id, document_id, chunk_index)\n        );\n        \"\"\"\n    )\n\n\ndef insert_workspace(conn: sqlite3.Connection, name: str) -> int:\n    cursor = conn.execute(\n        \"INSERT INTO workspaces (name) VALUES (?)\",\n        (name,),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_document(conn: sqlite3.Connection, workspace_id: int, title: str) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO documents (workspace_id, title)\n        VALUES (?, ?)\n        \"\"\",\n        (workspace_id, title),\n    )\n    return int(cursor.lastrowid)\n\n\ndef insert_chunk(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n    document_id: int,\n    chunk_index: int,\n    text: str,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO chunks (workspace_id, document_id, chunk_index, text)\n        VALUES (?, ?, ?, ?)\n        \"\"\",\n        (workspace_id, document_id, chunk_index, text),\n    )\n    return int(cursor.lastrowid)\n\n\ndef document_titles_for_workspace(\n    conn: sqlite3.Connection,\n    workspace_id: int,\n) -> list[str]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT title\n        FROM documents\n        WHERE workspace_id = ?\n        ORDER BY id\n        \"\"\",\n        (workspace_id,),\n    ).fetchall()\n    return [title for (title,) in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "dedup-and-latest-row",
+      "title": "Dedup And Latest Row",
+      "path": "modules/databases/sql-patterns/dedup-and-latest-row",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "readme": "# Dedup And Latest Row\n\n> Track: `databases` | Topic: `sql-patterns`\n\n## Concept\n\nThe standard way to keep the latest row per key is to rank rows inside each key partition and keep rank 1.\n\n## Key Points\n\n- `ROW_NUMBER()` lets you keep one latest row without losing access to the original columns.\n- A tie breaker like `id DESC` matters when timestamps are equal.\n- Dedup logic should be explicit, not accidental.\n- This pattern shows up in job state, latest feedback, event compaction, and user profile updates.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_run_events_table(conn)\nrecord_run_event(conn, \"run-1\", \"queued\", \"2026-03-10T09:00:00Z\")\nrecord_run_event(conn, \"run-1\", \"completed\", \"2026-03-10T09:05:00Z\")\nlatest = latest_event_per_run(conn)\nsummary = latest_status_summary(conn)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_run_events_table(conn: sqlite3.Connection) -> None:\ndef record_run_event(\n    conn: sqlite3.Connection,\n    run_id: str,\n    status: str,\n    recorded_at: str,\n) -> int:\ndef latest_event_per_run(conn: sqlite3.Connection) -> list[dict[str, object]]:\ndef latest_status_summary(conn: sqlite3.Connection) -> dict[str, int]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/sql-patterns/dedup-and-latest-row/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/sql-patterns/dedup-and-latest-row/python/dedup_and_latest_row.py",
+          "language": "python",
+          "content": "\"\"\"dedup_and_latest_row - keep the newest row per run with window functions.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_run_events_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE run_events (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            run_id TEXT NOT NULL,\n            status TEXT NOT NULL,\n            recorded_at TEXT NOT NULL\n        )\n        \"\"\"\n    )\n\n\ndef record_run_event(\n    conn: sqlite3.Connection,\n    run_id: str,\n    status: str,\n    recorded_at: str,\n) -> int:\n    cursor = conn.execute(\n        \"\"\"\n        INSERT INTO run_events (run_id, status, recorded_at)\n        VALUES (?, ?, ?)\n        \"\"\",\n        (run_id, status, recorded_at),\n    )\n    return int(cursor.lastrowid)\n\n\ndef latest_event_per_run(conn: sqlite3.Connection) -> list[dict[str, object]]:\n    rows = conn.execute(\n        \"\"\"\n        WITH ranked AS (\n            SELECT\n                run_id,\n                status,\n                recorded_at,\n                ROW_NUMBER() OVER (\n                    PARTITION BY run_id\n                    ORDER BY recorded_at DESC, id DESC\n                ) AS row_rank\n            FROM run_events\n        )\n        SELECT run_id, status, recorded_at\n        FROM ranked\n        WHERE row_rank = 1\n        ORDER BY run_id\n        \"\"\"\n    ).fetchall()\n    return [\n        {\"run_id\": run_id, \"status\": status, \"recorded_at\": recorded_at}\n        for run_id, status, recorded_at in rows\n    ]\n\n\ndef latest_status_summary(conn: sqlite3.Connection) -> dict[str, int]:\n    rows = conn.execute(\n        \"\"\"\n        WITH ranked AS (\n            SELECT\n                run_id,\n                status,\n                ROW_NUMBER() OVER (\n                    PARTITION BY run_id\n                    ORDER BY recorded_at DESC, id DESC\n                ) AS row_rank\n            FROM run_events\n        )\n        SELECT status, COUNT(*)\n        FROM ranked\n        WHERE row_rank = 1\n        GROUP BY status\n        ORDER BY status\n        \"\"\"\n    ).fetchall()\n    return {status: count for status, count in rows}\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "upserts-and-merge-patterns",
+      "title": "Upserts And Merge Patterns",
+      "path": "modules/databases/sql-patterns/upserts-and-merge-patterns",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "readme": "# Upserts And Merge Patterns\n\n> Track: `databases` | Topic: `sql-patterns`\n\n## Concept\n\nUpserts let a write either insert a new row or update the existing row for the same business key.\n\n## Key Points\n\n- Upserts make idempotent writes easier.\n- The conflict target should match the real business key.\n- Merge logic often needs freshness rules so stale writes do not overwrite newer data.\n- Batch merge is usually just repeated upsert against a unique key.\n\n## Minimal Code Mental Model\n\n```python\nconn = create_connection()\ncreate_model_scores_table(conn)\nupsert_score(conn, \"gpt-mini\", \"helpfulness\", 0.81, \"2026-03-10T09:00:00Z\")\nupsert_score(conn, \"gpt-mini\", \"helpfulness\", 0.84, \"2026-03-11T09:00:00Z\")\nrows = score_rows(conn)\n```\n\n## Function\n\n```python\ndef create_connection() -> sqlite3.Connection:\ndef create_model_scores_table(conn: sqlite3.Connection) -> None:\ndef upsert_score(\n    conn: sqlite3.Connection,\n    model_name: str,\n    dataset_name: str,\n    score: float,\n    updated_at: str,\n) -> None:\ndef merge_score_batch(\n    conn: sqlite3.Connection,\n    rows: list[tuple[str, str, float, str]],\n) -> None:\ndef score_rows(conn: sqlite3.Connection) -> list[tuple[str, str, float, str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/sql-patterns/upserts-and-merge-patterns/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/sql-patterns/upserts-and-merge-patterns/python/upserts_and_merge_patterns.py",
+          "language": "python",
+          "content": "\"\"\"upserts_and_merge_patterns - insert-or-update writes with freshness checks.\"\"\"\n\nfrom __future__ import annotations\n\nimport sqlite3\n\n\ndef create_connection() -> sqlite3.Connection:\n    return sqlite3.connect(\":memory:\")\n\n\ndef create_model_scores_table(conn: sqlite3.Connection) -> None:\n    conn.execute(\n        \"\"\"\n        CREATE TABLE model_scores (\n            model_name TEXT NOT NULL,\n            dataset_name TEXT NOT NULL,\n            score REAL NOT NULL,\n            updated_at TEXT NOT NULL,\n            PRIMARY KEY (model_name, dataset_name)\n        )\n        \"\"\"\n    )\n\n\ndef upsert_score(\n    conn: sqlite3.Connection,\n    model_name: str,\n    dataset_name: str,\n    score: float,\n    updated_at: str,\n) -> None:\n    conn.execute(\n        \"\"\"\n        INSERT INTO model_scores (model_name, dataset_name, score, updated_at)\n        VALUES (?, ?, ?, ?)\n        ON CONFLICT(model_name, dataset_name) DO UPDATE SET\n            score = excluded.score,\n            updated_at = excluded.updated_at\n        WHERE excluded.updated_at >= model_scores.updated_at\n        \"\"\",\n        (model_name, dataset_name, score, updated_at),\n    )\n\n\ndef merge_score_batch(\n    conn: sqlite3.Connection,\n    rows: list[tuple[str, str, float, str]],\n) -> None:\n    for row in rows:\n        upsert_score(conn, *row)\n\n\ndef score_rows(conn: sqlite3.Connection) -> list[tuple[str, str, float, str]]:\n    rows = conn.execute(\n        \"\"\"\n        SELECT model_name, dataset_name, score, updated_at\n        FROM model_scores\n        ORDER BY model_name, dataset_name\n        \"\"\"\n    ).fetchall()\n    return [(model_name, dataset_name, score, updated_at) for model_name, dataset_name, score, updated_at in rows]\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
       "topic": "sql-patterns",
       "slug": "window-functions-basics",
       "title": "Window Functions Basics",
@@ -2073,6 +2285,54 @@
     },
     {
       "track": "databases",
+      "topic": "streaming",
+      "slug": "idempotent-consumers",
+      "title": "Idempotent Consumers",
+      "path": "modules/databases/streaming/idempotent-consumers",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "readme": "# Idempotent Consumers\n\n> Track: `databases` | Topic: `streaming`\n\n## Concept\n\nAn idempotent consumer can safely see the same event more than once without applying the business effect twice.\n\n## Key Points\n\n- At-least-once delivery means duplicates are normal, not rare.\n- The consumer usually needs a processed-event ledger keyed by event ID.\n- Business state should only change the first time a given event ID is seen.\n- Idempotency is one of the main reasons streaming systems stay correct under retries.\n\n## Minimal Code Mental Model\n\n```python\nprocessed_ids = set()\nstate = {}\nevent = {\"event_id\": \"evt-1\", \"key\": \"doc-1\", \"status\": \"embedded\"}\nfirst = process_status_event(event, processed_ids, state)\nsecond = process_status_event(event, processed_ids, state)\n```\n\n## Function\n\n```python\ndef process_status_event(\n    event: dict[str, str],\n    processed_ids: set[str],\n    state: dict[str, str],\n) -> bool:\ndef consume_batch(\n    events: list[dict[str, str]],\n    processed_ids: set[str],\n    state: dict[str, str],\n) -> int:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/streaming/idempotent-consumers/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/streaming/idempotent-consumers/python/idempotent_consumers.py",
+          "language": "python",
+          "content": "\"\"\"idempotent_consumers - apply each event ID at most once.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef process_status_event(\n    event: dict[str, str],\n    processed_ids: set[str],\n    state: dict[str, str],\n) -> bool:\n    event_id = event[\"event_id\"]\n    if event_id in processed_ids:\n        return False\n\n    state[event[\"key\"]] = event[\"status\"]\n    processed_ids.add(event_id)\n    return True\n\n\ndef consume_batch(\n    events: list[dict[str, str]],\n    processed_ids: set[str],\n    state: dict[str, str],\n) -> int:\n    applied = 0\n    for event in events:\n        if process_status_event(event, processed_ids, state):\n            applied += 1\n    return applied\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "deadlocks-and-lock-ordering",
+      "title": "Deadlocks And Lock Ordering",
+      "path": "modules/databases/transactions/deadlocks-and-lock-ordering",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "readme": "# Deadlocks And Lock Ordering\n\n> Track: `databases` | Topic: `transactions`\n\n## Concept\n\nDeadlocks happen when transactions wait on each other in a cycle, and a consistent global lock order is one of the simplest ways to avoid them.\n\n## Key Points\n\n- Exclusive locks on overlapping resources can deadlock if transactions acquire them in different orders.\n- The bug is the conflicting order, not just the fact that two transactions overlap.\n- A canonical order like sorted resource IDs removes inversion risk.\n- Lock ordering is easier to apply than debugging deadlocks in production traces.\n\n## Minimal Code Mental Model\n\n```python\norder_a = [\"account:1\", \"account:2\"]\norder_b = [\"account:2\", \"account:1\"]\nrisk = has_deadlock_risk(order_a, order_b)\nsafe_orders = apply_canonical_order({\"a\": order_a, \"b\": order_b})\n```\n\n## Function\n\n```python\ndef inversion_pairs(order_a: list[str], order_b: list[str]) -> list[tuple[str, str]]:\ndef has_deadlock_risk(order_a: list[str], order_b: list[str]) -> bool:\ndef canonical_lock_order(resources: list[str]) -> list[str]:\ndef apply_canonical_order(\n    transaction_requests: dict[str, list[str]],\n) -> dict[str, list[str]]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/transactions/deadlocks-and-lock-ordering/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/transactions/deadlocks-and-lock-ordering/python/deadlocks_and_lock_ordering.py",
+          "language": "python",
+          "content": "\"\"\"deadlocks_and_lock_ordering - detect lock order inversions and canonicalize them.\"\"\"\n\nfrom __future__ import annotations\n\n\ndef inversion_pairs(order_a: list[str], order_b: list[str]) -> list[tuple[str, str]]:\n    pos_a = {resource: index for index, resource in enumerate(order_a)}\n    pos_b = {resource: index for index, resource in enumerate(order_b)}\n    shared = [resource for resource in order_a if resource in pos_b]\n    inversions: list[tuple[str, str]] = []\n\n    for left_index, left in enumerate(shared):\n        for right in shared[left_index + 1 :]:\n            if pos_a[left] < pos_a[right] and pos_b[left] > pos_b[right]:\n                inversions.append((left, right))\n\n    return inversions\n\n\ndef has_deadlock_risk(order_a: list[str], order_b: list[str]) -> bool:\n    return len(inversion_pairs(order_a, order_b)) > 0\n\n\ndef canonical_lock_order(resources: list[str]) -> list[str]:\n    return sorted(dict.fromkeys(resources))\n\n\ndef apply_canonical_order(\n    transaction_requests: dict[str, list[str]],\n) -> dict[str, list[str]]:\n    return {\n        txn_id: canonical_lock_order(resources)\n        for txn_id, resources in transaction_requests.items()\n    }\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "mvcc-mental-model",
+      "title": "MVCC Mental Model",
+      "path": "modules/databases/transactions/mvcc-mental-model",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "readme": "# MVCC Mental Model\n\n> Track: `databases` | Topic: `transactions`\n\n## Concept\n\nMVCC keeps old row versions so each transaction can read a stable snapshot without blocking every writer.\n\n## Key Points\n\n- Visibility depends on transaction snapshot time, not just the latest committed row.\n- Updates usually create a new version and mark the old version as deleted later.\n- An older snapshot can keep seeing the old value while a newer snapshot sees the new one.\n- Thinking in versions is the clearest way to understand snapshot isolation.\n\n## Minimal Code Mental Model\n\n```python\nstore = {}\nappend_version(store, \"doc-1\", \"draft\", created_xid=10)\nreplace_visible_value(store, \"doc-1\", \"published\", writer_xid=11)\nold_view = visible_value(store, \"doc-1\", snapshot_xid=10)\nnew_view = visible_value(store, \"doc-1\", snapshot_xid=11)\n```\n\n## Function\n\n```python\n@dataclass\nclass RowVersion:\n    value: object\n    created_xid: int\n    deleted_xid: int | None = None\n\ndef append_version(\n    store: dict[str, list[RowVersion]],\n    key: str,\n    value: object,\n    created_xid: int,\n) -> None:\ndef replace_visible_value(\n    store: dict[str, list[RowVersion]],\n    key: str,\n    new_value: object,\n    writer_xid: int,\n) -> None:\ndef delete_visible_value(\n    store: dict[str, list[RowVersion]],\n    key: str,\n    writer_xid: int,\n) -> None:\ndef visible_value(\n    store: dict[str, list[RowVersion]],\n    key: str,\n    snapshot_xid: int,\n) -> object | None:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/transactions/mvcc-mental-model/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/transactions/mvcc-mental-model/python/mvcc_mental_model.py",
+          "language": "python",
+          "content": "\"\"\"mvcc_mental_model - a tiny snapshot-visibility model.\"\"\"\n\nfrom __future__ import annotations\n\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass RowVersion:\n    value: object\n    created_xid: int\n    deleted_xid: int | None = None\n\n\nVersionedStore = dict[str, list[RowVersion]]\n\n\ndef append_version(\n    store: VersionedStore,\n    key: str,\n    value: object,\n    created_xid: int,\n) -> None:\n    store.setdefault(key, []).append(\n        RowVersion(value=value, created_xid=created_xid)\n    )\n\n\ndef replace_visible_value(\n    store: VersionedStore,\n    key: str,\n    new_value: object,\n    writer_xid: int,\n) -> None:\n    versions = store.setdefault(key, [])\n    current = next(\n        (version for version in reversed(versions) if version.deleted_xid is None),\n        None,\n    )\n    if current is not None:\n        current.deleted_xid = writer_xid\n    versions.append(RowVersion(value=new_value, created_xid=writer_xid))\n\n\ndef delete_visible_value(\n    store: VersionedStore,\n    key: str,\n    writer_xid: int,\n) -> None:\n    versions = store.get(key, [])\n    current = next(\n        (version for version in reversed(versions) if version.deleted_xid is None),\n        None,\n    )\n    if current is not None:\n        current.deleted_xid = writer_xid\n\n\ndef visible_value(\n    store: VersionedStore,\n    key: str,\n    snapshot_xid: int,\n) -> object | None:\n    versions = store.get(key, [])\n    visible_versions = [\n        version\n        for version in versions\n        if version.created_xid <= snapshot_xid\n        and (version.deleted_xid is None or version.deleted_xid > snapshot_xid)\n    ]\n    if not visible_versions:\n        return None\n    return visible_versions[-1].value\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
       "topic": "transactions",
       "slug": "transaction-basics",
       "title": "Transaction Basics",
@@ -2090,6 +2350,22 @@
     {
       "track": "databases",
       "topic": "vector-db",
+      "slug": "exact-vs-ann-search",
+      "title": "Exact Vs ANN Search",
+      "path": "modules/databases/vector-db/exact-vs-ann-search",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "readme": "# Exact Vs ANN Search\n\n> Track: `databases` | Topic: `vector-db`\n\n## Concept\n\nExact search scores every vector, while approximate nearest neighbor search prunes the candidate set to trade some recall for lower latency.\n\n## Key Points\n\n- Exact search is the correctness baseline.\n- ANN is a candidate-pruning strategy, not a different similarity metric.\n- ANN usually evaluates fewer vectors than exact search.\n- Lower candidate count can lower latency, but it can also miss a true nearest neighbor.\n\n## Minimal Code Mental Model\n\n```python\nexact = exact_top_k(query, docs, k=2)\nann, candidates = ann_top_k(query, docs, k=2, threshold=0.8)\nrecall = recall_at_k(exact, ann)\n```\n\n## Function\n\n```python\ndef cosine_similarity(left: list[float], right: list[float]) -> float:\ndef bucket_key(vector: list[float], threshold: float = 0.8) -> str:\ndef exact_top_k(\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    k: int,\n) -> list[tuple[str, float]]:\ndef ann_top_k(\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    k: int,\n    threshold: float = 0.8,\n) -> tuple[list[tuple[str, float]], int]:\ndef recall_at_k(\n    exact_results: list[tuple[str, float]],\n    ann_results: list[tuple[str, float]],\n) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/vector-db/exact-vs-ann-search/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/vector-db/exact-vs-ann-search/python/exact_vs_ann_search.py",
+          "language": "python",
+          "content": "\"\"\"exact_vs_ann_search - exact scoring versus toy ANN candidate pruning.\"\"\"\n\nfrom __future__ import annotations\n\nimport math\n\n\ndef cosine_similarity(left: list[float], right: list[float]) -> float:\n    if len(left) != len(right):\n        raise ValueError(\"vectors must have the same dimensions\")\n    left_norm = math.sqrt(sum(value * value for value in left))\n    right_norm = math.sqrt(sum(value * value for value in right))\n    if left_norm == 0 or right_norm == 0:\n        return 0.0\n    similarity = sum(a * b for a, b in zip(left, right)) / (left_norm * right_norm)\n    if abs(similarity - 1.0) < 1e-12:\n        return 1.0\n    if abs(similarity + 1.0) < 1e-12:\n        return -1.0\n    return similarity\n\n\ndef bucket_key(vector: list[float], threshold: float = 0.8) -> str:\n    if vector[0] >= threshold:\n        return \"high-x\"\n    if len(vector) > 1 and vector[1] >= threshold:\n        return \"high-y\"\n    return \"mixed\"\n\n\ndef exact_top_k(\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    k: int,\n) -> list[tuple[str, float]]:\n    scored = [\n        (\n            str(document[\"id\"]),\n            cosine_similarity(query_vector, list(document[\"vector\"])),\n        )\n        for document in documents\n    ]\n    return sorted(scored, key=lambda item: (-item[1], item[0]))[:k]\n\n\ndef ann_top_k(\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    k: int,\n    threshold: float = 0.8,\n) -> tuple[list[tuple[str, float]], int]:\n    query_bucket = bucket_key(query_vector, threshold=threshold)\n    candidates = [\n        document\n        for document in documents\n        if bucket_key(list(document[\"vector\"]), threshold=threshold) == query_bucket\n    ]\n    if not candidates:\n        candidates = documents\n\n    scored = [\n        (\n            str(document[\"id\"]),\n            cosine_similarity(query_vector, list(document[\"vector\"])),\n        )\n        for document in candidates\n    ]\n    scored.sort(key=lambda item: (-item[1], item[0]))\n    return scored[:k], len(candidates)\n\n\ndef recall_at_k(\n    exact_results: list[tuple[str, float]],\n    ann_results: list[tuple[str, float]],\n) -> float:\n    if not exact_results:\n        return 1.0\n    exact_ids = {doc_id for doc_id, _ in exact_results}\n    ann_ids = {doc_id for doc_id, _ in ann_results}\n    return len(exact_ids & ann_ids) / len(exact_ids)\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "vector-db",
       "slug": "hybrid-search",
       "title": "Hybrid Search",
       "path": "modules/databases/vector-db/hybrid-search",
@@ -2100,6 +2376,22 @@
           "path": "modules/databases/vector-db/hybrid-search/python/hybrid_search.py",
           "language": "python",
           "content": "\"\"\"hybrid_search - combine lexical overlap with cosine similarity.\"\"\"\n\nfrom __future__ import annotations\n\nimport math\nimport re\n\n\ndef tokenize(text: str) -> list[str]:\n    return re.findall(r\"[a-z0-9]+\", text.lower())\n\n\ndef cosine_similarity(left: list[float], right: list[float]) -> float:\n    if len(left) != len(right):\n        raise ValueError(\"vectors must have the same dimensions\")\n    left_norm = math.sqrt(sum(value * value for value in left))\n    right_norm = math.sqrt(sum(value * value for value in right))\n    if left_norm == 0 or right_norm == 0:\n        return 0.0\n    dot = sum(a * b for a, b in zip(left, right))\n    similarity = dot / (left_norm * right_norm)\n    if abs(similarity - 1.0) < 1e-12:\n        return 1.0\n    if abs(similarity + 1.0) < 1e-12:\n        return -1.0\n    return similarity\n\n\ndef lexical_overlap_score(query_text: str, doc_text: str) -> float:\n    query_terms = set(tokenize(query_text))\n    if not query_terms:\n        return 0.0\n    doc_terms = set(tokenize(doc_text))\n    return len(query_terms & doc_terms) / len(query_terms)\n\n\ndef hybrid_score(\n    query_text: str,\n    query_vector: list[float],\n    doc_text: str,\n    doc_vector: list[float],\n    alpha: float = 0.5,\n) -> float:\n    if not 0.0 <= alpha <= 1.0:\n        raise ValueError(\"alpha must be between 0 and 1\")\n    semantic = cosine_similarity(query_vector, doc_vector)\n    lexical = lexical_overlap_score(query_text, doc_text)\n    return alpha * semantic + (1.0 - alpha) * lexical\n\n\ndef rank_documents(\n    query_text: str,\n    query_vector: list[float],\n    documents: list[dict[str, object]],\n    alpha: float = 0.5,\n) -> list[tuple[str, float]]:\n    scored = [\n        (\n            str(document[\"id\"]),\n            hybrid_score(\n                query_text,\n                query_vector,\n                str(document[\"text\"]),\n                list(document[\"vector\"]),\n                alpha=alpha,\n            ),\n        )\n        for document in documents\n    ]\n    return sorted(scored, key=lambda item: (-item[1], item[0]))\n"
+        }
+      ]
+    },
+    {
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "reranking-pipelines",
+      "title": "Reranking Pipelines",
+      "path": "modules/databases/vector-db/reranking-pipelines",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "readme": "# Reranking Pipelines\n\n> Track: `databases` | Topic: `vector-db`\n\n## Concept\n\nReranking takes a coarse candidate set from first-stage retrieval and reorders it with a more expensive, more precise scoring function.\n\n## Key Points\n\n- First-stage retrieval is about recall.\n- Reranking is about improving the final ordering inside the candidate set.\n- A reranker cannot rescue a relevant document that never made it into the candidate pool.\n- Hybrid systems often use vector retrieval first, then rerank with lexical or model-based signals.\n\n## Minimal Code Mental Model\n\n```python\ntop_candidates = initial_retrieve(documents, candidate_k=2)\nreranked = rerank_candidates(\"approval gated actions\", top_candidates)\nfinal_ids = pipeline_rank(\"approval gated actions\", documents, candidate_k=2, final_k=2)\n```\n\n## Function\n\n```python\ndef tokenize(text: str) -> list[str]:\ndef initial_retrieve(\n    documents: list[dict[str, object]],\n    candidate_k: int,\n) -> list[dict[str, object]]:\ndef rerank_score(query_text: str, document: dict[str, object]) -> float:\ndef rerank_candidates(\n    query_text: str,\n    candidates: list[dict[str, object]],\n) -> list[tuple[str, float]]:\ndef pipeline_rank(\n    query_text: str,\n    documents: list[dict[str, object]],\n    candidate_k: int,\n    final_k: int,\n) -> list[str]:\n```\n\n## Run tests\n\n```bash\npytest modules/databases/vector-db/reranking-pipelines/python -q\n```\n",
+      "sources": [
+        {
+          "path": "modules/databases/vector-db/reranking-pipelines/python/reranking_pipelines.py",
+          "language": "python",
+          "content": "\"\"\"reranking_pipelines - candidate retrieval followed by a stronger reranker.\"\"\"\n\nfrom __future__ import annotations\n\nimport re\n\n\ndef tokenize(text: str) -> list[str]:\n    return re.findall(r\"[a-z0-9]+\", text.lower())\n\n\ndef initial_retrieve(\n    documents: list[dict[str, object]],\n    candidate_k: int,\n) -> list[dict[str, object]]:\n    ranked = sorted(\n        documents,\n        key=lambda document: (-float(document[\"retrieval_score\"]), str(document[\"id\"])),\n    )\n    return ranked[:candidate_k]\n\n\ndef rerank_score(query_text: str, document: dict[str, object]) -> float:\n    query_tokens = set(tokenize(query_text))\n    doc_text = str(document[\"text\"])\n    doc_tokens = set(tokenize(doc_text))\n    overlap = 0.0 if not query_tokens else len(query_tokens & doc_tokens) / len(query_tokens)\n    exact_phrase_bonus = 1.0 if query_text.lower() in doc_text.lower() else 0.0\n    retrieval_score = float(document[\"retrieval_score\"])\n    return 0.2 * retrieval_score + 0.5 * overlap + 0.3 * exact_phrase_bonus\n\n\ndef rerank_candidates(\n    query_text: str,\n    candidates: list[dict[str, object]],\n) -> list[tuple[str, float]]:\n    scored = [\n        (str(document[\"id\"]), rerank_score(query_text, document))\n        for document in candidates\n    ]\n    return sorted(scored, key=lambda item: (-item[1], item[0]))\n\n\ndef pipeline_rank(\n    query_text: str,\n    documents: list[dict[str, object]],\n    candidate_k: int,\n    final_k: int,\n) -> list[str]:\n    candidates = initial_retrieve(documents, candidate_k=candidate_k)\n    reranked = rerank_candidates(query_text, candidates)\n    return [doc_id for doc_id, _ in reranked[:final_k]]\n"
         }
       ]
     },
@@ -10444,6 +10736,141 @@
       "path": "docs/ml/systems/gpu/README.md",
       "summary": "GPU reasoning should connect model math to memory traffic and achievable throughput.",
       "content": "# GPU Performance\n\nGPU reasoning should connect model math to memory traffic and achievable throughput.\n\n## Current Anchors\n\n- Training loop mechanics (`modules/ml/systems/training-loop-mechanics`)\n- Numeric formats and quantization (`modules/ml/llm/precision-and-quantization`)\n- Roofline analysis (`modules/ml/systems/roofline-analysis`)\n\n## Concepts to Cover Well\n\n- Arithmetic intensity\n- Compute-bound vs memory-bound kernels\n- Quantization and memory savings\n- Kernel fusion and bandwidth pressure\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "README.md",
+      "slug": "README",
+      "title": "Software Engineering",
+      "path": "docs/software-engineering/README.md",
+      "summary": "This track is about building software that stays correct when code is cheap, change is constant, and AI can generate implementations faster than humans can reason about consequence…",
+      "content": "# Software Engineering\n\nThis track is about building software that stays correct when code is cheap, change is constant, and AI can generate implementations faster than humans can reason about consequences.\n\n## Purpose\n\nUse this track to learn the engineering responsibilities that still matter most in 2026:\n- define stable contracts and invariants\n- verify behavior before and after change\n- handle state, latency, concurrency, and failure explicitly\n- keep systems observable, secure, and operable\n- use AI coding tools without giving up review discipline\n\n## First Principles\n\n- AI speeds up implementation. It does not remove the need for contracts, tests, or rollback paths.\n- Most expensive bugs happen at boundaries: API boundaries, data boundaries, trust boundaries, and concurrency boundaries.\n- Good engineering turns hidden assumptions into explicit schemas, thresholds, tests, alerts, and operating rules.\n- Software quality is not just code quality. It also includes delivery safety, production behavior, and incident recovery.\n\n## How To Use This Track\n\n- Start with `tooling`, `apis`, `testing`, and `security-basics`.\n- Add `concurrency`, `observability`, `reliability`, and `performance` before going deep on `system-design`.\n- Use `python`, `rust`, and `typescript` as implementation support, not as the main curriculum spine.\n- Keep `design-patterns` secondary. Prefer patterns that clarify a real boundary or failure mode.\n\n## Module Authoring Rule\n\nEach software-engineering module should answer the same six questions:\n- What contract or invariant matters here?\n- What usually fails?\n- How do we test it?\n- What do we monitor in production?\n- What trust boundary exists?\n- What changes when AI helps write the code?\n\n## Main Sections\n\n- Tooling and AI-assisted workflow: `docs/software-engineering/tooling`\n- APIs and compatibility: `docs/software-engineering/apis`\n- Testing and verification: `docs/software-engineering/testing`\n- Security and trust boundaries: `docs/software-engineering/security-basics`\n- Concurrency and background work: `docs/software-engineering/concurrency`\n- Observability and debug signals: `docs/software-engineering/observability`\n- Reliability and safe delivery: `docs/software-engineering/reliability`\n- Performance and cost: `docs/software-engineering/performance`\n- System design and boundaries: `docs/software-engineering/system-design`\n- Platform and delivery systems: `docs/software-engineering/platform-and-delivery`\n- Python engineering: `docs/software-engineering/python`\n- Rust engineering: `docs/software-engineering/rust`\n- TypeScript engineering: `docs/software-engineering/typescript`\n- Practical design patterns: `docs/software-engineering/design-patterns`\n\n## AI-Time 2026 Priorities\n\n- Contract-first engineering over prompt-first engineering.\n- Regression resistance for AI-generated changes.\n- Observability and rollback before aggressive automation.\n- Reliability rules for retries, queues, overload, and partial failure.\n- Platform leverage that improves delivery speed without hiding ownership.\n\n## First 20 Canonical Modules\n\nBuild the track in this order:\n\n1. `ai-assisted-dev-loop`\n2. `reproducible-dev-environments`\n3. `repo-layout-and-codegen-boundaries`\n4. `api-contract-basics`\n5. `schema-evolution-and-compatibility`\n6. `idempotency-keys`\n7. `retries-timeouts-and-backoff`\n8. `test-portfolio-in-practice`\n9. `contract-tests`\n10. `regression-tests-for-ai-generated-code`\n11. `authn-vs-authz`\n12. `least-privilege-and-secrets-management`\n13. `race-conditions-and-shared-state`\n14. `cancellation-deadlines-and-timeouts`\n15. `logs-metrics-and-traces`\n16. `slis-slos-and-alerting`\n17. `graceful-degradation-and-overload`\n18. `canary-rollout-and-rollback`\n19. `latency-budgeting`\n20. `service-boundaries-and-failure-domains`\n\n## Scope Rule\n\n- Prefer stable engineering principles over framework churn.\n- Prefer compact modules with clear failure modes over long catalogs of tips.\n- Prefer operationally meaningful topics over interview-style trivia.\n- Treat AI as a workflow amplifier layered on top of software fundamentals, not as a replacement for them.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "apis",
+      "slug": "apis",
+      "title": "APIs",
+      "path": "docs/software-engineering/apis/README.md",
+      "summary": "This section is about contracts between systems and how those contracts survive change.",
+      "content": "# APIs\n\nThis section is about contracts between systems and how those contracts survive change.\n\n## Purpose\n\nUse this page to understand:\n- request and response contracts\n- compatibility over time\n- safe mutation semantics\n- retries, deadlines, and delivery failure\n\n## First Principles\n\n- API design is contract design, not route naming.\n- Backward compatibility is a product decision encoded in schemas and error behavior.\n- A retried request is normal production behavior, not an edge case.\n- Mutating endpoints need explicit safety rules such as idempotency or conflict handling.\n\n## Canonical Modules\n\n- `api-contract-basics`\n- `schema-evolution-and-compatibility`\n- `idempotency-keys`\n- `pagination-patterns`\n- `retries-timeouts-and-backoff`\n- `webhooks-and-signature-validation`\n\n## When To Use What\n\n- Start with contract basics and compatibility before advanced transport concerns.\n- Use idempotency for retried writes, queued work, and externally retried calls.\n- Add pagination once response size and traversal order both matter.\n- Treat webhooks as hostile network edges and validate sender authenticity explicitly.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "concurrency",
+      "slug": "concurrency",
+      "title": "Concurrency",
+      "path": "docs/software-engineering/concurrency/README.md",
+      "summary": "This section is about what changes when work happens in parallel, out of order, or under cancellation.",
+      "content": "# Concurrency\n\nThis section is about what changes when work happens in parallel, out of order, or under cancellation.\n\n## Purpose\n\nUse this page to understand:\n- shared-state hazards\n- queues and background workers\n- timeouts and cancellation\n- duplicate delivery and retries\n\n## First Principles\n\n- Concurrency bugs are usually state bugs with timing attached.\n- Retries, duplicate delivery, and cancellation are normal, not exceptional.\n- Queues trade immediate coupling for delayed coordination.\n- A clear state machine is often easier to reason about than a pile of interleavings.\n\n## Canonical Modules\n\n- `race-conditions-and-shared-state`\n- `queues-vs-locks`\n- `cancellation-deadlines-and-timeouts`\n- `idempotent-consumers`\n- `worker-retry-semantics`\n- `state-machine-thinking`\n\n## When To Use What\n\n- Start with races and cancellation before distributed worker systems.\n- Use queues when work can be delayed and retried safely.\n- Use explicit idempotency when duplicate execution is possible.\n- Model long-running workflows as state transitions instead of implicit control flow.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "slug": "design-patterns",
+      "title": "Design Patterns",
+      "path": "docs/software-engineering/design-patterns/README.md",
+      "summary": "This section is about a small set of patterns that still clarify real systems in 2026.",
+      "content": "# Design Patterns\n\nThis section is about a small set of patterns that still clarify real systems in 2026.\n\n## Purpose\n\nUse this page to organize patterns into:\n- boundary translation\n- dependency control\n- behavior selection\n- explicit state\n\n## First Principles\n\n- Patterns are useful only when they remove ambiguity or repeated failure modes.\n- Most software does not improve by collecting more abstractions.\n- Prefer patterns that explain a boundary or control flow clearly in code review.\n- If a pattern hides behavior, it is probably the wrong pattern for a learning-first repo.\n\n## Canonical Modules\n\n- `adapters-and-anti-corruption-layers`\n- `dependency-injection-basics`\n- `strategy-pattern-in-real-systems`\n- `state-machine-basics`\n- `composition-over-inheritance`\n\n## When To Use What\n\n- Use adapters when integrating with an unstable or externally owned interface.\n- Use dependency injection when testing and replacement of side effects matter.\n- Use strategy when you need multiple policy choices behind one stable contract.\n- Use explicit state machines when workflow correctness matters more than elegance.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "observability",
+      "slug": "observability",
+      "title": "Observability",
+      "path": "docs/software-engineering/observability/README.md",
+      "summary": "This section is about the signals that let you understand what the system is doing in production.",
+      "content": "# Observability\n\nThis section is about the signals that let you understand what the system is doing in production.\n\n## Purpose\n\nUse this page to organize observability into:\n- logs, metrics, and traces\n- structured debugging signals\n- service objectives and alerts\n- operating context for incidents\n\n## First Principles\n\n- If a system cannot explain its behavior in production, it is harder to trust and harder to improve.\n- Logs, metrics, and traces answer different questions and should reinforce each other.\n- Alerts should represent user or service risk, not raw noise volume.\n- Observability should be designed into the system before incidents force it.\n\n## Canonical Modules\n\n- `logs-metrics-and-traces`\n- `structured-logging`\n- `trace-driven-debugging`\n- `slis-slos-and-alerting`\n- `runbooks-and-dashboards`\n\n## When To Use What\n\n- Start with logs, metrics, and traces before building custom dashboards.\n- Use structured logging when manual text search is no longer enough.\n- Use traces when latency and dependency chains are hard to localize.\n- Use SLO-based alerting when you need alerts tied to user impact instead of infrastructure noise.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "performance",
+      "title": "Performance",
+      "path": "docs/software-engineering/performance/README.md",
+      "summary": "This section is about response time, throughput, resource cost, and where the real bottlenecks come from.",
+      "content": "# Performance\n\nThis section is about response time, throughput, resource cost, and where the real bottlenecks come from.\n\n## Purpose\n\nUse this page to organize performance into:\n- latency budgets\n- throughput constraints\n- caching and batching\n- profiling and cost tradeoffs\n\n## First Principles\n\n- Performance work starts with measurement, not with optimization folklore.\n- Latency is often dominated by a few slow boundaries, not by every line of code equally.\n- Throughput, memory, and cost trade off against each other.\n- The right optimization depends on the bottleneck shape: CPU, I/O, memory, network, or contention.\n\n## Canonical Modules\n\n- `latency-budgeting`\n- `caching-basics`\n- `batching-vs-streaming`\n- `profiling-workflow`\n- `memory-and-allocation-basics`\n- `cost-performance-tradeoffs`\n\n## When To Use What\n\n- Start with latency budgets and profiling before trying micro-optimizations.\n- Use caching only when invalidation and freshness rules are explicit enough to keep it correct.\n- Use batching when amortization matters more than tail latency.\n- Use streaming when early partial results matter more than total completion time.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "platform-and-delivery",
+      "title": "Platform And Delivery",
+      "path": "docs/software-engineering/platform-and-delivery/README.md",
+      "summary": "This section is about the systems and team structures that determine how safely and quickly software changes reach production.",
+      "content": "# Platform And Delivery\n\nThis section is about the systems and team structures that determine how safely and quickly software changes reach production.\n\n## Purpose\n\nUse this page to organize platform engineering into:\n- release pipelines\n- progressive delivery\n- internal platform leverage\n- ownership and team interfaces\n\n## First Principles\n\n- Delivery speed matters only when quality and recovery keep pace with it.\n- A useful platform removes repeated toil without hiding essential ownership boundaries.\n- Team interfaces shape system design as much as code interfaces do.\n- Cognitive load is a real architecture constraint.\n\n## Canonical Modules\n\n- `release-engineering-basics`\n- `progressive-delivery`\n- `internal-platforms`\n- `developer-experience-as-leverage`\n- `ownership-boundaries`\n- `cognitive-load-and-team-interfaces`\n\n## When To Use What\n\n- Start here once the technical foundations of change safety are in place.\n- Use progressive delivery when rollback cost and blast radius both matter.\n- Build platform abstractions only when many teams repeat the same work.\n- Revisit ownership boundaries when coordination overhead becomes the real bottleneck.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "python",
+      "slug": "python",
+      "title": "Python",
+      "path": "docs/software-engineering/python/README.md",
+      "summary": "This section is about writing Python that remains maintainable in real services, tools, and data-heavy systems.",
+      "content": "# Python\n\nThis section is about writing Python that remains maintainable in real services, tools, and data-heavy systems.\n\n## Purpose\n\nUse this page to organize Python engineering into:\n- project structure and packaging\n- typing and interfaces\n- async services\n- testing and profiling\n\n## First Principles\n\n- Python scales best when interfaces and data shapes are made explicit.\n- Type hints are communication tools as much as checker inputs.\n- Async code increases throughput only when the I/O model actually matches it.\n- Python performance work usually begins with measuring object, allocation, and serialization costs.\n\n## Canonical Modules\n\n- `typing-for-large-python-codebases`\n- `async-python-services`\n- `packaging-and-project-layout`\n- `testing-python-services`\n- `profiling-python`\n\n## When To Use What\n\n- Start with project layout and typing before advanced async patterns.\n- Use async for I/O-heavy services, not as a default for every codebase.\n- Add profiling before replacing simple Python with lower-level code.\n- Keep Python examples small but production-shaped.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "reliability",
+      "title": "Reliability",
+      "path": "docs/software-engineering/reliability/README.md",
+      "summary": "This section is about keeping systems useful under failure, overload, and risky change.",
+      "content": "# Reliability\n\nThis section is about keeping systems useful under failure, overload, and risky change.\n\n## Purpose\n\nUse this page to organize reliability into:\n- failure containment\n- safe retries and fallbacks\n- rollout and rollback\n- incident response and learning\n\n## First Principles\n\n- Failure is a normal operating condition, not a surprising exception.\n- Reliability comes from bounded blast radius, not from assuming components never fail.\n- Overload behavior should be designed, not discovered in production.\n- A fast rollback path is often more valuable than a perfect fix path.\n\n## Canonical Modules\n\n- `graceful-degradation-and-overload`\n- `circuit-breakers-and-bulkheads`\n- `retries-and-fallbacks`\n- `canary-rollout-and-rollback`\n- `incidents-and-postmortems`\n\n## When To Use What\n\n- Start with graceful degradation and rollout safety before advanced control patterns.\n- Use bulkheads when one failing dependency should not take down unrelated paths.\n- Use retries only when the operation and load profile can tolerate them.\n- Use postmortems to improve operating assumptions, not to assign blame.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "rust",
+      "slug": "rust",
+      "title": "Rust",
+      "path": "docs/software-engineering/rust/README.md",
+      "summary": "This section is about using Rust for correctness, explicit failure handling, and predictable systems behavior.",
+      "content": "# Rust\n\nThis section is about using Rust for correctness, explicit failure handling, and predictable systems behavior.\n\n## Purpose\n\nUse this page to organize Rust engineering into:\n- ownership at interfaces\n- error handling\n- abstraction boundaries\n- async and testing\n\n## First Principles\n\n- Rust pushes correctness decisions earlier in the development loop.\n- Ownership and borrowing become most useful at API and state boundaries.\n- Explicit error types improve recovery and observability.\n- Performance gains are strongest when memory and concurrency behavior are already understood.\n\n## Canonical Modules\n\n- `result-error-handling`\n- `ownership-at-api-boundaries`\n- `traits-and-abstraction-boundaries`\n- `async-rust-services`\n- `testing-rust-libraries`\n\n## When To Use What\n\n- Start with ownership and errors before async or advanced traits.\n- Use Rust where control over state, memory, or concurrency matters enough to justify the extra precision.\n- Keep abstractions narrow until the real boundary is stable.\n- Treat tests as executable documentation for invariants, not just behavior checks.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "security-basics",
+      "slug": "security-basics",
+      "title": "Security Basics",
+      "path": "docs/software-engineering/security-basics/README.md",
+      "summary": "This section is about trust boundaries, misuse resistance, and secure change management.",
+      "content": "# Security Basics\n\nThis section is about trust boundaries, misuse resistance, and secure change management.\n\n## Purpose\n\nUse this page to organize security into:\n- identity and authorization\n- data handling and validation\n- secret and credential control\n- dependency and SDLC risk\n\n## First Principles\n\n- Security is part of software design, not a final review step.\n- Trust boundaries should be explicit in code, config, and operational rules.\n- Least privilege is easier to maintain than broad access plus ad hoc exceptions.\n- AI-assisted coding increases supply-chain, secret-handling, and unsafe-action risk if boundaries are vague.\n\n## Canonical Modules\n\n- `authn-vs-authz`\n- `input-validation-and-output-encoding`\n- `secrets-management`\n- `least-privilege`\n- `dependency-and-supply-chain-risk`\n- `secure-sdlc-basics`\n\n## When To Use What\n\n- Start with identity and trust boundaries before specialized controls.\n- Use least privilege and secret isolation early, not after incidents.\n- Add supply-chain controls once dependency count and automation increase.\n- Treat secure SDLC work as part of delivery quality, not a separate domain.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "system-design",
+      "title": "System Design",
+      "path": "docs/software-engineering/system-design/README.md",
+      "summary": "This section is about choosing boundaries, state placement, and failure domains for systems that have to evolve.",
+      "content": "# System Design\n\nThis section is about choosing boundaries, state placement, and failure domains for systems that have to evolve.\n\n## Purpose\n\nUse this page to understand:\n- requirements and tradeoffs\n- service and storage boundaries\n- background work and workflows\n- consistency and failure-domain decisions\n\n## First Principles\n\n- Good system design starts with nonfunctional requirements, not component diagrams.\n- Boundaries should make ownership, failure, and scaling easier to reason about.\n- Stateful systems need explicit consistency and recovery rules.\n- Architecture is mostly about choosing what can fail independently and what must stay coupled.\n\n## Canonical Modules\n\n- `requirements-and-failure-models`\n- `service-boundaries-and-failure-domains`\n- `stateless-vs-stateful-design`\n- `storage-choice-basics`\n- `background-jobs-and-workflows`\n- `consistency-tradeoffs`\n\n## When To Use What\n\n- Start here after the API, testing, reliability, and observability foundations are clear.\n- Use service boundaries when they simplify ownership or failure isolation, not just to create more services.\n- Use stateful designs only with explicit recovery and consistency reasoning.\n- Treat workflows and job systems as part of architecture, not as afterthoughts.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "testing",
+      "slug": "testing",
+      "title": "Testing",
+      "path": "docs/software-engineering/testing/README.md",
+      "summary": "This section is about verification strategies that keep code changes safe, especially when AI helps generate the code.",
+      "content": "# Testing\n\nThis section is about verification strategies that keep code changes safe, especially when AI helps generate the code.\n\n## Purpose\n\nUse this page to organize testing into:\n- fast local checks\n- contract verification\n- regression prevention\n- nondeterminism control\n\n## First Principles\n\n- Testing should protect key invariants, not just increase line coverage.\n- Fast and focused tests usually catch more useful regressions than large end-to-end suites alone.\n- AI-generated code needs strong regression checks because the implementation can look plausible while violating contracts.\n- Flaky tests destroy trust in the whole verification system.\n\n## Canonical Modules\n\n- `test-portfolio-in-practice`\n- `contract-tests`\n- `property-based-testing-basics`\n- `golden-and-snapshot-test-tradeoffs`\n- `flaky-test-reduction`\n- `regression-tests-for-ai-generated-code`\n\n## When To Use What\n\n- Start with a practical test portfolio before expanding test types.\n- Use contract tests at service and schema boundaries.\n- Use property-based tests when inputs are wide and hand-picked examples miss edge cases.\n- Use snapshot or golden tests only when output shape matters more than exact internal implementation.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "tooling",
+      "slug": "tooling",
+      "title": "Tooling",
+      "path": "docs/software-engineering/tooling/README.md",
+      "summary": "This section is about the development loop that turns changes into reviewed, reproducible, and shippable software.",
+      "content": "# Tooling\n\nThis section is about the development loop that turns changes into reviewed, reproducible, and shippable software.\n\n## Purpose\n\nUse this page to organize tooling into:\n- local environment setup\n- repo and code generation boundaries\n- CI and release checks\n- AI-assisted coding workflow\n- review discipline\n\n## First Principles\n\n- A fast loop is only useful if it is reproducible.\n- Generated code should have clear ownership boundaries.\n- AI-generated code increases the need for review structure, not less.\n- Tooling should reduce accidental variation in how code is built, tested, and shipped.\n\n## Canonical Modules\n\n- `ai-assisted-dev-loop`\n- `reproducible-dev-environments`\n- `repo-layout-and-codegen-boundaries`\n- `ci-pipeline-basics`\n- `review-and-merge-discipline`\n\n## When To Use What\n\n- Start here before deeper system topics.\n- Use reproducible environment modules before debugging flaky local setup.\n- Make code generation boundaries explicit before generated files spread through the repo.\n- Add AI workflow rules before relying on agents for large code edits.\n"
+    },
+    {
+      "track": "software-engineering",
+      "topic": "typescript",
+      "slug": "typescript",
+      "title": "TypeScript",
+      "path": "docs/software-engineering/typescript/README.md",
+      "summary": "This section is about using types to keep web and backend systems honest across changing interfaces.",
+      "content": "# TypeScript\n\nThis section is about using types to keep web and backend systems honest across changing interfaces.\n\n## Purpose\n\nUse this page to organize TypeScript engineering into:\n- type-driven interfaces\n- runtime validation\n- async backend behavior\n- testing across client and server boundaries\n\n## First Principles\n\n- Static types help most when data crosses boundaries.\n- Compile-time safety is not enough for untrusted runtime data.\n- Shared types are useful only when ownership and versioning stay clear.\n- TypeScript should clarify contracts, not turn every file into type-level metaprogramming.\n\n## Canonical Modules\n\n- `type-driven-api-design`\n- `runtime-validation`\n- `async-typescript-services`\n- `testing-typescript-backends`\n- `frontend-backend-shared-types`\n\n## When To Use What\n\n- Start with type-driven interfaces and runtime validation before advanced type tricks.\n- Use runtime validation for all external or persisted data.\n- Share types only when the boundary and release process can support it.\n- Keep examples biased toward service and app code, not puzzle-style type programming.\n"
     }
   ]
 }

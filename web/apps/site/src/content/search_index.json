@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T15:41:14.535Z",
+  "generated_at": "2026-03-11T15:57:56.440Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -1934,6 +1934,18 @@
       "topicName": "LLM"
     },
     {
+      "id": "doc:software-engineering/apis/apis",
+      "type": "doc",
+      "title": "APIs",
+      "summary": "This section is about contracts between systems and how those contracts survive change.",
+      "track": "software-engineering",
+      "topic": "apis",
+      "slug": "apis",
+      "href": "/track/software-engineering/apis#apis",
+      "trackName": "Software Engineering",
+      "topicName": "APIs"
+    },
+    {
       "id": "module:ai-agents/guardrails/approval-gated-actions",
       "type": "module",
       "title": "Approval-Gated Actions",
@@ -2294,6 +2306,18 @@
       "topicName": "MLOps"
     },
     {
+      "id": "module:databases/query-plans/cardinality-estimation",
+      "type": "module",
+      "title": "Cardinality Estimation",
+      "summary": "> Track: `databases` | Topic: `query-plans`",
+      "track": "databases",
+      "topic": "query-plans",
+      "slug": "cardinality-estimation",
+      "href": "/track/databases/query-plans#cardinality-estimation",
+      "trackName": "Databases",
+      "topicName": "Query Plans"
+    },
+    {
       "id": "module:ml/data/categorical-encoding-methods",
       "type": "module",
       "title": "Categorical Encoding Methods",
@@ -2402,6 +2426,18 @@
       "topicName": "Dynamic Programming"
     },
     {
+      "id": "module:databases/indexing/composite-index-order",
+      "type": "module",
+      "title": "Composite Index Order",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "composite-index-order",
+      "href": "/track/databases/indexing#composite-index-order",
+      "trackName": "Databases",
+      "topicName": "Indexing"
+    },
+    {
       "id": "module:ai-agents/tool-use/computer-use",
       "type": "module",
       "title": "Computer Use",
@@ -2424,6 +2460,18 @@
       "href": "/track/ml/computer-vision#computer-vision",
       "trackName": "Machine Learning",
       "topicName": "Computer Vision"
+    },
+    {
+      "id": "doc:software-engineering/concurrency/concurrency",
+      "type": "doc",
+      "title": "Concurrency",
+      "summary": "This section is about what changes when work happens in parallel, out of order, or under cancellation.",
+      "track": "software-engineering",
+      "topic": "concurrency",
+      "slug": "concurrency",
+      "href": "/track/software-engineering/concurrency#concurrency",
+      "trackName": "Software Engineering",
+      "topicName": "Concurrency"
     },
     {
       "id": "module:ai-agents/evaluation/confidence-calibration",
@@ -2460,6 +2508,18 @@
       "href": "/track/ai-agents/planning#constrained-optimization-for-budgeted-agent-policies",
       "trackName": "AI Agents",
       "topicName": "Planning"
+    },
+    {
+      "id": "module:databases/relational/constraints-and-integrity",
+      "type": "module",
+      "title": "Constraints And Integrity",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "constraints-and-integrity",
+      "href": "/track/databases/relational#constraints-and-integrity",
+      "trackName": "Databases",
+      "topicName": "Relational"
     },
     {
       "id": "module:ml/llm/context-budgeting-and-truncation",
@@ -2714,6 +2774,18 @@
       "topicName": "Generative"
     },
     {
+      "id": "module:databases/transactions/deadlocks-and-lock-ordering",
+      "type": "module",
+      "title": "Deadlocks And Lock Ordering",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "deadlocks-and-lock-ordering",
+      "href": "/track/databases/transactions#deadlocks-and-lock-ordering",
+      "trackName": "Databases",
+      "topicName": "Transactions"
+    },
+    {
       "id": "module:ai-agents/multi-agent/debate-and-arbitration",
       "type": "module",
       "title": "Debate and Arbitration",
@@ -2760,6 +2832,18 @@
       "href": "/track/ml/llm#decoding-methods",
       "trackName": "Machine Learning",
       "topicName": "LLM"
+    },
+    {
+      "id": "module:databases/sql-patterns/dedup-and-latest-row",
+      "type": "module",
+      "title": "Dedup And Latest Row",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "dedup-and-latest-row",
+      "href": "/track/databases/sql-patterns#dedup-and-latest-row",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
     },
     {
       "id": "doc:ml/deep-learning/deep-learning",
@@ -2820,6 +2904,18 @@
       "href": "/track/ml/mlops#depth-spike-rate",
       "trackName": "Machine Learning",
       "topicName": "MLOps"
+    },
+    {
+      "id": "doc:software-engineering/design-patterns/design-patterns",
+      "type": "doc",
+      "title": "Design Patterns",
+      "summary": "This section is about a small set of patterns that still clarify real systems in 2026.",
+      "track": "software-engineering",
+      "topic": "design-patterns",
+      "slug": "design-patterns",
+      "href": "/track/software-engineering/design-patterns#design-patterns",
+      "trackName": "Software Engineering",
+      "topicName": "Design Patterns"
     },
     {
       "id": "module:ml/optimization/detect-nans",
@@ -3132,6 +3228,18 @@
       "href": "/track/databases/streaming#event-stream-basics",
       "trackName": "Databases",
       "topicName": "Streaming"
+    },
+    {
+      "id": "module:databases/vector-db/exact-vs-ann-search",
+      "type": "module",
+      "title": "Exact Vs ANN Search",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "exact-vs-ann-search",
+      "href": "/track/databases/vector-db#exact-vs-ann-search",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "module:ai-agents/prompting/examples-and-delimiters",
@@ -3542,6 +3650,18 @@
       "topicName": "Vector Db"
     },
     {
+      "id": "module:databases/streaming/idempotent-consumers",
+      "type": "module",
+      "title": "Idempotent Consumers",
+      "summary": "> Track: `databases` | Topic: `streaming`",
+      "track": "databases",
+      "topic": "streaming",
+      "slug": "idempotent-consumers",
+      "href": "/track/databases/streaming#idempotent-consumers",
+      "trackName": "Databases",
+      "topicName": "Streaming"
+    },
+    {
       "id": "module:ml/computer-vision/image-preprocessing",
       "type": "module",
       "title": "Image Preprocessing",
@@ -3756,6 +3876,18 @@
       "href": "/track/ml/fundamentals#jensen-shannon-divergence",
       "trackName": "Machine Learning",
       "topicName": "Fundamentals"
+    },
+    {
+      "id": "module:databases/relational/join-shapes",
+      "type": "module",
+      "title": "Join Shapes",
+      "summary": "> Track: `databases` | Topic: `relational`",
+      "track": "databases",
+      "topic": "relational",
+      "slug": "join-shapes",
+      "href": "/track/databases/relational#join-shapes",
+      "trackName": "Databases",
+      "topicName": "Relational"
     },
     {
       "id": "module:ai-agents/evaluation/judge-and-trace-grading",
@@ -4274,6 +4406,18 @@
       "topicName": "Memory"
     },
     {
+      "id": "module:databases/schema-design/metadata-and-lineage-tables",
+      "type": "module",
+      "title": "Metadata And Lineage Tables",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "metadata-and-lineage-tables",
+      "href": "/track/databases/schema-design#metadata-and-lineage-tables",
+      "trackName": "Databases",
+      "topicName": "Schema Design"
+    },
+    {
       "id": "doc:ml/representation/metric-learning",
       "type": "doc",
       "title": "Metric Learning",
@@ -4430,6 +4574,18 @@
       "topicName": "Reinforcement Learning"
     },
     {
+      "id": "module:databases/schema-design/multi-tenant-schema-patterns",
+      "type": "module",
+      "title": "Multi Tenant Schema Patterns",
+      "summary": "> Track: `databases` | Topic: `schema-design`",
+      "track": "databases",
+      "topic": "schema-design",
+      "slug": "multi-tenant-schema-patterns",
+      "href": "/track/databases/schema-design#multi-tenant-schema-patterns",
+      "trackName": "Databases",
+      "topicName": "Schema Design"
+    },
+    {
       "id": "doc:ai-agents/multi-agent/multi-agent",
       "type": "doc",
       "title": "Multi-Agent",
@@ -4524,6 +4680,18 @@
       "href": "/track/ml/fundamentals#mutual-information",
       "trackName": "Machine Learning",
       "topicName": "Fundamentals"
+    },
+    {
+      "id": "module:databases/transactions/mvcc-mental-model",
+      "type": "module",
+      "title": "MVCC Mental Model",
+      "summary": "> Track: `databases` | Topic: `transactions`",
+      "track": "databases",
+      "topic": "transactions",
+      "slug": "mvcc-mental-model",
+      "href": "/track/databases/transactions#mvcc-mental-model",
+      "trackName": "Databases",
+      "topicName": "Transactions"
     },
     {
       "id": "module:ml/models/naive-bayes-models",
@@ -4631,6 +4799,18 @@
       "slug": "observability",
       "href": "/track/ai-agents/observability#observability",
       "trackName": "AI Agents",
+      "topicName": "Observability"
+    },
+    {
+      "id": "doc:software-engineering/observability/observability",
+      "type": "doc",
+      "title": "Observability",
+      "summary": "This section is about the signals that let you understand what the system is doing in production.",
+      "track": "software-engineering",
+      "topic": "observability",
+      "slug": "observability",
+      "href": "/track/software-engineering/observability#observability",
+      "trackName": "Software Engineering",
       "topicName": "Observability"
     },
     {
@@ -4766,6 +4946,18 @@
       "topicName": "Evaluation"
     },
     {
+      "id": "module:databases/indexing/partial-indexes",
+      "type": "module",
+      "title": "Partial Indexes",
+      "summary": "> Track: `databases` | Topic: `indexing`",
+      "track": "databases",
+      "topic": "indexing",
+      "slug": "partial-indexes",
+      "href": "/track/databases/indexing#partial-indexes",
+      "trackName": "Databases",
+      "topicName": "Indexing"
+    },
+    {
       "id": "module:ml/llm/pass-at-k",
       "type": "module",
       "title": "Pass@k",
@@ -4788,6 +4980,18 @@
       "href": "/track/ml/fundamentals#pca",
       "trackName": "Machine Learning",
       "topicName": "Fundamentals"
+    },
+    {
+      "id": "doc:software-engineering/performance/performance",
+      "type": "doc",
+      "title": "Performance",
+      "summary": "This section is about response time, throughput, resource cost, and where the real bottlenecks come from.",
+      "track": "software-engineering",
+      "topic": "performance",
+      "slug": "performance",
+      "href": "/track/software-engineering/performance#performance",
+      "trackName": "Software Engineering",
+      "topicName": "Performance"
     },
     {
       "id": "module:ml/evaluation/permutation-test",
@@ -4848,6 +5052,18 @@
       "href": "/track/ai-agents/planning#planning-stop-conditions",
       "trackName": "AI Agents",
       "topicName": "Planning"
+    },
+    {
+      "id": "doc:software-engineering/platform-and-delivery/platform-and-delivery",
+      "type": "doc",
+      "title": "Platform And Delivery",
+      "summary": "This section is about the systems and team structures that determine how safely and quickly software changes reach production.",
+      "track": "software-engineering",
+      "topic": "platform-and-delivery",
+      "slug": "platform-and-delivery",
+      "href": "/track/software-engineering/platform-and-delivery#platform-and-delivery",
+      "trackName": "Software Engineering",
+      "topicName": "Platform And Delivery"
     },
     {
       "id": "module:ai-agents/guardrails/policy-and-escalation",
@@ -5054,6 +5270,18 @@
       "topicName": "Prompting"
     },
     {
+      "id": "doc:software-engineering/python/python",
+      "type": "doc",
+      "title": "Python",
+      "summary": "This section is about writing Python that remains maintainable in real services, tools, and data-heavy systems.",
+      "track": "software-engineering",
+      "topic": "python",
+      "slug": "python",
+      "href": "/track/software-engineering/python#python",
+      "trackName": "Software Engineering",
+      "topicName": "Python"
+    },
+    {
       "id": "module:ml/llm/qk-clip",
       "type": "module",
       "title": "QK-Clip",
@@ -5222,6 +5450,18 @@
       "topicName": "Relational"
     },
     {
+      "id": "doc:software-engineering/reliability/reliability",
+      "type": "doc",
+      "title": "Reliability",
+      "summary": "This section is about keeping systems useful under failure, overload, and risky change.",
+      "track": "software-engineering",
+      "topic": "reliability",
+      "slug": "reliability",
+      "href": "/track/software-engineering/reliability#reliability",
+      "trackName": "Software Engineering",
+      "topicName": "Reliability"
+    },
+    {
       "id": "module:ai-agents/planning/replanning",
       "type": "module",
       "title": "Replanning",
@@ -5256,6 +5496,18 @@
       "href": "/track/ml/mlops#request-batching",
       "trackName": "Machine Learning",
       "topicName": "MLOps"
+    },
+    {
+      "id": "module:databases/vector-db/reranking-pipelines",
+      "type": "module",
+      "title": "Reranking Pipelines",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "reranking-pipelines",
+      "href": "/track/databases/vector-db#reranking-pipelines",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "module:ai-agents/workflows/retries-and-recovery",
@@ -5486,6 +5738,18 @@
       "topicName": "Observability"
     },
     {
+      "id": "doc:software-engineering/rust/rust",
+      "type": "doc",
+      "title": "Rust",
+      "summary": "This section is about using Rust for correctness, explicit failure handling, and predictable systems behavior.",
+      "track": "software-engineering",
+      "topic": "rust",
+      "slug": "rust",
+      "href": "/track/software-engineering/rust#rust",
+      "trackName": "Software Engineering",
+      "topicName": "Rust"
+    },
+    {
       "id": "module:ai-agents/evaluation/sample-size-and-power",
       "type": "module",
       "title": "Sample Size and Power",
@@ -5522,6 +5786,18 @@
       "topicName": "Schema Design"
     },
     {
+      "id": "module:databases/nosql/secondary-index-tradeoffs",
+      "type": "module",
+      "title": "Secondary Index Tradeoffs",
+      "summary": "> Track: `databases` | Topic: `nosql`",
+      "track": "databases",
+      "topic": "nosql",
+      "slug": "secondary-index-tradeoffs",
+      "href": "/track/databases/nosql#secondary-index-tradeoffs",
+      "trackName": "Databases",
+      "topicName": "Nosql"
+    },
+    {
       "id": "module:ai-agents/evaluation/security-and-red-team-evals",
       "type": "module",
       "title": "Security and Red-Team Evals",
@@ -5532,6 +5808,18 @@
       "href": "/track/ai-agents/evaluation#security-and-red-team-evals",
       "trackName": "AI Agents",
       "topicName": "Evaluation"
+    },
+    {
+      "id": "doc:software-engineering/security-basics/security-basics",
+      "type": "doc",
+      "title": "Security Basics",
+      "summary": "This section is about trust boundaries, misuse resistance, and secure change management.",
+      "track": "software-engineering",
+      "topic": "security-basics",
+      "slug": "security-basics",
+      "href": "/track/software-engineering/security-basics#security-basics",
+      "trackName": "Software Engineering",
+      "topicName": "Security Basics"
     },
     {
       "id": "module:ai-agents/prompting/self-check-patterns",
@@ -5604,6 +5892,18 @@
       "href": "/track/ml/computer-vision#sobel-edge-detection",
       "trackName": "Machine Learning",
       "topicName": "Computer Vision"
+    },
+    {
+      "id": "doc:software-engineering/README.md/README",
+      "type": "doc",
+      "title": "Software Engineering",
+      "summary": "This track is about building software that stays correct when code is cheap, change is constant, and AI can generate implementations faster than humans can reason about consequence…",
+      "track": "software-engineering",
+      "topic": "README.md",
+      "slug": "README",
+      "href": "/track/software-engineering/README.md#README",
+      "trackName": "Software Engineering",
+      "topicName": "README.md"
     },
     {
       "id": "module:ai-agents/observability/span-taxonomy",
@@ -5822,6 +6122,18 @@
       "topicName": "Models"
     },
     {
+      "id": "doc:software-engineering/system-design/system-design",
+      "type": "doc",
+      "title": "System Design",
+      "summary": "This section is about choosing boundaries, state placement, and failure domains for systems that have to evolve.",
+      "track": "software-engineering",
+      "topic": "system-design",
+      "slug": "system-design",
+      "href": "/track/software-engineering/system-design#system-design",
+      "trackName": "Software Engineering",
+      "topicName": "System Design"
+    },
+    {
       "id": "module:ml/models/tsne-gradient",
       "type": "module",
       "title": "t-SNE Point Gradient",
@@ -5904,6 +6216,18 @@
       "href": "/track/ai-agents/tool-use#terminal-use",
       "trackName": "AI Agents",
       "topicName": "Tool Use"
+    },
+    {
+      "id": "doc:software-engineering/testing/testing",
+      "type": "doc",
+      "title": "Testing",
+      "summary": "This section is about verification strategies that keep code changes safe, especially when AI helps generate the code.",
+      "track": "software-engineering",
+      "topic": "testing",
+      "slug": "testing",
+      "href": "/track/software-engineering/testing#testing",
+      "trackName": "Software Engineering",
+      "topicName": "Testing"
     },
     {
       "id": "module:ml/mlops/throughput-per-dollar",
@@ -6012,6 +6336,18 @@
       "href": "/track/ai-agents/tool-use#tool-use-basics",
       "trackName": "AI Agents",
       "topicName": "Tool Use"
+    },
+    {
+      "id": "doc:software-engineering/tooling/tooling",
+      "type": "doc",
+      "title": "Tooling",
+      "summary": "This section is about the development loop that turns changes into reviewed, reproducible, and shippable software.",
+      "track": "software-engineering",
+      "topic": "tooling",
+      "slug": "tooling",
+      "href": "/track/software-engineering/tooling#tooling",
+      "trackName": "Software Engineering",
+      "topicName": "Tooling"
     },
     {
       "id": "module:ml/data/train-validation-test-split",
@@ -6134,6 +6470,18 @@
       "topicName": "Representation"
     },
     {
+      "id": "module:databases/caching/ttl-and-invalidation",
+      "type": "module",
+      "title": "TTL And Invalidation",
+      "summary": "> Track: `databases` | Topic: `caching`",
+      "track": "databases",
+      "topic": "caching",
+      "slug": "ttl-and-invalidation",
+      "href": "/track/databases/caching#ttl-and-invalidation",
+      "trackName": "Databases",
+      "topicName": "Caching"
+    },
+    {
       "id": "module:ml/fundamentals/two-sample-t-test",
       "type": "module",
       "title": "Two-Sample t-test",
@@ -6144,6 +6492,18 @@
       "href": "/track/ml/fundamentals#two-sample-t-test",
       "trackName": "Machine Learning",
       "topicName": "Fundamentals"
+    },
+    {
+      "id": "doc:software-engineering/typescript/typescript",
+      "type": "doc",
+      "title": "TypeScript",
+      "summary": "This section is about using types to keep web and backend systems honest across changing interfaces.",
+      "track": "software-engineering",
+      "topic": "typescript",
+      "slug": "typescript",
+      "href": "/track/software-engineering/typescript#typescript",
+      "trackName": "Software Engineering",
+      "topicName": "Typescript"
     },
     {
       "id": "doc:ml/evaluation/uncertainty",
@@ -6192,6 +6552,18 @@
       "href": "/track/dsa/binary-tree#unified-iterative-method-for-binary-trees",
       "trackName": "Data Structures & Algorithms",
       "topicName": "Binary Tree"
+    },
+    {
+      "id": "module:databases/sql-patterns/upserts-and-merge-patterns",
+      "type": "module",
+      "title": "Upserts And Merge Patterns",
+      "summary": "> Track: `databases` | Topic: `sql-patterns`",
+      "track": "databases",
+      "topic": "sql-patterns",
+      "slug": "upserts-and-merge-patterns",
+      "href": "/track/databases/sql-patterns#upserts-and-merge-patterns",
+      "trackName": "Databases",
+      "topicName": "SQL Patterns"
     },
     {
       "id": "module:ai-agents/planning/utility-aware-stopping",
