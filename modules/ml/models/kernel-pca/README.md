@@ -21,7 +21,7 @@ $$K_c = K - \mathbf{1}K - K\mathbf{1} + \mathbf{1}K\mathbf{1}$$
 
 - $K$ -- kernel matrix
 - $K_c$ -- centered kernel matrix
-- $\gamma$ -- RBF bandwidth parameter
+- $\gamma$ -- inverse squared length-scale parameter, equal to $\frac{1}{2\ell^2}$ in the common RBF form
 - $\mathbf{1}$ -- matrix with entries $\frac{1}{n}$
 
 ## From Math To Code

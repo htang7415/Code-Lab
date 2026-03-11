@@ -27,6 +27,7 @@ $$c(n) = 2 H_{n-1} - \frac{2(n-1)}{n}$$
 ## Function
 
 ```python
+def average_path_length(sample_size: int) -> float:
 def isolation_score(avg_path_length: float, sample_size: int) -> float:
 ```
 

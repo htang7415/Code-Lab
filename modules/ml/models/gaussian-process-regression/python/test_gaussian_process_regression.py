@@ -26,3 +26,14 @@ def test_gp_posterior_predict_hits_training_points():
 def test_gp_posterior_weights_have_one_weight_per_training_point() -> None:
     alpha = gp_posterior_weights([[0.0], [1.0]], [1.0, 3.0], length_scale=1.0, noise=1e-6)
     assert len(alpha) == 2
+
+
+def test_gp_validates_feature_dimension_and_non_empty_inputs() -> None:
+    import pytest
+
+    with pytest.raises(ValueError, match="same feature dimension"):
+        rbf_kernel([0.0], [0.0, 1.0], 1.0)
+    with pytest.raises(ValueError, match="non-empty"):
+        gp_posterior_weights([], [], length_scale=1.0, noise=1e-6)
+    with pytest.raises(ValueError, match="non-empty"):
+        gp_posterior_predict([[0.0]], [1.0], [], length_scale=1.0, noise=1e-6)

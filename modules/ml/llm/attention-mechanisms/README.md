@@ -55,6 +55,7 @@ def scaled_dot_product_scores(q: list[list[float]], k: list[list[float]]) -> lis
 def attention_weights(q: list[list[float]], k: list[list[float]]) -> list[list[float]]:
 def self_attention(q: list[list[float]], k: list[list[float]], v: list[list[float]]) -> list[list[float]]:
 def multi_head_attention(q: list[list[float]], k: list[list[float]], v: list[list[float]], heads: int) -> list[list[float]]:
+def softmax(x: np.ndarray, axis: int = -1) -> np.ndarray:
 def causal_mask(seq_len: int) -> np.ndarray:
 def causal_self_attention(Q: np.ndarray, K: np.ndarray, V: np.ndarray) -> np.ndarray:
 def window_mask(seq_len: int, window: int) -> list[list[int]]:

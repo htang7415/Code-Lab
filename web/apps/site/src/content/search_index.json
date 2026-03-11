@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T01:23:45.966Z",
+  "generated_at": "2026-03-11T03:35:09.087Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -4910,6 +4910,18 @@
       "topicName": "Observability"
     },
     {
+      "id": "module:ai-agents/observability/run-sampling",
+      "type": "module",
+      "title": "Run Sampling",
+      "summary": "> Track: `ai-agents` | Topic: `observability`",
+      "track": "ai-agents",
+      "topic": "observability",
+      "slug": "run-sampling",
+      "href": "/track/ai-agents/observability#run-sampling",
+      "trackName": "AI Agents",
+      "topicName": "Observability"
+    },
+    {
       "id": "module:ml/data/scaling-methods",
       "type": "module",
       "title": "Scaling Methods",
@@ -5290,6 +5302,18 @@
       "topic": "tool-use",
       "slug": "tool-result-validation",
       "href": "/track/ai-agents/tool-use#tool-result-validation",
+      "trackName": "AI Agents",
+      "topicName": "Tool Use"
+    },
+    {
+      "id": "module:ai-agents/tool-use/tool-schema-matching",
+      "type": "module",
+      "title": "Tool Schema Matching",
+      "summary": "> Track: `ai-agents` | Topic: `tool-use`",
+      "track": "ai-agents",
+      "topic": "tool-use",
+      "slug": "tool-schema-matching",
+      "href": "/track/ai-agents/tool-use#tool-schema-matching",
       "trackName": "AI Agents",
       "topicName": "Tool Use"
     },

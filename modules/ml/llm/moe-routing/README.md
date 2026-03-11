@@ -39,6 +39,7 @@ $$y = \sum_{i \in \mathcal{K}} \frac{g_i}{\sum_{j \in \mathcal{K}} g_j}\,(x W_{e
 ## Function
 
 ```python
+def softmax(x: np.ndarray, axis: int = -1) -> np.ndarray:
 def moe(
     x: np.ndarray,
     We: np.ndarray,

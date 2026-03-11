@@ -29,7 +29,8 @@ def test_dynamic_tanh_respects_bias_at_zero() -> None:
 
 
 def test_swiglu_uses_separate_value_and_gate() -> None:
-    assert swiglu(value=2.0, gate=0.0) == pytest.approx(1.0)
+    assert swiglu(value=2.0, gate=0.0) == pytest.approx(0.0)
+    assert swiglu(value=2.0, gate=2.0) == pytest.approx(2.0 * (2.0 / (1.0 + math.exp(-2.0))))
 
 
 def test_scalar_activations_requires_non_negative_alpha() -> None:

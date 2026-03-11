@@ -8,6 +8,9 @@ def rbf_kernel_matrix(points: list[list[float]], gamma: float) -> list[list[floa
         raise ValueError("gamma must be positive")
     if not points:
         return []
+    width = len(points[0])
+    if any(len(point) != width for point in points):
+        raise ValueError("all points must have the same feature dimension")
 
     n = len(points)
     kernel = [[0.0] * n for _ in range(n)]

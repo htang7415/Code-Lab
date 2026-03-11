@@ -36,6 +36,7 @@ result = tool_result(call["id"], output)
 - Recovery decisions after tool failure: `tool-failure-handling`
 - Choosing the best tool before calling it: `tool-selection-heuristics`
 - Normalizing tool arguments before execution: `tool-argument-normalization`
+- Matching requested arguments to the right tool schema: `tool-schema-matching`
 
 ## When To Use What
 
@@ -46,3 +47,4 @@ result = tool_result(call["id"], output)
 - Use `tool-failure-handling` when the agent needs a simple retry / fallback / escalate decision after a tool call fails.
 - Use `tool-selection-heuristics` when the main challenge is picking the right tool from several plausible options.
 - Use `tool-argument-normalization` when inputs need basic cleanup or default filling before the tool call.
+- Use `tool-schema-matching` when several tools look similar and the main question is which schema best fits the requested arguments.

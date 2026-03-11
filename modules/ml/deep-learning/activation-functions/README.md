@@ -36,7 +36,7 @@ flow, and model expressiveness.
   $$
 - SwiGLU gate:
   $$
-  \mathrm{SwiGLU}(v, g)=v \cdot \sigma(g)
+  \mathrm{SwiGLU}(v, g)=v \cdot \mathrm{SiLU}(g)=v \cdot g \cdot \sigma(g)
   $$
 
 ## From Math To Code
@@ -64,6 +64,7 @@ def swish(x: float) -> float:
 def softplus(x: float) -> float:
 def softsign(x: float) -> float:
 def swiglu(value: float, gate: float) -> float:
+def dynamic_tanh(x: float, alpha: float = 1.0, gamma: float = 1.0, beta: float = 0.0) -> float:
 def scalar_activations(x: float, alpha: float = 0.01) -> dict[str, float]:
 def softmax(row: list[float]) -> list[float]:
 ```

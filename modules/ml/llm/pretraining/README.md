@@ -19,7 +19,7 @@ cross-entropy being minimized.
 Per-token negative log-likelihood:
 
 $$
-\ell_t = -\log p_\theta(x_t \mid x_{<t})
+\ell_t = -\log p_\theta(x_{t+1} \mid x_{\le t})
 $$
 
 Mean next-token loss:
@@ -33,6 +33,10 @@ With logits:
 $$
 \ell_t = -\log\left(\mathrm{softmax}(\text{logits}_t)_{\text{target}_t}\right)
 $$
+
+- $T$ -- number of training positions after the causal shift
+- $\text{logits}_t$ -- predicted logits at position $t$
+- $\text{target}_t$ -- vocabulary index of the true next token
 
 ## From Math To Code
 

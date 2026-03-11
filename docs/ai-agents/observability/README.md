@@ -32,6 +32,7 @@ summary = summarize_trace(trace)
 - Aggregate trace summaries across runs: `run-analysis-metrics`
 - Threshold-based alerts over run metrics: `alerting-thresholds`
 - A simple vocabulary for trace span types: `span-taxonomy`
+- Deterministic retention of only some runs: `run-sampling`
 
 ## When To Use What
 
@@ -39,4 +40,5 @@ summary = summarize_trace(trace)
 - Use `run-analysis-metrics` when you need one dashboard-like summary over many runs.
 - Use `alerting-thresholds` when the system needs a simple rule for raising alerts from latency or failure metrics.
 - Use `span-taxonomy` when traces need a consistent naming scheme across model, tool, and workflow steps.
+- Use `run-sampling` when full tracing is too expensive and you need a stable subset of runs to inspect.
 - Add richer dashboards later; first get the basic run trace right.

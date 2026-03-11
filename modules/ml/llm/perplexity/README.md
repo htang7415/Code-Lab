@@ -27,7 +27,7 @@ $$
 $$
 
 - $n$ -- number of tokens
-- $p_i$ -- probability assigned to the correct token at position $i$
+- $p_i$ -- probability assigned to the correct token at position $i$, with $0 < p_i \le 1$
 
 ## From Math To Code
 

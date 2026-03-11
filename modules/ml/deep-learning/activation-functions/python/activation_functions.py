@@ -34,7 +34,7 @@ def softsign(x: float) -> float:
 
 
 def swiglu(value: float, gate: float) -> float:
-    return value * sigmoid(gate)
+    return value * swish(gate)
 
 
 def dynamic_tanh(

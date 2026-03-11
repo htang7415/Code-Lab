@@ -23,3 +23,8 @@ def test_rbf_kernel_matrix_has_unit_diagonal() -> None:
 def test_center_kernel_matrix_requires_square_input() -> None:
     with pytest.raises(ValueError, match="square"):
         center_kernel_matrix([[1.0, 0.0]])
+
+
+def test_rbf_kernel_matrix_requires_consistent_point_dimension() -> None:
+    with pytest.raises(ValueError, match="same feature dimension"):
+        rbf_kernel_matrix([[0.0], [0.0, 1.0]], gamma=1.0)

@@ -13,3 +13,8 @@ def test_perplexity_certain_predictions():
 
 def test_mean_negative_log_likelihood_matches_log_formula() -> None:
     assert mean_negative_log_likelihood([0.5, 0.5]) == pytest.approx(0.69314718056)
+
+
+def test_perplexity_validates_probability_range() -> None:
+    with pytest.raises(ValueError, match="at most 1"):
+        mean_negative_log_likelihood([1.2])

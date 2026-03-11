@@ -32,6 +32,7 @@ $$
 
 ```python
 def max_pool(window: list[float]) -> float:
+def avg_pool(window: list[float]) -> float:
 ```
 
 ## Run tests

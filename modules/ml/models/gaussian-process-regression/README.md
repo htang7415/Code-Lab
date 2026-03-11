@@ -51,6 +51,8 @@ mean, var = gp_posterior_predict(x_train, y_train, x_test, length_scale=1.0, noi
 ## Function
 
 ```python
+def rbf_kernel(x: list[float], y: list[float], length_scale: float) -> float:
+def kernel_matrix(xs: list[list[float]], ys: list[list[float]], length_scale: float) -> list[list[float]]:
 def gp_posterior_weights(
     x_train: list[list[float]],
     y_train: list[float],

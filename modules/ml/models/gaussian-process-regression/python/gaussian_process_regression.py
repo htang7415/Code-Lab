@@ -4,6 +4,8 @@ import math
 def rbf_kernel(x: list[float], y: list[float], length_scale: float) -> float:
     if length_scale <= 0:
         raise ValueError("length_scale must be positive")
+    if len(x) != len(y):
+        raise ValueError("x and y must have the same feature dimension")
     dist2 = sum((a - b) ** 2 for a, b in zip(x, y))
     return math.exp(-dist2 / (2 * length_scale ** 2))
 
@@ -54,6 +56,8 @@ def gp_posterior_weights(
     length_scale: float,
     noise: float,
 ) -> list[float]:
+    if not x_train:
+        raise ValueError("x_train must be non-empty")
     if len(x_train) != len(y_train):
         raise ValueError("x_train and y_train must have the same length")
     if noise < 0:
@@ -74,6 +78,8 @@ def gp_posterior_predict(
     length_scale: float,
     noise: float,
 ) -> tuple[list[float], list[float]]:
+    if not x_test:
+        raise ValueError("x_test must be non-empty")
     alpha = gp_posterior_weights(x_train, y_train, length_scale, noise)
     k_xx = kernel_matrix(x_train, x_train, length_scale)
     for i in range(len(k_xx)):

@@ -15,15 +15,21 @@ implementation small enough to inspect line by line.
 
 ## Math
 
-$$A(x) = \mathrm{softmax}\!\left(\frac{x x^\top}{\sqrt{d}}\right) x$$
+$$A(X) = \mathrm{softmax}\!\left(\frac{X X^\top}{\sqrt{d_{\text{model}}}}\right) X$$
 
-$$y = x + A(x),\quad z = y + \mathrm{FFN}(y)$$
+$$Y = X + A(X),\quad Z = Y + \mathrm{FFN}(Y)$$
 
-- $x$ -- token representation matrix
-- $d$ -- hidden dimension used for attention scaling
-- $A(x)$ -- self-attention output
-- $y$ -- residual output after attention
-- $z$ -- residual output after the feed-forward network
+$$
+\mathrm{FFN}(Y)=\mathrm{ReLU}(Y W_1) W_2
+$$
+
+- $X$ -- token representation matrix of shape $(T, d_{\text{model}})$
+- $T$ -- number of tokens in the block
+- $d_{\text{model}}$ -- model dimension used for attention scaling
+- $A(X)$ -- self-attention output
+- $Y$ -- residual output after attention
+- $Z$ -- residual output after the feed-forward network
+- $W_1, W_2$ -- feed-forward weights
 
 ## From Math To Code
 

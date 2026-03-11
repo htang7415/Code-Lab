@@ -25,6 +25,7 @@ module uses a tiny Gram-Schmidt approximation for a learnable demo.
 ## Function
 
 ```python
+def gram_schmidt_rows(mat: list[list[float]], eps: float = 1e-12) -> list[list[float]]:
 def muon_step(
     weights: list[list[float]],
     grad: list[list[float]],

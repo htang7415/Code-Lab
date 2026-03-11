@@ -37,6 +37,7 @@ $$
 - $\mu_k$ -- mean of component $k$
 - $\sigma_k^2$ -- variance of component $k$
 - $K$ -- number of components
+- $n$ -- number of data points
 
 ## From Math To Code
 
@@ -53,6 +54,7 @@ weights, means, variances = em_step_1d(data, weights, means, variances)
 ## Function
 
 ```python
+def gaussian_pdf_1d(x: float, mean: float, variance: float) -> float:
 def responsibilities_1d(
     data: list[float],
     weights: list[float],

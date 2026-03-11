@@ -41,6 +41,7 @@ margin = majority_vote_margin(answers)
 
 ```python
 def normalize_answer(text: str) -> str:
+def normalized_vote_counts(answers: list[str]) -> dict[str, int]:
 def answer_stability(answers: list[str]) -> float:
 def majority_vote_margin(answers: list[str]) -> float:
 def vote_entropy(answers: list[str]) -> float:
