@@ -48,7 +48,7 @@
   --sidebar-width: 236px;
   --toc-width: 180px;
   --header-height: 52px;
-  --content-max: 680px;
+  --content-max: 760px;
   --handbook-content-gap: 2.2rem;
   --handbook-main-pad-inline: 2.4rem;
   --handbook-main-pad-inline-total: 4.8rem;
@@ -2516,7 +2516,7 @@ code,
 
 @media (min-width: 1400px) {
   :root {
-    --content-max: 640px;
+    --content-max: 760px;
     --toc-width: 210px;
     --handbook-main-pad-inline: 3rem;
     --handbook-main-pad-inline-total: 6rem;
