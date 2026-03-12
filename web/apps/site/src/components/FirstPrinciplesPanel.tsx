@@ -124,8 +124,10 @@ export default function FirstPrinciplesPanel({
             key={card.step}
             className={`first-principles-card first-principles-card-${card.tone}`}
           >
-            <div className="first-principles-step">{card.step}</div>
-            <div className="first-principles-label">{card.label}</div>
+            <div className="first-principles-card-head">
+              <div className="first-principles-step">{card.step}</div>
+              <div className="first-principles-label">{card.label}</div>
+            </div>
             {card.kind === "math" ? (
               <ReactMarkdown
                 className="first-principles-math"

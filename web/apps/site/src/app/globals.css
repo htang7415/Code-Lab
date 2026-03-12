@@ -1894,6 +1894,12 @@ code,
   min-width: 0;
 }
 
+.first-principles-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
 .first-principles-card::before {
   content: "";
   position: absolute;
@@ -1934,7 +1940,7 @@ code,
 }
 
 .first-principles-label {
-  margin-top: 0.65rem;
+  margin: 0;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
