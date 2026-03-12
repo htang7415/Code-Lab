@@ -4,6 +4,27 @@ Max Handbook is a learning-first knowledge base for modern AI, software, and pro
 
 Read the live handbook at [max-handbook.vercel.app](https://max-handbook.vercel.app/).
 
+## GitHub Preview
+
+GitHub cannot render the interactive site components, so the README shows static previews for two core ML concepts and links them to the live handbook.
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://max-handbook.vercel.app/track/ml/representation#embeddings">
+        <img src="docs/assets/readme-embeddings-preview.svg" alt="Embeddings preview" />
+      </a>
+      <div><strong>Embeddings</strong><br/>Dense vectors whose geometry supports retrieval, ranking, and transfer.</div>
+    </td>
+    <td width="50%" align="center">
+      <a href="https://max-handbook.vercel.app/track/ml/llm#attention-mechanisms">
+        <img src="docs/assets/readme-attention-preview.svg" alt="Attention preview" />
+      </a>
+      <div><strong>Attention</strong><br/>Weighted token-to-token context lookup inside transformer-style models.</div>
+    </td>
+  </tr>
+</table>
+
 ## What Knowledge Lives Here
 
 | Track | Focus | Representative topics |
