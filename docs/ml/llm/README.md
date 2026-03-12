@@ -52,7 +52,7 @@ next_token = decode(hidden[-1], strategy="top_p")
 - Multimodal inputs: `multimodal-llms`
 - Evaluation: `docs/ml/llm/evaluation`
 - Decoding: `decoding-methods`
-- Retrieval and lexical baselines: `bm25-ranking`, `retrieval-fusion-methods`
+- Retrieval and lexical baselines: `bm25-ranking`, `retrieval-fusion-methods`, `cross-encoder-vs-bi-encoder`
 - Efficiency and systems: `long-context-and-caching`, `context-budgeting-and-truncation`, `parameter-efficient-fine-tuning`, `precision-and-quantization`, `kv-cache`, `prefix-cache`, `speculative-decoding`, `qk-clip`
 
 ## Supporting Guides
@@ -72,6 +72,7 @@ next_token = decode(hidden[-1], strategy="top_p")
 - Use `multimodal-llms` when the system has to mix text with images, audio, or video.
 - Use the evaluation guide before choosing metrics module by module.
 - Use decoding methods when generation behavior is the issue.
+- Use `cross-encoder-vs-bi-encoder` when choosing between first-stage dense retrieval and second-stage reranking.
 - Use serving and systems topics when latency, memory, or throughput becomes the bottleneck.
 - If the model must call APIs, browse interfaces, or use MCP-style tool servers, switch to `docs/ai-agents/tool-use`.
 - Treat this page as the stack overview; use the leaf guides for the real detail.

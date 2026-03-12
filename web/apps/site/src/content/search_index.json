@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T21:54:50.320Z",
+  "generated_at": "2026-03-12T19:49:13.266Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -3288,6 +3288,18 @@
       "href": "/track/databases/query-plans#covering-index-vs-table-lookups",
       "trackName": "Databases",
       "topicName": "Query Plans"
+    },
+    {
+      "id": "module:ml/llm/cross-encoder-vs-bi-encoder",
+      "type": "module",
+      "title": "Cross-Encoder Vs Bi-Encoder",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "cross-encoder-vs-bi-encoder",
+      "href": "/track/ml/llm#cross-encoder-vs-bi-encoder",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
     },
     {
       "id": "doc:ml/data/data",
