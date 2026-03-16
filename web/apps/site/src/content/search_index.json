@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-12T19:49:13.266Z",
+  "generated_at": "2026-03-16T14:41:18.847Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -4142,6 +4142,18 @@
       "topicName": "Evaluation"
     },
     {
+      "id": "module:databases/vector-db/faiss-index-families",
+      "type": "module",
+      "title": "FAISS Index Families",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "faiss-index-families",
+      "href": "/track/databases/vector-db#faiss-index-families",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
       "id": "module:ml/representation/features",
       "type": "module",
       "title": "Feature Vectors",
@@ -4550,6 +4562,18 @@
       "topicName": "Evaluation"
     },
     {
+      "id": "module:databases/vector-db/hnsw-graph-search",
+      "type": "module",
+      "title": "HNSW Graph Search",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "hnsw-graph-search",
+      "href": "/track/databases/vector-db#hnsw-graph-search",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
+    },
+    {
       "id": "module:databases/caching/hot-key-and-rate-limit-protection",
       "type": "module",
       "title": "Hot-Key And Rate-Limit Protection",
@@ -4920,6 +4944,18 @@
       "href": "/track/dsa/binary-tree#iterative-traversal-of-binary-trees",
       "trackName": "Data Structures & Algorithms",
       "topicName": "Binary Tree"
+    },
+    {
+      "id": "module:databases/vector-db/ivf-search",
+      "type": "module",
+      "title": "IVF Search",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "ivf-search",
+      "href": "/track/databases/vector-db#ivf-search",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "module:ml/evaluation/jaccard-index",
@@ -7800,6 +7836,18 @@
       "href": "/track/ml/data#scaling-methods",
       "trackName": "Machine Learning",
       "topicName": "Data"
+    },
+    {
+      "id": "module:databases/vector-db/scann-search",
+      "type": "module",
+      "title": "ScaNN Search",
+      "summary": "> Track: `databases` | Topic: `vector-db`",
+      "track": "databases",
+      "topic": "vector-db",
+      "slug": "scann-search",
+      "href": "/track/databases/vector-db#scann-search",
+      "trackName": "Databases",
+      "topicName": "Vector Db"
     },
     {
       "id": "doc:databases/schema-design/overview",

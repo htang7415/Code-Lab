@@ -28,6 +28,7 @@ LIMIT 5;
 
 - `embedding-table-design`
 - `exact-vs-ann-search`
+- `hnsw-graph-search`, `ivf-search`, `faiss-index-families`, `scann-search`
 - `metadata-filtering`
 - `hybrid-search`
 - `reranking-pipelines`
@@ -39,5 +40,9 @@ LIMIT 5;
 - Start with embedding table design and metadata filters before ANN tuning.
 - Use exact search for smaller collections or correctness-first baselines.
 - Use ANN when collection size or latency targets make exact search too expensive.
+- Use `hnsw-graph-search` when low-latency search and incremental inserts matter.
+- Use `ivf-search` when coarse partitioning plus `nprobe` tuning is the main ANN pattern.
+- Use `faiss-index-families` when choosing which FAISS family fits memory, recall, and update constraints.
+- Use `scann-search` when you want to reason about partition-and-reorder search at large scale.
 - Add reranking and retrieval evaluation once first-stage retrieval is stable enough to measure.
 - Use agent memory only after scoring, freshness, and conflict rules are already explicit.
