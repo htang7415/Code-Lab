@@ -45,6 +45,11 @@ def qlora_update(w: list[list[float]], a: list[list[float]], b: list[list[float]
 - Use LoRA when memory is tight but the base weights stay in standard precision.
 - Use QLoRA when memory is the main bottleneck and quantized base weights are acceptable.
 
+## References
+
+- Hu et al. (2021). [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685)
+- Dettmers et al. (2023). [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314)
+
 ## Run tests
 
 ```bash

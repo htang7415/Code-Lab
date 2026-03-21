@@ -78,6 +78,12 @@ def rerank_disagreement_rate(baseline_ids: list[str], reranked_ids: list[str], k
 - Use reciprocal rank or MRR-style metrics when the first useful result dominates user experience.
 - Use rerank gain together with disagreement rate when measuring a reranker over a baseline.
 
+## References
+
+- Karpukhin et al. (2020). [Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2004.04906)
+- Petroni et al. (2020). [KILT: a Benchmark for Knowledge Intensive Language Tasks](https://arxiv.org/abs/2009.02252)
+- Thakur et al. (2021). [BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://arxiv.org/abs/2104.08663)
+
 ## Run tests
 
 ```bash

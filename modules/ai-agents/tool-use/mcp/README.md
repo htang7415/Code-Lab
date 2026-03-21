@@ -39,6 +39,12 @@ def prompt_get_request(name: str, arguments: dict[str, object], session_id: str)
 def tool_call_request(name: str, arguments: dict[str, object], session_id: str) -> dict[str, object]:
 ```
 
+## References
+
+- Model Context Protocol (2025-06-18). [Overview](https://modelcontextprotocol.io/specification/2025-06-18/basic/index)
+- Model Context Protocol (2025-06-18). [Authorization](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)
+- JSON-RPC Working Group. [JSON-RPC 2.0 Specification](https://www.jsonrpc.org/specification)
+
 ## Run tests
 
 ```bash

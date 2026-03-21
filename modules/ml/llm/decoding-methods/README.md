@@ -72,6 +72,12 @@ def beam_search_step(
 - Use temperature plus top-p or top-k when you need multiple diverse but plausible generations.
 - Use top-p when you want candidate count to adapt to the probability shape instead of staying fixed.
 
+## References
+
+- Sutskever, Vinyals, and Le (2014). [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215)
+- Fan, Lewis, and Dauphin (2018). [Hierarchical Neural Story Generation](https://arxiv.org/abs/1805.04833)
+- Holtzman et al. (2019). [The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751)
+
 ## Run tests
 
 ```bash

@@ -28,6 +28,12 @@ def approval_packet(action_id: str, action_type: str, summary: str, risk_level: 
 def post_approval_route(decision: str) -> str:
 ```
 
+## References
+
+- OpenAI (2025). [Model Spec](https://model-spec.openai.com/2025-09-12.html)
+- OpenAI (2025). [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/)
+- Anthropic. [Computer use tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool)
+
 ## Run tests
 
 ```bash

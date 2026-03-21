@@ -54,6 +54,11 @@ def perplexity(token_probs: list[float]) -> float:
 - Do not use perplexity alone to judge downstream QA, reasoning, or product usefulness.
 - Compare perplexity only when tokenization and evaluation setup are matched.
 
+## References
+
+- Bengio et al. (2003). [A Neural Probabilistic Language Model](https://www.jmlr.org/papers/v3/bengio03a.html)
+- Brown et al. (2020). [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
+
 ## Run tests
 
 ```bash

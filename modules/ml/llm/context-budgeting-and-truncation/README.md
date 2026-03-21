@@ -64,6 +64,11 @@ def head_tail_keep(total_prompt_tokens: int, prompt_budget: int, head_tokens: in
 - Use `truncation_needed` and `tokens_to_drop` when you need the simplest overflow check.
 - Use `head_tail_keep` when prompt structure matters more than pure recency.
 
+## References
+
+- Liu et al. (2023). [Lost in the Middle: How Language Models Use Long Contexts](https://arxiv.org/abs/2307.03172)
+- Jiang et al. (2023). [LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression](https://arxiv.org/abs/2310.06839)
+
 ## Run tests
 
 ```bash

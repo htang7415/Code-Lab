@@ -37,6 +37,12 @@ def select_top_k(scored_chunks: list[tuple[str, float]], k: int) -> list[str]:
 def build_grounded_context(chunks: list[str], max_chunks: int) -> str:
 ```
 
+## References
+
+- Lewis et al. (2020). [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)
+- Karpukhin et al. (2020). [Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2004.04906)
+- Petroni et al. (2020). [KILT: a Benchmark for Knowledge Intensive Language Tasks](https://arxiv.org/abs/2009.02252)
+
 ## Run tests
 
 ```bash

@@ -77,6 +77,12 @@ def success_under_token_budget(correct: list[int], token_costs: list[int], max_t
 - Use `majority_vote_gain` when testing whether multi-sample self-consistency is worth it.
 - Use `success_under_token_budget` when a serving or product budget is the main constraint.
 
+## References
+
+- Wang et al. (2022). [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)
+- Lightman et al. (2023). [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)
+- Snell et al. (2024). [Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters](https://arxiv.org/abs/2408.03314)
+
 ## Run tests
 
 ```bash

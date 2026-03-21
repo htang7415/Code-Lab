@@ -75,6 +75,12 @@ def concatenate_modal_embeddings(modalities: list[list[list[float]]]) -> list[li
 - Use `modality_offsets` when debugging modality packing or attention masks.
 - Use `concatenate_modal_embeddings` to understand the simplest fused multimodal sequence.
 
+## References
+
+- Alayrac et al. (2022). [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198)
+- Li et al. (2023). [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/abs/2301.12597)
+- OpenAI (2023). [GPT-4V(ision) system card](https://openai.com/index/gpt-4v-system-card/)
+
 ## Run tests
 
 ```bash

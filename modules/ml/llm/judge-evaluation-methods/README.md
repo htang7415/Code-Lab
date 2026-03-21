@@ -57,6 +57,12 @@ def judge_agreement_matrix(judge_decisions: list[list[int]]) -> list[list[float]
 - Use agreement matrices when comparing multiple judges, prompts, or judging templates over the same examples.
 - Use `bradley-terry-ranking` as the next step when pairwise outcomes need to become a global latent ranking.
 
+## References
+
+- Zheng et al. (2023). [Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685)
+- Liu et al. (2023). [G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment](https://arxiv.org/abs/2303.16634)
+- Lightman et al. (2023). [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)
+
 ## Run tests
 
 ```bash

@@ -88,6 +88,12 @@ def cache_hit_rate(cached_prefix_tokens: int, total_prompt_tokens: int) -> float
 - Use `effective_prefix_tokens` and `prompt_cache_saved_tokens` when prompt caching is the main optimization.
 - Use `cache_hit_rate` for a simple serving-side summary of reusable prefix coverage.
 
+## References
+
+- Vaswani et al. (2017). [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- Shazeer (2019). [Fast Transformer Decoding: One Write-Head is All You Need](https://arxiv.org/abs/1911.02150)
+- Kwon et al. (2023). [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180)
+
 ## Run tests
 
 ```bash

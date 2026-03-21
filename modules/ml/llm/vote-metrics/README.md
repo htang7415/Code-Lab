@@ -60,6 +60,11 @@ def minority_cluster_entropy(answers: list[str]) -> float:
 - Use uniqueness or candidate diversity when exploration matters.
 - Use minority-cluster entropy when alternatives form meaningful competing groups.
 
+## References
+
+- Wang et al. (2022). [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)
+- Lightman et al. (2023). [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)
+
 ## Run tests
 
 ```bash

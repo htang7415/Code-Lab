@@ -36,6 +36,12 @@ def worker_task_packet(
 def orchestrator_summary(worker_reports: list[dict[str, object]]) -> dict[str, object]:
 ```
 
+## References
+
+- Anthropic (2024). [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
+- Anthropic (2025). [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
+- Wu et al. (2024). [AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation](https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-gen-llm-applications-via-multi-agent-conversation-framework/)
+
 ## Run tests
 
 ```bash

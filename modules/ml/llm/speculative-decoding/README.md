@@ -37,6 +37,11 @@ def speculative_decode_step(
 ) -> list[int]:
 ```
 
+## References
+
+- Leviathan, Kalman, and Matias (2022). [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/abs/2211.17192)
+- Chen et al. (2023). [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318)
+
 ## Run tests
 
 ```bash

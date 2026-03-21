@@ -31,6 +31,12 @@ def high_risk_failure_count(
 def security_release_gate(pass_rate: float, high_risk_failures: int, min_pass_rate: float) -> str:
 ```
 
+## References
+
+- Perez et al. (2022). [Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned](https://arxiv.org/abs/2209.07858)
+- Greshake et al. (2023). [Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/abs/2302.12173)
+- Yi et al. (2023). [Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models](https://arxiv.org/abs/2312.14197)
+
 ## Run tests
 
 ```bash

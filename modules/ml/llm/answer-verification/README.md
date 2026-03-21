@@ -29,6 +29,11 @@ $$
 def verify_answer(prediction: str, references: list[str], numeric_tolerance: float = 1.0e-6) -> bool:
 ```
 
+## References
+
+- Cobbe et al. (2021). [Training Verifiers to Solve Math Word Problems](https://arxiv.org/abs/2110.14168)
+- Lightman et al. (2023). [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)
+
 ## Run tests
 
 ```bash

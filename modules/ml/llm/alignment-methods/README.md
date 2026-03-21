@@ -86,6 +86,13 @@ def anchored_loss(align_loss: float, ptx_loss: float, alpha: float) -> float:
 - Use RLHF reward modeling when explicit reward scores are part of the training loop.
 - Use KL or PTX anchoring when the aligned model starts drifting away from useful base behavior.
 
+## References
+
+- Stiennon et al. (2020). [Learning to Summarize from Human Feedback](https://arxiv.org/abs/2009.01325)
+- Ouyang et al. (2022). [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155)
+- Bai et al. (2022). [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073)
+- Rafailov et al. (2023). [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290)
+
 ## Run tests
 
 ```bash

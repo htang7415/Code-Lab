@@ -30,6 +30,11 @@ def longest_prefix_cache_hit(
 ) -> int:
 ```
 
+## References
+
+- OpenAI (2024). [Prompt Caching in the API](https://openai.com/index/api-prompt-caching/)
+- OpenAI. [Prompt caching](https://platform.openai.com/docs/guides/prompt-caching)
+
 ## Run tests
 
 ```bash

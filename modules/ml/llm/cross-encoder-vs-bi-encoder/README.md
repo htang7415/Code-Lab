@@ -93,6 +93,12 @@ def rerank_pair_reduction(corpus_size: int, candidate_k: int) -> float:
 - Use `retrieval-metrics` after deployment to verify that the extra reranking
   cost actually improves ranking quality.
 
+## References
+
+- Reimers and Gurevych (2019). [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084)
+- Nogueira and Cho (2019). [Passage Re-ranking with BERT](https://arxiv.org/abs/1901.04085)
+- Karpukhin et al. (2020). [Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2004.04906)
+
 ## Run tests
 
 ```bash
