@@ -65,6 +65,11 @@ def grad_check(f, x: float, eps: float = 1e-5) -> float:
 - Use `Value` when you want the computation-graph view of automatic differentiation.
 - Use `grad_check` only for debugging custom gradients or verifying a small implementation.
 
+## References
+
+- Rumelhart, Hinton, and Williams (1986). [Learning representations by back-propagating errors](https://doi.org/10.1038/323533a0)
+- Baydin et al. (2018). [Automatic Differentiation in Machine Learning: a Survey](https://www.jmlr.org/papers/v18/17-468.html)
+
 ## Run tests
 
 ```bash

@@ -80,6 +80,13 @@ def rmse(y: list[float], y_hat: list[float]) -> float:
 - Use hinge loss when you want a margin-based classifier rather than calibrated probabilities.
 - Use MSE for standard regression, MAE for more outlier robustness, RMSE when you want the error back on the original scale, and Huber when you want a smooth compromise.
 
+## References
+
+- Shannon (1948). [A Mathematical Theory of Communication](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x)
+- Cortes and Vapnik (1995). [Support-vector networks](https://link.springer.com/article/10.1007/BF00994018)
+- Huber (1964). [Robust Estimation of a Location Parameter](https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-35/issue-1/Robust-Estimation-of-a-Location-Parameter/10.1214/aoms/1177703732.full)
+- Lin et al. (2017). [Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002)
+
 ## Run tests
 
 ```bash

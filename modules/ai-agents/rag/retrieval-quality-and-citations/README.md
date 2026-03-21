@@ -28,6 +28,12 @@ def uncited_claims(claim_ids: list[str], citations: dict[str, list[str]]) -> lis
 def cited_source_counts(citations: dict[str, list[str]]) -> dict[str, int]:
 ```
 
+## References
+
+- Lewis et al. (2020). [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)
+- Petroni et al. (2020). [KILT: a Benchmark for Knowledge Intensive Language Tasks](https://arxiv.org/abs/2009.02252)
+- Gao et al. (2023). [RARR: Researching and Revising What Language Models Say, Using Language Models](https://aclanthology.org/2023.acl-long.910/)
+
 ## Run tests
 
 ```bash

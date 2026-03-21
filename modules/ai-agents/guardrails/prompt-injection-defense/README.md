@@ -35,6 +35,12 @@ def prompt_injection_risk(
 def guard_untrusted_content(text: str, source: str = "untrusted content") -> str:
 ```
 
+## References
+
+- Greshake et al. (2023). [Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/abs/2302.12173)
+- Liu et al. (2023). [Formalizing and Benchmarking Prompt Injection Attacks and Defenses](https://arxiv.org/abs/2310.12815)
+- Yi et al. (2023). [Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models](https://arxiv.org/abs/2312.14197)
+
 ## Run tests
 
 ```bash

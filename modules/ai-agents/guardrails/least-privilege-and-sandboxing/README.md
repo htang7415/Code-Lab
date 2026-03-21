@@ -31,6 +31,12 @@ def sandbox_profile(needs_write: bool, needs_network: bool, handles_secrets: boo
 def scope_escalation_required(current_scopes: list[str], requested_scopes: list[str]) -> bool:
 ```
 
+## References
+
+- Saltzer and Schroeder (1975). [The Protection of Information in Computer Systems](https://doi.org/10.1109/PROC.1975.9939)
+- Wahbe et al. (1993). [Efficient Software-Based Fault Isolation](https://doi.org/10.1145/168619.168635)
+- Watson et al. (2010). [Capsicum: Practical Capabilities for UNIX](https://www.usenix.org/conference/usenixsecurity10/capsicum-practical-capabilities-unix)
+
 ## Run tests
 
 ```bash

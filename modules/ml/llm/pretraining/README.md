@@ -65,6 +65,12 @@ def next_token_loss(logits: list[list[float]], targets: list[int]) -> float:
 - Use `next_token_loss` when you want the mean pretraining objective for a batch.
 - Pair this module with `perplexity` when you want the same signal in exponentiated form.
 
+## References
+
+- Bengio et al. (2003). [A Neural Probabilistic Language Model](https://www.jmlr.org/papers/v3/bengio03a.html)
+- Radford et al. (2018). [Improving Language Understanding by Generative Pre-Training](https://openai.com/index/language-unsupervised/)
+- Brown et al. (2020). [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
+
 ## Run tests
 
 ```bash

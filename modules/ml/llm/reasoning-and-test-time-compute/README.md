@@ -101,6 +101,12 @@ def majority_vote_success_probability(single_try_success: float, n: int) -> floa
 - Use `best_of_n_success_probability` for retry or best-of-`n` intuition.
 - Use `majority_vote_success_probability` when you want to reason about self-consistency-style gains.
 
+## References
+
+- Wang et al. (2022). [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)
+- Lightman et al. (2023). [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)
+- Snell et al. (2024). [Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters](https://arxiv.org/abs/2408.03314)
+
 ## Run tests
 
 ```bash

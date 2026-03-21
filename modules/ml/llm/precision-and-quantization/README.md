@@ -46,6 +46,13 @@ def quantize_int(x: float, bits: int, scale: float) -> int:
 - Use lower-precision floating point when you want training or inference speedups with less disruption than integer quantization.
 - Use INT8 or INT4 when memory savings are the main goal and some quantization error is acceptable.
 
+## References
+
+- Micikevicius et al. (2018). [Mixed Precision Training](https://arxiv.org/abs/1710.03740)
+- Micikevicius et al. (2022). [FP8 Formats for Deep Learning](https://arxiv.org/abs/2209.05433)
+- Dettmers et al. (2022). [LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale](https://arxiv.org/abs/2208.07339)
+- Frantar et al. (2022). [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers](https://arxiv.org/abs/2210.17323)
+
 ## Run tests
 
 ```bash

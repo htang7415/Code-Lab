@@ -47,6 +47,11 @@ def reciprocal_rank_fusion(rankings: list[list[str]], k: int = 60) -> list[tuple
 - Use weighted fusion when sparse and dense scores are calibrated enough to average directly.
 - Use reciprocal-rank fusion when retriever score scales are not comparable.
 
+## References
+
+- Cormack, Clarke, and Buettcher (2009). [Reciprocal rank fusion outperforms condorcet and individual rank learning methods](https://doi.org/10.1145/1571941.1572114)
+- Bruch, Gai, and Ingber (2022). [An Analysis of Fusion Functions for Hybrid Retrieval](https://arxiv.org/abs/2210.11934)
+
 ## Run tests
 
 ```bash

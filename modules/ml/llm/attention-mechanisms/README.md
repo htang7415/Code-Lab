@@ -76,6 +76,12 @@ def window_mask(seq_len: int, window: int) -> list[list[int]]:
 - Use causal masking for decoder-only LLMs.
 - Use sparse local masking when full attention is too expensive.
 
+## References
+
+- Bahdanau, Cho, and Bengio (2014). [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
+- Vaswani et al. (2017). [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- Child et al. (2019). [Generating Long Sequences with Sparse Transformers](https://arxiv.org/abs/1904.10509)
+
 ## Run tests
 
 ```bash

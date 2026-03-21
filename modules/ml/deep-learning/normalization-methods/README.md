@@ -70,6 +70,13 @@ def instancenorm(matrix: list[list[float]], eps: float = 1e-5) -> list[list[floa
 - Use GroupNorm or InstanceNorm when batch statistics are unreliable or unavailable.
 - Use RMSNorm when you want scale control with less computation than full centering.
 
+## References
+
+- Ioffe and Szegedy (2015). [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://proceedings.mlr.press/v37/ioffe15.html)
+- Ba, Kiros, and Hinton (2016). [Layer Normalization](https://arxiv.org/abs/1607.06450)
+- Wu and He (2018). [Group Normalization](https://www.ecva.net/papers/eccv_2018/papers_ECCV/html/Yuxin_Wu_Group_Normalization_ECCV_2018_paper.php)
+- Zhang and Sennrich (2019). [Root Mean Square Layer Normalization](https://papers.neurips.cc/paper_files/paper/2019/hash/1e8a19426224ca89e83cef47f1e7f53b-Abstract.html)
+
 ## Run tests
 
 ```bash

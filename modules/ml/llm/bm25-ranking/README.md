@@ -38,6 +38,11 @@ def bm25_score(
 ) -> float:
 ```
 
+## References
+
+- Robertson and Zaragoza (2009). [The Probabilistic Relevance Framework: BM25 and Beyond](https://doi.org/10.1561/1500000019)
+- Spärck Jones, Walker, and Robertson (2000). [A probabilistic model of information retrieval: development and comparative experiments: Part 1](https://doi.org/10.1016/S0306-4573(00)00015-7)
+
 ## Run tests
 
 ```bash

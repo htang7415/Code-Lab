@@ -28,6 +28,12 @@ def trace_grade_packet(run_id: str, judge_score: float, step_statuses: list[str]
 def judge_trace_route(judge_score: float, blocked_or_failed_steps: int, threshold: float) -> str:
 ```
 
+## References
+
+- Zheng et al. (2023). [Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685)
+- Lightman et al. (2023). [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)
+- Liu et al. (2023). [AgentBench: Evaluating LLMs as Agents](https://arxiv.org/abs/2308.03688)
+
 ## Run tests
 
 ```bash

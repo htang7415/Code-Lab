@@ -76,6 +76,13 @@ def add_position_embedding(token_embedding: list[float], position_encoding: list
 - Use `embed` when you want the simplest view of token lookup into a learned table.
 - Use `sinusoidal_position` when you want an explicit order signal added to token embeddings.
 
+## References
+
+- Mikolov et al. (2013). [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)
+- Mikolov et al. (2013). [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546)
+- Sennrich, Haddow, and Birch (2016). [Neural Machine Translation of Rare Words with Subword Units](https://aclanthology.org/P16-1162/)
+- Vaswani et al. (2017). [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+
 ## Run tests
 
 ```bash

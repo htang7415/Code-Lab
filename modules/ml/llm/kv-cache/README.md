@@ -84,6 +84,12 @@ def kv_cache_gib(
 - Use it before deployment to check whether a serving plan fits GPU memory.
 - Pair it with batching and prefix-cache topics when inference throughput is the real concern.
 
+## References
+
+- Shazeer (2019). [Fast Transformer Decoding: One Write-Head is All You Need](https://arxiv.org/abs/1911.02150)
+- Ainslie et al. (2023). [GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints](https://arxiv.org/abs/2305.13245)
+- Kwon et al. (2023). [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180)
+
 ## Run tests
 
 ```bash

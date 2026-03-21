@@ -53,6 +53,11 @@ attended = self_attention_output(tokens)
 updated = transformer_block(tokens, w1, w2)
 ```
 
+## References
+
+- Vaswani et al. (2017). [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- He et al. (2015). [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+
 ## Run tests
 
 ```bash

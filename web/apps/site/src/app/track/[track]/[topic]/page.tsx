@@ -96,13 +96,20 @@ function stripModuleReferences(markdown: string): string {
 
 /**
  * Parse README-style markdown into structured sections.
- * Recognized h2 sections: Concept, Purpose, Math, Key points.
+ * Recognized h2 sections: Concept, Purpose, Math, Key points, References.
  * Everything before the first h2 becomes "intro".
  */
 interface ContentSection {
   id: string;
   label: string;
-  icon: "concept" | "math" | "function" | "keypoints" | "pitfalls" | "practice";
+  icon:
+    | "concept"
+    | "math"
+    | "function"
+    | "keypoints"
+    | "pitfalls"
+    | "practice"
+    | "references";
   content: string;
 }
 
@@ -126,6 +133,14 @@ const SECTION_MAP: Record<string, { label: string; icon: ContentSection["icon"] 
   exercises: { label: "Practice", icon: "practice" },
   "practice problems": { label: "Practice", icon: "practice" },
   "practice questions": { label: "Practice", icon: "practice" },
+  reference: { label: "References", icon: "references" },
+  references: { label: "References", icon: "references" },
+  citation: { label: "References", icon: "references" },
+  citations: { label: "References", icon: "references" },
+  source: { label: "References", icon: "references" },
+  sources: { label: "References", icon: "references" },
+  bibliography: { label: "References", icon: "references" },
+  "further reading": { label: "References", icon: "references" },
 };
 
 const SECTION_ORDER: Record<ContentSection["icon"], number> = {
@@ -135,6 +150,7 @@ const SECTION_ORDER: Record<ContentSection["icon"], number> = {
   keypoints: 3,
   pitfalls: 4,
   practice: 5,
+  references: 6,
 };
 
 function orderSections(sections: ContentSection[]) {
@@ -183,14 +199,24 @@ function splitSections(sections: ContentSection[]) {
     "Practice",
     "practice"
   );
+  const references = mergeSections(
+    sections.filter((section) => section.icon === "references"),
+    "references",
+    "References",
+    "references"
+  );
   const conceptParts = sections.filter(
-    (section) => section.icon !== "pitfalls" && section.icon !== "practice"
+    (section) =>
+      section.icon !== "pitfalls" &&
+      section.icon !== "practice" &&
+      section.icon !== "references"
   );
 
   return {
     conceptParts: orderSections(conceptParts),
     pitfalls,
     practice,
+    references,
   };
 }
 
@@ -753,6 +779,18 @@ function SectionIcon({ icon }: { icon: ContentSection["icon"] }) {
           <path d="M5.5 8.2l1.8 1.8 3.4-3.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
+    case "references":
+      return (
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M4 3.5h6.8a1.2 1.2 0 0 1 1.2 1.2v8.1l-2.2-1.3-2.2 1.3-2.2-1.3-2.2 1.3V4.7A1.2 1.2 0 0 1 4 3.5Z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+          />
+          <path d="M5.5 6h4M5.5 8h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+        </svg>
+      );
   }
 }
 
@@ -949,7 +987,7 @@ export default async function TopicPage({
   const allHeadings: TocHeading[] = [];
   for (const entry of entries) {
     allHeadings.push({ id: entry.slug, text: entry.title, level: 2 });
-    const { pitfalls, practice } = splitSections(entry.parsed.sections);
+    const { pitfalls, practice, references } = splitSections(entry.parsed.sections);
     // DSA and ML pages keep pitfalls in the main content but omit them from the right-side TOC.
     if (pitfalls && trackId !== "dsa" && trackId !== "ml") {
       allHeadings.push({
@@ -962,6 +1000,13 @@ export default async function TopicPage({
       allHeadings.push({
         id: `${entry.slug}-${practice.id}`,
         text: practice.label,
+        level: 3,
+      });
+    }
+    if (references) {
+      allHeadings.push({
+        id: `${entry.slug}-${references.id}`,
+        text: references.label,
         level: 3,
       });
     }
@@ -997,7 +1042,7 @@ export default async function TopicPage({
                 hasStructuredGroups && entry.group !== previousGroup;
               const currentGroupMeta = groupMeta[entry.group] ?? groupMeta.additional;
               const currentGroupCount = groupCounts[entry.group] ?? 0;
-              const { conceptParts, pitfalls, practice } = splitSections(
+              const { conceptParts, pitfalls, practice, references } = splitSections(
                 entry.parsed.sections
               );
               const conceptBlocks = buildConceptBlocks(
@@ -1020,7 +1065,7 @@ export default async function TopicPage({
                 "";
               const hasConcept = conceptBlocks.length > 0;
               const hasTemplateContent =
-                hasConcept || entry.Viz || entry.hasCode || pitfalls || practice;
+                hasConcept || entry.Viz || entry.hasCode || pitfalls || practice || references;
               const flowSteps: Array<{ key: string; id: string; label: string }> = [];
               if (hasConcept) {
                 flowSteps.push({
@@ -1055,6 +1100,13 @@ export default async function TopicPage({
                   key: "practice",
                   id: `${entry.slug}-${practice.id}`,
                   label: practice.label,
+                });
+              }
+              if (references) {
+                flowSteps.push({
+                  key: "references",
+                  id: `${entry.slug}-${references.id}`,
+                  label: references.label,
                 });
               }
               const stepIndex = new Map(flowSteps.map((step, i) => [step.key, i + 1]));
@@ -1267,6 +1319,26 @@ export default async function TopicPage({
                             </div>
                           </div>
                         )}
+                      </div>
+                    )}
+
+                    {references && (
+                      <div
+                        id={`${entry.slug}-${references.id}`}
+                        className="concept-section concept-section-references"
+                      >
+                        <div className="section-header section-header-references">
+                          <SectionIcon icon="references" />
+                          {stepIndex.get("references") && (
+                            <span className="section-step">
+                              {stepIndex.get("references")}
+                            </span>
+                          )}
+                          <span className="section-label">{references.label}</span>
+                        </div>
+                        <div className="section-body">
+                          <MarkdownRenderer content={references.content} />
+                        </div>
                       </div>
                     )}
                   </div>

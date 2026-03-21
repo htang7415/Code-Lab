@@ -39,6 +39,12 @@ def tool_call(name: str, arguments: dict[str, object], call_id: str = "call_1") 
 def tool_result(call_id: str, output: object, is_error: bool = False) -> dict[str, object]:
 ```
 
+## References
+
+- Yao et al. (2022). [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
+- Schick et al. (2023). [Toolformer: Language Models Can Teach Themselves to Use Tools](https://arxiv.org/abs/2302.04761)
+- Paranjape et al. (2023). [ART: Automatic multi-step reasoning and tool-use for large language models](https://arxiv.org/abs/2303.09014)
+
 ## Run tests
 
 ```bash
