@@ -10,11 +10,10 @@ Markov chains evolve distributions via transition matrices.
 
 $$p_{t+1} = p_t T$$
 
-- $p_t$ -- probability at step t
-- $p$ -- probability
+- $p_t$ -- distribution over states at step $t$
+- $p_{t+1}$ -- distribution over states after one transition
 - $t$ -- timestep or iteration
-
-- $T$ -- number of steps
+- $T$ -- transition matrix
 
 ## Function
 

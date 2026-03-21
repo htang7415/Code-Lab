@@ -4,13 +4,15 @@
 
 ## Concept
 
-Newton's method uses second derivatives for faster convergence.
+Newton's method updates the current estimate using local slope and curvature.
 
 ## Math
 $$x_{t+1} = x_t - \frac{f'(x_t)}{f''(x_t)}$$
 
-- $x_t$ -- input (feature vector or sample) at step t
-- $x$ -- input (feature vector or sample)
+- $x_t$ -- current iterate at step $t$
+- $x_{t+1}$ -- next iterate after the Newton update
+- $f'(x_t)$ -- first derivative (local slope) at $x_t$
+- $f''(x_t)$ -- second derivative (local curvature) at $x_t$
 - $t$ -- timestep or iteration
 
 ## Function

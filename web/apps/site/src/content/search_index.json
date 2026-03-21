@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-21T03:43:46.485Z",
+  "generated_at": "2026-03-21T04:00:16.153Z",
   "entries": [
     {
       "id": "module:dsa/dynamic-programming/0-1-knapsack-theory-part-1",
@@ -4178,6 +4178,18 @@
       "topicName": "Testing"
     },
     {
+      "id": "module:ml/llm/flashattention-and-io-aware-attention",
+      "type": "module",
+      "title": "FlashAttention and IO-Aware Attention",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "flashattention-and-io-aware-attention",
+      "href": "/track/ml/llm#flashattention-and-io-aware-attention",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
+    },
+    {
       "id": "module:databases/relational/foreign-key-cascades",
       "type": "module",
       "title": "Foreign Key Cascades",
@@ -4464,6 +4476,18 @@
       "href": "/track/ml/reinforcement-learning#group-based-optimization",
       "trackName": "Machine Learning",
       "topicName": "Reinforcement Learning"
+    },
+    {
+      "id": "module:ml/llm/grouped-query-and-multi-query-attention",
+      "type": "module",
+      "title": "Grouped-Query and Multi-Query Attention",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "grouped-query-and-multi-query-attention",
+      "href": "/track/ml/llm#grouped-query-and-multi-query-attention",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
     },
     {
       "id": "doc:ai-agents/guardrails/guardrails",
@@ -7716,6 +7740,18 @@
       "href": "/track/ai-agents/observability#root-cause-attribution",
       "trackName": "AI Agents",
       "topicName": "Observability"
+    },
+    {
+      "id": "module:ml/llm/rope-and-position-scaling",
+      "type": "module",
+      "title": "RoPE and Position Scaling",
+      "summary": "> Track: `ml` | Topic: `llm`",
+      "track": "ml",
+      "topic": "llm",
+      "slug": "rope-and-position-scaling",
+      "href": "/track/ml/llm#rope-and-position-scaling",
+      "trackName": "Machine Learning",
+      "topicName": "LLM"
     },
     {
       "id": "module:ai-agents/workflows/routing-scorecards",

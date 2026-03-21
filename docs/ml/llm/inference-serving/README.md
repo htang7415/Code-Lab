@@ -36,8 +36,9 @@ decoded = speculative_decode(batch, draft_model, target_model)
 
 ## Canonical Modules
 
-- Context and cache fundamentals: `long-context-and-caching`, `kv-cache`, `prefix-cache`
-- Serving efficiency: `precision-and-quantization`, `speculative-decoding`
+- Context and cache fundamentals: `long-context-and-caching`, `kv-cache`, `prefix-cache`, `rope-and-position-scaling`
+- Serving efficiency: `precision-and-quantization`, `speculative-decoding`, `flashattention-and-io-aware-attention`
+- Attention layout: `grouped-query-and-multi-query-attention`
 - Scheduling: `request-batching`, `continuous-batching`, `chunked-prefill`
 - Performance modeling: `roofline-analysis`, `prefix-cache-metrics`
 
@@ -45,6 +46,8 @@ decoded = speculative_decode(batch, draft_model, target_model)
 
 - Start with `long-context-and-caching` when context length or memory is the first bottleneck.
 - Use `kv-cache` and `prefix-cache` when reuse and memory budgets are the main issue.
+- Use `grouped-query-and-multi-query-attention` when decode bandwidth or KV memory dominates latency.
 - Use batching modules when latency and throughput trade-offs dominate.
 - Use `precision-and-quantization` when model memory footprint blocks deployment targets.
 - Use `speculative-decoding` only when verification overhead is smaller than the decode savings.
+- Use `flashattention-and-io-aware-attention` when attention kernel IO is the bottleneck during training or long-context serving.

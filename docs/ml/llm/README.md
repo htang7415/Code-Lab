@@ -45,15 +45,15 @@ next_token = decode(hidden[-1], strategy="top_p")
 
 ## Canonical Modules
 
-- Tokenization and representations: `token-representation-methods`
-- Transformer core: `attention-mechanisms`, `transformer`
+- Tokenization and representations: `token-representation-methods`, `rope-and-position-scaling`
+- Transformer core: `attention-mechanisms`, `transformer`, `grouped-query-and-multi-query-attention`
 - Training stages: `pretraining`, `alignment-methods`
 - Reasoning: `reasoning-and-test-time-compute`
 - Multimodal inputs: `multimodal-llms`
 - Evaluation: `docs/ml/llm/evaluation`
 - Decoding: `decoding-methods`
 - Retrieval and lexical baselines: `bm25-ranking`, `retrieval-fusion-methods`, `cross-encoder-vs-bi-encoder`
-- Efficiency and systems: `long-context-and-caching`, `context-budgeting-and-truncation`, `parameter-efficient-fine-tuning`, `precision-and-quantization`, `kv-cache`, `prefix-cache`, `speculative-decoding`, `qk-clip`
+- Efficiency and systems: `long-context-and-caching`, `context-budgeting-and-truncation`, `parameter-efficient-fine-tuning`, `precision-and-quantization`, `kv-cache`, `prefix-cache`, `speculative-decoding`, `flashattention-and-io-aware-attention`, `qk-clip`
 
 ## Supporting Guides
 
@@ -68,11 +68,14 @@ next_token = decode(hidden[-1], strategy="top_p")
 ## When To Use What
 
 - Start with token-representation methods and attention before jumping to alignment or serving.
+- Use `rope-and-position-scaling` when the long-context question is positional extrapolation rather than cache reuse.
 - Use `reasoning-and-test-time-compute` before tuning sampling-heavy reasoning workflows.
 - Use `multimodal-llms` when the system has to mix text with images, audio, or video.
 - Use the evaluation guide before choosing metrics module by module.
 - Use decoding methods when generation behavior is the issue.
 - Use `cross-encoder-vs-bi-encoder` when choosing between first-stage dense retrieval and second-stage reranking.
+- Use `grouped-query-and-multi-query-attention` when KV cache size or memory bandwidth is the main inference constraint.
+- Use `flashattention-and-io-aware-attention` when the attention kernel itself is the serving or training bottleneck.
 - Use serving and systems topics when latency, memory, or throughput becomes the bottleneck.
 - If the model must call APIs, browse interfaces, or use MCP-style tool servers, switch to `docs/ai-agents/tool-use`.
 - Treat this page as the stack overview; use the leaf guides for the real detail.

@@ -4,7 +4,8 @@
 
 ## Concept
 
-Convex functions have a single global minimum.
+A convex function bends upward, so any local minimum is also a global minimum.
+For a 1D quadratic, convexity is determined entirely by the leading coefficient.
 
 ## Math
 
