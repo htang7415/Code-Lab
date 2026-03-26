@@ -987,7 +987,7 @@ export default async function TopicPage({
   const allHeadings: TocHeading[] = [];
   for (const entry of entries) {
     allHeadings.push({ id: entry.slug, text: entry.title, level: 2 });
-    const { pitfalls, practice, references } = splitSections(entry.parsed.sections);
+    const { pitfalls, practice } = splitSections(entry.parsed.sections);
     // DSA and ML pages keep pitfalls in the main content but omit them from the right-side TOC.
     if (pitfalls && trackId !== "dsa" && trackId !== "ml") {
       allHeadings.push({
@@ -1003,13 +1003,7 @@ export default async function TopicPage({
         level: 3,
       });
     }
-    if (references) {
-      allHeadings.push({
-        id: `${entry.slug}-${references.id}`,
-        text: references.label,
-        level: 3,
-      });
-    }
+    // Keep "References" in the page body, but omit it from the right-side TOC.
     // Hide "Demo Code" from the right-side TOC by request.
   }
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-21T04:00:16.153Z",
+  "generated_at": "2026-03-26T07:08:37.049Z",
   "tracks": [
     {
       "id": "dsa",
@@ -8278,7 +8278,7 @@
       "title": "Convex vs Non-Convex",
       "path": "modules/ml/fundamentals/convex-vs-nonconvex",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Convex vs Non-Convex\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nConvex functions have a single global minimum.\n\n## Math\n\n$$f(x)=ax^2+bx+c \\text{ is convex if } a \\ge 0$$\n\n- $a$ -- quadratic coefficient\n- $b$ -- linear coefficient\n- $c$ -- constant term\n- $x$ -- input scalar\n\n## Function\n\n```python\ndef is_convex_quadratic(a: float) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/convex-vs-nonconvex/python -q\n```\n",
+      "readme": "# Convex vs Non-Convex\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nA convex function bends upward, so any local minimum is also a global minimum.\nFor a 1D quadratic, convexity is determined entirely by the leading coefficient.\n\n## Math\n\n$$f(x)=ax^2+bx+c \\text{ is convex if } a \\ge 0$$\n\n- $a$ -- quadratic coefficient\n- $b$ -- linear coefficient\n- $c$ -- constant term\n- $x$ -- input scalar\n\n## Function\n\n```python\ndef is_convex_quadratic(a: float) -> bool:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/convex-vs-nonconvex/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/convex-vs-nonconvex/python/convex_vs_nonconvex.py",
@@ -8488,7 +8488,7 @@
       "title": "Jensen–Shannon Divergence",
       "path": "modules/ml/fundamentals/jensen-shannon-divergence",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Jensen–Shannon Divergence\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nJS divergence symmetrizes KL using the mean distribution.\n\n## Math\n$$\\mathrm{JS}(p,q)=\\tfrac{1}{2}\\mathrm{KL}(p\\|m)+\\tfrac{1}{2}\\mathrm{KL}(q\\|m),\\quad m=\\tfrac{1}{2}(p+q)$$\n\n- $\\mathrm{KL}$ -- Kullback-Leibler divergence\n- $p$ -- probability\n- $q$ -- probability distribution\n- $m$ -- number of features/units\n\n## Function\n\n```python\ndef js(p: list[float], q: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/jensen-shannon-divergence/python -q\n```",
+      "readme": "# Jensen–Shannon Divergence\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nJS divergence symmetrizes KL using the mean distribution.\n\n## Math\n$$\\mathrm{JS}(p,q)=\\tfrac{1}{2}\\mathrm{KL}(p\\|m)+\\tfrac{1}{2}\\mathrm{KL}(q\\|m),\\quad m=\\tfrac{1}{2}(p+q)$$\n\n- $\\mathrm{KL}$ -- Kullback-Leibler divergence\n- $p$ -- first probability distribution\n- $q$ -- second probability distribution\n- $m$ -- mixture distribution halfway between $p$ and $q$\n\n## Function\n\n```python\ndef js(p: list[float], q: list[float]) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/jensen-shannon-divergence/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/jensen-shannon-divergence/python/jensen_shannon_divergence.py",
@@ -8530,7 +8530,7 @@
       "title": "Markov Chains",
       "path": "modules/ml/fundamentals/markov-chains",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Markov Chains\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nMarkov chains evolve distributions via transition matrices.\n\n## Math\n\n$$p_{t+1} = p_t T$$\n\n- $p_t$ -- probability at step t\n- $p$ -- probability\n- $t$ -- timestep or iteration\n\n- $T$ -- number of steps\n\n## Function\n\n```python\ndef next_distribution(p: list[float], t: list[list[float]]) -> list[float]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/markov-chains/python -q\n```\n",
+      "readme": "# Markov Chains\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nMarkov chains evolve distributions via transition matrices.\n\n## Math\n\n$$p_{t+1} = p_t T$$\n\n- $p_t$ -- distribution over states at step $t$\n- $p_{t+1}$ -- distribution over states after one transition\n- $t$ -- timestep or iteration\n- $T$ -- transition matrix\n\n## Function\n\n```python\ndef next_distribution(p: list[float], t: list[list[float]]) -> list[float]:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/markov-chains/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/markov-chains/python/markov_chains.py",
@@ -8572,7 +8572,7 @@
       "title": "Newton's Method",
       "path": "modules/ml/fundamentals/newtons-method",
       "summary": "> Track: `ml` | Topic: `fundamentals`",
-      "readme": "# Newton's Method\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nNewton's method uses second derivatives for faster convergence.\n\n## Math\n$$x_{t+1} = x_t - \\frac{f'(x_t)}{f''(x_t)}$$\n\n- $x_t$ -- input (feature vector or sample) at step t\n- $x$ -- input (feature vector or sample)\n- $t$ -- timestep or iteration\n\n## Function\n\n```python\ndef newton_step(x: float, f_prime: float, f_double_prime: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/newtons-method/python -q\n```",
+      "readme": "# Newton's Method\n\n> Track: `ml` | Topic: `fundamentals`\n\n## Concept\n\nNewton's method updates the current estimate using local slope and curvature.\n\n## Math\n$$x_{t+1} = x_t - \\frac{f'(x_t)}{f''(x_t)}$$\n\n- $x_t$ -- current iterate at step $t$\n- $x_{t+1}$ -- next iterate after the Newton update\n- $f'(x_t)$ -- first derivative (local slope) at $x_t$\n- $f''(x_t)$ -- second derivative (local curvature) at $x_t$\n- $t$ -- timestep or iteration\n\n## Function\n\n```python\ndef newton_step(x: float, f_prime: float, f_double_prime: float) -> float:\n```\n\n## Run tests\n\n```bash\npytest modules/ml/fundamentals/newtons-method/python -q\n```\n",
       "sources": [
         {
           "path": "modules/ml/fundamentals/newtons-method/python/newtons_method.py",
